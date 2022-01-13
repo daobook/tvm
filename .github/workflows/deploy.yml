@@ -1,0 +1,71 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - doc
+
+jobs:
+  deploy-to-pages:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # fetch all history so that last modified date-times are accurate
+
+      - name: 🐍 Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+
+      - name: 🧳 Cache pip
+        uses: actions/cache@v2
+        with:
+          # This path is specific to Ubuntu
+          path: ~/.cache/pip
+          # Look to see if there is a cache hit for the corresponding requirements file
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            ${{ runner.os }}-
+      # - name: 👷‍ Install Dot and pandoc
+      #   run: |
+      #     conda install -c conda-forge pandoc
+      #     conda install -c conda-forge ipython
+      #     pip install sphinxcontrib-websupport
+      #     sudo apt update
+      #     sudo apt install -y graphviz
+
+      - name: 👷‍ Install dependencies
+        shell: bash
+        run: |
+          pip install --upgrade pip
+          pip install tlcpack-nightly -f https://tlcpack.ai/wheels
+          pip install -r xin/requirements.txt
+          conda install numpy decorator attrs tornado psutil xgboost
+          conda install scikit-learn-intelex
+          pip install tensorflow onnx mxnet torch
+          rm -rf xin/docs/
+          cp -r docs/ xin/docs/
+          cp -r _toc/how_to xin/docs/
+          cp -r _toc/topic xin/docs/
+          cp -r _toc/tutorial xin/docs/
+          rm -rf xin/docs/_staging/
+          rm -rf xin/docs/index.rst xin/docs/genindex.rst
+      - name: 🔧 Build HTML
+        run: |
+          cd xin
+          make html
+      # remove the .doctrees folder when building for deployment as it takes two thirds of disk space
+      - name: 🔥 Clean up files
+        run: |
+          rm -r xin/_build/doctrees/
+          rm -r xin/docs
+
+      - name: 🚀 Deploy to GitHub pages
+        uses: peaceiris/actions-gh-pages@v3.6.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: xin/_build/html

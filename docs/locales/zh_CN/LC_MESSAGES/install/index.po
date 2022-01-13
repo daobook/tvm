@@ -1,0 +1,49 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# xinetzone <735613050@qq.com>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-10 21:32+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: xinetzone <735613050@qq.com>, 2022\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/install/index.rst:21
+msgid "Installing TVM"
+msgstr "安装 TVM"
+
+#: ../../docs/install/index.rst:23
+msgid ""
+"Checkout to :ref:`install TVM from source <install-from-source>`. "
+"Installing from source gives you the maximum flexibility to configure the"
+" build effectively from the official source releases. If you are "
+"interested in deploying to mobile or embedded devices, you do not need to"
+" install the entire TVM stack on your device. Instead, you only need the "
+"runtime and can install using the :ref:`deployment and integration guide "
+"<deploy-and-integration>`."
+msgstr ""
+"签出到 :ref:`从源码安装 TVM <install-from-source>`。"
+"从源代码安装为您提供了最大的灵活性，可以从官方源代码版本有效地配置构建。"
+"如果您有兴趣部署到移动或嵌入式设备，则无需在您的设备上安装整个 TVM 堆栈。"
+"相反，您只需运行时并且可以使用 "
+":ref:`部署和集成指南 <deploy-and-integration>` 进行安装。"
+
+#: ../../docs/install/index.rst:29
+msgid ""
+"If you would like to quickly try out TVM or run some demo and tutorials, "
+"you can checkout :ref:`install from Docker <docker-images>`. You can also"
+" tryout pre-built from third-party :doc:`TLCPack Python and Conda "
+"packages <tlcpack>`."
+msgstr ""
+"如果您想快速试用 TVM 或运行一些演示和教程，"
+"您可以从 :ref:`Docker 安装 <docker-images>` 签出。"
+"您还可以试用从第三方预构建的 :doc:`TLCPack Python 和 Conda 包 <tlcpack>`。"

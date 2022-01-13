@@ -1,0 +1,64 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020 - 2021, Apache Software Foundation
+# This file is distributed under the same license as the tvm package.
+# xinetzone <735613050@qq.com>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: tvm 0.9.dev282+gf54634c5d\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-11 13:20+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: xinetzone <735613050@qq.com>, 2022\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../_staging/index.rst:31
+msgid "Getting Started"
+msgstr "快速上手"
+
+#: ../../_staging/index.rst:38
+msgid "User Guide"
+msgstr "用户指南"
+
+#: ../../_staging/index.rst:45
+msgid "Developer Guide"
+msgstr "开发者指南"
+
+#: ../../_staging/index.rst:52
+msgid "Architecture  Guide"
+msgstr "架构指南"
+
+#: ../../_staging/index.rst:58
+msgid "Topic Guides"
+msgstr ""
+
+#: ../../_staging/index.rst:65
+msgid "Reference Guide"
+msgstr "主题指南"
+
+#: ../../_staging/index.rst:19
+msgid "Apache TVM Documentation"
+msgstr "Apache TVM 中文文档"
+
+#: ../../_staging/index.rst:21
+msgid ""
+"Welcome to the the documentation for Apache TVM, a deep learning compiler"
+" that enables access to high-performance machine learning anywhere for "
+"everyone. TVM's diverse community of hardware vendors, compiler engineers"
+" and ML researchers work together to build a unified, programmable "
+"software stack, that enriches the entire ML technology ecosystem and make"
+" it accessible to the wider ML community. TVM empowers users to leverage "
+"community-driven ML-based optimizations to push the limits and amplify "
+"the reach of their research and development, which in turn raises the "
+"collective performance of all ML, while driving its costs down."
+msgstr ""
+"欢迎来到 Apache TVM 的文档，这是一个深度学习编译器，可以让每个人都能在任何地方获得高性能的机器学习。"
+"TVM 是一个由硬件供应商、编译器工程师和 ML 研究人员组成的多样化社区。"
+"研究人员共同构建了一个统一的、可编程的软件栈，从而丰富了整个 ML "
+"技术生态系统，并使其能够被更广泛的 ML 社区。TVM 使用户能够利用社区驱动的基于 ML "
+"的优化来推动其研究和开发的极限并扩大其范围，这反过来又提高了所有 ML 的集体性能，同时推动其成本下降。"

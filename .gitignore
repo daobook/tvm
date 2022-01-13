@@ -7,6 +7,7 @@ __pycache__/
 *.so
 *.ll
 .npm
+*.npy
 # Distribution / packaging
 .Python
 env/

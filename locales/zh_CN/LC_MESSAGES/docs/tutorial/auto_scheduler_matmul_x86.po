@@ -1,0 +1,187 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-13 14:28+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:20003
+msgid "Optimizing Operators with Auto-scheduling"
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:20004
+msgid ""
+"**Author**: `Lianmin Zheng <https://github.com/merrymercy>`_,"
+"             `Chengfan Jia <https://github.com/jcf94/>`_"
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:20006
+msgid ""
+"In this tutorial, we will show how TVM's Auto Scheduling feature can find"
+" optimal schedules without the need for writing a custom template."
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:20009
+msgid ""
+"Different from the template-based :doc:`AutoTVM <autotvm_matmul_x86>` "
+"which relies on manual templates to define the search space, the auto-"
+"scheduler does not require any templates.  Users only need to write the "
+"computation declaration without any schedule commands or templates.  The "
+"auto-scheduler can automatically generate a large search space and find a"
+" good schedule in the space."
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:20016
+msgid "We use matrix multiplication as an example in this tutorial."
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:40002
+msgid "Defining the Matrix Multiplication"
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:40003
+msgid ""
+"To start, we define a matrix multiplication with a bias addition.  Note "
+"that this uses standard operations available in TVMs Tensor Expression "
+"language. The major difference is the use of the :any:`register_workload`"
+" decorator at the top of the function definition.  The function should "
+"return a list of input/output tensors.  From these tensors, the auto-"
+"scheduler can get the whole computational graph."
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:60002
+msgid "Create the search task"
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:60003
+msgid ""
+"With the function defined, we can now create the task for the "
+"auto_scheduler to search against. We specify the particular parameters "
+"for this matrix multiplication, in this case a multiplication of to "
+"square matricies of size 1024x1024. We then create a search task with "
+"N=L=M=1024 and dtype=\"float32\""
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:60008
+msgid ".. admonition:: Improve performance with custom targets"
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:60010
+msgid ""
+"In order for TVM to take full advantage of specific hardware platforms,"
+"   you will want to manuall specify your CPU capabilities. For example:"
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:80002
+msgid "Set Parameters for Auto-Scheduler"
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:80003
+msgid "Next, we set parameters for the auto-scheduler."
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:80005
+msgid ""
+":code:`num_measure_trials` is the number of measurement trials we can use"
+" during the search.  We only make 10 trials in this tutorial for a fast "
+"demonstration. In practice, 1000 is a good value for the search to "
+"converge. You can do more trials according to your time budget."
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:80009
+msgid ""
+"In addition, we use :any:`RecordToFile <auto_scheduler.RecordToFile>` to "
+"log measurement records into a file ``matmul.json``.  The measurement "
+"records can be used to query the history best, resume the search, and do "
+"more analyses later."
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:80012
+msgid ""
+"see :any:`TuningOptions <auto_scheduler.TuningOptions>` for more "
+"parameters"
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:100002
+msgid "Run the search"
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:100003
+msgid ""
+"Now we get all inputs ready. Pretty simple, isn't it?  We can kick off "
+"the search and let the auto-scheduler do its magic.  After some "
+"measurement trials, we can load the best schedule from the log file and "
+"apply it."
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:120002
+msgid "Inspecting the Optimized Schedule"
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:120003
+msgid ""
+"We can lower the schedule to see the IR after auto-scheduling.  The auto-"
+"scheduler correctly performs optimizations including multi-level tiling, "
+"layout transformation, parallelization, vectorization, unrolling, and "
+"operator fusion."
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:140002
+msgid "Check correctness and evaluate performance"
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:140003
+msgid "We build the binary and check its correctness and performance."
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:160002
+msgid "Using the record file"
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:160003
+msgid ""
+"During the search, all measurement records are logged into the record "
+"file ``matmul.json```. The measurement records can be used to re-apply "
+"search results, resume the search, and perform other analyses."
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:160007
+msgid ""
+"Here is an example where we load the best schedule from a file, and print"
+" the equivalent python schedule API. This can be used for debugging and "
+"learning the behavior of the auto-scheduler."
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:180002
+msgid ""
+"A more complicated example is to resume the search.  In this case, we "
+"need to create the search policy and cost model by ourselves and resume "
+"the status of search policy and cost model with the log file.  In the "
+"example below we resume the status and do more 5 trials."
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:200002
+msgid "Final Notes and Summary"
+msgstr ""
+
+#: ../../user-guide/tutorial/auto_scheduler_matmul_x86.ipynb:200003
+msgid ""
+"In this tutorial, we have shown how to use the TVM Auto-Scheduler to "
+"automatically optimize a matrix multiplication, without the need to "
+"specify a search template.  It ends a series of examples that starts from"
+" the Tensor Expression (TE) language that demonstrates how TVM can "
+"optimize computational operations."
+msgstr ""
+

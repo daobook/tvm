@@ -1,0 +1,227 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020 - 2021, Apache Software Foundation
+# This file is distributed under the same license as the tvm package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: tvm 0.9.dev282+gf54634c5d\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-11 13:20+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:13
+msgid ""
+"Click :ref:`here "
+"<sphx_glr_download_tutorial_auto_scheduler_matmul_x86.py>` to download "
+"the full example code"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:22
+msgid "Optimizing Operators with Auto-scheduling"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:23
+msgid ""
+"**Author**: `Lianmin Zheng <https://github.com/merrymercy>`_,"
+"             `Chengfan Jia <https://github.com/jcf94/>`_"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:25
+msgid ""
+"In this tutorial, we will show how TVM's Auto Scheduling feature can find"
+" optimal schedules without the need for writing a custom template."
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:28
+msgid ""
+"Different from the template-based :doc:`AutoTVM <autotvm_matmul_x86>` "
+"which relies on manual templates to define the search space, the auto-"
+"scheduler does not require any templates.  Users only need to write the "
+"computation declaration without any schedule commands or templates.  The "
+"auto-scheduler can automatically generate a large search space and find a"
+" good schedule in the space."
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:35
+msgid "We use matrix multiplication as an example in this tutorial."
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:38
+msgid ""
+"Note that this tutorial will not run on Windows or recent versions of "
+"macOS. To get it to run, you will need to wrap the body of this tutorial "
+"in a :code:`if __name__ == \"__main__\":` block."
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:57
+msgid "Defining the Matrix Multiplication"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:58
+msgid ""
+"To start, we define a matrix multiplication with a bias addition.  Note "
+"that this uses standard operations available in TVMs Tensor Expression "
+"language. The major difference is the use of the :any:`register_workload`"
+" decorator at the top of the function definition.  The function should "
+"return a list of input/output tensors.  From these tensors, the auto-"
+"scheduler can get the whole computational graph."
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:93
+msgid "Create the search task"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:94
+msgid ""
+"With the function defined, we can now create the task for the "
+"auto_scheduler to search against. We specify the particular parameters "
+"for this matrix multiplication, in this case a multiplication of to "
+"square matricies of size 1024x1024. We then create a search task with "
+"N=L=M=1024 and dtype=\"float32\""
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:99
+msgid "Improve performance with custom targets"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:101
+msgid ""
+"In order for TVM to take full advantage of specific hardware platforms, "
+"you will want to manuall specify your CPU capabilities. For example:"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:104
+msgid "replace ``llvm`` below with ``llvm -mcpu=core-avx2`` to enable AVX2"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:105
+msgid ""
+"replace ``llvm`` below with ``llvm -mcpu=skylake-avx512`` to enable "
+"AVX-512"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:124
+msgid "Set Parameters for Auto-Scheduler"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:125
+msgid "Next, we set parameters for the auto-scheduler."
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:127
+msgid ""
+":code:`num_measure_trials` is the number of measurement trials we can use"
+" during the search.  We only make 10 trials in this tutorial for a fast "
+"demonstration. In practice, 1000 is a good value for the search to "
+"converge. You can do more trials according to your time budget."
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:131
+msgid ""
+"In addition, we use :any:`RecordToFile <auto_scheduler.RecordToFile>` to "
+"log measurement records into a file ``matmul.json``.  The measurement "
+"records can be used to query the history best, resume the search, and do "
+"more analyses later."
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:134
+msgid ""
+"see :any:`TuningOptions <auto_scheduler.TuningOptions>` for more "
+"parameters"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:152
+msgid "Run the search"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:153
+msgid ""
+"Now we get all inputs ready. Pretty simple, isn't it?  We can kick off "
+"the search and let the auto-scheduler do its magic.  After some "
+"measurement trials, we can load the best schedule from the log file and "
+"apply it."
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:171
+msgid "Inspecting the Optimized Schedule"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:172
+msgid ""
+"We can lower the schedule to see the IR after auto-scheduling.  The auto-"
+"scheduler correctly performs optimizations including multi-level tiling, "
+"layout transformation, parallelization, vectorization, unrolling, and "
+"operator fusion."
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:189
+msgid "Check correctness and evaluate performance"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:190
+msgid "We build the binary and check its correctness and performance."
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:225
+msgid "Using the record file"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:226
+msgid ""
+"During the search, all measurement records are logged into the record "
+"file ``matmul.json```. The measurement records can be used to re-apply "
+"search results, resume the search, and perform other analyses."
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:230
+msgid ""
+"Here is an example where we load the best schedule from a file, and print"
+" the equivalent python schedule API. This can be used for debugging and "
+"learning the behavior of the auto-scheduler."
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:245
+msgid ""
+"A more complicated example is to resume the search.  In this case, we "
+"need to create the search policy and cost model by ourselves and resume "
+"the status of search policy and cost model with the log file.  In the "
+"example below we resume the status and do more 5 trials."
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:275
+msgid "Final Notes and Summary"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:276
+msgid ""
+"In this tutorial, we have shown how to use the TVM Auto-Scheduler to "
+"automatically optimize a matrix multiplication, without the need to "
+"specify a search template.  It ends a series of examples that starts from"
+" the Tensor Expression (TE) language that demonstrates how TVM can "
+"optimize computational operations."
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:295
+msgid ""
+":download:`Download Python source code: auto_scheduler_matmul_x86.py "
+"<auto_scheduler_matmul_x86.py>`"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:301
+msgid ""
+":download:`Download Jupyter notebook: auto_scheduler_matmul_x86.ipynb "
+"<auto_scheduler_matmul_x86.ipynb>`"
+msgstr ""
+
+#: ../../_staging/tutorial/auto_scheduler_matmul_x86.rst:308
+msgid "`Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_"
+msgstr ""
+
