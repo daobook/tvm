@@ -1,0 +1,15 @@
+Sphinx>=4.3
+sphinx-gallery
+numpy
+matplotlib
+sphinx_book_theme
+autodocsumm
+sphinx_copybutton
+tlcpack-sphinx-addon
+babel
+synr
+pytest
+# cloudpickle
+jupyter-sphinx
+myst-nb
+sphinx_thebe
