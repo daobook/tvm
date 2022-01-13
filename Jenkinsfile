@@ -50,8 +50,8 @@ ci_gpu = "tlcpack/ci-gpu:v0.79"
 ci_cpu = "tlcpack/ci-cpu:v0.80"
 ci_wasm = "tlcpack/ci-wasm:v0.71"
 ci_i386 = "tlcpack/ci-i386:v0.74"
-ci_qemu = "tlcpack/ci-qemu:v0.08"
-ci_arm = "tlcpack/ci-arm:v0.06"
+ci_qemu = "tlcpackstaging/ci_qemu:20220112-225944-11edc7b64"
+ci_arm = "tlcpackstaging/ci_arm:20220112-225944-11edc7b64"
 // <--- End of regex-scanned config.
 
 // Parameters to allow overriding (in Jenkins UI), the images
