@@ -249,3 +249,5 @@ _docs/
 jvm/target
 .config/configstore/
 .ci-py-scripts/
+*.fw
+*.fw.1
