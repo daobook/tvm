@@ -13,7 +13,7 @@ jobs:
       - name: 🛎️ Checkout
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # fetch all history so that last modified date-times are accurate
+          submodules: 'recursive'
 
       - name: 🐍 Set up Python 3.8
         uses: actions/setup-python@v2
@@ -42,7 +42,12 @@ jobs:
         shell: bash
         run: |
           pip install --upgrade pip
-          pip install tlcpack-nightly -f https://tlcpack.ai/wheels
+          sudo apt-get install -y python3 python3-dev python3-setuptools gcc libtinfo-dev zlib1g-dev build-essential cmake libedit-dev libxml2-dev
+          mkdir build
+          cp cmake/config.cmake build
+          cd build
+          cmake ..
+          make -j4
           pip install -r xin/requirements.txt
           conda install numpy decorator attrs tornado psutil xgboost
           conda install scikit-learn-intelex
@@ -54,6 +59,9 @@ jobs:
           cp -r _toc/tutorial xin/docs/
           rm -rf xin/docs/_staging/
           rm -rf xin/docs/index.rst xin/docs/genindex.rst
+          export TVM_HOME=/home/runner/work/tvm/tvm/
+          export PYTHONPATH=$TVM_HOME/python:${PYTHONPATH}
+          
       - name: 🔧 Build HTML
         run: |
           cd xin
