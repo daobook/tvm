@@ -6,5 +6,5 @@ Auto tuning
 .. toctree::
    :hidden:
 
-   autotvm/tune_alu_vta
-   autotvm/tune_relay_vta
+   tune_alu_vta
+   tune_relay_vta

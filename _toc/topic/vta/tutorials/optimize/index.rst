@@ -6,7 +6,7 @@ Optimize Tensor Operators
 .. toctree::
    :hidden:
 
-   optimize/convolution_opt
+   convolution_opt
 
-   optimize/matrix_multiply_opt
+   matrix_multiply_opt
 

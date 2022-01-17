@@ -9,5 +9,5 @@ Compile Deep Learning Models
 .. toctree::
    :hidden:
 
-   frontend/deploy_classification
-   frontend/deploy_detection
+   deploy_classification
+   deploy_detection

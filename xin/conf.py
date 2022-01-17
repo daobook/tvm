@@ -31,6 +31,12 @@ sys.path.extend([(tvm_path/"python").as_posix(),
                  (tvm_path/"docs").as_posix(),
                  ])
 
+# Version information.
+import tvm
+from tvm import topi
+from tvm import te
+from tvm import testing
+from tvm import relay
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
@@ -108,7 +114,7 @@ nb_render_priority = {
 
 intersphinx_mapping = {
     "python": ("https://docs.python.org/{.major}".format(sys.version_info), None),
-    "tvm": ("https://tvm.apache.org/docs/", None)
+    "tvm": ("https://tvm.apache.org/", None)
     # "numpy": ("https://numpy.org/doc/stable", None),
     # "scipy": ("https://docs.scipy.org/doc/scipy/", None),
     # "matplotlib": ("https://matplotlib.org/", None),
