@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../docs/arch/index.rst:19
 msgid "Design and Architecture"
-msgstr ""
+msgstr "设计与架构"
 
 #: ../../docs/arch/index.rst:21
 msgid ""
@@ -27,6 +27,7 @@ msgid ""
 "architecture of TVM and/or actively develop on the project. This page is "
 "organized as follows:"
 msgstr ""
+"本文档是为那些想了解 TVM 架构和/或积极开发项目的开发者准备的。本页的组织结构如下："
 
 #: ../../docs/arch/index.rst:25
 msgid ""
@@ -34,6 +35,7 @@ msgid ""
 "takes to turn a high level description of a model into a deployable "
 "module. To get started, please read this section first."
 msgstr ""
+"`Example Compilation Flow`_ 概述了 TVM 将模型的高级别描述转化为可部署模块的步骤。要开始使用，请先阅读本节。"
 
 #: ../../docs/arch/index.rst:28
 msgid ""
@@ -41,6 +43,8 @@ msgid ""
 "components. The sections after are specific guides focused on each "
 "logical component, organized by the component's name."
 msgstr ""
+"`Logical Architecture Components`_ 部分描述了逻辑组件。"
+"之后的章节是专注于每个逻辑组件的具体指南，按照组件的名称组织。"
 
 #: ../../docs/arch/index.rst:32
 msgid ""
@@ -48,12 +52,14 @@ msgid ""
 " describes how TVM interacts with each supported physical device and "
 "code-generation target."
 msgstr ""
+":ref:`Device/Target Interactions <tvm-target-specific-overview>` 页面描述了 TVM 如何与每个支持的物理设备和代码生成目标互动。"
 
 #: ../../docs/arch/index.rst:36
 msgid ""
 "Feel free to also check out the :ref:`dev-how-to` for useful development "
 "tips."
 msgstr ""
+"请随时查看 :ref:`dev-how-to`，了解有用的开发技巧。"
 
 #: ../../docs/arch/index.rst:38
 msgid ""
@@ -64,10 +70,14 @@ msgid ""
 "will review the logical modules of the codebase and their relationship. "
 "This part provides a static overarching view of the design."
 msgstr ""
+"本指南提供了关于架构的几个互补性观点。"
+"首先，我们回顾了一个单一的端到端编译流程，并讨论了关键的数据结构和转换。"
+"这种基于运行时的观点着重于运行编译器时每个组件的相互作用。"
+"然后，我们将回顾代码库的逻辑模块和它们之间的关系。这一部分提供了一个静态的总体设计视图。"
 
 #: ../../docs/arch/index.rst:45
 msgid "Example Compilation Flow"
-msgstr ""
+msgstr "编译流程示例"
 
 #: ../../docs/arch/index.rst:47
 msgid ""
