@@ -121,7 +121,7 @@ msgstr ""
 "TVM 代码库的一个有趣方面是，C++ 和 Python 之间的互操作性不是单向的。"
 "通常情况下，所有执行繁重工作的代码都是用 C++ 实现的，而 Python 绑定是为用户界面提供的。"
 "这在 TVM 中也是如此，但在 TVM 代码库中，C++ 代码也可以调用 Python 模块中定义的函数。"
-"例如，卷积运算符是用 Python 实现的，它的实现是由 Relay 中的 C++ 代码调用的。"
+"例如，卷积算子是用 Python 实现的，它的实现是由 Relay 中的 C++ 代码调用的。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:47
 msgid "Vector Add Example"
@@ -172,6 +172,10 @@ msgid ""
 "also checkout `FFI Navigator <https://github.com/tqchen/ffi-navigator>`_ "
 "which allows you to navigate between python and c++ FFI calls."
 msgstr ""
+"使用 ``TVM_REGISTER_*`` 宏，以 :ref:`tvm-runtime-system-packed-func` 的形式，将 C++ 函数暴露给前端语言。"
+"``PackedFunc`` 是 TVM 实现 C++ 和 Python 之间互操作的另一种机制。"
+"特别是，这使得从 C++ 代码库中调用 Python 函数非常容易。"
+"你也可以查看 `FFI Navigator <https://github.com/tqchen/ffi-navigator>`_，它允许你在 Python 和 C++ FFI 调用之间进行导航。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:74
 msgid ""
@@ -182,22 +186,29 @@ msgid ""
 "``input_tensors()`` method, which returns a list of input ``Tensor`` to "
 "it. This way we can keep track of dependencies between ``Operation``."
 msgstr ""
+"一个 ``Tensor`` 对象有一个与之相关的 ``Operation`` 对象，"
+"定义在 ``python/tvm/te/tensor.py``，``include/tvm/te/operation.h``，以及 ``src/tvm/te/operation`` 子目录下。"
+"一个 ``Tensor`` 是其 ``Operation`` 对象的一个输出。"
+"每个 ``Operation`` 对象都有 ``input_tensors()`` 方法，该方法返回一个输入 ``Tensor`` 的列表。"
+"这样，我们就可以跟踪 ``Operation`` 之间的依赖关系。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:76
 msgid ""
 "We pass the operation corresponding to the output tensor ``C`` to "
 "``tvm.te.create_schedule()`` function in ``python/tvm/te/schedule.py``."
 msgstr ""
+"我们将输出张量 ``C`` 对应的操作传递给在 ``python/tvm/te/schedule.py`` 中的 ``tvm.te.create_schedule()`` 函数。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:82
 msgid "This function is mapped to the C++ function in ``include/tvm/schedule.h``."
-msgstr ""
+msgstr "这个函数被映射到 ``include/tvm/schedule.h`` 中的 C++ 函数。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:90
 msgid ""
 "``Schedule`` consists of collections of ``Stage`` and output "
 "``Operation``."
 msgstr ""
+"``Schedule`` 由 ``Stage`` 和输出 ``Operation`` 的集合组成。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:92
 msgid ""

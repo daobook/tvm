@@ -12,7 +12,7 @@
 
 2. 翻译成 *Relay*，TVM 的高级模型语言。
 
-   已经导入 TVM 的模型是用 Relay 表示的。Relay 是一种功能语言（functional language）和神经网络的中间表示法（IR）。它支持以下内容：
+   已经导入 TVM 的模型是用 Relay 表示的。Relay 是一种函数式语言（functional language）和神经网络的中间表示法（IR）。它支持以下内容：
 
    - 传统的数据流式表示法
    - Functional-style scoping 和 let-binding 使其成为一种功能齐全的可区分语言
