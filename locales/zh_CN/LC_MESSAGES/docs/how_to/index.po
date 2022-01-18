@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../docs/how_to/index.rst:19
 msgid "How To Guides"
-msgstr "怎么做"
+msgstr "指南：怎么做"
 
 #: ../../docs/how_to/index.rst:21
 msgid ""

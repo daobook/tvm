@@ -1,3 +1,5 @@
+(sphx_glr_tutorial_introduction.py)=
+(sphx_glr_tutorial_introduction)=
 # TVM 和模型优化的概述
 
 下图说明了机器学习模型在用 TVM 优化编译器框架进行转换时的步骤。

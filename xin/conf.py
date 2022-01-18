@@ -114,7 +114,7 @@ nb_render_priority = {
 
 intersphinx_mapping = {
     "python": ("https://docs.python.org/{.major}".format(sys.version_info), None),
-    "tvm": ("https://tvm.apache.org/", None),
+    "tvm": ("https://tvm.apache.org/docs", None),
     "numpy": ("https://numpy.org/doc/stable", None),
     "scipy": ("https://docs.scipy.org/doc/scipy/", None),
     "matplotlib": ("https://matplotlib.org/", None),

@@ -2,6 +2,7 @@ Sphinx>=4.3
 sphinx-gallery
 numpy
 matplotlib
+scipy
 sphinx_book_theme
 autodocsumm
 sphinx_copybutton

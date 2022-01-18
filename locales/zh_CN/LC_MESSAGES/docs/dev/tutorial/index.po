@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../docs/dev/tutorial/index.rst:21
 msgid "Developer Tutorial"
-msgstr ""
+msgstr "开发者教程"
 
 #: ../../docs/dev/tutorial/index.rst:23
 msgid ""
 "This section is a guide to the TVM codebase, and an introduction on how "
 "to contribute to different parts of the platform."
 msgstr ""
-
+"本节是 TVM 代码库的指南，并介绍了如何为平台的不同部分作出贡献。"

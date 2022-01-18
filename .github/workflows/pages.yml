@@ -45,7 +45,7 @@ jobs:
           cp cmake/config.cmake build
           cd build
           cmake ..
-          make -j4
+          make -j8
 
       - name: 👷‍ Install dependencies
         shell: bash

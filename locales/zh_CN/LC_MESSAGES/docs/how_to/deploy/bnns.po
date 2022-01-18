@@ -1,35 +1,35 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2022, xinetzone
-# This file is distributed under the same license as the TVM package.
+# Copyright (C) 2020 - 2021, Apache Software Foundation
+# This file is distributed under the same license as the tvm package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: TVM \n"
+"Project-Id-Version: tvm 0.9.dev282+gf54634c5d\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 21:32+0800\n"
+"POT-Creation-Date: 2022-01-11 13:20+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.9.0\n"
 
-#: ../../docs/how_to/deploy/bnns.rst:19
+#: ../../_staging/how_to/deploy/bnns.rst:19
 msgid "Relay BNNS Integration"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:20
+#: ../../_staging/how_to/deploy/bnns.rst:20
 msgid "**Author**: `Egor Churaev <https://github.com/echuraev>`_"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:23
+#: ../../_staging/how_to/deploy/bnns.rst:23
 msgid "Introduction"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:25
+#: ../../_staging/how_to/deploy/bnns.rst:25
 msgid ""
 "Apple BNNS library is a collection of functions that can be used to "
 "construct neural networks for inference (and train). It’s supported in "
@@ -39,60 +39,60 @@ msgid ""
 "as possible from Relay to BNNS."
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:30
+#: ../../_staging/how_to/deploy/bnns.rst:30
 msgid ""
 "BNNS runtime is a part of platform API and available on all modern Apple "
 "operating systems. Application using BNNS will not depends on any "
 "additional external dependencies."
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:33
+#: ../../_staging/how_to/deploy/bnns.rst:33
 msgid ""
 "BNNS functions uses Apple private hardware capabilities which are not "
 "exposed yet by Apple. Example of such capabilities can be AMX Apple cpu "
 "extension."
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:36
+#: ../../_staging/how_to/deploy/bnns.rst:36
 msgid ""
 "This guide will demonstrate how to build TVM with BNNS codegen and "
 "runtime enabled. It will also provide example code to compile and run "
 "models using BNNS runtime. Finally, we document the supported operators."
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:40
+#: ../../_staging/how_to/deploy/bnns.rst:40
 msgid "Building TVM with BNNS support"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:42
+#: ../../_staging/how_to/deploy/bnns.rst:42
 msgid ""
 "To turn on TVM BNNS codegen and TVM BNNS runtime you need to turn on the "
 "only USE_BNNS flag"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:44
+#: ../../_staging/how_to/deploy/bnns.rst:44
 msgid ""
 "USE_BNNS=ON/OFF - This flag will enable compiling a network with "
 "offloading subgraphs to BNNS primitives and will link tvm library to the "
 "BNNS runtime module."
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:47
+#: ../../_staging/how_to/deploy/bnns.rst:47
 msgid ""
 "Enabling of this flag will cause to search the default Accelerate "
 "Frameworks on current target SDK. The minimal versions of required SDK is"
 " macOS 11.0, iOS 14.0, tvOS 14.0 and watchOS 7.0."
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:50
+#: ../../_staging/how_to/deploy/bnns.rst:50
 msgid "Example setting in config.cmake file:"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:57
+#: ../../_staging/how_to/deploy/bnns.rst:57
 msgid "BNNS partitioning of Relay graph"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:59
+#: ../../_staging/how_to/deploy/bnns.rst:59
 msgid ""
 "Operations to be offloaded on BNNS execution must be annotated before "
 "passing of module for compilation. All ops annotated by "
@@ -100,7 +100,7 @@ msgid ""
 "the ops will go through the LLVM compilation and code generation."
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:63
+#: ../../_staging/how_to/deploy/bnns.rst:63
 msgid ""
 "Important note: BNNS support primitives only with constant weights. To "
 "satisfy this requirements we have to map constants to related tensor "
@@ -112,17 +112,17 @@ msgid ""
 " as the argument."
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:76
+#: ../../_staging/how_to/deploy/bnns.rst:76
 msgid "Input data layout for operations to be offloaded to BNNS execution"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:78
+#: ../../_staging/how_to/deploy/bnns.rst:78
 msgid ""
 "BNNS kernels support only planar format of input data. The partitioner "
 "will require to have NCHW input layout for conv2d input."
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:81
+#: ../../_staging/how_to/deploy/bnns.rst:81
 msgid ""
 "To use BNNS integration for models with interleave input layout, they "
 "should be converted before passing of module to `partition_for_bnns`. The"
@@ -134,19 +134,19 @@ msgid ""
 "convert all intermediate tensors to NCHW data layout."
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:88
+#: ../../_staging/how_to/deploy/bnns.rst:88
 msgid "Example of input layouts change:"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:101
+#: ../../_staging/how_to/deploy/bnns.rst:101
 msgid "Example: Build and Deploy Mobilenet v2 1.0 with BNNS"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:103
+#: ../../_staging/how_to/deploy/bnns.rst:103
 msgid "Create a Relay graph from a MXNet Mobilenet v2 1.0 model."
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:118
+#: ../../_staging/how_to/deploy/bnns.rst:118
 msgid ""
 "Markup the parts of graphs to be offloaded to BNNS primitives. All ops "
 "which are supported by the BNNS integration will be handled by BNNS "
@@ -154,79 +154,81 @@ msgid ""
 "compilation and code generation."
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:122
+#: ../../_staging/how_to/deploy/bnns.rst:122
 msgid ""
 "After that you need to compile new module with target corresponding to "
 "required Apple platform"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:135
+#: ../../_staging/how_to/deploy/bnns.rst:135
 msgid "Export the module."
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:142
+#: ../../_staging/how_to/deploy/bnns.rst:142
 msgid ""
 "Load module and run inference on the target machine with TVM  built with "
 "``USE_BNNS`` enabled"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:162
+#: ../../_staging/how_to/deploy/bnns.rst:162
 msgid "Operator support"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:165
+#: ../../_staging/how_to/deploy/bnns.rst:165
 msgid "Relay Node"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:165
+#: ../../_staging/how_to/deploy/bnns.rst:165
 msgid "Remarks"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:167
+#: ../../_staging/how_to/deploy/bnns.rst:167
 msgid "nn.conv2d"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:169
+#: ../../_staging/how_to/deploy/bnns.rst:169
 msgid "nn.batch_norm"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:169
+#: ../../_staging/how_to/deploy/bnns.rst:169
 msgid "Supported by BNNS integration only in nn.conv2d-batch_norm pattern"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:171
+#: ../../_staging/how_to/deploy/bnns.rst:171
 msgid "nn.dense"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:173
+#: ../../_staging/how_to/deploy/bnns.rst:173
 msgid "nn.batch_matmul"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:175
+#: ../../_staging/how_to/deploy/bnns.rst:175
 msgid "nn.bias_add"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:175 ../../docs/how_to/deploy/bnns.rst:178
+#: ../../_staging/how_to/deploy/bnns.rst:175
+#: ../../_staging/how_to/deploy/bnns.rst:178
 msgid ""
 "Supported by BNNS integration only as a bias part of nn.conv2d or "
 "nn.dense fusion"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:178
+#: ../../_staging/how_to/deploy/bnns.rst:178
 msgid "add"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:181
+#: ../../_staging/how_to/deploy/bnns.rst:181
 msgid "nn.relu"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:181 ../../docs/how_to/deploy/bnns.rst:183
+#: ../../_staging/how_to/deploy/bnns.rst:181
+#: ../../_staging/how_to/deploy/bnns.rst:183
 msgid ""
 "Supported by BNNS integration only as a part of nn.conv2d or nn.dense "
 "fusion"
 msgstr ""
 
-#: ../../docs/how_to/deploy/bnns.rst:183
+#: ../../_staging/how_to/deploy/bnns.rst:183
 msgid "nn.gelu"
 msgstr ""
 

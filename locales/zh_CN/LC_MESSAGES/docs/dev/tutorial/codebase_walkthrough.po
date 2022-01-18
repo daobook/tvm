@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:20
 msgid "TVM Codebase Walkthrough by Example"
-msgstr ""
+msgstr "TVM 代码库的实例演练"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:22
 msgid ""
@@ -31,38 +31,47 @@ msgid ""
 " purpose is to let new developers and interested users dive into the "
 "codebase more quickly."
 msgstr ""
+"了解一个新的代码库可能是一个挑战。"
+"对于像 TVM 这样的代码库尤其如此，其中不同的组件以非明显的方式进行交互。"
+"在本指南中，我们试图通过一个简单的例子来说明构成编译管道的关键因素。"
+"对于每一个重要的步骤，我们都显示了它在代码库中的实现位置。"
+"其目的是让新的开发者和感兴趣的用户更快进入代码库"。
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:26
 msgid "Codebase Structure Overview"
-msgstr ""
+msgstr "代码库结构概述"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:28
 msgid ""
 "At the root of the TVM repository, we have following subdirectories that "
 "together comprise a bulk of the codebase."
 msgstr ""
+"在 TVM 资源库的根部，我们有以下子目录，它们共同构成了代码库的大部分。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:30
 msgid "``src`` - C++ code for operator compilation and deployment runtimes."
-msgstr ""
+msgstr "``src`` - 用于算子编译和运行时部署的 C++ 代码。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:31
 msgid ""
 "``src/relay`` - Implementation of Relay, a new functional IR for deep "
 "learning framework."
 msgstr ""
+"``src/relay`` - Relay 的实现，一个新的深度学习框架的函数式 IR。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:32
 msgid ""
 "``python`` - Python frontend that wraps C++ functions and objects "
 "implemented in ``src``."
 msgstr ""
+"``python`` - Python 前端，包装 ``src`` 中实现的 C++ 函数和对象。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:33
 msgid ""
 "``src/topi`` - Compute definitions and backend schedules for standard "
 "neural network operators."
 msgstr ""
+"``src/topi`` - 计算标准神经网络算子的定义和后端调度。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:35
 msgid ""
@@ -74,24 +83,30 @@ msgid ""
 "node are registered in ``src/relay/op``. Implementations of operators are"
 " in ``topi``, and they are coded in either C++ or Python."
 msgstr ""
+"使用标准的深度学习术语，``src/relay`` 是管理计算图的组件，"
+"图中的节点使用 ``src`` 其他部分实现的基础设施进行编译和执行。"
+"``python`` 为 C++ API 和 driver 代码提供 python 绑定，用户可以用它来执行编译。"
+"与每个节点对应的算子在 ``src/relay/op`` 中注册。"
+"算子的实现在 ``topi`` 中，它们是用 C++ 或 Python 编码的。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:37
 msgid ""
 "When a user invokes graph compilation by ``relay.build(...)``, the "
 "following sequence of actions happens for each node in the graph:"
 msgstr ""
+"当用户通过 ``relay.build(...)`` 调用图的编译时，对图中的每个节点都会发生以下一系列动作："
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:39
 msgid "Look up an operator implementation by querying the operator registry"
-msgstr ""
+msgstr "通过查询算子注册表查找算子实现"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:40
 msgid "Generate a compute expression and a schedule for the operator"
-msgstr ""
+msgstr "为算子生成计算表达式和调度"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:41
 msgid "Compile the operator into object code"
-msgstr ""
+msgstr "将算子编译成目标代码"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:43
 msgid ""
@@ -103,10 +118,14 @@ msgid ""
 " a Python module. For example, the convolution operator is implemented in"
 " Python, and its implementation is invoked from C++ code in Relay."
 msgstr ""
+"TVM 代码库的一个有趣方面是，C++ 和 Python 之间的互操作性不是单向的。"
+"通常情况下，所有执行繁重工作的代码都是用 C++ 实现的，而 Python 绑定是为用户界面提供的。"
+"这在 TVM 中也是如此，但在 TVM 代码库中，C++ 代码也可以调用 Python 模块中定义的函数。"
+"例如，卷积运算符是用 Python 实现的，它的实现是由 Relay 中的 C++ 代码调用的。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:47
 msgid "Vector Add Example"
-msgstr ""
+msgstr "向量加法示例"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:49
 msgid ""
@@ -114,6 +133,8 @@ msgid ""
 "example is vector addition, which is covered in detail in :ref:`tutorial-"
 "tensor-expr-get-started`"
 msgstr ""
+"我们使用一个简单的例子，直接使用低级别的 TVM API。"
+"这个例子是向量加法，在 :ref:`tutorial-tensor-expr-get-started` 中详细介绍。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:58
 msgid ""
@@ -125,6 +146,10 @@ msgid ""
 "definition of Python ``Tensor`` type below, you can see it is a subclass "
 "of ``Object``."
 msgstr ""
+"这里，``A``、``B``、``C`` 的类型是 ``tvm.tensor.Tensor``，定义在 ``python/tvm/te/tensor.py``。"
+"Python 的 ``Tensor`` 由 C++ 的 ``Tensor`` 支持，在 ``include/tvm/te/tensor.h`` 和 ``src/te/tensor.cc`` 中实现。"
+"TVM 中的所有 Python 类型都可以被认为是底层 C++ 类型的句柄，具有相同的名称。"
+"如果你看一下下面的 Python ``Tensor`` 类型的定义，你可以看到它是 ``Object`` 的一个子类。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:69
 msgid ""
@@ -133,6 +158,9 @@ msgid ""
 "not straightforward. It is briefly covered in :ref:`tvm-runtime-system`, "
 "and details are in ``python/tvm/_ffi/`` if you are interested."
 msgstr ""
+"对象协议（object protocol）是将 C++ 类型暴露给前端语言（包括 Python）的基础。"
+"TVM 实现 Python 封装的方式并不直接。"
+":ref:`tvm-runtime-system` 中简要介绍了这一点，如果你有兴趣，细节在 ``python/tvm/_ffi/`` 中。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:71
 msgid ""
