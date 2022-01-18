@@ -14,23 +14,20 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""The NPU cascader.
+# pylint: disable=missing-module-docstring,missing-function-docstring,missing-class-docstring
+from typing import List
 
-This component performs inter-operator scheduling to optimize
-for both performance and memory usage on Arm(R) Ethos(TM)-U NPUs.
-"""
-from .stripe_config import StripeConfig
-from .block_config import BlockConfig
-from .propagator import Propagator
-from .graph import (
-    PerformanceInfo,
-    Tensor,
-    Part,
-    TESubgraph,
-    CascaderGraph,
-    BufferMode,
-    register_matcher,
-    create_cascader_graph,
-)
-from .parts import InlinePart, EthosuPart
-from .device_config import EthosuDeviceConfig
+from tvm.tir import Schedule
+from tvm.tir.schedule import Trace
+
+
+def check_trace(spaces: List[Schedule], expected: List[List[str]]):
+    expected_traces = {"\n".join(t) for t in expected}
+    actual_traces = set()
+    for space in spaces:
+        trace = Trace(space.trace.insts, {})
+        trace = trace.simplified(remove_postproc=True)
+        str_trace = "\n".join(str(trace).strip().splitlines())
+        actual_traces.add(str_trace)
+        assert str_trace in expected_traces, "\n" + str_trace
+    assert len(expected_traces) == len(actual_traces)

@@ -14,23 +14,18 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""The NPU cascader.
+"""A postprocessor that verifies if the GPU code is correct"""
 
-This component performs inter-operator scheduling to optimize
-for both performance and memory usage on Arm(R) Ethos(TM)-U NPUs.
-"""
-from .stripe_config import StripeConfig
-from .block_config import BlockConfig
-from .propagator import Propagator
-from .graph import (
-    PerformanceInfo,
-    Tensor,
-    Part,
-    TESubgraph,
-    CascaderGraph,
-    BufferMode,
-    register_matcher,
-    create_cascader_graph,
-)
-from .parts import InlinePart, EthosuPart
-from .device_config import EthosuDeviceConfig
+from tvm._ffi.registry import register_object
+from .. import _ffi_api
+from .postproc import Postproc
+
+
+@register_object("meta_schedule.VerifyGPUCode")
+class VerifyGPUCode(Postproc):
+    """A postprocessor that verifies if the GPU code is correct"""
+
+    def __init__(self) -> None:
+        self.__init_handle_by_constructor__(
+            _ffi_api.PostprocVerifyGPUCode,  # type: ignore # pylint: disable=no-member
+        )
