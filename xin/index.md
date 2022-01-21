@@ -14,6 +14,7 @@ developer-guide
 architecture-guide
 topic-guides
 reference-guide
+refs/index
 ```
 
 # 目录和索引
