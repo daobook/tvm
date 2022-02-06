@@ -1,4 +1,4 @@
-Sphinx>=4.3
+Sphinx>=4.4
 sphinx-gallery
 numpy
 matplotlib
