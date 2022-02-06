@@ -2206,28 +2206,7 @@ class Where(OnnxOpConverter):
 
     @classmethod
     def _impl_v9(cls, inputs, attr, params):
-        condition_rank = len(infer_shape(inputs[0]))
-        x_rank = len(infer_shape(inputs[1]))
-        y_rank = len(infer_shape(inputs[2]))
-        ranks = [condition_rank, x_rank, y_rank]
-
-        # If one rank is longer than others, then we can broadcast
-        # to that shape.
-        max_rank = max(ranks)
-        max_rank_idxs = [i for i, x in enumerate(ranks) if x == max_rank]
-        broadcast_shape = shape_of(inputs[max_rank_idxs[0]])
-        # If two or more inputs have the same rank, compute the broadcast
-        # shape by taking the maximum value of each dimensions.
-        if len(max_rank_idxs) > 1:
-            for idx in max_rank_idxs:
-                broadcast_shape = _op.maximum(broadcast_shape, shape_of(inputs[idx]))
-
-        broadcast_shape = fold_constant(broadcast_shape)
-
-        condition = _op.broadcast_to(inputs[0], broadcast_shape)
-        x = _op.broadcast_to(inputs[1], broadcast_shape)
-        y = _op.broadcast_to(inputs[2], broadcast_shape)
-        return _op.where(condition, x, y)
+        return _op.where(*inputs)
 
 
 class Or(Elemwise):
@@ -3804,18 +3783,16 @@ class QLinearMatMul(OnnxOpConverter):
         #
         # This function attempts to present 'x' in a form that meets both of those
         # requirements.
-        def try_resolve_to_const_scalar(x, dtype_override=None):
+        def try_resolve_to_const(x, dtype_override=None):
             x2 = try_resolve_var_to_const(x, params)
-            x3 = ensure_scalar_shape(x2)
-
+            num_elem = np.prod(infer_shape(x))
+            if num_elem == 1:
+                x2 = ensure_scalar_shape(x2)
             x_dtype = infer_type(x).checked_type.dtype
             if (dtype_override is not None) and (dtype_override != x_dtype):
-                x4 = _op.cast(x3, dtype_override)
-            else:
-                x4 = x3
-
-            x5 = fold_constant(x4)
-            return x5
+                x2 = _op.cast(x2, dtype_override)
+            x3 = fold_constant(x2)
+            return x3
 
         # Unpack the inputs and obtain some type info...
         a, a_scale, a_zp, b, b_scale, b_zp, y_scale, y_zp = inputs
@@ -3855,14 +3832,14 @@ class QLinearMatMul(OnnxOpConverter):
         )
 
         # _qnn.op.dense requires the zero-point values to have dtype int32.
-        a_scale_scalar = try_resolve_to_const_scalar(a_scale)
-        a_zp_scalar = try_resolve_to_const_scalar(a_zp, "int32")
+        a_scale_scalar = try_resolve_to_const(a_scale)
+        a_zp_scalar = try_resolve_to_const(a_zp, "int32")
 
-        b_scale_scalar = try_resolve_to_const_scalar(b_scale)
-        b_zp_scalar = try_resolve_to_const_scalar(b_zp, "int32")
+        b_scale_scalar = try_resolve_to_const(b_scale)
+        b_zp_scalar = try_resolve_to_const(b_zp, "int32")
 
-        y_scale_scalar = try_resolve_to_const_scalar(y_scale)
-        y_zp_scalar = try_resolve_to_const_scalar(y_zp, "int32")
+        y_scale_scalar = try_resolve_to_const(y_scale)
+        y_zp_scalar = try_resolve_to_const(y_zp, "int32")
 
         # TODO: Confirm that we're using 'num_hidden_units' correctly / as intended with
         # the '_qnn.op.dense' instance below.

@@ -2510,6 +2510,12 @@ def test_where(target, dev):
     verify_where(condition, x, y, TensorProto.FLOAT, outdata)
     verify_where(condition, x, y, TensorProto.FLOAT, outdata, dynamic=True)
 
+    condition = np.random.uniform(size=(3, 1)) < 0.5
+    x = np.random.uniform(size=2).astype(np.float32)
+    y = np.random.uniform(size=2).astype(np.float32)
+    outdata = np.where(condition, x, y)
+    verify_where(condition, x, y, TensorProto.FLOAT, outdata)
+
 
 @tvm.testing.parametrize_targets
 def test_or(target, dev):
@@ -3169,6 +3175,7 @@ def test_global_pooling(target, dev):
         verify_global_pooling([4, 1, 2, 6, 4], mode)
 
 
+@pytest.mark.skip("flaky")
 @tvm.testing.parametrize_targets
 def test_qlinear_average_pool(target, dev):
     def verify_qlinear_average_pool(
@@ -5090,6 +5097,7 @@ unsupported_onnx_tests = [
     "test_reduce_sum_keepdims_random",
     "test_reduce_sum_negative_axes_keepdims_example",
     "test_reduce_sum_negative_axes_keepdims_random",
+    "test_reshape_allowzero_reordered",
     "test_rnn_seq_length",
     "test_round",
     "test_sequence_insert_at_back",
