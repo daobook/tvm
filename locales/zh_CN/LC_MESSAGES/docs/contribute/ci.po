@@ -1,0 +1,195 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-06 15:25+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/contribute/ci.rst:21
+msgid "Using TVM's CI"
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:23
+msgid ""
+"TVM uses Jenkins for running Linux continuous integration (CI) tests on "
+"`branches <https://ci.tlcpack.ai/job/tvm/>`_ and `pull requests "
+"<https://ci.tlcpack.ai/job/tvm/view/change-requests/>`_ through a build "
+"configuration specified in a `Jenkinsfile "
+"<https://github.com/apache/tvm/blob/main/Jenkinsfile>`_. Non-critical "
+"jobs run in GitHub Actions for Windows and MacOS jobs."
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:29
+msgid ""
+"A standard CI run looks something like this viewed in `Jenkins' BlueOcean"
+" viewer "
+"<https://ci.tlcpack.ai/blue/organizations/jenkins/tvm/activity>`_. CI "
+"runs usually take several hours to complete and pull requests (PRs) "
+"cannot be merged before CI has successfully completed. To diagnose "
+"failing steps, click through to the failing pipeline stage then to the "
+"failing step to see the output logs."
+msgstr ""
+
+msgid "The Jenkins UI for a CI run"
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:40
+msgid "Debugging Failures"
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:42
+msgid ""
+"When CI fails for some reason, there are several methods to diagnose the "
+"issue."
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:45
+msgid "Jenkins Logs"
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:50
+msgid ""
+"The first place to look for a failure is in the CI logs, follow the red "
+"Xs on the failing job to view the logs. Note:"
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:53
+msgid ""
+"Jenkins does not display the full log by default, at the top of the log "
+"viewer is a button \"Show complete log\" which will take you to a "
+"plaintext version of the log"
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:55
+msgid ""
+"|pytest|_ failures are summarized at the bottom of the log but you will "
+"likely need to scroll up to view the actual failure."
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:59
+msgid "Reproduce Failures"
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:61
+msgid ""
+"Most TVM Python tests run under |pytest|_ and can be run as described in "
+":ref:`pr-testing`. For a closer environment to the one than runs in CI "
+"you can run the docker images directly, build TVM, and execute tests "
+"inside the container. See :ref:`docker_images` for details."
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:67
+msgid "Keeping CI Green"
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:69
+msgid ""
+"Developers rely on the TVM CI to get signal on their PRs before merging. "
+"Occasionally breakages slip through and break ``main``, which in turn "
+"causes the same error to show up on an PR that is based on the broken "
+"commit(s). Broken commits can be identified `through GitHub "
+"<https://github.com/apache/tvm/commits/main>`_ via the commit status icon"
+" or via `Jenkins "
+"<https://ci.tlcpack.ai/blue/organizations/jenkins/tvm/activity?branch=main>`_."
+" In these situations it is possible to either revert the offending commit"
+" or submit a forward fix to address the issue. It is up to the committer "
+"and commit author which option to choose, keeping in mind that a broken "
+"CI affects all TVM developers and should be fixed as soon as possible."
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:80
+msgid "Skip CI for Reverts"
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:82
+msgid ""
+"For reverts and trivial forward fixes, adding ``[skip ci]`` to the "
+"revert's commit message will cause CI to shortcut and only run lint. "
+"Committers should take care that they only merge CI-skipped PRs to fix a "
+"failure on ``main`` and not in cases where the submitter wants to "
+"shortcut CI to merge a change faster."
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:102
+msgid "Handling Flaky Failures"
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:110
+msgid ""
+"If you notice a failure on your PR that seems unrelated to your change, "
+"you should search `recent GitHub issues related to flaky tests "
+"<https://github.com/apache/tvm/issues?q=is%3Aissue+%5BCI+Problem%5D+Flaky+>`_"
+" and `file a new issue "
+"<https://github.com/apache/tvm/issues/new?assignees=&labels=&template=ci-"
+"problem.md&title=%5BCI+Problem%5D+>`_ if you don't see any reports of the"
+" failure. If a certain test or class of tests affects several PRs or "
+"commits on ``main`` with flaky failures, the test should be disabled via "
+"|pytest's @xfail decorator|_ with |strict=True|_ and the relevant issue "
+"linked in the disabling PR."
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:125
+msgid "``ci-docker-staging``"
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:127
+msgid ""
+"The `ci-docker-staging <https://github.com/apache/tvm/tree/ci-docker-"
+"staging>`_ branch is used to test updates to Docker images and "
+"``Jenkinsfile`` changes. When running a build for a normal PR from a "
+"forked repository, Jenkins uses the code from the PR except for the "
+"``Jenkinsfile`` itself, which comes from the base branch. When branches "
+"are built, the ``Jenkinsfile`` in the branch is used, so a committer with"
+" write access must push PRs to a branch in apache/tvm to properly test "
+"``Jenkinsfile`` changes. If your PR makes changes to the ``Jenkinsfile``,"
+" make sure to @ a `committer "
+"<https://github.com/apache/tvm/blob/main/CONTRIBUTORS.md>`_ and ask them "
+"to push your PR as a branch to test the changes."
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:140
+msgid "Docker Images"
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:145
+msgid ""
+"Each CI job runs most of its work inside a Docker container, built from "
+"files in the `docker/ <https://github.com/apache/tvm/tree/main/docker>`_ "
+"folder. These files are built nightly in Jenkins via the `docker-images-"
+"ci <https://ci.tlcpack.ai/job/docker-images-ci/>`_ job. The images for "
+"these containers are hosted in the `tlcpack Docker Hub "
+"<https://hub.docker.com/u/tlcpack>`_ and referenced at the "
+"|top_of_the_Jenkinsfile|_. These can be inspected and run locally via "
+"standard Docker commands."
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:158
+msgid ""
+"``docker/bash.sh`` will automatically grab the latest image from the "
+"``Jenkinsfile`` and help in mounting your current directory."
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:173
+msgid "Reporting Issues"
+msgstr ""
+
+#: ../../docs/contribute/ci.rst:175
+msgid ""
+"Issues with CI should be `reported on GitHub "
+"<https://github.com/apache/tvm/issues/new?assignees=&labels=&template=ci-"
+"problem.md&title=%5BCI+Problem%5D+>`_ with a link to the relevant jobs, "
+"commits, or PRs."
+msgstr ""
+

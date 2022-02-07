@@ -1,0 +1,56 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-06 15:25+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/topic/vta/tutorials/autotvm/tune_alu_vta.rst:13
+msgid ""
+"Click :ref:`here "
+"<sphx_glr_download_topic_vta_tutorials_autotvm_tune_alu_vta.py>` to "
+"download the full example code"
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/autotvm/tune_alu_vta.rst:22
+msgid "Auto-tuning a ALU fused op on VTA"
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/autotvm/tune_alu_vta.rst:53
+msgid "Compile network"
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/autotvm/tune_alu_vta.rst:54
+msgid "Perform vta-specific compilation with Relay from a Gluon model"
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/autotvm/tune_alu_vta.rst:99
+msgid "Set Tuning Options"
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/autotvm/tune_alu_vta.rst:100
+msgid ""
+"Before tuning, we should apply some configurations. Here we use an "
+"Pynq-Z1 board as an example."
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/autotvm/tune_alu_vta.rst:240
+msgid "Register VTA-specific tuning tasks"
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/autotvm/tune_alu_vta.rst:297
+msgid "Finally, we launch tuning jobs and evaluate the end-to-end performance."
+msgstr ""
+

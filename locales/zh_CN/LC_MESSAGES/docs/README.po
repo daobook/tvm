@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 21:32+0800\n"
+"POT-Creation-Date: 2022-02-06 15:25+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: xinetzone <735613050@qq.com>, 2022\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,109 +21,119 @@ msgstr ""
 msgid "TVM Documentation"
 msgstr "TVM 文档"
 
-#: ../../docs/README.md:19
+#: ../../docs/README.md:20
 msgid ""
 "This folder contains the source of TVM's documentation, hosted at "
 "https://tvm.apache.org/docs"
-msgstr ""
-"TVM 的文档托管在 https://tvm.apache.org/docs"
+msgstr "TVM 的文档托管在 https://tvm.apache.org/docs"
 
-#: ../../docs/README.md:21
+#: ../../docs/README.md:22
 msgid "Build Locally"
 msgstr "本地构建"
 
-#: ../../docs/README.md:23
-msgid ""
-"See also the instructions below to run a specific tutorial. Note that "
-"some of the tutorials need GPU support. Once build, either of these can "
-"be served using Python's build in HTTP server:"
-msgstr ""
-"也请看下面的说明，以运行一个具体的教程。"
-"注意，一些教程需要 GPU 支持。"
-"一旦构建完成，可以使用 Python 的内置 HTTP 服务器服务这些教程："
-
-#: ../../docs/README.md:30
+#: ../../docs/README.md:24
 msgid "With Docker (recommended)"
 msgstr "使用 Docker（推荐）"
 
-#: ../../docs/README.md:32
+#: ../../docs/README.md:26
+#, fuzzy
 msgid ""
 "Build TVM and the docs inside the [tlcpack/ci-gpu "
-"image](https://hub.docker.com/r/tlcpack/ci-gpu)"
+"image](https://hub.docker.com/r/tlcpack/ci-gpu) using the "
+"[`ci.py`](../tests/scripts/ci.py) script."
 msgstr ""
-"在 [tlcpack/ci-gpu image](https://hub.docker.com/r/tlcpack/ci-gpu) 内构建 TVM 和文档"
+"在 [tlcpack/ci-gpu image](https://hub.docker.com/r/tlcpack/ci-gpu) 内构建 TVM"
+" 和文档"
 
-#: ../../docs/README.md:40
+#: ../../docs/README.md:36
+msgid "Serve the docs and visit http://localhost:8000 in your browser"
+msgstr ""
+
+#: ../../docs/README.md:43
 msgid "Native"
 msgstr "原生应用"
 
-#: ../../docs/README.md:42
+#: ../../docs/README.md:45
 msgid ""
 "[Build TVM](https://tvm.apache.org/docs/install/from_source.html) first "
 "in the repo root folder"
 msgstr ""
-"首先在 repo 根目录下 [建立 TVM](https://tvm.apache.org/docs/install/from_source.html)"
+"首先在 repo 根目录下 [建立 "
+"TVM](https://tvm.apache.org/docs/install/from_source.html)"
 
-#: ../../docs/README.md:43
+#: ../../docs/README.md:46
 msgid "Install dependencies"
 msgstr "安装依赖"
 
-#: ../../docs/README.md:53
+#: ../../docs/README.md:56
 msgid "Generate the docs"
 msgstr "生成 docs"
 
-#: ../../docs/README.md:64
+#: ../../docs/README.md:66
+msgid "Run an HTTP server and visit http://localhost:8000 in your browser"
+msgstr ""
+
+#: ../../docs/README.md:72
 msgid "Only Execute Specified Tutorials"
 msgstr "仅执行指定的教程"
 
-#: ../../docs/README.md:65
+#: ../../docs/README.md:74
 msgid ""
 "The document build process will execute all the tutorials in the sphinx "
 "gallery. This will cause failure in some cases when certain machines do "
 "not have necessary environment. You can set `TVM_TUTORIAL_EXEC_PATTERN` "
 "to only execute the path that matches the regular expression pattern."
 msgstr ""
-"文档构建过程将执行 sphinx 库中的所有教程。"
-"在某些情况下，如果某些机器没有必要的环境，这将导致失败。"
-"你可以设置 `TVM_TUTORIAL_EXEC_PATTERN`，只执行符合正则表达式的路径。"
+"文档构建过程将执行 sphinx 库中的所有教程。在某些情况下，如果某些机器没有必要的环境，这将导致失败。你可以设置 "
+"`TVM_TUTORIAL_EXEC_PATTERN`，只执行符合正则表达式的路径。"
 
-#: ../../docs/README.md:70
+#: ../../docs/README.md:79
 msgid "For example, to only build tutorials under `/vta/tutorials`, run"
 msgstr "例如，要想只在 `/vta/tutorials` 下构建教程，运行"
 
-#: ../../docs/README.md:76
+#: ../../docs/README.md:85
 msgid "To only build one specific file, do"
 msgstr "要想只建立一个特定的文件，请执行"
 
-#: ../../docs/README.md:83
+#: ../../docs/README.md:92
 msgid "Helper Scripts"
 msgstr "辅助脚本"
 
-#: ../../docs/README.md:85
+#: ../../docs/README.md:94
 msgid ""
 "You can run the following script to reproduce the CI sphinx pre-check "
 "stage. This script skips the tutorial executions and is useful to quickly"
 " check the content."
-msgstr ""
-"你可以运行以下脚本来重现 CI sphinx 的预检查阶段。"
-"这个脚本跳过了教程的执行，对快速检查内容很有用。"
+msgstr "你可以运行以下脚本来重现 CI sphinx 的预检查阶段。这个脚本跳过了教程的执行，对快速检查内容很有用。"
 
-#: ../../docs/README.md:92
+#: ../../docs/README.md:101
 msgid ""
 "The following script runs the full build which includes tutorial "
 "executions. You will need a GPU CI environment."
-msgstr ""
-"下面的脚本运行完整的构建，包括教程的执行。你将需要一个 GPU CI 环境。"
+msgstr "下面的脚本运行完整的构建，包括教程的执行。你将需要一个 GPU CI 环境。"
 
-#: ../../docs/README.md:99
+#: ../../docs/README.md:108
 msgid "Define the Order of Tutorials"
 msgstr "定义教程的顺序"
 
-#: ../../docs/README.md:100
+#: ../../docs/README.md:110
+#, fuzzy
 msgid ""
-"You can define the order of tutorials with `conf.py::subsection_order` "
-"and `conf.py::within_subsection_order`. By default, the tutorials within "
-"one subsection is sorted by filename."
+"You can define the order of tutorials with `subsection_order` and "
+"`within_subsection_order` in [`conf.py`](conf.py). By default, the "
+"tutorials within one subsection are sorted by filename."
 msgstr ""
-"你可以用 `conf.py::subsection_order` 和 `conf.py::within_subsection_order` 来定义教程的顺序。"
-"默认情况下，一个小节内的教程是按文件名排序的。"
+"你可以用 `conf.py::subsection_order` 和 `conf.py::within_subsection_order` "
+"来定义教程的顺序。默认情况下，一个小节内的教程是按文件名排序的。"
+
+#~ msgid ""
+#~ "See also the instructions below to "
+#~ "run a specific tutorial. Note that "
+#~ "some of the tutorials need GPU "
+#~ "support. Once build, either of these "
+#~ "can be served using Python's build "
+#~ "in HTTP server:"
+#~ msgstr ""
+#~ "也请看下面的说明，以运行一个具体的教程。注意，一些教程需要 GPU 支持。一旦构建完成，可以使用 "
+#~ "Python 的内置 HTTP 服务器服务这些教程："
+

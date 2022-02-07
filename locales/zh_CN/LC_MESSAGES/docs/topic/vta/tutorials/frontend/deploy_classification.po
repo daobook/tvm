@@ -1,0 +1,128 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-06 15:25+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:13
+msgid ""
+"Click :ref:`here "
+"<sphx_glr_download_topic_vta_tutorials_frontend_deploy_classification.py>`"
+" to download the full example code"
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:22
+msgid "Deploy Pretrained Vision Model from MxNet on VTA"
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:23
+msgid "**Author**: `Thierry Moreau <https://homes.cs.washington.edu/~moreau/>`_"
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:25
+msgid ""
+"This tutorial provides an end-to-end demo, on how to run ImageNet "
+"classification inference onto the VTA accelerator design to perform "
+"ImageNet classification tasks. It showcases Relay as a front end compiler"
+" that can perform quantization (VTA only supports int8/32 inference) as "
+"well as graph packing (in order to enable tensorization in the core) to "
+"massage the compute graph for the hardware target."
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:34
+msgid "Install dependencies"
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:35
+msgid ""
+"To use the autotvm package in tvm, we need to install some extra "
+"dependencies. (change \"3\" to \"2\" if you use python2):"
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:42
+msgid "Now return to the python code. Import packages."
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:79
+msgid "Define the platform and model targets"
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:80
+msgid "Execute on CPU vs. VTA, and define the model."
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:116
+msgid "Obtain an execution remote"
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:117
+msgid ""
+"When target is 'pynq', reconfigure FPGA and runtime. Otherwise, if target"
+" is 'sim', execute locally."
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:168
+msgid "Build the inference graph executor"
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:169
+msgid ""
+"Grab vision model from Gluon model zoo and compile with Relay. The "
+"compilation steps are:"
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:172
+msgid "Front end translation from MxNet into Relay module."
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:173
+msgid ""
+"Apply 8-bit quantization: here we skip the first conv layer, and dense "
+"layer which will both be executed in fp32 on the CPU."
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:175
+msgid "Perform graph packing to alter the data layout for tensorization."
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:176
+msgid ""
+"Perform constant folding to reduce number of operators (e.g. eliminate "
+"batch norm multiply)."
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:177
+msgid "Perform relay build to object file."
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:178
+msgid "Load the object file onto remote (FPGA device)."
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:179
+msgid "Generate graph executor, `m`."
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:264
+msgid "Perform image classification inference"
+msgstr ""
+
+#: ../../docs/topic/vta/tutorials/frontend/deploy_classification.rst:265
+msgid ""
+"We run classification on an image sample from ImageNet We just need to "
+"download the categories files, `synset.txt` and an input test image."
+msgstr ""
+

@@ -1,0 +1,143 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-06 15:25+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:20003
+msgid "TensorIR 的突击课程"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:20005
+msgid "**作者**: [Siyuan Feng](https://github.com/Hzfengsy)"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:20007
+msgid "TensorIR 是一种用于深度学习程序的特定域语言，有两个广泛的目的："
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:20009
+msgid "一个在各种硬件后端进行程序转换和优化的实现。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:20010
+msgid "一个用于自动张量化程序优化的抽象。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:40002
+msgid "IRModule"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:40004
+msgid "IRModule 是 TVM 的中心数据结构，它包含深度学习程序。它是 IR 变换和模型构建的基本关注对象。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:40010
+msgid ""
+"这是一个 IRModule 的生命周期（life cycle），它可以从 TVMScript 创建。TensorIR "
+"调度原语（primitive）和传递（pass）是转换 IRModule 的两种主要方式。另外，对一个 IRModule "
+"进行一系列的转换也是可以接受的。请注意，我们可以在 **任何** 阶段向 TVMScript 打印一个 "
+"IRModule。在所有转换和优化完成后，我们可以将 IRModule 构建为可运行的模块，以部署在目标设备上。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:40012
+msgid "基于 TensorIR 和 IRModule 的设计，我们能够创建一个新的编程方式："
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:40014
+msgid "用 TVMScript 写一个基于 Python-AST 语法的程序。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:40015
+msgid "用 python api 转换和优化一个程序。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:40016
+msgid "通过一个命令式的转换 API，交互式地检查和尝试性能。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:40018
+msgid "创建 IRModule"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:40020
+msgid ""
+"IRModule 可以通过编写 TVMScript 来创建，TVMScript 是 TVM IR 的一种可圆润化（round-"
+"trippable）的语法。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:40022
+msgid ""
+"与通过 [张量表达式](tutorial-tensor-expr-get-started) 创建计算表达式不同，TensorIR 允许用户通过 "
+"TVMScript（一种嵌入 python AST 的语言）来编程。这种新方法使得编写复杂的程序并进一步调度和优化它成为可能。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:60002
+msgid "此外，我们还可以使用张量表达式 DSL 来编写简单的运算符，并将其转换为 IRModule。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:80002
+msgid "构建和运行 IRModule"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:80004
+msgid "我们可以将 IRModule 构建为具有特定目标后端的可运行模块。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:100002
+msgid "准备好输入 array 和输出 array，然后运行该模块。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:120002
+msgid "转换 IRModule"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:120004
+msgid ""
+"IRModule 是程序优化的中心数据结构，它可以通过 `Schedule` "
+"进行转换。一个调度包含多个原语方法，以交互式地转换程序。每个原语都以某些方式改造程序，以带来额外的性能优化。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:120008
+msgid ""
+"上面的图片是优化张量程序的典型工作流程。首先，我们需要在由 TVMScript 或 Tensor Expression 创建的初始 "
+"IRModule 上创建一个调度。然后，一连串的调度原语将有助于提高性能。最后，我们可以将其降低并构建为一个可运行的模块。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:120010
+msgid "这里我们只演示了一个非常简单的转换。首先，我们在输入的 `ir_module` 上创建调度。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:140002
+msgid "将该循环分为 3 个循环，并打印结果。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:160002
+msgid "我们也可以重新调度循环的顺序。现在我们将循环 `i_2` 移到 `i_1` 的外面。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:180002
+msgid "转化为 GPU 程序"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:180004
+msgid "如果我们想在 GPU 上部署模型，线程绑定是必要的。幸运的是，我们也可以使用原语并做增量转换。"
+msgstr ""
+
+#: ../../docs/tutorial/tensor_ir_blitz_course.ipynb:200002
+msgid "绑定线程后，现在用 `cuda` 后端构建 IRModule。"
+msgstr ""
+

@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-13 14:28+0800\n"
+"POT-Creation-Date: 2022-02-06 15:25+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 #: ../../docs/reference/api/python/relay/index.rst:19
 msgid "tvm.relay"
@@ -1370,6 +1370,17 @@ msgid "Slice the first input with respect to the second input."
 msgstr ""
 
 #: of tvm.relay.expr.Call:1:<autosummary>:1
+msgid ""
+":py:obj:`sliding_window <tvm.relay.sliding_window>`\\ \\(data\\, axis\\, "
+"window\\_shape\\, strides\\)"
+msgstr ""
+
+#: of tvm.relay.expr.Call:1:<autosummary>:1
+#: tvm.relay.op.transform.sliding_window:1
+msgid "Slide a window over the data tensor."
+msgstr ""
+
+#: of tvm.relay.expr.Call:1:<autosummary>:1
 msgid ":py:obj:`sort <tvm.relay.sort>`\\ \\(data\\[\\, axis\\, is\\_ascend\\]\\)"
 msgstr ""
 
@@ -1687,7 +1698,7 @@ msgstr ""
 #: tvm.relay.op.transform.reverse_sequence tvm.relay.op.transform.scatter
 #: tvm.relay.op.transform.scatter_add tvm.relay.op.transform.scatter_nd
 #: tvm.relay.op.transform.segment_sum tvm.relay.op.transform.sequence_mask
-#: tvm.relay.op.transform.slice_like
+#: tvm.relay.op.transform.slice_like tvm.relay.op.transform.sliding_window
 #: tvm.relay.op.transform.sparse_fill_empty_rows
 #: tvm.relay.op.transform.sparse_reshape tvm.relay.op.transform.sparse_to_dense
 #: tvm.relay.op.transform.split tvm.relay.op.transform.squeeze
@@ -1937,6 +1948,7 @@ msgstr ""
 #: tvm.relay.op.transform.reverse_sequence:20
 #: tvm.relay.op.transform.segment_sum:26
 #: tvm.relay.op.transform.sequence_mask:19
+#: tvm.relay.op.transform.sliding_window:21
 #: tvm.relay.op.transform.sparse_fill_empty_rows:31
 #: tvm.relay.op.transform.sparse_reshape:15 tvm.relay.op.transform.tile:12
 #: tvm.relay.op.transform.unique:19 tvm.relay.op.transform.where:21
@@ -2058,7 +2070,7 @@ msgstr ""
 #: tvm.relay.op.transform.reverse_sequence tvm.relay.op.transform.scatter
 #: tvm.relay.op.transform.scatter_add tvm.relay.op.transform.scatter_nd
 #: tvm.relay.op.transform.segment_sum tvm.relay.op.transform.sequence_mask
-#: tvm.relay.op.transform.slice_like
+#: tvm.relay.op.transform.slice_like tvm.relay.op.transform.sliding_window
 #: tvm.relay.op.transform.sparse_fill_empty_rows
 #: tvm.relay.op.transform.sparse_reshape tvm.relay.op.transform.sparse_to_dense
 #: tvm.relay.op.transform.split tvm.relay.op.transform.squeeze
@@ -2139,13 +2151,14 @@ msgstr ""
 #: tvm.relay.op.transform.reverse_sequence tvm.relay.op.transform.scatter
 #: tvm.relay.op.transform.scatter_add tvm.relay.op.transform.scatter_nd
 #: tvm.relay.op.transform.segment_sum tvm.relay.op.transform.sequence_mask
-#: tvm.relay.op.transform.slice_like tvm.relay.op.transform.sparse_reshape
-#: tvm.relay.op.transform.sparse_to_dense tvm.relay.op.transform.split
-#: tvm.relay.op.transform.squeeze tvm.relay.op.transform.strided_set
-#: tvm.relay.op.transform.strided_slice tvm.relay.op.transform.take
-#: tvm.relay.op.transform.tile tvm.relay.op.transform.transpose
-#: tvm.relay.op.transform.unravel_index tvm.relay.op.transform.where
-#: tvm.relay.param_dict.load_param_dict tvm.relay.param_dict.save_param_dict
+#: tvm.relay.op.transform.slice_like tvm.relay.op.transform.sliding_window
+#: tvm.relay.op.transform.sparse_reshape tvm.relay.op.transform.sparse_to_dense
+#: tvm.relay.op.transform.split tvm.relay.op.transform.squeeze
+#: tvm.relay.op.transform.strided_set tvm.relay.op.transform.strided_slice
+#: tvm.relay.op.transform.take tvm.relay.op.transform.tile
+#: tvm.relay.op.transform.transpose tvm.relay.op.transform.unravel_index
+#: tvm.relay.op.transform.where tvm.relay.param_dict.load_param_dict
+#: tvm.relay.param_dict.save_param_dict
 #: tvm.relay.scope_builder.ScopeBuilder.else_scope
 #: tvm.relay.scope_builder.ScopeBuilder.get
 #: tvm.relay.scope_builder.ScopeBuilder.if_scope
@@ -2474,7 +2487,7 @@ msgstr ""
 #: tvm.relay.op.transform.broadcast_to_like:8
 #: tvm.relay.op.transform.collapse_sum_like:8
 #: tvm.relay.op.transform.collapse_sum_to:8 tvm.relay.op.transform.full:10
-#: tvm.relay.op.transform.full_like:8
+#: tvm.relay.op.transform.full_like:8 tvm.relay.op.transform.sliding_window:17
 msgid "**result** -- The resulting tensor."
 msgstr ""
 
@@ -2668,8 +2681,9 @@ msgstr ""
 #: tvm.relay.op.transform.reshape:50 tvm.relay.op.transform.reshape_like:10
 #: tvm.relay.op.transform.reverse:4 tvm.relay.op.transform.reverse_reshape:13
 #: tvm.relay.op.transform.scatter:3 tvm.relay.op.transform.scatter_add:3
-#: tvm.relay.op.transform.scatter_nd:5 tvm.relay.op.transform.squeeze:3
-#: tvm.relay.op.transform.tile:3 tvm.relay.op.transform.transpose:3
+#: tvm.relay.op.transform.scatter_nd:5 tvm.relay.op.transform.sliding_window:3
+#: tvm.relay.op.transform.squeeze:3 tvm.relay.op.transform.tile:3
+#: tvm.relay.op.transform.transpose:3
 msgid "The input data to the operator."
 msgstr ""
 
@@ -3547,6 +3561,26 @@ msgid ""
 "List of axes on which input data will be sliced according to the "
 "corresponding size of the second input. By default will slice on all "
 "axes. Negative axes mean counting in reverse."
+msgstr ""
+
+#: of tvm.relay.op.transform.sliding_window:5
+msgid ""
+"What axis the window begins sliding over. Window will be slid over this "
+"axis and all following axes. The axis value determines the window shape "
+"(and thus, the number of strides): window shape and strides must both be "
+"of length `data.ndim-axis`."
+msgstr ""
+
+#: of tvm.relay.op.transform.sliding_window:10
+msgid ""
+"The window shape to form over the input. Window shape must be of length "
+"`data.ndim-axis`."
+msgstr ""
+
+#: of tvm.relay.op.transform.sliding_window:13
+msgid ""
+"How to stride the window along each dimension. Strides must be of length "
+"`data.ndim-axis`."
 msgstr ""
 
 #: of tvm.relay.op.transform.sparse_fill_empty_rows:1

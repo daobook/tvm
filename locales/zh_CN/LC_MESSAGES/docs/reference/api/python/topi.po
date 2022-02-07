@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-13 14:28+0800\n"
+"POT-Creation-Date: 2022-02-06 15:25+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 #: ../../docs/reference/api/python/topi.rst:19
 msgid "tvm.topi"
@@ -1163,6 +1163,17 @@ msgstr ""
 
 #: of tvm.tir.stmt.AssertStmt:1:<autosummary>:1
 msgid ""
+":py:obj:`sliding_window <tvm.topi.tvm.topi.sliding_window>`\\ \\(data\\, "
+"axis\\, window\\_shape\\, strides\\)"
+msgstr ""
+
+#: of tvm.tir.stmt.AssertStmt:1:<autosummary>:1
+#: tvm.topi.transform.sliding_window:1
+msgid "Slide a window over the data tensor."
+msgstr ""
+
+#: of tvm.tir.stmt.AssertStmt:1:<autosummary>:1
+msgid ""
 ":py:obj:`sort <tvm.topi.tvm.topi.sort>`\\ \\(data\\[\\, axis\\, "
 "is\\_ascend\\]\\)"
 msgstr ""
@@ -1509,8 +1520,8 @@ msgstr ""
 #: tvm.topi.transform.one_hot tvm.topi.transform.repeat
 #: tvm.topi.transform.reshape tvm.topi.transform.reverse_sequence
 #: tvm.topi.transform.sequence_mask tvm.topi.transform.shape
-#: tvm.topi.transform.sparse_to_dense tvm.topi.transform.split
-#: tvm.topi.transform.squeeze tvm.topi.transform.stack
+#: tvm.topi.transform.sliding_window tvm.topi.transform.sparse_to_dense
+#: tvm.topi.transform.split tvm.topi.transform.squeeze tvm.topi.transform.stack
 #: tvm.topi.transform.strided_set tvm.topi.transform.strided_slice
 #: tvm.topi.transform.take tvm.topi.transform.take_legalize
 #: tvm.topi.transform.tensordot tvm.topi.transform.tile
@@ -1635,7 +1646,6 @@ msgstr ""
 #: tvm.topi.nn.conv2d_transpose.conv2d_transpose_legalize
 #: tvm.topi.nn.conv2d_transpose.conv2d_transpose_nchw
 #: tvm.topi.nn.conv2d_transpose.group_conv2d_transpose_nchw
-#: tvm.topi.nn.conv2d_transpose.layout_transform
 #: tvm.topi.nn.conv3d.conv3d_ncdhw tvm.topi.nn.conv3d.conv3d_ndhwc
 #: tvm.topi.nn.conv3d.conv3d_winograd_weight_transform
 #: tvm.topi.nn.conv3d_transpose.conv3d_transpose_legalize
@@ -1685,18 +1695,18 @@ msgstr ""
 #: tvm.topi.transform.concatenate tvm.topi.transform.expand_dims
 #: tvm.topi.transform.expand_like tvm.topi.transform.flip
 #: tvm.topi.transform.gather tvm.topi.transform.gather_nd
-#: tvm.topi.transform.invert_permutation tvm.topi.transform.matmul
-#: tvm.topi.transform.matrix_set_diag tvm.topi.transform.meshgrid
-#: tvm.topi.transform.ndarray_size tvm.topi.transform.one_hot
-#: tvm.topi.transform.repeat tvm.topi.transform.reshape
-#: tvm.topi.transform.reverse_sequence tvm.topi.transform.sequence_mask
-#: tvm.topi.transform.shape tvm.topi.transform.sparse_to_dense
+#: tvm.topi.transform.invert_permutation tvm.topi.transform.matrix_set_diag
+#: tvm.topi.transform.meshgrid tvm.topi.transform.ndarray_size
+#: tvm.topi.transform.one_hot tvm.topi.transform.repeat
+#: tvm.topi.transform.reshape tvm.topi.transform.reverse_sequence
+#: tvm.topi.transform.sequence_mask tvm.topi.transform.shape
+#: tvm.topi.transform.sliding_window tvm.topi.transform.sparse_to_dense
 #: tvm.topi.transform.split tvm.topi.transform.squeeze tvm.topi.transform.stack
 #: tvm.topi.transform.strided_set tvm.topi.transform.strided_slice
 #: tvm.topi.transform.take tvm.topi.transform.take_legalize
-#: tvm.topi.transform.tensordot tvm.topi.transform.tile
-#: tvm.topi.transform.transpose tvm.topi.transform.unravel_index
-#: tvm.topi.transform.where tvm.topi.unique.unique tvm.topi.utils.const_vector
+#: tvm.topi.transform.tile tvm.topi.transform.transpose
+#: tvm.topi.transform.unravel_index tvm.topi.transform.where
+#: tvm.topi.unique.unique tvm.topi.utils.const_vector
 #: tvm.topi.utils.equal_const_int tvm.topi.utils.get_const_int
 #: tvm.topi.utils.get_const_tuple tvm.topi.utils.make_idx
 #: tvm.topi.utils.simplify tvm.topi.utils.within_index
@@ -1833,8 +1843,9 @@ msgstr ""
 #: tvm.topi.transform.ndarray_size tvm.topi.transform.one_hot
 #: tvm.topi.transform.repeat tvm.topi.transform.reshape
 #: tvm.topi.transform.reverse_sequence tvm.topi.transform.sequence_mask
-#: tvm.topi.transform.shape tvm.topi.transform.sparse_to_dense
-#: tvm.topi.transform.split tvm.topi.transform.squeeze tvm.topi.transform.stack
+#: tvm.topi.transform.shape tvm.topi.transform.sliding_window
+#: tvm.topi.transform.sparse_to_dense tvm.topi.transform.split
+#: tvm.topi.transform.squeeze tvm.topi.transform.stack
 #: tvm.topi.transform.strided_set tvm.topi.transform.strided_slice
 #: tvm.topi.transform.take tvm.topi.transform.take_legalize
 #: tvm.topi.transform.tensordot tvm.topi.transform.tile
@@ -1969,7 +1980,7 @@ msgid "The target data type."
 msgstr ""
 
 #: of tvm.topi.transform.arange:13 tvm.topi.transform.ndarray_size:8
-#: tvm.topi.transform.shape:8
+#: tvm.topi.transform.shape:8 tvm.topi.transform.sliding_window:17
 msgid "**result** -- The resulting tensor."
 msgstr ""
 
@@ -2140,7 +2151,7 @@ msgstr ""
 
 #: of tvm.topi.scan.cumprod:3 tvm.topi.scan.cumsum:3 tvm.topi.scan.scanop:8
 #: tvm.topi.scatter.scatter:3 tvm.topi.scatter_add.scatter_add:3
-#: tvm.topi.transform.gather:14
+#: tvm.topi.transform.gather:14 tvm.topi.transform.sliding_window:3
 msgid "The input data to the operator."
 msgstr ""
 
@@ -2917,6 +2928,26 @@ msgstr ""
 msgid ""
 "**output** -- N-D with shape [MAX_LENGTH, batch_size, ...] or "
 "[batch_size, MAX_LENGTH, ...] depending on the value of `axis`."
+msgstr ""
+
+#: of tvm.topi.transform.sliding_window:5
+msgid ""
+"What axis the window begins sliding over. Window will be slid over this "
+"axis and all following axes. The axis value determines the window shape "
+"(and thus, the number of strides): window shape and strides must both be "
+"of length `data.ndim-axis`."
+msgstr ""
+
+#: of tvm.topi.transform.sliding_window:10
+msgid ""
+"The window shape to form over the input. Window shape must be of length "
+"`data.ndim-axis`."
+msgstr ""
+
+#: of tvm.topi.transform.sliding_window:13
+msgid ""
+"How to stride the window along each dimension. Strides must be of length "
+"`data.ndim-axis`."
 msgstr ""
 
 #: of tvm.topi.sparse_reshape.sparse_reshape:3

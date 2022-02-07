@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 21:32+0800\n"
+"POT-Creation-Date: 2022-02-06 15:25+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,18 +33,20 @@ msgstr ""
 #: ../../docs/contribute/document.rst:28
 msgid ""
 "This document describes the organization of TVM documentation, and how to"
-" write new documentation."
+" write new documentation. See `docs/README.md "
+"<https://github.com/apache/tvm/tree/main/docs#build-locally>`_ for "
+"instructions on building the docs."
 msgstr ""
 
-#: ../../docs/contribute/document.rst:32
+#: ../../docs/contribute/document.rst:33
 msgid "The Four Document Types"
 msgstr ""
 
-#: ../../docs/contribute/document.rst:35
+#: ../../docs/contribute/document.rst:36
 msgid "Introductory Tutorials"
 msgstr ""
 
-#: ../../docs/contribute/document.rst:37
+#: ../../docs/contribute/document.rst:38
 msgid ""
 "These are step by step guides to introduce new users to a project. An "
 "introductory tutorial is designed to get a user engaged with the software"
@@ -52,25 +54,25 @@ msgid ""
 "Those explanations can be saved for other document types. An introductory"
 " tutorial focuses on a successful first experience. These are the most "
 "important docs to turning newcomers into new users and developers. A "
-"fully end-to-end tutorial&mdash; from installing TVM and supporting ML "
+"fully end-to-end tutorial — from installing TVM and supporting ML "
 "software, to creating and training a model, to compiling to different "
-"architectures&mdash;will give a new user the opportunity to use TVM in "
-"the most efficient way possible. A tutorial teaches a beginner something "
-"they need to know. This is in contrast with a how-to, which is meant to "
-"be an answer to a question that a user with some experience would ask."
+"architectures — will give a new user the opportunity to use TVM in the "
+"most efficient way possible. A tutorial teaches a beginner something they"
+" need to know. This is in contrast with a how-to, which is meant to be an"
+" answer to a question that a user with some experience would ask."
 msgstr ""
 
-#: ../../docs/contribute/document.rst:50
+#: ../../docs/contribute/document.rst:51
 msgid ""
 "Tutorials need to be repeatable and reliable, because the lack of success"
 " means a user will look for other solutions."
 msgstr ""
 
-#: ../../docs/contribute/document.rst:54
+#: ../../docs/contribute/document.rst:55
 msgid "How-to Guides"
 msgstr ""
 
-#: ../../docs/contribute/document.rst:56
+#: ../../docs/contribute/document.rst:57
 msgid ""
 "These are step by step guides on how to solve particular problems. The "
 "user can ask meaningful questions, and the documents provide answers. An "
@@ -82,7 +84,7 @@ msgid ""
 "problem the how-to is solving."
 msgstr ""
 
-#: ../../docs/contribute/document.rst:64
+#: ../../docs/contribute/document.rst:65
 msgid ""
 "How are tutorials different from how-tos? A tutorial is oriented towards "
 "the new developer, and focuses on successfully introducing them to the "
@@ -93,11 +95,11 @@ msgid ""
 " task."
 msgstr ""
 
-#: ../../docs/contribute/document.rst:72
+#: ../../docs/contribute/document.rst:73
 msgid "Reference"
 msgstr ""
 
-#: ../../docs/contribute/document.rst:74
+#: ../../docs/contribute/document.rst:75
 msgid ""
 "Reference documentation describes how the software is configured and "
 "operated. APIs, key functions, commands, and interfaces are all "
@@ -110,11 +112,11 @@ msgid ""
 "generated automatically as much as possible."
 msgstr ""
 
-#: ../../docs/contribute/document.rst:84
+#: ../../docs/contribute/document.rst:85
 msgid "Architecture Guides"
 msgstr ""
 
-#: ../../docs/contribute/document.rst:86
+#: ../../docs/contribute/document.rst:87
 msgid ""
 "Architecture Guides are explanations are background material on a topic. "
 "These documents help to illuminate and understand the application "
@@ -126,18 +128,18 @@ msgid ""
 "sense of how and why the software was built the way it is. It's not the "
 "place for how-tos and descriptions on how to accomplish tasks. They "
 "instead focus on higher level concepts that help with the understanding "
-"of the project.  Generally these are written by the architects and "
+"of the project. Generally these are written by the architects and "
 "developers of the project, but can useful to help both users and "
 "developers to have a deeper understanding of why the software works the "
 "way it does, and how to contribute to it in ways that are consistent with"
 " the underlying design principles."
 msgstr ""
 
-#: ../../docs/contribute/document.rst:101
+#: ../../docs/contribute/document.rst:102
 msgid "Special considerations for TVM"
 msgstr ""
 
-#: ../../docs/contribute/document.rst:103
+#: ../../docs/contribute/document.rst:104
 msgid ""
 "The TVM community has some special considerations that require deviation "
 "from the simple docs style outlined by Divio. The first consideration is "
@@ -150,7 +152,7 @@ msgid ""
 "developer experience."
 msgstr ""
 
-#: ../../docs/contribute/document.rst:112
+#: ../../docs/contribute/document.rst:113
 msgid ""
 "The next consideration is that there are special topics within the TVM "
 "community that benefit from additional attention. These topics include, "
@@ -159,93 +161,98 @@ msgid ""
 "navigate that material most effectively."
 msgstr ""
 
-#: ../../docs/contribute/document.rst:118
+#: ../../docs/contribute/document.rst:119
 msgid ""
 "To facilitate newcomers, a special \"Getting Started\" section with "
 "installation instructions, a overview of why to use TVM, and other first-"
 "experience documents will be produced."
 msgstr ""
 
-#: ../../docs/contribute/document.rst:124
+#: ../../docs/contribute/document.rst:125
 msgid "Technical Details"
 msgstr ""
 
-#: ../../docs/contribute/document.rst:126
+#: ../../docs/contribute/document.rst:127
 msgid ""
 "We use the `Sphinx <http://sphinx-doc.org>`_ for the main documentation. "
-"Sphinx support both the reStructuredText and markdown.  When possible, we"
-" encourage to use reStructuredText as it has richer features.  Note that "
-"the python doc-string and tutorials allow you to embed reStructuredText "
+"Sphinx supports both reStructuredText and markdown. When possible, we "
+"encourage reStructuredText as it has richer features. Note that the "
+"Python doc-string and tutorials allow you to embed reStructuredText "
 "syntax."
 msgstr ""
 
-#: ../../docs/contribute/document.rst:133
+#: ../../docs/contribute/document.rst:132
+msgid ""
+"See `docs/README.md <https://github.com/apache/tvm/tree/main/docs#build-"
+"locally>`_ for instructions on building the docs."
+msgstr ""
+
+#: ../../docs/contribute/document.rst:138
 msgid "Python Reference Documentation"
 msgstr ""
 
-#: ../../docs/contribute/document.rst:135
+#: ../../docs/contribute/document.rst:140
 msgid ""
-"We use `numpydoc <https://numpydoc.readthedocs.io/en/latest/>`_ format to"
-" document the function and classes.  The following snippet gives an "
-"example docstring.  We always document all the public functions, when "
-"necessary, provide an usage example of the features we support(as shown "
+"We use the `numpydoc <https://numpydoc.readthedocs.io/en/latest/>`_ "
+"format to document the function and classes. The following snippet gives "
+"an example docstring. We always document all the public functions, when "
+"necessary, provide an usage example of the features we support (as shown "
 "below)."
 msgstr ""
 
-#: ../../docs/contribute/document.rst:170
+#: ../../docs/contribute/document.rst:175
 msgid ""
-"Be careful to leave blank lines between sections of your documents.  In "
-"the above case, there has to be a blank line before `Parameters`, "
-"`Returns` and `Examples` in order for the doc to be built correctly. To "
-"add a new function to the doc, we need to add the `sphinx.autodoc "
-"<http://www.sphinx-doc.org/en/master/ext/autodoc.html>`_ rules to the "
-"`docs/api/python "
-"<https://github.com/apache/tvm/tree/main/docs/api/python>`_). You can "
-"refer to the existing files under this folder on how to add the "
+"Be careful to leave blank lines between sections of your documents. In "
+"the above case, there has to be a blank line before ``Parameters``, "
+"``Returns`` and ``Examples`` in order for the doc to be built correctly. "
+"To add a new function to the docs, we need to add the `sphinx.autodoc "
+"<http://www.sphinx-doc.org/en/master/ext/autodoc.html>`_ rules to "
+"`docs/reference/api/python "
+"<https://github.com/apache/tvm/tree/main/docs/reference/api/python>`_). "
+"You can refer to the existing files under this folder on how to add the "
 "functions."
 msgstr ""
 
-#: ../../docs/contribute/document.rst:180
+#: ../../docs/contribute/document.rst:185
 msgid "C++ Reference Documentation"
 msgstr ""
 
-#: ../../docs/contribute/document.rst:182
+#: ../../docs/contribute/document.rst:187
 msgid ""
-"We use the doxgen format to document c++ functions.  The following "
+"We use the doxygen format to document c++ functions. The following "
 "snippet shows an example of c++ docstring."
 msgstr ""
 
-#: ../../docs/contribute/document.rst:197
+#: ../../docs/contribute/document.rst:202
 msgid ""
 "Besides documenting function usages, we also highly recommend "
 "contributors to add comments about code logics to improve readability."
 msgstr ""
 
-#: ../../docs/contribute/document.rst:201
+#: ../../docs/contribute/document.rst:206
 msgid "Sphinx Gallery How-Tos"
 msgstr ""
 
-#: ../../docs/contribute/document.rst:203
+#: ../../docs/contribute/document.rst:208
 msgid ""
-"We use the `sphinx-gallery <https://sphinx-gallery.github.io/>`_ to build"
-" many python how-tos.  You can find the source code under `gallery "
-"<https://github.com/apache/tvm/tree/main/gallery>`_ quite self "
-"explanatory. One thing that worth noting is that the comment blocks are "
-"written in reStructuredText instead of markdown so be aware of the "
-"syntax."
+"We use `sphinx-gallery <https://sphinx-gallery.github.io/>`_ to build "
+"many Python how-tos. You can find the source code under `gallery "
+"<https://github.com/apache/tvm/tree/main/gallery>`_. One thing that worth"
+" noting is that the comment blocks are written in reStructuredText "
+"instead of markdown so be aware of the syntax."
 msgstr ""
 
-#: ../../docs/contribute/document.rst:209
+#: ../../docs/contribute/document.rst:214
 msgid ""
 "The how-to code will run on our build server to generate the document "
-"page.  So we may have a restriction like not being able to access a "
-"remote Raspberry Pi, in such case add a flag variable to the tutorial "
-"(e.g. `use_rasp`) and allow users to easily switch to the real device by "
+"page. So we may have a restriction like not being able to access a remote"
+" Raspberry Pi, in such case add a flag variable to the tutorial (e.g. "
+"``use_rasp``) and allow users to easily switch to the real device by "
 "changing one flag. Then use the existing environment to demonstrate the "
 "usage."
 msgstr ""
 
-#: ../../docs/contribute/document.rst:215
+#: ../../docs/contribute/document.rst:220
 msgid ""
 "If you add a new categorization of how-to, you will need to add "
 "references to `conf.py "
@@ -253,13 +260,160 @@ msgid ""
 "index <https://github.com/apache/tvm/tree/main/docs/how-to/index.rst>`_"
 msgstr ""
 
-#: ../../docs/contribute/document.rst:220
+#: ../../docs/contribute/document.rst:225
 msgid "Refer to Another Location in the Document"
 msgstr ""
 
-#: ../../docs/contribute/document.rst:221
+#: ../../docs/contribute/document.rst:226
 msgid ""
-"Please use sphinx's `:ref:` markup to refer to another location in the "
+"Please use sphinx's ``:ref:`` markup to refer to another location in the "
 "same doc."
 msgstr ""
+
+#~ msgid ""
+#~ "This document describes the organization "
+#~ "of TVM documentation, and how to "
+#~ "write new documentation."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "These are step by step guides to"
+#~ " introduce new users to a project."
+#~ " An introductory tutorial is designed "
+#~ "to get a user engaged with the "
+#~ "software without necessarily explaining why"
+#~ " the software works the way it "
+#~ "does. Those explanations can be saved"
+#~ " for other document types. An "
+#~ "introductory tutorial focuses on a "
+#~ "successful first experience. These are "
+#~ "the most important docs to turning "
+#~ "newcomers into new users and developers."
+#~ " A fully end-to-end tutorial&mdash;"
+#~ " from installing TVM and supporting "
+#~ "ML software, to creating and training"
+#~ " a model, to compiling to different"
+#~ " architectures&mdash;will give a new user"
+#~ " the opportunity to use TVM in "
+#~ "the most efficient way possible. A "
+#~ "tutorial teaches a beginner something "
+#~ "they need to know. This is in "
+#~ "contrast with a how-to, which is"
+#~ " meant to be an answer to a "
+#~ "question that a user with some "
+#~ "experience would ask."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Architecture Guides are explanations are "
+#~ "background material on a topic. These"
+#~ " documents help to illuminate and "
+#~ "understand the application environment. Why"
+#~ " are things the way they are? "
+#~ "What were the design decisions, what "
+#~ "alternatives were considered, what are "
+#~ "the RFCs describing the existing system?"
+#~ " This includes academic papers and "
+#~ "links to publications relevant to the"
+#~ " software. Within these documents you "
+#~ "can explore contradictory and conflicting "
+#~ "position, and help the reader make "
+#~ "sense of how and why the software"
+#~ " was built the way it is. It's"
+#~ " not the place for how-tos and"
+#~ " descriptions on how to accomplish "
+#~ "tasks. They instead focus on higher "
+#~ "level concepts that help with the "
+#~ "understanding of the project.  Generally "
+#~ "these are written by the architects "
+#~ "and developers of the project, but "
+#~ "can useful to help both users and"
+#~ " developers to have a deeper "
+#~ "understanding of why the software works"
+#~ " the way it does, and how to"
+#~ " contribute to it in ways that "
+#~ "are consistent with the underlying "
+#~ "design principles."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "We use the `Sphinx <http://sphinx-"
+#~ "doc.org>`_ for the main documentation. "
+#~ "Sphinx support both the reStructuredText "
+#~ "and markdown.  When possible, we "
+#~ "encourage to use reStructuredText as it"
+#~ " has richer features.  Note that the"
+#~ " python doc-string and tutorials "
+#~ "allow you to embed reStructuredText "
+#~ "syntax."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "We use `numpydoc "
+#~ "<https://numpydoc.readthedocs.io/en/latest/>`_ format to"
+#~ " document the function and classes.  "
+#~ "The following snippet gives an example"
+#~ " docstring.  We always document all "
+#~ "the public functions, when necessary, "
+#~ "provide an usage example of the "
+#~ "features we support(as shown below)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Be careful to leave blank lines "
+#~ "between sections of your documents.  In"
+#~ " the above case, there has to "
+#~ "be a blank line before `Parameters`, "
+#~ "`Returns` and `Examples` in order for"
+#~ " the doc to be built correctly. "
+#~ "To add a new function to the "
+#~ "doc, we need to add the "
+#~ "`sphinx.autodoc <http://www.sphinx-"
+#~ "doc.org/en/master/ext/autodoc.html>`_ rules to the"
+#~ " `docs/api/python "
+#~ "<https://github.com/apache/tvm/tree/main/docs/api/python>`_). "
+#~ "You can refer to the existing "
+#~ "files under this folder on how to"
+#~ " add the functions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "We use the doxgen format to "
+#~ "document c++ functions.  The following "
+#~ "snippet shows an example of c++ "
+#~ "docstring."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "We use the `sphinx-gallery <https"
+#~ "://sphinx-gallery.github.io/>`_ to build many "
+#~ "python how-tos.  You can find the"
+#~ " source code under `gallery "
+#~ "<https://github.com/apache/tvm/tree/main/gallery>`_ quite "
+#~ "self explanatory. One thing that worth"
+#~ " noting is that the comment blocks"
+#~ " are written in reStructuredText instead"
+#~ " of markdown so be aware of the"
+#~ " syntax."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The how-to code will run on "
+#~ "our build server to generate the "
+#~ "document page.  So we may have a"
+#~ " restriction like not being able to"
+#~ " access a remote Raspberry Pi, in "
+#~ "such case add a flag variable to"
+#~ " the tutorial (e.g. `use_rasp`) and "
+#~ "allow users to easily switch to "
+#~ "the real device by changing one "
+#~ "flag. Then use the existing environment"
+#~ " to demonstrate the usage."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Please use sphinx's `:ref:` markup to"
+#~ " refer to another location in the "
+#~ "same doc."
+#~ msgstr ""
 

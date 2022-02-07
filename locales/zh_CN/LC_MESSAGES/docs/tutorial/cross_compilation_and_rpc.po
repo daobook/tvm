@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-06 15:25+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:20004
+msgid "交叉编译和RPC"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:20006
+msgid ""
+"**作者**: [Ziheng Jiang](https://github.com/ZihengJiang/), [Lianmin "
+"Zheng](https://github.com/merrymercy/)"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:20008
+msgid "本教程介绍了 TVM 中的交叉编译和使用 RPC 的远程设备执行。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:20010
+msgid ""
+"通过交叉编译和 RPC，**你可以在本地机器上编译一个程序，然后在远程设备上运行它**。在远程设备资源有限的情况下，如 Raspberry Pi "
+"和移动平台，这很有用。在本教程中，我们将使用 Raspberry Pi 作为 CPU 例子，使用 Firefly-RK3399 作为 OpenCL"
+" 例子。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:20012
+msgid "在设备上建立 TVM 运行时"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:20014
+msgid "第一步是在远程设备上建立 TVM 运行时。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:20016
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:20055
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:60002
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:120006
+msgid "注意"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:1
+msgid "本节和下一节的所有指令都应该在目标设备上执行，例如 Raspberry Pi。我们假设目标设备运行的是 Linux。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:20022
+msgid "由于我们在本地机器上进行编译，远程设备只用于运行生成的代码。我们只需要在远程设备上构建 TVM 运行时。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:20030
+msgid ""
+"成功构建运行时后，我们需要在 `~/.bashrc` 文件中设置环境变量。我们可以用 `vi ~/.bashrc` 编辑 "
+"`~/.bashrc`，并添加以下一行（假设你的 TVM 目录在 `~/tvm`）。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:20036
+msgid "要更新环境变量，执行 `source ~/.bashrc`。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:20038
+msgid "在设备上设置 RPC 服务器"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:20040
+msgid "要启动 RPC 服务器，请在你的远程设备上运行以下命令（本例中为 Raspberry Pi）。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:20046
+msgid "如果你看到下面这一行，这意味着 RPC 服务器在你的设备上成功启动。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:20052
+msgid "在本地机器上声明和交叉编译内核"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:1
+msgid "现在我们回到本地机器，它安装了一个完整的 TVM（含 LLVM）。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:20061
+msgid "这里我们将在本地机器上声明一个简单的内核："
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:40002
+msgid ""
+"然后我们交叉编译内核。对于 Raspberry Pi 3B 来说，目标应该是 `'llvm -mtriple=armv7l-linux-"
+"gnueabihf'`，但我们在这里使用 `'llvm'` 来使这个教程可以在我们的网页构建服务器上运行。请看下面区块中的详细说明。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:1
+msgid ""
+"要在真正的远程设备上运行本教程，请将 `local_demo` 改为 `False`，并将 `target` 中的 `build` "
+"改为适合你设备的目标 triple。对于不同的设备，目标 triple 可能是不同的。例如，对于 Raspberry Pi 3B，它是 "
+"`'llvm -mtriple=armv7l-linux-gnueabihf'`，对于 RK3399，它是 `'llvm "
+"-mtriple=aarch64-linux-gnu'`。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:3
+msgid "通常，你可以通过在你的设备上运行 `gcc -v` 来查询目标，并寻找以 `Target:` 开始的行。（尽管它可能仍然是一个松散的配置）。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:5
+msgid "除了`-mtriple`，你还可以设置其他的编译选项，比如："
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:7
+msgid "`-mcpu=<cpuname>` :   指定一个当前架构中的特定芯片来生成代码。默认情况下，这是从目标芯片中推断出来的，并自动检测到当前架构。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:10
+msgid ""
+"`-mattr=a1,+a2,-a3,…` :   覆盖或控制目标的特定属性，比如是否启用 SIMD 操作。默认的属性集是由当前的 CPU "
+"设置的。要获得可用的属性列表，你可以这样做："
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:17
+msgid ""
+"这些选项与 [llc](http://llvm.org/docs/CommandGuide/llc.html) 一致。建议将目标 triple  "
+"和特性集设置为包含可用的特定特性，这样我们就可以充分利用板子的特性。你可以从 [LLVM "
+"的交叉编译指南](https://clang.llvm.org/docs/CrossCompilation.html) "
+"中找到更多关于交叉编译属性的细节。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:60024
+msgid "通过 RPC 远程运行 CPU 内核"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:60026
+msgid "我们将展示如何在远程设备上运行已经生成的 CPU 内核。首先，我们从远程设备获得一个 RPC 会话。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:80002
+msgid "将 lib 上传至远程设备，然后调用设备本地编译器重新链接它们。现在 `func` 是一个远程模块对象。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:100002
+msgid ""
+"当你想评估内核在远程设备上的性能时，避免网络开销是很重要的。`time_evaluator` "
+"将返回一个远程函数，该函数在远程设备上运行多次，测量每次运行的成本并返回测量的成本。网络开销被排除在外。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:120002
+msgid "通过 RPC 远程运行 OpenCL 内核"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:120004
+msgid "对于远程 OpenCL 设备，工作流程几乎和上面一样。你可以定义内核，上传文件，并通过 RPC 运行。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:1
+msgid ""
+"Raspberry Pi 不支持 OpenCL，以下代码是在 Firefly-RK3399 上测试的。你可以按照这个 "
+"[教程](https://gist.github.com/mli/585aed2cec0b5178b1a510f9f236afa2) "
+"来设置操作系统和 RK3399 的 OpenCL 驱动。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:3
+msgid "此外，我们还需要在 rk3399 板上启用 OpenCL 来构建运行时。在 TVM 根目录下，执行"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:120020
+msgid "下面的函数显示了我们如何远程运行一个 OpenCL 内核"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:140002
+msgid "总结"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:140004
+msgid "本教程提供了 TVM 中交叉编译和 RPC 功能的介绍。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:140005
+msgid "在远程设备上设置一个 RPC 服务器。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:140006
+msgid "设置目标设备配置，在本地机器上交叉编译内核。"
+msgstr ""
+
+#: ../../docs/tutorial/cross_compilation_and_rpc.ipynb:140007
+msgid "通过 RPC API 远程上传和运行内核。"
+msgstr ""
+

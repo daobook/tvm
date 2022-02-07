@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-13 14:28+0800\n"
+"POT-Creation-Date: 2022-02-06 15:25+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 #: ../../docs/reference/langref/relay_op.rst:19
 msgid "Relay Core Tensor Operators"
@@ -1200,19 +1200,123 @@ msgstr ""
 msgid "This level supports dialect operators."
 msgstr ""
 
-#: ../../docs/reference/langref/relay_op.rst:235:<autosummary>:1
-msgid ":py:obj:`tvm.relay.qnn.op.requantize <tvm.relay.qnn.op.requantize>`"
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid ":py:obj:`tvm.relay.qnn.op.add <tvm.relay.qnn.op.add>`"
 msgstr ""
 
-#: ../../docs/reference/langref/relay_op.rst:235:<autosummary>:1
-msgid "Requantized operator."
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid "Quantized addition with numpy-style broadcasting."
 msgstr ""
 
-#: ../../docs/reference/langref/relay_op.rst:235:<autosummary>:1
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid ":py:obj:`tvm.relay.qnn.op.batch_matmul <tvm.relay.qnn.op.batch_matmul>`"
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid ""
+"Computes batch matrix multiplication of `x` and `y` when `x` and `y` are "
+"data in batch."
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid ":py:obj:`tvm.relay.qnn.op.concatenate <tvm.relay.qnn.op.concatenate>`"
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid "Concatenate the quantized input tensors along the given axis."
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
 msgid ":py:obj:`tvm.relay.qnn.op.conv2d <tvm.relay.qnn.op.conv2d>`"
 msgstr ""
 
-#: ../../docs/reference/langref/relay_op.rst:235:<autosummary>:1
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
 msgid "Quantized 2D convolution."
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid ""
+":py:obj:`tvm.relay.qnn.op.conv2d_transpose "
+"<tvm.relay.qnn.op.conv2d_transpose>`"
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid "This operator deconvolves quantized data with quantized kernel."
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid ":py:obj:`tvm.relay.qnn.op.dense <tvm.relay.qnn.op.dense>`"
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid "Qnn Dense operator."
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid ":py:obj:`tvm.relay.qnn.op.dequantize <tvm.relay.qnn.op.dequantize>`"
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid ""
+"Dequantize op This operator takes quantized int8 and unit8 as input and "
+"produces dequantized float32 as output."
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid ":py:obj:`tvm.relay.qnn.op.mul <tvm.relay.qnn.op.mul>`"
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid "Quantized multiplication with numpy-style broadcasting."
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid ":py:obj:`tvm.relay.qnn.op.quantize <tvm.relay.qnn.op.quantize>`"
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid ""
+"Quantize op This operator takes float32 as input and produces quantized "
+"int8 or unit8 as output."
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid ":py:obj:`tvm.relay.qnn.op.requantize <tvm.relay.qnn.op.requantize>`"
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid "Requantized operator."
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid ""
+":py:obj:`tvm.relay.qnn.op.simulated_dequantize "
+"<tvm.relay.qnn.op.simulated_dequantize>`"
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid ""
+"Simulated Dequantize op Mimics the dequantize op but has more flexibility"
+" in valid inputs and always outputs the same type as the input."
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid ""
+":py:obj:`tvm.relay.qnn.op.simulated_quantize "
+"<tvm.relay.qnn.op.simulated_quantize>`"
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid ""
+"Simulated Quantize op Mimics the quantize op but has more flexibility in "
+"valid inputs and always outputs the same type as the input."
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid ":py:obj:`tvm.relay.qnn.op.subtract <tvm.relay.qnn.op.subtract>`"
+msgstr ""
+
+#: ../../docs/reference/langref/relay_op.rst:247:<autosummary>:1
+msgid "Quantized subtraction with numpy-style broadcasting."
 msgstr ""
 
