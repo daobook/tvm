@@ -136,12 +136,12 @@ html_theme_options = {
     "repository_branch": "xin",  # 文档库的分支，默认 `master`
     # -- 在导航栏添加一个按钮，链接到版本库的议题 ------------------------------
     # （与 `repository_url` 和 `repository_branch` 一起使用）
-    "use_issues_button": True,  # 默认 `False`
+    "use_issues_button": False,  # 默认 `False`
     # -- 在导航栏添加一个按钮，以下载页面的源文件。
     "use_download_button": True,  # 默认 `True`
     # 你可以在每个页面添加一个按钮，允许用户直接编辑页面文本，
     # 并提交拉动请求以更新文档。
-    "use_edit_page_button": True,
+    "use_edit_page_button": False,
     # 在导航栏添加一个按钮来切换全屏的模式。
     "use_fullscreen_button": True,  # 默认 `True`
     # -- 在导航栏中添加一个链接到文档库的按钮。----------------------------------
