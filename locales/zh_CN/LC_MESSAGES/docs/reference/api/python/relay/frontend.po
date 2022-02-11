@@ -23,15 +23,15 @@ msgstr ""
 
 #: of tvm.relay.frontend:1
 msgid "Frontends for constructing Relay programs."
-msgstr ""
+msgstr "用于构建 Relay 程序的前端。"
 
 #: of tvm.relay.frontend:3
 msgid "Contains the model importers currently defined for Relay."
-msgstr ""
+msgstr "包含当前为 Relay 定义的模型导入器。"
 
 #: of tvm.relay.frontend:1
 msgid "**Classes:**"
-msgstr ""
+msgstr "**类**："
 
 #: of tvm.relay.frontend:1:<autosummary>:1
 msgid ""
@@ -43,11 +43,11 @@ msgstr ""
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1
 #: tvm.relay.frontend:1:<autosummary>:1
 msgid "Mutator for changing the datatype of Relay programs."
-msgstr ""
+msgstr "改变 Relay 程序的数据类型的变体。"
 
 #: of tvm.relay.frontend:1
 msgid "**Functions:**"
-msgstr ""
+msgstr "**函数**："
 
 #: of
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
@@ -59,7 +59,7 @@ msgstr ""
 #: of tvm.relay.frontend.caffe.from_caffe:1
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
 msgid "Convert from caffe model into compatible relay Function."
-msgstr ""
+msgstr "将 caffe 模型转换为兼容的 relay  函数。"
 
 #: of
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
@@ -74,6 +74,7 @@ msgid ""
 "Load caffe2 graph which contains init_net and predict_net into Relay "
 "Function."
 msgstr ""
+"将包含 init_net 和 predict_net 的 caffe2 图加载到 Relay Function 中。"
 
 #: of
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
@@ -86,7 +87,7 @@ msgstr ""
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
 #: tvm.relay.frontend.coreml.from_coreml:1
 msgid "Convert from coreml model into Relay Function."
-msgstr ""
+msgstr "将 coreml 模型转换为 Relay Function。"
 
 #: of
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
@@ -99,7 +100,7 @@ msgstr ""
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
 #: tvm.relay.frontend.darknet.from_darknet:1
 msgid "Convert from Darknet's model into compatible relay Function."
-msgstr ""
+msgstr "将 Darknet 模型转换为兼容的 Relay  函数。"
 
 #: of
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
@@ -112,7 +113,7 @@ msgstr ""
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
 #: tvm.relay.frontend.keras.from_keras:1
 msgid "Convert keras model to relay Function."
-msgstr ""
+msgstr "将 keras 模型转换为 Relay Function。"
 
 #: of
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
@@ -125,7 +126,7 @@ msgstr ""
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
 #: tvm.relay.frontend.mxnet.from_mxnet:1
 msgid "Convert from MXNet\"s model into compatible relay Function."
-msgstr ""
+msgstr "将 MXNet 模型转换为兼容的 Relay  函数。"
 
 #: of
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
@@ -138,7 +139,7 @@ msgstr ""
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
 #: tvm.relay.frontend.onnx.from_onnx:1
 msgid "Convert a ONNX model into an equivalent Relay Function."
-msgstr ""
+msgstr "将 ONNX 模型转换为等效的 Relay Function。"
 
 #: of
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
@@ -150,7 +151,7 @@ msgstr ""
 #: of
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
 msgid "Convert a PaddlePaddle model into an equivalent Relay Function."
-msgstr ""
+msgstr "将PaddlePaddle 模型转换成等效的 Relay Function。"
 
 #: of
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
@@ -165,6 +166,7 @@ msgid ""
 "Load PyTorch model in the form of a scripted PyTorch model and convert "
 "into relay."
 msgstr ""
+"以脚本化 PyTorch 模型的形式加载 PyTorch 模型，并转换为 relay。"
 
 #: of
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
@@ -179,6 +181,7 @@ msgid ""
 "Load tensorflow graph which is a python tensorflow graph object into "
 "relay."
 msgstr ""
+"将 python tensorflow 计算图对象加载到 relay 中。"
 
 #: of
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
@@ -191,7 +194,7 @@ msgstr ""
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
 #: tvm.relay.frontend.tflite.from_tflite:1
 msgid "Convert from tflite model into compatible relay Function."
-msgstr ""
+msgstr "从 tflite 模型转换成兼容的 relay Function。"
 
 #: of
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
@@ -205,7 +208,7 @@ msgstr ""
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:1:<autosummary>:1
 #: tvm.relay.frontend.mxnet_qnn_op_utils.quantize_conv_bias_mkldnn_from_var:1
 msgid "Quantized conv2d bias"
-msgstr ""
+msgstr "量化 conv2d bias"
 
 #: of
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:3
@@ -214,11 +217,13 @@ msgid ""
 "framework. TODO(@gussmith23 @hypercubestart) Add link to documentation "
 "when it exists"
 msgstr ""
+"此传递对于“带上你自己的数据类型”框架的用户应该很有用。"
+"TODO(@gussmith23 @hypercubestart) 当文档存在时，添加链接到文档"
 
 #: of
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:7
 msgid "Example:"
-msgstr ""
+msgstr "示例："
 
 #: of tvm.relay.frontend.caffe.from_caffe tvm.relay.frontend.caffe2.from_caffe2
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass
@@ -238,11 +243,13 @@ msgid ""
 "The source datatype name, e.g. \"float\" or \"posites2\" (but not "
 "\"float32\" or \"custom[posites2]32\")."
 msgstr ""
+"源码的数据类型名称，"
+"例如 \"float\" 或 \"posites2\" （但不是 \"float32\" 或 \"custom[posites2]32\"）。"
 
 #: of
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass:24
 msgid "The destination datatype name, in the same format."
-msgstr ""
+msgstr "目标数据的类型名称，格式相同。"
 
 #: of tvm.relay.frontend.caffe.from_caffe tvm.relay.frontend.caffe2.from_caffe2
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass
@@ -262,6 +269,7 @@ msgid ""
 "**mod** -- Module where all nodes of dtype `src` have been changed to "
 "have dtype `dst`."
 msgstr ""
+"**mod** —— 所有 dtype 为 `src` 的节点都被更改为 dtype `dst` 的模块。"
 
 #: of
 #: tvm.relay.frontend.change_datatype._wrap_class_function_pass.<locals>.PyFunctionPass

@@ -19,29 +19,33 @@ msgstr ""
 
 #: ../../docs/topic/vta/dev/hardware.rst:19
 msgid "VTA Hardware Guide"
-msgstr ""
+msgstr "VTA 硬件指南"
 
 #: ../../docs/topic/vta/dev/hardware.rst:21
 msgid ""
 "We present a top-down overview of the VTA hardware design. This hardware "
 "design guide covers VTA hardware at two levels:"
 msgstr ""
+"提供了自顶向下的 VTA 硬件设计概述。"
+"本硬件设计指南涵盖了两个层次的 VTA 硬件："
 
 #: ../../docs/topic/vta/dev/hardware.rst:24
 msgid ""
 "An architectural overview of the VTA design and its ISA hardware-software"
 " interface."
 msgstr ""
+"VTA 设计及其 ISA 软硬件接口的架构概述。"
 
 #: ../../docs/topic/vta/dev/hardware.rst:26
 msgid ""
 "A micro-architectural overview of the VTA hardware modules, and the "
 "micro-code specification for the compute core."
 msgstr ""
+"VTA 硬件模块的微架构概述，以及计算核心的微代码规范。"
 
 #: ../../docs/topic/vta/dev/hardware.rst:30
 msgid "VTA Overview"
-msgstr ""
+msgstr "VTA 概述"
 
 #: ../../docs/topic/vta/dev/hardware.rst:32
 msgid ""
@@ -51,6 +55,9 @@ msgid ""
 "registers. In addition the design adopts decoupled access-execute to hide"
 " memory access latency."
 msgstr ""
+"VTA 是通用的深度学习加速器，用于快速和高效的密集线性代数。"
+"VTA 集成了简单的类 RISC 处理器，可以在 1 级或 2 级张量寄存器上执行密集的线性代数操作。"
+"此外，该设计采用解耦的访问-执行来隐藏内存访问延迟。"
 
 #: ../../docs/topic/vta/dev/hardware.rst:37
 msgid ""
@@ -58,6 +65,8 @@ msgid ""
 "accelerator design for full stack optimization, exposing a generic tensor"
 " computation interface to the compiler stack."
 msgstr ""
+"在更广泛的范围内，VTA 可以作为模板深度学习加速器设计，用于全堆栈优化，"
+"向编译器堆栈公开通用张量计算接口。"
 
 #: ../../docs/topic/vta/dev/hardware.rst:43
 msgid ""
@@ -66,6 +75,8 @@ msgid ""
 " other via FIFO queues and local memory blocks (SRAM), to enable task-"
 "level pipeline parallelism:"
 msgstr ""
+"上图给出了 VTA 硬件组织的高级概述。"
+"VTA 由四个模块组成，通过 FIFO 队列和本地内存块（SRAM）相互通信，以实现任务级管道并行："
 
 #: ../../docs/topic/vta/dev/hardware.rst:46
 msgid ""
@@ -73,12 +84,15 @@ msgid ""
 "It also decodes those instructions to route them into one of three "
 "command queues."
 msgstr ""
+"fetch 模块负责从 DRAM 中加载指令流。"
+"它还解码这些指令，将它们路由到三个命令队列中的一个。"
 
 #: ../../docs/topic/vta/dev/hardware.rst:47
 msgid ""
 "The load module takes care of loading input and weight tensors from DRAM "
 "into data-specialized on-chip memories."
 msgstr ""
+"load 模块负责将 DRAM 的输入量和权重张量加载到数据专用的片上存储器中。"
 
 #: ../../docs/topic/vta/dev/hardware.rst:48
 msgid ""
@@ -87,14 +101,16 @@ msgid ""
 " care of loading data from DRAM into the register file, and loading "
 "micro-op kernels into the micro-op cache."
 msgstr ""
+"compute 模块使用 GEMM 核心进行密集线性代数计算，使用张量 ALU 进行通用计算。"
+"它还负责将数据从 DRAM 加载到寄存器文件，并将微操作内核加载到微操作缓存。"
 
 #: ../../docs/topic/vta/dev/hardware.rst:49
 msgid "The store module stores results produced by the compute core back to DRAM."
-msgstr ""
+msgstr "store 模块将计算核心产生的结果存储回 DRAM。"
 
 #: ../../docs/topic/vta/dev/hardware.rst:52
 msgid "HLS Hardware Source Organization"
-msgstr ""
+msgstr "HLS 硬件资源组织"
 
 #: ../../docs/topic/vta/dev/hardware.rst:54
 msgid ""

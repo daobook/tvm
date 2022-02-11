@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../docs/topic/vta/install.rst:19
 msgid "VTA Installation Guide"
-msgstr ""
+msgstr "VTA 安装指南"
 
 #: ../../docs/topic/vta/install.rst:21
 msgid "We present three installation guides, each extending on the previous one:"
-msgstr ""
+msgstr "提供了三个安装指南，每一个都是前一个的延伸："
 
 #: ../../docs/topic/vta/install.rst:23
 msgid "`VTA Simulator Installation`_"
@@ -47,43 +47,48 @@ msgstr ""
 
 #: ../../docs/topic/vta/install.rst:31
 msgid "VTA Simulator Installation"
-msgstr ""
+msgstr "VTA 仿真器的安装"
 
 #: ../../docs/topic/vta/install.rst:33
 msgid ""
 "You need :ref:`TVM installed <installation>` on your machine.  For a "
 "quick and easy start, checkout the :ref:`Docker Guide <docker-images>`."
 msgstr ""
+"你需要 :ref:`TVM 安装 <installation>` 在你的机器上。"
+"为了快速和简单的开始，检查 :ref:`Docker 指南 <docker-images>`。"
 
 #: ../../docs/topic/vta/install.rst:36
 msgid "You'll need to set the following paths to use VTA:"
-msgstr ""
+msgstr "您需要设置以下路径来使用 VTA："
 
 #: ../../docs/topic/vta/install.rst:43
 msgid ""
 "The VTA functional simulation library needs to be enabled when building "
 "TVM."
 msgstr ""
+"构建 TVM 时需要启用 VTA 功能仿真库。"
 
 #: ../../docs/topic/vta/install.rst:53
 msgid "Add the VTA python library to your python path to run the VTA examples."
-msgstr ""
+msgstr "将 VTA python 库添加到 python 路径中以运行 VTA 示例。"
 
 #: ../../docs/topic/vta/install.rst:60
 msgid "Testing your VTA Simulation Setup"
-msgstr ""
+msgstr "测试 VTA 仿真设置"
 
 #: ../../docs/topic/vta/install.rst:62
 msgid ""
 "To ensure that you've properly installed the VTA python package, run the "
 "following 2D convolution testbench."
 msgstr ""
+"为了确保正确安装了 VTA python 包，请运行以下 2D convolution 测试台。"
 
 #: ../../docs/topic/vta/install.rst:68
 msgid ""
 "You are invited to try out our :ref:`VTA programming tutorials <vta-"
 "tutorials>`."
 msgstr ""
+"邀请您试用我们的 :ref:`VTA 编程指南 <vta-tutorials>`。"
 
 #: ../../docs/topic/vta/install.rst:70
 msgid ""
@@ -92,10 +97,12 @@ msgid ""
 "throughput that the simulator achieves, by evaluating the convolutions in"
 " software."
 msgstr ""
+"**注**：你会注意到，对于每一个卷积层，吞吐量都以 GOPS 报告。"
+"这些数字实际上是仿真器通过在软件中评估卷积实现的计算吞吐量。"
 
 #: ../../docs/topic/vta/install.rst:73
 msgid "Advanced Configuration (optional)"
-msgstr ""
+msgstr "高级配置（可选）"
 
 #: ../../docs/topic/vta/install.rst:75
 msgid ""
@@ -105,6 +112,9 @@ msgid ""
 " accelerator to parameterize the TVM compiler stack and the VTA hardware "
 "stack."
 msgstr ""
+"VTA 是通用的可配置深度学习加速器。"
+"配置由 ``3rdparty/vta-hw/config`` 下的 ``vta_config.json`` 指定。"
+"该文件提供了 VTA 加速器的架构规范，以参数化 TVM 编译器堆栈和 VTA 硬件堆栈。"
 
 #: ../../docs/topic/vta/install.rst:79
 msgid ""
@@ -113,6 +123,9 @@ msgid ""
 "simulator. You can modify the content of the configuration file to "
 "rebuild VTA to a different parameterization. To do so,"
 msgstr ""
+"VTA 配置文件也指定了 TVM 编译器目标。"
+"当 ``TARGET`` 设置为 ``sim`` 时，所有 TVM 工作负载都在 VTA 仿真器上执行。"
+"您可以修改配置文件的内容，以重新构建不同的参数化 VTA。要做到这一点，"
 
 #: ../../docs/topic/vta/install.rst:94
 msgid "Xilinx Pynq FPGA Setup"

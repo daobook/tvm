@@ -19,9 +19,8 @@ msgstr ""
 
 #: ../../docs/topic/vta/dev/index.rst:19
 msgid "VTA Design and Developer Guide"
-msgstr ""
+msgstr "VTA 设计和开发指南"
 
 #: ../../docs/topic/vta/dev/index.rst:21
 msgid "This developer guide details the complete VTA-TVM hardware-software stack."
-msgstr ""
-
+msgstr "本开发指南详细介绍了完整的 VTA-TVM 硬件软件堆栈。"

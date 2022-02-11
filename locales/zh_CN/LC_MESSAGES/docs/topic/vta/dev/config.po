@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../docs/topic/vta/dev/config.rst:19
 msgid "VTA Configuration"
-msgstr ""
+msgstr "VTA 配置"
 
 #: ../../docs/topic/vta/dev/config.rst:21
 msgid ""
@@ -30,16 +30,20 @@ msgid ""
 "intrinsic, clock frequency, pipelining, data type width, and on-chip "
 "buffer sizes."
 msgstr ""
+"VTA 堆栈包含硬件加速堆栈和基于 TVM 的软件堆栈。"
+"VTA 引入了即用的灵活性：通过修改 ``3rdparty/vta-hw/config/vta_config.json`` "
+"高级配置文件，用户可以改变张量固有形状、时钟频率、流水线、数据类型宽度和片上缓冲区大小。"
 
 #: ../../docs/topic/vta/dev/config.rst:29
 msgid "Parameters Overview"
-msgstr ""
+msgstr "参数概述"
 
 #: ../../docs/topic/vta/dev/config.rst:31
 msgid ""
 "We explain the parameters listed in the ``vta_config.json`` file in the "
 "table below."
 msgstr ""
+"下表解释了 ``vta_config.json`` 文件中列出的参数。"
 
 #: ../../docs/topic/vta/dev/config.rst:35
 msgid "Attribute"
@@ -64,7 +68,7 @@ msgstr ""
 
 #: ../../docs/topic/vta/dev/config.rst:37
 msgid "The TVM device target."
-msgstr ""
+msgstr "TVM 设备目标。"
 
 #: ../../docs/topic/vta/dev/config.rst:39
 msgid "``HW_VER``"
@@ -72,7 +76,7 @@ msgstr ""
 
 #: ../../docs/topic/vta/dev/config.rst:39
 msgid "VTA hardware version number."
-msgstr ""
+msgstr "VTA 硬件版本号。"
 
 #: ../../docs/topic/vta/dev/config.rst:41
 msgid "``LOG_INP_WIDTH``"

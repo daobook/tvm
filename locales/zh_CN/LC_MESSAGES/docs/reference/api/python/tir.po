@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-13 14:28+0800\n"
+"POT-Creation-Date: 2022-02-10 14:20+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 #: ../../docs/reference/api/python/tir.rst:21
 msgid "tvm.tir"
@@ -84,7 +84,7 @@ msgid "AttrStmt node."
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
-msgid ":py:obj:`BijectiveLayout <tvm.tir.BijectiveLayout>`\\ \\(\\)"
+msgid ":py:obj:`BijectiveLayout <tvm.tir.BijectiveLayout>`\\"
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
@@ -113,7 +113,7 @@ msgid "BlockRealize node."
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
-msgid ":py:obj:`BlockScope <tvm.tir.BlockScope>`\\ \\(\\)"
+msgid ":py:obj:`BlockScope <tvm.tir.BlockScope>`\\"
 msgstr ""
 
 #: of tvm.tir.schedule.block_scope.BlockScope:1 tvm.tir:1:<autosummary>:1
@@ -133,7 +133,7 @@ msgid "Broadcast node."
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
-msgid ":py:obj:`Buffer <tvm.tir.Buffer>`\\ \\(\\)"
+msgid ":py:obj:`Buffer <tvm.tir.Buffer>`\\"
 msgstr ""
 
 #: of tvm.tir.analysis:1:<autosummary>:1 tvm.tir.buffer.Buffer:1
@@ -215,7 +215,7 @@ msgid "Commutative reduce operator"
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
-msgid ":py:obj:`DataProducer <tvm.tir.DataProducer>`\\ \\(\\)"
+msgid ":py:obj:`DataProducer <tvm.tir.DataProducer>`\\"
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
@@ -345,7 +345,7 @@ msgid "LT node."
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
-msgid ":py:obj:`Layout <tvm.tir.Layout>`\\ \\(\\)"
+msgid ":py:obj:`Layout <tvm.tir.Layout>`\\"
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
@@ -579,7 +579,7 @@ msgid "Symbolic variable to represent a tensor index size"
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
-msgid ":py:obj:`Stmt <tvm.tir.Stmt>`\\ \\(\\)"
+msgid ":py:obj:`Stmt <tvm.tir.Stmt>`\\"
 msgstr ""
 
 #: of tvm.tir.analysis:1:<autosummary>:1 tvm.tir.stmt.Stmt:1
@@ -588,7 +588,7 @@ msgid "Base class of all the statements."
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
-msgid ":py:obj:`StmtSRef <tvm.tir.StmtSRef>`\\ \\(\\)"
+msgid ":py:obj:`StmtSRef <tvm.tir.StmtSRef>`\\"
 msgstr ""
 
 #: of tvm.tir.schedule.block_scope.StmtSRef:1 tvm.tir:1:<autosummary>:1
@@ -4874,7 +4874,7 @@ msgid "Decorate a function pass."
 msgstr ""
 
 #: of tvm.tir.transform.transform.Apply:1:<autosummary>:1
-msgid ":py:obj:`PrimFuncPass <tvm.tir.transform.PrimFuncPass>`\\ \\(\\)"
+msgid ":py:obj:`PrimFuncPass <tvm.tir.transform.PrimFuncPass>`\\"
 msgstr ""
 
 #: of tvm.tir.transform.transform.Apply:1:<autosummary>:1
@@ -5197,7 +5197,7 @@ msgid ""
 msgstr ""
 
 #: of tvm.tir.analysis:1:<autosummary>:1
-msgid ":py:obj:`Buffer <tvm.tir.analysis.Buffer>`\\ \\(\\)"
+msgid ":py:obj:`Buffer <tvm.tir.analysis.Buffer>`\\"
 msgstr ""
 
 #: of tvm.tir.analysis:1:<autosummary>:1
@@ -5207,7 +5207,7 @@ msgid ""
 msgstr ""
 
 #: of tvm.tir.analysis:1:<autosummary>:1
-msgid ":py:obj:`Object <tvm.tir.analysis.Object>`\\ \\(\\)"
+msgid ":py:obj:`Object <tvm.tir.analysis.Object>`\\"
 msgstr ""
 
 #: of tvm.runtime.object.Object:1 tvm.tir.analysis:1:<autosummary>:1
@@ -5215,7 +5215,7 @@ msgid "Base class for all tvm's runtime objects."
 msgstr ""
 
 #: of tvm.tir.analysis:1:<autosummary>:1
-msgid ":py:obj:`PrimExpr <tvm.tir.analysis.PrimExpr>`\\ \\(\\)"
+msgid ":py:obj:`PrimExpr <tvm.tir.analysis.PrimExpr>`\\"
 msgstr ""
 
 #: of tvm.ir.expr.PrimExpr:1 tvm.tir.analysis:1:<autosummary>:1
@@ -5229,7 +5229,7 @@ msgid ""
 msgstr ""
 
 #: of tvm.tir.analysis:1:<autosummary>:1
-msgid ":py:obj:`Stmt <tvm.tir.analysis.Stmt>`\\ \\(\\)"
+msgid ":py:obj:`Stmt <tvm.tir.analysis.Stmt>`\\"
 msgstr ""
 
 #: of tvm.tir.analysis:1:<autosummary>:1
@@ -5662,4 +5662,40 @@ msgstr ""
 #: of tvm.tir.stmt_functor.substitute:5
 msgid "The variable mapping."
 msgstr ""
+
+#~ msgid ":py:obj:`BijectiveLayout <tvm.tir.BijectiveLayout>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`BlockScope <tvm.tir.BlockScope>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Buffer <tvm.tir.Buffer>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`DataProducer <tvm.tir.DataProducer>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Layout <tvm.tir.Layout>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Stmt <tvm.tir.Stmt>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`StmtSRef <tvm.tir.StmtSRef>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PrimFuncPass <tvm.tir.transform.PrimFuncPass>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Buffer <tvm.tir.analysis.Buffer>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Object <tvm.tir.analysis.Object>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PrimExpr <tvm.tir.analysis.PrimExpr>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Stmt <tvm.tir.analysis.Stmt>`\\ \\(\\)"
+#~ msgstr ""
 
