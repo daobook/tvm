@@ -1597,6 +1597,20 @@ class PyTorchOpConverter:
 
         return func(data)
 
+    def var_mean(self, inputs, input_types):
+        data = inputs[0]
+        if len(inputs) == 2:
+            axis = None
+            keepdims = False
+            unbiased = bool(inputs[1])
+        else:
+            axis = inputs[1]
+            keepdims = bool(inputs[3])
+            unbiased = bool(inputs[2])
+
+        m, v = _op.reduce.mean_variance(data, axis, keepdims, False, unbiased)
+        return v, m
+
     def chunk(self, inputs, input_types):
         data = inputs[0]
 
@@ -2896,6 +2910,25 @@ class PyTorchOpConverter:
         # Chop off the extra result dimension
         return _op.transform.squeeze(dense_result)
 
+    def grid_sampler(self, inputs, input_types):
+        if inputs[2] == 0:
+            mode = "bilinear"
+        else:
+            msg = "Only bilinear mode is supported in grid_sampler"
+            raise NotImplementedError(msg)
+
+        if inputs[3] == 0:
+            padding_mode = "zeros"
+        elif inputs[3] == 1:
+            padding_mode = "border"
+        else:
+            msg = "Only zeros and border padding mode are supported in grid_sampler"
+            raise NotImplementedError(msg)
+
+        axes = [0, 3, 1, 2]
+        grid = _op.transform.transpose(inputs[1], axes)
+        return _op.image.grid_sample(inputs[0], grid, mode, "NCHW", padding_mode)
+
     # Operator mappings
     def create_convert_map(self):
         self.convert_map = {
@@ -3020,6 +3053,7 @@ class PyTorchOpConverter:
             "aten::frobenius_norm": self.frobenius_norm,
             "aten::std": self.std,
             "aten::var": self.variance,
+            "aten::var_mean": self.var_mean,
             "aten::abs": self.make_unary("abs"),
             "aten::neg": self.make_unary("negative"),
             "aten::cos": self.make_unary("cos"),
@@ -3124,6 +3158,7 @@ class PyTorchOpConverter:
             "aten::einsum": self.einsum,
             "aten::dot": self.dot,
             "aten::mv": self.mv,
+            "aten::grid_sampler": self.grid_sampler,
         }
 
     def update_convert_map(self, custom_map):
@@ -3508,7 +3543,7 @@ def _wrap_const(c):
     return c
 
 
-def _run_jit_passes(graph):
+def _run_jit_passes(graph, enable_lower_all_tuples=True):
     """The inline pass is necessary to unwrap prim::CallMethod"""
     # pylint: disable=c-extension-no-member
     import torch
@@ -3520,6 +3555,9 @@ def _run_jit_passes(graph):
         torch._C._jit_pass_onnx_function_substitution(graph)
     else:
         torch._C._jit_pass_inline(graph)
+
+    if enable_lower_all_tuples:
+        torch._C._jit_pass_lower_all_tuples(graph)
 
 
 def _get_tensor_and_var(torch_tensor, name):
@@ -3929,11 +3967,19 @@ def from_pytorch(
 
     mod = tvm.IRModule()
     prelude = Prelude(mod)
+    enable_lower_all_tuples = True
 
     converter = PyTorchOpConverter(prelude, default_dtype)
 
     graph = script_module.graph.copy()
-    _run_jit_passes(graph)
+
+    # Check if lower_all_tuples pass can be enabled
+    graph_inputs = list(graph.inputs())
+    for inp in graph_inputs:
+        if inp.type().kind() == "TupleType" or inp.type().kind() == "ListType":
+            enable_lower_all_tuples = False
+            break
+    _run_jit_passes(graph, enable_lower_all_tuples)
 
     if custom_convert_map:
         converter.update_convert_map(custom_convert_map)
@@ -3976,10 +4022,15 @@ def from_pytorch(
         qnn_torch.add_quant_params(tvm_params, weight_quant_params)
         converter.update_convert_map(qnn_torch.convert_map)
 
-    ret = converter.convert_operators(_get_operator_nodes(graph.nodes()), outputs, ret_name)[0]
-    if isinstance(ret, list):
-        # ListConstruct kept original python list. Convert to tuple.
-        ret = _expr.Tuple(ret)
+    outputs = converter.convert_operators(_get_operator_nodes(graph.nodes()), outputs, ret_name)
+
+    # ListConstruct kept original python list. Convert to tuple.
+    outputs = [_expr.Tuple(output) if isinstance(output, list) else output for output in outputs]
+
+    if len(outputs) > 1:
+        ret = _expr.Tuple(outputs)
+    else:
+        ret = outputs[0]
 
     # Separate data inputs and parameters to make sure data inputs come first.
     func_args = []

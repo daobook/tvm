@@ -216,9 +216,8 @@ def verify_model(
             if not tvm.runtime.enabled(target):
                 continue
             dev = tvm.device(target, 0)
-            relay_graph, relay_lib, relay_params = relay.build(mod, target=target, params=params)
-            relay_model = graph_executor.create(relay_graph, relay_lib, dev)
-            relay_model.set_input(**relay_params)
+            lib = relay.build(mod, target=target, params=params)
+            relay_model = graph_executor.GraphModule(lib["default"](dev))
             for name, inp in compiled_input.items():
                 relay_model.set_input(name, inp)
             relay_model.run()
@@ -2619,6 +2618,59 @@ def test_forward_std():
 
 
 @tvm.testing.uses_gpu
+def test_forward_var_mean():
+    torch.set_grad_enabled(False)
+    input_shape = [1, 3, 10, 10]
+
+    class VarMean1(Module):
+        def forward(self, *args):
+            return torch.var_mean(args[0], 1, unbiased=False)
+
+    class VarMean2(Module):
+        def forward(self, *args):
+            return torch.var_mean(args[0], dim=1, keepdim=False, unbiased=False)
+
+    class VarMean3(Module):
+        def forward(self, *args):
+            return torch.var_mean(args[0], dim=2, keepdim=True, unbiased=False)
+
+    class VarMean4(Module):
+        def forward(self, *args):
+            return torch.var_mean(args[0], dim=(2, 3), keepdim=True, unbiased=False)
+
+    class VarMean5(Module):
+        def forward(self, *args):
+            return torch.var_mean(args[0], dim=(2, 3), keepdim=False, unbiased=False)
+
+    class VarMean6(Module):
+        def forward(self, *args):
+            return torch.var_mean(args[0], unbiased=False)
+
+    class VarMean7(Module):
+        def forward(self, *args):
+            return torch.var_mean(args[0], dim=1, keepdim=False, unbiased=True)
+
+    class VarMean8(Module):
+        def forward(self, *args):
+            return torch.var_mean(args[0], dim=(2, 3), keepdim=True, unbiased=True)
+
+    class VarMean9(Module):
+        def forward(self, *args):
+            return torch.var_mean(args[0], unbiased=True)
+
+    input_data = torch.rand(input_shape).float()
+    verify_model(VarMean1().float().eval(), input_data=input_data)
+    verify_model(VarMean2().float().eval(), input_data=input_data)
+    verify_model(VarMean3().float().eval(), input_data=input_data)
+    verify_model(VarMean4().float().eval(), input_data=input_data)
+    verify_model(VarMean5().float().eval(), input_data=input_data)
+    verify_model(VarMean6().float().eval(), input_data=input_data)
+    verify_model(VarMean7().float().eval(), input_data=input_data)
+    verify_model(VarMean8().float().eval(), input_data=input_data)
+    verify_model(VarMean9().float().eval(), input_data=input_data)
+
+
+@tvm.testing.uses_gpu
 def test_forward_variance():
     torch.set_grad_enabled(False)
     input_shape = [1, 3, 10, 10]
@@ -4077,6 +4129,46 @@ def test_mv():
     verify_model(test_fn, [torch.randn(4, 4), torch.randn(4)])
     verify_model(test_fn, [torch.randn(2, 2), torch.randn(2)])
     verify_model(test_fn, [torch.randn(3, 8), torch.randn(8)])
+
+
+def test_grid_sample():
+    class Grid_sample_zeros(Module):
+        def forward(self, x, y):
+            return torch.nn.functional.grid_sample(
+                input=x, grid=y, mode="bilinear", padding_mode="zeros", align_corners=True
+            )
+
+    class Grid_sample_border(Module):
+        def forward(self, x, y):
+            return torch.nn.functional.grid_sample(
+                input=x, grid=y, mode="bilinear", padding_mode="border", align_corners=True
+            )
+
+    data = torch.rand([4, 4, 16, 32]).float()
+    grid = torch.rand([4, 8, 8, 2]).float()
+    verify_model(Grid_sample_zeros(), input_data=[data, grid])
+    verify_model(Grid_sample_border(), input_data=[data, grid])
+
+
+def test_list_tuple():
+    """test compilation error for a Python list followed by a prim::TupleConstruct."""
+
+    class List_tuple(Module):
+        def forward(self, x):
+            merged = []
+            mask_list = []
+            for i in range(3):
+                w0 = torch.sigmoid(x)
+                merged.append((w0, w0))
+                mask_list.append(x)
+
+            for i in range(3):
+                merged[i] = merged[i][0] + merged[i][1]
+            return mask_list[2], merged
+
+    x = torch.rand([4, 4, 16, 32]).float()
+    script_module = torch.jit.trace(List_tuple(), x, strict=False).eval()
+    mod, params = relay.frontend.from_pytorch(script_module, [("x", x.shape)])
 
 
 if __name__ == "__main__":
