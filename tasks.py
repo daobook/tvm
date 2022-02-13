@@ -1,3 +1,4 @@
+from pathlib import Path
 from invoke import Collection, task
 from _docs import xin
 
@@ -25,5 +26,22 @@ def xin_init(ctx):
     ctx.run('export TVM_HOME=/home/runner/work/tvm/tvm/')
     ctx.run('export PYTHONPATH=$TVM_HOME/python:${PYTHONPATH}')
 
+@task
+def install(ctx):
+    ctx.run('sudo apt-get update')
+    ctx.run('sudo apt-get install -y python3 python3-dev ' 
+    'python3-setuptools gcc libtinfo-dev zlib1g-dev ' 
+    'build-essential cmake libedit-dev libxml2-dev')
 
-ns = Collection(xin, init, xin_init)
+# @task
+# def make(ctx):
+#     BUILD = Path('build')
+#     if not BUILD.exists():
+#         BUILD.mkdir()
+#     ctx.run('cp cmake/config.cmake build')
+#     ctx.run('cd build')
+#     ctx.run('cmake ..')
+#     ctx.run('make -j8')
+
+
+ns = Collection(xin, init, xin_init, install)
