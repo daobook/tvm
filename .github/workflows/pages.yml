@@ -51,32 +51,20 @@ jobs:
         shell: bash
         run: |
           pip install --upgrade pip
-          pip install -r xin/requirements.txt
-          conda install numpy decorator attrs tornado psutil xgboost
-          conda install scikit-learn-intelex
-          pip install tensorflow onnx mxnet torch
-          rm -rf xin/docs/
-          cp -r docs/ xin/docs/
-          cp -r _toc/how_to xin/docs/
-          cp -r _toc/topic xin/docs/
-          cp -r _toc/tutorial xin/docs/
-          rm -rf xin/docs/_staging/
-          rm -rf xin/docs/index.rst xin/docs/genindex.rst
-          export TVM_HOME=/home/runner/work/tvm/tvm/
-          export PYTHONPATH=$TVM_HOME/python:${PYTHONPATH}
+          pip install invoke
+          invoke init
+          invoke xin-init
           
       - name: 🔧 Build HTML
         run: |
-          cd xin
-          make html
-      # remove the .doctrees folder when building for deployment as it takes two thirds of disk space
-      - name: 🔥 Clean up files
-        run: |
-          rm -r xin/_build/doctrees/
-          rm -r xin/docs
+          invoke xin
 
       - name: 🚀 Deploy to GitHub pages
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: xin/_build/html
+          publish_dir: _build/html
+
+      - name: 🔥 Clean up files
+        run: |
+          invoke xin.clean
