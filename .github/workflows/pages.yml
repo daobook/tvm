@@ -43,9 +43,8 @@ jobs:
           pip install --upgrade pip
           pip install invoke
           invoke install
-          mkdir build
-          cp cmake/config.cmake build
-          echo 'set(USE_VTA_FSIM ON)' >> build/config.cmake
+          invoke edit-config
+          invoke export
           cd build && cmake .. && make -j16
 
       - name: 👷‍ Install dependencies
@@ -62,7 +61,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: _build/html
+          publish_dir: xin/_build/html
 
       - name: 🔥 Clean up files
         run: |

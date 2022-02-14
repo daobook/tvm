@@ -23,25 +23,40 @@ def xin_init(ctx):
     ctx.run('cp -r _toc/tutorial xin/docs/')
     ctx.run('rm -rf xin/docs/_staging/')
     ctx.run('rm -rf xin/docs/index.rst xin/docs/genindex.rst')
-    ctx.run('export TVM_HOME=/home/runner/work/tvm/tvm/')
-    ctx.run('export PYTHONPATH=$TVM_HOME/python:${PYTHONPATH}')
+
 
 @task
 def install(ctx):
     ctx.run('sudo apt-get update')
-    ctx.run('sudo apt-get install -y python3 python3-dev ' 
-    'python3-setuptools gcc libtinfo-dev zlib1g-dev ' 
-    'build-essential cmake libedit-dev libxml2-dev')
-
-# @task
-# def make(ctx):
-#     BUILD = Path('build')
-#     if not BUILD.exists():
-#         BUILD.mkdir()
-#     ctx.run('cp cmake/config.cmake build')
-#     ctx.run('cd build')
-#     ctx.run('cmake ..')
-#     ctx.run('make -j8')
+    ctx.run('sudo apt-get install -y python3 python3-dev '
+            'python3-setuptools gcc libtinfo-dev zlib1g-dev '
+            'build-essential cmake libedit-dev libxml2-dev')
 
 
-ns = Collection(xin, init, xin_init, install)
+@task
+def edit_config(ctx):
+    '''仅仅用于 deploy.yml'''
+    BUILD = Path('build')
+    if not BUILD.exists():
+        BUILD.mkdir()
+    ctx.run('cp cmake/config.cmake build')
+    ctx.run("echo 'set(USE_VTA_FSIM ON)' >> build/config.cmake")
+    with open('build/config.cmake') as fp:
+        text = fp.read()
+    text = text.replace('USE_RELAY_DEBUG OFF', 'USE_RELAY_DEBUG ON')
+    text = text.replace('USE_LLVM OFF', 'USE_LLVM ON')
+    with open('build/config.cmake', 'w') as fp:
+        fp.write(text)
+    # ctx.run("echo 'set(USE_RELAY_DEBUG ON)' >> build/config.cmake")
+    # ctx.run("echo 'set(USE_LLVM ON)' >> build/config.cmake")
+
+
+@task
+def export(ctx):
+    ctx.run('export TVM_HOME=/home/runner/work/tvm/tvm/')
+    ctx.run('export PYTHONPATH=$TVM_HOME/python:${PYTHONPATH}')
+    ctx.run('export PYTHONPATH=/home/runner/work/tvm/vta/python:${PYTHONPATH}')
+    ctx.run('export TVM_LOG_DEBUG="ir/transform.cc=1;relay/ir/transform.cc=1"')
+
+
+ns = Collection(xin, init, xin_init, install, edit_config, export)
