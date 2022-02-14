@@ -50,7 +50,7 @@ def update(c, language='en'):
     Only used with `invoke intl.update`
     '''
     opts = "-b gettext"
-    target = Path(c.sphinx.target).parent / '_build/gettext'
+    target = Path(c.sphinx.target).parent / 'gettext'
     if language == 'en':
         _clean(c)
         build(c, target=target, opts=opts)
@@ -60,14 +60,16 @@ def update(c, language='en'):
         c.run(f'sphinx-intl update -p {target} -l {language}')
 
 
-def _site(name, help_part):
+def _site(name, page, help_part):
     self = sys.modules[__name__]
+    target = 'output/html'
+    target = f"{target}/{page}" if page else target
     coll = Collection.from_module(
         self,
         name=name,
         config={"sphinx": {
             "source": name,
-            "target": "xin/_build/html"
+            "target": target
         }},
     )
     coll.__doc__ = f"Tasks for building {help_part}"
@@ -77,6 +79,7 @@ def _site(name, help_part):
 
 # Usage doc/API site (published as e.g. docs.myproject.org)
 # docs = _site("docs", "the main site.")
-xin = _site("xin", "the main site.")
+xin = _site("xin", '', "the main site.")
+# docs = _site("docs", 'origin', "the origin site.")
 
 ns = Collection(xin)

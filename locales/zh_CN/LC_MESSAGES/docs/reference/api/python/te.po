@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-10 14:20+0800\n"
+"POT-Creation-Date: 2022-02-14 20:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/reference/api/python/te.rst:19
+#: ../../../docs/reference/api/python/te.rst:19
 msgid "tvm.te"
 msgstr ""
 
@@ -30,7 +30,7 @@ msgid "**Classes:**"
 msgstr ""
 
 #: of tvm.te:1:<autosummary>:1
-msgid ":py:obj:`ComputeOp <tvm.te.ComputeOp>`\\"
+msgid ":py:obj:`ComputeOp <tvm.te.ComputeOp>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.te.tensor.ComputeOp:1 tvm.te:1:<autosummary>:1
@@ -38,7 +38,7 @@ msgid "Scalar operation."
 msgstr ""
 
 #: of tvm.te:1:<autosummary>:1
-msgid ":py:obj:`ExternOp <tvm.te.ExternOp>`\\"
+msgid ":py:obj:`ExternOp <tvm.te.ExternOp>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.te.tensor.ExternOp:1 tvm.te:1:<autosummary>:1
@@ -46,7 +46,7 @@ msgid "External operation."
 msgstr ""
 
 #: of tvm.te:1:<autosummary>:1
-msgid ":py:obj:`HybridOp <tvm.te.HybridOp>`\\"
+msgid ":py:obj:`HybridOp <tvm.te.HybridOp>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.te.tensor.HybridOp:1 tvm.te:1:<autosummary>:1
@@ -54,7 +54,7 @@ msgid "Hybrid operation."
 msgstr ""
 
 #: of tvm.te:1:<autosummary>:1
-msgid ":py:obj:`PlaceholderOp <tvm.te.PlaceholderOp>`\\"
+msgid ":py:obj:`PlaceholderOp <tvm.te.PlaceholderOp>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.te.tensor.PlaceholderOp:1 tvm.te:1:<autosummary>:1
@@ -62,7 +62,7 @@ msgid "Placeholder operation."
 msgstr ""
 
 #: of tvm.te:1:<autosummary>:1
-msgid ":py:obj:`ScanOp <tvm.te.ScanOp>`\\"
+msgid ":py:obj:`ScanOp <tvm.te.ScanOp>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.te.tensor.ScanOp:1 tvm.te:1:<autosummary>:1
@@ -70,7 +70,7 @@ msgid "Scan operation."
 msgstr ""
 
 #: of tvm.te:1:<autosummary>:1
-msgid ":py:obj:`Schedule <tvm.te.Schedule>`\\"
+msgid ":py:obj:`Schedule <tvm.te.Schedule>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.te.schedule.Schedule:1 tvm.te:1:<autosummary>:1
@@ -88,7 +88,7 @@ msgid "Specialized condition to enable op specialization."
 msgstr ""
 
 #: of tvm.te:1:<autosummary>:1
-msgid ":py:obj:`Stage <tvm.te.Stage>`\\"
+msgid ":py:obj:`Stage <tvm.te.Stage>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.te.schedule.Stage:1 tvm.te:1:<autosummary>:1
@@ -96,7 +96,7 @@ msgid "A Stage represents schedule for one operation."
 msgstr ""
 
 #: of tvm.te:1:<autosummary>:1
-msgid ":py:obj:`Tensor <tvm.te.Tensor>`\\"
+msgid ":py:obj:`Tensor <tvm.te.Tensor>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.te.tensor.Tensor:1 tvm.te:1:<autosummary>:1
@@ -104,7 +104,7 @@ msgid "Tensor object, to construct, see function.Tensor"
 msgstr ""
 
 #: of tvm.te:1:<autosummary>:1
-msgid ":py:obj:`TensorComputeOp <tvm.te.TensorComputeOp>`\\"
+msgid ":py:obj:`TensorComputeOp <tvm.te.TensorComputeOp>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.te.tensor.TensorComputeOp:1 tvm.te:1:<autosummary>:1
@@ -1964,7 +1964,7 @@ msgstr ""
 msgid "**var** -- The result symbolic variable."
 msgstr ""
 
-#: ../../docs/reference/api/python/te.rst:29
+#: ../../../docs/reference/api/python/te.rst:29
 msgid "tvm.te.hybrid"
 msgstr ""
 
@@ -2146,5 +2146,32 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ":py:obj:`TensorComputeOp <tvm.te.TensorComputeOp>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ComputeOp <tvm.te.ComputeOp>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ExternOp <tvm.te.ExternOp>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`HybridOp <tvm.te.HybridOp>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PlaceholderOp <tvm.te.PlaceholderOp>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ScanOp <tvm.te.ScanOp>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Schedule <tvm.te.Schedule>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Stage <tvm.te.Stage>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Tensor <tvm.te.Tensor>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TensorComputeOp <tvm.te.TensorComputeOp>`\\"
 #~ msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-10 14:20+0800\n"
+"POT-Creation-Date: 2022-02-14 20:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/reference/api/python/tir.rst:21
+#: ../../../docs/reference/api/python/tir.rst:21
 msgid "tvm.tir"
 msgstr ""
 
@@ -84,7 +84,7 @@ msgid "AttrStmt node."
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
-msgid ":py:obj:`BijectiveLayout <tvm.tir.BijectiveLayout>`\\"
+msgid ":py:obj:`BijectiveLayout <tvm.tir.BijectiveLayout>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
@@ -113,7 +113,7 @@ msgid "BlockRealize node."
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
-msgid ":py:obj:`BlockScope <tvm.tir.BlockScope>`\\"
+msgid ":py:obj:`BlockScope <tvm.tir.BlockScope>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.tir.schedule.block_scope.BlockScope:1 tvm.tir:1:<autosummary>:1
@@ -133,7 +133,7 @@ msgid "Broadcast node."
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
-msgid ":py:obj:`Buffer <tvm.tir.Buffer>`\\"
+msgid ":py:obj:`Buffer <tvm.tir.Buffer>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.tir.analysis:1:<autosummary>:1 tvm.tir.buffer.Buffer:1
@@ -215,7 +215,7 @@ msgid "Commutative reduce operator"
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
-msgid ":py:obj:`DataProducer <tvm.tir.DataProducer>`\\"
+msgid ":py:obj:`DataProducer <tvm.tir.DataProducer>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
@@ -345,7 +345,7 @@ msgid "LT node."
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
-msgid ":py:obj:`Layout <tvm.tir.Layout>`\\"
+msgid ":py:obj:`Layout <tvm.tir.Layout>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
@@ -579,7 +579,7 @@ msgid "Symbolic variable to represent a tensor index size"
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
-msgid ":py:obj:`Stmt <tvm.tir.Stmt>`\\"
+msgid ":py:obj:`Stmt <tvm.tir.Stmt>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.tir.analysis:1:<autosummary>:1 tvm.tir.stmt.Stmt:1
@@ -588,7 +588,7 @@ msgid "Base class of all the statements."
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
-msgid ":py:obj:`StmtSRef <tvm.tir.StmtSRef>`\\"
+msgid ":py:obj:`StmtSRef <tvm.tir.StmtSRef>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.tir.schedule.block_scope.StmtSRef:1 tvm.tir:1:<autosummary>:1
@@ -621,6 +621,14 @@ msgstr ""
 
 #: of tvm.tir.expr.Sub:1 tvm.tir:1:<autosummary>:1
 msgid "Sub node."
+msgstr ""
+
+#: of tvm.tir:1:<autosummary>:1
+msgid ":py:obj:`TensorIntrin <tvm.tir.TensorIntrin>`\\ \\(desc\\, impl\\)"
+msgstr ""
+
+#: of tvm.tir.function.TensorIntrin:1 tvm.tir:1:<autosummary>:1
+msgid "A tensor intrinsic."
 msgstr ""
 
 #: of tvm.tir:1:<autosummary>:1
@@ -1272,10 +1280,12 @@ msgstr ""
 #: tvm.tir.expr.Shuffle tvm.tir.expr.SizeVar tvm.tir.expr.StringImm
 #: tvm.tir.expr.Sub tvm.tir.expr.Var tvm.tir.function.PrimFunc
 #: tvm.tir.function.PrimFunc.script tvm.tir.function.PrimFunc.specialize
-#: tvm.tir.function.PrimFunc.with_body tvm.tir.op.abs tvm.tir.op.acos
-#: tvm.tir.op.acosh tvm.tir.op.all tvm.tir.op.any tvm.tir.op.asin
-#: tvm.tir.op.asinh tvm.tir.op.atan tvm.tir.op.atan2 tvm.tir.op.atanh
-#: tvm.tir.op.call_extern tvm.tir.op.call_intrin tvm.tir.op.call_llvm_intrin
+#: tvm.tir.function.PrimFunc.with_body tvm.tir.function.TensorIntrin
+#: tvm.tir.function.TensorIntrin.get tvm.tir.function.TensorIntrin.register
+#: tvm.tir.op.abs tvm.tir.op.acos tvm.tir.op.acosh tvm.tir.op.all
+#: tvm.tir.op.any tvm.tir.op.asin tvm.tir.op.asinh tvm.tir.op.atan
+#: tvm.tir.op.atan2 tvm.tir.op.atanh tvm.tir.op.call_extern
+#: tvm.tir.op.call_intrin tvm.tir.op.call_llvm_intrin
 #: tvm.tir.op.call_llvm_pure_intrin tvm.tir.op.call_packed
 #: tvm.tir.op.call_pure_extern tvm.tir.op.ceil tvm.tir.op.clz
 #: tvm.tir.op.comm_reducer tvm.tir.op.comm_reducer.<locals>.reducer
@@ -1295,6 +1305,7 @@ msgstr ""
 #: tvm.tir.schedule.block_scope.BlockScope.get_deps_by_src
 #: tvm.tir.schedule.schedule.Schedule.annotate
 #: tvm.tir.schedule.schedule.Schedule.bind
+#: tvm.tir.schedule.schedule.Schedule.blockize
 #: tvm.tir.schedule.schedule.Schedule.cache_read
 #: tvm.tir.schedule.schedule.Schedule.cache_write
 #: tvm.tir.schedule.schedule.Schedule.compute_at
@@ -1315,12 +1326,14 @@ msgstr ""
 #: tvm.tir.schedule.schedule.Schedule.reverse_compute_inline
 #: tvm.tir.schedule.schedule.Schedule.rfactor
 #: tvm.tir.schedule.schedule.Schedule.sample_categorical
+#: tvm.tir.schedule.schedule.Schedule.sample_compute_location
 #: tvm.tir.schedule.schedule.Schedule.sample_perfect_tile
 #: tvm.tir.schedule.schedule.Schedule.seed
 #: tvm.tir.schedule.schedule.Schedule.set_scope
 #: tvm.tir.schedule.schedule.Schedule.show
 #: tvm.tir.schedule.schedule.Schedule.split
 #: tvm.tir.schedule.schedule.Schedule.storage_align
+#: tvm.tir.schedule.schedule.Schedule.tensorize
 #: tvm.tir.schedule.schedule.Schedule.unannotate
 #: tvm.tir.schedule.schedule.Schedule.unroll
 #: tvm.tir.schedule.schedule.Schedule.vectorize
@@ -1474,7 +1487,7 @@ msgstr ""
 
 #: of tvm.tir.buffer.Buffer:1 tvm.tir.data_layout.BijectiveLayout:1
 #: tvm.tir.data_layout.Layout:1 tvm.tir.function.PrimFunc:1
-#: tvm.tir.schedule.block_scope.BlockScope:1
+#: tvm.tir.function.TensorIntrin:1 tvm.tir.schedule.block_scope.BlockScope:1
 #: tvm.tir.schedule.block_scope.StmtSRef:1 tvm.tir.schedule.schedule.Schedule:1
 #: tvm.tir.schedule.state.ScheduleState:1
 msgid "**Methods:**"
@@ -1547,10 +1560,11 @@ msgstr ""
 #: tvm.tir.data_layout.Layout.factor_of tvm.tir.data_layout.Layout.index_of
 #: tvm.tir.data_layout.bijective_layout tvm.tir.data_layout.layout
 #: tvm.tir.function.PrimFunc.script tvm.tir.function.PrimFunc.specialize
-#: tvm.tir.function.PrimFunc.with_body tvm.tir.op.abs tvm.tir.op.acos
-#: tvm.tir.op.acosh tvm.tir.op.all tvm.tir.op.any tvm.tir.op.asin
-#: tvm.tir.op.asinh tvm.tir.op.atan tvm.tir.op.atan2 tvm.tir.op.atanh
-#: tvm.tir.op.call_extern tvm.tir.op.call_intrin tvm.tir.op.call_llvm_intrin
+#: tvm.tir.function.PrimFunc.with_body tvm.tir.function.TensorIntrin.get
+#: tvm.tir.op.abs tvm.tir.op.acos tvm.tir.op.acosh tvm.tir.op.all
+#: tvm.tir.op.any tvm.tir.op.asin tvm.tir.op.asinh tvm.tir.op.atan
+#: tvm.tir.op.atan2 tvm.tir.op.atanh tvm.tir.op.call_extern
+#: tvm.tir.op.call_intrin tvm.tir.op.call_llvm_intrin
 #: tvm.tir.op.call_llvm_pure_intrin tvm.tir.op.call_packed
 #: tvm.tir.op.call_pure_extern tvm.tir.op.ceil tvm.tir.op.clz
 #: tvm.tir.op.comm_reducer tvm.tir.op.comm_reducer.<locals>.reducer
@@ -1568,6 +1582,7 @@ msgstr ""
 #: tvm.tir.op.trunc tvm.tir.op.truncdiv tvm.tir.op.truncmod
 #: tvm.tir.schedule.block_scope.BlockScope.get_deps_by_dst
 #: tvm.tir.schedule.block_scope.BlockScope.get_deps_by_src
+#: tvm.tir.schedule.schedule.Schedule.blockize
 #: tvm.tir.schedule.schedule.Schedule.cache_read
 #: tvm.tir.schedule.schedule.Schedule.cache_write
 #: tvm.tir.schedule.schedule.Schedule.copy
@@ -1583,6 +1598,7 @@ msgstr ""
 #: tvm.tir.schedule.schedule.Schedule.get_sref
 #: tvm.tir.schedule.schedule.Schedule.rfactor
 #: tvm.tir.schedule.schedule.Schedule.sample_categorical
+#: tvm.tir.schedule.schedule.Schedule.sample_compute_location
 #: tvm.tir.schedule.schedule.Schedule.sample_perfect_tile
 #: tvm.tir.schedule.schedule.Schedule.show
 #: tvm.tir.schedule.schedule.Schedule.split
@@ -1598,6 +1614,7 @@ msgstr ""
 #: tvm.tir.transform.transform.BF16TypeLowering
 #: tvm.tir.transform.transform.CoProcSync
 #: tvm.tir.transform.transform.CombineContextCall
+#: tvm.tir.transform.transform.CommonSubexprElimTIR
 #: tvm.tir.transform.transform.CompactBufferAllocation
 #: tvm.tir.transform.transform.ConvertBlocksToOpaque
 #: tvm.tir.transform.transform.ConvertForLoopsToSerial
@@ -1666,10 +1683,11 @@ msgstr ""
 #: tvm.tir.data_layout.Layout.factor_of tvm.tir.data_layout.Layout.index_of
 #: tvm.tir.data_layout.bijective_layout tvm.tir.data_layout.layout
 #: tvm.tir.function.PrimFunc.script tvm.tir.function.PrimFunc.specialize
-#: tvm.tir.function.PrimFunc.with_body tvm.tir.op.abs tvm.tir.op.acos
-#: tvm.tir.op.acosh tvm.tir.op.all tvm.tir.op.any tvm.tir.op.asin
-#: tvm.tir.op.asinh tvm.tir.op.atan tvm.tir.op.atan2 tvm.tir.op.atanh
-#: tvm.tir.op.call_extern tvm.tir.op.call_intrin tvm.tir.op.call_llvm_intrin
+#: tvm.tir.function.PrimFunc.with_body tvm.tir.function.TensorIntrin.get
+#: tvm.tir.op.abs tvm.tir.op.acos tvm.tir.op.acosh tvm.tir.op.all
+#: tvm.tir.op.any tvm.tir.op.asin tvm.tir.op.asinh tvm.tir.op.atan
+#: tvm.tir.op.atan2 tvm.tir.op.atanh tvm.tir.op.call_extern
+#: tvm.tir.op.call_intrin tvm.tir.op.call_llvm_intrin
 #: tvm.tir.op.call_llvm_pure_intrin tvm.tir.op.call_packed
 #: tvm.tir.op.call_pure_extern tvm.tir.op.ceil tvm.tir.op.clz
 #: tvm.tir.op.comm_reducer tvm.tir.op.comm_reducer.<locals>.reducer
@@ -1687,6 +1705,7 @@ msgstr ""
 #: tvm.tir.op.trunc tvm.tir.op.truncdiv tvm.tir.op.truncmod
 #: tvm.tir.schedule.block_scope.BlockScope.get_deps_by_dst
 #: tvm.tir.schedule.block_scope.BlockScope.get_deps_by_src
+#: tvm.tir.schedule.schedule.Schedule.blockize
 #: tvm.tir.schedule.schedule.Schedule.cache_read
 #: tvm.tir.schedule.schedule.Schedule.cache_write
 #: tvm.tir.schedule.schedule.Schedule.copy
@@ -1702,6 +1721,7 @@ msgstr ""
 #: tvm.tir.schedule.schedule.Schedule.get_sref
 #: tvm.tir.schedule.schedule.Schedule.rfactor
 #: tvm.tir.schedule.schedule.Schedule.sample_categorical
+#: tvm.tir.schedule.schedule.Schedule.sample_compute_location
 #: tvm.tir.schedule.schedule.Schedule.sample_perfect_tile
 #: tvm.tir.schedule.schedule.Schedule.show
 #: tvm.tir.schedule.schedule.Schedule.split
@@ -1717,6 +1737,7 @@ msgstr ""
 #: tvm.tir.transform.transform.BF16TypeLowering
 #: tvm.tir.transform.transform.CoProcSync
 #: tvm.tir.transform.transform.CombineContextCall
+#: tvm.tir.transform.transform.CommonSubexprElimTIR
 #: tvm.tir.transform.transform.CompactBufferAllocation
 #: tvm.tir.transform.transform.ConvertBlocksToOpaque
 #: tvm.tir.transform.transform.ConvertForLoopsToSerial
@@ -2001,6 +2022,7 @@ msgstr ""
 #: tvm.tir.function.PrimFunc.specialize:7
 #: tvm.tir.schedule.schedule.Schedule.annotate:11
 #: tvm.tir.schedule.schedule.Schedule.bind:20
+#: tvm.tir.schedule.schedule.Schedule.blockize:10
 #: tvm.tir.schedule.schedule.Schedule.cache_read:18
 #: tvm.tir.schedule.schedule.Schedule.cache_write:18
 #: tvm.tir.schedule.schedule.Schedule.compute_at:26
@@ -2015,6 +2037,7 @@ msgstr ""
 #: tvm.tir.schedule.schedule.Schedule.set_scope:12
 #: tvm.tir.schedule.schedule.Schedule.split:21
 #: tvm.tir.schedule.schedule.Schedule.storage_align:18
+#: tvm.tir.schedule.schedule.Schedule.tensorize:9
 #: tvm.tir.schedule.schedule.Schedule.unannotate:9
 #: tvm.tir.schedule.schedule.Schedule.unroll:7
 #: tvm.tir.schedule.schedule.Schedule.vectorize:12
@@ -2484,6 +2507,15 @@ msgid "Bind the input loop to the given thread axis."
 msgstr ""
 
 #: of tvm.tir.schedule.schedule.Schedule:1:<autosummary>:1
+msgid ":py:obj:`blockize <tvm.tir.Schedule.blockize>`\\ \\(loop\\)"
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule.blockize:1
+#: tvm.tir.schedule.schedule.Schedule:1:<autosummary>:1
+msgid "Convert the subtree rooted at a specific loop into a block."
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule:1:<autosummary>:1
 msgid ""
 ":py:obj:`cache_read <tvm.tir.Schedule.cache_read>`\\ \\(block\\, "
 "read\\_buffer\\_index\\, ...\\)"
@@ -2714,6 +2746,18 @@ msgstr ""
 
 #: of tvm.tir.schedule.schedule.Schedule:1:<autosummary>:1
 msgid ""
+":py:obj:`sample_compute_location "
+"<tvm.tir.Schedule.sample_compute_location>`\\ \\(block\\[\\, "
+"decision\\]\\)"
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule.sample_compute_location:1
+#: tvm.tir.schedule.schedule.Schedule:1:<autosummary>:1
+msgid "Sample a compute-at location of the given block"
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule:1:<autosummary>:1
+msgid ""
 ":py:obj:`sample_perfect_tile <tvm.tir.Schedule.sample_perfect_tile>`\\ "
 "\\(loop\\, n\\[\\, ...\\]\\)"
 msgstr ""
@@ -2774,6 +2818,17 @@ msgstr ""
 msgid ""
 "Set alignment requirement for specific dimension such that stride[axis] "
 "== k * factor + offset for some k."
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule:1:<autosummary>:1
+msgid ""
+":py:obj:`tensorize <tvm.tir.Schedule.tensorize>`\\ "
+"\\(block\\_or\\_loop\\, tensor\\_intrin\\)"
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule.tensorize:1
+#: tvm.tir.schedule.schedule.Schedule:1:<autosummary>:1
+msgid "Tensorize the computation enclosed by loop with the tensor intrinsic."
 msgstr ""
 
 #: of tvm.tir.schedule.schedule.Schedule:1:<autosummary>:1
@@ -2894,6 +2949,34 @@ msgstr ""
 
 #: of tvm.tir.schedule.schedule.Schedule.bind:43
 msgid "After applying bind, the IR becomes:"
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule.blockize:3
+msgid "The root of the subtree."
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule.blockize:6
+msgid "**result** -- The new block."
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule.blockize:11
+msgid "Before blockize, in TensorIR, the IR is:"
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule.blockize:28
+#: tvm.tir.schedule.schedule.Schedule.set_scope:32
+msgid "Create the schedule and do set_scope:"
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule.blockize:38
+msgid "After applying blockize, the IR becomes:"
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule.blockize:61
+msgid ""
+"blockize requires there is exactly one block under the given loop and the"
+" bindings of the block are divisible by the subspace represented by the "
+"loops starting at the given loop."
 msgstr ""
 
 #: of tvm.tir.schedule.schedule.Schedule.cache_read:1
@@ -3477,6 +3560,18 @@ msgstr ""
 msgid "**result** -- The random variable sampled from candidates"
 msgstr ""
 
+#: of tvm.tir.schedule.schedule.Schedule.sample_compute_location:3
+msgid "The block whose compute-at location is to be sampled"
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule.sample_compute_location:5
+msgid "The sampling decision"
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule.sample_compute_location:8
+msgid "**result** -- The sampled loop where the input block is to be computed at"
+msgstr ""
+
 #: of tvm.tir.schedule.schedule.Schedule.sample_perfect_tile:3
 msgid "The loop to be tiled"
 msgstr ""
@@ -3511,10 +3606,6 @@ msgstr ""
 
 #: of tvm.tir.schedule.schedule.Schedule.set_scope:13
 msgid "Before set_scope, in TensorIR, the IR is:"
-msgstr ""
-
-#: of tvm.tir.schedule.schedule.Schedule.set_scope:32
-msgid "Create the schedule and do set_scope:"
 msgstr ""
 
 #: of tvm.tir.schedule.schedule.Schedule.set_scope:40
@@ -3615,6 +3706,30 @@ msgstr ""
 msgid ""
 "Storage_align requires the buffer to be an intermediate buffer defined "
 "via `alloc_buffer`."
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule.tensorize:3
+msgid "The loop to be tensorized."
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule.tensorize:5
+msgid "The tensor intrin or the name of the tensor intrin."
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule.tensorize:10
+msgid "Before tensorize, in TensorIR, the IR is:"
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule.tensorize:33
+msgid "Declare and register the tensor intrinsic:"
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule.tensorize:76
+msgid "Create the schedule and do tensorize:"
+msgstr ""
+
+#: of tvm.tir.schedule.schedule.Schedule.tensorize:86
+msgid "After applying tensorize, the IR becomes:"
 msgstr ""
 
 #: of tvm.tir.schedule.schedule.Schedule.unannotate:3
@@ -3880,6 +3995,46 @@ msgstr ""
 
 #: of tvm.tir.stmt.Store:9
 msgid "The store predicate."
+msgstr ""
+
+#: of tvm.tir.function.TensorIntrin:3 tvm.tir.function.TensorIntrin.register:5
+msgid "The function to describe the computation."
+msgstr ""
+
+#: of tvm.tir.function.TensorIntrin:5 tvm.tir.function.TensorIntrin.register:7
+msgid "The function of the implementation for the execution."
+msgstr ""
+
+#: of tvm.tir.function.TensorIntrin.get:1:<autosummary>:1
+msgid ":py:obj:`get <tvm.tir.TensorIntrin.get>`\\ \\(name\\)"
+msgstr ""
+
+#: of tvm.tir.function.TensorIntrin.get:1
+#: tvm.tir.function.TensorIntrin.get:1:<autosummary>:1
+msgid "Look up a tensor intrinsic by its name."
+msgstr ""
+
+#: of tvm.tir.function.TensorIntrin.get:1:<autosummary>:1
+msgid ""
+":py:obj:`register <tvm.tir.TensorIntrin.register>`\\ \\(name\\, desc\\, "
+"impl\\)"
+msgstr ""
+
+#: of tvm.tir.function.TensorIntrin.get:1:<autosummary>:1
+#: tvm.tir.function.TensorIntrin.register:1
+msgid "Register a tensor intrinsic with its name."
+msgstr ""
+
+#: of tvm.tir.function.TensorIntrin.get:3
+msgid "The name of the TensorIntrin to look up."
+msgstr ""
+
+#: of tvm.tir.function.TensorIntrin.get:6
+msgid "**result** -- The TensorIntrin with the specified name."
+msgstr ""
+
+#: of tvm.tir.function.TensorIntrin.register:3
+msgid "The name of the TensorIntrin to register."
 msgstr ""
 
 #: of tvm.tir.stmt.While:3
@@ -4339,7 +4494,7 @@ msgstr ""
 msgid "This is the default integer division behavior in C."
 msgstr ""
 
-#: ../../docs/reference/api/python/tir.rst:30
+#: ../../../docs/reference/api/python/tir.rst:30
 msgid "tvm.tir.transform"
 msgstr ""
 
@@ -4410,6 +4565,17 @@ msgstr ""
 #: of tvm.tir.transform.transform.CombineContextCall:1
 #: tvm.tir.transform:1:<autosummary>:1
 msgid "Combine context calls in the host function."
+msgstr ""
+
+#: of tvm.tir.transform:1:<autosummary>:1
+msgid ""
+":py:obj:`CommonSubexprElimTIR <tvm.tir.transform.CommonSubexprElimTIR>`\\"
+" \\(\\[enable\\_cse\\_tir\\]\\)"
+msgstr ""
+
+#: of tvm.tir.transform.transform.CommonSubexprElimTIR:1
+#: tvm.tir.transform:1:<autosummary>:1
+msgid "Replace redundant computations by new variables."
 msgstr ""
 
 #: of tvm.tir.transform:1:<autosummary>:1
@@ -4874,7 +5040,7 @@ msgid "Decorate a function pass."
 msgstr ""
 
 #: of tvm.tir.transform.transform.Apply:1:<autosummary>:1
-msgid ":py:obj:`PrimFuncPass <tvm.tir.transform.PrimFuncPass>`\\"
+msgid ":py:obj:`PrimFuncPass <tvm.tir.transform.PrimFuncPass>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.tir.transform.transform.Apply:1:<autosummary>:1
@@ -4896,6 +5062,7 @@ msgstr ""
 #: tvm.tir.transform.transform.BF16TypeLowering:4
 #: tvm.tir.transform.transform.CoProcSync:3
 #: tvm.tir.transform.transform.CombineContextCall:3
+#: tvm.tir.transform.transform.CommonSubexprElimTIR:3
 #: tvm.tir.transform.transform.CompactBufferAllocation:35
 #: tvm.tir.transform.transform.ConvertBlocksToOpaque:5
 #: tvm.tir.transform.transform.ConvertForLoopsToSerial:3
@@ -5182,7 +5349,7 @@ msgid ""
 "transform function."
 msgstr ""
 
-#: ../../docs/reference/api/python/tir.rst:38
+#: ../../../docs/reference/api/python/tir.rst:38
 msgid "tvm.tir.analysis"
 msgstr ""
 
@@ -5197,7 +5364,7 @@ msgid ""
 msgstr ""
 
 #: of tvm.tir.analysis:1:<autosummary>:1
-msgid ":py:obj:`Buffer <tvm.tir.analysis.Buffer>`\\"
+msgid ":py:obj:`Buffer <tvm.tir.analysis.Buffer>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.tir.analysis:1:<autosummary>:1
@@ -5207,7 +5374,7 @@ msgid ""
 msgstr ""
 
 #: of tvm.tir.analysis:1:<autosummary>:1
-msgid ":py:obj:`Object <tvm.tir.analysis.Object>`\\"
+msgid ":py:obj:`Object <tvm.tir.analysis.Object>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.runtime.object.Object:1 tvm.tir.analysis:1:<autosummary>:1
@@ -5215,7 +5382,7 @@ msgid "Base class for all tvm's runtime objects."
 msgstr ""
 
 #: of tvm.tir.analysis:1:<autosummary>:1
-msgid ":py:obj:`PrimExpr <tvm.tir.analysis.PrimExpr>`\\"
+msgid ":py:obj:`PrimExpr <tvm.tir.analysis.PrimExpr>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.ir.expr.PrimExpr:1 tvm.tir.analysis:1:<autosummary>:1
@@ -5229,7 +5396,7 @@ msgid ""
 msgstr ""
 
 #: of tvm.tir.analysis:1:<autosummary>:1
-msgid ":py:obj:`Stmt <tvm.tir.analysis.Stmt>`\\"
+msgid ":py:obj:`Stmt <tvm.tir.analysis.Stmt>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.tir.analysis:1:<autosummary>:1
@@ -5582,7 +5749,7 @@ msgstr ""
 msgid "**result** -- The result of verification."
 msgstr ""
 
-#: ../../docs/reference/api/python/tir.rst:47
+#: ../../../docs/reference/api/python/tir.rst:47
 msgid "tvm.tir.stmt_functor"
 msgstr ""
 
@@ -5697,5 +5864,41 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ":py:obj:`Stmt <tvm.tir.analysis.Stmt>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`BijectiveLayout <tvm.tir.BijectiveLayout>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`BlockScope <tvm.tir.BlockScope>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Buffer <tvm.tir.Buffer>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`DataProducer <tvm.tir.DataProducer>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Layout <tvm.tir.Layout>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Stmt <tvm.tir.Stmt>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`StmtSRef <tvm.tir.StmtSRef>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PrimFuncPass <tvm.tir.transform.PrimFuncPass>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Buffer <tvm.tir.analysis.Buffer>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Object <tvm.tir.analysis.Object>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PrimExpr <tvm.tir.analysis.PrimExpr>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Stmt <tvm.tir.analysis.Stmt>`\\"
 #~ msgstr ""
 

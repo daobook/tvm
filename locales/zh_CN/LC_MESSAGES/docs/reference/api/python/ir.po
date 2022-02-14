@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-10 14:20+0800\n"
+"POT-Creation-Date: 2022-02-14 20:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/reference/api/python/ir.rst:19
+#: ../../../docs/reference/api/python/ir.rst:19
 msgid "tvm.ir"
 msgstr ""
 
@@ -25,12 +25,12 @@ msgstr ""
 msgid "Common data structures across all IR variants."
 msgstr ""
 
-#: ../../docstring of tvm.instrument:1 tvm.ir:1 tvm.transform:1
+#: ../../../../docstring of tvm.instrument:1 tvm.ir:1 tvm.transform:1
 msgid "**Classes:**"
 msgstr ""
 
 #: of tvm.ir:1:<autosummary>:1
-msgid ":py:obj:`Array <tvm.ir.Array>`\\"
+msgid ":py:obj:`Array <tvm.ir.Array>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.ir.container.Array:1 tvm.ir:1:<autosummary>:1
@@ -38,7 +38,7 @@ msgid "Array container of TVM."
 msgstr ""
 
 #: of tvm.ir:1:<autosummary>:1
-msgid ":py:obj:`Attrs <tvm.ir.Attrs>`\\"
+msgid ":py:obj:`Attrs <tvm.ir.Attrs>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.ir.attrs.Attrs:1 tvm.ir:1:<autosummary>:1
@@ -48,7 +48,7 @@ msgid ""
 msgstr ""
 
 #: of tvm.ir:1:<autosummary>:1
-msgid ":py:obj:`BaseExpr <tvm.ir.BaseExpr>`\\"
+msgid ":py:obj:`BaseExpr <tvm.ir.BaseExpr>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.ir.expr.BaseExpr:1 tvm.ir:1:<autosummary>:1
@@ -56,7 +56,7 @@ msgid "Base class of all the expressions."
 msgstr ""
 
 #: of tvm.ir:1:<autosummary>:1
-msgid ":py:obj:`BaseFunc <tvm.ir.BaseFunc>`\\"
+msgid ":py:obj:`BaseFunc <tvm.ir.BaseFunc>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.ir.function.BaseFunc:1 tvm.ir:1:<autosummary>:1
@@ -82,7 +82,7 @@ msgid "Relay ADT constructor."
 msgstr ""
 
 #: of tvm.ir:1:<autosummary>:1
-msgid ":py:obj:`DictAttrs <tvm.ir.DictAttrs>`\\"
+msgid ":py:obj:`DictAttrs <tvm.ir.DictAttrs>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.ir.attrs.DictAttrs:1 tvm.ir:1:<autosummary>:1
@@ -90,7 +90,7 @@ msgid "Dictionary attributes."
 msgstr ""
 
 #: of tvm.ir:1:<autosummary>:1
-msgid ":py:obj:`EnvFunc <tvm.ir.EnvFunc>`\\"
+msgid ":py:obj:`EnvFunc <tvm.ir.EnvFunc>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.ir.base.EnvFunc:1 tvm.ir:1:<autosummary>:1
@@ -148,7 +148,7 @@ msgid "Incomplete type during type inference."
 msgstr ""
 
 #: of tvm.ir:1:<autosummary>:1
-msgid ":py:obj:`Map <tvm.ir.Map>`\\"
+msgid ":py:obj:`Map <tvm.ir.Map>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.ir.container.Map:1 tvm.ir:1:<autosummary>:1
@@ -156,7 +156,7 @@ msgid "Map container of TVM."
 msgstr ""
 
 #: of tvm.ir:1:<autosummary>:1
-msgid ":py:obj:`Node <tvm.ir.Node>`\\"
+msgid ":py:obj:`Node <tvm.ir.Node>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.ir.base.Node:1 tvm.ir:1:<autosummary>:1
@@ -182,7 +182,7 @@ msgid "PointerType used in the low-level TIR."
 msgstr ""
 
 #: of tvm.ir:1:<autosummary>:1
-msgid ":py:obj:`PrimExpr <tvm.ir.PrimExpr>`\\"
+msgid ":py:obj:`PrimExpr <tvm.ir.PrimExpr>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.ir.expr.PrimExpr:1 tvm.ir:1:<autosummary>:1
@@ -206,7 +206,7 @@ msgid "Represent a range in TVM."
 msgstr ""
 
 #: of tvm.ir:1:<autosummary>:1
-msgid ":py:obj:`RelayExpr <tvm.ir.RelayExpr>`\\"
+msgid ":py:obj:`RelayExpr <tvm.ir.RelayExpr>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.ir.expr.RelayExpr:1 tvm.ir:1:<autosummary>:1
@@ -274,7 +274,7 @@ msgid "The type of tuple values."
 msgstr ""
 
 #: of tvm.ir:1:<autosummary>:1
-msgid ":py:obj:`Type <tvm.ir.Type>`\\"
+msgid ":py:obj:`Type <tvm.ir.Type>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.ir.type.Type:1 tvm.ir:1:<autosummary>:1
@@ -290,7 +290,7 @@ msgid "Type function application."
 msgstr ""
 
 #: of tvm.ir:1:<autosummary>:1
-msgid ":py:obj:`TypeConstraint <tvm.ir.TypeConstraint>`\\"
+msgid ":py:obj:`TypeConstraint <tvm.ir.TypeConstraint>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.ir.type.TypeConstraint:1 tvm.ir:1:<autosummary>:1
@@ -333,7 +333,7 @@ msgstr ""
 msgid "Type parameter in functions."
 msgstr ""
 
-#: ../../docstring of tvm.instrument:1 tvm.ir:1 tvm.transform:1
+#: ../../../../docstring of tvm.instrument:1 tvm.ir:1 tvm.transform:1
 msgid "**Functions:**"
 msgstr ""
 
@@ -474,7 +474,7 @@ msgstr ""
 msgid "Get fields information"
 msgstr ""
 
-#: ../../docstring of tvm.ir.adt.Constructor tvm.ir.adt.TypeData
+#: ../../../../docstring of tvm.ir.adt.Constructor tvm.ir.adt.TypeData
 #: tvm.ir.affine_type.TensorAffineType tvm.ir.affine_type.TupleAffineType
 #: tvm.ir.attrs.Attrs.get_int tvm.ir.attrs.Attrs.get_int_tuple
 #: tvm.ir.attrs.Attrs.get_str tvm.ir.attrs.make_node tvm.ir.base.EnvFunc.get
@@ -508,7 +508,7 @@ msgstr ""
 msgid "参数"
 msgstr ""
 
-#: ../../docstring of tvm.ir.RelayExpr.checked_type
+#: ../../../../docstring of tvm.ir.RelayExpr.checked_type
 #: tvm.ir.TensorType.concrete_shape tvm.ir.attrs.Attrs.get_int
 #: tvm.ir.attrs.Attrs.get_int_tuple tvm.ir.attrs.Attrs.get_str
 #: tvm.ir.attrs.Attrs.keys tvm.ir.attrs.Attrs.list_field_info
@@ -535,7 +535,7 @@ msgstr ""
 msgid "**value**"
 msgstr ""
 
-#: ../../docstring of tvm.ir.RelayExpr.checked_type
+#: ../../../../docstring of tvm.ir.RelayExpr.checked_type
 #: tvm.ir.TensorType.concrete_shape tvm.ir.attrs.Attrs.get_int
 #: tvm.ir.attrs.Attrs.get_int_tuple tvm.ir.attrs.Attrs.get_str
 #: tvm.ir.attrs.Attrs.keys tvm.ir.attrs.Attrs.list_field_info
@@ -1617,32 +1617,32 @@ msgstr ""
 msgid ":obj:`structrual_equal`"
 msgstr ""
 
-#: ../../docs/reference/api/python/ir.rst:27
+#: ../../../docs/reference/api/python/ir.rst:27
 msgid "tvm.instrument"
 msgstr ""
 
-#: ../../docstring of tvm.instrument:1
+#: ../../../../docstring of tvm.instrument:1
 msgid "Common pass instrumentation across IR variants."
 msgstr ""
 
-#: ../../docstring of tvm.instrument:1:<autosummary>:1
+#: ../../../../docstring of tvm.instrument:1:<autosummary>:1
 msgid ""
 ":py:obj:`PassInstrument <tvm.instrument.tvm.instrument.PassInstrument>`\\"
 " \\(\\)"
 msgstr ""
 
-#: ../../docstring of tvm.instrument:1:<autosummary>:1
+#: ../../../../docstring of tvm.instrument:1:<autosummary>:1
 #: tvm.ir.instrument.PassInstrument:1
 msgid "A pass instrument implementation."
 msgstr ""
 
-#: ../../docstring of tvm.instrument:1:<autosummary>:1
+#: ../../../../docstring of tvm.instrument:1:<autosummary>:1
 msgid ""
 ":py:obj:`PassTimingInstrument "
 "<tvm.instrument.tvm.instrument.PassTimingInstrument>`\\ \\(\\)"
 msgstr ""
 
-#: ../../docstring of tvm.instrument:1:<autosummary>:1
+#: ../../../../docstring of tvm.instrument:1:<autosummary>:1
 #: tvm.ir.instrument.PassTimingInstrument:1
 msgid "A wrapper to create a passes time instrument that implemented in C++"
 msgstr ""
@@ -1653,7 +1653,7 @@ msgid ""
 "<tvm.instrument.tvm.instrument.pass_instrument>`\\ \\(\\[pi\\_cls\\]\\)"
 msgstr ""
 
-#: ../../docstring of tvm.ir.instrument.PassInstrument:1:<autosummary>:1
+#: ../../../../docstring of tvm.ir.instrument.PassInstrument:1:<autosummary>:1
 #: tvm.ir.instrument.pass_instrument:1
 msgid "Decorate a pass instrument."
 msgstr ""
@@ -1763,66 +1763,66 @@ msgid ""
 "rendered string result of time profiles :rtype: string"
 msgstr ""
 
-#: ../../docstring of tvm.ir.instrument.PassTimingInstrument.render:6
+#: ../../../../docstring of tvm.ir.instrument.PassTimingInstrument.render:6
 #: tvm.ir.instrument.pass_instrument:7 tvm.ir.transform.module_pass:28
 msgid "实际案例"
 msgstr ""
 
-#: ../../docstring of tvm.ir.instrument.pass_instrument:3
+#: ../../../../docstring of tvm.ir.instrument.pass_instrument:3
 msgid "Instrument class. See example below."
 msgstr ""
 
-#: ../../docs/reference/api/python/ir.rst:35
+#: ../../../docs/reference/api/python/ir.rst:35
 msgid "tvm.transform"
 msgstr ""
 
-#: ../../docstring of tvm.transform:1
+#: ../../../../docstring of tvm.transform:1
 msgid "Common pass infrastructure across IR variants."
 msgstr ""
 
-#: ../../docstring of tvm.transform:1:<autosummary>:1
-msgid ":py:obj:`ModulePass <tvm.transform.tvm.transform.ModulePass>`\\"
+#: ../../../../docstring of tvm.transform:1:<autosummary>:1
+msgid ":py:obj:`ModulePass <tvm.transform.tvm.transform.ModulePass>`\\ \\(\\)"
 msgstr ""
 
-#: ../../docstring of tvm.transform:1:<autosummary>:1
+#: ../../../../docstring of tvm.transform:1:<autosummary>:1
 msgid "A pass that works on tvm.IRModule."
 msgstr ""
 
-#: ../../docstring of tvm.transform:1:<autosummary>:1
-msgid ":py:obj:`Pass <tvm.transform.tvm.transform.Pass>`\\"
+#: ../../../../docstring of tvm.transform:1:<autosummary>:1
+msgid ":py:obj:`Pass <tvm.transform.tvm.transform.Pass>`\\ \\(\\)"
 msgstr ""
 
-#: ../../docstring of tvm.transform:1:<autosummary>:1
+#: ../../../../docstring of tvm.transform:1:<autosummary>:1
 msgid "The base class of all passes."
 msgstr ""
 
-#: ../../docstring of tvm.transform:1:<autosummary>:1
+#: ../../../../docstring of tvm.transform:1:<autosummary>:1
 msgid ""
 ":py:obj:`PassContext <tvm.transform.tvm.transform.PassContext>`\\ "
 "\\(\\[opt\\_level\\, required\\_pass\\, ...\\]\\)"
 msgstr ""
 
-#: ../../docstring of tvm.transform:1:<autosummary>:1
+#: ../../../../docstring of tvm.transform:1:<autosummary>:1
 msgid "The basis where a Relay optimization/analysis runs on."
 msgstr ""
 
-#: ../../docstring of tvm.transform:1:<autosummary>:1
+#: ../../../../docstring of tvm.transform:1:<autosummary>:1
 msgid ""
 ":py:obj:`PassInfo <tvm.transform.tvm.transform.PassInfo>`\\ "
 "\\(opt\\_level\\, name\\[\\, required\\]\\)"
 msgstr ""
 
-#: ../../docstring of tvm.transform:1:<autosummary>:1
+#: ../../../../docstring of tvm.transform:1:<autosummary>:1
 msgid "The class contains the meta data required by a pass."
 msgstr ""
 
-#: ../../docstring of tvm.transform:1:<autosummary>:1
+#: ../../../../docstring of tvm.transform:1:<autosummary>:1
 msgid ""
 ":py:obj:`Sequential <tvm.transform.tvm.transform.Sequential>`\\ "
 "\\(\\[passes\\, opt\\_level\\, name\\, required\\]\\)"
 msgstr ""
 
-#: ../../docstring of tvm.transform:1:<autosummary>:1
+#: ../../../../docstring of tvm.transform:1:<autosummary>:1
 msgid "A pass that works on a sequence of pass objects."
 msgstr ""
 
@@ -1832,7 +1832,7 @@ msgid ""
 " show\\_meta\\_data\\]\\)"
 msgstr ""
 
-#: ../../docstring of tvm.ir.transform.ModulePass:1:<autosummary>:1
+#: ../../../../docstring of tvm.ir.transform.ModulePass:1:<autosummary>:1
 #: tvm.ir.transform.PrintIR:1
 msgid "A special trace pass that prints the header and IR."
 msgstr ""
@@ -1843,7 +1843,7 @@ msgid ""
 "\\(\\[pass\\_func\\, opt\\_level\\, name\\, ...\\]\\)"
 msgstr ""
 
-#: ../../docstring of tvm.ir.transform.ModulePass:1:<autosummary>:1
+#: ../../../../docstring of tvm.ir.transform.ModulePass:1:<autosummary>:1
 #: tvm.ir.transform.module_pass:1
 msgid "Decorate a module pass."
 msgstr ""
@@ -1999,11 +1999,11 @@ msgstr ""
 msgid "The pass name."
 msgstr ""
 
-#: ../../docstring of tvm.ir.transform.PrintIR:3
+#: ../../../../docstring of tvm.ir.transform.PrintIR:3
 msgid "The header to be displayed along with the dump."
 msgstr ""
 
-#: ../../docstring of tvm.ir.transform.PrintIR:5
+#: ../../../../docstring of tvm.ir.transform.PrintIR:5
 msgid "A boolean flag to indicate if meta data should be printed."
 msgstr ""
 
@@ -2040,38 +2040,38 @@ msgstr ""
 msgid "The list of passes that the sequential pass is dependent on."
 msgstr ""
 
-#: ../../docstring of tvm.ir.transform.module_pass:3
+#: ../../../../docstring of tvm.ir.transform.module_pass:3
 msgid ""
 "This function returns a callback when pass_func is provided. Otherwise, "
 "it serves a decorator function."
 msgstr ""
 
-#: ../../docstring of tvm.ir.transform.module_pass:6
+#: ../../../../docstring of tvm.ir.transform.module_pass:6
 msgid ""
 "pass_func can also be a class type with a method transform_module. This "
 "function will create a decorated ModulePass using transform_module as the"
 " pass function."
 msgstr ""
 
-#: ../../docstring of tvm.ir.transform.module_pass:10
+#: ../../../../docstring of tvm.ir.transform.module_pass:10
 msgid "The transformation function or class."
 msgstr ""
 
-#: ../../docstring of tvm.ir.transform.module_pass:12
+#: ../../../../docstring of tvm.ir.transform.module_pass:12
 msgid "The optimization level of this module pass."
 msgstr ""
 
-#: ../../docstring of tvm.ir.transform.module_pass:14
+#: ../../../../docstring of tvm.ir.transform.module_pass:14
 msgid ""
 "The name of the module pass. The name could be empty. In this case, the "
 "name of the optimization function will be used as the pass name."
 msgstr ""
 
-#: ../../docstring of tvm.ir.transform.module_pass:17
+#: ../../../../docstring of tvm.ir.transform.module_pass:17
 msgid "The list of passes that the module pass is dependent on."
 msgstr ""
 
-#: ../../docstring of tvm.ir.transform.module_pass:20
+#: ../../../../docstring of tvm.ir.transform.module_pass:20
 msgid ""
 "**create_module_pass** -- A decorator will be returned if pass_func is "
 "not provided, otherwise return the decorated result. The returned "
@@ -2080,11 +2080,11 @@ msgid ""
 "will be returned when we decorate a class type."
 msgstr ""
 
-#: ../../docstring of tvm.ir.transform.module_pass:29
+#: ../../../../docstring of tvm.ir.transform.module_pass:29
 msgid "The following code block decorates a module pass class."
 msgstr ""
 
-#: ../../docstring of tvm.ir.transform.module_pass:52
+#: ../../../../docstring of tvm.ir.transform.module_pass:52
 msgid ""
 "The following code creates a module pass by decorating a user defined "
 "transform function."
@@ -2130,5 +2130,47 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ":py:obj:`Pass <tvm.transform.tvm.transform.Pass>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Array <tvm.ir.Array>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Attrs <tvm.ir.Attrs>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`BaseExpr <tvm.ir.BaseExpr>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`BaseFunc <tvm.ir.BaseFunc>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`DictAttrs <tvm.ir.DictAttrs>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`EnvFunc <tvm.ir.EnvFunc>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Map <tvm.ir.Map>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Node <tvm.ir.Node>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PrimExpr <tvm.ir.PrimExpr>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`RelayExpr <tvm.ir.RelayExpr>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Type <tvm.ir.Type>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TypeConstraint <tvm.ir.TypeConstraint>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ModulePass <tvm.transform.tvm.transform.ModulePass>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Pass <tvm.transform.tvm.transform.Pass>`\\"
 #~ msgstr ""
 

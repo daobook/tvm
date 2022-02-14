@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-13 14:28+0800\n"
+"POT-Creation-Date: 2022-02-14 20:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/reference/api/python/contrib.rst:19
+#: ../../../docs/reference/api/python/contrib.rst:19
 msgid "tvm.contrib"
 msgstr ""
 
@@ -31,7 +31,7 @@ msgid ""
 "useful utilities to interact with thirdparty libraries and tools."
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:23
+#: ../../../docs/reference/api/python/contrib.rst:23
 msgid "tvm.contrib.cblas"
 msgstr ""
 
@@ -102,12 +102,13 @@ msgid "Whether transpose rhs"
 msgstr ""
 
 #: of tvm.contrib.cblas.batch_matmul tvm.contrib.cblas.matmul
-#: tvm.contrib.cc.cross_compiler tvm.contrib.cc.get_target_by_dump_machine
-#: tvm.contrib.clang.create_llvm tvm.contrib.clang.find_clang
-#: tvm.contrib.cublas.batch_matmul tvm.contrib.cublas.matmul
-#: tvm.contrib.dlpack.to_pytorch_func tvm.contrib.miopen.conv2d_forward
-#: tvm.contrib.miopen.log_softmax tvm.contrib.miopen.softmax
-#: tvm.contrib.mxnet.to_mxnet_func tvm.contrib.nnpack.convolution_inference
+#: tvm.contrib.cc.cross_compiler tvm.contrib.cc.get_cc
+#: tvm.contrib.cc.get_target_by_dump_machine tvm.contrib.clang.create_llvm
+#: tvm.contrib.clang.find_clang tvm.contrib.cublas.batch_matmul
+#: tvm.contrib.cublas.matmul tvm.contrib.dlpack.to_pytorch_func
+#: tvm.contrib.miopen.conv2d_forward tvm.contrib.miopen.log_softmax
+#: tvm.contrib.miopen.softmax tvm.contrib.mxnet.to_mxnet_func
+#: tvm.contrib.nnpack.convolution_inference
 #: tvm.contrib.nnpack.convolution_inference_weight_transform
 #: tvm.contrib.nnpack.convolution_inference_without_weight_transform
 #: tvm.contrib.nnpack.fully_connected_inference tvm.contrib.nvcc.compile_cuda
@@ -133,12 +134,13 @@ msgid "**C** -- The result tensor."
 msgstr ""
 
 #: of tvm.contrib.cblas.batch_matmul tvm.contrib.cblas.matmul
-#: tvm.contrib.cc.cross_compiler tvm.contrib.cc.get_target_by_dump_machine
-#: tvm.contrib.clang.create_llvm tvm.contrib.clang.find_clang
-#: tvm.contrib.cublas.batch_matmul tvm.contrib.cublas.matmul
-#: tvm.contrib.dlpack.to_pytorch_func tvm.contrib.miopen.conv2d_forward
-#: tvm.contrib.miopen.log_softmax tvm.contrib.miopen.softmax
-#: tvm.contrib.mxnet.to_mxnet_func tvm.contrib.nnpack.convolution_inference
+#: tvm.contrib.cc.cross_compiler tvm.contrib.cc.get_cc
+#: tvm.contrib.cc.get_target_by_dump_machine tvm.contrib.clang.create_llvm
+#: tvm.contrib.clang.find_clang tvm.contrib.cublas.batch_matmul
+#: tvm.contrib.cublas.matmul tvm.contrib.dlpack.to_pytorch_func
+#: tvm.contrib.miopen.conv2d_forward tvm.contrib.miopen.log_softmax
+#: tvm.contrib.miopen.softmax tvm.contrib.mxnet.to_mxnet_func
+#: tvm.contrib.nnpack.convolution_inference
 #: tvm.contrib.nnpack.convolution_inference_weight_transform
 #: tvm.contrib.nnpack.convolution_inference_without_weight_transform
 #: tvm.contrib.nnpack.fully_connected_inference tvm.contrib.nvcc.compile_cuda
@@ -162,7 +164,7 @@ msgid ""
 "This function serves as an example on how to call external libraries."
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:29
+#: ../../../docs/reference/api/python/contrib.rst:29
 msgid "tvm.contrib.clang"
 msgstr ""
 
@@ -217,7 +219,7 @@ msgid ""
 " that built with tvm"
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:35
+#: ../../../docs/reference/api/python/contrib.rst:35
 msgid "tvm.contrib.cc"
 msgstr ""
 
@@ -299,6 +301,16 @@ msgstr ""
 msgid "实际案例"
 msgstr ""
 
+#: of tvm.contrib.cc.get_cc:1
+msgid "Return the path to the default C/C++ compiler."
+msgstr ""
+
+#: of tvm.contrib.cc.get_cc:3
+msgid ""
+"**out** -- The path to the default C/C++ compiler, or None if none was "
+"found."
+msgstr ""
+
 #: of tvm.contrib.cc.get_target_by_dump_machine:1
 msgid ""
 "Functor of get_target_triple that can get the target triple using "
@@ -315,7 +327,7 @@ msgid ""
 " option of compiler."
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:41
+#: ../../../docs/reference/api/python/contrib.rst:41
 msgid "tvm.contrib.cublas"
 msgstr ""
 
@@ -333,7 +345,7 @@ msgstr ""
 msgid "Create an extern op that compute matrix mult of A and rhs with cuBLAS"
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:47
+#: ../../../docs/reference/api/python/contrib.rst:47
 msgid "tvm.contrib.dlpack"
 msgstr ""
 
@@ -369,7 +381,7 @@ msgstr ""
 msgid "**wrapped_func** -- Wrapped tvm function that operates on PyTorch tensors"
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:52
+#: ../../../docs/reference/api/python/contrib.rst:52
 msgid "tvm.contrib.emcc"
 msgstr ""
 
@@ -390,7 +402,7 @@ msgstr ""
 msgid "The compile string."
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:57
+#: ../../../docs/reference/api/python/contrib.rst:57
 msgid "tvm.contrib.miopen"
 msgstr ""
 
@@ -474,7 +486,7 @@ msgstr ""
 msgid "The axis to compute softmax over"
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:62
+#: ../../../docs/reference/api/python/contrib.rst:62
 msgid "tvm.contrib.mxnet"
 msgstr ""
 
@@ -508,7 +520,7 @@ msgid ""
 " engine."
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:67
+#: ../../../docs/reference/api/python/contrib.rst:67
 msgid "tvm.contrib.ndk"
 msgstr ""
 
@@ -516,7 +528,7 @@ msgstr ""
 msgid "Util to invoke NDK compiler toolchain."
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:73
+#: ../../../docs/reference/api/python/contrib.rst:73
 msgid "tvm.contrib.nnpack"
 msgstr ""
 
@@ -621,7 +633,7 @@ msgid ""
 "`nnp_status_success`."
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:79
+#: ../../../docs/reference/api/python/contrib.rst:79
 msgid "tvm.contrib.nvcc"
 msgstr ""
 
@@ -752,7 +764,7 @@ msgstr ""
 msgid "**minor** (*int*) -- minor version number"
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:85
+#: ../../../docs/reference/api/python/contrib.rst:85
 msgid "tvm.contrib.pickle_memoize"
 msgstr ""
 
@@ -784,7 +796,7 @@ msgstr ""
 msgid "**fmemoize** -- The decorator function to perform memoization."
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:91
+#: ../../../docs/reference/api/python/contrib.rst:91
 msgid "tvm.contrib.random"
 msgstr ""
 
@@ -860,7 +872,7 @@ msgstr ""
 msgid "**out** -- A tensor with specified size and dtype."
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:97
+#: ../../../docs/reference/api/python/contrib.rst:97
 msgid "tvm.contrib.rocblas"
 msgstr ""
 
@@ -880,7 +892,7 @@ msgstr ""
 msgid "The right batched matrix operand"
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:103
+#: ../../../docs/reference/api/python/contrib.rst:103
 msgid "tvm.contrib.rocm"
 msgstr ""
 
@@ -916,7 +928,7 @@ msgid ""
 "version."
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:108
+#: ../../../docs/reference/api/python/contrib.rst:108
 msgid "tvm.contrib.sparse"
 msgstr ""
 
@@ -978,7 +990,7 @@ msgstr ""
 msgid "**tensor** -- The created sparse tensor placeholder"
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:114
+#: ../../../docs/reference/api/python/contrib.rst:114
 msgid "tvm.contrib.spirv"
 msgstr ""
 
@@ -1002,7 +1014,7 @@ msgstr ""
 msgid "**cobj_bin** -- The HSA Code Object"
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:120
+#: ../../../docs/reference/api/python/contrib.rst:120
 msgid "tvm.contrib.tar"
 msgstr ""
 
@@ -1030,7 +1042,7 @@ msgstr ""
 msgid "The target directory"
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:126
+#: ../../../docs/reference/api/python/contrib.rst:126
 msgid "tvm.contrib.utils"
 msgstr ""
 
@@ -1134,7 +1146,7 @@ msgstr ""
 msgid "**path** -- The full path of executable if found, otherwise returns None"
 msgstr ""
 
-#: ../../docs/reference/api/python/contrib.rst:132
+#: ../../../docs/reference/api/python/contrib.rst:132
 msgid "tvm.contrib.xcode"
 msgstr ""
 

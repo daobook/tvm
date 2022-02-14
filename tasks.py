@@ -25,6 +25,7 @@ def xin_init(ctx):
     ctx.run('cp -r _toc/how_to xin/docs/')
     ctx.run('cp -r _toc/topic xin/docs/')
     ctx.run('cp -r _toc/tutorial xin/docs/')
+    ctx.run('rm -rf xin/docs/_build')
     ctx.run('rm -rf xin/docs/_staging/')
     ctx.run('rm -rf xin/docs/index.rst xin/docs/genindex.rst')
 

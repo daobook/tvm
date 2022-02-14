@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-10 14:20+0800\n"
+"POT-Creation-Date: 2022-02-14 20:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/reference/api/python/runtime.rst:19
+#: ../../../docs/reference/api/python/runtime.rst:19
 msgid "tvm.runtime"
 msgstr ""
 
@@ -62,7 +62,7 @@ msgid "Runtime Module."
 msgstr ""
 
 #: of tvm.runtime:1:<autosummary>:1
-msgid ":py:obj:`Object <tvm.runtime.Object>`\\"
+msgid ":py:obj:`Object <tvm.runtime.Object>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.runtime.object.Object:1 tvm.runtime:1:<autosummary>:1
@@ -78,7 +78,9 @@ msgid "Base class for all classes that can be converted to object."
 msgstr ""
 
 #: of tvm.runtime:1:<autosummary>:1
-msgid ":py:obj:`PackedFunc <tvm.runtime.PackedFunc>`\\"
+msgid ""
+":py:obj:`PackedFunc <tvm.runtime.PackedFunc>`\\ \\(handle\\, "
+"is\\_global\\)"
 msgstr ""
 
 #: of tvm.runtime.packed_func.PackedFunc:1 tvm.runtime:1:<autosummary>:1
@@ -86,7 +88,7 @@ msgid "The PackedFunc object used in TVM."
 msgstr ""
 
 #: of tvm.runtime:1:<autosummary>:1
-msgid ":py:obj:`Report <tvm.runtime.Report>`\\"
+msgid ":py:obj:`Report <tvm.runtime.Report>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.runtime.profiling.Report:1 tvm.runtime:1:<autosummary>:1
@@ -654,6 +656,14 @@ msgstr ""
 #: of tvm.runtime.Module.entry_func:1
 #: tvm.runtime.module.Module:1:<autosummary>:1
 msgid "Get the entry function"
+msgstr ""
+
+#: of tvm.runtime.module.Module:1:<autosummary>:1
+msgid ":py:obj:`format <tvm.runtime.Module.format>`\\"
+msgstr ""
+
+#: of tvm.runtime.Module.format:1 tvm.runtime.module.Module:1:<autosummary>:1
+msgid "Get the format of the module."
 msgstr ""
 
 #: of tvm.runtime.module.Module:1:<autosummary>:1
@@ -1236,5 +1246,14 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ":py:obj:`Report <tvm.runtime.Report>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Object <tvm.runtime.Object>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PackedFunc <tvm.runtime.PackedFunc>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Report <tvm.runtime.Report>`\\"
 #~ msgstr ""
 

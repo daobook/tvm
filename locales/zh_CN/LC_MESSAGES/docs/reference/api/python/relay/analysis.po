@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-13 14:28+0800\n"
+"POT-Creation-Date: 2022-02-14 20:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/reference/api/python/relay/analysis.rst:19
+#: ../../../docs/reference/api/python/relay/analysis.rst:19
 msgid "tvm.relay.analysis"
 msgstr ""
 
@@ -224,6 +224,19 @@ msgid "Count the number of MACs (multiply-accumulate) of a model"
 msgstr ""
 
 #: of tvm.relay.analysis.annotated_regions.AnnotatedRegionSet:1:<autosummary>:1
+msgid ""
+":py:obj:`list_fake_quantized_op_freqs "
+"<tvm.relay.analysis.list_fake_quantized_op_freqs>`\\ \\(mod\\)"
+msgstr ""
+
+#: of tvm.relay.analysis.analysis.list_fake_quantized_op_freqs:1
+#: tvm.relay.analysis.annotated_regions.AnnotatedRegionSet:1:<autosummary>:1
+msgid ""
+"Pass to extract fake quantized op names and the frequency that they "
+"appear in fake quantized regions of an IRModule."
+msgstr ""
+
+#: of tvm.relay.analysis.annotated_regions.AnnotatedRegionSet:1:<autosummary>:1
 msgid ":py:obj:`list_op_freqs <tvm.relay.analysis.list_op_freqs>`\\ \\(mod\\)"
 msgstr ""
 
@@ -306,6 +319,7 @@ msgstr ""
 #: tvm.relay.analysis.analysis.free_vars
 #: tvm.relay.analysis.analysis.get_calibration_data
 #: tvm.relay.analysis.analysis.get_total_mac_number
+#: tvm.relay.analysis.analysis.list_fake_quantized_op_freqs
 #: tvm.relay.analysis.analysis.list_op_freqs
 #: tvm.relay.analysis.analysis.post_order_visit
 #: tvm.relay.analysis.analysis.search_fc_transpose
@@ -339,6 +353,7 @@ msgstr ""
 #: tvm.relay.analysis.analysis.free_vars
 #: tvm.relay.analysis.analysis.get_calibration_data
 #: tvm.relay.analysis.analysis.get_total_mac_number
+#: tvm.relay.analysis.analysis.list_fake_quantized_op_freqs
 #: tvm.relay.analysis.analysis.list_op_freqs
 #: tvm.relay.analysis.analysis.search_fc_transpose
 #: tvm.relay.analysis.analysis.unmatched_cases
@@ -371,6 +386,7 @@ msgstr ""
 #: tvm.relay.analysis.analysis.free_vars
 #: tvm.relay.analysis.analysis.get_calibration_data
 #: tvm.relay.analysis.analysis.get_total_mac_number
+#: tvm.relay.analysis.analysis.list_fake_quantized_op_freqs
 #: tvm.relay.analysis.analysis.list_op_freqs
 #: tvm.relay.analysis.analysis.search_fc_transpose
 #: tvm.relay.analysis.analysis.unmatched_cases
@@ -467,7 +483,7 @@ msgstr ""
 msgid ":py:obj:`fGraph <tvm.relay.analysis.Feature.fGraph>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.relay.analysis.Feature.fGraph:1
+#: ../../../../docstring of tvm.relay.analysis.Feature.fGraph:1
 #: tvm.relay.analysis.Feature.fGraph:1:<autosummary>:1
 msgid "Whether there is local fixpoint in the program."
 msgstr ""
@@ -476,7 +492,7 @@ msgstr ""
 msgid ":py:obj:`fMatch <tvm.relay.analysis.Feature.fMatch>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.relay.analysis.Feature.fGraph:1:<autosummary>:1
+#: ../../../../docstring of tvm.relay.analysis.Feature.fGraph:1:<autosummary>:1
 #: tvm.relay.analysis.Feature.fMatch:1
 msgid ""
 "Whether any non-atom fragment of the program is shared, making the "
@@ -659,6 +675,10 @@ msgstr ""
 
 #: of tvm.relay.analysis.analysis.get_total_mac_number:6
 msgid "**result** -- The number of MACs (multiply-accumulate) of a model"
+msgstr ""
+
+#: of tvm.relay.analysis.analysis.list_fake_quantized_op_freqs:7
+msgid "**ret** -- Dict of fake quantized operator names to frequency"
 msgstr ""
 
 #: of tvm.relay.analysis.analysis.list_op_freqs:1

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-10 14:20+0800\n"
+"POT-Creation-Date: 2022-02-14 20:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/reference/api/python/relay/dataflow_pattern.rst:19
+#: ../../../docs/reference/api/python/relay/dataflow_pattern.rst:19
 msgid "tvm.relay.dataflow_pattern"
 msgstr ""
 
@@ -79,7 +79,8 @@ msgstr ""
 #: of tvm.relay.dataflow_pattern:1:<autosummary>:1
 msgid ""
 ":py:obj:`DFPattern "
-"<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DFPattern>`\\"
+"<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DFPattern>`\\ "
+"\\(\\)"
 msgstr ""
 
 #: of tvm.relay.dataflow_pattern.DFPattern:1
@@ -1066,5 +1067,10 @@ msgstr ""
 #~ ":py:obj:`DFPattern "
 #~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DFPattern>`\\"
 #~ " \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`DFPattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DFPattern>`\\"
 #~ msgstr ""
 

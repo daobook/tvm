@@ -252,3 +252,6 @@ jvm/target
 .ci-py-scripts/
 *.fw
 *.fw.1
+
+# invoke
+output/

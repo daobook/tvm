@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-13 14:28+0800\n"
+"POT-Creation-Date: 2022-02-14 20:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/reference/api/python/auto_scheduler.rst:19
+#: ../../../docs/reference/api/python/auto_scheduler.rst:19
 msgid "tvm.auto_scheduler"
 msgstr ""
 
@@ -570,8 +570,7 @@ msgstr ""
 msgid "The workload key that can be decoded to workload hash and args."
 msgstr ""
 
-#: of tvm.auto_scheduler.compute_dag.ComputeDAG.apply_steps_from_state
-#: tvm.auto_scheduler.compute_dag.ComputeDAG.get_init_state
+#: of tvm.auto_scheduler.compute_dag.ComputeDAG.get_init_state
 #: tvm.auto_scheduler.compute_dag.ComputeDAG.infer_bound_from_state
 #: tvm.auto_scheduler.compute_dag.ComputeDAG.print_python_code_from_state
 #: tvm.auto_scheduler.compute_dag.ComputeDAG.rewrite_layout_from_state
@@ -591,9 +590,7 @@ msgstr ""
 #: tvm.auto_scheduler.search_policy.SketchPolicy.evolutionary_search
 #: tvm.auto_scheduler.search_policy.SketchPolicy.generate_sketches
 #: tvm.auto_scheduler.search_policy.SketchPolicy.sample_initial_population
-#: tvm.auto_scheduler.search_task.SearchTask.apply_best
 #: tvm.auto_scheduler.search_task.SearchTask.print_best
-#: tvm.auto_scheduler.search_task.auto_schedule
 #: tvm.auto_scheduler.search_task.create_task
 #: tvm.auto_scheduler.workload_registry.make_workload_key
 msgid "返回"
@@ -846,7 +843,7 @@ msgid ""
 "generated schedule to read from."
 msgstr ""
 
-#: of tvm.auto_scheduler.compute_dag.ComputeDAG.apply_steps_from_state:10
+#: of tvm.auto_scheduler.compute_dag.ComputeDAG.apply_steps_from_state:9
 msgid ""
 "A `te.schedule` and the a list of `te.Tensor` to be used in `tvm.lower` "
 "or `tvm.build`."
@@ -1066,6 +1063,12 @@ msgid ""
 "latency during end-to-end inference. To make this option effective, the "
 "argument `number` should also be set to 1. This is only has effect on CPU"
 " task."
+msgstr ""
+
+#: of tvm.auto_scheduler.measure.LocalRPCMeasureContext:35
+#: tvm.auto_scheduler.measure.LocalRunner:30
+#: tvm.auto_scheduler.measure.RPCRunner:42
+msgid "Which device to run on if multiple are available."
 msgstr ""
 
 #: of tvm.auto_scheduler.measure.MeasureInput:3
@@ -1433,8 +1436,8 @@ msgstr ""
 msgid "The layout rewrite option."
 msgstr ""
 
-#: of tvm.auto_scheduler.search_task.SearchTask.apply_best:11
-#: tvm.auto_scheduler.search_task.auto_schedule:13
+#: of tvm.auto_scheduler.search_task.SearchTask.apply_best:10
+#: tvm.auto_scheduler.search_task.auto_schedule:12
 msgid ""
 "A `te.Schedule` and the a list of `te.Tensor` to be used in `tvm.lower` "
 "or `tvm.build`."

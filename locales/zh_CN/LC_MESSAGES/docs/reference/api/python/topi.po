@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-10 14:20+0800\n"
+"POT-Creation-Date: 2022-02-14 20:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/reference/api/python/topi.rst:19
+#: ../../../docs/reference/api/python/topi.rst:19
 msgid "tvm.topi"
 msgstr ""
 
@@ -1163,6 +1163,17 @@ msgstr ""
 
 #: of tvm.tir.stmt.AssertStmt:1:<autosummary>:1
 msgid ""
+":py:obj:`sliding_window <tvm.topi.tvm.topi.sliding_window>`\\ \\(data\\, "
+"axis\\, window\\_shape\\, strides\\)"
+msgstr ""
+
+#: of tvm.tir.stmt.AssertStmt:1:<autosummary>:1
+#: tvm.topi.transform.sliding_window:1
+msgid "Slide a window over the data tensor."
+msgstr ""
+
+#: of tvm.tir.stmt.AssertStmt:1:<autosummary>:1
+msgid ""
 ":py:obj:`sort <tvm.topi.tvm.topi.sort>`\\ \\(data\\[\\, axis\\, "
 "is\\_ascend\\]\\)"
 msgstr ""
@@ -1509,8 +1520,8 @@ msgstr ""
 #: tvm.topi.transform.one_hot tvm.topi.transform.repeat
 #: tvm.topi.transform.reshape tvm.topi.transform.reverse_sequence
 #: tvm.topi.transform.sequence_mask tvm.topi.transform.shape
-#: tvm.topi.transform.sparse_to_dense tvm.topi.transform.split
-#: tvm.topi.transform.squeeze tvm.topi.transform.stack
+#: tvm.topi.transform.sliding_window tvm.topi.transform.sparse_to_dense
+#: tvm.topi.transform.split tvm.topi.transform.squeeze tvm.topi.transform.stack
 #: tvm.topi.transform.strided_set tvm.topi.transform.strided_slice
 #: tvm.topi.transform.take tvm.topi.transform.take_legalize
 #: tvm.topi.transform.tensordot tvm.topi.transform.tile
@@ -1689,8 +1700,8 @@ msgstr ""
 #: tvm.topi.transform.one_hot tvm.topi.transform.repeat
 #: tvm.topi.transform.reshape tvm.topi.transform.reverse_sequence
 #: tvm.topi.transform.sequence_mask tvm.topi.transform.shape
-#: tvm.topi.transform.sparse_to_dense tvm.topi.transform.split
-#: tvm.topi.transform.squeeze tvm.topi.transform.stack
+#: tvm.topi.transform.sliding_window tvm.topi.transform.sparse_to_dense
+#: tvm.topi.transform.split tvm.topi.transform.squeeze tvm.topi.transform.stack
 #: tvm.topi.transform.strided_set tvm.topi.transform.strided_slice
 #: tvm.topi.transform.take tvm.topi.transform.take_legalize
 #: tvm.topi.transform.tile tvm.topi.transform.transpose
@@ -1832,8 +1843,9 @@ msgstr ""
 #: tvm.topi.transform.ndarray_size tvm.topi.transform.one_hot
 #: tvm.topi.transform.repeat tvm.topi.transform.reshape
 #: tvm.topi.transform.reverse_sequence tvm.topi.transform.sequence_mask
-#: tvm.topi.transform.shape tvm.topi.transform.sparse_to_dense
-#: tvm.topi.transform.split tvm.topi.transform.squeeze tvm.topi.transform.stack
+#: tvm.topi.transform.shape tvm.topi.transform.sliding_window
+#: tvm.topi.transform.sparse_to_dense tvm.topi.transform.split
+#: tvm.topi.transform.squeeze tvm.topi.transform.stack
 #: tvm.topi.transform.strided_set tvm.topi.transform.strided_slice
 #: tvm.topi.transform.take tvm.topi.transform.take_legalize
 #: tvm.topi.transform.tensordot tvm.topi.transform.tile
@@ -1968,7 +1980,7 @@ msgid "The target data type."
 msgstr ""
 
 #: of tvm.topi.transform.arange:13 tvm.topi.transform.ndarray_size:8
-#: tvm.topi.transform.shape:8
+#: tvm.topi.transform.shape:8 tvm.topi.transform.sliding_window:17
 msgid "**result** -- The resulting tensor."
 msgstr ""
 
@@ -2139,7 +2151,7 @@ msgstr ""
 
 #: of tvm.topi.scan.cumprod:3 tvm.topi.scan.cumsum:3 tvm.topi.scan.scanop:8
 #: tvm.topi.scatter.scatter:3 tvm.topi.scatter_add.scatter_add:3
-#: tvm.topi.transform.gather:14
+#: tvm.topi.transform.gather:14 tvm.topi.transform.sliding_window:3
 msgid "The input data to the operator."
 msgstr ""
 
@@ -2918,6 +2930,26 @@ msgid ""
 "[batch_size, MAX_LENGTH, ...] depending on the value of `axis`."
 msgstr ""
 
+#: of tvm.topi.transform.sliding_window:5
+msgid ""
+"What axis the window begins sliding over. Window will be slid over this "
+"axis and all following axes. The axis value determines the window shape "
+"(and thus, the number of strides): window shape and strides must both be "
+"of length `data.ndim-axis`."
+msgstr ""
+
+#: of tvm.topi.transform.sliding_window:10
+msgid ""
+"The window shape to form over the input. Window shape must be of length "
+"`data.ndim-axis`."
+msgstr ""
+
+#: of tvm.topi.transform.sliding_window:13
+msgid ""
+"How to stride the window along each dimension. Strides must be of length "
+"`data.ndim-axis`."
+msgstr ""
+
 #: of tvm.topi.sparse_reshape.sparse_reshape:3
 msgid ""
 "A 2-D tensor[N, n_dim] of integers containing location of sparse values, "
@@ -3230,7 +3262,7 @@ msgid ""
 "be selected by the index and False otherwise"
 msgstr ""
 
-#: ../../docs/reference/api/python/topi.rst:27
+#: ../../../docs/reference/api/python/topi.rst:27
 msgid "tvm.topi.nn"
 msgstr ""
 
@@ -4500,7 +4532,7 @@ msgstr ""
 msgid ":py:obj:`dilation_h <tvm.topi.nn.tvm.topi.nn.Workload.dilation_h>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.topi.nn.Workload.dilation_h:1
+#: ../../../../docstring of tvm.topi.nn.Workload.dilation_h:1
 #: tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
 msgid "Alias for field number 12"
 msgstr ""
@@ -4509,7 +4541,7 @@ msgstr ""
 msgid ":py:obj:`dilation_w <tvm.topi.nn.tvm.topi.nn.Workload.dilation_w>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
+#: ../../../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
 #: tvm.topi.nn.Workload.dilation_w:1
 msgid "Alias for field number 13"
 msgstr ""
@@ -4518,7 +4550,7 @@ msgstr ""
 msgid ":py:obj:`height <tvm.topi.nn.tvm.topi.nn.Workload.height>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
+#: ../../../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
 #: tvm.topi.nn.Workload.height:1
 msgid "Alias for field number 2"
 msgstr ""
@@ -4527,7 +4559,7 @@ msgstr ""
 msgid ":py:obj:`in_dtype <tvm.topi.nn.tvm.topi.nn.Workload.in_dtype>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
+#: ../../../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
 #: tvm.topi.nn.Workload.in_dtype:1
 msgid "Alias for field number 0"
 msgstr ""
@@ -4536,7 +4568,7 @@ msgstr ""
 msgid ":py:obj:`in_filter <tvm.topi.nn.tvm.topi.nn.Workload.in_filter>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
+#: ../../../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
 #: tvm.topi.nn.Workload.in_filter:1
 msgid "Alias for field number 4"
 msgstr ""
@@ -4545,7 +4577,7 @@ msgstr ""
 msgid ":py:obj:`kernel_h <tvm.topi.nn.tvm.topi.nn.Workload.kernel_h>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
+#: ../../../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
 #: tvm.topi.nn.Workload.kernel_h:1
 msgid "Alias for field number 6"
 msgstr ""
@@ -4554,7 +4586,7 @@ msgstr ""
 msgid ":py:obj:`kernel_w <tvm.topi.nn.tvm.topi.nn.Workload.kernel_w>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
+#: ../../../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
 #: tvm.topi.nn.Workload.kernel_w:1
 msgid "Alias for field number 7"
 msgstr ""
@@ -4563,7 +4595,7 @@ msgstr ""
 msgid ":py:obj:`out_dtype <tvm.topi.nn.tvm.topi.nn.Workload.out_dtype>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
+#: ../../../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
 #: tvm.topi.nn.Workload.out_dtype:1
 msgid "Alias for field number 1"
 msgstr ""
@@ -4572,7 +4604,7 @@ msgstr ""
 msgid ":py:obj:`out_filter <tvm.topi.nn.tvm.topi.nn.Workload.out_filter>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
+#: ../../../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
 #: tvm.topi.nn.Workload.out_filter:1
 msgid "Alias for field number 5"
 msgstr ""
@@ -4581,7 +4613,7 @@ msgstr ""
 msgid ":py:obj:`padb <tvm.topi.nn.tvm.topi.nn.Workload.padb>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
+#: ../../../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
 #: tvm.topi.nn.Workload.padb:1
 msgid "Alias for field number 10"
 msgstr ""
@@ -4590,7 +4622,7 @@ msgstr ""
 msgid ":py:obj:`padl <tvm.topi.nn.tvm.topi.nn.Workload.padl>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
+#: ../../../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
 #: tvm.topi.nn.Workload.padl:1
 msgid "Alias for field number 9"
 msgstr ""
@@ -4599,7 +4631,7 @@ msgstr ""
 msgid ":py:obj:`padr <tvm.topi.nn.tvm.topi.nn.Workload.padr>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
+#: ../../../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
 #: tvm.topi.nn.Workload.padr:1
 msgid "Alias for field number 11"
 msgstr ""
@@ -4608,7 +4640,7 @@ msgstr ""
 msgid ":py:obj:`padt <tvm.topi.nn.tvm.topi.nn.Workload.padt>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
+#: ../../../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
 #: tvm.topi.nn.Workload.padt:1
 msgid "Alias for field number 8"
 msgstr ""
@@ -4617,7 +4649,7 @@ msgstr ""
 msgid ":py:obj:`stride_h <tvm.topi.nn.tvm.topi.nn.Workload.stride_h>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
+#: ../../../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
 #: tvm.topi.nn.Workload.stride_h:1
 msgid "Alias for field number 14"
 msgstr ""
@@ -4626,7 +4658,7 @@ msgstr ""
 msgid ":py:obj:`stride_w <tvm.topi.nn.tvm.topi.nn.Workload.stride_w>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
+#: ../../../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
 #: tvm.topi.nn.Workload.stride_w:1
 msgid "Alias for field number 15"
 msgstr ""
@@ -4635,7 +4667,7 @@ msgstr ""
 msgid ":py:obj:`width <tvm.topi.nn.tvm.topi.nn.Workload.width>`\\"
 msgstr ""
 
-#: ../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
+#: ../../../../docstring of tvm.topi.nn.Workload.dilation_h:1:<autosummary>:1
 #: tvm.topi.nn.Workload.width:1
 msgid "Alias for field number 3"
 msgstr ""
@@ -4884,7 +4916,7 @@ msgid "Attributes of current convolution"
 msgstr ""
 
 #: of tvm.topi.image.dilation2d.dilation2d_nchw:3
-#: tvm.topi.image.grid_sample.grid_sample:20
+#: tvm.topi.image.grid_sample.grid_sample:21
 #: tvm.topi.nn.bitserial_conv2d.bitserial_conv2d_nchw:3
 #: tvm.topi.nn.conv2d.conv2d:3 tvm.topi.nn.conv2d.conv2d_nchw:3
 #: tvm.topi.nn.conv2d.group_conv2d_nchw:3
@@ -6502,7 +6534,7 @@ msgid ""
 "in_height*scale, in_width*scale, channel]"
 msgstr ""
 
-#: ../../docs/reference/api/python/topi.rst:35
+#: ../../../docs/reference/api/python/topi.rst:35
 msgid "tvm.topi.image"
 msgstr ""
 
@@ -6655,7 +6687,7 @@ msgstr ""
 #: of tvm.topi.image.grid_sample.affine_grid:1:<autosummary>:1
 msgid ""
 ":py:obj:`grid_sample <tvm.topi.image.tvm.topi.image.grid_sample>`\\ "
-"\\(data\\, grid\\[\\, method\\, layout\\]\\)"
+"\\(data\\, grid\\[\\, method\\, layout\\, ...\\]\\)"
 msgstr ""
 
 #: of tvm.topi.image.grid_sample.affine_grid:1:<autosummary>:1
@@ -6791,6 +6823,7 @@ msgid "Padding size"
 msgstr ""
 
 #: of tvm.topi.image.dilation2d.dilation2d_nchw:16
+#: tvm.topi.image.grid_sample.grid_sample:30
 msgid "**Output** -- 4-D with shape [batch, in_channel, out_height, out_width]"
 msgstr ""
 
@@ -6820,34 +6853,31 @@ msgstr ""
 msgid ""
 ":math:`x_{dst}`, :math:`y_{dst}` enumerate all spatial locations in "
 ":math:`output`, and :math:`G()` denotes the interpolation method. The "
-"out-boundary points will be padded with zeros. The shape of the output "
-"will be (data.shape[0], data.shape[1], grid.shape[2], grid.shape[3])."
+"out-boundary points will be padded with zeros if the padding_mode is "
+"\"zeros\". The shape of the output will be (data.shape[0], data.shape[1],"
+" grid.shape[2], grid.shape[3])."
 msgstr ""
 
-#: of tvm.topi.image.grid_sample.grid_sample:16
+#: of tvm.topi.image.grid_sample.grid_sample:17
 msgid "The operator assumes that :math:`grid` has been normalized to [-1, 1]."
 msgstr ""
 
-#: of tvm.topi.image.grid_sample.grid_sample:18
+#: of tvm.topi.image.grid_sample.grid_sample:19
 msgid ""
 "grid_sample often cooperates with affine_grid which generates sampling "
 "grids for grid_sample."
 msgstr ""
 
-#: of tvm.topi.image.grid_sample.grid_sample:22
+#: of tvm.topi.image.grid_sample.grid_sample:23
 msgid "4-D with shape [batch, 2, out_height, out_width]"
 msgstr ""
 
-#: of tvm.topi.image.grid_sample.grid_sample:24
+#: of tvm.topi.image.grid_sample.grid_sample:25
 msgid "The interpolation method. Only 'bilinear' is supported."
 msgstr ""
 
-#: of tvm.topi.image.grid_sample.grid_sample:26
+#: of tvm.topi.image.grid_sample.grid_sample:27
 msgid "The layout of input data and the output."
-msgstr ""
-
-#: of tvm.topi.image.grid_sample.grid_sample:29
-msgid "**Output** -- 4-D with shape [batch, 2, out_height, out_width]"
 msgstr ""
 
 #: of tvm.topi.image.resize.resize1d:3
@@ -6947,7 +6977,7 @@ msgid ""
 "minor]"
 msgstr ""
 
-#: ../../docs/reference/api/python/topi.rst:43
+#: ../../../docs/reference/api/python/topi.rst:43
 msgid "tvm.topi.sparse"
 msgstr ""
 
@@ -7051,5 +7081,24 @@ msgstr ""
 #~ "How to stride the window along "
 #~ "each dimension. Strides must be of "
 #~ "length `data.ndim-axis`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`grid_sample "
+#~ "<tvm.topi.image.tvm.topi.image.grid_sample>`\\ \\(data\\, "
+#~ "grid\\[\\, method\\, layout\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":math:`x_{dst}`, :math:`y_{dst}` enumerate all "
+#~ "spatial locations in :math:`output`, and "
+#~ ":math:`G()` denotes the interpolation method."
+#~ " The out-boundary points will be "
+#~ "padded with zeros. The shape of "
+#~ "the output will be (data.shape[0], "
+#~ "data.shape[1], grid.shape[2], grid.shape[3])."
+#~ msgstr ""
+
+#~ msgid "**Output** -- 4-D with shape [batch, 2, out_height, out_width]"
 #~ msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-06 15:25+0800\n"
+"POT-Creation-Date: 2022-02-14 20:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/reference/api/python/relay/nn.rst:19
+#: ../../../docs/reference/api/python/relay/nn.rst:19
 msgid "tvm.relay.nn"
 msgstr ""
 
@@ -378,6 +378,18 @@ msgstr ""
 
 #: of tvm.relay.expr.Constant:1:<autosummary>:1 tvm.relay.op.nn.nn.conv2d:1
 msgid "2D convolution."
+msgstr ""
+
+#: of tvm.relay.expr.Constant:1:<autosummary>:1
+msgid ""
+":py:obj:`conv2d_backward_weight "
+"<tvm.relay.op.nn.conv2d_backward_weight>`\\ \\(grad\\, data\\[\\, "
+"...\\]\\)"
+msgstr ""
+
+#: of tvm.relay.expr.Constant:1:<autosummary>:1
+#: tvm.relay.op.nn.nn.conv2d_backward_weight:1
+msgid "The gradient of conv2d with respect to weight."
 msgstr ""
 
 #: of tvm.relay.expr.Constant:1:<autosummary>:1
@@ -2093,6 +2105,27 @@ msgid ""
 "Semantically, the operator will convert the layout to the canonical "
 "layout (`NCHW` for data and `OIHW` for weight), perform the computation, "
 "then convert to the out_layout."
+msgstr ""
+
+#: of tvm.relay.op.nn.nn.conv2d_backward_weight:3
+msgid ""
+"This operator takes the output gradient `grad` and convolves it with "
+"`data` as the convolution kernel, to produce the gradient with respect to"
+" weight."
+msgstr ""
+
+#: of tvm.relay.op.nn.nn.conv2d_backward_weight:6
+msgid ""
+"Note that the parameter `kernel_size` is the spatial size of the "
+"corresponding forward convolution kernel, not that of `data`. "
+"`grad_layout` and `kernel_layout` are the layouts of `grad` and the "
+"weight gradient respectively."
+msgstr ""
+
+#: of tvm.relay.op.nn.nn.conv2d_backward_weight:10
+msgid ""
+"Other parameters are the same as the conv2d op. See its documentation for"
+" more details."
 msgstr ""
 
 #: of tvm.relay.op.nn.nn.conv3d:7

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-10 14:20+0800\n"
+"POT-Creation-Date: 2022-02-14 20:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/reference/api/python/relay/transform.rst:19
+#: ../../../docs/reference/api/python/relay/transform.rst:19
 msgid "tvm.relay.transform"
 msgstr ""
 
@@ -428,6 +428,19 @@ msgstr ""
 
 #: of tvm.relay.transform:1:<autosummary>:1
 msgid ""
+":py:obj:`ManifestLifetimes "
+"<tvm.relay.transform.tvm.relay.transform.ManifestLifetimes>`\\ \\(\\)"
+msgstr ""
+
+#: of tvm.relay.transform.transform.ManifestLifetimes:1
+#: tvm.relay.transform:1:<autosummary>:1
+msgid ""
+"Manifest the lifetimes of variables after allocations have been "
+"manifested, by inserting kill operations once variables become dead."
+msgstr ""
+
+#: of tvm.relay.transform:1:<autosummary>:1
+msgid ""
 ":py:obj:`MergeCompilerRegions "
 "<tvm.relay.transform.tvm.relay.transform.MergeCompilerRegions>`\\ \\(\\)"
 msgstr ""
@@ -698,7 +711,7 @@ msgstr ""
 #: of tvm.relay.transform.transform.AlterOpLayout:1:<autosummary>:1
 msgid ""
 ":py:obj:`FunctionPass "
-"<tvm.relay.transform.tvm.relay.transform.FunctionPass>`\\"
+"<tvm.relay.transform.tvm.relay.transform.FunctionPass>`\\ \\(\\)"
 msgstr ""
 
 #: of tvm.relay.transform.transform.AlterOpLayout:1:<autosummary>:1
@@ -1660,5 +1673,10 @@ msgstr ""
 #~ msgid ""
 #~ ":py:obj:`FunctionPass "
 #~ "<tvm.relay.transform.tvm.relay.transform.FunctionPass>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`FunctionPass "
+#~ "<tvm.relay.transform.tvm.relay.transform.FunctionPass>`\\"
 #~ msgstr ""
 

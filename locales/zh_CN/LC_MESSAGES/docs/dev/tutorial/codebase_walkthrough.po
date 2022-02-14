@@ -35,7 +35,7 @@ msgstr ""
 "对于像 TVM 这样的代码库尤其如此，其中不同的组件以非明显的方式进行交互。"
 "在本指南中，我们试图通过一个简单的例子来说明构成编译管道的关键因素。"
 "对于每一个重要的步骤，我们都显示了它在代码库中的实现位置。"
-"其目的是让新的开发者和感兴趣的用户更快进入代码库"。
+"其目的是让新的开发者和感兴趣的用户更快进入代码库。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:26
 msgid "Codebase Structure Overview"
@@ -57,7 +57,7 @@ msgid ""
 "``src/relay`` - Implementation of Relay, a new functional IR for deep "
 "learning framework."
 msgstr ""
-"``src/relay`` - Relay 的实现，一个新的深度学习框架的函数式 IR。"
+"``src/relay`` - Relay 的实现，新的深度学习框架的函数式 IR。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:32
 msgid ""
@@ -71,7 +71,7 @@ msgid ""
 "``src/topi`` - Compute definitions and backend schedules for standard "
 "neural network operators."
 msgstr ""
-"``src/topi`` - 计算标准神经网络算子的定义和后端调度。"
+"``src/topi`` - 标准神经网络算子的计算定义和后端调度。"
 
 #: ../../docs/dev/tutorial/codebase_walkthrough.rst:35
 msgid ""
