@@ -35,6 +35,35 @@ def install(ctx):
     ctx.run('sudo apt-get install -y python3 python3-dev '
             'python3-setuptools gcc libtinfo-dev zlib1g-dev '
             'build-essential cmake libedit-dev libxml2-dev')
+    ctx.run('sudo apt install clang-12 clangd-12 llvm-12 liblldb-12-dev')
+
+@task
+def cuda(ctx):
+    '''安装 CUDA'''
+    cmds = ['sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub',
+        """sudo sh -c 'echo "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda.list'""",
+        'sudo apt-get update',
+        'sudo apt-get install -y cuda-toolkit-11-0']
+    for cmd in cmds:
+        ctx.run(cmd)
+
+@task
+def docker(ctx):
+    '''安装docker 及 nvidia-docker 2
+    
+    测试：`docker run --gpus all nvcr.io/nvidia/k8s/cuda-sample:nbody nbody -gpu -benchmark`
+    '''
+    cmds = ['curl https://get.docker.com | sh',
+    'distribution=$(. /etc/os-release;echo $ID$VERSION_ID)',
+    'curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -',
+    'curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list'
+    'curl -s -L https://nvidia.github.io/libnvidia-container/experimental/$distribution/libnvidia-container-experimental.list | sudo tee /etc/apt/sources.list.d/libnvidia-container-experimental.list'
+    'sudo apt-get update',
+    'sudo apt-get install -y nvidia-docker2',
+    'sudo service docker stop',
+    'sudo service docker start']
+    for cmd in cmds:
+        ctx.run(cmd)
 
 
 @task
@@ -58,9 +87,11 @@ def edit_config(ctx):
 
 @task
 def export(ctx):
-    ctx.run('export TVM_HOME=/home/runner/work/tvm/tvm/')
+    ROOT = '/home/runner/work/tvm'
+    # ROOT = '/home/xinet/study/'
+    ctx.run(f'export TVM_HOME={ROOT}/tvm/')
     ctx.run('export PYTHONPATH=$TVM_HOME/python:${PYTHONPATH}')
-    ctx.run('export PYTHONPATH=/home/runner/work/tvm/vta/python:${PYTHONPATH}')
+    ctx.run('export PYTHONPATH=$TVM_HOME/vta/python:${PYTHONPATH}')
     ctx.run('export TVM_LOG_DEBUG="ir/transform.cc=1;relay/ir/transform.cc=1"')
 
 
