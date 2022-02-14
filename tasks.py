@@ -5,6 +5,10 @@ from _docs import xin
 
 @task
 def init(ctx):
+    '''
+    python -m venv .env
+    source .env/bin/activate
+    '''
     ctx.run('conda install numpy decorator attrs tornado psutil xgboost')
     ctx.run('conda install scikit-learn-intelex')
     pip_cmd = 'pip install'
@@ -45,6 +49,7 @@ def edit_config(ctx):
         text = fp.read()
     text = text.replace('USE_RELAY_DEBUG OFF', 'USE_RELAY_DEBUG ON')
     text = text.replace('USE_LLVM OFF', 'USE_LLVM ON')
+    text = text.replace('USE_MICRO OFF', 'USE_MICRO ON')
     with open('build/config.cmake', 'w') as fp:
         fp.write(text)
     # ctx.run("echo 'set(USE_RELAY_DEBUG ON)' >> build/config.cmake")
