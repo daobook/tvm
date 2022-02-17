@@ -26,6 +26,7 @@ generates a runtime library for Nvidia GPU with TVM.
 Notice that you need to build TVM with cuda and llvm enabled.
 """
 
+
 ######################################################################
 # Overview for Supported Hardware Backend of TVM
 # ----------------------------------------------
@@ -120,7 +121,7 @@ module.run()
 out = module.get_output(0, tvm.nd.empty(out_shape)).numpy()
 
 # Print first 10 elements of output
-print(out.flatten()[0:10])
+print(out.flatten()[:10])
 
 ######################################################################
 # Save and Load Compiled Module
@@ -149,7 +150,7 @@ module.run(data=input_data)
 out_deploy = module.get_output(0).numpy()
 
 # Print first 10 elements of output
-print(out_deploy.flatten()[0:10])
+print(out_deploy.flatten()[:10])
 
 # check whether the output from deployed module is consistent with original one
 tvm.testing.assert_allclose(out_deploy, out, atol=1e-5)

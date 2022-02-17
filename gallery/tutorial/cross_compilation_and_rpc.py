@@ -31,6 +31,7 @@ platforms. In this tutorial, we will use the Raspberry Pi for a CPU example
 and the Firefly-RK3399 for an OpenCL example.
 """
 
+
 ######################################################################
 # Build TVM Runtime on Device
 # ---------------------------
@@ -113,11 +114,7 @@ s = te.create_schedule(B.op)
 
 local_demo = True
 
-if local_demo:
-    target = "llvm"
-else:
-    target = "llvm -mtriple=armv7l-linux-gnueabihf"
-
+target = "llvm" if local_demo else "llvm -mtriple=armv7l-linux-gnueabihf"
 func = tvm.build(s, [A, B], target=target, name="add_one")
 # save the lib at a local temp folder
 temp = utils.tempdir()

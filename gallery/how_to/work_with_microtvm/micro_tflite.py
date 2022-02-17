@@ -25,6 +25,7 @@ This tutorial is an introduction to working with microTVM and a TFLite
 model with Relay.
 """
 
+
 ######################################################################
 # .. note::
 #     If you want to run this tutorial on the microTVM Reference VM, download the Jupyter
@@ -155,7 +156,7 @@ except AttributeError:
 ######################################################################
 # Print out the version of the model
 version = tflite_model.Version()
-print("Model Version: " + str(version))
+print(f'Model Version: {str(version)}')
 
 ######################################################################
 # Parse the python model object to convert it into a relay module
@@ -321,4 +322,4 @@ with tvm.micro.Session(transport_context_manager=generated_project.transport()) 
     graph_mod.run()
 
     tvm_output = graph_mod.get_output(0).numpy()
-    print("result is: " + str(tvm_output))
+    print(f'result is: {str(tvm_output)}')

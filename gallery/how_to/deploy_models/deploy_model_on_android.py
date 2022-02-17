@@ -300,15 +300,12 @@ else:
     # When running a heavy model, we should increase the `session_timeout`
     remote = tracker.request(key, priority=0, session_timeout=60)
 
-if local_demo:
+if local_demo or test_target not in ["opencl", "vulkan"]:
     dev = remote.cpu(0)
 elif test_target == "opencl":
     dev = remote.cl(0)
-elif test_target == "vulkan":
-    dev = remote.vulkan(0)
 else:
-    dev = remote.cpu(0)
-
+    dev = remote.vulkan(0)
 # upload the library to remote device and load it
 remote.upload(lib_fname)
 rlib = remote.load_module("net.so")

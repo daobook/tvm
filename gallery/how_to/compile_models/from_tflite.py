@@ -61,13 +61,12 @@ import os
 def extract(path):
     import tarfile
 
-    if path.endswith("tgz") or path.endswith("gz"):
-        dir_path = os.path.dirname(path)
-        tar = tarfile.open(path)
-        tar.extractall(path=dir_path)
-        tar.close()
-    else:
-        raise RuntimeError("Could not decompress the file: " + path)
+    if not path.endswith("tgz") and not path.endswith("gz"):
+        raise RuntimeError(f'Could not decompress the file: {path}')
+    dir_path = os.path.dirname(path)
+    tar = tarfile.open(path)
+    tar.extractall(path=dir_path)
+    tar.close()
 
 
 ######################################################################
@@ -189,4 +188,7 @@ predictions = np.squeeze(tvm_output)
 prediction = np.argmax(predictions)
 
 # Convert id to class name and show the result
-print("The image prediction result is: id " + str(prediction) + " name: " + labels[prediction])
+print(
+    f'The image prediction result is: id {str(prediction)} name: '
+    + labels[prediction]
+)

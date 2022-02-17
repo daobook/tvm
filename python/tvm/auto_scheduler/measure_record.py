@@ -120,8 +120,9 @@ class RecordReader(Object):
         to rebuild these fields.
         """
         inputs, results = _ffi_api.RecordReaderReadLines(
-            self, max_lines if max_lines else -1, skip_lines
+            self, max_lines or -1, skip_lines
         )
+
         self.check_workload_key(inputs)
         return inputs, results
 
@@ -353,7 +354,7 @@ def main():
     logger.setLevel(logging.INFO)
 
     if args.mode == "distill":
-        args.output = args.output or args.input + ".best.json"
+        args.output = args.output or f'{args.input}.best.json'
         distill_record_file(args.input, args.output)
 
 

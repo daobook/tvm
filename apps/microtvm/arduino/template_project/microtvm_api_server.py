@@ -204,7 +204,7 @@ class Handler(server.ProjectAPIHandler):
             # Copy C files from model. The filesnames and quantity
             # depend on the target string, so we just copy all c files
             source_dir = mlf_unpacking_dir / "codegen" / "host" / "src"
-            for file in source_dir.rglob(f"*.c"):
+            for file in source_dir.rglob('*.c'):
                 shutil.copy(file, model_dir)
 
             # Return metadata.json for use in templating
@@ -238,7 +238,7 @@ class Handler(server.ProjectAPIHandler):
             for filename in source_dir.rglob(f"*.{ext}"):
                 filename.rename(filename.with_suffix(".cpp"))
 
-        for filename in source_dir.rglob(f"*.inc"):
+        for filename in source_dir.rglob('*.inc'):
             filename.rename(filename.with_suffix(".h"))
 
     def _convert_includes(self, project_dir, source_dir):
@@ -260,18 +260,18 @@ class Handler(server.ProjectAPIHandler):
                 with filename.open("rb") as src_file:
                     lines = src_file.readlines()
                     with filename.open("wb") as dst_file:
-                        for i, line in enumerate(lines):
+                        for line in lines:
                             line_str = str(line, "utf-8")
-                            # Check if line has an include
-                            result = re.search(r"#include\s*[<\"]([^>]*)[>\"]", line_str)
-                            if not result:
-                                dst_file.write(line)
-                            else:
+                            if result := re.search(
+                                r"#include\s*[<\"]([^>]*)[>\"]", line_str
+                            ):
                                 new_include = self._find_modified_include_path(
                                     project_dir, filename, result.groups()[0]
                                 )
                                 updated_line = f'#include "{new_include}"\n'
                                 dst_file.write(updated_line.encode("utf-8"))
+                            else:
+                                dst_file.write(line)
 
     # Most of the files we used to be able to point to directly are under "src/standalone_crt/include/".
     # Howver, crt_config.h lives under "src/standalone_crt/crt_config/", and more exceptions might
@@ -320,9 +320,7 @@ class Handler(server.ProjectAPIHandler):
         version_output = subprocess.check_output([arduino_cli_path, "version"], encoding="utf-8")
         full_version = re.findall("version: ([\.0-9]*)", version_output.lower())
         full_version = full_version[0].split(".")
-        version = float(f"{full_version[0]}.{full_version[1]}")
-
-        return version
+        return float(f"{full_version[0]}.{full_version[1]}")
 
     def generate_project(self, model_library_format_path, standalone_crt_dir, project_dir, options):
         # Check Arduino version
@@ -481,7 +479,7 @@ class Handler(server.ProjectAPIHandler):
 
         # It takes a moment for the Arduino code to finish initializing
         # and start communicating over serial
-        for attempts in range(10):
+        for _ in range(10):
             if any(serial.tools.list_ports.grep(port)):
                 break
             time.sleep(0.5)

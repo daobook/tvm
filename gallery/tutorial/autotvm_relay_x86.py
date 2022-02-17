@@ -42,6 +42,7 @@ The goal of this section is to give you an overview of TVM's capabilites and
 how to use them through the Python API.
 """
 
+
 ################################################################################
 # TVM is a deep learning compiler framework, with a number of different modules
 # available for working with deep learning models and operators. In this
@@ -234,7 +235,7 @@ with open(labels_path, "r") as f:
 scores = softmax(tvm_output)
 scores = np.squeeze(scores)
 ranks = np.argsort(scores)[::-1]
-for rank in ranks[0:5]:
+for rank in ranks[:5]:
     print("class='%s' with probability=%f" % (labels[rank], scores[rank]))
 
 ################################################################################
@@ -423,7 +424,7 @@ tvm_output = module.get_output(0, tvm.nd.empty(output_shape)).numpy()
 scores = softmax(tvm_output)
 scores = np.squeeze(scores)
 ranks = np.argsort(scores)[::-1]
-for rank in ranks[0:5]:
+for rank in ranks[:5]:
     print("class='%s' with probability=%f" % (labels[rank], scores[rank]))
 
 ################################################################################

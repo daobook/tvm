@@ -89,10 +89,8 @@ def get_itervar_feature(sch, args, take_log=False):
     # convert tvm node to python type
     ret = []
     for row in feas:
-        tmp = []
-        tmp.append([row[0][0].value, row[0][1]])
-        for item in row[1:]:
-            tmp.append([item[0].value] + [x.value for x in item[1:]])
+        tmp = [[row[0][0].value, row[0][1]]]
+        tmp.extend([item[0].value] + [x.value for x in item[1:]] for item in row[1:])
         ret.append(tmp)
     return ret
 
@@ -112,8 +110,7 @@ def flatten_itervar_feature(fea):
     """
     flatten = []
     for axis in fea:
-        for pair in axis[1:]:
-            flatten.append(pair[1:])
+        flatten.extend(pair[1:] for pair in axis[1:])
     return np.concatenate(flatten)
 
 
@@ -181,11 +178,7 @@ def get_flatten_name(fea):
         var_name = str(row[0][1])
         for pair in row[1:]:
             key = pair[0]
-            if key in feature_name:
-                name_list = feature_name[key]
-            else:
-                name_list = feature_name["buf_touch"]
-
+            name_list = feature_name.get(key, feature_name["buf_touch"])
             for i in range(len((pair[1:]))):
                 names.append(".".join(["f%d" % ct, var_name, key, name_list[i]]))
                 ct += 1

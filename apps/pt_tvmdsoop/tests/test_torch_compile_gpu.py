@@ -17,6 +17,7 @@
 # specific language governing permissions and limitations
 # under the License.
 """Test script for torch module"""
+
 import torch
 import time
 from torchvision.models import resnet50
@@ -30,7 +31,7 @@ model_jit = torch.jit.trace(model, x)
 print(model_jit.graph)
 
 print("run torchscript...")
-for i in range(20):
+for _ in range(20):
     t = time.time()
     model_jit(x)
     torch.cuda.synchronize()
@@ -55,7 +56,7 @@ torch.jit.script(pytorch_tvm_module).save("model_tvm.pt")
 
 
 print("Run PyTorch...")
-for i in range(20):
+for _ in range(20):
     t = time.time()
     outputs = pytorch_tvm_module.forward([x])
     torch.cuda.synchronize()

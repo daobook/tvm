@@ -159,7 +159,7 @@ class State:
         res_it : Iterator
             The binded Iterator.
         """
-        if not thread_name in State.ANNOTATION_TRANS_TABLE.keys():
+        if thread_name not in State.ANNOTATION_TRANS_TABLE.keys():
             raise ValueError("Invalid thread_name: ", thread_name)
 
         self.state_object, res = _ffi_api.StateBind(
@@ -211,8 +211,9 @@ class State:
             self.state_object,
             self._resolve_stage_id(stage),
             iterator,
-            max_unroll if max_unroll else -1,
+            max_unroll or -1,
         )
+
         return res
 
     def vectorize(self, stage, iterator):
@@ -592,7 +593,8 @@ class State:
         if isinstance(stage_id, int):
             return stage_id
         raise ValueError(
-            "Invalid stage: " + stage_id + " . Expect to be a int, Operation or Tensor"
+            f'Invalid stage: {stage_id}'
+            + " . Expect to be a int, Operation or Tensor"
         )
 
     def _update_stage_id_map(self):
@@ -609,7 +611,7 @@ class State:
             key = key.op
         if isinstance(key, Operation):
             return self.stages[self.stage_id_map[key]]
-        raise ValueError("Invalid item: " + key + " . Expect to be a Operation or Tensor")
+        raise ValueError(f'Invalid item: {key} . Expect to be a Operation or Tensor')
 
     def __str__(self):
         return str(self.state_object)

@@ -53,18 +53,15 @@ class GCN(nn.Module):
         self.g = g
         self.layers = nn.ModuleList()
         self.layers.append(GraphConv(n_infeat, n_hidden, activation=activation))
-        for i in range(n_layers - 1):
+        for _ in range(n_layers - 1):
             self.layers.append(GraphConv(n_hidden, n_hidden, activation=activation))
         self.layers.append(GraphConv(n_hidden, n_classes))
 
     def forward(self, features):
         h = features
-        for i, layer in enumerate(self.layers):
+        for layer in self.layers:
             # handle api changes for differnt DGL version
-            if dgl.__version__ > "0.3":
-                h = layer(self.g, h)
-            else:
-                h = layer(h, self.g)
+            h = layer(self.g, h) if dgl.__version__ > "0.3" else layer(h, self.g)
         return h
 
 
@@ -92,9 +89,7 @@ def evaluate(data, logits):
     test_mask = data.test_mask  # the test set which isn't included in the training phase
 
     pred = logits.argmax(axis=1)
-    acc = ((pred == data.labels) * test_mask).sum() / test_mask.sum()
-
-    return acc
+    return ((pred == data.labels) * test_mask).sum() / test_mask.sum()
 
 
 ######################################################################
@@ -216,7 +211,7 @@ def GraphConv(layer_name, input_dim, output_dim, adj, input, norm=None, bias=Tru
     if norm is not None:
         input = relay.multiply(input, norm)
 
-    weight = relay.var(layer_name + ".weight", shape=(input_dim, output_dim))
+    weight = relay.var(f'{layer_name}.weight', shape=(input_dim, output_dim))
     weight_t = relay.transpose(weight)
     dense = relay.nn.dense(weight_t, input)
     output = relay.nn.sparse_dense(dense, adj)
@@ -224,7 +219,7 @@ def GraphConv(layer_name, input_dim, output_dim, adj, input, norm=None, bias=Tru
     if norm is not None:
         output_t = relay.multiply(output_t, norm)
     if bias is True:
-        _bias = relay.var(layer_name + ".bias", shape=(output_dim, 1))
+        _bias = relay.var(f'{layer_name}.bias', shape=(output_dim, 1))
         output_t = relay.nn.bias_add(output_t, _bias, axis=-1)
     if activation is not None:
         output_t = activation(output_t)
@@ -240,11 +235,7 @@ import networkx as nx
 
 
 def prepare_params(g, data):
-    params = {}
-    params["infeats"] = data.features.numpy().astype(
-        "float32"
-    )  # Only support float32 as feature for now
-
+    params = {'infeats': data.features.numpy().astype("float32")}
     # Generate adjacency matrix
     adjacency = nx.to_scipy_sparse_matrix(g)
     params["g_data"] = adjacency.data.astype("float32")
@@ -283,8 +274,7 @@ Adjacency = namedtuple("Adjacency", ["data", "indices", "indptr"])
 adj = Adjacency(g_data, indices, indptr)
 
 # Construct the 2-layer GCN
-layers = []
-layers.append(
+layers = [
     GraphConv(
         layer_name="layers.0",
         input_dim=infeat_dim,
@@ -294,7 +284,8 @@ layers.append(
         norm=norm,
         activation=relay.nn.relu,
     )
-)
+]
+
 layers.append(
     GraphConv(
         layer_name="layers.1",
@@ -315,9 +306,10 @@ output = layers[-1]
 # ------------------------
 #
 # Export the weigths from PyTorch model to Python Dict
-model_params = {}
-for param_tensor in torch_model.state_dict():
-    model_params[param_tensor] = torch_model.state_dict()[param_tensor].numpy()
+model_params = {
+    param_tensor: torch_model.state_dict()[param_tensor].numpy()
+    for param_tensor in torch_model.state_dict()
+}
 
 for i in range(num_layers + 1):
     params["layers.%d.weight" % (i)] = model_params["layers.%d.weight" % (i)]

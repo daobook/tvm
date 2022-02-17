@@ -201,11 +201,8 @@ ATTACH_USB_DEVICE = {
 
 
 def generate_packer_config(platform, file_path, providers):
-    builders = []
     provisioners = []
-    for provider_name in providers:
-        builders.append(
-            {
+    builders = [{
                 "name": f"{provider_name}",
                 "type": "vagrant",
                 "box_name": f"microtvm-base-{provider_name}",
@@ -214,9 +211,7 @@ def generate_packer_config(platform, file_path, providers):
                 "source_path": "generic/ubuntu1804",
                 "provider": provider_name,
                 "template": "Vagrantfile.packer-template",
-            }
-        )
-
+            } for provider_name in providers]
     repo_root = subprocess.check_output(
         ["git", "rev-parse", "--show-toplevel"], encoding="utf-8"
     ).strip()
@@ -225,19 +220,13 @@ def generate_packer_config(platform, file_path, providers):
         filename = os.path.basename(script_path)
         provisioners.append({"type": "file", "source": script_path, "destination": f"~/{filename}"})
 
-    provisioners.append(
-        {
+    provisioners.extend(({
             "type": "shell",
             "script": "base_box_setup.sh",
-        }
-    )
-    provisioners.append(
-        {
+        }, {
             "type": "shell",
             "script": "base_box_provision.sh",
-        }
-    )
-
+        }))
     with open(file_path, "w") as f:
         json.dump(
             {
@@ -437,10 +426,10 @@ def test_command(args):
 
 
 def release_command(args):
-    if args.release_full_name:
-        vm_name = args.release_full_name
-    else:
-        vm_name = f"tlcpack/microtvm-{args.platform}-{args.platform_version}"
+    vm_name = (
+        args.release_full_name
+        or f"tlcpack/microtvm-{args.platform}-{args.platform_version}"
+    )
 
     if not args.skip_creating_release_version:
         subprocess.check_call(
@@ -454,7 +443,7 @@ def release_command(args):
             ]
         )
     if not args.release_version:
-        sys.exit(f"--release-version must be specified")
+        sys.exit('--release-version must be specified')
 
     for provider_name in args.provider:
         subprocess.check_call(

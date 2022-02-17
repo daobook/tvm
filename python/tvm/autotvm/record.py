@@ -119,7 +119,7 @@ def encode(inp, result, protocol="json"):
         )
         return "\t".join(row)
 
-    raise RuntimeError("Invalid log protocol: " + protocol)
+    raise RuntimeError(f'Invalid log protocol: {protocol}')
 
 
 def decode(row, protocol="json"):
@@ -161,7 +161,7 @@ def decode(row, protocol="json"):
             2. Convert unicode to str for python2
             """
             if isinstance(x, list):
-                return tuple([clean_json_to_python(a) for a in x])
+                return tuple(clean_json_to_python(a) for a in x)
             if isinstance(x, _unicode):
                 return str(x)
             if isinstance(x, (_long, int)):
@@ -286,10 +286,7 @@ def pick_best(in_file, out_file):
         context = itertools.chain(context, out_context)
     context, context_clone = itertools.tee(context)
     best_context = ApplyHistoryBest(context)
-    best_set = set()
-
-    for v in best_context.best_by_model.values():
-        best_set.add(measure_str_key(v[0]))
+    best_set = {measure_str_key(v[0]) for v in best_context.best_by_model.values()}
 
     for v in best_context.best_by_targetkey.values():
         best_set.add(measure_str_key(v[0]))
@@ -316,6 +313,7 @@ e.g. python -m tvm.autotvm.record --mode pick --i collect.log
 * Split a log file into separate files, each of which contains only a single wkl
 e.g. python -m tvm.autotvm.record --mode split --i collect.log
 """
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", choices=["read", "pick", "split"], default="read")
@@ -330,7 +328,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
 
     if args.mode == "pick":
-        args.o = args.o or args.i + ".best.log"
+        args.o = args.o or f'{args.i}.best.log'
         pick_best(args.i, args.o)
     elif args.mode == "read":
         for i, (inp, result) in enumerate(load_from_file(args.i)):

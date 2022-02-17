@@ -80,7 +80,7 @@ def get_network(name, batch_size, layout="NHWC", dtype="float32", use_sparse=Fal
     elif layout == "NCHW":
         image_shape = (3, 224, 224)
     else:
-        raise ValueError("Invalid layout: " + layout)
+        raise ValueError(f'Invalid layout: {layout}')
 
     input_shape = (batch_size,) + image_shape
     output_shape = (batch_size, 1000)

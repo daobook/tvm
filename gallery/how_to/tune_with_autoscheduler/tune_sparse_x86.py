@@ -119,15 +119,24 @@ prefix = "sparse_dense_bsr_%d_%d_%d_%d_%d_%d_" % (
 )
 task = tvm.auto_scheduler.SearchTask(
     func=sparse_dense,
-    args=(M, N, K, W_sp_np.data.shape, W_sp_np.indices.shape, W_sp_np.indptr.shape, "float32"),
+    args=(
+        M,
+        N,
+        K,
+        W_sp_np.data.shape,
+        W_sp_np.indices.shape,
+        W_sp_np.indptr.shape,
+        "float32",
+    ),
     target=target,
     task_inputs={
-        prefix + "W_data": runtime.ndarray.array(W_sp_np.data),
-        prefix + "W_indices": runtime.ndarray.array(W_sp_np.indices),
-        prefix + "W_indptr": runtime.ndarray.array(W_sp_np.indptr),
+        f'{prefix}W_data': runtime.ndarray.array(W_sp_np.data),
+        f'{prefix}W_indices': runtime.ndarray.array(W_sp_np.indices),
+        f'{prefix}W_indptr': runtime.ndarray.array(W_sp_np.indptr),
     },
     task_inputs_save_to_file=True,
 )
+
 
 # Inspect the computational graph
 print("Computational DAG:")
@@ -158,7 +167,6 @@ def meet_condition_func(search_policy, state, stage_id):
 
 
 def apply_func(search_policy, state, stage_id):
-    ret = []
     s0 = auto_scheduler.loop_state.State(state, search_policy.search_task.compute_dag)
     if s0.stages[stage_id].op.tag == "sparse_dense_sp_rhs_bsrmm_block":
         return [s0.state_object, stage_id - 1]
@@ -194,9 +202,7 @@ def apply_func(search_policy, state, stage_id):
     s0.reorder(consumer, [m0, n0, m1, n1])
     s0.compute_at(sparse_dense_block, consumer, n0)
 
-    ret.append([s0.state_object, stage_id - 2])
-
-    return ret
+    return [[s0.state_object, stage_id - 2]]
 
 
 ######################################################################

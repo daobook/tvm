@@ -113,7 +113,7 @@ def test_gemm():
         a = tvm.nd.array(a_np, dev)
         b = tvm.nd.array(b_np, dev)
         c = tvm.nd.array(np.zeros((n, m), dtype=C.dtype), dev)
-        for i in range(2):
+        for _ in range(2):
             f(a, b, c)
         tvm.testing.assert_allclose(c.numpy(), np.dot(b_np.T, a_np), rtol=1e-5)
 

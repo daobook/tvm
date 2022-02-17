@@ -72,7 +72,7 @@ def get_shape(
     """
     data_shape = (1, in_filter // NUM_VEC_LANES, im_height, im_width, NUM_VEC_LANES)
 
-    if out_dtype == "int32" or out_dtype == "uint32":
+    if out_dtype in ["int32", "uint32"]:
         kernel_shape = (
             out_filter // NUM_VEC_LANES,
             in_filter // NUM_VEC_LANES,

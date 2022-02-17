@@ -84,7 +84,7 @@ def get_network(name, batch_size, dtype="float32"):
         )
         net = tvm.IRModule.from_expr(net)
     else:
-        raise ValueError("Unsupported network: " + name)
+        raise ValueError(f'Unsupported network: {name}')
 
     return net, params, input_shape, output_shape
 

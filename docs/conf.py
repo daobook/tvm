@@ -188,7 +188,7 @@ html_favicon = "_static/img/tvm-logo-square.png"
 
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = project + "doc"
+htmlhelp_basename = f'{project}doc'
 
 # -- Options for LaTeX output ---------------------------------------------
 latex_elements = {}

@@ -150,7 +150,7 @@ def make_workload_key(func, args):
             + " . `make_workload_key` expects a callable function or its function name"
         )
 
-    if not func_name in WORKLOAD_FUNC_REGISTRY:
+    if func_name not in WORKLOAD_FUNC_REGISTRY:
         raise ValueError(
             "%s is not registered. " % func,
             "Please register it with @auto_scheduler.register_workload",

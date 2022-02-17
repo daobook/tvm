@@ -137,12 +137,12 @@ class BaseGraphTuner(object):
 
         # Set up logger
         self._verbose = verbose
-        self._logger = logging.getLogger(name + "_logger")
+        self._logger = logging.getLogger(f'{name}_logger')
         need_file_handler = need_console_handler = True
         for handler in self._logger.handlers:
             if handler.__class__.__name__ == "FileHandler":
                 need_file_handler = False
-            if handler.__class__.__name__ == "StreamHandler":
+            elif handler.__class__.__name__ == "StreamHandler":
                 need_console_handler = False
         self._log_level = log_level
         self._log_file = log_file
@@ -163,13 +163,12 @@ class BaseGraphTuner(object):
         if isinstance(graph, tvm.IRModule):
             graph = graph["main"]
 
-        if isinstance(graph, relay.function.Function):
-            node_dict = {}
-            graph = bind_inputs(graph, input_shapes, dtype)
-            expr2graph(graph, self._target_ops, node_dict, self._node_list, target)
-        else:
+        if not isinstance(graph, relay.function.Function):
             raise RuntimeError("Unsupported graph type: %s" % str(type(graph)))
 
+        node_dict = {}
+        graph = bind_inputs(graph, input_shapes, dtype)
+        expr2graph(graph, self._target_ops, node_dict, self._node_list, target)
         self._graph = graph
         self._in_nodes_dict = get_in_nodes(self._node_list, self._target_ops, input_shapes.keys())
         if len(self._in_nodes_dict) == 0:
@@ -202,7 +201,7 @@ class BaseGraphTuner(object):
                         input_workload = input_node["workloads"][0]
                         first_tensor = input_workload[1]
                         dtype = first_tensor[-1]
-                        new_shape = tuple([val.value for val in node_entry["types"][0].shape])
+                        new_shape = tuple(val.value for val in node_entry["types"][0].shape)
                         actual_workload = (
                             (input_workload[0],)
                             + (("TENSOR", new_shape, dtype),)
@@ -238,7 +237,6 @@ class BaseGraphTuner(object):
             if workload in cache_dict:
                 node_entry["record_candidates"] = cache_dict[workload]
                 continue
-            record_candidates = []
             infer_layout_func = get_infer_layout(node_entry["topi_op"][0])
             layout_tracking_dict = {}
             for record in cfg_dict[workload]:
@@ -259,8 +257,11 @@ class BaseGraphTuner(object):
             sorted_records = sorted(
                 layout_tracking_dict.values(), key=lambda item: item[1].costs[0]
             )
-            for i in range(min(self._max_sch_num, len(sorted_records))):
-                record_candidates.append(sorted_records[i])
+            record_candidates = [
+                sorted_records[i]
+                for i in range(min(self._max_sch_num, len(sorted_records)))
+            ]
+
             node_entry["record_candidates"] = record_candidates
             cache_dict[workload] = record_candidates
 

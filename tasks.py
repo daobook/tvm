@@ -75,8 +75,7 @@ def edit_config(ctx):
         BUILD.mkdir()
     ctx.run('cp cmake/config.cmake build')
     ctx.run("echo 'set(USE_VTA_FSIM ON)' >> build/config.cmake")
-    with open('build/config.cmake') as fp:
-        text = fp.read()
+    text = Path('build/config.cmake').read_text()
     text = text.replace('USE_RELAY_DEBUG OFF', 'USE_RELAY_DEBUG ON')
     text = text.replace('USE_LLVM OFF', 'USE_LLVM ON')
     text = text.replace('USE_MICRO OFF', 'USE_MICRO ON')
@@ -88,9 +87,8 @@ def edit_config(ctx):
 
 @task
 def export(ctx):
-    ROOT = '/home/runner/work/tvm'
     # ROOT = '/home/xinet/study/'
-    ctx.run(f'export TVM_HOME={ROOT}/tvm/')
+    ctx.run(f'export TVM_HOME=/home/runner/work/tvm/tvm/')
     ctx.run('export PYTHONPATH=$TVM_HOME/python:${PYTHONPATH}')
     ctx.run('export PYTHONPATH=$TVM_HOME/vta/python:${PYTHONPATH}')
     ctx.run('export TVM_LOG_DEBUG="ir/transform.cc=1;relay/ir/transform.cc=1"')

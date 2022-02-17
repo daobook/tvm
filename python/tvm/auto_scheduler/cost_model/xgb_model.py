@@ -288,7 +288,7 @@ class XGBModel(PythonBasedModel):
             stage_scores = [[] for _ in range(len(states))]
             for pred, pack_id in zip(raw_preds, pack_ids):
                 stage_scores[pack_id].append(pred)
-            for idx, stage_score in enumerate(stage_scores):
+            for stage_score in stage_scores:
                 breakdown = np.append(breakdown, len(stage_score))
                 breakdown = np.concatenate((breakdown, np.array(stage_score)))
         else:
@@ -436,8 +436,7 @@ def predict_throughput_pack_sum(raw_preds, pack_ids):
     throughputs: np.ndarray
         The throughput
     """
-    sum_pred = np.bincount(pack_ids, weights=raw_preds)
-    return sum_pred
+    return np.bincount(pack_ids, weights=raw_preds)
 
 
 def pack_sum_square_error(preds, dtrain):
@@ -568,21 +567,17 @@ def custom_callback(
 
         state["maximize_score"] = maximize
         state["best_iteration"] = 0
-        if maximize:
-            state["best_score"] = float("-inf")
-        else:
-            state["best_score"] = float("inf")
-
-        if bst is not None:
-            if bst.attr("best_score") is not None:
-                state["best_score"] = float(bst.attr("best_score"))
-                state["best_iteration"] = int(bst.attr("best_iteration"))
-                state["best_msg"] = bst.attr("best_msg")
-            else:
-                bst.set_attr(best_iteration=str(state["best_iteration"]))
-                bst.set_attr(best_score=str(state["best_score"]))
-        else:
+        state["best_score"] = float("-inf") if maximize else float("inf")
+        if bst is None:
             assert env.cvfolds is not None
+
+        elif bst.attr("best_score") is not None:
+            state["best_score"] = float(bst.attr("best_score"))
+            state["best_iteration"] = int(bst.attr("best_iteration"))
+            state["best_msg"] = bst.attr("best_msg")
+        else:
+            bst.set_attr(best_iteration=str(state["best_iteration"]))
+            bst.set_attr(best_score=str(state["best_score"]))
 
     def callback(env):
         """internal function"""
@@ -598,14 +593,12 @@ def custom_callback(
         if i % skip_every == 1:
             return
 
-        ##### evaluation #####
-        if cvfolds is not None:
-            for feval in fevals:
+        for feval in fevals:
+            if cvfolds is not None:
                 tmp = aggcv([f.eval(i, feval) for f in cvfolds])
                 for k, mean, std in tmp:
                     res_dict[k] = [mean, std]
-        else:
-            for feval in fevals:
+            else:
                 bst_eval = bst.eval_set(evals, i, feval)
                 res = [x.split(":") for x in bst_eval.split()]
                 for kv in res[1:]:
@@ -613,7 +606,7 @@ def custom_callback(
 
         eval_res = []
         keys = list(res_dict.keys())
-        keys.sort(key=lambda x: x if metric_shortname not in x else "a" + x)
+        keys.sort(key=lambda x: x if metric_shortname not in x else f'a{x}')
         for key in keys:
             v = res_dict[key]
             eval_res.append([key] + v)
@@ -621,22 +614,18 @@ def custom_callback(
         ##### print eval result #####
         if not isinstance(verbose_eval, bool) and verbose_eval and i % verbose_eval == 0:
             infos = ["XGB iter: %3d" % i]
-            for item in eval_res:
-                if "null" in item[0]:
-                    continue
-                infos.append("%s: %.6f" % (item[0], item[1]))
+            infos.extend(
+                "%s: %.6f" % (item[0], item[1])
+                for item in eval_res
+                if "null" not in item[0]
+            )
 
             logger.debug("\t".join(infos))
             if log_file:
                 with open(log_file, "a") as fout:
                     fout.write("\t".join(infos) + "\n")
 
-        ##### choose score and do early stopping #####
-        score = None
-        for item in eval_res:
-            if item[0] == metric:
-                score = item[1]
-                break
+        score = next((item[1] for item in eval_res if item[0] == metric), None)
         assert score is not None
 
         best_score = state["best_score"]

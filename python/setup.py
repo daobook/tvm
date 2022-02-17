@@ -104,10 +104,7 @@ def config_cython():
         from Cython.Build import cythonize
 
         # from setuptools.extension import Extension
-        if sys.version_info >= (3, 0):
-            subdir = "_cy3"
-        else:
-            subdir = "_cy2"
+        subdir = "_cy3" if sys.version_info >= (3, 0) else "_cy2"
         ret = []
         path = "tvm/_ffi/_cython"
         extra_compile_args = ["-std=c++14", "-DDMLC_USE_LOGGING_LIBRARY=<tvm/runtime/logging.h>"]
@@ -122,11 +119,7 @@ def config_cython():
             library_dirs = None
             libraries = None
 
-        for fn in os.listdir(path):
-            if not fn.endswith(".pyx"):
-                continue
-            ret.append(
-                Extension(
+        ret.extend(Extension(
                     "tvm._ffi.%s.%s" % (subdir, fn[:-4]),
                     ["tvm/_ffi/_cython/%s" % fn],
                     include_dirs=[
@@ -138,8 +131,7 @@ def config_cython():
                     library_dirs=library_dirs,
                     libraries=libraries,
                     language="c++",
-                )
-            )
+                ) for fn in os.listdir(path) if fn.endswith(".pyx"))
         return cythonize(ret, compiler_directives={"language_level": 3})
     except ImportError as error:
         if FFI_MODE == "cython":

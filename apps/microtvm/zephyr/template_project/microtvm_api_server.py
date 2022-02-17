@@ -65,7 +65,7 @@ BOARDS = API_SERVER_DIR / "boards.json"
 # We only check two levels of the version.
 ZEPHYR_VERSION = 2.7
 
-WEST_CMD = default = sys.executable + " -m west" if sys.executable else None
+WEST_CMD = default = f'{sys.executable} -m west' if sys.executable else None
 
 ZEPHYR_BASE = os.getenv("ZEPHYR_BASE")
 
@@ -183,16 +183,16 @@ def openocd_serial(options):
 
     find_kw = BOARD_USB_FIND_KW[CMAKE_CACHE["BOARD"]]
     boards = usb.core.find(find_all=True, **find_kw)
-    serials = []
-    for b in boards:
-        serials.append(b.serial_number)
-
-    if len(serials) == 0:
+    serials = [b.serial_number for b in boards]
+    if not serials:
         raise BoardAutodetectFailed(f"No attached USB devices matching: {find_kw!r}")
     serials.sort()
 
     autodetected_openocd_serial = serials[0]
-    _LOG.debug("zephyr openocd driver: autodetected serial %s", serials[0])
+    _LOG.debug(
+        "zephyr openocd driver: autodetected serial %s",
+        autodetected_openocd_serial,
+    )
 
     return autodetected_openocd_serial
 
@@ -229,10 +229,9 @@ def _get_nrf_device_args(options):
 
 PROJECT_TYPES = []
 if IS_TEMPLATE:
-    for d in (API_SERVER_DIR / "src").iterdir():
-        if d.is_dir():
-            PROJECT_TYPES.append(d.name)
-
+    PROJECT_TYPES.extend(
+        d.name for d in (API_SERVER_DIR / "src").iterdir() if d.is_dir()
+    )
 
 PROJECT_OPTIONS = [
     server.ProjectOption(
@@ -630,7 +629,7 @@ class ZephyrSerialTransport:
     @classmethod
     def _find_openocd_serial_port(cls, options):
         serial_number = openocd_serial(options)
-        ports = [p for p in serial.tools.list_ports.grep(serial_number)]
+        ports = list(serial.tools.list_ports.grep(serial_number))
         if len(ports) != 1:
             raise Exception(
                 f"_find_openocd_serial_port: expected 1 port to match {serial_number}, "

@@ -82,8 +82,8 @@ def filter_inputs(db, measure_inputs, retry=False):
     unsaved: Array of MeasureInput
         a list that only contains unsaved inputs
     """
-    partial_results = list()
-    unsaved = list()
+    partial_results = []
+    unsaved = []
     for inp in measure_inputs:
         res = db.load(inp)
         if res is None or (retry and res.error_no != 0):
@@ -164,7 +164,7 @@ class RedisDatabase(Database):
         get records with errors
         >>> db.filter(lambda inp, results: any(r.error_no != 0 for r in results))
         """
-        matched_records = list()
+        matched_records = []
         # may consider filtering in iterator in the future
         for key in self.db.keys():
             current = self.get(key)

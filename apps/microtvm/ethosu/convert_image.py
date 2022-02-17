@@ -27,7 +27,7 @@ def create_header_file(name, section, tensor_name, tensor_data, output_path):
     """
     This function generates a header file containing the data from the numpy array provided.
     """
-    file_path = pathlib.Path(f"{output_path}/" + name).resolve()
+    file_path = pathlib.Path(f'{output_path}/{name}').resolve()
     # Create header file with npy_data as a C array
     raw_path = file_path.with_suffix(".h").resolve()
     with open(raw_path, "w") as header_file:

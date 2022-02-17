@@ -209,9 +209,12 @@ class PackedFuncBase(object):
         self.is_global = is_global
 
     def __del__(self):
-        if not self.is_global and _LIB is not None:
-            if _LIB.TVMFuncFree(self.handle) != 0:
-                raise get_last_ffi_error()
+        if (
+            not self.is_global
+            and _LIB is not None
+            and _LIB.TVMFuncFree(self.handle) != 0
+        ):
+            raise get_last_ffi_error()
 
     def __call__(self, *args):
         """Call the function with positional arguments
@@ -261,8 +264,7 @@ def __init_handle_by_constructor__(fconstructor, args):
     _ = temp_args
     _ = args
     assert ret_tcode.value == ArgTypeCode.OBJECT_HANDLE
-    handle = ret_val.v_handle
-    return handle
+    return ret_val.v_handle
 
 
 def _return_module(x):

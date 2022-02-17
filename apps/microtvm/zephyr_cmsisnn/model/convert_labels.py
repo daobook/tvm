@@ -31,9 +31,9 @@ def create_labels_header(labels_file, output_path):
         labels = f.readlines()
 
     with open(file_path, "w") as header_file:
-        header_file.write(f"char* labels[] = {{")
+        header_file.write('char* labels[] = {')
 
-        for _, label in enumerate(labels):
+        for label in labels:
             header_file.write(f'"{label.rstrip()}",')
 
         header_file.write("};\n")

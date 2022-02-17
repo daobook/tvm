@@ -30,11 +30,10 @@ def libinfo():
         The dictionary of compile-time info.
     """
     get_lib_info_func = get_global_func("support.GetLibInfo", allow_missing=True)
-    if get_lib_info_func is not None:
-        lib_info = get_lib_info_func()
-        if lib_info is None:
-            return {}
-    else:
+    if get_lib_info_func is None:
+        return {}
+    lib_info = get_lib_info_func()
+    if lib_info is None:
         return {}
     return dict(lib_info.items())
 

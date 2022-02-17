@@ -230,9 +230,13 @@ def load_reference_log(backend, model, workload_name):
             if not find and counts:
                 model = max(counts.items(), key=lambda k: k[1])[0]
 
-            for inp, res in load_from_file(filename):
-                if model == inp.target.model and inp.task.workload[0] == workload_name:
-                    tmp.append((inp, res))
+            tmp.extend(
+                (inp, res)
+                for inp, res in load_from_file(filename)
+                if model == inp.target.model
+                and inp.task.workload[0] == workload_name
+            )
+
         REFERENCE_LOG_CACHE[key] = tmp
 
     return REFERENCE_LOG_CACHE[key]

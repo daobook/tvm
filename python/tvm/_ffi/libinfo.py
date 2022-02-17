@@ -64,19 +64,23 @@ def get_dll_directories():
     elif sys.platform.startswith("win32"):
         dll_path.extend(split_env_var("PATH", ";"))
 
-    # Pip lib directory
-    dll_path.append(os.path.join(ffi_dir, ".."))
-    # Default cmake build directory
-    dll_path.append(os.path.join(source_dir, "build"))
-    dll_path.append(os.path.join(source_dir, "build", "Release"))
-    # Default make build directory
-    dll_path.append(os.path.join(source_dir, "lib"))
-
-    dll_path.append(install_lib_dir)
+    dll_path.extend(
+        (
+            os.path.join(ffi_dir, ".."),
+            os.path.join(source_dir, "build"),
+            os.path.join(source_dir, "build", "Release"),
+            os.path.join(source_dir, "lib"),
+            install_lib_dir,
+        )
+    )
 
     if os.path.isdir(source_dir):
-        dll_path.append(os.path.join(source_dir, "web", "dist", "wasm"))
-        dll_path.append(os.path.join(source_dir, "web", "dist"))
+        dll_path.extend(
+            (
+                os.path.join(source_dir, "web", "dist", "wasm"),
+                os.path.join(source_dir, "web", "dist"),
+            )
+        )
 
     dll_path = [os.path.realpath(x) for x in dll_path]
     return [x for x in dll_path if os.path.isdir(x)]
@@ -175,13 +179,11 @@ def find_include_path(name=None, search_path=None, optional=False):
     if os.environ.get("TVM_INCLUDE_PATH", None):
         header_path.append(os.environ["TVM_INCLUDE_PATH"])
 
-    header_path.append(source_dir)
-    header_path.append(third_party_dir)
-
+    header_path.extend((source_dir, third_party_dir))
     header_path = [os.path.abspath(x) for x in header_path]
     if search_path is not None:
         if isinstance(search_path, list):
-            header_path = header_path + search_path
+            header_path += search_path
         else:
             header_path.append(search_path)
     if name is not None:

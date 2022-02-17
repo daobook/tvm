@@ -38,7 +38,7 @@ if sys.platform == "win32":
         try:
             return x.decode("utf-8")
         except UnicodeDecodeError:
-            encoding = "cp" + str(ctypes.cdll.kernel32.GetACP())
+            encoding = f'cp{str(ctypes.cdll.kernel32.GetACP())}'
         return x.decode(encoding)
 
     py_str = _py_str

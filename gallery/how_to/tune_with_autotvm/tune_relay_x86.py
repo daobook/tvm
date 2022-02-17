@@ -85,7 +85,7 @@ def get_network(name, batch_size):
         )
         mod = tvm.IRModule.from_expr(net)
     else:
-        raise ValueError("Unsupported network: " + name)
+        raise ValueError(f'Unsupported network: {name}')
 
     return mod, params, input_shape, output_shape
 
@@ -153,7 +153,7 @@ def tune_kernels(
         prefix = "[Task %2d/%2d] " % (i + 1, len(tasks))
 
         # create tuner
-        if tuner == "xgb" or tuner == "xgb-rank":
+        if tuner in ["xgb", "xgb-rank"]:
             tuner_obj = XGBTuner(task, loss_type="rank")
         elif tuner == "ga":
             tuner_obj = GATuner(task, pop_size=50)
@@ -162,7 +162,7 @@ def tune_kernels(
         elif tuner == "gridsearch":
             tuner_obj = GridSearchTuner(task)
         else:
-            raise ValueError("Invalid tuner: " + tuner)
+            raise ValueError(f'Invalid tuner: {tuner}')
 
         # do tuning
         n_trial = len(task.config_space)

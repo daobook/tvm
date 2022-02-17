@@ -37,7 +37,7 @@ model_jit = torch.jit.trace(model, x)
 print(model_jit.graph)
 
 print("run torchscript...")
-for i in range(20):
+for _ in range(20):
     t = time.time()
     model_jit(x)
     print(time.time() - t)
@@ -61,7 +61,7 @@ torch.jit.script(pytorch_tvm_module).save("model_tvm.pt")
 
 
 print("Run PyTorch...")
-for i in range(20):
+for _ in range(20):
     t = time.time()
     outputs = pytorch_tvm_module.forward([x.cpu()])
     print(1000 * (time.time() - t))
