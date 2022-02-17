@@ -33,7 +33,7 @@ def create_labels_header(labels_file, section, output_path):
     with open(file_path, "w") as header_file:
         header_file.write(f'char* labels[] __attribute__((section("{section}"), aligned(16))) = {{')
 
-        for _, label in enumerate(labels):
+        for label in labels:
             header_file.write(f'"{label.rstrip()}",')
 
         header_file.write("};\n")

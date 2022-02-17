@@ -183,7 +183,7 @@ class TuningOptions(Object):
             if builder == "local":
                 builder = LocalBuilder()
             else:
-                raise ValueError("Invalid builder: " + builder)
+                raise ValueError(f'Invalid builder: {builder}')
         elif not isinstance(builder, tvm.auto_scheduler.measure.ProgramBuilder):
             raise ValueError(
                 "Invalid builder: "
@@ -195,11 +195,13 @@ class TuningOptions(Object):
             if runner == "local":
                 runner = LocalRunner()
             else:
-                raise ValueError("Invalid runner: " + runner)
+                raise ValueError(f'Invalid runner: {runner}')
         elif not isinstance(runner, tvm.auto_scheduler.measure.ProgramRunner):
             raise ValueError(
-                "Invalid runner: " + runner + " . TuningOptions expects a ProgramRunner or string."
+                f'Invalid runner: {runner}'
+                + " . TuningOptions expects a ProgramRunner or string."
             )
+
 
         self.__init_handle_by_constructor__(
             _ffi_api.TuningOptions,
@@ -253,7 +255,7 @@ def _try_load_buffer_from_file(buffer_name):
     filelist = os.listdir()
 
     for file in filelist:
-        if file.startswith(buffer_name + "."):
+        if file.startswith(f'{buffer_name}.'):
             meta_info = file.split(".")[-2].split("_")
             shape = [int(i) for i in meta_info[:-1]]
             dtype = meta_info[-1]
@@ -305,9 +307,7 @@ def register_task_input_buffer(
 
     if not overwrite:
         if input_name not in input_table.keys():
-            # Try to load buffer data from local file
-            tensor_from_file = _try_load_buffer_from_file(input_name)
-            if tensor_from_file:
+            if tensor_from_file := _try_load_buffer_from_file(input_name):
                 input_table[input_name] = tensor_from_file
         elif input_name in input_table.keys():
             raise RuntimeError(
@@ -346,9 +346,7 @@ def get_task_input_buffer(workload_key, input_name):
     input_table = TASK_INPUT_BUFFER_TABLE[workload_key]
 
     if input_name not in input_table:
-        # Try to load buffer data from local file
-        tensor_from_file = _try_load_buffer_from_file(input_name)
-        if tensor_from_file:
+        if tensor_from_file := _try_load_buffer_from_file(input_name):
             input_table[input_name] = tensor_from_file
 
     # Then check for the default table, the input names extracted from a relay model will be

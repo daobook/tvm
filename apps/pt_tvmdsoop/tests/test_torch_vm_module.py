@@ -80,10 +80,9 @@ def test_use_pt_vm_module():
             inps = [torch.Tensor(x), torch.Tensor(y)]
             if device == "cpu":
                 return inps
-            else:
-                device_type, device_id = device.split(":")
-                assert device_type == "cuda"
-                return [inp.cuda(int(device_id)) for inp in inps]
+            device_type, device_id = device.split(":")
+            assert device_type == "cuda"
+            return [inp.cuda(int(device_id)) for inp in inps]
 
         assets = [os.path.join(export_dir, i) for i in TVM_ASSETS]
         engine.init((x.shape, y.shape), *assets)

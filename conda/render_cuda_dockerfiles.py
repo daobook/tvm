@@ -53,8 +53,6 @@ def render_dockerfile(version):
 
 
 if __name__ == "__main__":
-    build_versions = CUDA_VERSIONS
-    if len(sys.argv) > 1:
-        build_versions = sys.argv[1:]
+    build_versions = sys.argv[1:] if len(sys.argv) > 1 else CUDA_VERSIONS
     for version in build_versions:
         render_dockerfile(version)

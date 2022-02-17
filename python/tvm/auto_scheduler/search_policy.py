@@ -251,8 +251,7 @@ class SketchPolicy(SearchPolicy):
         states: List[State]
             The sampled states
         """
-        states = _ffi_api.SketchPolicySampleInitialPopulation(self)
-        return states
+        return _ffi_api.SketchPolicySampleInitialPopulation(self)
 
     def evolutionary_search(self, init_populations, out_size):
         """Perform evolutionary search.
@@ -271,5 +270,6 @@ class SketchPolicy(SearchPolicy):
         states: List[State]
             The generated states
         """
-        states = _ffi_api.SketchPolicyEvolutionarySearch(self, init_populations, out_size)
-        return states
+        return _ffi_api.SketchPolicyEvolutionarySearch(
+            self, init_populations, out_size
+        )

@@ -99,8 +99,6 @@ def unpack_feature(byte_arr: bytearray) -> Tuple[np.ndarray, np.ndarray, np.ndar
     # unpack features
     features = []
     for size in sizes[:-2]:
-        row = []
-
         # Now, we need to unpack the feature for multiple statements.
         # The format is:
         # {
@@ -125,6 +123,8 @@ def unpack_feature(byte_arr: bytearray) -> Tuple[np.ndarray, np.ndarray, np.ndar
                 tmp_vec_len,
             )
             assert tmp_vec_len * n_stmts == size - 1
+            row = []
+
             for _ in range(n_stmts):
                 x = struct.unpack_from("%df" % vec_len, byte_arr, offset=offset)
                 offset += vec_len * SIZE_OF_FLOAT32

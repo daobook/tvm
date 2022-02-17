@@ -229,10 +229,7 @@ def list_global_func_names():
     size = ctypes.c_uint()
 
     check_call(_LIB.TVMFuncListGlobalNames(ctypes.byref(size), ctypes.byref(plist)))
-    fnames = []
-    for i in range(size.value):
-        fnames.append(py_str(plist[i]))
-    return fnames
+    return [py_str(plist[i]) for i in range(size.value)]
 
 
 def extract_ext_funcs(finit):
@@ -288,7 +285,7 @@ def _init_api(namespace, target_module_name=None):
     target_module_name : str
        The target module name if different from namespace
     """
-    target_module_name = target_module_name if target_module_name else namespace
+    target_module_name = target_module_name or namespace
     if namespace.startswith("tvm."):
         _init_api_prefix(target_module_name, namespace[4:])
     else:

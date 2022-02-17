@@ -41,9 +41,9 @@ def del_dir(target: Union[Path, str], only_if_empty: bool = False):
         p.chmod(0o666)
         if p.is_dir():
             p.rmdir()
+        elif only_if_empty:
+            raise RuntimeError(f"{p.parent} is not empty!")
         else:
-            if only_if_empty:
-                raise RuntimeError(f"{p.parent} is not empty!")
             p.unlink()
     target.rmdir()
 
@@ -100,12 +100,12 @@ def main(model_str, output_path):
     with tvm.transform.PassContext(opt_level=3):
         graph, lib, params = relay.build(net, tvm.target.Target(target, target_host), params=params)
     print("dumping lib...")
-    lib.export_library(output_path_str + "/" + "deploy_lib_cpu.so", ndk.create_shared)
+    lib.export_library(f'{output_path_str}/deploy_lib_cpu.so', ndk.create_shared)
     print("dumping graph...")
-    with open(output_path_str + "/" + "deploy_graph.json", "w") as f:
+    with open(f'{output_path_str}/deploy_graph.json', "w") as f:
         f.write(graph)
     print("dumping params...")
-    with open(output_path_str + "/" + "deploy_param.params", "wb") as f:
+    with open(f'{output_path_str}/deploy_param.params', "wb") as f:
         f.write(runtime.save_param_dict(params))
     print("dumping labels...")
     synset_url = "".join(
@@ -116,11 +116,11 @@ def main(model_str, output_path):
             "imagenet1000_clsid_to_human.txt",
         ]
     )
-    synset_path = output_path_str + "/image_net_labels"
-    download(synset_url, output_path_str + "/image_net_labels")
+    synset_path = f'{output_path_str}/image_net_labels'
+    download(synset_url, f'{output_path_str}/image_net_labels')
     with open(synset_path) as fi:
         synset = eval(fi.read())
-        with open(output_path_str + "/image_net_labels.json", "w") as fo:
+        with open(f'{output_path_str}/image_net_labels.json', "w") as fo:
             json.dump(synset, fo, indent=4)
     os.remove(synset_path)
 

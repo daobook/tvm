@@ -165,9 +165,7 @@ def gemv_impl():
 
     temp = utils.tempdir()
     ll_path = temp.relpath("temp.ll")
-    # Create LLVM ir from c source code
-    ll_code = clang.create_llvm(cc_code, output=ll_path)
-    return ll_code
+    return clang.create_llvm(cc_code, output=ll_path)
 
 
 ######################################################################
@@ -233,9 +231,7 @@ def gemv_impl():
 
     temp = utils.tempdir()
     ll_path = temp.relpath("temp.ll")
-    # Create LLVM ir from c source code
-    ll_code = clang.create_llvm(cc_code, output=ll_path)
-    return ll_code
+    return clang.create_llvm(cc_code, output=ll_path)
 
 
 def intrin_gemv(m, l):

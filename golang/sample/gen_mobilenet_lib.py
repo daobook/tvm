@@ -26,13 +26,12 @@ from tvm.contrib.download import download_testdata
 def extract(path):
     import tarfile
 
-    if path.endswith("tgz") or path.endswith("gz"):
-        dir_path = os.path.dirname(path)
-        tar = tarfile.open(path)
-        tar.extractall(path=dir_path)
-        tar.close()
-    else:
-        raise RuntimeError("Could not decompress the file: " + path)
+    if not path.endswith("tgz") and not path.endswith("gz"):
+        raise RuntimeError(f'Could not decompress the file: {path}')
+    dir_path = os.path.dirname(path)
+    tar = tarfile.open(path)
+    tar.extractall(path=dir_path)
+    tar.close()
 
 
 ###################################

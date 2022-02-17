@@ -126,10 +126,12 @@ print("TVM prediction top-1:", top1, synset[top1])
 def block2symbol(block):
     data = mx.sym.Variable("data")
     sym = block(data)
-    args = {}
     auxs = {}
-    for k, v in block.collect_params().items():
-        args[k] = mx.nd.array(v.data().asnumpy())
+    args = {
+        k: mx.nd.array(v.data().asnumpy())
+        for k, v in block.collect_params().items()
+    }
+
     return sym, args, auxs
 
 

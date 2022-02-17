@@ -34,8 +34,7 @@ USE_MANUAL_CODE = False
 
 @tvm.register_func("tvm_callback_cuda_compile", override=True)
 def tvm_callback_cuda_compile(code):
-    ptx = nvcc.compile_cuda(code, target_format="ptx")
-    return ptx
+    return nvcc.compile_cuda(code, target_format="ptx")
 
 
 def write_code(code, fname):
@@ -122,11 +121,11 @@ def test_depthwise_conv2d_nchw():
         # Measure time cost of kernel 3 (depthwise_conv2d + scale_shift + relu)
         timer_3 = f3.time_evaluator(f3.entry_name, dev, number=1000)
         tcost_3 = timer_3(input_tvm, filter_tvm, scale_tvm, shift_tvm, relu_tvm).mean
-        print("Input shape = " + str(get_const_tuple(Input.shape)))
-        print("Filter shape = " + str(get_const_tuple(Filter.shape)))
+        print(f'Input shape = {str(get_const_tuple(Input.shape))}')
+        print(f'Filter shape = {str(get_const_tuple(Filter.shape))}')
         print("Stride = (%d, %d)" % (stride_h, stride_w))
         print("padding = %s\n" % padding)
-        print("Output shape = " + str(get_const_tuple(DepthwiseConv2d.shape)))
+        print(f'Output shape = {str(get_const_tuple(DepthwiseConv2d.shape))}')
         print("average time cost of 1000 runs (depthwise_conv2d) = %g us" % (tcost_1 * 1e6))
         print(
             "average time cost of 1000 runs (depthwise_conv2d + scale_shift) = %g us"
@@ -227,11 +226,11 @@ def test_depthwise_conv2d_nhwc():
         # Measure time cost of kernel 3 (depthwise_conv2d + scale_shift + relu)
         timer_3 = f3.time_evaluator(f3.entry_name, dev, number=1000)
         tcost_3 = timer_3(input_tvm, filter_tvm, scale_tvm, shift_tvm, relu_tvm).mean
-        print("Input shape = " + str(get_const_tuple(Input.shape)))
-        print("Filter shape = " + str(get_const_tuple(Filter.shape)))
+        print(f'Input shape = {str(get_const_tuple(Input.shape))}')
+        print(f'Filter shape = {str(get_const_tuple(Filter.shape))}')
         print("Stride = (%d, %d)" % (stride_h, stride_w))
         print("padding = %s\n" % padding)
-        print("Output shape = " + str(get_const_tuple(DepthwiseConv2d.shape)))
+        print(f'Output shape = {str(get_const_tuple(DepthwiseConv2d.shape))}')
         print("average time cost of 1000 runs (depthwise_conv2d) = %g us" % (tcost_1 * 1e6))
         print(
             "average time cost of 1000 runs (depthwise_conv2d + scale_shift) = %g us"

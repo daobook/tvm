@@ -145,8 +145,7 @@ def update(file_name, pattern, repl, dry_run=False):
     need_update = False
     with open(file_name) as file:
         for l in file:
-            result = re.findall(pattern, l)
-            if result:
+            if result := re.findall(pattern, l):
                 assert len(result) == 1
                 hit_counter += 1
                 if result[0] != repl:

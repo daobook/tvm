@@ -106,10 +106,7 @@ def test_mobilenet(host, port, key, mode):
             remote = MODES[mode](host, port, key=key)
         remote.upload(path_dso)
 
-        if target == "metal":
-            dev = remote.metal(0)
-        else:
-            dev = remote.cpu(0)
+        dev = remote.metal(0) if target == "metal" else remote.cpu(0)
         lib = remote.load_module("deploy.dylib")
         m = graph_executor.GraphModule(lib["default"](dev))
 

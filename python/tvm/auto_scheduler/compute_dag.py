@@ -66,17 +66,16 @@ class LayoutRewriteOption:
         layout_rewrite_option: LayoutRewriteOption
             The default layout rewrite option for the specified target.
         """
-        layout_rewrite_option = LayoutRewriteOption.NO_REWRITE
         if target.kind.name == "llvm" or (
             "device" in target.attrs and target.attrs["device"] == "mali"
         ):
-            layout_rewrite_option = (
+            return (
                 LayoutRewriteOption.REWRITE_FOR_PRE_TRANSFORMED
                 if in_relay_integration
                 else LayoutRewriteOption.INSERT_TRANSFORM_STAGE
             )
-
-        return layout_rewrite_option
+        else:
+            return LayoutRewriteOption.NO_REWRITE
 
 
 @tvm._ffi.register_object("auto_scheduler.ComputeDAG")
@@ -240,9 +239,7 @@ class ComputeDAG(Object):
         else:
             hash_key = hash_func(str_dag)
 
-        io_shapes = []
-        for tensor in self.tensors:
-            io_shapes.append(get_const_tuple(tensor.shape))
+        io_shapes = [get_const_tuple(tensor.shape) for tensor in self.tensors]
         return json.dumps([hash_key] + io_shapes)
 
     def __str__(self):
@@ -254,8 +251,10 @@ class ComputeDAG(Object):
         for line in raw_lines:
             if len(line) > MAX_LINE_WIDTH:
                 line = (
-                    line[: MAX_LINE_WIDTH // 2] + " ..(OMITTED).. " + line[-MAX_LINE_WIDTH // 2 :]
+                    f'{line[: MAX_LINE_WIDTH // 2]} ..(OMITTED).. '
+                    + line[-MAX_LINE_WIDTH // 2 :]
                 )
+
             lines.append(line)
         return "\n".join(lines)
 

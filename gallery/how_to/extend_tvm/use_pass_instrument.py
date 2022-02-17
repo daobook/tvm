@@ -139,9 +139,7 @@ class RelayCallNodeDiffer:
         )
         cur_depth = len(self._op_cnt_before_stack)
         op_to_cnt_after = self._count_nodes(mod)
-        op_diff = self._diff(op_to_cnt_after, op_to_cnt_before)
-        # only record passes causing differences.
-        if op_diff:
+        if op_diff := self._diff(op_to_cnt_after, op_to_cnt_before):
             self._op_diff.append((cur_depth, info.name, op_diff))
 
     def get_pass_to_op_diff(self):
@@ -177,8 +175,7 @@ class RelayCallNodeDiffer:
         ret = {}
         key_after, key_before = set(d_after), set(d_before)
         for k in key_before & key_after:
-            tmp = d_after[k] - d_before[k]
-            if tmp:
+            if tmp := d_after[k] - d_before[k]:
                 ret[k] = d_after[k] - d_before[k]
         for k in key_after - key_before:
             ret[k] = d_after[k]

@@ -433,8 +433,7 @@ def parse_semver(
 
     # Major/minor version handling is simple
     for i, p in enumerate(min_ver_parts[:2]):
-        x = int(p.strip())
-        if x:
+        if x := int(p.strip()):
             return min_ver_parts, i, x
 
     # For patch version, consult only the numeric patch
@@ -542,12 +541,10 @@ class ValidationError(Exception):
 
 
 def validate_or_raise():
-    problems = validate_requirements_by_piece()
-    if problems:
+    if problems := validate_requirements_by_piece():
         raise ValidationError("REQUIREMENTS_BY_PIECE", problems)
 
-    problems = validate_constraints()
-    if problems:
+    if problems := validate_constraints():
         raise ValidationError("CONSTRAINTS", problems)
 
 

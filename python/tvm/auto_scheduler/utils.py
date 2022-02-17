@@ -207,7 +207,7 @@ def serialize_args(args):
         elif isinstance(t, list):
             t = list_to_tuple(t)
 
-        assert isinstance(t, Hashable), str(t) + " is not hashable"
+        assert isinstance(t, Hashable), f'{str(t)} is not hashable'
         ret.append(t)
 
     return tuple(ret)
@@ -327,8 +327,7 @@ def request_remote(device_key, host=None, port=None, priority=1, timeout=60):
     port = port or int(os.environ["TVM_TRACKER_PORT"])
 
     tracker = rpc.connect_tracker(host, port)
-    remote = tracker.request(device_key, priority=priority, session_timeout=timeout)
-    return remote
+    return tracker.request(device_key, priority=priority, session_timeout=timeout)
 
 
 def check_remote(device_key, host=None, port=None, priority=100, timeout=10):
@@ -409,4 +408,4 @@ def to_str_round(x, decimal=6):
     if isinstance(x, (np.float32, np.float64, float)):
         format_str = "%%.%df" % decimal
         return format_str % x
-    raise ValueError("Invalid value: " + str(x) + "\ttype: " + str(type(x)))
+    raise ValueError(f'Invalid value: {str(x)}' + "\ttype: " + str(type(x)))

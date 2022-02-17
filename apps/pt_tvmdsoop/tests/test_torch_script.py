@@ -36,7 +36,7 @@ model = Model()
 model.cuda().half()
 x = torch.rand([1280, 2464, 4]).cuda().half()
 y = torch.rand([1280, 4, 1]).cuda().half()
-for i in range(20):
+for _ in range(20):
     t = time.time()
     o = model(x, y)
     torch.cuda.synchronize()
@@ -75,7 +75,7 @@ pytorch_mod = mod.build_pytorch_module(num_inputs=2, num_outputs=1)
 print("Run TVM...")
 tvm_x = tvm.nd.array(x.cpu().numpy().astype(dtype), device=tvm.gpu(0))
 tvm_y = tvm.nd.array(y.cpu().numpy().astype(dtype), device=tvm.gpu(0))
-for i in range(20):
+for _ in range(20):
     t = time.time()
     tvm_mod.run(x=tvm_x, y=tvm_y)
     print(1000 * (time.time() - t))
@@ -84,7 +84,7 @@ print(tvm_output.shape)
 
 
 print("Run PyTorch...")
-for i in range(20):
+for _ in range(20):
     t = time.time()
     outputs = pytorch_mod.forward([x, y])
     torch.cuda.synchronize()
@@ -98,11 +98,7 @@ class EnsembleModel(torch.nn.Module):
         self.layer = torch.jit.script(pytorch_mod)
 
     def forward(self, x, y, z) -> torch.Tensor:
-        if x > 1:
-            out = self.layer(y, z)[0]
-        else:
-            out = torch.ones([1280, 2464, 1])
-        return out
+        return self.layer(y, z)[0] if x > 1 else torch.ones([1280, 2464, 1])
 
 
 print("Exporting...")

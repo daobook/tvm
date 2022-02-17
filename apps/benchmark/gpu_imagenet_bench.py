@@ -112,7 +112,7 @@ if __name__ == "__main__":
         if args.thread == 1:
             benchmark(network, target)
         else:
-            threads = list()
+            threads = []
             for n in range(args.thread):
                 thread = threading.Thread(
                     target=benchmark, args=([network, target]), name="thread%d" % n
