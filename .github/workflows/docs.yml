@@ -9,21 +9,21 @@ env:
   SETUPTOOLS_USE_DISTUTILS: "stdlib"
 jobs:
   docs:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: 'recursive'
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.10"
-      - name: Install
-        run: |
-          pip install invoke d2py
-          pip install .
+      # - name: Set up Python 3.10
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: "3.10"
       - name: Set up environment
         uses: ./.github/actions/setup
+      - name: Install
+        run: |
+          pip install sphinx-gallery
+          pip install .
       # - name: Conda Build
       #   shell: cmd /C call {0}
       #   run: >-
