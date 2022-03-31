@@ -22,7 +22,7 @@ jobs:
         uses: ./.github/actions/setup
       - name: Install
         run: |
-          pip install sphinx-gallery
+          pip install sphinx-gallery sphinx
           pip install .
       # - name: Conda Build
       #   shell: cmd /C call {0}
