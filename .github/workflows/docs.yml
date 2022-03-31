@@ -1,4 +1,4 @@
-name: CI
+name: Doc
 on: [push, pull_request]
 
 env:
@@ -24,13 +24,16 @@ jobs:
           pip install .
       - name: Set up environment
         uses: ./.github/actions/setup
-      - name: Conda Build
-        shell: cmd /C call {0}
-        run: >-
-          conda build --output-folder=conda/pkg conda/recipe &&
-          conda install tvm -c ./conda/pkg
+      # - name: Conda Build
+      #   shell: cmd /C call {0}
+      #   run: >-
+      #     conda build --output-folder=conda/pkg conda/recipe &&
+      #     conda install tvm -c ./conda/pkg
       - name: Docs
-        run: inv docs
+        run: 
+          cd docs
+          make html
+
 
       - name: 🚀 Deploy to GitHub pages
         uses: peaceiris/actions-gh-pages@v3.6.1
