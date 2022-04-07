@@ -1,0 +1,2112 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tvm.autotvm.measure.measure_methods &#8212; TVM  文档</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../../../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <link rel="shortcut icon" href="../../../../_static/tvm-logo-square.png"/>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_CN">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../../_static/tvm-logo-small.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">TVM  文档</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../docs/README.html">
+   TVM 文档
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../start.html">
+   快速上手
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../docs/install/index.html">
+     安装 TVM
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../docs/install/from_source.html">
+       从源码安装
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/install/nnpack.html">
+         NNPACK Contrib Installation
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/install/docker.html">
+       Docker 镜像
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/install/tlcpack.html">
+       TLCPack
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../docs/contribute/index.html">
+     Contributor Guide
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/contribute/community.html">
+       TVM Community Guidelines
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/contribute/pull_request.html">
+       Submit a Pull Request
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/contribute/code_review.html">
+       Code Reviews
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/contribute/committer_guide.html">
+       Committer Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/contribute/document.html">
+       Documentation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/contribute/code_guide.html">
+       Code Guide and Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/contribute/git_howto.html">
+       Git Usage Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/contribute/ci.html">
+       Using TVM’s CI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/contribute/release_process.html">
+       Release Process
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/contribute/error_handling.html">
+       Error Handling Guide
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../study/index.html">
+   学习笔记
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../study/quantize.html">
+     量化
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../study/start.html">
+     TVM 入门指南
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../study/test.html">
+     测试 TVM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../user-guide.html">
+   用户手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../docs/tutorial/index.html">
+     用户指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/tutorial/introduction.html">
+       TVM 和模型优化的概述
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/tutorial/tvmc_command_line_driver.html">
+       用 TVMC 编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/tutorial/tvmc_python.html">
+       开始使用 TVMC Python：TVM 的高级 API
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/tutorial/autotvm_relay_x86.html">
+       用 Python 接口编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/tutorial/tensor_expr_get_started.html">
+       使用张量表达式处理算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/tutorial/autotvm_matmul_x86.html">
+       用调度模板和 AutoTVM 优化算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/tutorial/auto_scheduler_matmul_x86.html">
+       使用自动调度优化运算
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/tutorial/tensor_ir_blitz_course.html">
+       TensorIR 的突击课程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/tutorial/cross_compilation_and_rpc.html">
+       交叉编译和RPC
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/tutorial/relay_quick_start.html">
+       编译深度学习模型的快速入门教程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/tutorial/intro_topi.html">
+       TOPI 简介
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../docs/how_to/index.html">
+     How To 指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../docs/how_to/compile_models/index.html">
+       编译深度学习模型
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+      <label for="toctree-checkbox-9">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/compile_models/from_pytorch.html">
+         编译 PyTorch 模型
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/compile_models/from_tensorflow.html">
+         Compile Tensorflow Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/compile_models/from_mxnet.html">
+         Compile MXNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/compile_models/from_onnx.html">
+         Compile ONNX Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/compile_models/from_keras.html">
+         Compile Keras Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/compile_models/from_tflite.html">
+         Compile TFLite Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/compile_models/from_coreml.html">
+         Compile CoreML Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/compile_models/from_darknet.html">
+         Compile YOLO-V2 and YOLO-V3 in DarkNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/compile_models/from_caffe2.html">
+         Compile Caffe2 Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/compile_models/from_paddle.html">
+         Compile PaddlePaddle Models
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../docs/how_to/deploy/index.html">
+       部署模型，集成 TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/deploy/cpp_deploy.html">
+         Deploy TVM Module using C++ API
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/deploy/android.html">
+         Deploy to Android
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/deploy/integrate.html">
+         Integrate TVM into Your Project
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/deploy/hls.html">
+         HLS Backend Example
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/deploy/arm_compute_lib.html">
+         Relay Arm
+         <sup>
+          ®
+         </sup>
+         Compute Library Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/deploy/tensorrt.html">
+         Relay TensorRT Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/deploy/vitis_ai.html">
+         Vitis AI Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/deploy/bnns.html">
+         Relay BNNS Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/deploy_models/index.html">
+         部署深度学习模型
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../docs/how_to/work_with_relay/index.html">
+       Work With Relay
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+      <label for="toctree-checkbox-11">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../docs/how_to/work_with_schedules/index.html">
+       Work With Tensor Expression and Schedules
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+      <label for="toctree-checkbox-12">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../docs/how_to/optimize_operators/index.html">
+       Optimize Tensor Operators
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+      <label for="toctree-checkbox-13">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../docs/how_to/tune_with_autotvm/index.html">
+       Auto-Tune with Templates and AutoTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+      <label for="toctree-checkbox-14">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/tune_with_autotvm/tune_conv2d_cuda.html">
+         Tuning High Performance Convolution on NVIDIA GPUs
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/tune_with_autotvm/tune_relay_cuda.html">
+         Auto-tuning a Convolutional Network for NVIDIA GPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/tune_with_autotvm/tune_relay_x86.html">
+         Auto-tuning a Convolutional Network for x86 CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/tune_with_autotvm/tune_relay_arm.html">
+         Auto-tuning a Convolutional Network for ARM CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/tune_with_autotvm/tune_relay_mobile_gpu.html">
+         Auto-tuning a Convolutional Network for Mobile GPU
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../docs/how_to/tune_with_autoscheduler/index.html">
+       Use AutoScheduler for Template-Free Scheduling
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+      <label for="toctree-checkbox-15">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../docs/how_to/work_with_microtvm/index.html">
+       Work With microTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+      <label for="toctree-checkbox-16">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../docs/how_to/extend_tvm/index.html">
+       Extend TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+      <label for="toctree-checkbox-17">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../docs/how_to/profile/index.html">
+       Profile Models
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+      <label for="toctree-checkbox-18">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/how_to/profile/papi.html">
+         Getting Started With PAPI
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/errors.html">
+       处理 TVM 的错误
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/faq.html">
+       常见问题
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../developer-guide.html">
+   开发手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../docs/dev/tutorial/index.html">
+     开发者教程
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+    <label for="toctree-checkbox-20">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/dev/tutorial/codebase_walkthrough.html">
+       TVM 代码库的实例演练
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../docs/dev/how_to/how_to.html">
+     开发者 How-To 指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/dev/how_to/relay_add_op.html">
+       Adding an Operator to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/dev/how_to/relay_add_pass.html">
+       Adding a Compiler Pass to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/dev/how_to/relay_bring_your_own_codegen.html">
+       Bring Your Own Codegen To TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/dev/how_to/pytest_target_parametrization.html">
+       Python Target Parametrization
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../docs/arch/index.html">
+   设计与架构
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/runtime.html">
+     TVM 运行时系统
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/debugger.html">
+     Debugger
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/virtual_machine.html">
+     Putting the VM in TVM: The Relay Virtual Machine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/introduction_to_module_serialization.html">
+     Introduction to Module Serialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/pass_infra.html">
+     Pass Infrastructure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/inferbound.html">
+     InferBound Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/hybrid_script.html">
+     Hybrid Frontend Developer Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/relay_intro.html">
+     Introduction to Relay IR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/relay_op_strategy.html">
+     Relay Operator Strategy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/convert_layout.html">
+     Convert Layout Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/benchmark.html">
+     Benchmark Performance Log Format
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/frontend/tensorflow.html">
+     TensorFlow Frontend
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/security.html">
+     Security Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/microtvm_design.html">
+     microTVM Design Document
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/microtvm_project_api.html">
+     microTVM Project API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/arch/model_library_format.html">
+     Model Library Format
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../topic-guides.html">
+   主题指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/topic/microtvm/index.html">
+     microTVM：裸机上的 TVM
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../docs/topic/vta/index.html">
+     VTA：通用张量加速器
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+    <label for="toctree-checkbox-24">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/topic/vta/install.html">
+       VTA 安装指南
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../docs/topic/vta/dev/index.html">
+       VTA 设计和开发指南
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/topic/vta/dev/config.html">
+         VTA 配置
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/topic/vta/dev/hardware.html">
+         VTA 硬件指南
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../docs/topic/vta/tutorials/index.html">
+       VTA 教程
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/topic/vta/tutorials/matrix_multiply.html">
+         Simple Matrix Multiply
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/topic/vta/tutorials/vta_get_started.html">
+         Get Started with VTA
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/topic/vta/tutorials/frontend/index.html">
+         Compile Deep Learning Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/topic/vta/tutorials/optimize/index.html">
+         Optimize Tensor Operators
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../docs/topic/vta/tutorials/autotvm/index.html">
+         Auto tuning
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../reference-guide.html">
+   参考指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../docs/reference/langref/index.html">
+     语言参考
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+    <label for="toctree-checkbox-28">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/langref/relay_expr.html">
+       Expressions in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/langref/relay_type.html">
+       Relay’s Type System
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/langref/relay_adt.html">
+       Algebraic Data Types in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/langref/relay_op.html">
+       Relay Core Tensor Operators
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/langref/relay_pattern.html">
+       Pattern Matching in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/langref/hybrid_script.html">
+       Hybrid Frontend Language Reference
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../docs/reference/api/python/index.html">
+     Python API
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/runtime.html">
+       tvm.runtime
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/ndarray.html">
+       tvm.runtime.ndarray
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/error.html">
+       tvm.error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/ir.html">
+       tvm.ir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/target.html">
+       tvm.target
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/tir.html">
+       tvm.tir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/te.html">
+       tvm.te
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/driver.html">
+       tvm.driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/relay/index.html">
+       tvm.relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/relay/frontend.html">
+       tvm.relay.frontend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/relay/nn.html">
+       tvm.relay.nn
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/relay/vision.html">
+       tvm.relay.vision
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/relay/image.html">
+       tvm.relay.image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/relay/transform.html">
+       tvm.relay.transform
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/relay/analysis.html">
+       tvm.relay.analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/relay/backend.html">
+       tvm.relay.backend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/relay/dataflow_pattern.html">
+       tvm.relay.dataflow_pattern
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/relay/testing.html">
+       tvm.relay.testing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/autotvm.html">
+       tvm.autotvm
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/auto_scheduler.html">
+       tvm.auto_scheduler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/rpc.html">
+       tvm.rpc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/micro.html">
+       tvm.micro
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/contrib.html">
+       tvm.contrib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/graph_executor.html">
+       tvm.contrib.graph_executor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/topi.html">
+       tvm.topi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/reference/api/python/vta/index.html">
+       vta
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/reference/api/links.html">
+     其他 API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../docs/reference/publications.html">
+     出版物
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../refs/index.html">
+   参考
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+  <label for="toctree-checkbox-30">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../refs/_ffi/index.html">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _ffi
+      </span>
+     </code>
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../refs/_ffi/base.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.base
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../refs/_ffi/libinfo.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.libinfo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../refs/_ffi/object.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi._ctypes.object
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../refs/_ffi/registry.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.registry
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../refs/_ffi/runtime_ctypes.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.runtime_ctypes
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1></h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <h1>tvm.autotvm.measure.measure_methods 源代码</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Licensed to the Apache Software Foundation (ASF) under one</span>
+<span class="c1"># or more contributor license agreements.  See the NOTICE file</span>
+<span class="c1"># distributed with this work for additional information</span>
+<span class="c1"># regarding copyright ownership.  The ASF licenses this file</span>
+<span class="c1"># to you under the Apache License, Version 2.0 (the</span>
+<span class="c1"># &quot;License&quot;); you may not use this file except in compliance</span>
+<span class="c1"># with the License.  You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#   http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing,</span>
+<span class="c1"># software distributed under the License is distributed on an</span>
+<span class="c1"># &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</span>
+<span class="c1"># KIND, either express or implied.  See the License for the</span>
+<span class="c1"># specific language governing permissions and limitations</span>
+<span class="c1"># under the License.</span>
+<span class="c1"># pylint: disable=invalid-name,too-many-function-args,too-many-nested-blocks</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Functions that run on executor for measurement.</span>
+
+<span class="sd">These functions are responsible for building the tvm module, uploading it to</span>
+<span class="sd">remote devices, recording the running time costs, and checking the correctness of the output.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">contextlib</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">import</span> <span class="nn">typing</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">getrandbits</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">import</span> <span class="nn">tvm._ffi</span>
+<span class="kn">import</span> <span class="nn">tvm.ir.transform</span>
+<span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">nd</span>
+<span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">rpc</span> <span class="k">as</span> <span class="n">_rpc</span>
+<span class="kn">from</span> <span class="nn">tvm.autotvm.env</span> <span class="kn">import</span> <span class="n">AutotvmGlobalScope</span><span class="p">,</span> <span class="n">reset_global_scope</span>
+<span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">ndk</span><span class="p">,</span> <span class="n">stackvm</span><span class="p">,</span> <span class="n">tar</span>
+<span class="kn">from</span> <span class="nn">tvm.contrib.popen_pool</span> <span class="kn">import</span> <span class="n">PopenPoolExecutor</span>
+<span class="kn">from</span> <span class="nn">tvm.driver</span> <span class="kn">import</span> <span class="n">build</span>
+<span class="kn">from</span> <span class="nn">tvm.error</span> <span class="kn">import</span> <span class="n">TVMError</span>
+<span class="kn">from</span> <span class="nn">tvm.target</span> <span class="kn">import</span> <span class="n">Target</span>
+
+<span class="kn">from</span> <span class="nn">..env</span> <span class="kn">import</span> <span class="n">AutotvmGlobalScope</span>
+<span class="kn">from</span> <span class="nn">..task.space</span> <span class="kn">import</span> <span class="n">InstantiationError</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">get_const_tuple</span>
+<span class="kn">from</span> <span class="nn">.measure</span> <span class="kn">import</span> <span class="n">Builder</span><span class="p">,</span> <span class="n">MeasureErrorNo</span><span class="p">,</span> <span class="n">MeasureResult</span><span class="p">,</span> <span class="n">Runner</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;autotvm&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">BuildResult</span><span class="p">(</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;BuildResult&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;filename&quot;</span><span class="p">,</span> <span class="s2">&quot;arg_info&quot;</span><span class="p">,</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="s2">&quot;time_cost&quot;</span><span class="p">))):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Stores all the necessary inputs for a measurement.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        The filename of generated library</span>
+<span class="sd">    arg_info : Tuple</span>
+<span class="sd">        The shape and dtype information of tvm tensor arguments</span>
+<span class="sd">    error : Exception</span>
+<span class="sd">        The error happens during compilation.</span>
+<span class="sd">    time_cost : float</span>
+<span class="sd">        The time cost of building</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="LocalBuilder"><a class="viewcode-back" href="../../../../docs/reference/api/python/autotvm.html#tvm.autotvm.measure.measure_methods.LocalBuilder">[文档]</a><span class="k">class</span> <span class="nc">LocalBuilder</span><span class="p">(</span><span class="n">Builder</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Run compilation on local machine</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    timeout: float</span>
+<span class="sd">        The timeout of a compilation</span>
+<span class="sd">    n_parallel: int</span>
+<span class="sd">        The number of tasks run in parallel. &quot;None&quot; will use all cpu cores</span>
+<span class="sd">    build_kwargs: dict</span>
+<span class="sd">        If supplied, additional kwargs passed to build_func. Overrides any build_kwargs supplied</span>
+<span class="sd">        by the Runner.</span>
+<span class="sd">    build_func: callable or str</span>
+<span class="sd">        If is &#39;default&#39;, use default build function</span>
+<span class="sd">        If is &#39;ndk&#39;, use function for android ndk</span>
+<span class="sd">        If id &#39;stackvm&#39;, use function for stackvm</span>
+<span class="sd">        If is callable, use it as custom build function, expect lib_format field.</span>
+<span class="sd">    do_fork: bool</span>
+<span class="sd">        If False, do not fork when building. Requires n_parallel=1.</span>
+<span class="sd">    runtime: Optional[Runtime]</span>
+<span class="sd">        Specify the runtime to generate artifacts for</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">n_parallel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">build_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">build_func</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+        <span class="n">do_fork</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">runtime</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LocalBuilder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">timeout</span><span class="p">,</span> <span class="n">n_parallel</span><span class="p">,</span> <span class="n">build_kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">build_func</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">build_func</span> <span class="o">==</span> <span class="s2">&quot;default&quot;</span><span class="p">:</span>
+                <span class="n">build_func</span> <span class="o">=</span> <span class="n">tar</span><span class="o">.</span><span class="n">tar</span>
+            <span class="k">elif</span> <span class="n">build_func</span> <span class="o">==</span> <span class="s2">&quot;ndk&quot;</span><span class="p">:</span>
+                <span class="n">build_func</span> <span class="o">=</span> <span class="n">ndk</span><span class="o">.</span><span class="n">create_shared</span>
+            <span class="k">elif</span> <span class="n">build_func</span> <span class="o">==</span> <span class="s2">&quot;stackvm&quot;</span><span class="p">:</span>
+                <span class="n">build_func</span> <span class="o">=</span> <span class="n">stackvm</span><span class="o">.</span><span class="n">build</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid build_func&quot;</span> <span class="o">+</span> <span class="n">build_func</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">build_func</span> <span class="o">=</span> <span class="n">_WrappedBuildFunc</span><span class="p">(</span><span class="n">build_func</span><span class="p">,</span> <span class="n">runtime</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">do_fork</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">n_parallel</span> <span class="ow">in</span> <span class="p">(</span>
+                <span class="kc">None</span><span class="p">,</span>
+                <span class="mi">1</span><span class="p">,</span>
+            <span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;if do_fork=False, need n_parallel=None or 1; got </span><span class="si">{</span><span class="n">n_parallel</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">executor</span> <span class="o">=</span> <span class="n">PopenPoolExecutor</span><span class="p">(</span>
+            <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">initializer</span><span class="o">=</span><span class="n">reset_global_scope</span><span class="p">,</span> <span class="n">initargs</span><span class="o">=</span><span class="p">(</span><span class="n">AutotvmGlobalScope</span><span class="o">.</span><span class="n">current</span><span class="p">,)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tmp_dir</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measure_inputs</span><span class="p">):</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tmp_dir</span><span class="p">,</span> <span class="n">ignore_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tmp_dir</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">measure_inputs</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_parallel</span><span class="p">):</span>
+            <span class="n">futures</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">inp</span> <span class="ow">in</span> <span class="n">measure_inputs</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_parallel</span><span class="p">]:</span>
+                <span class="n">ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">build_func</span><span class="p">,</span> <span class="n">inp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tmp_dir</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">build_kwargs</span><span class="p">)</span>
+                <span class="n">futures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">futures</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">res</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">error</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">error</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;BuildResult errors should be a 2-tuple, but it is a </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">error</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                            <span class="s2">&quot;-tuple. This should not happen!&quot;</span>
+                        <span class="p">)</span>
+                        <span class="n">tb</span><span class="p">,</span> <span class="n">exception</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">error</span>
+                        <span class="c1"># instantiation error</span>
+                        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">exception</span><span class="p">,</span> <span class="n">InstantiationError</span><span class="p">):</span>
+                            <span class="n">res</span> <span class="o">=</span> <span class="n">MeasureResult</span><span class="p">(</span>
+                                <span class="p">(</span>
+                                    <span class="n">tb</span><span class="p">,</span>
+                                    <span class="n">exception</span><span class="p">,</span>
+                                <span class="p">),</span>
+                                <span class="n">MeasureErrorNo</span><span class="o">.</span><span class="n">INSTANTIATION_ERROR</span><span class="p">,</span>
+                                <span class="n">res</span><span class="o">.</span><span class="n">time_cost</span><span class="p">,</span>
+                                <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+                            <span class="p">)</span>
+
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="s2">&quot;InstantiationError&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">exception</span><span class="p">):</span>
+                                <span class="n">msg</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">exception</span><span class="p">)</span>
+                                <span class="k">try</span><span class="p">:</span>
+                                    <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;: &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+                                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>  <span class="c1"># pylint: disable=broad-except</span>
+                                    <span class="k">pass</span>
+                                <span class="n">res</span> <span class="o">=</span> <span class="n">MeasureResult</span><span class="p">(</span>
+                                    <span class="p">(</span>
+                                        <span class="n">tb</span><span class="p">,</span>
+                                        <span class="n">InstantiationError</span><span class="p">(</span><span class="n">msg</span><span class="p">),</span>
+                                    <span class="p">),</span>
+                                    <span class="n">MeasureErrorNo</span><span class="o">.</span><span class="n">INSTANTIATION_ERROR</span><span class="p">,</span>
+                                    <span class="n">res</span><span class="o">.</span><span class="n">time_cost</span><span class="p">,</span>
+                                    <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+                                <span class="p">)</span>
+
+                            <span class="k">else</span><span class="p">:</span>  <span class="c1"># tvm error</span>
+                                <span class="n">res</span> <span class="o">=</span> <span class="n">MeasureResult</span><span class="p">(</span>
+                                    <span class="p">(</span>
+                                        <span class="n">tb</span><span class="p">,</span>
+                                        <span class="n">res</span><span class="o">.</span><span class="n">error</span><span class="p">,</span>
+                                    <span class="p">),</span>
+                                    <span class="n">MeasureErrorNo</span><span class="o">.</span><span class="n">COMPILE_HOST</span><span class="p">,</span>
+                                    <span class="n">res</span><span class="o">.</span><span class="n">time_cost</span><span class="p">,</span>
+                                    <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+                                <span class="p">)</span>
+                <span class="k">except</span> <span class="ne">TimeoutError</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+                    <span class="n">tb</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
+                    <span class="n">res</span> <span class="o">=</span> <span class="n">MeasureResult</span><span class="p">(</span>
+                        <span class="p">(</span>
+                            <span class="n">tb</span><span class="p">,</span>
+                            <span class="n">ex</span><span class="p">,</span>
+                        <span class="p">),</span>
+                        <span class="n">MeasureErrorNo</span><span class="o">.</span><span class="n">BUILD_TIMEOUT</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
+                        <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+                    <span class="p">)</span>
+                <span class="k">except</span> <span class="ne">ChildProcessError</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+                    <span class="n">tb</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
+                    <span class="n">res</span> <span class="o">=</span> <span class="n">MeasureResult</span><span class="p">(</span>
+                        <span class="p">(</span>
+                            <span class="n">tb</span><span class="p">,</span>
+                            <span class="n">ex</span><span class="p">,</span>
+                        <span class="p">),</span>
+                        <span class="n">MeasureErrorNo</span><span class="o">.</span><span class="n">RUNTIME_DEVICE</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
+                        <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+                    <span class="p">)</span>
+
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">results</span></div>
+
+
+<div class="viewcode-block" id="RPCRunner"><a class="viewcode-back" href="../../../../docs/reference/api/python/autotvm.html#tvm.autotvm.measure.measure_methods.RPCRunner">[文档]</a><span class="k">class</span> <span class="nc">RPCRunner</span><span class="p">(</span><span class="n">Runner</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Run generated code on remove devices.</span>
+<span class="sd">    This function will ask a RPC Tracker to get device for measurement.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    timeout: float</span>
+<span class="sd">        The timeout of a RPCRunner measurement task</span>
+<span class="sd">    n_parallel: int</span>
+<span class="sd">        The number of tasks run in parallel. &quot;None&quot; will use all cpu cores</span>
+<span class="sd">    key: str</span>
+<span class="sd">        The key of the device registered in the tracker</span>
+<span class="sd">    host: str</span>
+<span class="sd">        The host address of RPC Tracker</span>
+<span class="sd">    port: int</span>
+<span class="sd">        The port of RPC Tracker</span>
+<span class="sd">    number: int</span>
+<span class="sd">        The number of times to run the generated code for taking average.</span>
+<span class="sd">        We call these runs as one `repeat` of measurement.</span>
+<span class="sd">    repeat : int, optional</span>
+<span class="sd">        The number of times to repeat the measurement.</span>
+<span class="sd">        In total, the generated code will be run (1 + number x repeat) times,</span>
+<span class="sd">        where the first &quot;1&quot; is warm up and will be discarded.</span>
+<span class="sd">        The returned result contains `repeat` costs,</span>
+<span class="sd">        each of which is an average of `number` costs.</span>
+<span class="sd">    min_repeat_ms: int, optional</span>
+<span class="sd">        The minimum duration of one `repeat` in milliseconds.</span>
+<span class="sd">        By default, one `repeat` contains `number` runs. If this parameter is set,</span>
+<span class="sd">        the parameters `number` will be dynamically adjusted to meet the</span>
+<span class="sd">        minimum duration requirement of one `repeat`.</span>
+<span class="sd">        i.e., When the run time of one `repeat` falls below this time, the `number` parameter</span>
+<span class="sd">        will be automatically increased.</span>
+<span class="sd">    cooldown_interval: float, optional</span>
+<span class="sd">        The cool down interval between two measurements.</span>
+<span class="sd">    enable_cpu_cache_flush: bool</span>
+<span class="sd">        Whether to flush cache on CPU between repeated measurements.</span>
+<span class="sd">        Flushing cache can make the measured latency of one operator closer to</span>
+<span class="sd">        its actual latency during end-to-end inference.</span>
+<span class="sd">        To make this option effective, the argument `number` should also be set to 1.</span>
+<span class="sd">        This is only has effect on CPU task.</span>
+<span class="sd">    module_loader : ModuleLoader</span>
+<span class="sd">        If given, a context manager that loads the module to be timed into the remote runtime.</span>
+<span class="sd">        If not given, default_module_loader is used.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">key</span><span class="p">,</span>
+        <span class="n">host</span><span class="p">,</span>
+        <span class="n">port</span><span class="p">,</span>
+        <span class="n">priority</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">n_parallel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">repeat</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">min_repeat_ms</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">cooldown_interval</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">enable_cpu_cache_flush</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">module_loader</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RPCRunner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">timeout</span><span class="p">,</span> <span class="n">n_parallel</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">host</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">port</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priority</span> <span class="o">=</span> <span class="n">priority</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="n">timeout</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repeat</span> <span class="o">=</span> <span class="n">repeat</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_repeat_ms</span> <span class="o">=</span> <span class="n">min_repeat_ms</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ref_input</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">enable_cpu_cache_flush</span> <span class="o">=</span> <span class="n">enable_cpu_cache_flush</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cooldown_interval</span> <span class="o">=</span> <span class="n">cooldown_interval</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">module_loader</span> <span class="o">=</span> <span class="n">module_loader</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">executor</span> <span class="o">=</span> <span class="n">PopenPoolExecutor</span><span class="p">(</span>
+            <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_parallel</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="n">reset_global_scope</span><span class="p">,</span>
+            <span class="n">initargs</span><span class="o">=</span><span class="p">(</span><span class="n">AutotvmGlobalScope</span><span class="o">.</span><span class="n">current</span><span class="p">,),</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ref_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fixed input for tuning special operators, e.g., sparse operators</span>
+<span class="sd">        requiring indices as input.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ref_input</span>
+
+    <span class="nd">@ref_input</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">ref_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;You are specifying fixed input for tuning the operator. &quot;</span>
+                <span class="s2">&quot;Be sure your input always fits the operator. Some &quot;</span>
+                <span class="s2">&quot;operators may conduct layout transformation during tuning, &quot;</span>
+                <span class="s2">&quot;thus can lead to unexpected behaviors. &quot;</span><span class="p">,</span>
+                <span class="ne">RuntimeWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ref_input</span> <span class="o">=</span> <span class="n">val</span>
+
+    <span class="k">def</span> <span class="nf">set_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task</span> <span class="o">=</span> <span class="n">task</span>
+
+        <span class="k">if</span> <span class="n">check_remote</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Get devices for measurement successfully!&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="s2">&quot;Cannot get remote devices from the tracker. &quot;</span>
+                <span class="s2">&quot;Please check the status of tracker by &quot;</span>
+                <span class="s2">&quot;&#39;python -m tvm.exec.query_rpc_tracker --port [THE PORT YOU USE]&#39; &quot;</span>
+                <span class="s2">&quot;and make sure you have free devices on the queue status.&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_build_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="s2">&quot;cuda&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">keys</span>
+            <span class="ow">or</span> <span class="s2">&quot;opencl&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">keys</span>
+            <span class="ow">or</span> <span class="s2">&quot;rocm&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">keys</span>
+            <span class="ow">or</span> <span class="s2">&quot;vulkan&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">keys</span>
+        <span class="p">):</span>
+            <span class="n">remote</span> <span class="o">=</span> <span class="n">request_remote</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+            <span class="n">dev</span> <span class="o">=</span> <span class="n">remote</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">target</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">max_dims</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">max_thread_dimensions</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;check_gpu&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;max_shared_memory_per_block&quot;</span><span class="p">:</span> <span class="n">dev</span><span class="o">.</span><span class="n">max_shared_memory_per_block</span><span class="p">,</span>
+                <span class="s2">&quot;max_threads_per_block&quot;</span><span class="p">:</span> <span class="n">dev</span><span class="o">.</span><span class="n">max_threads_per_block</span><span class="p">,</span>
+                <span class="s2">&quot;max_thread_x&quot;</span><span class="p">:</span> <span class="n">max_dims</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="s2">&quot;max_thread_y&quot;</span><span class="p">:</span> <span class="n">max_dims</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="s2">&quot;max_thread_z&quot;</span><span class="p">:</span> <span class="n">max_dims</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">kwargs</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measure_inputs</span><span class="p">,</span> <span class="n">build_results</span><span class="p">):</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">remote_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">device_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+            <span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span>
+            <span class="n">port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">,</span>
+            <span class="n">priority</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">priority</span><span class="p">,</span>
+            <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">measure_inputs</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_parallel</span><span class="p">):</span>
+            <span class="n">futures</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">measure_inp</span><span class="p">,</span> <span class="n">build_res</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+                <span class="n">measure_inputs</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_parallel</span><span class="p">],</span> <span class="n">build_results</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_parallel</span><span class="p">]</span>
+            <span class="p">):</span>
+                <span class="n">module_loader</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">module_loader</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">module_loader</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                    <span class="k">else</span> <span class="n">default_module_loader</span><span class="p">()</span>
+                <span class="p">)</span>
+                <span class="n">ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span>
+                    <span class="n">run_through_rpc</span><span class="p">,</span>
+                    <span class="n">measure_inp</span><span class="p">,</span>
+                    <span class="n">build_res</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">number</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">repeat</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">min_repeat_ms</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cooldown_interval</span><span class="p">,</span>
+                    <span class="n">remote_kwargs</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">ref_input</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">enable_cpu_cache_flush</span><span class="p">,</span>
+                    <span class="n">module_loader</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">futures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">futures</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">res</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+                    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>  <span class="c1"># pylint: disable=broad-except</span>
+                    <span class="n">tb</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
+                    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">MeasureResult</span><span class="p">(</span>
+                            <span class="p">(</span>
+                                <span class="n">tb</span><span class="p">,</span>
+                                <span class="n">ex</span><span class="p">,</span>
+                            <span class="p">),</span>
+                            <span class="n">MeasureErrorNo</span><span class="o">.</span><span class="n">RUN_TIMEOUT</span><span class="p">,</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
+                            <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">results</span></div>
+
+
+<div class="viewcode-block" id="LocalRunner"><a class="viewcode-back" href="../../../../docs/reference/api/python/autotvm.html#tvm.autotvm.measure.measure_methods.LocalRunner">[文档]</a><span class="k">class</span> <span class="nc">LocalRunner</span><span class="p">(</span><span class="n">RPCRunner</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Run generated code on local devices.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    timeout: float</span>
+<span class="sd">        The timeout of a compilation</span>
+<span class="sd">    number: int</span>
+<span class="sd">        The number of times to run the generated code for taking average.</span>
+<span class="sd">        We call these runs as one `repeat` of measurement.</span>
+<span class="sd">    repeat : int, optional</span>
+<span class="sd">        The number of times to repeat the measurement.</span>
+<span class="sd">        In total, the generated code will be run (1 + number x repeat) times,</span>
+<span class="sd">        where the first one is warm up and will be discarded.</span>
+<span class="sd">        The returned result contains `repeat` costs,</span>
+<span class="sd">        each of which is an average of `number` costs.</span>
+<span class="sd">    min_repeat_ms: int, optional</span>
+<span class="sd">        The minimum duration of one `repeat` in milliseconds.</span>
+<span class="sd">        By default, one `repeat` contains `number` runs. If this parameter is set,</span>
+<span class="sd">        the parameters `number` will be dynamically adjusted to meet the</span>
+<span class="sd">        minimum duration requirement of one `repeat`.</span>
+<span class="sd">        i.e., When the run time of one `repeat` falls below this time, the `number` parameter</span>
+<span class="sd">        will be automatically increased.</span>
+<span class="sd">    cooldown_interval: float, optional</span>
+<span class="sd">        The cool down interval between two measurements.</span>
+<span class="sd">    enable_cpu_cache_flush: bool</span>
+<span class="sd">        Whether to flush cache on CPU between repeated measurements.</span>
+<span class="sd">        Flushing cache can make the measured latency of one operator closer to</span>
+<span class="sd">        its actual latency during end-to-end inference.</span>
+<span class="sd">        To make this option effective, the argument `number` should also be set to 1.</span>
+<span class="sd">        This is only has effect on CPU task.</span>
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    This is a &quot;fake&quot; local mode. We start a silent rpc tracker and rpc server</span>
+<span class="sd">    for the user. In this way we reuse timeout/isolation mechanism in RPC infrastructure.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">repeat</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">min_repeat_ms</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">cooldown_interval</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">enable_cpu_cache_flush</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">module_loader</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LocalRunner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="kc">None</span><span class="p">,</span>
+            <span class="kc">None</span><span class="p">,</span>
+            <span class="mi">0</span><span class="p">,</span>
+            <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+            <span class="n">n_parallel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="n">number</span><span class="p">,</span>
+            <span class="n">repeat</span><span class="o">=</span><span class="n">repeat</span><span class="p">,</span>
+            <span class="n">min_repeat_ms</span><span class="o">=</span><span class="n">min_repeat_ms</span><span class="p">,</span>
+            <span class="n">cooldown_interval</span><span class="o">=</span><span class="n">cooldown_interval</span><span class="p">,</span>
+            <span class="n">enable_cpu_cache_flush</span><span class="o">=</span><span class="n">enable_cpu_cache_flush</span><span class="p">,</span>
+            <span class="n">module_loader</span><span class="o">=</span><span class="n">module_loader</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tracker</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">server</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">set_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
+        <span class="c1"># pylint: disable=import-outside-toplevel</span>
+        <span class="kn">from</span> <span class="nn">...rpc.server</span> <span class="kn">import</span> <span class="n">Server</span>
+        <span class="kn">from</span> <span class="nn">...rpc.tracker</span> <span class="kn">import</span> <span class="n">Tracker</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">task</span> <span class="o">=</span> <span class="n">task</span>
+        <span class="n">tracker</span> <span class="o">=</span> <span class="n">Tracker</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">9000</span><span class="p">,</span> <span class="n">port_end</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">device_key</span> <span class="o">=</span> <span class="s2">&quot;$local$device$</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">tracker</span><span class="o">.</span><span class="n">port</span>
+        <span class="n">server</span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span>
+            <span class="n">port</span><span class="o">=</span><span class="mi">9000</span><span class="p">,</span>
+            <span class="n">port_end</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+            <span class="n">key</span><span class="o">=</span><span class="n">device_key</span><span class="p">,</span>
+            <span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">tracker_addr</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="n">tracker</span><span class="o">.</span><span class="n">port</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">device_key</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">tracker</span><span class="o">.</span><span class="n">port</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">LocalRunner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">set_task</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">server</span><span class="p">,</span> <span class="n">tracker</span></div>
+
+
+<span class="k">def</span> <span class="nf">_build_func_common</span><span class="p">(</span><span class="n">measure_input</span><span class="p">,</span> <span class="n">runtime</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">check_gpu</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">build_option</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Common part for building a configuration&quot;&quot;&quot;</span>
+    <span class="n">target</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">config</span> <span class="o">=</span> <span class="n">measure_input</span>
+    <span class="n">target</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">target_host</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">check_and_update_host_consist</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">target_host</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">target</span><span class="p">:</span>
+        <span class="n">s</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">instantiate</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="c1"># check invalidity of template and code hash consistency</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">valid</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">InstantiationError</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">errors</span><span class="p">)</span>
+
+        <span class="n">opts</span> <span class="o">=</span> <span class="n">build_option</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">check_gpu</span><span class="p">:</span>  <span class="c1"># Add verify pass to filter out invalid configs in advance.</span>
+            <span class="n">opts</span><span class="p">[</span><span class="s2">&quot;tir.add_lower_pass&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="n">gpu_verify_pass</span><span class="p">(</span><span class="o">**</span><span class="n">check_gpu</span><span class="p">))]</span>
+
+        <span class="c1"># if target is vta, we need to use vta build</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="nb">hasattr</span><span class="p">(</span><span class="n">measure_input</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="s2">&quot;device_name&quot;</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="n">measure_input</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">device_name</span> <span class="o">==</span> <span class="s2">&quot;vta&quot;</span>
+        <span class="p">):</span>
+            <span class="c1"># pylint: disable=import-outside-toplevel</span>
+            <span class="kn">import</span> <span class="nn">vta</span>
+
+            <span class="n">func</span> <span class="o">=</span> <span class="n">vta</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">target_host</span><span class="o">=</span><span class="n">task</span><span class="o">.</span><span class="n">target_host</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">ir</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">opts</span><span class="p">):</span>
+                <span class="n">func</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">target_host</span><span class="o">=</span><span class="n">task</span><span class="o">.</span><span class="n">target_host</span><span class="p">,</span> <span class="n">runtime</span><span class="o">=</span><span class="n">runtime</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">func</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">((</span><span class="n">get_const_tuple</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">_WrappedBuildFunc</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Wrap build_func to a function that can be used in measure.</span>
+
+<span class="sd">    Note: this is a class instead of a closure so that it can be pickled when</span>
+<span class="sd">    using multiprocessing.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    build_func : The compilation function</span>
+<span class="sd">        We expect fcompile to contain an attr &quot;output_format&quot;.</span>
+<span class="sd">    runtime : Optional[Runtime]</span>
+<span class="sd">        The runtime to generate artifacts for</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    wrapped_build_func : callable</span>
+<span class="sd">        The wrapped build function</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">build_func</span><span class="p">,</span> <span class="n">runtime</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">build_func</span><span class="p">,</span> <span class="s2">&quot;output_format&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Expect build_func to have the attribute output_format.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">build_func</span> <span class="o">=</span> <span class="n">build_func</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime</span> <span class="o">=</span> <span class="n">runtime</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measure_input</span><span class="p">,</span> <span class="n">tmp_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Wrapped build func.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        measure_input: MeasureInput</span>
+<span class="sd">            The input of measurement</span>
+
+<span class="sd">        tmp_dir: str</span>
+<span class="sd">            The path of temporary directory to export generated library</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="n">tmp_dir</span><span class="p">,</span> <span class="s2">&quot;tmp_func_</span><span class="si">%0x</span><span class="s2">.</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_func</span><span class="o">.</span><span class="n">output_format</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="c1"># TODO(tvm-team) consider linline _build_func_common</span>
+            <span class="n">func</span><span class="p">,</span> <span class="n">arg_info</span> <span class="o">=</span> <span class="n">_build_func_common</span><span class="p">(</span><span class="n">measure_input</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">runtime</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_func</span><span class="o">.</span><span class="n">output_format</span> <span class="o">==</span> <span class="s2">&quot;.model-library-format&quot;</span><span class="p">:</span>
+                <span class="c1"># Late import to preserve autoTVM with USE_MICRO OFF</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">micro</span>  <span class="c1"># pylint: disable=import-outside-toplevel</span>
+                <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Requires USE_MICRO&quot;</span><span class="p">)</span>
+                <span class="n">micro</span><span class="o">.</span><span class="n">export_model_library_format</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">func</span><span class="o">.</span><span class="n">export_library</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_func</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># pylint: disable=broad-except</span>
+            <span class="n">tb</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">BuildResult</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span><span class="n">tb</span><span class="p">,</span> <span class="n">e</span><span class="p">),</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">BuildResult</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">arg_info</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span><span class="p">)</span>
+
+
+<span class="n">ModuleLoader</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span>
+    <span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">],</span> <span class="n">typing</span><span class="o">.</span><span class="n">ContextManager</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="n">tvm</span><span class="o">.</span><span class="n">rpc</span><span class="o">.</span><span class="n">RPCSession</span><span class="p">,</span> <span class="n">tvm</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">Module</span><span class="p">]]</span>
+<span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">run_through_rpc</span><span class="p">(</span>
+    <span class="n">measure_input</span><span class="p">,</span>
+    <span class="n">build_result</span><span class="p">,</span>
+    <span class="n">number</span><span class="p">,</span>
+    <span class="n">repeat</span><span class="p">,</span>
+    <span class="n">min_repeat_ms</span><span class="p">,</span>
+    <span class="n">cooldown_interval</span><span class="p">,</span>
+    <span class="n">remote_kwargs</span><span class="p">,</span>
+    <span class="n">ref_input</span><span class="p">,</span>
+    <span class="n">enable_cpu_cache_flush</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">module_loader</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Run a generated library through rpc</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    measure_input: MeasureInput</span>
+<span class="sd">        The raw measure input</span>
+<span class="sd">    build_result: BuildResult</span>
+<span class="sd">        The result returned from Builder. This contains the path to the generated library.</span>
+<span class="sd">    number: int</span>
+<span class="sd">        The number of times to run the generated code for taking average.</span>
+<span class="sd">        We call these runs as one `repeat` of measurement.</span>
+<span class="sd">    repeat : int, optional</span>
+<span class="sd">        The number of times to repeat the measurement.</span>
+<span class="sd">        In total, the generated code will be run (1 + number x repeat) times,</span>
+<span class="sd">        where the first one is warm up and will be discarded.</span>
+<span class="sd">        The returned result contains `repeat` costs,</span>
+<span class="sd">        each of which is an average of `number` costs.</span>
+<span class="sd">    min_repeat_ms: int, optional</span>
+<span class="sd">        The minimum duration of one `repeat` in milliseconds.</span>
+<span class="sd">        By default, one `repeat` contains `number` runs. If this parameter is set,</span>
+<span class="sd">        the parameters `number` will be dynamically adjusted to meet the</span>
+<span class="sd">        minimum duration requirement of one `repeat`.</span>
+<span class="sd">        i.e., When the run time of one `repeat` falls below this time, the `number` parameter</span>
+<span class="sd">        will be automatically increased.</span>
+<span class="sd">    cooldown_interval: float</span>
+<span class="sd">        The cool down interval between two measurements</span>
+<span class="sd">    remote_kwargs: dict</span>
+<span class="sd">        Passed to module_loader(). Ultimately, keyword args to request_remote().</span>
+<span class="sd">    ref_input: List of np.ndarray</span>
+<span class="sd">        The reference input used for tuning. Empty for randomly filled input.</span>
+<span class="sd">    enable_cpu_cache_flush: bool</span>
+<span class="sd">        Whether to flush cache on CPU between repeated measurements.</span>
+<span class="sd">        Flushing cache can make the measured latency of one operator closer to</span>
+<span class="sd">        its actual latency during end-to-end inference.</span>
+<span class="sd">        To make this option effective, the argument `number` should also be set to 1.</span>
+<span class="sd">        This is only has effect on CPU task.</span>
+<span class="sd">    module_loader: ModuleLoader</span>
+<span class="sd">        A function that returns a ContextManager used to establish and teardown the remote session.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">build_result</span><span class="p">,</span> <span class="n">MeasureResult</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">build_result</span>
+
+    <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">errno</span> <span class="o">=</span> <span class="n">MeasureErrorNo</span><span class="o">.</span><span class="n">NO_ERROR</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># upload built module</span>
+        <span class="k">with</span> <span class="n">module_loader</span><span class="p">(</span><span class="n">remote_kwargs</span><span class="p">,</span> <span class="n">build_result</span><span class="p">)</span> <span class="k">as</span> <span class="p">(</span><span class="n">remote</span><span class="p">,</span> <span class="n">mod</span><span class="p">):</span>
+            <span class="n">dev</span> <span class="o">=</span> <span class="n">remote</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">measure_input</span><span class="o">.</span><span class="n">target</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+
+            <span class="c1"># Limitation:</span>
+            <span class="c1"># We can not get PackFunction directly in the remote mode as it is wrapped</span>
+            <span class="c1"># under the std::function. We could lift the restriction later once we fold</span>
+            <span class="c1"># the PackedFunc as an object. Currently, we pass function name to work</span>
+            <span class="c1"># around it.</span>
+            <span class="n">f_prepare</span> <span class="o">=</span> <span class="s2">&quot;cache_flush_cpu_non_first_arg&quot;</span> <span class="k">if</span> <span class="n">enable_cpu_cache_flush</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">time_f</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">time_evaluator</span><span class="p">(</span>
+                <span class="n">mod</span><span class="o">.</span><span class="n">entry_name</span><span class="p">,</span>
+                <span class="n">dev</span><span class="p">,</span>
+                <span class="n">number</span><span class="o">=</span><span class="n">number</span><span class="p">,</span>
+                <span class="n">repeat</span><span class="o">=</span><span class="n">repeat</span><span class="p">,</span>
+                <span class="n">min_repeat_ms</span><span class="o">=</span><span class="n">min_repeat_ms</span><span class="p">,</span>
+                <span class="n">f_preproc</span><span class="o">=</span><span class="n">f_prepare</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">ref_input</span><span class="p">:</span>
+                <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">nd</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">dev</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ref_input</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">random_fill</span> <span class="o">=</span> <span class="n">remote</span><span class="o">.</span><span class="n">get_function</span><span class="p">(</span><span class="s2">&quot;tvm.contrib.random.random_fill&quot;</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+                        <span class="s2">&quot;Please make sure USE_RANDOM is ON in the config.cmake &quot;</span>
+                        <span class="s2">&quot;on the remote devices&quot;</span>
+                    <span class="p">)</span>
+                <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">nd</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dev</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">build_result</span><span class="o">.</span><span class="n">arg_info</span><span class="p">]</span>
+                <span class="k">if</span> <span class="s2">&quot;scatter&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">measure_input</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+                    <span class="c1"># the index tensor of scatter op cannot be randomly initialized</span>
+                    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+                        <span class="n">random_fill</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+                <span class="n">dev</span><span class="o">.</span><span class="n">sync</span><span class="p">()</span>
+
+            <span class="n">costs</span> <span class="o">=</span> <span class="n">time_f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="o">.</span><span class="n">results</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">costs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># remove largest and smallest value to reduce variance</span>
+            <span class="n">costs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">costs</span><span class="p">)</span>
+            <span class="n">costs</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+            <span class="n">costs</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">costs</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">except</span> <span class="n">TVMError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;Stack trace returned&quot;</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="p">[:</span> <span class="n">msg</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;Stack trace returned&quot;</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="s2">&quot;CUDA Source&quot;</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="p">[:</span> <span class="n">msg</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;CUDA Source&quot;</span><span class="p">)]</span>
+        <span class="n">costs</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">(),</span>
+            <span class="ne">RuntimeError</span><span class="p">(</span><span class="n">msg</span><span class="p">[:</span><span class="mi">1024</span><span class="p">]),</span>
+        <span class="p">)</span>
+        <span class="n">errno</span> <span class="o">=</span> <span class="n">MeasureErrorNo</span><span class="o">.</span><span class="n">RUNTIME_DEVICE</span>
+    <span class="n">tstamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">cooldown_interval</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">MeasureResult</span><span class="p">(</span><span class="n">costs</span><span class="p">,</span> <span class="n">errno</span><span class="p">,</span> <span class="n">tstamp</span> <span class="o">-</span> <span class="n">tic</span> <span class="o">+</span> <span class="n">build_result</span><span class="o">.</span><span class="n">time_cost</span><span class="p">,</span> <span class="n">tstamp</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">DefaultModuleLoader</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;See default_module_loader(). A pickleable emulation of the original function closure.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pre_load_function</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pre_load_function</span> <span class="o">=</span> <span class="n">pre_load_function</span>
+
+    <span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">remote_kwargs</span><span class="p">,</span> <span class="n">build_result</span><span class="p">):</span>
+        <span class="n">remote</span> <span class="o">=</span> <span class="n">request_remote</span><span class="p">(</span><span class="o">**</span><span class="n">remote_kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_load_function</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pre_load_function</span><span class="p">(</span><span class="n">remote</span><span class="p">,</span> <span class="n">build_result</span><span class="p">)</span>
+
+        <span class="n">remote</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span><span class="n">build_result</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">remote</span><span class="p">,</span> <span class="n">remote</span><span class="o">.</span><span class="n">load_module</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">build_result</span><span class="o">.</span><span class="n">filename</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="c1"># clean up remote files</span>
+            <span class="n">remote</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">build_result</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+            <span class="n">remote</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">build_result</span><span class="o">.</span><span class="n">filename</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.so&quot;</span><span class="p">)</span>
+            <span class="n">remote</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">default_module_loader</span><span class="p">(</span><span class="n">pre_load_function</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a default function that can be passed as module_loader to run_through_rpc.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pre_load_function : Optional[Function[tvm.rpc.Session, tvm.runtime.Module]]</span>
+<span class="sd">        Invoked after a session is established and before the default code-loading RPC calls are</span>
+<span class="sd">        issued. Allows performing pre-upload actions, e.g. resetting the remote runtime environment.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DefaultModuleLoader :</span>
+<span class="sd">        A callable that can be passed as module_loader to run_through_rpc.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># This was a function with a closure before but that couldn&#39;t be pickled!</span>
+    <span class="c1"># We need pickle to work for using python&#39;s multiprocessing on some platforms.</span>
+    <span class="k">return</span> <span class="n">DefaultModuleLoader</span><span class="p">(</span><span class="n">pre_load_function</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">request_remote</span><span class="p">(</span><span class="n">device_key</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">priority</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Request a remote session</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    device_key: string</span>
+<span class="sd">        The device key of registered device in tracker</span>
+<span class="sd">    host: host, optional</span>
+<span class="sd">        The host address of rpc tracker.</span>
+<span class="sd">        If is none, will use environment variable &quot;TVM_TRACKER_HOST&quot;</span>
+<span class="sd">    port: int, optional</span>
+<span class="sd">        The port of rpc tracker.</span>
+<span class="sd">        If is none, will use environment variable &quot;TVM_TRACKER_PORT&quot;</span>
+<span class="sd">    priority: int, optional</span>
+<span class="sd">        The priority of this request, larger is more prior</span>
+<span class="sd">    timeout: float, optional</span>
+<span class="sd">        The timeout of this session (units: second)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------</span>
+<span class="sd">    session: RPCSession</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># connect to the tracker</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="n">host</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TVM_TRACKER_HOST&quot;</span><span class="p">]</span>
+    <span class="n">port</span> <span class="o">=</span> <span class="n">port</span> <span class="ow">or</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TVM_TRACKER_PORT&quot;</span><span class="p">])</span>
+
+    <span class="n">tracker</span> <span class="o">=</span> <span class="n">_rpc</span><span class="o">.</span><span class="n">connect_tracker</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+    <span class="n">remote</span> <span class="o">=</span> <span class="n">tracker</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">device_key</span><span class="p">,</span> <span class="n">priority</span><span class="o">=</span><span class="n">priority</span><span class="p">,</span> <span class="n">session_timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">remote</span>
+
+
+<span class="k">def</span> <span class="nf">check_remote</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">device_key</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">priority</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check the availability of a remote device</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    target: Target</span>
+<span class="sd">        The wanted compilation target</span>
+<span class="sd">    device_key: string</span>
+<span class="sd">        device key of registered device in tracker</span>
+<span class="sd">    host: host, optional</span>
+<span class="sd">        The host address of rpc tracker.</span>
+<span class="sd">        If is none, will use environment variable &quot;TVM_TRACKER_HOST&quot;</span>
+<span class="sd">    port: int, optional</span>
+<span class="sd">        The port address of rpc tracker.</span>
+<span class="sd">        If is none, will use environment variable &quot;TVM_TRACKER_PORT&quot;</span>
+<span class="sd">    priority: int, optional</span>
+<span class="sd">        The priority of this request, larger is more prior</span>
+<span class="sd">    timeout: float, optional</span>
+<span class="sd">        The timeout of this check (units: seconds).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    available: bool</span>
+<span class="sd">        True if can find available device</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_check</span><span class="p">():</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;waiting for device...&quot;</span><span class="p">)</span>
+        <span class="n">remote</span> <span class="o">=</span> <span class="n">request_remote</span><span class="p">(</span><span class="n">device_key</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">priority</span><span class="p">)</span>
+        <span class="n">dev</span> <span class="o">=</span> <span class="n">remote</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">dev</span><span class="o">.</span><span class="n">exist</span><span class="p">:</span>  <span class="c1"># wait until we get an available device</span>
+            <span class="k">pass</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;device available&quot;</span><span class="p">)</span>
+
+    <span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span>
+        <span class="n">target</span><span class="o">=</span><span class="n">_check</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+
+    <span class="n">remote</span> <span class="o">=</span> <span class="n">request_remote</span><span class="p">(</span><span class="n">device_key</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">priority</span><span class="p">)</span>
+    <span class="n">dev</span> <span class="o">=</span> <span class="n">remote</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">dev</span><span class="o">.</span><span class="n">exist</span>
+
+
+<span class="k">def</span> <span class="nf">set_cuda_target_arch</span><span class="p">(</span><span class="n">arch</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;THIS API IS DEPRECATED.</span>
+
+<span class="sd">    set target architecture of nvcc compiler</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    arch: str or list</span>
+<span class="sd">        The argument of nvcc -arch. (e.g. &quot;sm_51&quot;, &quot;sm_62&quot;)</span>
+<span class="sd">        it can also be a count of gencode arguments pass to nvcc command line,</span>
+<span class="sd">        e.g., [&quot;-gencode&quot;, &quot;arch=compute_52,code=sm_52&quot;, &quot;-gencode&quot;, &quot;arch=compute_70,code=sm_70&quot;]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="s2">&quot;The API &#39;autotvm.measure.set_cuda_target_arch&#39; is deprecated.&quot;</span>
+        <span class="s2">&quot;Try specifying it by adding &#39;-arch=sm_xx&#39; to your target, such as &#39;cuda -arch=sm_86&#39;.&quot;</span>
+        <span class="s2">&quot;See https://github.com/apache/tvm/pull/9544 for the upgrade guide.&quot;</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">gpu_verify_pass</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Verify the validity of a gpu kernel.</span>
+<span class="sd">    This pass will check memory usage and number of threads per block.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">verify_pass</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">):</span>
+        <span class="n">valid</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">tir</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">verify_gpu_code</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">valid</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InstantiationError</span><span class="p">(</span><span class="s2">&quot;Skipped because of invalid gpu kernel&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">f</span>
+
+    <span class="k">return</span> <span class="n">tvm</span><span class="o">.</span><span class="n">tir</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">prim_func_pass</span><span class="p">(</span><span class="n">verify_pass</span><span class="p">,</span> <span class="n">opt_level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By xinetzone<br/>
+  
+      &copy; Copyright 2022, xinetzone.<br/>
+    Last updated on 2022-04-07, 15:51:47.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

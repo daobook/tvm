@@ -1,0 +1,1787 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>tvm.relay.backend &#8212; TVM  文档</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../../_static/togglebutton.js"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../../../../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <link rel="shortcut icon" href="../../../../../_static/tvm-logo-square.png"/>
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" />
+    <link rel="next" title="tvm.relay.dataflow_pattern" href="dataflow_pattern.html" />
+    <link rel="prev" title="tvm.relay.analysis" href="analysis.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_CN">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../../../_static/tvm-logo-small.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">TVM  文档</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../README.html">
+   TVM 文档
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../../start.html">
+   快速上手
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../install/index.html">
+     安装 TVM
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../install/from_source.html">
+       从源码安装
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../install/nnpack.html">
+         NNPACK Contrib Installation
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../install/docker.html">
+       Docker 镜像
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../install/tlcpack.html">
+       TLCPack
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../contribute/index.html">
+     Contributor Guide
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/community.html">
+       TVM Community Guidelines
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/pull_request.html">
+       Submit a Pull Request
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/code_review.html">
+       Code Reviews
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/committer_guide.html">
+       Committer Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/document.html">
+       Documentation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/code_guide.html">
+       Code Guide and Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/git_howto.html">
+       Git Usage Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/ci.html">
+       Using TVM’s CI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/release_process.html">
+       Release Process
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/error_handling.html">
+       Error Handling Guide
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../../study/index.html">
+   学习笔记
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../study/quantize.html">
+     量化
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../study/start.html">
+     TVM 入门指南
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../study/test.html">
+     测试 TVM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../../user-guide.html">
+   用户手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../tutorial/index.html">
+     用户指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/introduction.html">
+       TVM 和模型优化的概述
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/tvmc_command_line_driver.html">
+       用 TVMC 编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/tvmc_python.html">
+       开始使用 TVMC Python：TVM 的高级 API
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/autotvm_relay_x86.html">
+       用 Python 接口编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/tensor_expr_get_started.html">
+       使用张量表达式处理算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/autotvm_matmul_x86.html">
+       用调度模板和 AutoTVM 优化算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/auto_scheduler_matmul_x86.html">
+       使用自动调度优化运算
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/tensor_ir_blitz_course.html">
+       TensorIR 的突击课程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/cross_compilation_and_rpc.html">
+       交叉编译和RPC
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/relay_quick_start.html">
+       编译深度学习模型的快速入门教程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/intro_topi.html">
+       TOPI 简介
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../how_to/index.html">
+     How To 指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/compile_models/index.html">
+       编译深度学习模型
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+      <label for="toctree-checkbox-9">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_pytorch.html">
+         编译 PyTorch 模型
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_tensorflow.html">
+         Compile Tensorflow Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_mxnet.html">
+         Compile MXNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_onnx.html">
+         Compile ONNX Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_keras.html">
+         Compile Keras Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_tflite.html">
+         Compile TFLite Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_coreml.html">
+         Compile CoreML Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_darknet.html">
+         Compile YOLO-V2 and YOLO-V3 in DarkNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_caffe2.html">
+         Compile Caffe2 Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_paddle.html">
+         Compile PaddlePaddle Models
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/deploy/index.html">
+       部署模型，集成 TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy/cpp_deploy.html">
+         Deploy TVM Module using C++ API
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy/android.html">
+         Deploy to Android
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy/integrate.html">
+         Integrate TVM into Your Project
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy/hls.html">
+         HLS Backend Example
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy/arm_compute_lib.html">
+         Relay Arm
+         <sup>
+          ®
+         </sup>
+         Compute Library Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy/tensorrt.html">
+         Relay TensorRT Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy/vitis_ai.html">
+         Vitis AI Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy/bnns.html">
+         Relay BNNS Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy_models/index.html">
+         部署深度学习模型
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/work_with_relay/index.html">
+       Work With Relay
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+      <label for="toctree-checkbox-11">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/work_with_schedules/index.html">
+       Work With Tensor Expression and Schedules
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+      <label for="toctree-checkbox-12">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/optimize_operators/index.html">
+       Optimize Tensor Operators
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+      <label for="toctree-checkbox-13">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/tune_with_autotvm/index.html">
+       Auto-Tune with Templates and AutoTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+      <label for="toctree-checkbox-14">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/tune_with_autotvm/tune_conv2d_cuda.html">
+         Tuning High Performance Convolution on NVIDIA GPUs
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/tune_with_autotvm/tune_relay_cuda.html">
+         Auto-tuning a Convolutional Network for NVIDIA GPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/tune_with_autotvm/tune_relay_x86.html">
+         Auto-tuning a Convolutional Network for x86 CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/tune_with_autotvm/tune_relay_arm.html">
+         Auto-tuning a Convolutional Network for ARM CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/tune_with_autotvm/tune_relay_mobile_gpu.html">
+         Auto-tuning a Convolutional Network for Mobile GPU
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/tune_with_autoscheduler/index.html">
+       Use AutoScheduler for Template-Free Scheduling
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+      <label for="toctree-checkbox-15">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/work_with_microtvm/index.html">
+       Work With microTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+      <label for="toctree-checkbox-16">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/extend_tvm/index.html">
+       Extend TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+      <label for="toctree-checkbox-17">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/profile/index.html">
+       Profile Models
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+      <label for="toctree-checkbox-18">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/profile/papi.html">
+         Getting Started With PAPI
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../errors.html">
+       处理 TVM 的错误
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../faq.html">
+       常见问题
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../../developer-guide.html">
+   开发手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../dev/tutorial/index.html">
+     开发者教程
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+    <label for="toctree-checkbox-20">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../dev/tutorial/codebase_walkthrough.html">
+       TVM 代码库的实例演练
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../dev/how_to/how_to.html">
+     开发者 How-To 指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../dev/how_to/relay_add_op.html">
+       Adding an Operator to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../dev/how_to/relay_add_pass.html">
+       Adding a Compiler Pass to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../dev/how_to/relay_bring_your_own_codegen.html">
+       Bring Your Own Codegen To TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../dev/how_to/pytest_target_parametrization.html">
+       Python Target Parametrization
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../arch/index.html">
+   设计与架构
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/runtime.html">
+     TVM 运行时系统
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/debugger.html">
+     Debugger
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/virtual_machine.html">
+     Putting the VM in TVM: The Relay Virtual Machine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/introduction_to_module_serialization.html">
+     Introduction to Module Serialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/pass_infra.html">
+     Pass Infrastructure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/inferbound.html">
+     InferBound Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/hybrid_script.html">
+     Hybrid Frontend Developer Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/relay_intro.html">
+     Introduction to Relay IR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/relay_op_strategy.html">
+     Relay Operator Strategy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/convert_layout.html">
+     Convert Layout Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/benchmark.html">
+     Benchmark Performance Log Format
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/frontend/tensorflow.html">
+     TensorFlow Frontend
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/security.html">
+     Security Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/microtvm_design.html">
+     microTVM Design Document
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/microtvm_project_api.html">
+     microTVM Project API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/model_library_format.html">
+     Model Library Format
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../../topic-guides.html">
+   主题指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../topic/microtvm/index.html">
+     microTVM：裸机上的 TVM
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../topic/vta/index.html">
+     VTA：通用张量加速器
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+    <label for="toctree-checkbox-24">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../topic/vta/install.html">
+       VTA 安装指南
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../topic/vta/dev/index.html">
+       VTA 设计和开发指南
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../topic/vta/dev/config.html">
+         VTA 配置
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../topic/vta/dev/hardware.html">
+         VTA 硬件指南
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../topic/vta/tutorials/index.html">
+       VTA 教程
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../topic/vta/tutorials/matrix_multiply.html">
+         Simple Matrix Multiply
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../topic/vta/tutorials/vta_get_started.html">
+         Get Started with VTA
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../topic/vta/tutorials/frontend/index.html">
+         Compile Deep Learning Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../topic/vta/tutorials/optimize/index.html">
+         Optimize Tensor Operators
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../topic/vta/tutorials/autotvm/index.html">
+         Auto tuning
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../../../../reference-guide.html">
+   参考指南
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../langref/index.html">
+     语言参考
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+    <label for="toctree-checkbox-28">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../langref/relay_expr.html">
+       Expressions in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../langref/relay_type.html">
+       Relay’s Type System
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../langref/relay_adt.html">
+       Algebraic Data Types in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../langref/relay_op.html">
+       Relay Core Tensor Operators
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../langref/relay_pattern.html">
+       Pattern Matching in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../langref/hybrid_script.html">
+       Hybrid Frontend Language Reference
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="../index.html">
+     Python API
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../runtime.html">
+       tvm.runtime
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../ndarray.html">
+       tvm.runtime.ndarray
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../error.html">
+       tvm.error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../ir.html">
+       tvm.ir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../target.html">
+       tvm.target
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tir.html">
+       tvm.tir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../te.html">
+       tvm.te
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../driver.html">
+       tvm.driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="index.html">
+       tvm.relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="frontend.html">
+       tvm.relay.frontend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="nn.html">
+       tvm.relay.nn
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vision.html">
+       tvm.relay.vision
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="image.html">
+       tvm.relay.image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="transform.html">
+       tvm.relay.transform
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="analysis.html">
+       tvm.relay.analysis
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       tvm.relay.backend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="dataflow_pattern.html">
+       tvm.relay.dataflow_pattern
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="testing.html">
+       tvm.relay.testing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autotvm.html">
+       tvm.autotvm
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../auto_scheduler.html">
+       tvm.auto_scheduler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../rpc.html">
+       tvm.rpc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../micro.html">
+       tvm.micro
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../contrib.html">
+       tvm.contrib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../graph_executor.html">
+       tvm.contrib.graph_executor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../topi.html">
+       tvm.topi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../vta/index.html">
+       vta
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../links.html">
+     其他 API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../publications.html">
+     出版物
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../../refs/index.html">
+   参考
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+  <label for="toctree-checkbox-30">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../../refs/_ffi/index.html">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _ffi
+      </span>
+     </code>
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../../refs/_ffi/base.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.base
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../../refs/_ffi/libinfo.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.libinfo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../../refs/_ffi/object.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi._ctypes.object
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../../refs/_ffi/registry.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.registry
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../../refs/_ffi/runtime_ctypes.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.runtime_ctypes
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/xinetzone/torch-quantization/edit/main/docs/docs/reference/api/python/relay/backend.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../../_sources/docs/reference/api/python/relay/backend.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>tvm.relay.backend</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="module-tvm.relay.backend">
+<span id="tvm-relay-backend"></span><h1>tvm.relay.backend<a class="headerlink" href="#module-tvm.relay.backend" title="永久链接至标题">#</a></h1>
+<p>Backend codegen modules for relay.</p>
+<span class="target" id="module-tvm.relay.backend.interpreter"></span><p>The Python interface to the Relay reference interpreter.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="tvm.relay.backend.interpreter.ConstructorValue">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tvm.relay.backend.interpreter.</span></span><span class="sig-name descname"><span class="pre">ConstructorValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constructor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/interpreter.html#ConstructorValue"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.interpreter.ConstructorValue" title="永久链接至目标">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tvm.relay.backend.interpreter.Executor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tvm.relay.backend.interpreter.</span></span><span class="sig-name descname"><span class="pre">Executor</span></span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/interpreter.html#Executor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.interpreter.Executor" title="永久链接至目标">#</a></dt>
+<dd><p>An abstract interface for executing Relay programs.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.relay.backend.interpreter.Executor._convert_args">
+<span class="sig-name descname"><span class="pre">_convert_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/interpreter.html#Executor._convert_args"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.interpreter.Executor._convert_args" title="永久链接至目标">#</a></dt>
+<dd><p>Convert the combination of arguments and keyword arguments
+into a sequence of arguments that may be passed to
+a Relay evaluator.</p>
+<p>We first provide all positional arguments, and then attempt
+to fill in the remaining arguments using the keyword arguments. We
+map the keyword arguments to the corresponding parameters, if there
+is an ambiguity between positional and keyword arguments this
+procedure will raise an error.</p>
+<dl class="simple">
+<dt>expr: relay.Expr</dt><dd><p>The expression to evaluate</p>
+</dd>
+<dt>args: List[tvm.nd.NDArray]</dt><dd><p>The arguments to pass to the evaluator.</p>
+</dd>
+<dt>kwargs: Dict[str, tvm.NDArrray]</dt><dd><p>The keyword arguments to pass to the evaluator.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>List[tvm.nd.NDArray]</dt><dd><p>The new arguments with all keyword arguments placed in the correct slot.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>args</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.relay.backend.interpreter.Executor._make_executor">
+<span class="sig-name descname"><span class="pre">_make_executor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/interpreter.html#Executor._make_executor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.interpreter.Executor._make_executor" title="永久链接至目标">#</a></dt>
+<dd><p>Construct a Python function that implements the evaluation
+of expression.</p>
+<dl class="simple">
+<dt>expr: Optional[relay.Expr]</dt><dd><p>The Relay expression to execute.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>executor: function,</dt><dd><p>A Python function which implements the behavior of <cite>expr</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.relay.backend.interpreter.Executor.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/interpreter.html#Executor.evaluate"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.interpreter.Executor.evaluate" title="永久链接至目标">#</a></dt>
+<dd><p>Evaluate a Relay expression on the executor.</p>
+<dl class="simple">
+<dt>expr: Optional[tvm.relay.Expr]</dt><dd><p>The expression to evaluate.</p>
+</dd>
+<dt>binds: Optional[Map[tvm.relay.Var, tvm.relay.Expr]]</dt><dd><p>Additional binding of free variable.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>val<span class="classifier">Union[function, Object]</span></dt><dd><p>The evaluation result.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tvm.relay.backend.interpreter.Interpreter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tvm.relay.backend.interpreter.</span></span><span class="sig-name descname"><span class="pre">Interpreter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mod</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/interpreter.html#Interpreter"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.interpreter.Interpreter" title="永久链接至目标">#</a></dt>
+<dd><p>Simple interpreter interface.</p>
+<dl class="simple">
+<dt>mod<span class="classifier">tvm.IRModule</span></dt><dd><p>The module to support the execution.</p>
+</dd>
+<dt>device<span class="classifier">Device</span></dt><dd><p>The runtime device to run the code on.</p>
+</dd>
+<dt>target<span class="classifier">tvm.Target</span></dt><dd><p>The target option to build the function.</p>
+</dd>
+</dl>
+<p>CAUTION: Despite the API the module is prepared upon each call to evaluate
+rather than once in create_executor.
+That is:
+.. code-block:: python</p>
+<blockquote>
+<div><p>executor = relay.create_executor(kind=”debug”, mod=module)
+a = executor.evaluate(expr)(args1)
+b = executor.evaluate(expr)(args2)</p>
+</div></blockquote>
+<p>will prepare all the bindings in module twice. For efficiency, try to hoist
+calls to evaluate as high as possible, preferably immediately after create_executor:
+.. code-block:: python</p>
+<blockquote>
+<div><p>func = relay.create_executor(kind=”debug”, mod=module).evaluate(expr)
+a = func(args1)
+b = func(args2)</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tvm.relay.backend.interpreter.RefValue">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tvm.relay.backend.interpreter.</span></span><span class="sig-name descname"><span class="pre">RefValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/interpreter.html#RefValue"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.interpreter.RefValue" title="永久链接至目标">#</a></dt>
+<dd></dd></dl>
+
+<span class="target" id="module-tvm.relay.backend.te_compiler"></span><p>TE compiler engine (replacing legacy compile_engine).</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="tvm.relay.backend.te_compiler.CCacheKey">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tvm.relay.backend.te_compiler.</span></span><span class="sig-name descname"><span class="pre">CCacheKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/te_compiler.html#CCacheKey"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.te_compiler.CCacheKey" title="永久链接至目标">#</a></dt>
+<dd><p>Key in the TE Compiler.</p>
+<dl class="simple">
+<dt>source_func<span class="classifier">tvm.relay.Function</span></dt><dd><p>The source function.</p>
+</dd>
+<dt>target<span class="classifier">tvm.Target</span></dt><dd><p>The target we want to run the function on.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tvm.relay.backend.te_compiler.CCacheValue">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tvm.relay.backend.te_compiler.</span></span><span class="sig-name descname"><span class="pre">CCacheValue</span></span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/te_compiler.html#CCacheValue"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.te_compiler.CCacheValue" title="永久链接至目标">#</a></dt>
+<dd><p>Value in the TE Compiler, including usage statistics.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tvm.relay.backend.te_compiler.LoweredOutput">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tvm.relay.backend.te_compiler.</span></span><span class="sig-name descname"><span class="pre">LoweredOutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">implement</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/te_compiler.html#LoweredOutput"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.te_compiler.LoweredOutput" title="永久链接至目标">#</a></dt>
+<dd><p>Lowered output</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tvm.relay.backend.te_compiler.TECompiler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tvm.relay.backend.te_compiler.</span></span><span class="sig-name descname"><span class="pre">TECompiler</span></span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/te_compiler.html#TECompiler"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.te_compiler.TECompiler" title="永久链接至目标">#</a></dt>
+<dd><p>TECompiler to get lowered code.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.relay.backend.te_compiler.TECompiler.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/te_compiler.html#TECompiler.clear"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.te_compiler.TECompiler.clear" title="永久链接至目标">#</a></dt>
+<dd><p>clear the existing cached functions</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.relay.backend.te_compiler.TECompiler.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/te_compiler.html#TECompiler.items"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.te_compiler.TECompiler.items" title="永久链接至目标">#</a></dt>
+<dd><p>List items in the cache.
+Returns
+——-
+item_list : List[Tuple[CCacheKey, CCacheValue]]</p>
+<blockquote>
+<div><p>The list of items.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.relay.backend.te_compiler.TECompiler.jit">
+<span class="sig-name descname"><span class="pre">jit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/te_compiler.html#TECompiler.jit"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.te_compiler.TECompiler.jit" title="永久链接至目标">#</a></dt>
+<dd><p>JIT a source_func to a tvm.runtime.PackedFunc.</p>
+<dl class="simple">
+<dt>source_func<span class="classifier">Union[tvm.relay.Function, CCacheKey]</span></dt><dd><p>The source relay function.</p>
+</dd>
+<dt>target<span class="classifier">tvm.Target</span></dt><dd><p>The target platform.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>jited_func: tvm.runtime.PackedFunc</dt><dd><p>The result of jited function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.relay.backend.te_compiler.TECompiler.lower">
+<span class="sig-name descname"><span class="pre">lower</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mod_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/te_compiler.html#TECompiler.lower"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.te_compiler.TECompiler.lower" title="永久链接至目标">#</a></dt>
+<dd><p>Lower a source_func to a CachedFunc.</p>
+<dl class="simple">
+<dt>source_func<span class="classifier">Union[tvm.relay.Function, CCacheKey]</span></dt><dd><p>The source relay function.</p>
+</dd>
+<dt>target<span class="classifier">tvm.Target</span></dt><dd><p>The target platform.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>cached_func: CachedFunc</dt><dd><p>The result of lowering.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.backend.te_compiler.get">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.backend.te_compiler.</span></span><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/te_compiler.html#get"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.te_compiler.get" title="永久链接至目标">#</a></dt>
+<dd><p>Get the global TE Compiler.</p>
+<dl class="simple">
+<dt>engine<span class="classifier">tvm.relay.backend.TECompiler</span></dt><dd><p>The TE Compiler.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.backend.te_compiler.get_shape">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.backend.te_compiler.</span></span><span class="sig-name descname"><span class="pre">get_shape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/te_compiler.html#get_shape"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.te_compiler.get_shape" title="永久链接至目标">#</a></dt>
+<dd><p>Convert the shape to correct dtype and vars.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.backend.te_compiler.get_valid_implementations">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.backend.te_compiler.</span></span><span class="sig-name descname"><span class="pre">get_valid_implementations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attrs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/te_compiler.html#get_valid_implementations"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.te_compiler.get_valid_implementations" title="永久链接至目标">#</a></dt>
+<dd><p>Get all valid implementations from the op strategy.</p>
+<p>Note that this function doesn’t support op with symbolic input shapes.</p>
+<dl class="simple">
+<dt>op<span class="classifier">tvm.ir.Op</span></dt><dd><p>Relay operator.</p>
+</dd>
+<dt>attrs<span class="classifier">object</span></dt><dd><p>The op attribute.</p>
+</dd>
+<dt>inputs<span class="classifier">List[tvm.te.Tensor]</span></dt><dd><p>Input tensors to the op.</p>
+</dd>
+<dt>out_type<span class="classifier">relay.Type</span></dt><dd><p>The output type.</p>
+</dd>
+<dt>target<span class="classifier">tvm.target.Target</span></dt><dd><p>The target to compile the op.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>ret<span class="classifier">List[relay.op.OpImplementation]</span></dt><dd><p>The list of all valid op implementations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.backend.te_compiler.select_implementation">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.backend.te_compiler.</span></span><span class="sig-name descname"><span class="pre">select_implementation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attrs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_autotvm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/te_compiler.html#select_implementation"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.te_compiler.select_implementation" title="永久链接至目标">#</a></dt>
+<dd><p>Select the best implementation from the op strategy.</p>
+<p>If use_autotvm is True, it’ll first try to find the best implementation
+based on AutoTVM profile results. If no AutoTVM profile result is found,
+it’ll choose the implementation with highest plevel.</p>
+<p>If use_autotvm is False, it’ll directly choose the implementation with
+highest plevel.</p>
+<p>Note that this function doesn’t support op with symbolic input shapes.</p>
+<dl class="simple">
+<dt>op<span class="classifier">tvm.ir.Op</span></dt><dd><p>Relay operator.</p>
+</dd>
+<dt>attrs<span class="classifier">object</span></dt><dd><p>The op attribute.</p>
+</dd>
+<dt>inputs<span class="classifier">List[tvm.te.Tensor]</span></dt><dd><p>Input tensors to the op.</p>
+</dd>
+<dt>out_type<span class="classifier">relay.Type</span></dt><dd><p>The output type.</p>
+</dd>
+<dt>target<span class="classifier">tvm.target.Target</span></dt><dd><p>The target to compile the op.</p>
+</dd>
+<dt>use_autotvm<span class="classifier">bool</span></dt><dd><p>Whether query AutoTVM to pick the best.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>ret<span class="classifier">tuple(relay.op.OpImplementation, List[tvm.te.Tensor])</span></dt><dd><p>The best op implementation and the corresponding output tensors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-tvm.relay.backend.graph_executor_codegen"></span><p>A compiler from a Relay expression to TVM’s graph executor.</p>
+<p>The compiler is built from a few pieces.</p>
+<p>First we define a compiler from a single Relay expression to the
+graph language. We require the expression to be a function.
+The function’s parameters correspond to the placeholder/inputs
+and model parameters found in the computation graph representation.
+The body of the function represents the computation graph.</p>
+<p>The compiler’s output is a program in the graph language, which is composed of
+Node, NodeRef, InputNode, OpNode. This “little language” represents programs in
+TVM’s graph format.</p>
+<p>To connect to the graph executor, we use a printer that converts our graph format
+into TVM’s JSON format. The resulting string can be loaded by
+contrib.graph_executor or any other TVM runtime compatible systems.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tvm.relay.backend.graph_executor_codegen.</span></span><span class="sig-name descname"><span class="pre">GraphExecutorCodegen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mod</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/graph_executor_codegen.html#GraphExecutorCodegen"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen" title="永久链接至目标">#</a></dt>
+<dd><p>The compiler from Relay to the TVM runtime system.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen.codegen">
+<span class="sig-name descname"><span class="pre">codegen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ir_module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/graph_executor_codegen.html#GraphExecutorCodegen.codegen"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen.codegen" title="永久链接至目标">#</a></dt>
+<dd><p>Compile a single function into a graph.</p>
+<dl class="simple">
+<dt>ir_module: tvm.ir.Module</dt><dd><p>The module to compile</p>
+</dd>
+<dt>func: tvm.relay.Expr</dt><dd><p>The function to compile.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>graph_json<span class="classifier">str</span></dt><dd><p>The graph json that can be consumed by runtime.</p>
+</dd>
+<dt>mod<span class="classifier">IRModule or Dict[Target, IRModule]</span></dt><dd><p>The lowered functions.</p>
+</dd>
+<dt>params<span class="classifier">Dict[str, tvm.nd.NDArray]</span></dt><dd><p>Additional constant parameters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-tvm.relay.backend.vm"></span><p>The Relay Virtual Machine.</p>
+<p>Implements a Python interface to compiling and executing on the Relay VM.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="tvm.relay.backend.vm.VMCompiler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tvm.relay.backend.vm.</span></span><span class="sig-name descname"><span class="pre">VMCompiler</span></span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/vm.html#VMCompiler"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.vm.VMCompiler" title="永久链接至目标">#</a></dt>
+<dd><p>Compiler that compiles Relay module to VM executable.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.relay.backend.vm.VMCompiler._tophub_context">
+<span class="sig-name descname"><span class="pre">_tophub_context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/vm.html#VMCompiler._tophub_context"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.vm.VMCompiler._tophub_context" title="永久链接至目标">#</a></dt>
+<dd><p>Get the autotvm context.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.relay.backend.vm.VMCompiler._update_target">
+<span class="sig-name descname"><span class="pre">_update_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/vm.html#VMCompiler._update_target"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.vm.VMCompiler._update_target" title="永久链接至目标">#</a></dt>
+<dd><p>Update target.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.relay.backend.vm.VMCompiler._update_target_host">
+<span class="sig-name descname"><span class="pre">_update_target_host</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_host</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/vm.html#VMCompiler._update_target_host"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.vm.VMCompiler._update_target_host" title="永久链接至目标">#</a></dt>
+<dd><p>Update target host.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.relay.backend.vm.VMCompiler.codegen">
+<span class="sig-name descname"><span class="pre">codegen</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/vm.html#VMCompiler.codegen"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.vm.VMCompiler.codegen" title="永久链接至目标">#</a></dt>
+<dd><p>Generate the kernel library.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.relay.backend.vm.VMCompiler.get_exec">
+<span class="sig-name descname"><span class="pre">get_exec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/vm.html#VMCompiler.get_exec"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.vm.VMCompiler.get_exec" title="永久链接至目标">#</a></dt>
+<dd><p>Get the VM executable.</p>
+<dl class="simple">
+<dt>exec<span class="classifier">tvm.runtime.vm.Executable</span></dt><dd><p>The VM executable that contains both library code and bytecode.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.relay.backend.vm.VMCompiler.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/vm.html#VMCompiler.get_params"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.vm.VMCompiler.get_params" title="永久链接至目标">#</a></dt>
+<dd><p>Return the updated weights.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.relay.backend.vm.VMCompiler.lower">
+<span class="sig-name descname"><span class="pre">lower</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mod</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/vm.html#VMCompiler.lower"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.vm.VMCompiler.lower" title="永久链接至目标">#</a></dt>
+<dd><p>Lower the module to VM bytecode.</p>
+<dl>
+<dt>mod<span class="classifier">tvm.IRModule</span></dt><dd><p>The Relay module to build.</p>
+</dd>
+<dt>target<span class="classifier">str, <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/target.html#tvm.target.Target" title="(在 tvm v0.9.dev0)"><code class="xref any docutils literal notranslate"><span class="pre">tvm.target.Target</span></code></a>, or dict of str(i.e.</span></dt><dd><p>device/context name) to str/tvm.target.Target, optional
+For heterogeneous compilation, it is a dictionary indicating context
+to target mapping. For homogeneous compilation, it is a build target.</p>
+</dd>
+<dt>target_host<span class="classifier">str or <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/target.html#tvm.target.Target" title="(在 tvm v0.9.dev0)"><code class="xref any docutils literal notranslate"><span class="pre">tvm.target.Target</span></code></a>, optional</span></dt><dd><p>Host compilation target, if target is device.
+When TVM compiles device specific program such as CUDA,
+we also need host(CPU) side code to interact with the driver
+to setup the dimensions and parameters correctly.
+target_host is used to specify the host side codegen target.
+By default, llvm is used if it is enabled,
+otherwise a stackvm intepreter is used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.relay.backend.vm.VMCompiler.optimize">
+<span class="sig-name descname"><span class="pre">optimize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mod</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/vm.html#VMCompiler.optimize"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.vm.VMCompiler.optimize" title="永久链接至目标">#</a></dt>
+<dd><p>Helper method that optimizes a Relay module via VM.</p>
+<p>mod : tvm.IRModule</p>
+<dl>
+<dt>target<span class="classifier">str, <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/target.html#tvm.target.Target" title="(在 tvm v0.9.dev0)"><code class="xref any docutils literal notranslate"><span class="pre">tvm.target.Target</span></code></a>, or dict of str (i.e.</span></dt><dd><p>device/context name) to str/tvm.target.Target, optional</p>
+</dd>
+<dt>target_host<span class="classifier">str or <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/target.html#tvm.target.Target" title="(在 tvm v0.9.dev0)"><code class="xref any docutils literal notranslate"><span class="pre">tvm.target.Target</span></code></a>, optional</span></dt><dd><p>The compilation target for host.
+By default, llvm is used if it is enabled,
+otherwise a stackvm intepreter is used.</p>
+</dd>
+<dt>params<span class="classifier">dict of str to NDArray</span></dt><dd><p>Input parameters to the graph that do not change
+during inference time. Used for constant folding.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>mod<span class="classifier">tvm.IRModule</span></dt><dd><p>The optimized relay module.</p>
+</dd>
+<dt>params<span class="classifier">dict</span></dt><dd><p>The parameters of the final module.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.relay.backend.vm.VMCompiler.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/vm.html#VMCompiler.set_params"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.vm.VMCompiler.set_params" title="永久链接至目标">#</a></dt>
+<dd><p>Set constant parameters for the model.</p>
+<dl class="simple">
+<dt>params<span class="classifier">dict of str to NDArray</span></dt><dd><p>Input parameters to the graph that do not change
+during inference time. Used for constant folding.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tvm.relay.backend.vm.VMExecutor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tvm.relay.backend.vm.</span></span><span class="sig-name descname"><span class="pre">VMExecutor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mod</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/vm.html#VMExecutor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.vm.VMExecutor" title="永久链接至目标">#</a></dt>
+<dd><p>An implementation of the executor interface for
+the Relay VM.</p>
+<p>Useful interface for experimentation and debugging
+the VM can also be used directly from the API.
+supported by <cite>tvm.runtime.vm</cite>.</p>
+<dl>
+<dt>mod<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">IRModule</span></code></span></dt><dd><p>The module to support the execution.</p>
+</dd>
+<dt>device<span class="classifier"><a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.Device" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Device</span></code></a></span></dt><dd><p>The runtime device to run the code on.</p>
+</dd>
+<dt>target<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Target</span></code></span></dt><dd><p>The target option to build the function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.backend.vm.compile">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.backend.vm.</span></span><span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mod</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/vm.html#compile"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.vm.compile" title="永久链接至目标">#</a></dt>
+<dd><p>Compile the module to VM executable. A helper function for VMCompiler.</p>
+<dl>
+<dt>mod<span class="classifier">tvm.IRModule</span></dt><dd><p>The Relay module to build.</p>
+</dd>
+<dt>target<span class="classifier">str, <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/target.html#tvm.target.Target" title="(在 tvm v0.9.dev0)"><code class="xref any docutils literal notranslate"><span class="pre">tvm.target.Target</span></code></a>, or dict of str(i.e.</span></dt><dd><p>device/context name) to str/tvm.target.Target, optional
+For heterogeneous compilation, it is a dictionary indicating context
+to target mapping. For homogeneous compilation, it is a build target.</p>
+</dd>
+<dt>target_host<span class="classifier">str or <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/target.html#tvm.target.Target" title="(在 tvm v0.9.dev0)"><code class="xref any docutils literal notranslate"><span class="pre">tvm.target.Target</span></code></a>, optional</span></dt><dd><p>Host compilation target, if target is device.
+When TVM compiles device specific program such as CUDA,
+we also need host(CPU) side code to interact with the driver
+to setup the dimensions and parameters correctly.
+target_host is used to specify the host side codegen target.
+By default, llvm is used if it is enabled,
+otherwise a stackvm intepreter is used.</p>
+</dd>
+<dt>params<span class="classifier">dict of str to NDArray</span></dt><dd><p>Input parameters to the graph that do not change
+during inference time. Used for constant folding.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>exec<span class="classifier">tvm.runtime.vm.Executable</span></dt><dd><p>The VM executable that contains both library code and bytecode.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="analysis.html" title="上一页 页">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一页</p>
+            <p class="prev-next-title">tvm.relay.analysis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="dataflow_pattern.html" title="下一页 页">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">tvm.relay.dataflow_pattern</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By xinetzone<br/>
+  
+      &copy; Copyright 2022, xinetzone.<br/>
+    Last updated on 2022-04-07, 15:51:47.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,2007 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>VTA 安装指南 &#8212; TVM  文档</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <link rel="shortcut icon" href="../../../_static/tvm-logo-square.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="VTA 设计和开发指南" href="dev/index.html" />
+    <link rel="prev" title="VTA：通用张量加速器" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_CN">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/tvm-logo-small.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">TVM  文档</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   TVM 文档
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../start.html">
+   快速上手
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../install/index.html">
+     安装 TVM
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../install/from_source.html">
+       从源码安装
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../install/nnpack.html">
+         NNPACK Contrib Installation
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../install/docker.html">
+       Docker 镜像
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../install/tlcpack.html">
+       TLCPack
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../contribute/index.html">
+     Contributor Guide
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/community.html">
+       TVM Community Guidelines
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/pull_request.html">
+       Submit a Pull Request
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/code_review.html">
+       Code Reviews
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/committer_guide.html">
+       Committer Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/document.html">
+       Documentation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/code_guide.html">
+       Code Guide and Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/git_howto.html">
+       Git Usage Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/ci.html">
+       Using TVM’s CI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/release_process.html">
+       Release Process
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/error_handling.html">
+       Error Handling Guide
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../study/index.html">
+   学习笔记
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../study/quantize.html">
+     量化
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../study/start.html">
+     TVM 入门指南
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../study/test.html">
+     测试 TVM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../user-guide.html">
+   用户手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../tutorial/index.html">
+     用户指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/introduction.html">
+       TVM 和模型优化的概述
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tvmc_command_line_driver.html">
+       用 TVMC 编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tvmc_python.html">
+       开始使用 TVMC Python：TVM 的高级 API
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/autotvm_relay_x86.html">
+       用 Python 接口编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tensor_expr_get_started.html">
+       使用张量表达式处理算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/autotvm_matmul_x86.html">
+       用调度模板和 AutoTVM 优化算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/auto_scheduler_matmul_x86.html">
+       使用自动调度优化运算
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tensor_ir_blitz_course.html">
+       TensorIR 的突击课程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/cross_compilation_and_rpc.html">
+       交叉编译和RPC
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/relay_quick_start.html">
+       编译深度学习模型的快速入门教程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/intro_topi.html">
+       TOPI 简介
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../how_to/index.html">
+     How To 指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/compile_models/index.html">
+       编译深度学习模型
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+      <label for="toctree-checkbox-9">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_pytorch.html">
+         编译 PyTorch 模型
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_tensorflow.html">
+         Compile Tensorflow Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_mxnet.html">
+         Compile MXNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_onnx.html">
+         Compile ONNX Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_keras.html">
+         Compile Keras Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_tflite.html">
+         Compile TFLite Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_coreml.html">
+         Compile CoreML Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_darknet.html">
+         Compile YOLO-V2 and YOLO-V3 in DarkNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_caffe2.html">
+         Compile Caffe2 Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_paddle.html">
+         Compile PaddlePaddle Models
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/deploy/index.html">
+       部署模型，集成 TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/cpp_deploy.html">
+         Deploy TVM Module using C++ API
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/android.html">
+         Deploy to Android
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/integrate.html">
+         Integrate TVM into Your Project
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/hls.html">
+         HLS Backend Example
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/arm_compute_lib.html">
+         Relay Arm
+         <sup>
+          ®
+         </sup>
+         Compute Library Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/tensorrt.html">
+         Relay TensorRT Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/vitis_ai.html">
+         Vitis AI Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/bnns.html">
+         Relay BNNS Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy_models/index.html">
+         部署深度学习模型
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/work_with_relay/index.html">
+       Work With Relay
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+      <label for="toctree-checkbox-11">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/work_with_schedules/index.html">
+       Work With Tensor Expression and Schedules
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+      <label for="toctree-checkbox-12">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/optimize_operators/index.html">
+       Optimize Tensor Operators
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+      <label for="toctree-checkbox-13">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/tune_with_autotvm/index.html">
+       Auto-Tune with Templates and AutoTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+      <label for="toctree-checkbox-14">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/tune_with_autotvm/tune_conv2d_cuda.html">
+         Tuning High Performance Convolution on NVIDIA GPUs
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/tune_with_autotvm/tune_relay_cuda.html">
+         Auto-tuning a Convolutional Network for NVIDIA GPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/tune_with_autotvm/tune_relay_x86.html">
+         Auto-tuning a Convolutional Network for x86 CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/tune_with_autotvm/tune_relay_arm.html">
+         Auto-tuning a Convolutional Network for ARM CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/tune_with_autotvm/tune_relay_mobile_gpu.html">
+         Auto-tuning a Convolutional Network for Mobile GPU
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/tune_with_autoscheduler/index.html">
+       Use AutoScheduler for Template-Free Scheduling
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+      <label for="toctree-checkbox-15">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/work_with_microtvm/index.html">
+       Work With microTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+      <label for="toctree-checkbox-16">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/extend_tvm/index.html">
+       Extend TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+      <label for="toctree-checkbox-17">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/profile/index.html">
+       Profile Models
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+      <label for="toctree-checkbox-18">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/profile/papi.html">
+         Getting Started With PAPI
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../errors.html">
+       处理 TVM 的错误
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../faq.html">
+       常见问题
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../developer-guide.html">
+   开发手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../dev/tutorial/index.html">
+     开发者教程
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+    <label for="toctree-checkbox-20">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/tutorial/codebase_walkthrough.html">
+       TVM 代码库的实例演练
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../dev/how_to/how_to.html">
+     开发者 How-To 指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/relay_add_op.html">
+       Adding an Operator to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/relay_add_pass.html">
+       Adding a Compiler Pass to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/relay_bring_your_own_codegen.html">
+       Bring Your Own Codegen To TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/pytest_target_parametrization.html">
+       Python Target Parametrization
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../arch/index.html">
+   设计与架构
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/runtime.html">
+     TVM 运行时系统
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/debugger.html">
+     Debugger
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/virtual_machine.html">
+     Putting the VM in TVM: The Relay Virtual Machine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/introduction_to_module_serialization.html">
+     Introduction to Module Serialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/pass_infra.html">
+     Pass Infrastructure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/inferbound.html">
+     InferBound Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/hybrid_script.html">
+     Hybrid Frontend Developer Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/relay_intro.html">
+     Introduction to Relay IR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/relay_op_strategy.html">
+     Relay Operator Strategy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/convert_layout.html">
+     Convert Layout Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/benchmark.html">
+     Benchmark Performance Log Format
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/frontend/tensorflow.html">
+     TensorFlow Frontend
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/security.html">
+     Security Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/microtvm_design.html">
+     microTVM Design Document
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/microtvm_project_api.html">
+     microTVM Project API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/model_library_format.html">
+     Model Library Format
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../../topic-guides.html">
+   主题指南
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../microtvm/index.html">
+     microTVM：裸机上的 TVM
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="index.html">
+     VTA：通用张量加速器
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+    <label for="toctree-checkbox-24">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       VTA 安装指南
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="dev/index.html">
+       VTA 设计和开发指南
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="dev/config.html">
+         VTA 配置
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="dev/hardware.html">
+         VTA 硬件指南
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="tutorials/index.html">
+       VTA 教程
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="tutorials/matrix_multiply.html">
+         Simple Matrix Multiply
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="tutorials/vta_get_started.html">
+         Get Started with VTA
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="tutorials/frontend/index.html">
+         Compile Deep Learning Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="tutorials/optimize/index.html">
+         Optimize Tensor Operators
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="tutorials/autotvm/index.html">
+         Auto tuning
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../reference-guide.html">
+   参考指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../reference/langref/index.html">
+     语言参考
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+    <label for="toctree-checkbox-28">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_expr.html">
+       Expressions in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_type.html">
+       Relay’s Type System
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_adt.html">
+       Algebraic Data Types in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_op.html">
+       Relay Core Tensor Operators
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_pattern.html">
+       Pattern Matching in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/hybrid_script.html">
+       Hybrid Frontend Language Reference
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../reference/api/python/index.html">
+     Python API
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/runtime.html">
+       tvm.runtime
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/ndarray.html">
+       tvm.runtime.ndarray
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/error.html">
+       tvm.error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/ir.html">
+       tvm.ir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/target.html">
+       tvm.target
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/tir.html">
+       tvm.tir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/te.html">
+       tvm.te
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/driver.html">
+       tvm.driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/index.html">
+       tvm.relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/frontend.html">
+       tvm.relay.frontend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/nn.html">
+       tvm.relay.nn
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/vision.html">
+       tvm.relay.vision
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/image.html">
+       tvm.relay.image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/transform.html">
+       tvm.relay.transform
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/analysis.html">
+       tvm.relay.analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/backend.html">
+       tvm.relay.backend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/dataflow_pattern.html">
+       tvm.relay.dataflow_pattern
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/testing.html">
+       tvm.relay.testing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/autotvm.html">
+       tvm.autotvm
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/auto_scheduler.html">
+       tvm.auto_scheduler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/rpc.html">
+       tvm.rpc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/micro.html">
+       tvm.micro
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/contrib.html">
+       tvm.contrib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/graph_executor.html">
+       tvm.contrib.graph_executor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/topi.html">
+       tvm.topi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/vta/index.html">
+       vta
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../reference/api/links.html">
+     其他 API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../reference/publications.html">
+     出版物
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../refs/index.html">
+   参考
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+  <label for="toctree-checkbox-30">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../refs/_ffi/index.html">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _ffi
+      </span>
+     </code>
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/base.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.base
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/libinfo.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.libinfo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/object.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi._ctypes.object
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/registry.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.registry
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/runtime_ctypes.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.runtime_ctypes
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/xinetzone/torch-quantization/edit/main/docs/docs/topic/vta/install.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/docs/topic/vta/install.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> 导航
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vta-simulator-installation">
+   VTA 仿真器的安装
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing-your-vta-simulation-setup">
+     测试 VTA 仿真设置
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#advanced-configuration-optional">
+     高级配置（可选）
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#xilinx-pynq-fpga-setup">
+   Xilinx Pynq FPGA Setup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynq-board-setup">
+     Pynq Board Setup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynq-side-rpc-server-build-deployment">
+     Pynq-Side RPC Server Build &amp; Deployment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing-your-pynq-based-hardware-setup">
+     Testing your Pynq-based Hardware Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intel-de10-fpga-setup">
+   Intel DE10 FPGA Setup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#de10-nano-board-setup">
+     DE10-Nano Board Setup
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#flash-sd-card-and-boot-angstrom-linux">
+       Flash SD Card and Boot Angstrom Linux
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#install-required-python-packages">
+       Install Required Python Packages
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#build-additional-components-to-use-vta-bitstream">
+       Build Additional Components to Use VTA Bitstream
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bitstream-generation-with-xilinx-toolchains">
+   Bitstream Generation with Xilinx Toolchains
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#xilinx-toolchain-installation">
+     Xilinx Toolchain Installation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#obtaining-and-launching-the-vivado-gui-installer">
+       Obtaining and Launching the Vivado GUI Installer
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#xilinx-vivado-gui-installer-steps">
+       Xilinx Vivado GUI Installer Steps
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#environment-setup">
+       Environment Setup
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hls-based-custom-vta-bitstream-compilation-for-pynq">
+     HLS-based Custom VTA Bitstream Compilation for Pynq
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-a-custom-bitstream">
+     Using A Custom Bitstream
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bitstream-generation-with-intel-toolchains">
+   Bitstream Generation with Intel Toolchains
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intel-toolchain-installation">
+     Intel Toolchain Installation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#obtaining-and-launching-the-quartus-gui-installer">
+       Obtaining and Launching the Quartus GUI Installer
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Environment Setup
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chisel-based-custom-vta-bitstream-compilation-for-de10-nano">
+     Chisel-based Custom VTA Bitstream Compilation for DE10-Nano
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>VTA 安装指南</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> 导航 </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vta-simulator-installation">
+   VTA 仿真器的安装
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing-your-vta-simulation-setup">
+     测试 VTA 仿真设置
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#advanced-configuration-optional">
+     高级配置（可选）
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#xilinx-pynq-fpga-setup">
+   Xilinx Pynq FPGA Setup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynq-board-setup">
+     Pynq Board Setup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynq-side-rpc-server-build-deployment">
+     Pynq-Side RPC Server Build &amp; Deployment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing-your-pynq-based-hardware-setup">
+     Testing your Pynq-based Hardware Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intel-de10-fpga-setup">
+   Intel DE10 FPGA Setup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#de10-nano-board-setup">
+     DE10-Nano Board Setup
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#flash-sd-card-and-boot-angstrom-linux">
+       Flash SD Card and Boot Angstrom Linux
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#install-required-python-packages">
+       Install Required Python Packages
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#build-additional-components-to-use-vta-bitstream">
+       Build Additional Components to Use VTA Bitstream
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bitstream-generation-with-xilinx-toolchains">
+   Bitstream Generation with Xilinx Toolchains
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#xilinx-toolchain-installation">
+     Xilinx Toolchain Installation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#obtaining-and-launching-the-vivado-gui-installer">
+       Obtaining and Launching the Vivado GUI Installer
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#xilinx-vivado-gui-installer-steps">
+       Xilinx Vivado GUI Installer Steps
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#environment-setup">
+       Environment Setup
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hls-based-custom-vta-bitstream-compilation-for-pynq">
+     HLS-based Custom VTA Bitstream Compilation for Pynq
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-a-custom-bitstream">
+     Using A Custom Bitstream
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bitstream-generation-with-intel-toolchains">
+   Bitstream Generation with Intel Toolchains
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intel-toolchain-installation">
+     Intel Toolchain Installation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#obtaining-and-launching-the-quartus-gui-installer">
+       Obtaining and Launching the Quartus GUI Installer
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Environment Setup
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chisel-based-custom-vta-bitstream-compilation-for-de10-nano">
+     Chisel-based Custom VTA Bitstream Compilation for DE10-Nano
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="vta-installation-guide">
+<h1>VTA 安装指南<a class="headerlink" href="#vta-installation-guide" title="永久链接至标题">#</a></h1>
+<p>提供了三个安装指南，每一个都是前一个的延伸：</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#vta-simulator-installation">VTA Simulator Installation</a></p></li>
+<li><p><a class="reference internal" href="#xilinx-pynq-fpga-setup">Xilinx Pynq FPGA Setup</a></p></li>
+<li><p><a class="reference internal" href="#intel-de10-fpga-setup">Intel DE10 FPGA Setup</a></p></li>
+<li><p><a class="reference internal" href="#bitstream-generation-with-xilinx-toolchains">Bitstream Generation with Xilinx Toolchains</a></p></li>
+<li><p><a class="reference internal" href="#bitstream-generation-with-intel-toolchains">Bitstream Generation with Intel Toolchains</a></p></li>
+</ol>
+<section id="vta-simulator-installation">
+<h2>VTA 仿真器的安装<a class="headerlink" href="#vta-simulator-installation" title="永久链接至标题">#</a></h2>
+<p>你需要 <a class="reference internal" href="../../install/index.html#installation"><span class="std std-ref">TVM 安装</span></a> 在你的机器上。为了快速和简单的开始，检查 <a class="reference internal" href="../../install/docker.html#docker-images"><span class="std std-ref">Docker 指南</span></a>。</p>
+<p>您需要设置以下路径来使用 VTA：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">TVM_PATH</span><span class="o">=</span>&lt;path to TVM root&gt;
+<span class="nb">export</span> <span class="nv">VTA_HW_PATH</span><span class="o">=</span><span class="nv">$TVM_PATH</span>/3rdparty/vta-hw
+</pre></div>
+</div>
+<p>构建 TVM 时需要启用 VTA 功能仿真库。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;tvm-root&gt;
+mkdir build
+cp cmake/config.cmake build/.
+<span class="nb">echo</span> <span class="s1">&#39;set(USE_VTA_FSIM ON)&#39;</span> &gt;&gt; build/config.cmake
+<span class="nb">cd</span> build <span class="o">&amp;&amp;</span> cmake .. <span class="o">&amp;&amp;</span> make -j4
+</pre></div>
+</div>
+<p>将 VTA python 库添加到 python 路径中以运行 VTA 示例。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/path/to/vta/python:<span class="si">${</span><span class="nv">PYTHONPATH</span><span class="si">}</span>
+</pre></div>
+</div>
+<section id="testing-your-vta-simulation-setup">
+<h3>测试 VTA 仿真设置<a class="headerlink" href="#testing-your-vta-simulation-setup" title="永久链接至标题">#</a></h3>
+<p>为了确保正确安装了 VTA python 包，请运行以下 2D convolution 测试台。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python &lt;tvm root&gt;/vta/tests/python/integration/test_benchmark_topi_conv2d.py
+</pre></div>
+</div>
+<p>邀请您试用我们的 <a class="reference internal" href="tutorials/index.html#vta-tutorials"><span class="std std-ref">VTA 编程指南</span></a>。</p>
+<blockquote>
+<div><p><strong>注</strong>：你会注意到，对于每一个卷积层，吞吐量都以 GOPS 报告。这些数字实际上是仿真器通过在软件中评估卷积实现的计算吞吐量。</p>
+</div></blockquote>
+</section>
+<section id="advanced-configuration-optional">
+<h3>高级配置（可选）<a class="headerlink" href="#advanced-configuration-optional" title="永久链接至标题">#</a></h3>
+<p>VTA 是通用的可配置深度学习加速器。配置由 <code class="docutils literal notranslate"><span class="pre">3rdparty/vta-hw/config</span></code> 下的 <code class="docutils literal notranslate"><span class="pre">vta_config.json</span></code> 指定。该文件提供了 VTA 加速器的架构规范，以参数化 TVM 编译器堆栈和 VTA 硬件堆栈。</p>
+<p>VTA 配置文件也指定了 TVM 编译器目标。当 <code class="docutils literal notranslate"><span class="pre">TARGET</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">sim</span></code> 时，所有 TVM 工作负载都在 VTA 仿真器上执行。您可以修改配置文件的内容，以重新构建不同的参数化 VTA。要做到这一点，</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;tvm root&gt;
+vim 3rdparty/vta-hw/config/vta_config.json
+<span class="c1"># edit vta_config.json</span>
+make
+</pre></div>
+</div>
+</section>
+</section>
+<section id="xilinx-pynq-fpga-setup">
+<h2>Xilinx Pynq FPGA Setup<a class="headerlink" href="#xilinx-pynq-fpga-setup" title="永久链接至标题">#</a></h2>
+<p>This second guide extends the <em>VTA Simulator Installation</em> guide above to run FPGA hardware tests of the complete TVM and VTA software-hardware stack.
+In terms of hardware components you’ll need:</p>
+<ul class="simple">
+<li><p>The <a class="reference external" href="http://www.pynq.io/">Pynq</a> FPGA development board which can be acquired for $200, or $150 for academics from <a class="reference external" href="https://store.digilentinc.com/pynq-z1-python-productivity-for-zynq/">Digilent</a>.</p></li>
+<li><p>An Ethernet-to-USB adapter to connect the Pynq board to your development machine.</p></li>
+<li><p>An 8+GB micro SD card.</p></li>
+<li><p>An AC to DC 12V 3A power adapter.</p></li>
+</ul>
+<p>This guide covers the following themes:</p>
+<ol class="arabic simple">
+<li><p>Pynq board setup instructions.</p></li>
+<li><p>Pynq-side RPC server build and deployment.</p></li>
+<li><p>Revisiting the test examples from the <em>VTA Simulator Installation</em> guide, this time executing on the Pynq board.</p></li>
+</ol>
+<section id="pynq-board-setup">
+<h3>Pynq Board Setup<a class="headerlink" href="#pynq-board-setup" title="永久链接至标题">#</a></h3>
+<p>Setup your Pynq board based on the <a class="reference external" href="http://pynq.readthedocs.io/en/latest/getting_started.html">Pynq board getting started tutorial</a>.</p>
+<p>You should follow the instructions up to and including the <em>Turning On the PYNQ-Z1</em> step (no need to pursue the tutorial beyond this point).</p>
+<ul class="simple">
+<li><p>Make sure that you’ve downloaded the latest Pynq image, <a class="reference external" href="http://www.pynq.io/board.html">PYNQ-Z1 v2.5</a>, and have imaged your SD card with it (we recommend the free <a class="reference external" href="https://etcher.io/">Etcher</a> program).</p></li>
+<li><p>For this test setup, follow the <a class="reference external" href="https://pynq.readthedocs.io/en/latest/getting_started/pynq_z1_setup.html">“Connect to a Computer”</a> Ethernet setup instructions. To be able to talk to the board, make sure to <a class="reference external" href="https://pynq.readthedocs.io/en/latest/appendix.html#assign-your-computer-a-static-ip">assign your computer a static IP address</a></p></li>
+</ul>
+<p>Once the board is powered on and connected to your development machine, try connecting to it to make sure you’ve properly set up your Pynq board:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># To connect to the Pynq board use the &lt;username, password&gt; combo: &lt;xilinx, xilinx&gt;</span>
+ssh xilinx@192.168.2.99
+</pre></div>
+</div>
+</section>
+<section id="pynq-side-rpc-server-build-deployment">
+<h3>Pynq-Side RPC Server Build &amp; Deployment<a class="headerlink" href="#pynq-side-rpc-server-build-deployment" title="永久链接至标题">#</a></h3>
+<p>Because the direct board-to-computer connection prevents the board from directly accessing the internet, we’ll need to mount the Pynq’s file system to your development machine’s file system with <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh">sshfs</a>. Next we directly clone the TVM repository into the sshfs mountpoint on your development machine.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># On the Host-side</span>
+mkdir &lt;mountpoint&gt;
+sshfs xilinx@192.168.2.99:/home/xilinx &lt;mountpoint&gt;
+<span class="nb">cd</span> &lt;mountpoint&gt;
+git clone --recursive https://github.com/apache/tvm tvm
+<span class="c1"># When finished, you can leave the moutpoint and unmount the directory</span>
+<span class="nb">cd</span> ~
+sudo umount &lt;mountpoint&gt;
+</pre></div>
+</div>
+<p>Now that we’ve cloned the VTA repository in the Pynq’s file system, we can ssh into it and launch the build of the TVM-based RPC server.
+The build process should take roughly 5 minutes.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh xilinx@192.168.2.99
+<span class="c1"># Build TVM runtime library (takes 5 mins)</span>
+<span class="nb">cd</span> /home/xilinx/tvm
+mkdir build
+cp cmake/config.cmake build/.
+<span class="nb">echo</span> <span class="s1">&#39;set(USE_VTA_FPGA ON)&#39;</span> &gt;&gt; build/config.cmake
+<span class="c1"># Copy pynq specific configuration</span>
+cp 3rdparty/vta-hw/config/pynq_sample.json 3rdparty/vta-hw/config/vta_config.json
+<span class="nb">cd</span> build
+cmake ..
+make runtime vta -j2
+<span class="c1"># FIXME (tmoreau89): remove this step by fixing the cmake build</span>
+make clean<span class="p">;</span> make runtime vta -j2
+<span class="c1"># Build VTA RPC server (takes 1 min)</span>
+<span class="nb">cd</span> ..
+sudo ./apps/vta_rpc/start_rpc_server.sh <span class="c1"># pw is &#39;xilinx&#39;</span>
+</pre></div>
+</div>
+<p>You should see the following being displayed when starting the RPC server. In order to run the next examples, you’ll need to leave the RPC server running in an <code class="docutils literal notranslate"><span class="pre">ssh</span></code> session.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>INFO:root:RPCServer: <span class="nb">bind</span> to <span class="m">0</span>.0.0.0:9091
+</pre></div>
+</div>
+<p>Tips regarding the Pynq RPC Server:</p>
+<ul class="simple">
+<li><p>The RPC server should be listening on port <code class="docutils literal notranslate"><span class="pre">9091</span></code>. If not, an earlier process might have terminated unexpectedly and it’s recommended in this case to just reboot the Pynq, and re-run the RPC server.</p></li>
+<li><p>To kill the RPC server, just send the <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">c</span></code> command. You can re-run it with <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./apps/pynq_rpc/start_rpc_server.sh</span></code>.</p></li>
+<li><p>If unresponsive, the board can be rebooted by power-cycling it with the physical power switch.</p></li>
+</ul>
+</section>
+<section id="testing-your-pynq-based-hardware-setup">
+<h3>Testing your Pynq-based Hardware Setup<a class="headerlink" href="#testing-your-pynq-based-hardware-setup" title="永久链接至标题">#</a></h3>
+<p>Before running the examples on your development machine, you’ll need to configure your host environment as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># On the Host-side</span>
+<span class="nb">export</span> <span class="nv">VTA_RPC_HOST</span><span class="o">=</span><span class="m">192</span>.168.2.99
+<span class="nb">export</span> <span class="nv">VTA_RPC_PORT</span><span class="o">=</span><span class="m">9091</span>
+</pre></div>
+</div>
+<p>In addition, you’ll need to edit the <code class="docutils literal notranslate"><span class="pre">vta_config.json</span></code> file on the host to indicate that we are targeting the Pynq platform, by setting the <code class="docutils literal notranslate"><span class="pre">TARGET</span></code> field to <code class="docutils literal notranslate"><span class="pre">&quot;pynq&quot;</span></code>.
+&gt; Note: in contrast to our simulation setup, there are no libraries to compile on the host side since the host offloads all of the computation to the Pynq board.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># On the Host-side</span>
+<span class="nb">cd</span> &lt;tvm root&gt;
+cp 3rdparty/vta-hw/config/pynq_sample.json 3rdparty/vta-hw/config/vta_config.json
+</pre></div>
+</div>
+<p>This time again, we will run the 2D convolution testbench.
+Beforehand, we need to program the Pynq board FPGA with a VTA bitstream, and build the VTA runtime via RPC.
+The following <code class="docutils literal notranslate"><span class="pre">test_program_rpc.py</span></code> script will perform two operations:</p>
+<ul class="simple">
+<li><p>FPGA programming, by downloading a pre-compiled bitstream from a <a class="reference external" href="https://github.com/uwsampl/vta-distro">VTA bitstream repository</a> that matches the default <code class="docutils literal notranslate"><span class="pre">vta_config.json</span></code> configuration set by the host, and sending it over to the Pynq via RPC to program the Pynq’s FPGA.</p></li>
+<li><p>Runtime building on the Pynq, which needs to be run every time the <code class="docutils literal notranslate"><span class="pre">vta_config.json</span></code> configuration is modified. This ensures that the VTA software runtime that generates the accelerator’s executable via just-in-time (JIT) compilation matches the specifications of the VTA design that is programmed on the FPGA. The build process takes about 30 seconds to complete so be patient!</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># On the Host-side</span>
+python &lt;tvm root&gt;/vta/tests/python/pynq/test_program_rpc.py
+</pre></div>
+</div>
+<p>We are now ready to run the 2D convolution testbench in hardware.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># On the Host-side</span>
+python &lt;tvm root&gt;/vta/tests/python/integration/test_benchmark_topi_conv2d.py
+</pre></div>
+</div>
+<p>The performance metrics measured on the Pynq board will be reported for each convolutional layer.</p>
+<p><strong>Tip</strong>: You can track progress of the FPGA programming and the runtime rebuilding steps by looking at the RPC server’s logging messages in your Pynq <code class="docutils literal notranslate"><span class="pre">ssh</span></code> session.</p>
+<p>You can also try out our <a class="reference internal" href="tutorials/index.html#vta-tutorials"><span class="std std-ref">VTA programming tutorials</span></a>.</p>
+</section>
+</section>
+<section id="intel-de10-fpga-setup">
+<h2>Intel DE10 FPGA Setup<a class="headerlink" href="#intel-de10-fpga-setup" title="永久链接至标题">#</a></h2>
+<p>Similar to the Pynq-side setup steps, this third guide bring us the details on how can we setup up the Linux environment for Intel FPGA boards like DE10-Nano.</p>
+<p>In terms of hardware components, you would need the <a class="reference external" href="https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&amp;No=1046">DE10-Nano Development Kit</a>, which can be acquired for $130, or $100 for academics from <a class="reference external" href="https://www.terasic.com.tw/">Terasic</a>. A microSD card would be delivered the kit. Power cables and USB cables would be included as well. However, an additional Ethernet cable would be needed to connect the board to LAN.</p>
+<p>The rest part of this guide would provide the steps to</p>
+<ul class="simple">
+<li><p>Flash the microSD card with latest Angstrom Linux image</p></li>
+<li><p>Cross-compilation setup</p></li>
+<li><p>Device-side RPC server setup and deployment</p></li>
+</ul>
+<section id="de10-nano-board-setup">
+<h3>DE10-Nano Board Setup<a class="headerlink" href="#de10-nano-board-setup" title="永久链接至标题">#</a></h3>
+<p>Before powering up the device, we need to flash the microSD card image with latest Angstrom Linux image.</p>
+<section id="flash-sd-card-and-boot-angstrom-linux">
+<h4>Flash SD Card and Boot Angstrom Linux<a class="headerlink" href="#flash-sd-card-and-boot-angstrom-linux" title="永久链接至标题">#</a></h4>
+<p>To flash SD card and boot Linux on DE10-Nano, it is recommended to navigate to the <a class="reference external" href="https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&amp;CategoryNo=167&amp;No=1046&amp;PartNo=4">Resource</a> tab of the DE10-Nano product page from Terasic Inc.
+After registration and login on the webpage, the prebuilt Angstrom Linux image would be available for downloading and flashing.
+Specifically, to flash the downloaded Linux SD card image into your physical SD card:</p>
+<p>First, extract the gzipped archive file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar xf de10-nano-image-Angstrom-v2016.12.socfpga-sdimg.2017.03.31.tgz
+</pre></div>
+</div>
+<p>This would produce a single SD card image named <code class="docutils literal notranslate"><span class="pre">de10-nano-image-Angstrom-v2016.12.socfpga-sdimg</span></code> (approx. 2.4 GB), it contains all the file systems to boot Angstrom Linux.</p>
+<p>Second, plugin a SD card that is ready to flash in your PC, and identify the device id for the disk with <code class="docutils literal notranslate"><span class="pre">fdisk</span> <span class="pre">-l</span></code>, or <code class="docutils literal notranslate"><span class="pre">gparted</span></code> if you feel better to use GUI. The typical device id for your disk would likely to be <code class="docutils literal notranslate"><span class="pre">/dev/sdb</span></code>.</p>
+<p>Then, flash the disk image into your physical SD card with the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: root privilege is typically required to run the following command.</span>
+dd <span class="k">if</span><span class="o">=</span>de10-nano-image-Angstrom-v2016.12.socfpga-sdimg <span class="nv">of</span><span class="o">=</span>/dev/sdb <span class="nv">status</span><span class="o">=</span>progress
+</pre></div>
+</div>
+<p>This would take a few minutes for your PC to write the whole file systems into the SD card.
+After this process completes, you are ready to unmount the SD card and insert it into your DE10-Nano board.
+Now you can connect the power cable and serial port to boot the Angstrom Linux.</p>
+<blockquote>
+<div><p><strong>Note</strong>: When boot up from the microSD card, you might notice the incompatibility of the Linux kernel <code class="docutils literal notranslate"><span class="pre">zImage</span></code> in the microSD card.
+In this case, you might need to build the <code class="docutils literal notranslate"><span class="pre">zImage</span></code> file of your own from <a class="reference external" href="https://github.com/altera-opensource/linux-socfpga/tree/socfpga-4.9.78-ltsi">socfpga-4.9.78-ltsi</a> branch of the <a class="reference external" href="https://github.com/altera-opensource/linux-socfpga">linux-socfpga</a> repository.
+For a quick fix, you can also download a prebuilt version of the <code class="docutils literal notranslate"><span class="pre">zImage</span></code> file <a class="reference external" href="https://raw.githubusercontent.com/liangfu/de10-nano-supplement/master/zImage">from this link</a>.</p>
+</div></blockquote>
+<p>After connecting the usb cables to the DE10-Nano board, power on the board by connecting the power cable. You may then connect to the serial port of the device by using <code class="docutils literal notranslate"><span class="pre">minicom</span></code> on your host PC:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: root privilege is typically required to run the following command.</span>
+minicom -D /dev/ttyUSB0
+</pre></div>
+</div>
+<p>The default user name for the device would be <code class="docutils literal notranslate"><span class="pre">root</span></code>, and the password is empty for the default user.</p>
+<p>You may now start to install supporting Python3 packages (TVM has dropped the support for Python2), specifically, they are <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">attrs</span></code> and <code class="docutils literal notranslate"><span class="pre">decorator</span></code>.</p>
+<blockquote>
+<div><p><strong>Note</strong>: You might fail to install <code class="docutils literal notranslate"><span class="pre">numpy</span></code> by using <code class="docutils literal notranslate"><span class="pre">pip3</span></code> on the DE10-Nano device.
+In that case, you have the option to either build your own filesystem image for the board from <a class="reference external" href="https://github.com/intel/meta-de10-nano">meta-de10-nano</a> repository;
+an alternative option is to download prebuilt packages from existing Linux distributions, e.g. Debian.
+For a quick fix, we have concatenated the supplementary binary files <a class="reference external" href="https://raw.githubusercontent.com/liangfu/de10-nano-supplement/master/rootfs_supplement.tgz">here</a>, and you can extract the files into the root filesystem.</p>
+</div></blockquote>
+</section>
+<section id="install-required-python-packages">
+<h4>Install Required Python Packages<a class="headerlink" href="#install-required-python-packages" title="永久链接至标题">#</a></h4>
+<p>After accessing bash terminal from the serial port, we need to install required Python packages before building and installing TVM and VTA programs.</p>
+</section>
+<section id="build-additional-components-to-use-vta-bitstream">
+<h4>Build Additional Components to Use VTA Bitstream<a class="headerlink" href="#build-additional-components-to-use-vta-bitstream" title="永久链接至标题">#</a></h4>
+<p>To use the above built bitstream on DE10-Nano hardware, several additional components need to be compiled for the system.
+Specifically, to compile application executables for the system, you need to download and install <a class="reference external" href="http://fpgasoftware.intel.com/soceds/18.1/?edition=standard&amp;download_manager=dlm3&amp;platform=linux">SoCEDS</a> (recommended), or alternatively install the <code class="docutils literal notranslate"><span class="pre">g++-arm-linux-gnueabihf</span></code> package on your host machine. You would also need a <code class="docutils literal notranslate"><span class="pre">cma</span></code> kernel module to allocate contigous memory, and a driver for communicating with the VTA subsystem.</p>
+</section>
+</section>
+</section>
+<section id="bitstream-generation-with-xilinx-toolchains">
+<h2>Bitstream Generation with Xilinx Toolchains<a class="headerlink" href="#bitstream-generation-with-xilinx-toolchains" title="永久链接至标题">#</a></h2>
+<p>If you’re interested in generating the Xilinx FPGA bitstream on your own instead of using the pre-built VTA bitstreams, follow the instructions below.</p>
+<section id="xilinx-toolchain-installation">
+<h3>Xilinx Toolchain Installation<a class="headerlink" href="#xilinx-toolchain-installation" title="永久链接至标题">#</a></h3>
+<p>We recommend using Vivado 2020.1 since our scripts have been tested to work on this version of the Xilinx toolchains.
+Our guide is written for Linux (Ubuntu) installation.</p>
+<p>You’ll need to install Xilinx’ FPGA compilation toolchain, <a class="reference external" href="https://www.xilinx.com/products/design-tools/vivado.html">Vivado HL WebPACK 2020.1</a>, which a license-free version of the Vivado HLx toolchain.</p>
+<section id="obtaining-and-launching-the-vivado-gui-installer">
+<h4>Obtaining and Launching the Vivado GUI Installer<a class="headerlink" href="#obtaining-and-launching-the-vivado-gui-installer" title="永久链接至标题">#</a></h4>
+<ol class="arabic simple">
+<li><p>Go to the <a class="reference external" href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/2020-1.html">download webpage</a>, and download the Linux Self Extracting Web Installer for Vivado HLx 2020.1: WebPACK and Editions.</p></li>
+<li><p>You’ll have to sign in with a Xilinx account. This requires a Xilinx account creation that will take 2 minutes.</p></li>
+<li><p>Complete the Name and Address Verification by clicking “Next”, and you will get the opportunity to download a binary file, called <code class="docutils literal notranslate"><span class="pre">Xilinx_Unified_2020.1_0602_1208_Lin64.bin</span></code>.</p></li>
+<li><p>Now that the file is downloaded, go to your <code class="docutils literal notranslate"><span class="pre">Downloads</span></code> directory, and change the file permissions so it can be executed:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod u+x Xilinx_Unified_2020.1_0602_1208_Lin64.bin
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Now you can execute the binary:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./Xilinx_Unified_2020.1_0602_1208_Lin64.bin
+</pre></div>
+</div>
+</section>
+<section id="xilinx-vivado-gui-installer-steps">
+<h4>Xilinx Vivado GUI Installer Steps<a class="headerlink" href="#xilinx-vivado-gui-installer-steps" title="永久链接至标题">#</a></h4>
+<p>At this point you’ve launched the Vivado 2020.1 Installer GUI program.</p>
+<ol class="arabic simple">
+<li><p>Click “Next” on the “Welcome” screen.</p></li>
+<li><p>On the “Select Install Type” screen, enter your Xilinx user credentials under the “User Authentication” box and select the “Download and Install Now” option before clicking “Next”.</p></li>
+<li><p>On the “Accept License Agreements” screen, accept all terms before clicking “Next”.</p></li>
+<li><p>On the “Select Edition to Install” screen, select the “Vivado HL WebPACK” before clicking “Next”.</p></li>
+<li><p>Under the “Vivado HL WebPACK” screen, before hitting “Next”, check the following options (the rest should be unchecked):
+* Design Tools -&gt; Vivado Design Suite -&gt; Vivado
+* Devices -&gt; Production Devices -&gt; SoCs -&gt; Zynq-7000 (if you are targeting the Pynq board)
+* Devices -&gt; Production Devices -&gt; SoCs -&gt; UltraScale+ MPSoC (if you are targeting the Ultra-96 board)</p></li>
+<li><p>Your total download size should be about 5GB and the amount of Disk Space Required 23GB.</p></li>
+<li><p>On the “Select Destination Directory” screen, set the installation directory before clicking “Next”. It might highlight some paths as red - that’s because the installer doesn’t have the permission to write to the directory. In that case select a path that doesn’t require special write permissions (e.g. your home directory).</p></li>
+<li><p>On the “Installation Summary” screen, hit “Install”.</p></li>
+<li><p>An “Installation Progress” window will pop-up to track progress of the download and the installation.</p></li>
+<li><p>This process will take about 20-30 minutes depending on your connection speed.</p></li>
+<li><p>A pop-up window will inform you that the installation completed successfully. Click “OK”.</p></li>
+<li><p>Finally the “Vivado License Manager” will launch. Select “Get Free ISE WebPACK, ISE/Vivado IP or PetaLinux License” and click “Connect Now” to complete the license registration process.</p></li>
+</ol>
+</section>
+<section id="environment-setup">
+<h4>Environment Setup<a class="headerlink" href="#environment-setup" title="永久链接至标题">#</a></h4>
+<p>The last step is to update your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> with the following lines. This will include all of the Xilinx binary paths so you can launch compilation scripts from the command line.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Xilinx Vivado 2020.1 environment</span>
+<span class="nb">export</span> <span class="nv">XILINX_VIVADO</span><span class="o">=</span><span class="si">${</span><span class="nv">XILINX_PATH</span><span class="si">}</span>/Vivado/2020.1
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">XILINX_VIVADO</span><span class="si">}</span>/bin:<span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="hls-based-custom-vta-bitstream-compilation-for-pynq">
+<h3>HLS-based Custom VTA Bitstream Compilation for Pynq<a class="headerlink" href="#hls-based-custom-vta-bitstream-compilation-for-pynq" title="永久链接至标题">#</a></h3>
+<p>High-level hardware parameters are listed in the VTA configuration file and can be customized by the user.
+For this custom VTA bitstream compilation exercise, we’ll change the frequency of our design, so it can be clocked a little faster.</p>
+<ul class="simple">
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">HW_FREQ</span></code> field to <code class="docutils literal notranslate"><span class="pre">142</span></code>. The Pynq board supports 100, 142, 167 and 200MHz clocks. Note that the higher the frequency, the harder it will be to close timing. Increasing the frequency can lead to timing violation and thus faulty hardware execution.</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">HW_CLK_TARGET</span></code> to <code class="docutils literal notranslate"><span class="pre">6</span></code>. This parameters refers to the target clock period in nano seconds for HLS - a lower clock period leads to more aggressive pipelining to achieve timing closure at higher frequencies. Technically a 142MHz clock would require a 7ns target, but we intentionally lower the clock target to 6ns to more aggressively pipeline our design.</p></li>
+</ul>
+<p>Bitstream generation is driven by a top-level <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> under <code class="docutils literal notranslate"><span class="pre">&lt;tvm</span> <span class="pre">root&gt;/3rdparty/vta-hw/hardware/xilinx/</span></code>.</p>
+<p>If you just want to simulate the VTA design in software emulation to make sure that it is functional, enter:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;tvm root&gt;/3rdparty/vta-hw/hardware/xilinx
+make ip <span class="nv">MODE</span><span class="o">=</span>sim
+</pre></div>
+</div>
+<p>If you just want to generate the HLS-based VTA IP cores without launching the entire design place and route, enter:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make ip
+</pre></div>
+</div>
+<p>You’ll be able to view the HLS synthesis reports under <code class="docutils literal notranslate"><span class="pre">&lt;tvm</span> <span class="pre">root&gt;/3rdparty/vta-hw/build/hardware/xilinx/hls/&lt;configuration&gt;/&lt;block&gt;/solution0/syn/report/&lt;block&gt;_csynth.rpt</span></code></p>
+<blockquote>
+<div><p><strong>Note</strong>: The <code class="docutils literal notranslate"><span class="pre">&lt;configuration&gt;</span></code> name is a string that summarizes the VTA configuration parameters listed in the <code class="docutils literal notranslate"><span class="pre">vta_config.json</span></code>. The <code class="docutils literal notranslate"><span class="pre">&lt;block&gt;</span></code> name refers to the specific module (or HLS function) that compose the high-level VTA pipeline.</p>
+</div></blockquote>
+<p>Finally to run the full hardware compilation and generate the VTA bitstream, run <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
+<p>This process is lengthy, and can take around up to an hour to complete depending on your machine’s specs.
+We recommend setting the <code class="docutils literal notranslate"><span class="pre">VTA_HW_COMP_THREADS</span></code> variable in the Makefile to take full advantage of all the cores on your development machine.</p>
+<p>Once the compilation completes, the generated bitstream can be found under <code class="docutils literal notranslate"><span class="pre">&lt;tvm</span> <span class="pre">root&gt;/3rdparty/vta-hw/build/hardware/xilinx/vivado/&lt;configuration&gt;/export/vta.bit</span></code>.</p>
+</section>
+<section id="using-a-custom-bitstream">
+<h3>Using A Custom Bitstream<a class="headerlink" href="#using-a-custom-bitstream" title="永久链接至标题">#</a></h3>
+<p>We can program the new VTA FPGA bitstream by setting the bitstream path of the <code class="docutils literal notranslate"><span class="pre">vta.program_fpga()</span></code> function in the tutorial examples, or in the <code class="docutils literal notranslate"><span class="pre">test_program_rpc.py</span></code> script.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vta</span><span class="o">.</span><span class="n">program_fpga</span><span class="p">(</span><span class="n">remote</span><span class="p">,</span> <span class="n">bitstream</span><span class="o">=</span><span class="s2">&quot;&lt;tvm root&gt;/3rdparty/vta-hw/build/hardware/xilinx/vivado/&lt;configuration&gt;/export/vta.bit&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Instead of downloading a pre-built bitstream from the VTA bitstream repository, TVM will instead use the new bitstream you just generated, which is a VTA design clocked at a higher frequency.
+Do you observe a noticeable performance increase on the ImageNet classification example?</p>
+</section>
+</section>
+<section id="bitstream-generation-with-intel-toolchains">
+<h2>Bitstream Generation with Intel Toolchains<a class="headerlink" href="#bitstream-generation-with-intel-toolchains" title="永久链接至标题">#</a></h2>
+<p>If you’re interested in generating the Xilinx FPGA bitstream on your own instead of using the pre-built VTA bistreams, follow the instructions below.</p>
+<section id="intel-toolchain-installation">
+<h3>Intel Toolchain Installation<a class="headerlink" href="#intel-toolchain-installation" title="永久链接至标题">#</a></h3>
+<p>It is recommended to use <code class="docutils literal notranslate"><span class="pre">Intel</span> <span class="pre">Quartus</span> <span class="pre">Prime</span> <span class="pre">18.1</span></code>, since the test scripts contained in this document have been tested on this version.</p>
+<p>You would need to install Intel’s FPGA compilation toolchain, <a class="reference external" href="http://fpgasoftware.intel.com/?edition=lite">Quartus Prime Lite</a>, which is a license-free version of the Intel Quartus Prime software.</p>
+<section id="obtaining-and-launching-the-quartus-gui-installer">
+<h4>Obtaining and Launching the Quartus GUI Installer<a class="headerlink" href="#obtaining-and-launching-the-quartus-gui-installer" title="永久链接至标题">#</a></h4>
+<ol class="arabic simple">
+<li><p>Go to the <a class="reference external" href="http://fpgasoftware.intel.com/?edition=lite">download center</a>, and download the linux version of “Quartus Prime (include Nios II EDS)” and “Cyclone V device support” files in the “Separate file” tab. This avoid downloading unused device support files.</p></li>
+<li><p>Sign in the form if you have an account, or register on the right side of the web page to create an account.</p></li>
+<li><p>After signed in, you are able to download the installer and the device support files.</p></li>
+<li><p>Now that the files are downloaded, go to your <code class="docutils literal notranslate"><span class="pre">Downloads</span></code> directory, and change the file permissions:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod u+x QuartusLiteSetup-18.1.0.625-linux.run
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Now ensure both the installer and device support files are in the same directory, and you can run the install with:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./QuartusLiteSetup-18.1.0.625-linux.run
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Follow the instructions on the pop-up GUI form, and install all the content in the <code class="docutils literal notranslate"><span class="pre">/usr/local</span></code> directory. After installation, <code class="docutils literal notranslate"><span class="pre">/usr/local/intelFPGA_lite/18.1</span></code> would be created and the Quartus program along with other programs would be available in the folder.</p></li>
+</ol>
+</section>
+<section id="id1">
+<h4>Environment Setup<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h4>
+<p>Similar to what should be done for Xilinx toolchain, the following line should be added to your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Intel Quartus 18.1 environment</span>
+<span class="nb">export</span> <span class="nv">QUARTUS_ROOTDIR</span><span class="o">=</span><span class="s2">&quot;/usr/local/intelFPGA_lite/18.1/quartus&quot;</span>
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">QUARTUS_ROOTDIR</span><span class="si">}</span>/bin:<span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">QUARTUS_ROOTDIR</span><span class="si">}</span>/sopc_builder/bin:<span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+</pre></div>
+</div>
+<p>This would add quartus binary path into your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable, so you can launch compilation scripts from the command line.</p>
+</section>
+</section>
+<section id="chisel-based-custom-vta-bitstream-compilation-for-de10-nano">
+<h3>Chisel-based Custom VTA Bitstream Compilation for DE10-Nano<a class="headerlink" href="#chisel-based-custom-vta-bitstream-compilation-for-de10-nano" title="永久链接至标题">#</a></h3>
+<p>Similar to the HLS-based design, high-level hardware parameters in Chisel-based design are listed in the VTA configuration file <a class="reference external" href="https://github.com/apache/tvm/blob/main/3rdparty/vta-hw/hardware/chisel/src/main/scala/core/Configs.scala">Configs.scala</a>, and they can be customized by the user.</p>
+<p>For Intel FPGA, bitstream generation is driven by a top-level <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> under <code class="docutils literal notranslate"><span class="pre">&lt;tvm</span> <span class="pre">root&gt;/3rdparty/vta-hw/hardware/intel</span></code>.</p>
+<p>If you just want to generate the Chisel-based VTA IP core for the DE10-Nano board without compiling the design for the FPGA hardware, enter:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;tvm root&gt;/3rdparty/vta-hw/hardware/intel
+make ip
+</pre></div>
+</div>
+<p>Then you’ll be able to locate the generated verilog file at <code class="docutils literal notranslate"><span class="pre">&lt;tvm</span> <span class="pre">root&gt;/3rdparty/vta-hw/build/hardware/intel/chisel/&lt;configuration&gt;/VTA.DefaultDe10Config.v</span></code>.</p>
+<p>If you would like to run the full hardware compilation for the <code class="docutils literal notranslate"><span class="pre">de10nano</span></code> board:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make
+</pre></div>
+</div>
+<p>This process might be a bit lengthy, and might take up to half an hour to complete depending on the performance of your PC. The Quartus Prime software would automatically detect the number of cores available on your PC and try to utilize all of them to perform such process.</p>
+<p>Once the compilation completes, the generated bistream can be found under <code class="docutils literal notranslate"><span class="pre">&lt;tvm</span> <span class="pre">root&gt;/3rdparty/vta-hw/build/hardware/intel/quartus/&lt;configuration&gt;/export/vta.rbf</span></code>. You can also open the Quartus project file (.qpf) available at <code class="docutils literal notranslate"><span class="pre">&lt;tvm</span> <span class="pre">root&gt;/3rdparty/vta-hw/build/hardware/intel/quartus/&lt;configuration&gt;/de10_nano_top.qpf</span></code> to look around the generated reports.</p>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="index.html" title="上一页 页">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一页</p>
+            <p class="prev-next-title">VTA：通用张量加速器</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="dev/index.html" title="下一页 页">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">VTA 设计和开发指南</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By xinetzone<br/>
+  
+      &copy; Copyright 2022, xinetzone.<br/>
+    Last updated on 2022-04-07, 15:51:47.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

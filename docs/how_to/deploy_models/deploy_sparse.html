@@ -1,0 +1,1788 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Deploy a Hugging Face Pruned Model on CPU &#8212; TVM  文档</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <link rel="shortcut icon" href="../../../_static/tvm-logo-square.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="Deploy Single Shot Multibox Detector(SSD) model" href="deploy_ssd_gluoncv.html" />
+    <link rel="prev" title="Deploy a Quantized Model on Cuda" href="deploy_quantized.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_CN">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/tvm-logo-small.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">TVM  文档</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   TVM 文档
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../start.html">
+   快速上手
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../install/index.html">
+     安装 TVM
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../install/from_source.html">
+       从源码安装
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../install/nnpack.html">
+         NNPACK Contrib Installation
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../install/docker.html">
+       Docker 镜像
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../install/tlcpack.html">
+       TLCPack
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../contribute/index.html">
+     Contributor Guide
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/community.html">
+       TVM Community Guidelines
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/pull_request.html">
+       Submit a Pull Request
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/code_review.html">
+       Code Reviews
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/committer_guide.html">
+       Committer Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/document.html">
+       Documentation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/code_guide.html">
+       Code Guide and Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/git_howto.html">
+       Git Usage Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/ci.html">
+       Using TVM’s CI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/release_process.html">
+       Release Process
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/error_handling.html">
+       Error Handling Guide
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../study/index.html">
+   学习笔记
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../study/quantize.html">
+     量化
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../study/start.html">
+     TVM 入门指南
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../study/test.html">
+     测试 TVM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../../user-guide.html">
+   用户手册
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../tutorial/index.html">
+     用户指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/introduction.html">
+       TVM 和模型优化的概述
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tvmc_command_line_driver.html">
+       用 TVMC 编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tvmc_python.html">
+       开始使用 TVMC Python：TVM 的高级 API
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/autotvm_relay_x86.html">
+       用 Python 接口编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tensor_expr_get_started.html">
+       使用张量表达式处理算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/autotvm_matmul_x86.html">
+       用调度模板和 AutoTVM 优化算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/auto_scheduler_matmul_x86.html">
+       使用自动调度优化运算
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tensor_ir_blitz_course.html">
+       TensorIR 的突击课程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/cross_compilation_and_rpc.html">
+       交叉编译和RPC
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/relay_quick_start.html">
+       编译深度学习模型的快速入门教程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/intro_topi.html">
+       TOPI 简介
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="../index.html">
+     How To 指南
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../compile_models/index.html">
+       编译深度学习模型
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+      <label for="toctree-checkbox-9">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_pytorch.html">
+         编译 PyTorch 模型
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_tensorflow.html">
+         Compile Tensorflow Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_mxnet.html">
+         Compile MXNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_onnx.html">
+         Compile ONNX Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_keras.html">
+         Compile Keras Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_tflite.html">
+         Compile TFLite Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_coreml.html">
+         Compile CoreML Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_darknet.html">
+         Compile YOLO-V2 and YOLO-V3 in DarkNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_caffe2.html">
+         Compile Caffe2 Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_paddle.html">
+         Compile PaddlePaddle Models
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 current active has-children">
+      <a class="reference internal" href="../deploy/index.html">
+       部署模型，集成 TVM
+      </a>
+      <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="current">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy/cpp_deploy.html">
+         Deploy TVM Module using C++ API
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy/android.html">
+         Deploy to Android
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy/integrate.html">
+         Integrate TVM into Your Project
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy/hls.html">
+         HLS Backend Example
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy/arm_compute_lib.html">
+         Relay Arm
+         <sup>
+          ®
+         </sup>
+         Compute Library Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy/tensorrt.html">
+         Relay TensorRT Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy/vitis_ai.html">
+         Vitis AI Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy/bnns.html">
+         Relay BNNS Integration
+        </a>
+       </li>
+       <li class="toctree-l4 current active">
+        <a class="reference internal" href="index.html">
+         部署深度学习模型
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../work_with_relay/index.html">
+       Work With Relay
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+      <label for="toctree-checkbox-11">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../work_with_schedules/index.html">
+       Work With Tensor Expression and Schedules
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+      <label for="toctree-checkbox-12">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../optimize_operators/index.html">
+       Optimize Tensor Operators
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+      <label for="toctree-checkbox-13">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../tune_with_autotvm/index.html">
+       Auto-Tune with Templates and AutoTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+      <label for="toctree-checkbox-14">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autotvm/tune_conv2d_cuda.html">
+         Tuning High Performance Convolution on NVIDIA GPUs
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autotvm/tune_relay_cuda.html">
+         Auto-tuning a Convolutional Network for NVIDIA GPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autotvm/tune_relay_x86.html">
+         Auto-tuning a Convolutional Network for x86 CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autotvm/tune_relay_arm.html">
+         Auto-tuning a Convolutional Network for ARM CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autotvm/tune_relay_mobile_gpu.html">
+         Auto-tuning a Convolutional Network for Mobile GPU
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../tune_with_autoscheduler/index.html">
+       Use AutoScheduler for Template-Free Scheduling
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+      <label for="toctree-checkbox-15">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../work_with_microtvm/index.html">
+       Work With microTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+      <label for="toctree-checkbox-16">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extend_tvm/index.html">
+       Extend TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+      <label for="toctree-checkbox-17">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../profile/index.html">
+       Profile Models
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+      <label for="toctree-checkbox-18">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../profile/papi.html">
+         Getting Started With PAPI
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../errors.html">
+       处理 TVM 的错误
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../faq.html">
+       常见问题
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../developer-guide.html">
+   开发手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../dev/tutorial/index.html">
+     开发者教程
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+    <label for="toctree-checkbox-20">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/tutorial/codebase_walkthrough.html">
+       TVM 代码库的实例演练
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../dev/how_to/how_to.html">
+     开发者 How-To 指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/relay_add_op.html">
+       Adding an Operator to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/relay_add_pass.html">
+       Adding a Compiler Pass to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/relay_bring_your_own_codegen.html">
+       Bring Your Own Codegen To TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/pytest_target_parametrization.html">
+       Python Target Parametrization
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../arch/index.html">
+   设计与架构
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/runtime.html">
+     TVM 运行时系统
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/debugger.html">
+     Debugger
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/virtual_machine.html">
+     Putting the VM in TVM: The Relay Virtual Machine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/introduction_to_module_serialization.html">
+     Introduction to Module Serialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/pass_infra.html">
+     Pass Infrastructure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/inferbound.html">
+     InferBound Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/hybrid_script.html">
+     Hybrid Frontend Developer Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/relay_intro.html">
+     Introduction to Relay IR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/relay_op_strategy.html">
+     Relay Operator Strategy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/convert_layout.html">
+     Convert Layout Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/benchmark.html">
+     Benchmark Performance Log Format
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/frontend/tensorflow.html">
+     TensorFlow Frontend
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/security.html">
+     Security Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/microtvm_design.html">
+     microTVM Design Document
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/microtvm_project_api.html">
+     microTVM Project API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/model_library_format.html">
+     Model Library Format
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../topic-guides.html">
+   主题指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../topic/microtvm/index.html">
+     microTVM：裸机上的 TVM
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../topic/vta/index.html">
+     VTA：通用张量加速器
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+    <label for="toctree-checkbox-24">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../topic/vta/install.html">
+       VTA 安装指南
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../topic/vta/dev/index.html">
+       VTA 设计和开发指南
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/dev/config.html">
+         VTA 配置
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/dev/hardware.html">
+         VTA 硬件指南
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../topic/vta/tutorials/index.html">
+       VTA 教程
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/matrix_multiply.html">
+         Simple Matrix Multiply
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/vta_get_started.html">
+         Get Started with VTA
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/frontend/index.html">
+         Compile Deep Learning Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/optimize/index.html">
+         Optimize Tensor Operators
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/autotvm/index.html">
+         Auto tuning
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../reference-guide.html">
+   参考指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../reference/langref/index.html">
+     语言参考
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+    <label for="toctree-checkbox-28">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_expr.html">
+       Expressions in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_type.html">
+       Relay’s Type System
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_adt.html">
+       Algebraic Data Types in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_op.html">
+       Relay Core Tensor Operators
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_pattern.html">
+       Pattern Matching in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/hybrid_script.html">
+       Hybrid Frontend Language Reference
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../reference/api/python/index.html">
+     Python API
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/runtime.html">
+       tvm.runtime
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/ndarray.html">
+       tvm.runtime.ndarray
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/error.html">
+       tvm.error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/ir.html">
+       tvm.ir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/target.html">
+       tvm.target
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/tir.html">
+       tvm.tir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/te.html">
+       tvm.te
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/driver.html">
+       tvm.driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/index.html">
+       tvm.relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/frontend.html">
+       tvm.relay.frontend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/nn.html">
+       tvm.relay.nn
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/vision.html">
+       tvm.relay.vision
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/image.html">
+       tvm.relay.image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/transform.html">
+       tvm.relay.transform
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/analysis.html">
+       tvm.relay.analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/backend.html">
+       tvm.relay.backend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/dataflow_pattern.html">
+       tvm.relay.dataflow_pattern
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/testing.html">
+       tvm.relay.testing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/autotvm.html">
+       tvm.autotvm
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/auto_scheduler.html">
+       tvm.auto_scheduler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/rpc.html">
+       tvm.rpc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/micro.html">
+       tvm.micro
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/contrib.html">
+       tvm.contrib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/graph_executor.html">
+       tvm.contrib.graph_executor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/topi.html">
+       tvm.topi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/vta/index.html">
+       vta
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../reference/api/links.html">
+     其他 API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../reference/publications.html">
+     出版物
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../refs/index.html">
+   参考
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+  <label for="toctree-checkbox-30">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../refs/_ffi/index.html">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _ffi
+      </span>
+     </code>
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/base.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.base
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/libinfo.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.libinfo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/object.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi._ctypes.object
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/registry.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.registry
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/runtime_ctypes.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.runtime_ctypes
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/xinetzone/torch-quantization/edit/main/docs/docs/how_to/deploy_models/deploy_sparse.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/docs/how_to/deploy_models/deploy_sparse.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> 导航
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-required-modules">
+   Load Required Modules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configure-settings">
+   Configure Settings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-and-convert-transformers-model">
+   Download and Convert Transformers Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convert-to-relay-graph">
+   Convert to Relay Graph
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-dense-graph">
+   Run the Dense Graph
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-sparse-graph">
+   Run the Sparse Graph
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-all-the-code">
+   Run All the Code!
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sample-output">
+   Sample Output
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Deploy a Hugging Face Pruned Model on CPU</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> 导航 </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-required-modules">
+   Load Required Modules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configure-settings">
+   Configure Settings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-and-convert-transformers-model">
+   Download and Convert Transformers Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convert-to-relay-graph">
+   Convert to Relay Graph
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-dense-graph">
+   Run the Dense Graph
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-sparse-graph">
+   Run the Sparse Graph
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-all-the-code">
+   Run All the Code!
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sample-output">
+   Sample Output
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">备注</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-how-to-deploy-models-deploy-sparse-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="deploy-a-hugging-face-pruned-model-on-cpu">
+<span id="sphx-glr-how-to-deploy-models-deploy-sparse-py"></span><h1>Deploy a Hugging Face Pruned Model on CPU<a class="headerlink" href="#deploy-a-hugging-face-pruned-model-on-cpu" title="永久链接至标题">#</a></h1>
+<p><strong>Author</strong>: <a class="reference external" href="https://github.com/jwfromm">Josh Fromm</a></p>
+<p>This tutorial demonstrates how to take any pruned model, in this case <a class="reference external" href="https://huggingface.co/huggingface/prunebert-base-uncased-6-finepruned-w-distil-squad">PruneBert
+from Hugging Face</a>,
+and use TVM to leverage the model’s sparsity support to produce real speedups. Although
+the primary purpose of this tutorial is to realize speedups on already pruned
+models, it may also be useful to estimate how fast a model would be <em>if</em> it were
+pruned. To this end, we also provide a function that takes an unpruned model and
+replaces its weights
+with random and pruned weights at a specified sparsity. This may be a useful
+feature when trying to decide if a model is worth pruning or not.</p>
+<p>Before we get into the code, it’s useful to discuss sparsity and pruning
+and dig into the two
+different types of sparsity: <strong>structured</strong> and <strong>unstructured</strong>.</p>
+<p>Pruning is a technique primarily used to reduce the parameter size of a model
+by replacing weight values with 0s. Although many methods exist for choosing which
+weights should be set to 0, the most straight forward is by picking the
+weights with the smallest value. Typically, weights are pruned to a desired
+sparsity percentage. For example, a 95% sparse model would have only 5% of
+its weights non-zero. Pruning to very high sparsities often requires
+finetuning or full retraining as it tends to be a lossy approximation.
+Although parameter size benefits are quite easy to obtain from a pruned model
+through simple compression, leveraging sparsity to yield runtime speedups
+is more complicated.</p>
+<p>In structured sparsity weights are pruned with the goal of clustering
+pruned weights together. In other words, they are pruned using both their
+value and location. The benefit of bunching up pruned weights is that it allows
+an algorithm such as matrix multiplication to skip entire blocks. It turns out
+that some degree of <em>block sparsity</em> is very important to realizing significant
+speedups on most hardware available today.
+This is because when loading memory in most CPUs or GPUs,
+it doesn’t save any work to skip reading a single value at a time, instead an entire
+chunk or tile is read in and executed using something like vectorized instructions.</p>
+<p>Unstructured sparse weights are those that are pruned only on the value of
+the original weights. They may appear to be scattered randomly throughout
+a tensor rather than in chunks like we’d see in block sparse weights.
+At low sparsities, unstructured pruning techniques are difficult to
+accelerate. However, at high sparsities many blocks of all 0 values
+will naturally appear, making it possible to accelerate.</p>
+<p>This tutorial interacts with both structured and unstructured sparsity.
+Hugging Face’s PruneBert model is unstructured but 95% sparse, allowing us
+to apply TVM’s block sparse optimizations to it, even if not optimally.
+When generating random sparse weights for an unpruned model, we do so with structured
+sparsity. A fun exercise is comparing the real speed of PruneBert with the block
+sparse speed using fake weights to see the benefit of structured sparsity.</p>
+<section id="load-required-modules">
+<h2>Load Required Modules<a class="headerlink" href="#load-required-modules" title="永久链接至标题">#</a></h2>
+<p>Other than TVM, scipy, the latest transformers, and
+tensorflow 2.2+ are required.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">tvm</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">relay</span><span class="p">,</span> <span class="n">runtime</span>
+<span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">graph_executor</span>
+<span class="kn">from</span> <span class="nn">tvm.relay</span> <span class="kn">import</span> <span class="n">data_dep_optimization</span> <span class="k">as</span> <span class="n">ddo</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework.convert_to_constants</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">convert_variables_to_constants_v2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">import</span> <span class="nn">scipy.sparse</span> <span class="k">as</span> <span class="nn">sp</span>
+
+
+<span class="c1"># Ask tensorflow to limit its GPU memory to what&#39;s actually needed</span>
+<span class="c1"># instead of gobbling everything that&#39;s available.</span>
+<span class="c1"># https://www.tensorflow.org/guide/gpu#limiting_gpu_memory_growth</span>
+<span class="c1"># This way this tutorial is a little more friendly to sphinx-gallery.</span>
+<span class="n">gpus</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">list_physical_devices</span><span class="p">(</span><span class="s2">&quot;GPU&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">gpus</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">gpu</span> <span class="ow">in</span> <span class="n">gpus</span><span class="p">:</span>
+            <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">set_memory_growth</span><span class="p">(</span><span class="n">gpu</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tensorflow will use experimental.set_memory_growth(True)&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;experimental.set_memory_growth option is not available: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="configure-settings">
+<h2>Configure Settings<a class="headerlink" href="#configure-settings" title="永久链接至标题">#</a></h2>
+<p>Let’s start by defining some parameters that define the type of model
+and sparsity to run.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># The name of the transformer model to download and run.</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;huggingface/prunebert-base-uncased-6-finepruned-w-distil-squad&quot;</span>
+<span class="c1"># The number of batches in an input.</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1"># The length of each input sequence.</span>
+<span class="n">seq_len</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="c1"># TVM platform identifier. Note that best cpu performance can be achieved by setting -mcpu</span>
+<span class="c1"># appropriately for your specific machine. CUDA and ROCm are also supported.</span>
+<span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;llvm&quot;</span>
+<span class="c1"># Which device to run on. Should be one of tvm.cpu() or tvm.cuda().</span>
+<span class="n">dev</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+<span class="c1"># If true, then a sparse variant of the network will be run and</span>
+<span class="c1"># benchmarked.</span>
+<span class="n">measure_sparse</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="c1"># The block size of structured sparsity to convert weight tensors</span>
+<span class="c1"># into. Changing this parameter may yield speedups for some platforms.</span>
+<span class="n">bs_r</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1"># For models besides PruneBert (which is 95% sparse), this parameter</span>
+<span class="c1"># determines how sparse the generated weights should be. The higher</span>
+<span class="c1"># the sparsity, the faster the result.</span>
+<span class="n">sparsity</span> <span class="o">=</span> <span class="mf">0.85</span>
+</pre></div>
+</div>
+</section>
+<section id="download-and-convert-transformers-model">
+<h2>Download and Convert Transformers Model<a class="headerlink" href="#download-and-convert-transformers-model" title="永久链接至标题">#</a></h2>
+<p>Now we’ll grab a model from the transformers module, download it,
+convert it into a TensorFlow graphdef in preperation for converting that graphdef into
+a relay graph that we can optimize and deploy.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_keras_model</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">report_runtime</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">dummy_input</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">seq_len</span><span class="p">],</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int32&quot;</span><span class="p">)</span>
+    <span class="n">dummy_out</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">dummy_input</span><span class="p">)</span>  <span class="c1"># Propagate shapes through the keras model.</span>
+    <span class="k">if</span> <span class="n">report_runtime</span><span class="p">:</span>
+        <span class="n">np_input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">],</span> <span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">seq_len</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
+            <span class="s2">&quot;int32&quot;</span>
+        <span class="p">)</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">repeats</span> <span class="o">=</span> <span class="mi">50</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">repeats</span><span class="p">):</span>
+            <span class="n">np_out</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">np_input</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Keras Runtime: </span><span class="si">%f</span><span class="s2"> ms.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">1000</span> <span class="o">*</span> <span class="p">((</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">/</span> <span class="n">repeats</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">model</span>
+
+
+<span class="k">def</span> <span class="nf">convert_to_graphdef</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">):</span>
+    <span class="n">model_func</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">input_dict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_saved_model_inputs_spec</span>
+    <span class="n">input_spec</span> <span class="o">=</span> <span class="n">input_dict</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="n">model_func</span> <span class="o">=</span> <span class="n">model_func</span><span class="o">.</span><span class="n">get_concrete_function</span><span class="p">(</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">TensorSpec</span><span class="p">([</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">],</span> <span class="n">input_spec</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">frozen_func</span> <span class="o">=</span> <span class="n">convert_variables_to_constants_v2</span><span class="p">(</span><span class="n">model_func</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">frozen_func</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">as_graph_def</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">download_model</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">transformers</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">transformers</span><span class="p">,</span> <span class="s2">&quot;TFBertForSequenceClassification&quot;</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">load_keras_model</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="o">=</span><span class="n">seq_len</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">convert_to_graphdef</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="convert-to-relay-graph">
+<h2>Convert to Relay Graph<a class="headerlink" href="#convert-to-relay-graph" title="永久链接至标题">#</a></h2>
+<p>We now have all the tooling to get a transformers model in the right format
+for relay conversion. Let’s import it! In the following function we
+save the imported graph in relay’s json format so that we dont have
+to reimport from tensorflow each time this script is run.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">import_graphdef</span><span class="p">(</span>
+    <span class="n">name</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">seq_len</span><span class="p">,</span>
+    <span class="n">save_relay</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">relay_file</span><span class="o">=</span><span class="s2">&quot;model.json&quot;</span><span class="p">,</span>
+    <span class="n">relay_params</span><span class="o">=</span><span class="s2">&quot;model.params&quot;</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">abs_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+    <span class="n">shape_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;input_1&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">)}</span>
+    <span class="n">relay_file</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_</span><span class="si">%d</span><span class="s2">_</span><span class="si">%d</span><span class="s2">_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">,</span> <span class="n">relay_file</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+    <span class="n">relay_params</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_</span><span class="si">%d</span><span class="s2">_</span><span class="si">%d</span><span class="s2">_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">,</span> <span class="n">relay_params</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">abs_path</span><span class="p">,</span> <span class="n">relay_file</span><span class="p">))</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">abs_path</span><span class="p">,</span> <span class="n">relay_params</span><span class="p">)</span>
+    <span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">abs_path</span><span class="p">,</span> <span class="n">relay_file</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fi</span><span class="p">:</span>
+            <span class="n">mod</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">ir</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="n">fi</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">abs_path</span><span class="p">,</span> <span class="n">relay_params</span><span class="p">),</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fi</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">load_param_dict</span><span class="p">(</span><span class="n">fi</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">graph_def</span> <span class="o">=</span> <span class="n">download_model</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">)</span>
+
+        <span class="n">mod</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">frontend</span><span class="o">.</span><span class="n">from_tensorflow</span><span class="p">(</span><span class="n">graph_def</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape_dict</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">save_relay</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">abs_path</span><span class="p">,</span> <span class="n">relay_file</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fo</span><span class="p">:</span>
+                <span class="n">fo</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">ir</span><span class="o">.</span><span class="n">save_json</span><span class="p">(</span><span class="n">mod</span><span class="p">))</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">abs_path</span><span class="p">,</span> <span class="n">relay_params</span><span class="p">),</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fo</span><span class="p">:</span>
+                <span class="n">fo</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">runtime</span><span class="o">.</span><span class="n">save_param_dict</span><span class="p">(</span><span class="n">params</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">mod</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">shape_dict</span>
+</pre></div>
+</div>
+</section>
+<section id="run-the-dense-graph">
+<h2>Run the Dense Graph<a class="headerlink" href="#run-the-dense-graph" title="永久链接至标题">#</a></h2>
+<p>Let’s run the default version of the imported model. Note that even if
+the weights are sparse, we won’t see any speedup because we are using
+regular dense matrix multiplications on these dense (but mostly zero)
+tensors instead of sparse aware kernels.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_relay_graph</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">shape_dict</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">dev</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">relay</span><span class="o">.</span><span class="n">build_config</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">lib</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">input_shape</span> <span class="o">=</span> <span class="n">shape_dict</span><span class="p">[</span><span class="s2">&quot;input_1&quot;</span><span class="p">]</span>
+    <span class="n">dummy_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">input_shape</span><span class="p">,</span> <span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int32&quot;</span><span class="p">)</span>
+
+    <span class="n">m</span> <span class="o">=</span> <span class="n">graph_executor</span><span class="o">.</span><span class="n">GraphModule</span><span class="p">(</span><span class="n">lib</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">](</span><span class="n">dev</span><span class="p">))</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dummy_data</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="n">tvm_output</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">benchmark</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">tvm_output</span>
+
+
+<span class="k">def</span> <span class="nf">run_dense</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">shape_dict</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">dev</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dense Model Benchmark:&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">run_relay_graph</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">shape_dict</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">dev</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="run-the-sparse-graph">
+<h2>Run the Sparse Graph<a class="headerlink" href="#run-the-sparse-graph" title="永久链接至标题">#</a></h2>
+<p>Next we’ll convert the graph into a sparse representation and generate
+fake sparse weights if needed. Then we’ll use the same benchmarking
+script as dense to see how much faster we go! We apply a few relay passes
+to the graph to get it leveraging sparsity. First we use
+<cite>simplify_fc_transpose</cite> to use transposes on the weights of dense layers
+into the parameters. This makes it easier to convert to matrix multiplies
+to sparse versions. Next we apply <cite>bsr_dense.convert</cite> to identify all
+weight matrices that can be sparse, and automatically replace them.</p>
+<p>The <cite>bsr_dense.convert</cite> call below is doing the heavy lifting of identifying
+which weights in the model can be made sparse by checking if they are
+at least <cite>sparsity_threshold</cite> percent sparse. If so, it converts those
+weights into <em>Block Compressed Row Format (BSR)</em>. BSR is essentially
+a representation that indexes into the nonzero chunks of the tensor,
+making it easy for an algorithm to load those non-zero chunks and ignore
+the rest of the tensor. Once the sparse weights are in BSR format,
+<cite>relay.transform.DenseToSparse</cite> is applied to actually replace
+<cite>relay.dense</cite> operations with <cite>relay.sparse_dense</cite> calls that can be
+run faster.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">random_bsr_matrix</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">BS_R</span><span class="p">,</span> <span class="n">BS_C</span><span class="p">,</span> <span class="n">density</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">):</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">M</span><span class="p">,</span> <span class="n">N</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">M</span> <span class="o">%</span> <span class="n">BS_R</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">assert</span> <span class="n">N</span> <span class="o">%</span> <span class="n">BS_C</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="n">nnz</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">density</span> <span class="o">*</span> <span class="n">M</span> <span class="o">*</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">num_blocks</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nnz</span> <span class="o">/</span> <span class="p">(</span><span class="n">BS_R</span> <span class="o">*</span> <span class="n">BS_C</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">candidate_blocks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">BS_R</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">BS_C</span><span class="p">))))</span>
+    <span class="k">assert</span> <span class="n">candidate_blocks</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">M</span> <span class="o">//</span> <span class="n">BS_R</span> <span class="o">*</span> <span class="n">N</span> <span class="o">//</span> <span class="n">BS_C</span>
+    <span class="n">chosen_blocks</span> <span class="o">=</span> <span class="n">candidate_blocks</span><span class="p">[</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">candidate_blocks</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">num_blocks</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chosen_blocks</span><span class="p">)):</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">chosen_blocks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">Y</span><span class="p">[</span><span class="n">r</span> <span class="p">:</span> <span class="n">r</span> <span class="o">+</span> <span class="n">BS_R</span><span class="p">,</span> <span class="n">c</span> <span class="p">:</span> <span class="n">c</span> <span class="o">+</span> <span class="n">BS_C</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="p">(</span><span class="n">BS_R</span><span class="p">,</span> <span class="n">BS_C</span><span class="p">))</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">bsr_matrix</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">blocksize</span><span class="o">=</span><span class="p">(</span><span class="n">BS_R</span><span class="p">,</span> <span class="n">BS_C</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">s</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">num_blocks</span><span class="p">,</span> <span class="n">BS_R</span><span class="p">,</span> <span class="n">BS_C</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">s</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;=</span> <span class="n">nnz</span>
+    <span class="k">assert</span> <span class="n">s</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">num_blocks</span><span class="p">,)</span>
+    <span class="k">assert</span> <span class="n">s</span><span class="o">.</span><span class="n">indptr</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">M</span> <span class="o">//</span> <span class="n">BS_R</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,)</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">random_sparse_bert_params</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">density</span><span class="p">,</span> <span class="n">BS_R</span><span class="p">,</span> <span class="n">BS_C</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">deepcopy</span><span class="p">(</span><span class="n">param_dic</span><span class="p">):</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">param_dic</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">ret</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">ret</span>
+
+    <span class="n">new_params</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">dense_weight_names</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">sparse_dense</span><span class="o">.</span><span class="n">_search_dense_op_weight</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">dense_weight_names</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">new_params</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+        <span class="k">if</span> <span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">%</span> <span class="n">BS_R</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">%</span> <span class="n">BS_C</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">new_w</span> <span class="o">=</span> <span class="n">random_bsr_matrix</span><span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">BS_R</span><span class="p">,</span> <span class="n">BS_C</span><span class="p">,</span> <span class="n">density</span><span class="p">)</span>
+            <span class="n">new_params</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">new_w</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">new_params</span>
+
+
+<span class="k">def</span> <span class="nf">run_sparse</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">shape_dict</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">bs_r</span><span class="p">,</span> <span class="n">sparsity</span><span class="p">,</span> <span class="n">gen_weights</span><span class="p">):</span>
+    <span class="n">mod</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">ddo</span><span class="o">.</span><span class="n">simplify_fc_transpose</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">mod</span><span class="p">[</span><span class="s2">&quot;main&quot;</span><span class="p">],</span> <span class="n">params</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">gen_weights</span><span class="p">:</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">random_sparse_bert_params</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">BS_R</span><span class="o">=</span><span class="n">bs_r</span><span class="p">,</span> <span class="n">BS_C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="n">sparsity</span><span class="p">)</span>
+    <span class="n">mod</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">ddo</span><span class="o">.</span><span class="n">bsr_dense</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="p">(</span><span class="n">bs_r</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">sparsity_threshold</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Block Sparse Model with </span><span class="si">{blocksize}</span><span class="s2">x1 blocks:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">blocksize</span><span class="o">=</span><span class="n">bs_r</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">run_relay_graph</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">shape_dict</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">dev</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="run-all-the-code">
+<h2>Run All the Code!<a class="headerlink" href="#run-all-the-code" title="永久链接至标题">#</a></h2>
+<p>And that’s it! Now we’ll simply call all the needed function to benchmark
+the model according to the set parameters. Note that to run this code
+you’ll need to uncomment the last line first.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">benchmark</span><span class="p">():</span>
+    <span class="n">mod</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">shape_dict</span> <span class="o">=</span> <span class="n">import_graphdef</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">)</span>
+    <span class="n">run_dense</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">shape_dict</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">dev</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">measure_sparse</span><span class="p">:</span>
+        <span class="n">gen_weights</span> <span class="o">=</span> <span class="s2">&quot;prune&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span>
+        <span class="n">run_sparse</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">shape_dict</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">bs_r</span><span class="p">,</span> <span class="n">sparsity</span><span class="p">,</span> <span class="n">gen_weights</span><span class="p">)</span>
+
+
+<span class="c1"># benchmark()</span>
+</pre></div>
+</div>
+</section>
+<section id="sample-output">
+<h2>Sample Output<a class="headerlink" href="#sample-output" title="永久链接至标题">#</a></h2>
+<p>For reference, below is the output of the script when run on an AMD CPU
+and shows about a 2.5X speedup from using sparsity.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dense Model Benchmark:</span>
+<span class="c1"># Cannot find config for target=llvm, workload=(&#39;dense_nopack.x86&#39;, (&#39;TENSOR&#39;, (1, 768), &#39;float32&#39;), (&#39;TENSOR&#39;, (2, 768), &#39;float32&#39;), None, &#39;float32&#39;). A fallback configuration is used, which may bring great performance regression.</span>
+<span class="c1"># Cannot find config for target=llvm, workload=(&#39;dense_nopack.x86&#39;, (&#39;TENSOR&#39;, (1, 768), &#39;float32&#39;), (&#39;TENSOR&#39;, (768, 768), &#39;float32&#39;), None, &#39;float32&#39;). A fallback configuration is used, which may bring great performance regression.</span>
+<span class="c1"># Cannot find config for target=llvm, workload=(&#39;dense_nopack.x86&#39;, (&#39;TENSOR&#39;, (128, 3072), &#39;float32&#39;), (&#39;TENSOR&#39;, (768, 3072), &#39;float32&#39;), None, &#39;float32&#39;). A fallback configuration is used, which may bring great performance regression.</span>
+<span class="c1"># Cannot find config for target=llvm, workload=(&#39;dense_nopack.x86&#39;, (&#39;TENSOR&#39;, (128, 768), &#39;float32&#39;), (&#39;TENSOR&#39;, (3072, 768), &#39;float32&#39;), None, &#39;float32&#39;). A fallback configuration is used, which may bring great performance regression.</span>
+<span class="c1"># Cannot find config for target=llvm, workload=(&#39;dense_nopack.x86&#39;, (&#39;TENSOR&#39;, (128, 768), &#39;float32&#39;), (&#39;TENSOR&#39;, (768, 768), &#39;float32&#39;), None, &#39;float32&#39;). A fallback configuration is used, which may bring great performance regression.</span>
+<span class="c1"># Cannot find config for target=llvm, workload=(&#39;batch_matmul.x86&#39;, (&#39;TENSOR&#39;, (12, 128, 128), &#39;float32&#39;), (&#39;TENSOR&#39;, (12, 64, 128), &#39;float32&#39;)). A fallback configuration is used, which may bring great performance regression.</span>
+<span class="c1"># Cannot find config for target=llvm, workload=(&#39;batch_matmul.x86&#39;, (&#39;TENSOR&#39;, (12, 128, 64), &#39;float32&#39;), (&#39;TENSOR&#39;, (12, 128, 64), &#39;float32&#39;)). A fallback configuration is used, which may bring great performance regression.</span>
+<span class="c1"># Runtime:             165.26 ms           (12.83 ms)</span>
+<span class="c1"># Block Sparse Model with 1x1 blocks:</span>
+<span class="c1"># Runtime:             67.75 ms            (8.83 ms)</span>
+
+<span class="c1"># Here is the output of this script on a GPU (GTX 1070) with the target &quot;cuda -libs=cublas&quot;.</span>
+<span class="c1">#</span>
+<span class="c1"># Dense Model Benchmark:</span>
+<span class="c1"># Cannot find config for target=cuda -keys=cuda,gpu -libs=cublas -max_num_threads=1024 -thread_warp_size=32, workload=(&#39;dense_cublas.cuda&#39;, (&#39;TENSOR&#39;, (1, 768), &#39;float32&#39;), (&#39;TENSOR&#39;, (2, 768), &#39;float32&#39;), None, &#39;float32&#39;). A fallback configuration is used, which may bring great performance regression.</span>
+<span class="c1"># Cannot find config for target=cuda -keys=cuda,gpu -libs=cublas -max_num_threads=1024 -thread_warp_size=32, workload=(&#39;dense_cublas.cuda&#39;, (&#39;TENSOR&#39;, (1, 768), &#39;float32&#39;), (&#39;TENSOR&#39;, (768, 768), &#39;float32&#39;), None, &#39;float32&#39;). A fallback configuration is used, which may bring great performance regression.</span>
+<span class="c1"># Cannot find config for target=cuda -keys=cuda,gpu -libs=cublas -max_num_threads=1024 -thread_warp_size=32, workload=(&#39;dense_cublas.cuda&#39;, (&#39;TENSOR&#39;, (128, 3072), &#39;float32&#39;), (&#39;TENSOR&#39;, (768, 3072), &#39;float32&#39;), None, &#39;float32&#39;). A fallback configuration is used, which may bring great performance regression.</span>
+<span class="c1"># Cannot find config for target=cuda -keys=cuda,gpu -libs=cublas -max_num_threads=1024 -thread_warp_size=32, workload=(&#39;dense_cublas.cuda&#39;, (&#39;TENSOR&#39;, (128, 768), &#39;float32&#39;), (&#39;TENSOR&#39;, (3072, 768), &#39;float32&#39;), None, &#39;float32&#39;). A fallback configuration is used, which may bring great performance regression.</span>
+<span class="c1"># Cannot find config for target=cuda -keys=cuda,gpu -libs=cublas -max_num_threads=1024 -thread_warp_size=32, workload=(&#39;dense_cublas.cuda&#39;, (&#39;TENSOR&#39;, (128, 768), &#39;float32&#39;), (&#39;TENSOR&#39;, (768, 768), &#39;float32&#39;), None, &#39;float32&#39;). A fallback configuration is used, which may bring great performance regression.</span>
+<span class="c1"># Cannot find config for target=cuda -keys=cuda,gpu -libs=cublas -max_num_threads=1024 -thread_warp_size=32, workload=(&#39;batch_matmul_cublas.cuda&#39;, (&#39;TENSOR&#39;, (12, 128, 128), &#39;float32&#39;), (&#39;TENSOR&#39;, (12, 64, 128), &#39;float32&#39;), (12, 128, 64)). A fallback configuration is used, which may bring great performance regression.</span>
+<span class="c1"># Cannot find config for target=cuda -keys=cuda,gpu -libs=cublas -max_num_threads=1024 -thread_warp_size=32, workload=(&#39;batch_matmul_cublas.cuda&#39;, (&#39;TENSOR&#39;, (12, 128, 64), &#39;float32&#39;), (&#39;TENSOR&#39;, (12, 128, 64), &#39;float32&#39;), (12, 128, 128)). A fallback configuration is used, which may bring great performance regression.</span>
+<span class="c1"># Runtime:             10.64 ms            (0.29 ms)</span>
+<span class="c1"># Block Sparse Model with 1x1 blocks:</span>
+<span class="c1"># Runtime:             6.46 ms             (0.05 ms)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-how-to-deploy-models-deploy-sparse-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">deploy_sparse.py</span></code></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">deploy_sparse.ipynb</span></code></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="deploy_quantized.html" title="上一页 页">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一页</p>
+            <p class="prev-next-title">Deploy a Quantized Model on Cuda</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="deploy_ssd_gluoncv.html" title="下一页 页">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">Deploy Single Shot Multibox Detector(SSD) model</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By xinetzone<br/>
+  
+      &copy; Copyright 2022, xinetzone.<br/>
+    Last updated on 2022-04-07, 15:51:47.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

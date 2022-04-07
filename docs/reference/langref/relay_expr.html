@@ -1,0 +1,2137 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Expressions in Relay &#8212; TVM  文档</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <link rel="shortcut icon" href="../../../_static/tvm-logo-square.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="Relay’s Type System" href="relay_type.html" />
+    <link rel="prev" title="语言参考" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_CN">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/tvm-logo-small.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">TVM  文档</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   TVM 文档
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../start.html">
+   快速上手
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../install/index.html">
+     安装 TVM
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../install/from_source.html">
+       从源码安装
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../install/nnpack.html">
+         NNPACK Contrib Installation
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../install/docker.html">
+       Docker 镜像
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../install/tlcpack.html">
+       TLCPack
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../contribute/index.html">
+     Contributor Guide
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/community.html">
+       TVM Community Guidelines
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/pull_request.html">
+       Submit a Pull Request
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/code_review.html">
+       Code Reviews
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/committer_guide.html">
+       Committer Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/document.html">
+       Documentation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/code_guide.html">
+       Code Guide and Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/git_howto.html">
+       Git Usage Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/ci.html">
+       Using TVM’s CI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/release_process.html">
+       Release Process
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/error_handling.html">
+       Error Handling Guide
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../study/index.html">
+   学习笔记
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../study/quantize.html">
+     量化
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../study/start.html">
+     TVM 入门指南
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../study/test.html">
+     测试 TVM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../user-guide.html">
+   用户手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../tutorial/index.html">
+     用户指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/introduction.html">
+       TVM 和模型优化的概述
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tvmc_command_line_driver.html">
+       用 TVMC 编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tvmc_python.html">
+       开始使用 TVMC Python：TVM 的高级 API
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/autotvm_relay_x86.html">
+       用 Python 接口编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tensor_expr_get_started.html">
+       使用张量表达式处理算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/autotvm_matmul_x86.html">
+       用调度模板和 AutoTVM 优化算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/auto_scheduler_matmul_x86.html">
+       使用自动调度优化运算
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tensor_ir_blitz_course.html">
+       TensorIR 的突击课程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/cross_compilation_and_rpc.html">
+       交叉编译和RPC
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/relay_quick_start.html">
+       编译深度学习模型的快速入门教程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/intro_topi.html">
+       TOPI 简介
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../how_to/index.html">
+     How To 指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/compile_models/index.html">
+       编译深度学习模型
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+      <label for="toctree-checkbox-9">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_pytorch.html">
+         编译 PyTorch 模型
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_tensorflow.html">
+         Compile Tensorflow Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_mxnet.html">
+         Compile MXNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_onnx.html">
+         Compile ONNX Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_keras.html">
+         Compile Keras Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_tflite.html">
+         Compile TFLite Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_coreml.html">
+         Compile CoreML Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_darknet.html">
+         Compile YOLO-V2 and YOLO-V3 in DarkNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_caffe2.html">
+         Compile Caffe2 Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_paddle.html">
+         Compile PaddlePaddle Models
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/deploy/index.html">
+       部署模型，集成 TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/cpp_deploy.html">
+         Deploy TVM Module using C++ API
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/android.html">
+         Deploy to Android
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/integrate.html">
+         Integrate TVM into Your Project
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/hls.html">
+         HLS Backend Example
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/arm_compute_lib.html">
+         Relay Arm
+         <sup>
+          ®
+         </sup>
+         Compute Library Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/tensorrt.html">
+         Relay TensorRT Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/vitis_ai.html">
+         Vitis AI Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/bnns.html">
+         Relay BNNS Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy_models/index.html">
+         部署深度学习模型
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/work_with_relay/index.html">
+       Work With Relay
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+      <label for="toctree-checkbox-11">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/work_with_schedules/index.html">
+       Work With Tensor Expression and Schedules
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+      <label for="toctree-checkbox-12">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/optimize_operators/index.html">
+       Optimize Tensor Operators
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+      <label for="toctree-checkbox-13">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/tune_with_autotvm/index.html">
+       Auto-Tune with Templates and AutoTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+      <label for="toctree-checkbox-14">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/tune_with_autotvm/tune_conv2d_cuda.html">
+         Tuning High Performance Convolution on NVIDIA GPUs
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/tune_with_autotvm/tune_relay_cuda.html">
+         Auto-tuning a Convolutional Network for NVIDIA GPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/tune_with_autotvm/tune_relay_x86.html">
+         Auto-tuning a Convolutional Network for x86 CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/tune_with_autotvm/tune_relay_arm.html">
+         Auto-tuning a Convolutional Network for ARM CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/tune_with_autotvm/tune_relay_mobile_gpu.html">
+         Auto-tuning a Convolutional Network for Mobile GPU
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/tune_with_autoscheduler/index.html">
+       Use AutoScheduler for Template-Free Scheduling
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+      <label for="toctree-checkbox-15">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/work_with_microtvm/index.html">
+       Work With microTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+      <label for="toctree-checkbox-16">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/extend_tvm/index.html">
+       Extend TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+      <label for="toctree-checkbox-17">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/profile/index.html">
+       Profile Models
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+      <label for="toctree-checkbox-18">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/profile/papi.html">
+         Getting Started With PAPI
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../errors.html">
+       处理 TVM 的错误
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../faq.html">
+       常见问题
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../developer-guide.html">
+   开发手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../dev/tutorial/index.html">
+     开发者教程
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+    <label for="toctree-checkbox-20">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/tutorial/codebase_walkthrough.html">
+       TVM 代码库的实例演练
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../dev/how_to/how_to.html">
+     开发者 How-To 指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/relay_add_op.html">
+       Adding an Operator to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/relay_add_pass.html">
+       Adding a Compiler Pass to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/relay_bring_your_own_codegen.html">
+       Bring Your Own Codegen To TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/pytest_target_parametrization.html">
+       Python Target Parametrization
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../arch/index.html">
+   设计与架构
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/runtime.html">
+     TVM 运行时系统
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/debugger.html">
+     Debugger
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/virtual_machine.html">
+     Putting the VM in TVM: The Relay Virtual Machine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/introduction_to_module_serialization.html">
+     Introduction to Module Serialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/pass_infra.html">
+     Pass Infrastructure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/inferbound.html">
+     InferBound Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/hybrid_script.html">
+     Hybrid Frontend Developer Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/relay_intro.html">
+     Introduction to Relay IR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/relay_op_strategy.html">
+     Relay Operator Strategy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/convert_layout.html">
+     Convert Layout Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/benchmark.html">
+     Benchmark Performance Log Format
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/frontend/tensorflow.html">
+     TensorFlow Frontend
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/security.html">
+     Security Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/microtvm_design.html">
+     microTVM Design Document
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/microtvm_project_api.html">
+     microTVM Project API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/model_library_format.html">
+     Model Library Format
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../topic-guides.html">
+   主题指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../topic/microtvm/index.html">
+     microTVM：裸机上的 TVM
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../topic/vta/index.html">
+     VTA：通用张量加速器
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+    <label for="toctree-checkbox-24">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../topic/vta/install.html">
+       VTA 安装指南
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../topic/vta/dev/index.html">
+       VTA 设计和开发指南
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/dev/config.html">
+         VTA 配置
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/dev/hardware.html">
+         VTA 硬件指南
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../topic/vta/tutorials/index.html">
+       VTA 教程
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/matrix_multiply.html">
+         Simple Matrix Multiply
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/vta_get_started.html">
+         Get Started with VTA
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/frontend/index.html">
+         Compile Deep Learning Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/optimize/index.html">
+         Optimize Tensor Operators
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/autotvm/index.html">
+         Auto tuning
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../../reference-guide.html">
+   参考指南
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="index.html">
+     语言参考
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+    <label for="toctree-checkbox-28">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Expressions in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="relay_type.html">
+       Relay’s Type System
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="relay_adt.html">
+       Algebraic Data Types in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="relay_op.html">
+       Relay Core Tensor Operators
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="relay_pattern.html">
+       Pattern Matching in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="hybrid_script.html">
+       Hybrid Frontend Language Reference
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../api/python/index.html">
+     Python API
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/runtime.html">
+       tvm.runtime
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/ndarray.html">
+       tvm.runtime.ndarray
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/error.html">
+       tvm.error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/ir.html">
+       tvm.ir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/target.html">
+       tvm.target
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/tir.html">
+       tvm.tir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/te.html">
+       tvm.te
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/driver.html">
+       tvm.driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/relay/index.html">
+       tvm.relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/relay/frontend.html">
+       tvm.relay.frontend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/relay/nn.html">
+       tvm.relay.nn
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/relay/vision.html">
+       tvm.relay.vision
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/relay/image.html">
+       tvm.relay.image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/relay/transform.html">
+       tvm.relay.transform
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/relay/analysis.html">
+       tvm.relay.analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/relay/backend.html">
+       tvm.relay.backend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/relay/dataflow_pattern.html">
+       tvm.relay.dataflow_pattern
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/relay/testing.html">
+       tvm.relay.testing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/autotvm.html">
+       tvm.autotvm
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/auto_scheduler.html">
+       tvm.auto_scheduler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/rpc.html">
+       tvm.rpc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/micro.html">
+       tvm.micro
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/contrib.html">
+       tvm.contrib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/graph_executor.html">
+       tvm.contrib.graph_executor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/topi.html">
+       tvm.topi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../api/python/vta/index.html">
+       vta
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../api/links.html">
+     其他 API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../publications.html">
+     出版物
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../refs/index.html">
+   参考
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+  <label for="toctree-checkbox-30">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../refs/_ffi/index.html">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _ffi
+      </span>
+     </code>
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/base.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.base
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/libinfo.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.libinfo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/object.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi._ctypes.object
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/registry.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.registry
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/runtime_ctypes.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.runtime_ctypes
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/xinetzone/torch-quantization/edit/main/docs/docs/reference/langref/relay_expr.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/docs/reference/langref/relay_expr.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> 导航
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataflow-and-control-fragments">
+   Dataflow and Control Fragments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variables">
+   Variables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#global-variable">
+     Global Variable
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#local-variable">
+     Local Variable
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions">
+   Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#syntax">
+     Syntax
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#closures">
+     Closures
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#polymorphism-and-type-relations">
+     Polymorphism and Type Relations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operators">
+   Operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adt-constructors">
+   ADT Constructors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#call">
+   Call
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-and-global-functions">
+   Module and Global Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#constant">
+   Constant
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tuples">
+   Tuples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#construction">
+     Construction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#projection">
+     Projection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-bindings">
+   Let Bindings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graph-bindings">
+   Graph Bindings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#if-then-else">
+   If-Then-Else
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adt-matching">
+   ADT Matching
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tempexprs">
+   TempExprs
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Expressions in Relay</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> 导航 </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataflow-and-control-fragments">
+   Dataflow and Control Fragments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variables">
+   Variables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#global-variable">
+     Global Variable
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#local-variable">
+     Local Variable
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions">
+   Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#syntax">
+     Syntax
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#closures">
+     Closures
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#polymorphism-and-type-relations">
+     Polymorphism and Type Relations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operators">
+   Operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adt-constructors">
+   ADT Constructors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#call">
+   Call
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-and-global-functions">
+   Module and Global Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#constant">
+   Constant
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tuples">
+   Tuples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#construction">
+     Construction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#projection">
+     Projection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-bindings">
+   Let Bindings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graph-bindings">
+   Graph Bindings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#if-then-else">
+   If-Then-Else
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adt-matching">
+   ADT Matching
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tempexprs">
+   TempExprs
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="expressions-in-relay">
+<h1>Expressions in Relay<a class="headerlink" href="#expressions-in-relay" title="永久链接至标题">#</a></h1>
+<p>The Relay IR is a pure, expression-oriented language. The below sections
+describe the different expressions in Relay and give details of their semantics.</p>
+<section id="dataflow-and-control-fragments">
+<h2>Dataflow and Control Fragments<a class="headerlink" href="#dataflow-and-control-fragments" title="永久链接至标题">#</a></h2>
+<p>For the purposes of comparing Relay to traditional computational graph-based IRs, it
+can be useful to consider Relay expressions in terms of dataflow and control fragments.
+Each portion of a Relay program containing expressions that only affect the dataflow can
+be viewed as a traditional computation graph when writing and expressing transformations.</p>
+<p>The dataflow fragment covers the set of Relay expressions that do not involve
+control flow. That is, any portion of a program containing only the following
+constructs corresponds to a pure computation graph:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#variables">Variables</a></p></li>
+<li><p>Tuple <a class="reference internal" href="#construction">Construction</a> and <a class="reference internal" href="#projection">Projection</a></p></li>
+<li><p><a class="reference internal" href="#let-bindings">Let Bindings</a></p></li>
+<li><p><a class="reference internal" href="#graph-bindings">Graph Bindings</a></p></li>
+<li><p>Calls to <a class="reference internal" href="#operators">Operators</a> and <a class="reference internal" href="#adt-constructors">ADT Constructors</a></p></li>
+</ul>
+<p>Control flow expressions allow the graph topology to change
+based on the value of previously executed expressions. The control
+fragment in Relay includes the following constructs:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#if-then-else">If-Then-Else</a> Expressions</p></li>
+<li><p><a class="reference internal" href="#adt-matching">ADT Matching</a> Expressions</p></li>
+<li><p>Recursive Calls in Functions</p></li>
+</ul>
+<p>From the point of view of a computation graph, a function is a subgraph and a function call inlines the subgraph, substituting its arguments for the free variables in the subgraph with corresponding names.
+Thus, if a function’s body uses only dataflow constructs,
+a call to that function is in the dataflow fragment; conversely, if the
+function’s body contains control flow, a call to that function is not part of the dataflow fragment.</p>
+</section>
+<section id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="永久链接至标题">#</a></h2>
+<p>Inspired by LLVM, Relay explicitly distinguishes between local and
+global variables both in the AST and in the text format. In the text format,
+global and local variables are distinguished by prefixes, or <em>sigils</em>.
+Global variables are prefixed with <code class="code docutils literal notranslate"><span class="pre">&#64;</span></code> and local variables with <code class="code docutils literal notranslate"><span class="pre">%</span></code>.</p>
+<p>This explicit distinction makes certain optimizations easier to implement.
+For example, inlining a global definition requires no analysis: simply
+substituting the definition suffices.</p>
+<section id="global-variable">
+<h3>Global Variable<a class="headerlink" href="#global-variable" title="永久链接至标题">#</a></h3>
+<p>Global identifiers are prefixed by the <code class="code docutils literal notranslate"><span class="pre">&#64;</span></code> sigil, such as “<code class="code docutils literal notranslate"><span class="pre">&#64;global</span></code>”.
+A global identifier always references a globally visible definition contained in the
+globally visible environment, known as the <a class="reference internal" href="#module-and-global-functions">module</a>.
+Global identifiers must be unique.</p>
+<p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">GlobalVar</span></code> for its implementation
+and documentation.</p>
+</section>
+<section id="local-variable">
+<h3>Local Variable<a class="headerlink" href="#local-variable" title="永久链接至标题">#</a></h3>
+<p>Local identifiers are prefixed by the <code class="code docutils literal notranslate"><span class="pre">%</span></code> sigil,
+such as “<code class="code docutils literal notranslate"><span class="pre">%local</span></code>”. A local identifier always references
+a function argument or a variable bound in a <code class="code docutils literal notranslate"><span class="pre">let</span></code> expression,
+and will be scoped to the function where it appears or the <code class="code docutils literal notranslate"><span class="pre">let</span></code>
+expression where it is bound, respectively.</p>
+<p>In the below code segment, notice that <code class="code docutils literal notranslate"><span class="pre">%a</span></code> is defined twice. This is
+permitted, as in most functional languages; in the scope of the second
+<code class="code docutils literal notranslate"><span class="pre">let</span></code> expression, the name <code class="code docutils literal notranslate"><span class="pre">%a</span></code> is “shadowed,” meaning all
+references to <code class="code docutils literal notranslate"><span class="pre">%a</span></code> in the inner scope refer to the later definition, while
+references to <code class="code docutils literal notranslate"><span class="pre">%a</span></code> in the outer scope continue to refer to
+the first one.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="o">%</span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">let</span> <span class="o">%</span><span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="o">%</span><span class="n">a</span><span class="p">;</span>  <span class="o">//</span> <span class="o">%</span><span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">let</span> <span class="o">%</span><span class="n">a</span> <span class="o">=</span> <span class="o">%</span><span class="n">a</span> <span class="o">+</span> <span class="o">%</span><span class="n">a</span><span class="p">;</span> <span class="o">//</span> <span class="o">%</span><span class="n">a</span> <span class="o">=</span> <span class="mf">2.</span> <span class="o">%</span><span class="n">a</span> <span class="ow">is</span> <span class="n">shadowed</span>
+<span class="o">%</span><span class="n">a</span> <span class="o">+</span> <span class="o">%</span><span class="n">b</span>           <span class="o">//</span> <span class="n">has</span> <span class="n">value</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p>(Note that in Relay’s implementation, each definition of a local variable
+creates a new <code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code>, so a shadowed local variable,
+despite having the same name as one in an outer scope, will be a different
+object. This allows for comparing local variables by pointer identity with the
+knowledge that the same local variable object corresponds to a different binding site.)</p>
+<p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code> for its implementation
+and documentation.</p>
+</section>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="永久链接至标题">#</a></h2>
+<p>Functions in Relay act similarly to procedures or functions in
+other programming languages and serve to generalize the concept
+of a named subgraph.</p>
+<p>Functions are first class in Relay, which means they are expressions just like variables, constants, and tuples.
+Additionally, functions in Relay are higher-order, which means that a function can be passed as an argument to a
+function or returned by a function, as function expressions evaluate to closures (see the <a class="reference internal" href="#closures">Closures</a> subsection),
+which are values like tensors and tuples.</p>
+<p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">Function</span></code> for the definition and documentation of function nodes.</p>
+<section id="syntax">
+<h3>Syntax<a class="headerlink" href="#syntax" title="永久链接至标题">#</a></h3>
+<p>A definition minimally consists of the keyword <code class="code docutils literal notranslate"><span class="pre">fn</span></code>, an empty set of
+parameters, and a body expression (<code class="xref py py-class docutils literal notranslate"><span class="pre">Expr</span></code>)
+contained by curly braces.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span><span class="p">()</span> <span class="p">{</span> <span class="n">body</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>A definition may contain any number of parameters. For example, a
+simple function that invokes the <code class="code docutils literal notranslate"><span class="pre">add</span></code> operator:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span><span class="p">(</span><span class="o">%</span><span class="n">x</span><span class="p">,</span> <span class="o">%</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span> <span class="n">add</span><span class="p">(</span><span class="o">%</span><span class="n">x</span><span class="p">,</span> <span class="o">%</span><span class="n">y</span><span class="p">)</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Notice that within the function’s body, the parameters are local
+variables, just like those bound in a <code class="code docutils literal notranslate"><span class="pre">let</span></code> expression.</p>
+<p>One may also annotate explicit types on functions.
+For example, we can restrict the above function to only work
+on certain types:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span><span class="p">(</span><span class="o">%</span><span class="n">x</span> <span class="p">:</span> <span class="n">Tensor</span><span class="p">[(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">],</span> <span class="o">%</span><span class="n">y</span> <span class="p">:</span> <span class="n">Tensor</span><span class="p">[(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">])</span>
+           <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">[(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">]</span> <span class="p">{</span>
+    <span class="n">add</span><span class="p">(</span><span class="o">%</span><span class="n">x</span><span class="p">,</span> <span class="o">%</span><span class="n">y</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The above function only takes arguments of type <code class="code docutils literal notranslate"><span class="pre">Tensor[(10,</span> <span class="pre">10),</span> <span class="pre">float32]</span></code> and returns a value of
+type <code class="code docutils literal notranslate"><span class="pre">Tensor[(10,</span> <span class="pre">10),</span> <span class="pre">float32]</span></code>. A function parameter is just a local
+variable (<code class="xref py py-class docutils literal notranslate"><span class="pre">LocalVar</span></code>) optionally annotated with a type, written as <code class="code docutils literal notranslate"><span class="pre">%x</span> <span class="pre">:</span> <span class="pre">T</span></code>.</p>
+<p>When the type information is omitted, Relay attempts to infer the most general type
+for the users. This property is known as generalization: for a definition without
+explicit annotations, Relay attempts to assign the most general type to the
+parameters and return type based on the function body and call sites.</p>
+<p>A recursive function expression can be defined using a <code class="code docutils literal notranslate"><span class="pre">let</span></code> binding,
+as here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="o">%</span><span class="n">fact</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">%</span><span class="n">x</span> <span class="p">:</span> <span class="n">Tensor</span><span class="p">[(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">[(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">]</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">%</span><span class="n">x</span> <span class="o">==</span> <span class="n">Constant</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">Constant</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="o">%</span><span class="n">x</span> <span class="o">*</span> <span class="o">%</span><span class="n">fact</span><span class="p">(</span><span class="o">%</span><span class="n">x</span> <span class="o">-</span> <span class="n">Constant</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="o">%</span><span class="n">fact</span><span class="p">(</span><span class="n">Constant</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="closures">
+<h3>Closures<a class="headerlink" href="#closures" title="永久链接至标题">#</a></h3>
+<p>A function expression evaluates to a closure. Closures
+are values that are represented as a pair of a local environment
+(storing the values for all variables defined outside the scope
+of the function’s body) and the function itself.</p>
+<p>For example, in the below example, the final result will be
+a tensor of zero values because the closure for <code class="code docutils literal notranslate"><span class="pre">%f</span></code> stores the value of
+<code class="code docutils literal notranslate"><span class="pre">%x</span></code> at the pointer where <code class="code docutils literal notranslate"><span class="pre">%f</span></code> was defined.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="o">%</span><span class="n">g</span> <span class="o">=</span> <span class="n">fn</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">let</span> <span class="o">%</span><span class="n">x</span> <span class="o">=</span> <span class="n">Constant</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">);</span>
+  <span class="o">//</span> <span class="o">%</span><span class="n">x</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">free</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">below</span> <span class="n">function</span>
+  <span class="n">fn</span><span class="p">(</span><span class="o">%</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span> <span class="o">%</span><span class="n">y</span> <span class="o">*</span> <span class="o">%</span><span class="n">x</span> <span class="p">}</span>
+<span class="p">};</span>
+<span class="o">//</span> <span class="n">the</span> <span class="o">%</span><span class="n">x</span> <span class="ow">in</span> <span class="o">%</span><span class="n">g</span><span class="s1">&#39;s body is not in scope anymore</span>
+<span class="o">//</span> <span class="o">%</span><span class="n">f</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">closure</span> <span class="n">where</span> <span class="o">%</span><span class="n">x</span> <span class="n">maps</span> <span class="n">to</span> <span class="n">Constant</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">)</span>
+<span class="n">let</span> <span class="o">%</span><span class="n">f</span> <span class="o">=</span> <span class="o">%</span><span class="n">g</span><span class="p">();</span>
+<span class="n">let</span> <span class="o">%</span><span class="n">x</span> <span class="o">=</span> <span class="n">Constant</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">);</span>
+<span class="o">%</span><span class="n">f</span><span class="p">(</span><span class="o">%</span><span class="n">x</span><span class="p">)</span> <span class="o">//</span> <span class="n">evaluates</span> <span class="n">to</span> <span class="n">Constant</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="polymorphism-and-type-relations">
+<h3>Polymorphism and Type Relations<a class="headerlink" href="#polymorphism-and-type-relations" title="永久链接至标题">#</a></h3>
+<p><em>Note: type parameter syntax is not yet supported in the text format.</em></p>
+<p>A function may also be given a set of type parameters, which can be
+substituted for specific types at call sites. Functions with
+type parameters are <em>type polymorphic</em>; their return type or the types
+of arguments they will accept can vary based on the type arguments
+given at call sites.</p>
+<p>Type parameters are classified by <em>kind</em> and can
+only appear in parts of the type signature where their kind is appropriate
+(e.g., type parameters of kind <code class="code docutils literal notranslate"><span class="pre">Shape</span></code> can only appear where a shape
+would be expected in a tensor type); for a full discussion,
+see <a class="reference internal" href="relay_type.html#type-parameter"><span class="std std-ref">the documentation on type parameters</span></a>.</p>
+<p>For example, one can define a polymorphic identity function for
+any Relay type as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span><span class="o">&lt;</span><span class="n">t</span> <span class="p">:</span> <span class="n">Type</span><span class="o">&gt;</span><span class="p">(</span><span class="o">%</span><span class="n">x</span> <span class="p">:</span> <span class="n">t</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span> <span class="p">{</span>
+    <span class="o">%</span><span class="n">x</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The below definition is also polymorphic, but restricts its
+arguments to tensor types:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span><span class="o">&lt;</span><span class="n">s</span> <span class="p">:</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">bt</span> <span class="p">:</span> <span class="n">BaseType</span><span class="o">&gt;</span><span class="p">(</span><span class="o">%</span><span class="n">x</span> <span class="p">:</span> <span class="n">Tensor</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">bt</span><span class="p">])</span> <span class="p">{</span>
+    <span class="o">%</span><span class="n">x</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Notice that the return type is omitted and will be inferred.</p>
+<p><em>Note: “where” syntax is not yet supported in the text format.</em></p>
+<p>A function may also be subject to one or more type relations, such as in
+the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span><span class="p">(</span><span class="o">%</span><span class="n">x</span><span class="p">,</span> <span class="o">%</span><span class="n">y</span><span class="p">)</span> <span class="n">where</span> <span class="n">Broadcast</span> <span class="p">{</span> <span class="n">add</span><span class="p">(</span><span class="o">%</span><span class="n">x</span><span class="p">,</span> <span class="o">%</span><span class="n">y</span><span class="p">)</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>In the above definition, the types of <code class="code docutils literal notranslate"><span class="pre">%x</span></code> and <code class="code docutils literal notranslate"><span class="pre">%y</span></code> and the return type
+are subject to the <code class="code docutils literal notranslate"><span class="pre">Broadcast</span></code> relation, meaning all three must be tensors
+and their shapes follow the elementwise broadcast relation. As with
+operators, the definitions of relations are not transparent to Relay
+and they are instead implemented externally in either C++ or Python.</p>
+<p>As in the case of <code class="code docutils literal notranslate"><span class="pre">Broadcast</span></code>, relations are used to express complicated
+constraints on types (especially tensor shapes).
+All function relations must hold at all call sites;
+type checking is thus treated as a constraint-solving problem.
+For more detail on type relations and their implementations,
+please see <a class="reference internal" href="relay_type.html#type-relation"><span class="std std-ref">their section in the documentation on Relay’s type system</span></a>.</p>
+</section>
+</section>
+<section id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="永久链接至标题">#</a></h2>
+<p>An operator is a primitive operation, such as <code class="code docutils literal notranslate"><span class="pre">add</span></code> or <code class="code docutils literal notranslate"><span class="pre">conv2d</span></code>, not defined in the Relay
+language. Operators are declared in the global operator
+registry in C++. Many common operators are backed by TVM’s
+Tensor Operator Inventory.</p>
+<p>To register an operator a user must provide an implementation
+of the operator, its type, and any other desired metadata.
+The operator registry is a column-based store where
+operators are keys, so any metadata (which might be referenced
+by optimization passes) may be registered as a new column.</p>
+<p>From the perspective of Relay’s type system, an operator is a function,
+so operators may be called like any other function and have function
+types. In particular, operator types are registered using a single
+type relation (see <a class="reference internal" href="relay_type.html#type-relation"><span class="std std-ref">the documentation on type relations</span></a>), typically a relation
+specialized to that operator. For example, the <code class="code docutils literal notranslate"><span class="pre">add</span></code> operator
+is registered with the <code class="code docutils literal notranslate"><span class="pre">Broadcast</span></code> relation, indicating that the
+arguments of <code class="code docutils literal notranslate"><span class="pre">add</span></code> must be tensors and that the return type
+is a tensor whose shape depends on those of its arguments.</p>
+<p>Operators are rendered without a sigil (e.g <code class="code docutils literal notranslate"><span class="pre">conv2d</span></code>, <code class="code docutils literal notranslate"><span class="pre">flatten</span></code>)
+when pretty-printing Relay programs.
+Operators are explicitly contained in the program and are uniquely
+identifiable by pointer.</p>
+<p>Note that common arithmetic operators such as <code class="code docutils literal notranslate"><span class="pre">add</span></code> and <code class="code docutils literal notranslate"><span class="pre">multiply</span></code>
+may be written using the corresponding arithmetic operators in the text format
+(e.g., <code class="code docutils literal notranslate"><span class="pre">+</span></code> or <code class="code docutils literal notranslate"><span class="pre">*</span></code>) as syntactic sugar.</p>
+<p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">Op</span></code> for the definition and documentation
+of operator nodes, demonstrating the infrastructure for registering
+operator metadata. The other files in <code class="xref py py-class docutils literal notranslate"><span class="pre">op</span></code> give
+handles for generating a call to various pre-registered operators.
+The <a class="reference internal" href="../../dev/how_to/relay_add_op.html#relay-add-op"><span class="std std-ref">tutorial on adding operators to Relay</span></a> shows how to add further
+operators into the language.</p>
+</section>
+<section id="adt-constructors">
+<h2>ADT Constructors<a class="headerlink" href="#adt-constructors" title="永久链接至标题">#</a></h2>
+<p>Algebraic data types (ADTs) in Relay are described in detail in a
+<a class="reference internal" href="relay_adt.html#adt-overview"><span class="std std-ref">separate overview</span></a> and their integration into
+the type system is described <a class="reference internal" href="relay_type.html#adt-typing"><span class="std std-ref">here</span></a>.</p>
+<p>In this section, we will simply note that ADT constructors are given
+a function type and should be used inside call nodes like a function
+or operator. An ADT constructor is defined by giving the name of
+the ADT it constructs (a global type variable) and the types of the
+expected arguments for the constructor.</p>
+<p>If the ADT definition includes type variables, those type variables
+may appear in the constructor. Constructors cannot include any other
+type variables.</p>
+<p>Let us suppose that <code class="code docutils literal notranslate"><span class="pre">D</span></code> is an ADT that takes type parameters
+<code class="code docutils literal notranslate"><span class="pre">a</span></code> and <code class="code docutils literal notranslate"><span class="pre">b</span></code>. If <code class="code docutils literal notranslate"><span class="pre">C1</span></code> is a constructor for <code class="code docutils literal notranslate"><span class="pre">D</span></code>
+and expects two arguments, one of type <code class="code docutils literal notranslate"><span class="pre">a</span></code> and one of type <code class="code docutils literal notranslate"><span class="pre">b</span></code>, then
+<code class="code docutils literal notranslate"><span class="pre">C1</span></code> has the following type signature:
+<code class="code docutils literal notranslate"><span class="pre">fun&lt;a,</span> <span class="pre">b&gt;(a,</span> <span class="pre">b)</span> <span class="pre">-&gt;</span> <span class="pre">D[a,</span> <span class="pre">b]</span></code>. (See either the ADT overview
+or the discussion of ADT typing for an explanation of the type call
+in the return type.)
+If another constructor for <code class="code docutils literal notranslate"><span class="pre">D</span></code>, <code class="code docutils literal notranslate"><span class="pre">C2</span></code>, takes no arguments,
+then it has the following type signature: <code class="code docutils literal notranslate"><span class="pre">fun&lt;a,</span> <span class="pre">b&gt;()</span> <span class="pre">-&gt;</span> <span class="pre">D[a,</span> <span class="pre">b]</span></code>;
+the type parameters will always appear in the return type.</p>
+<p>Once called, a constructor produces an ADT instance, which is a
+container that stores the values of the arguments to the constructor
+as well as the name (“tag”) of the constructor. The tag will be used
+for deconstructing the instances and retrieving the values when
+<a class="reference internal" href="#adt-matching">ADT Matching</a>.</p>
+<p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">Constructor</span></code> for the definition and documentation.</p>
+</section>
+<section id="call">
+<h2>Call<a class="headerlink" href="#call" title="永久链接至标题">#</a></h2>
+<p>Expressions with function types in Relay are “callable,”
+meaning that they can be invoked via a function call. These consist of
+any expression that evaluates to a closure (i.e., function expressions
+or global functions) and Relay operators.</p>
+<p>The syntax of calls follows that used in C-like languages, demonstrated in the
+example below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="o">%</span><span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">let</span> <span class="o">%</span><span class="n">f</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">%</span><span class="n">x</span> <span class="p">:</span> <span class="n">Tensor</span><span class="p">[(),</span> <span class="n">float32</span><span class="p">],</span> <span class="o">%</span><span class="n">y</span> <span class="p">:</span> <span class="n">Tensor</span><span class="p">[(),</span> <span class="n">float32</span><span class="p">])</span> <span class="p">{</span> <span class="o">%</span><span class="n">x</span> <span class="o">+</span> <span class="o">%</span><span class="n">y</span> <span class="o">+</span> <span class="o">%</span><span class="n">c</span> <span class="p">};</span>
+<span class="o">%</span><span class="n">f</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When a closure is called (see <a class="reference internal" href="#closures">Closures</a>),
+the closure’s body is evaluated in the stored environment
+(i.e., using the stored values for free variables) with
+local variable bindings added for each argument; the final value
+obtained by evaluating the body is the call’s return value.
+Thus, in the above example, the call evaluates to 22.
+In the case of operators, the implementation is opaque to Relay,
+so the result is left up to the registered TVM implementation.</p>
+<p><em>Note: type parameters are not yet supported in the text format.</em></p>
+<p>A type-polymorphic function can also include type arguments at a call
+site. The type arguments are substituted for type parameters when
+type checking. If a function is type-polymorphic and type arguments are not
+given, type inference will attempt to infer type arguments if possible.
+The following code gives examples of explicit and inferred type arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="o">%</span><span class="n">f</span> <span class="p">:</span> <span class="n">fn</span><span class="o">&lt;</span><span class="n">a</span> <span class="p">:</span> <span class="n">Type</span><span class="p">,</span> <span class="n">b</span> <span class="p">:</span> <span class="n">Type</span><span class="p">,</span> <span class="n">c</span> <span class="p">:</span> <span class="n">Type</span><span class="o">&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">c</span>
+<span class="n">let</span> <span class="o">%</span><span class="n">x1</span> <span class="o">=</span> <span class="o">%</span><span class="n">f</span><span class="o">&lt;</span><span class="n">Tensor</span><span class="p">[(),</span> <span class="nb">bool</span><span class="p">],</span> <span class="n">Tensor</span><span class="p">[(),</span> <span class="nb">bool</span><span class="p">],</span> <span class="n">Tensor</span><span class="p">[(),</span> <span class="nb">bool</span><span class="p">)]</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">);</span>
+<span class="o">//</span> <span class="o">%</span><span class="n">x1</span> <span class="ow">is</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">Tensor</span><span class="p">[(),</span> <span class="nb">bool</span><span class="p">]</span>
+<span class="n">let</span> <span class="o">%</span><span class="n">x2</span> <span class="p">:</span> <span class="p">()</span> <span class="o">=</span> <span class="o">%</span><span class="n">f</span><span class="p">(</span><span class="o">%</span><span class="n">x1</span><span class="p">,</span> <span class="o">%</span><span class="n">x1</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">the</span> <span class="nb">type</span> <span class="n">arguments</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">second</span> <span class="n">call</span> <span class="n">are</span> <span class="n">inferred</span> <span class="n">to</span> <span class="n">be</span> <span class="o">&lt;</span><span class="n">Tensor</span><span class="p">[(),</span> <span class="nb">bool</span><span class="p">],</span> <span class="n">Tensor</span><span class="p">[(),</span> <span class="nb">bool</span><span class="p">],</span> <span class="p">()</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Note that all type relations in the function type must hold at each
+call site. Specifically, this means that the relation will be checked
+against the specific types of the arguments at a given call site. This
+is also a form of polymorphism, since there may be multiple valid
+assignments of argument types and a return type so long as the relation
+is satisfied.</p>
+<p>For example, if we have a function <code class="code docutils literal notranslate"><span class="pre">%f</span></code> that takes tensor arguments
+and has the <code class="code docutils literal notranslate"><span class="pre">Broadcast</span></code> relation, then there are many different
+shapes that the arguments in the below call could have that would satisfy
+the type annotation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="o">%</span><span class="n">x</span> <span class="p">:</span> <span class="n">Tensor</span><span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">float32</span><span class="p">]</span> <span class="o">=</span> <span class="o">%</span><span class="n">f</span><span class="p">(</span><span class="o">%</span><span class="n">a</span><span class="p">,</span> <span class="o">%</span><span class="n">b</span><span class="p">);</span>
+<span class="o">%</span><span class="n">x</span>
+</pre></div>
+</div>
+<p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">Call</span></code> for its definition and documentation.</p>
+</section>
+<section id="module-and-global-functions">
+<span id="module-description"></span><h2>Module and Global Functions<a class="headerlink" href="#module-and-global-functions" title="永久链接至标题">#</a></h2>
+<p>Relay keeps a global data structure known as a “module” (often called an “environment” in other
+functional programming languages) to keep track of the definitions of global functions.
+In particular, the module keeps a globally accessible mapping of global variables to the
+function expressions they denote. The utility of the module is that it allows global functions
+to recursively refer to themselves or any other global function (e.g., as in mutual recursion).</p>
+<p>Note Relay’s module is analogous to data structures for keeping track of subgraphs in computation
+graph-based IRs.</p>
+<p>Global functions in Relay behave identically to the function expressions defined in <a class="reference internal" href="#functions">Functions</a>,
+but have syntactic sugar in the text format to enter their definitions into the module. Namely,
+a global function definition includes a global identifier and is allowed to recursively refer to
+that identifier in the body, as in the following example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nd">@ackermann</span><span class="p">(</span><span class="o">%</span><span class="n">m</span> <span class="p">:</span> <span class="n">Tensor</span><span class="p">[(),</span> <span class="n">int32</span><span class="p">],</span> <span class="o">%</span><span class="n">n</span> <span class="p">:</span> <span class="n">Tensor</span><span class="p">[(),</span> <span class="n">int32</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">[(),</span> <span class="n">int32</span><span class="p">]</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">%</span><span class="n">m</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">%</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">%</span><span class="n">m</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="o">%</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nd">@ackermann</span><span class="p">(</span><span class="o">%</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nd">@ackermann</span><span class="p">(</span><span class="o">%</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nd">@ackermann</span><span class="p">(</span><span class="o">%</span><span class="n">m</span><span class="p">,</span> <span class="o">%</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This definition would result in a module entry mapping the identifier <code class="code docutils literal notranslate"><span class="pre">&#64;ackermann</span></code> to a function expression
+with the parameters, return type, and body above. Any reference to the identifier <code class="code docutils literal notranslate"><span class="pre">&#64;ackermann</span></code> elsewhere in the
+code could then look up the identifier in the module and replace the function definition as needed.</p>
+<p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">IRModule</span></code> for the definition and documentation of a module.</p>
+</section>
+<section id="constant">
+<h2>Constant<a class="headerlink" href="#constant" title="永久链接至标题">#</a></h2>
+<p>This node represents a constant tensor value
+(see <code class="xref py py-mod docutils literal notranslate"><span class="pre">Value</span></code> for more details).
+A constant is represented as a <code class="xref py py-class docutils literal notranslate"><span class="pre">NDArray</span></code>,
+allowing Relay to utilize TVM operators for constant evaluation.</p>
+<p>This node can also represent scalar constants, since
+scalars are tensors with a shape of <code class="code docutils literal notranslate"><span class="pre">()</span></code>. In the text format, numerical
+and boolean literals are thus syntactic sugar for constants encoding a
+tensor type with a rank-zero shape.</p>
+<p>See <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/relay/nn.html#tvm.relay.nn.Constant" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Constant</span></code></a> for its definition and documentation.</p>
+</section>
+<section id="tuples">
+<h2>Tuples<a class="headerlink" href="#tuples" title="永久链接至标题">#</a></h2>
+<section id="construction">
+<h3>Construction<a class="headerlink" href="#construction" title="永久链接至标题">#</a></h3>
+<p>The tuple node builds a finite (that is, of statically known size) sequence of heterogeneous data.
+These tuples match Python’s closely, and their fixed length allows for efficient projection of their
+members.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span><span class="p">(</span><span class="o">%</span><span class="n">a</span> <span class="p">:</span> <span class="n">Tensor</span><span class="p">[(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">],</span> <span class="o">%</span><span class="n">b</span> <span class="p">:</span> <span class="n">float32</span><span class="p">,</span> <span class="o">%</span><span class="n">c</span> <span class="p">:</span> <span class="n">Tensor</span><span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">float32</span><span class="p">])</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="o">%</span><span class="n">tup</span> <span class="o">=</span> <span class="p">(</span><span class="o">%</span><span class="n">a</span><span class="p">,</span> <span class="o">%</span><span class="n">b</span><span class="p">);</span>     <span class="o">//</span> <span class="nb">type</span><span class="p">:</span> <span class="p">(</span><span class="n">Tensor</span><span class="p">[(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">],</span> <span class="n">float32</span><span class="p">)</span>
+    <span class="p">((</span><span class="o">%</span><span class="n">tup</span><span class="mf">.0</span> <span class="o">+</span> <span class="o">%</span><span class="n">tup</span><span class="mf">.1</span><span class="p">),</span> <span class="o">%</span><span class="n">c</span><span class="p">)</span>  <span class="o">//</span> <span class="nb">type</span><span class="p">:</span> <span class="p">(</span><span class="n">Tensor</span><span class="p">[(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">],</span> <span class="n">Tensor</span><span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">float32</span><span class="p">])</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code> for its definition and documentation.</p>
+</section>
+<section id="projection">
+<h3>Projection<a class="headerlink" href="#projection" title="永久链接至标题">#</a></h3>
+<p>A tuple must be indexed by an integer constant in order to extract a
+particular member of the tuple. Projections are 0-indexed.</p>
+<p>For example, the below projection evaluates to <code class="code docutils literal notranslate"><span class="pre">%b</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">%</span><span class="n">a</span><span class="p">,</span> <span class="o">%</span><span class="n">b</span><span class="p">,</span> <span class="o">%</span><span class="n">c</span><span class="p">)</span><span class="mf">.1</span>
+</pre></div>
+</div>
+<p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">TupleGetItem</span></code> for its definition and documentation.</p>
+</section>
+</section>
+<section id="let-bindings">
+<h2>Let Bindings<a class="headerlink" href="#let-bindings" title="永久链接至标题">#</a></h2>
+<p>A <code class="code docutils literal notranslate"><span class="pre">let</span></code> binding is an immutable local variable binding,
+allowing the user to bind an expression to a name.</p>
+<p>A <code class="code docutils literal notranslate"><span class="pre">let</span></code> binding contains a local variable,
+an optional type annotation, a value, and a body expression
+that may reference the bound identifier. If a type annotation
+on the bound variable is omitted, Relay attempts to infer the
+most general type permitted for the variable.</p>
+<p>The bound variable in a <code class="code docutils literal notranslate"><span class="pre">let</span></code> expression is only in scope
+in its body, except when the variable defines a function expression.
+When a <code class="code docutils literal notranslate"><span class="pre">let</span></code> expression creates a function, the variable is also
+in scope in its value to allow for recursively defined functions
+(see the previous subsection).</p>
+<p>The value of a <code class="code docutils literal notranslate"><span class="pre">let</span></code> binding is the value of the final expression
+after evaluating the bindings it depends on. For example, in the
+following example the entire expression evaluates to a tensor
+of shape <code class="code docutils literal notranslate"><span class="pre">(10,</span> <span class="pre">10)</span></code> where all elements are 2:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="o">%</span><span class="n">x</span> <span class="p">:</span> <span class="n">Tensor</span><span class="p">[(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">]</span> <span class="o">=</span> <span class="n">Constant</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">float32</span><span class="p">);</span>
+<span class="o">%</span><span class="n">x</span> <span class="o">+</span> <span class="o">%</span><span class="n">x</span>
+</pre></div>
+</div>
+<p>A sequence of <code class="code docutils literal notranslate"><span class="pre">let</span></code> bindings can be considered as a dataflow graph,
+where the bindings are a series of sub-graphs connected
+by bound variables. Since these binding sequences are
+pure, a pair of bindings where neither depends on the other can be safely reordered.
+For example, the first and second <code class="code docutils literal notranslate"><span class="pre">let</span></code> bindings below
+may be evaluated in either order because neither has a dataflow
+dependency on the other:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="o">%</span><span class="n">x</span> <span class="o">=</span> <span class="o">%</span><span class="n">a</span> <span class="o">+</span> <span class="o">%</span><span class="n">b</span><span class="p">;</span>
+<span class="n">let</span> <span class="o">%</span><span class="n">y</span> <span class="o">=</span> <span class="o">%</span><span class="n">c</span> <span class="o">+</span> <span class="o">%</span><span class="n">d</span><span class="p">;</span>
+<span class="o">%</span><span class="n">x</span> <span class="o">*</span> <span class="o">%</span><span class="n">y</span>
+</pre></div>
+</div>
+<p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">Let</span></code> for its definition and documentation.</p>
+</section>
+<section id="graph-bindings">
+<h2>Graph Bindings<a class="headerlink" href="#graph-bindings" title="永久链接至标题">#</a></h2>
+<p>A <code class="code docutils literal notranslate"><span class="pre">let</span></code> binding creates a named variable that is bound to the given value
+and scoped to the subsequent expression. By contrast, a graph binding allows for
+explicitly constructing dataflow graphs in a Relay program by binding an expression
+(graph node) directly to a temporary variable, which is not scoped. Each reference
+to the variable corresponds to an edge in the dataflow graph. This has the
+semantics of substituting the expression wherever the variable appears, even though
+the graph node will only be evaluated once by the compiled program.</p>
+<p>These bindings allow for a style of programming that corresponds to that already
+employed by NNVM and other dataflow graph-based input formats. The fact that the variables
+are not scoped offers some flexibility in evaluation order compared to <code class="code docutils literal notranslate"><span class="pre">let</span></code>
+bindings, though this can also introduce some ambiguity in programs (the
+<a class="reference internal" href="../../arch/relay_intro.html#relay-dev-intro"><span class="std std-ref">developer introduction to the Relay IR</span></a> includes more detailed discussion
+of this nuance).</p>
+<p><em>Note: Graph bindings are not currently parsed by the text format.</em></p>
+<p>In Relay’s text format, a graph binding can be written as below (note the lack of a
+<code class="code docutils literal notranslate"><span class="pre">let</span></code> keyword and a semicolon):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="mi">1</span> <span class="o">=</span> <span class="o">%</span><span class="n">a</span> <span class="o">+</span> <span class="o">%</span><span class="n">b</span>
+<span class="o">%</span><span class="mi">2</span> <span class="o">=</span> <span class="o">%</span><span class="mi">1</span> <span class="o">+</span> <span class="o">%</span><span class="mi">1</span>
+<span class="o">%</span><span class="mi">2</span> <span class="o">*</span> <span class="o">%</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>Unlike a let binding, a graph binding is not represented as an AST node in Relay, but rather as a meta-variable referencing its AST node value.
+For example, a program like the above could be constructed in Relay’s
+Python front-end by setting <em>Python variables</em> equal to the corresponding Relay AST node and
+using the variables repeatedly, as below (a C++ program using the corresponding API bindings
+could accomplish the same thing):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sum1</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">sum2</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sum1</span><span class="p">,</span> <span class="n">sum1</span><span class="p">)</span>
+<span class="n">relay</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">sum2</span><span class="p">,</span> <span class="n">sum2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For development purposes and to enable certain optimizations, Relay includes passes to
+convert between dataflow graphs defined using graph bindings and programs with <code class="code docutils literal notranslate"><span class="pre">let</span></code>
+bindings in A-normal form, employed by many compiler optimizations from the functional
+programming community (see <a class="reference external" href="http://matt.might.net/articles/a-normalization/">“A-Normalization: Why and How” by
+Matt Might</a> for an introduction
+to A-normal form).</p>
+</section>
+<section id="if-then-else">
+<h2>If-Then-Else<a class="headerlink" href="#if-then-else" title="永久链接至标题">#</a></h2>
+<p>Relay has a simple if-then-else expression that allows programs to branch
+on a single value of type <code class="code docutils literal notranslate"><span class="pre">bool</span></code>, i.e., a zero-rank
+tensor of booleans (<code class="code docutils literal notranslate"><span class="pre">Tensor[(),</span> <span class="pre">bool]</span></code>).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="o">%</span><span class="n">t</span> <span class="o">==</span> <span class="o">%</span><span class="n">u</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">%</span><span class="n">t</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="o">%</span><span class="n">u</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Since if-then-else branches are expressions, they may appear inline
+wherever any other expression may be expected, like invocations of
+the ternary operator in C-like languages. The if-then-else expression
+evaluates to the value of the “then” branch if the condition value
+evaluates to <code class="code docutils literal notranslate"><span class="pre">True</span></code> and evaluates to the value of the “else” branch if the
+condition value evaluates to <code class="code docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">If</span></code> for its definition and documentation.</p>
+</section>
+<section id="adt-matching">
+<h2>ADT Matching<a class="headerlink" href="#adt-matching" title="永久链接至标题">#</a></h2>
+<p>Instances of algebraic data types (ADTs), as discussed in the
+<a class="reference internal" href="relay_adt.html#adt-overview"><span class="std std-ref">ADT overview</span></a>, are containers that store the
+arguments passed to the constructor used to create them, tagged by
+the constructor name.</p>
+<p>Match expressions in Relay allow for retrieving the values stored in
+an ADT instance (“deconstructing” it) based on their constructor tag.
+A match expression behaves similarly to a C-style <code class="code docutils literal notranslate"><span class="pre">switch</span></code> statement,
+branching on the different possible constructors for the type of the
+value being deconstructed. As the ADT overview details, match
+expressions are capable of more general pattern-matching than simply
+splitting by constructors: any ADT instance nested inside an instance
+(e.g., a list of lists) can be deconstructed at the same time as
+the outer instance, while the different fields of the instance can be
+bound to variables. (See <a class="reference internal" href="relay_adt.html#adt-pattern"><span class="std std-ref">this section</span></a> for a detailed
+description of ADT pattern-matching.)</p>
+<p>A match expression is defined using the
+input value (an expression) and a list of clauses, each of which
+consists of a pattern and an expression. When executed, the <em>first</em>
+clause whose pattern matches the structure of the queried value is
+executed; the clause expression is evaluated and returned.</p>
+<p>For example, suppose we have an ADT for natural numbers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="n">Nat</span> <span class="p">{</span>
+  <span class="n">Z</span> <span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Nat</span> <span class="c1"># zero</span>
+  <span class="n">S</span> <span class="p">:</span> <span class="p">(</span><span class="n">Nat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Nat</span> <span class="c1"># successor (+1) to a nat</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then the following function subtracts one from a passed nat:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span><span class="p">(</span><span class="o">%</span><span class="n">v</span><span class="p">:</span> <span class="n">Nat</span><span class="p">[])</span> <span class="o">-&gt;</span> <span class="n">Nat</span><span class="p">[]</span> <span class="p">{</span>
+  <span class="k">match</span><span class="p">(</span><span class="o">%</span><span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">Z</span><span class="p">()</span> <span class="p">{</span> <span class="n">Z</span><span class="p">()</span> <span class="p">}</span>
+    <span class="k">case</span> <span class="n">S</span><span class="p">(</span><span class="o">%</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span> <span class="o">%</span><span class="n">n</span> <span class="p">}</span> <span class="c1"># the variable %n is bound in the scope of this clause</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The following function subtracts two from its argument if it is at least
+two and returns the argument otherwise, using a nested constructor pattern:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span><span class="p">(</span><span class="o">%</span><span class="n">v</span> <span class="p">:</span> <span class="n">Nat</span><span class="p">[])</span> <span class="o">-&gt;</span> <span class="n">Nat</span><span class="p">[]</span> <span class="p">{</span>
+  <span class="k">match</span><span class="p">(</span><span class="o">%</span><span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">case</span> <span class="n">S</span><span class="p">(</span><span class="n">S</span><span class="p">(</span><span class="o">%</span><span class="n">n</span><span class="p">))</span> <span class="p">{</span> <span class="o">%</span><span class="n">n</span> <span class="p">}</span>
+     <span class="c1"># wildcard pattern: matches all cases not matched already</span>
+     <span class="k">case</span> <span class="k">_</span> <span class="p">{</span> <span class="o">%</span><span class="n">v</span> <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As aforementioned, the ordering of match clauses is relevant.
+In the below example, the first clause will always match so
+those below it can never run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span><span class="p">(</span><span class="o">%</span><span class="n">v</span> <span class="p">:</span> <span class="n">Nat</span><span class="p">[])</span> <span class="o">-&gt;</span> <span class="n">Nat</span><span class="p">[]</span> <span class="p">{</span>
+  <span class="k">match</span><span class="p">(</span><span class="o">%</span><span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="k">_</span> <span class="p">{</span> <span class="o">%</span><span class="n">v</span> <span class="p">}</span>
+    <span class="k">case</span> <span class="n">S</span><span class="p">(</span><span class="n">S</span><span class="p">(</span><span class="o">%</span><span class="n">n</span><span class="p">))</span> <span class="p">{</span> <span class="n">S</span><span class="p">(</span><span class="o">%</span><span class="n">n</span><span class="p">)</span> <span class="p">}</span>
+    <span class="k">case</span> <span class="n">S</span><span class="p">(</span><span class="o">%</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span> <span class="o">%</span><span class="n">n</span> <span class="p">}</span>
+    <span class="k">case</span> <span class="n">Z</span><span class="p">()</span> <span class="p">{</span> <span class="n">S</span><span class="p">(</span><span class="n">Z</span><span class="p">())</span> <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">Match</span></code> for its definition and documentation.</p>
+</section>
+<section id="tempexprs">
+<h2>TempExprs<a class="headerlink" href="#tempexprs" title="永久链接至标题">#</a></h2>
+<p>Program transformations (passes) in Relay may require inserting temporary
+state into the program AST to guide further transformations. The
+<code class="code docutils literal notranslate"><span class="pre">TempExpr</span></code> node is provided as a utility to developers for this purpose;
+nodes inheriting from <code class="code docutils literal notranslate"><span class="pre">TempExpr</span></code> cannot appear directly in user-provided
+code but may be inserted in a pass. Any <code class="code docutils literal notranslate"><span class="pre">TempExpr</span></code> created in a pass
+should ideally be eliminated before the pass is complete, as a
+<code class="code docutils literal notranslate"><span class="pre">TempExpr</span></code> only stores internal state and has no semantics of its own.</p>
+<p>For an example of <code class="code docutils literal notranslate"><span class="pre">TempExpr</span></code> being used in a pass, see
+<code class="code docutils literal notranslate"><span class="pre">src/relay/transforms/fold_scale_axis.cc</span></code>, which uses
+<code class="code docutils literal notranslate"><span class="pre">TempExpr</span></code> nodes to store information about scaling parameters
+as the pass tries to fold these into the weights of a convolution.</p>
+<p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">TempExpr</span></code> for its definition and documentation.</p>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="index.html" title="上一页 页">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一页</p>
+            <p class="prev-next-title">语言参考</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="relay_type.html" title="下一页 页">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">Relay’s Type System</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By xinetzone<br/>
+  
+      &copy; Copyright 2022, xinetzone.<br/>
+    Last updated on 2022-04-07, 15:51:47.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

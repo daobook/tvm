@@ -1,0 +1,1790 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Adding a Compiler Pass to Relay &#8212; TVM  文档</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <link rel="shortcut icon" href="../../../_static/tvm-logo-square.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="Bring Your Own Codegen To TVM" href="relay_bring_your_own_codegen.html" />
+    <link rel="prev" title="Adding an Operator to Relay" href="relay_add_op.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_CN">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/tvm-logo-small.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">TVM  文档</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   TVM 文档
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../start.html">
+   快速上手
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../install/index.html">
+     安装 TVM
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../install/from_source.html">
+       从源码安装
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../install/nnpack.html">
+         NNPACK Contrib Installation
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../install/docker.html">
+       Docker 镜像
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../install/tlcpack.html">
+       TLCPack
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../contribute/index.html">
+     Contributor Guide
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/community.html">
+       TVM Community Guidelines
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/pull_request.html">
+       Submit a Pull Request
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/code_review.html">
+       Code Reviews
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/committer_guide.html">
+       Committer Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/document.html">
+       Documentation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/code_guide.html">
+       Code Guide and Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/git_howto.html">
+       Git Usage Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/ci.html">
+       Using TVM’s CI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/release_process.html">
+       Release Process
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/error_handling.html">
+       Error Handling Guide
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../study/index.html">
+   学习笔记
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../study/quantize.html">
+     量化
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../study/start.html">
+     TVM 入门指南
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../study/test.html">
+     测试 TVM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../user-guide.html">
+   用户手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../tutorial/index.html">
+     用户指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/introduction.html">
+       TVM 和模型优化的概述
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tvmc_command_line_driver.html">
+       用 TVMC 编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tvmc_python.html">
+       开始使用 TVMC Python：TVM 的高级 API
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/autotvm_relay_x86.html">
+       用 Python 接口编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tensor_expr_get_started.html">
+       使用张量表达式处理算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/autotvm_matmul_x86.html">
+       用调度模板和 AutoTVM 优化算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/auto_scheduler_matmul_x86.html">
+       使用自动调度优化运算
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tensor_ir_blitz_course.html">
+       TensorIR 的突击课程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/cross_compilation_and_rpc.html">
+       交叉编译和RPC
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/relay_quick_start.html">
+       编译深度学习模型的快速入门教程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/intro_topi.html">
+       TOPI 简介
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../how_to/index.html">
+     How To 指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/compile_models/index.html">
+       编译深度学习模型
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+      <label for="toctree-checkbox-9">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_pytorch.html">
+         编译 PyTorch 模型
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_tensorflow.html">
+         Compile Tensorflow Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_mxnet.html">
+         Compile MXNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_onnx.html">
+         Compile ONNX Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_keras.html">
+         Compile Keras Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_tflite.html">
+         Compile TFLite Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_coreml.html">
+         Compile CoreML Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_darknet.html">
+         Compile YOLO-V2 and YOLO-V3 in DarkNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_caffe2.html">
+         Compile Caffe2 Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/compile_models/from_paddle.html">
+         Compile PaddlePaddle Models
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/deploy/index.html">
+       部署模型，集成 TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/cpp_deploy.html">
+         Deploy TVM Module using C++ API
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/android.html">
+         Deploy to Android
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/integrate.html">
+         Integrate TVM into Your Project
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/hls.html">
+         HLS Backend Example
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/arm_compute_lib.html">
+         Relay Arm
+         <sup>
+          ®
+         </sup>
+         Compute Library Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/tensorrt.html">
+         Relay TensorRT Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/vitis_ai.html">
+         Vitis AI Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy/bnns.html">
+         Relay BNNS Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy_models/index.html">
+         部署深度学习模型
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/work_with_relay/index.html">
+       Work With Relay
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+      <label for="toctree-checkbox-11">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/work_with_schedules/index.html">
+       Work With Tensor Expression and Schedules
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+      <label for="toctree-checkbox-12">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/optimize_operators/index.html">
+       Optimize Tensor Operators
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+      <label for="toctree-checkbox-13">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/tune_with_autotvm/index.html">
+       Auto-Tune with Templates and AutoTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+      <label for="toctree-checkbox-14">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/tune_with_autotvm/tune_conv2d_cuda.html">
+         Tuning High Performance Convolution on NVIDIA GPUs
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/tune_with_autotvm/tune_relay_cuda.html">
+         Auto-tuning a Convolutional Network for NVIDIA GPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/tune_with_autotvm/tune_relay_x86.html">
+         Auto-tuning a Convolutional Network for x86 CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/tune_with_autotvm/tune_relay_arm.html">
+         Auto-tuning a Convolutional Network for ARM CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/tune_with_autotvm/tune_relay_mobile_gpu.html">
+         Auto-tuning a Convolutional Network for Mobile GPU
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/tune_with_autoscheduler/index.html">
+       Use AutoScheduler for Template-Free Scheduling
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+      <label for="toctree-checkbox-15">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/work_with_microtvm/index.html">
+       Work With microTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+      <label for="toctree-checkbox-16">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/extend_tvm/index.html">
+       Extend TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+      <label for="toctree-checkbox-17">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../how_to/profile/index.html">
+       Profile Models
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+      <label for="toctree-checkbox-18">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/profile/papi.html">
+         Getting Started With PAPI
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../errors.html">
+       处理 TVM 的错误
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../faq.html">
+       常见问题
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../../developer-guide.html">
+   开发手册
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../tutorial/index.html">
+     开发者教程
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+    <label for="toctree-checkbox-20">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tutorial/codebase_walkthrough.html">
+       TVM 代码库的实例演练
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="how_to.html">
+     开发者 How-To 指南
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="relay_add_op.html">
+       Adding an Operator to Relay
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Adding a Compiler Pass to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="relay_bring_your_own_codegen.html">
+       Bring Your Own Codegen To TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pytest_target_parametrization.html">
+       Python Target Parametrization
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../arch/index.html">
+   设计与架构
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/runtime.html">
+     TVM 运行时系统
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/debugger.html">
+     Debugger
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/virtual_machine.html">
+     Putting the VM in TVM: The Relay Virtual Machine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/introduction_to_module_serialization.html">
+     Introduction to Module Serialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/pass_infra.html">
+     Pass Infrastructure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/inferbound.html">
+     InferBound Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/hybrid_script.html">
+     Hybrid Frontend Developer Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/relay_intro.html">
+     Introduction to Relay IR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/relay_op_strategy.html">
+     Relay Operator Strategy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/convert_layout.html">
+     Convert Layout Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/benchmark.html">
+     Benchmark Performance Log Format
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/frontend/tensorflow.html">
+     TensorFlow Frontend
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/security.html">
+     Security Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/microtvm_design.html">
+     microTVM Design Document
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/microtvm_project_api.html">
+     microTVM Project API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/model_library_format.html">
+     Model Library Format
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../topic-guides.html">
+   主题指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../topic/microtvm/index.html">
+     microTVM：裸机上的 TVM
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../topic/vta/index.html">
+     VTA：通用张量加速器
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+    <label for="toctree-checkbox-24">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../topic/vta/install.html">
+       VTA 安装指南
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../topic/vta/dev/index.html">
+       VTA 设计和开发指南
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/dev/config.html">
+         VTA 配置
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/dev/hardware.html">
+         VTA 硬件指南
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../topic/vta/tutorials/index.html">
+       VTA 教程
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/matrix_multiply.html">
+         Simple Matrix Multiply
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/vta_get_started.html">
+         Get Started with VTA
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/frontend/index.html">
+         Compile Deep Learning Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/optimize/index.html">
+         Optimize Tensor Operators
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/autotvm/index.html">
+         Auto tuning
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../reference-guide.html">
+   参考指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../reference/langref/index.html">
+     语言参考
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+    <label for="toctree-checkbox-28">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_expr.html">
+       Expressions in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_type.html">
+       Relay’s Type System
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_adt.html">
+       Algebraic Data Types in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_op.html">
+       Relay Core Tensor Operators
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_pattern.html">
+       Pattern Matching in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/hybrid_script.html">
+       Hybrid Frontend Language Reference
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../reference/api/python/index.html">
+     Python API
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/runtime.html">
+       tvm.runtime
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/ndarray.html">
+       tvm.runtime.ndarray
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/error.html">
+       tvm.error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/ir.html">
+       tvm.ir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/target.html">
+       tvm.target
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/tir.html">
+       tvm.tir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/te.html">
+       tvm.te
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/driver.html">
+       tvm.driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/index.html">
+       tvm.relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/frontend.html">
+       tvm.relay.frontend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/nn.html">
+       tvm.relay.nn
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/vision.html">
+       tvm.relay.vision
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/image.html">
+       tvm.relay.image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/transform.html">
+       tvm.relay.transform
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/analysis.html">
+       tvm.relay.analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/backend.html">
+       tvm.relay.backend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/dataflow_pattern.html">
+       tvm.relay.dataflow_pattern
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/testing.html">
+       tvm.relay.testing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/autotvm.html">
+       tvm.autotvm
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/auto_scheduler.html">
+       tvm.auto_scheduler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/rpc.html">
+       tvm.rpc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/micro.html">
+       tvm.micro
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/contrib.html">
+       tvm.contrib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/graph_executor.html">
+       tvm.contrib.graph_executor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/topi.html">
+       tvm.topi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/vta/index.html">
+       vta
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../reference/api/links.html">
+     其他 API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../reference/publications.html">
+     出版物
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../refs/index.html">
+   参考
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+  <label for="toctree-checkbox-30">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../refs/_ffi/index.html">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _ffi
+      </span>
+     </code>
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/base.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.base
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/libinfo.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.libinfo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/object.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi._ctypes.object
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/registry.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.registry
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/runtime_ctypes.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.runtime_ctypes
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/xinetzone/torch-quantization/edit/main/docs/docs/dev/how_to/relay_add_pass.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/docs/dev/how_to/relay_add_pass.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> 导航
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ast-traversers">
+   AST Traversers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expression-visitors">
+     Expression Visitors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expression-mutators">
+     Expression Mutators
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-constant-folding">
+   Example: Constant Folding
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-constantchecker-visitor">
+     The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ConstantChecker
+      </span>
+     </code>
+     Visitor
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-constantfolder-mutator">
+     The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ConstantFolder
+      </span>
+     </code>
+     Mutator
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#registering-a-pass-with-the-pass-manager">
+     Registering a Pass with the Pass Manager
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Adding a Compiler Pass to Relay</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> 导航 </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ast-traversers">
+   AST Traversers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expression-visitors">
+     Expression Visitors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expression-mutators">
+     Expression Mutators
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-constant-folding">
+   Example: Constant Folding
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-constantchecker-visitor">
+     The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ConstantChecker
+      </span>
+     </code>
+     Visitor
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-constantfolder-mutator">
+     The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ConstantFolder
+      </span>
+     </code>
+     Mutator
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#registering-a-pass-with-the-pass-manager">
+     Registering a Pass with the Pass Manager
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="adding-a-compiler-pass-to-relay">
+<span id="relay-add-pass"></span><h1>Adding a Compiler Pass to Relay<a class="headerlink" href="#adding-a-compiler-pass-to-relay" title="永久链接至标题">#</a></h1>
+<p>Compiler passes are the primary interface for both extending Relay’s feature
+set and for performing optimizations on Relay programs. By writing a compiler
+pass, you can modify the AST or collect information about the AST,
+depending on your goal. Indeed, some of Relay’s most important built-in
+features (e.g., autodiff and type inference) are nothing more than “standard”
+compiler passes.</p>
+<p>At a high level, there are two key components to writing a pass:</p>
+<ul class="simple">
+<li><p>Creating one or more C++ classes that traverse the program</p></li>
+<li><p>Wrapping the traversal implementation and its metadata in the pass manager API so it can neatly interface with the <a class="reference internal" href="../../arch/pass_infra.html#pass-infra"><span class="std std-ref">Pass Infrastructure</span></a></p></li>
+</ul>
+<p>To begin, we’ll give an overview of the key mechanisms for writing a compiler
+pass. Then, we’ll walk through a concrete example of the constant-folding
+pass in Relay.</p>
+<section id="ast-traversers">
+<h2>AST Traversers<a class="headerlink" href="#ast-traversers" title="永久链接至标题">#</a></h2>
+<p>The base class used to traverse Relay programs is <code class="docutils literal notranslate"><span class="pre">ExprFunctor</span></code>. The public
+interface it provides is a <code class="docutils literal notranslate"><span class="pre">VisitExpr</span></code> method that takes an expression and
+zero or more arguments and returns an instance of some type. When you extend
+this class, you define the AST traversal pattern by overriding
+implementations of <code class="docutils literal notranslate"><span class="pre">VisitExpr_</span></code> for each type of expression.</p>
+<p>The relation between <code class="docutils literal notranslate"><span class="pre">VisitExpr</span></code> and <code class="docutils literal notranslate"><span class="pre">VisitExpr_</span></code> has to do with
+dispatch. Each <code class="docutils literal notranslate"><span class="pre">VisitExpr_</span></code> definition targets a specific type of
+expression, but you don’t always know which node type you’ll be visiting.
+To remedy this, <code class="docutils literal notranslate"><span class="pre">ExprFunctor</span></code> provides a <code class="docutils literal notranslate"><span class="pre">VisitExpr</span></code> function which
+routes from the given expression to the <code class="docutils literal notranslate"><span class="pre">VisitExpr_</span></code> case that handles it.
+Although C++ already provides dynamic dispatch, <code class="docutils literal notranslate"><span class="pre">ExprFunctor</span></code> defines its
+own vtable, which <code class="docutils literal notranslate"><span class="pre">VisitExpr</span></code> uses. By defining our own vtable, we have
+more control over dispatch. For example, if we wanted to define a
+<code class="docutils literal notranslate"><span class="pre">PrintVisitor</span></code> traverser that printed “Here” before every visit, we
+could override <code class="docutils literal notranslate"><span class="pre">VisitExpr</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">PrintVisitor::VisitExpr</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Expr</span><span class="o">&amp;</span><span class="w"> </span><span class="n">expr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Here&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ExprFunctor</span><span class="o">::</span><span class="n">VisitExpr</span><span class="p">(</span><span class="n">expr</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ExprFunctor</span></code> itself is a very general class, which is why more often than
+not, you will be extending <code class="docutils literal notranslate"><span class="pre">ExprVisitor</span></code> or <code class="docutils literal notranslate"><span class="pre">ExprMutator</span></code>. These classes
+extend <code class="docutils literal notranslate"><span class="pre">ExprFunctor</span></code> and provide default implementations of <code class="docutils literal notranslate"><span class="pre">VisitExpr_</span></code>
+that capture common traversal patterns for each expression type. Having these
+default implementations means we only need to provide overriding
+implementations for the expression types where we want different behavior. We
+describe each subclass on its own in the following sections.</p>
+<section id="expression-visitors">
+<h3>Expression Visitors<a class="headerlink" href="#expression-visitors" title="永久链接至标题">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ExprVisitor</span></code> is for passes that don’t modify the program and instead
+perform program analyses and collect information. With this class,
+<code class="docutils literal notranslate"><span class="pre">VisitExpr</span></code> and the private counterparts return nothing. The <code class="docutils literal notranslate"><span class="pre">VisitExpr_</span></code>
+implementations provided by this class simply visit all of the expression’s
+fields that are expressions. The default implementation for <code class="docutils literal notranslate"><span class="pre">IfNode</span></code> is
+shown below.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">ExprVisitor::VisitExpr_</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">IfNode</span><span class="o">*</span><span class="w"> </span><span class="n">op</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">this</span><span class="o">-&gt;</span><span class="n">VisitExpr</span><span class="p">(</span><span class="n">op</span><span class="o">-&gt;</span><span class="n">cond</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">this</span><span class="o">-&gt;</span><span class="n">VisitExpr</span><span class="p">(</span><span class="n">op</span><span class="o">-&gt;</span><span class="n">true_branch</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">this</span><span class="o">-&gt;</span><span class="n">VisitExpr</span><span class="p">(</span><span class="n">op</span><span class="o">-&gt;</span><span class="n">false_branch</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Note that we’re calling <code class="docutils literal notranslate"><span class="pre">VisitExpr</span></code> and not <code class="docutils literal notranslate"><span class="pre">VisitExpr_</span></code> here, so we can
+use the vtable in <code class="docutils literal notranslate"><span class="pre">ExprFunctor</span></code> for routing.</p>
+<p>Now, if we wanted to write a class <code class="docutils literal notranslate"><span class="pre">CallChecker</span></code> that checks if any
+function calls appear in the program, we would only need to extend
+<code class="docutils literal notranslate"><span class="pre">ExprVisitor</span></code> and define the following <code class="docutils literal notranslate"><span class="pre">VisitExpr_</span></code> method:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">VisitExpr_</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CallNode</span><span class="o">*</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="n">final</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">result_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">result_</span></code> is a field. In this case, we don’t need to further recurse
+on the fields of the <code class="docutils literal notranslate"><span class="pre">CallNode</span></code>, because <code class="docutils literal notranslate"><span class="pre">result_</span></code> is already true and we
+now know the original expression contains a call. To make this visitor
+usable, we would provide the following public method:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">Check</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Expr</span><span class="o">&amp;</span><span class="w"> </span><span class="n">expr</span><span class="p">)</span><span class="w"> </span><span class="n">final</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">result_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">VisitExpr</span><span class="p">(</span><span class="n">expr</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">result_</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>And that’s all we need. It is very common to define a public interface that
+performs some bookkeeping before invoking the top-level recursion. We could
+of course further wrap the API by making a standalone procedure that creates
+a <code class="docutils literal notranslate"><span class="pre">CallChecker</span></code> instance and calls <code class="docutils literal notranslate"><span class="pre">Check</span></code> on it, but the takeaway is
+that we’ve achieved our goal with very little effort.</p>
+</section>
+<section id="expression-mutators">
+<h3>Expression Mutators<a class="headerlink" href="#expression-mutators" title="永久链接至标题">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ExprMutator</span></code> is for passes that transform the program in some way. With
+this class, <code class="docutils literal notranslate"><span class="pre">VisitExpr</span></code> and its private counterparts return <code class="docutils literal notranslate"><span class="pre">Expr</span></code>. The
+default <code class="docutils literal notranslate"><span class="pre">VisitExpr_</span></code> implementations provided by this class visit all of
+the expression’s fields that are expressions and set the fields to be the
+result of visiting them. The default implementation for <code class="docutils literal notranslate"><span class="pre">TupleGetItemNode</span></code>
+is shown below.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Expr</span><span class="w"> </span><span class="nf">ExprMutator::VisitExpr_</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TupleGetItemNode</span><span class="o">*</span><span class="w"> </span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">this</span><span class="o">-&gt;</span><span class="n">Mutate</span><span class="p">(</span><span class="n">g</span><span class="o">-&gt;</span><span class="n">tuple</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">g</span><span class="o">-&gt;</span><span class="n">tuple</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">GetRef</span><span class="o">&lt;</span><span class="n">Expr</span><span class="o">&gt;</span><span class="p">(</span><span class="n">g</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">TupleGetItem</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>There are a few things to notice here. First, <code class="docutils literal notranslate"><span class="pre">Mutate</span></code> is an alias for
+<code class="docutils literal notranslate"><span class="pre">VisitExpr</span></code> in <code class="docutils literal notranslate"><span class="pre">ExprMutator</span></code>. Second, we only return a new node if the
+call to <code class="docutils literal notranslate"><span class="pre">Mutate</span></code> modified the <code class="docutils literal notranslate"><span class="pre">tuple</span></code> field. This method of update is
+called a functional update and doing so avoids unnecessary allocations.</p>
+<p>One feature <code class="docutils literal notranslate"><span class="pre">ExprMutator</span></code> has that <code class="docutils literal notranslate"><span class="pre">ExprVisitor</span></code> doesn’t is a built-in
+<code class="docutils literal notranslate"><span class="pre">memo_</span></code> field for caching results. It makes sense that <code class="docutils literal notranslate"><span class="pre">ExprMutator</span></code> has
+a memoizer, because we know which types of results we’re caching (i.e.,
+<code class="docutils literal notranslate"><span class="pre">Expr</span></code>), whereas the visit methods of <code class="docutils literal notranslate"><span class="pre">ExprVisitor</span></code> don’t return
+anything. Usually, when we want to cache results in a subclass of
+<code class="docutils literal notranslate"><span class="pre">ExprVisitor</span></code>, we need to define the cache ourselves.</p>
+<p>Now, if we wanted to write a class <code class="docutils literal notranslate"><span class="pre">IfCollapser</span></code> that replaces every if
+statement with its true branch, we would override <code class="docutils literal notranslate"><span class="pre">VisitExpr_</span></code> for
+<code class="docutils literal notranslate"><span class="pre">IfNode</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Expr</span><span class="w"> </span><span class="nf">ExprMutator::VisitExpr_</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">IfNode</span><span class="o">*</span><span class="w"> </span><span class="n">op</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">this</span><span class="o">-&gt;</span><span class="n">Mutate</span><span class="p">(</span><span class="n">op</span><span class="o">-&gt;</span><span class="n">true_branch</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Note that the returned expression will not necessarily be an <code class="docutils literal notranslate"><span class="pre">IfNode</span></code>, and
+this is fine, because the return type is <code class="docutils literal notranslate"><span class="pre">Expr</span></code>. Now, we create the public
+interface:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Expr</span><span class="w"> </span><span class="nf">CollapseIfs</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Expr</span><span class="o">&amp;</span><span class="w"> </span><span class="n">expr</span><span class="p">)</span><span class="w"> </span><span class="n">final</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">this</span><span class="o">-&gt;</span><span class="n">Mutate</span><span class="p">(</span><span class="n">expr</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>With this mutator, we didn’t need to do any bookkeeping, but we still want to
+follow the convention of having a descriptive method as the interface.</p>
+</section>
+</section>
+<section id="example-constant-folding">
+<h2>Example: Constant Folding<a class="headerlink" href="#example-constant-folding" title="永久链接至标题">#</a></h2>
+<p>In order to better understand the process of writing a pass, we will look at
+the constant folding pass (found in <a class="reference external" href="https://github.com/apache/tvm/blob/main/src/relay/transforms/fold_constant.cc">src/relay/transforms/fold_constant.cc</a>)
+as a guide, because it is a relatively simple pass that incorporates
+both types of traversals.</p>
+<p>Constant folding involves evaluating expressions in the program that only
+involve constant values, then replacing those expressions with the result
+of evaluating them. The goal of this pass is to frontload all of the
+computations that we can. To achieve this, the constant folding pass makes
+use of a visitor (<code class="docutils literal notranslate"><span class="pre">ConstantChecker</span></code>) and a mutator (<code class="docutils literal notranslate"><span class="pre">ConstantFolder</span></code>).</p>
+<section id="the-constantchecker-visitor">
+<h3>The <code class="docutils literal notranslate"><span class="pre">ConstantChecker</span></code> Visitor<a class="headerlink" href="#the-constantchecker-visitor" title="永久链接至标题">#</a></h3>
+<p>This visitor is used to check if an expression is constant. In Relay, we
+define an expression to be constant if it is a <code class="docutils literal notranslate"><span class="pre">ConstantNode</span></code> or it is a
+<code class="docutils literal notranslate"><span class="pre">TupleNode</span></code> with only constant fields.</p>
+<p>We use a <code class="docutils literal notranslate"><span class="pre">memo_</span></code> field to map from nodes to whether they are constant and
+to cache these results. Below are the <code class="docutils literal notranslate"><span class="pre">VisitExpr_</span></code> definitions in the
+<code class="docutils literal notranslate"><span class="pre">ConstantChecker</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">VisitExpr_</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ConstantNode</span><span class="o">*</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="n">final</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">memo_</span><span class="p">[</span><span class="n">GetRef</span><span class="o">&lt;</span><span class="n">Constant</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">VisitExpr_</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TupleNode</span><span class="o">*</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="n">final</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">field</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">n</span><span class="o">-&gt;</span><span class="n">fields</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Check</span><span class="p">(</span><span class="n">field</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">memo_</span><span class="p">[</span><span class="n">GetRef</span><span class="o">&lt;</span><span class="n">Tuple</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The bookkeeping used to coordinate these definitions is a <code class="docutils literal notranslate"><span class="pre">Check</span></code> method
+that returns whether the given expression is considered constant.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">Check</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Expr</span><span class="o">&amp;</span><span class="w"> </span><span class="n">expr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">memo_</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">expr</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">memo_</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">VisitExpr</span><span class="p">(</span><span class="n">expr</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">memo_</span><span class="p">[</span><span class="n">expr</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>We don’t modify <code class="docutils literal notranslate"><span class="pre">memo_</span></code> for every node we encounter; instead we only modify
+<code class="docutils literal notranslate"><span class="pre">memo_</span></code> when the encountered node could potentially be constant. Then we
+rely on the default value being false when <code class="docutils literal notranslate"><span class="pre">memo_</span></code> doesn’t contain
+<code class="docutils literal notranslate"><span class="pre">expr</span></code>.</p>
+</section>
+<section id="the-constantfolder-mutator">
+<h3>The <code class="docutils literal notranslate"><span class="pre">ConstantFolder</span></code> Mutator<a class="headerlink" href="#the-constantfolder-mutator" title="永久链接至标题">#</a></h3>
+<p>This mutator performs the bulk of the constant folding pass and internally
+uses <code class="docutils literal notranslate"><span class="pre">ConstantChecker</span></code>. In Relay, there are three node types that are
+involved in constant folding: <code class="docutils literal notranslate"><span class="pre">LetNode</span></code>, <code class="docutils literal notranslate"><span class="pre">TupleItemGetNode</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">CallNode</span></code>. In the following paragraphs, we explain the roles of each in
+the pass.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Expr</span><span class="w"> </span><span class="nf">VisitExpr_</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">LetNode</span><span class="o">*</span><span class="w"> </span><span class="n">op</span><span class="p">)</span><span class="w"> </span><span class="n">final</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Expr</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">this</span><span class="o">-&gt;</span><span class="n">Mutate</span><span class="p">(</span><span class="n">op</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">ConstantNode</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">memo_</span><span class="p">[</span><span class="n">op</span><span class="o">-&gt;</span><span class="n">var</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">this</span><span class="o">-&gt;</span><span class="n">Mutate</span><span class="p">(</span><span class="n">op</span><span class="o">-&gt;</span><span class="n">body</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Var</span><span class="w"> </span><span class="n">var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Downcast</span><span class="o">&lt;</span><span class="n">Var</span><span class="o">&gt;</span><span class="p">(</span><span class="n">this</span><span class="o">-&gt;</span><span class="n">Mutate</span><span class="p">(</span><span class="n">op</span><span class="o">-&gt;</span><span class="n">var</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">Expr</span><span class="w"> </span><span class="n">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">this</span><span class="o">-&gt;</span><span class="n">Mutate</span><span class="p">(</span><span class="n">op</span><span class="o">-&gt;</span><span class="n">body</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">var</span><span class="p">.</span><span class="n">same_as</span><span class="p">(</span><span class="n">op</span><span class="o">-&gt;</span><span class="n">var</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">        </span><span class="n">value</span><span class="p">.</span><span class="n">same_as</span><span class="p">(</span><span class="n">op</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">        </span><span class="n">body</span><span class="p">.</span><span class="n">same_as</span><span class="p">(</span><span class="n">op</span><span class="o">-&gt;</span><span class="n">body</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">GetRef</span><span class="o">&lt;</span><span class="n">Expr</span><span class="o">&gt;</span><span class="p">(</span><span class="n">op</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">Let</span><span class="p">(</span><span class="n">var</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">body</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">LetNode</span></code> case, we first attempt to const-fold the value being bound
+in the expression. If we can, then we populate <code class="docutils literal notranslate"><span class="pre">memo_</span></code> and return the
+result of visiting the body—essentially, propagating the bound value to its
+use sites in the body. If we can’t const-fold the bound value, we mimic the
+default implementation.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Expr</span><span class="w"> </span><span class="nf">VisitExpr_</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TupleGetItemNode</span><span class="o">*</span><span class="w"> </span><span class="n">op</span><span class="p">)</span><span class="w"> </span><span class="n">final</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Expr</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ExprMutator</span><span class="o">::</span><span class="n">VisitExpr_</span><span class="p">(</span><span class="n">op</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">res</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">TupleGetItemNode</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">tuple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">op</span><span class="o">-&gt;</span><span class="n">tuple</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">TupleNode</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tuple</span><span class="o">-&gt;</span><span class="n">fields</span><span class="p">[</span><span class="n">op</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">TupleItemGetNode</span></code> case, we check if <code class="docutils literal notranslate"><span class="pre">op-&gt;tuple</span></code> field is a
+<code class="docutils literal notranslate"><span class="pre">TupleNode</span></code>. If so, we replace the tuple get with the field of the tuple
+pointed to by <code class="docutils literal notranslate"><span class="pre">op-&gt;index</span></code>. The reason we need to check is because
+<code class="docutils literal notranslate"><span class="pre">op-&gt;tuple</span></code> might evaluate to a tuple, without itself being a tuple.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Expr</span><span class="w"> </span><span class="nf">VisitExpr_</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CallNode</span><span class="o">*</span><span class="w"> </span><span class="n">call</span><span class="p">)</span><span class="w"> </span><span class="n">final</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">op_stateful</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Op</span><span class="o">::</span><span class="n">GetAttrMap</span><span class="o">&lt;</span><span class="n">TOpIsStateful</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;TOpIsStateful&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">Expr</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ExprMutator</span><span class="o">::</span><span class="n">VisitExpr_</span><span class="p">(</span><span class="n">call</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">call</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">res</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">CallNode</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// We don&#39;t constant fold function with zero arguments.</span>
+<span class="w">  </span><span class="c1">// This is a heuristic that is useful.</span>
+<span class="w">  </span><span class="c1">// For example it is harmful to fold ones(shape=(4, 5)).</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">call</span><span class="o">-&gt;</span><span class="n">args</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">OpNode</span><span class="o">*</span><span class="w"> </span><span class="n">op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">call</span><span class="o">-&gt;</span><span class="n">op</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpNode</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nullptr</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// skip stateful ops.</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">op_stateful</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">GetRef</span><span class="o">&lt;</span><span class="n">Op</span><span class="o">&gt;</span><span class="p">(</span><span class="n">op</span><span class="p">),</span><span class="w"> </span><span class="nb">false</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">all_const_args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Expr</span><span class="w"> </span><span class="n">arg</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">call</span><span class="o">-&gt;</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">checker_</span><span class="p">.</span><span class="n">Check</span><span class="p">(</span><span class="n">arg</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">all_const_args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">all_const_args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ConstEvaluate</span><span class="p">(</span><span class="n">res</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">CallNode</span></code> case, we first use the <code class="docutils literal notranslate"><span class="pre">VisitExpr_</span></code> of <code class="docutils literal notranslate"><span class="pre">ExprMutator</span></code>
+to visit the call, which const-folds all of the fields of the call. We use
+<code class="docutils literal notranslate"><span class="pre">ExprMutator::VisitExpr_</span></code> instead of <code class="docutils literal notranslate"><span class="pre">VisitExpr</span></code>, because we want to
+bypass the vtable (to avoid an infinite loop) and use the default
+implementation provided by <code class="docutils literal notranslate"><span class="pre">ExprMutator</span></code>. Then we evaluate the call only if
+all of the arguments are constant (using <code class="docutils literal notranslate"><span class="pre">ConstantChecker</span></code>). Evaluating the
+call produces a <strong>value</strong>, so we use a helper method <code class="docutils literal notranslate"><span class="pre">ValueToExpr</span></code> to allow
+us to place the evaluated expression back into the AST.</p>
+<p>Now, we construct a more convenient interface <code class="docutils literal notranslate"><span class="pre">FoldConstant</span></code> for our constant
+folder. <code class="docutils literal notranslate"><span class="pre">FoldConstant</span></code> is a standalone function outside of the <code class="docutils literal notranslate"><span class="pre">ConstantFolder</span></code>
+class that takes an expression and internally creates and uses a
+<code class="docutils literal notranslate"><span class="pre">ConstantFolder</span></code> instance (the full definition can be found in
+<a class="reference external" href="https://github.com/apache/tvm/blob/main/src/relay/transforms/fold_constant.cc">src/relay/transforms/fold_constant.cc</a>).</p>
+</section>
+<section id="registering-a-pass-with-the-pass-manager">
+<h3>Registering a Pass with the Pass Manager<a class="headerlink" href="#registering-a-pass-with-the-pass-manager" title="永久链接至标题">#</a></h3>
+<p><em>Note: please see the documentation on the :ref:`pass-infra` for more specific detail on this subject.</em></p>
+<p>With the AST traversers written, the pass can be registered to become a TVM
+API endpoint with the following code:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">namespace</span><span class="w"> </span><span class="n">transform</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="n">Pass</span><span class="w"> </span><span class="nf">FoldConstant</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">runtime</span><span class="o">::</span><span class="n">TypedPackedFunc</span><span class="o">&lt;</span><span class="n">Function</span><span class="p">(</span><span class="n">Function</span><span class="p">,</span><span class="w"> </span><span class="n">Module</span><span class="p">,</span><span class="w"> </span><span class="n">PassContext</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pass_func</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="o">=</span><span class="p">](</span><span class="n">Function</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">Module</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">PassContext</span><span class="w"> </span><span class="n">pc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">Downcast</span><span class="o">&lt;</span><span class="n">Function</span><span class="o">&gt;</span><span class="p">(</span><span class="n">FoldConstant</span><span class="p">(</span><span class="n">f</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">CreateFunctionPass</span><span class="p">(</span><span class="n">pass_func</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FoldConstant&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{});</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace transform</span>
+</pre></div>
+</div>
+<p>If the <code class="docutils literal notranslate"><span class="pre">Pass</span></code> object produced by the above code is given to the pass infrastructure,
+it will ensure that the AST traversal is applied to every function in the
+given Relay module, which is the behavior one would expect for a constant folding
+pass (it should fold all constants where possible).</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">CreateFunctionPass</span></code>
+allows for registering the optimization level of the pass (in this case, 2), which can
+be used to group together passes based on their general utility, a name for the pass,
+and any dependencies for the pass. A pass’s dependencies are given as a list of any passes
+whose results are necessary to be able to run the current pass. <code class="docutils literal notranslate"><span class="pre">FoldConstant</span></code> does not
+have any dependencies, but many Relay passes do depend on having type information,
+so <code class="docutils literal notranslate"><span class="pre">InferType</span></code> is a common dependency; others may depend on the program’s being in
+A-normal form, via the <code class="docutils literal notranslate"><span class="pre">ToANormalForm</span></code> pass.</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> object contains information a pass uses for
+error reporting and configuration options; <code class="docutils literal notranslate"><span class="pre">FoldConstant</span></code> does not need
+this information but other passes may reference their <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> objects.</p>
+<p>The pass can now be invoked via the pass infrastructure, though it’s a good idea to
+also add a Python binding for the pass, as in this code snippet:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TVM_REGISTER_GLOBAL</span><span class="p">(</span><span class="s">&quot;relay._transform.FoldConstant&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="p">.</span><span class="n">set_body_typed</span><span class="p">(</span><span class="n">FoldConstant</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Once <code class="docutils literal notranslate"><span class="pre">Pass</span></code> objects are defined in the above fashion, they can be invoked using the
+pass infrastructure’s <code class="docutils literal notranslate"><span class="pre">Sequential</span></code> construct, which takes a list of passes and applies
+them in sequence to a Relay module, obtaining a transformed module as a result. For example,
+the below code applies both the <code class="docutils literal notranslate"><span class="pre">FoldConstant</span></code> and <code class="docutils literal notranslate"><span class="pre">ToANormalForm</span></code> passes
+(one after the other) to each function in <code class="docutils literal notranslate"><span class="pre">mod</span></code> and obtains a new module.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">relay</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">FoldConstant</span><span class="p">(),</span>
+    <span class="n">relay</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">ToANormalForm</span><span class="p">()</span>
+<span class="p">])</span>
+<span class="n">new_mod</span> <span class="o">=</span> <span class="n">seq</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>More detail about registration can be found in <a class="reference internal" href="../../arch/runtime.html#tvm-runtime-system"><span class="std std-ref">TVM 运行时系统</span></a> and more
+information about the pass manager interface can be found in <a class="reference internal" href="../../arch/pass_infra.html#pass-infra"><span class="std std-ref">Pass Infrastructure</span></a>.
+Relay’s standard passes are listed in <a class="reference external" href="https://github.com/apache/tvm/blob/main/include/tvm/relay/transform.h">include/tvm/relay/transform.h</a> and implemented
+in <a class="reference external" href="https://github.com/apache/tvm/tree/main/src/relay/transforms">src/relay/transforms/</a>.</p>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="relay_add_op.html" title="上一页 页">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一页</p>
+            <p class="prev-next-title">Adding an Operator to Relay</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="relay_bring_your_own_codegen.html" title="下一页 页">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">Bring Your Own Codegen To TVM</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By xinetzone<br/>
+  
+      &copy; Copyright 2022, xinetzone.<br/>
+    Last updated on 2022-04-07, 15:51:47.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

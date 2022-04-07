@@ -1,0 +1,1811 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>tvm.relay.testing &#8212; TVM  文档</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../../_static/togglebutton.js"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../../../../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <link rel="shortcut icon" href="../../../../../_static/tvm-logo-square.png"/>
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" />
+    <link rel="next" title="tvm.autotvm" href="../autotvm.html" />
+    <link rel="prev" title="tvm.relay.dataflow_pattern" href="dataflow_pattern.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_CN">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../../../_static/tvm-logo-small.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">TVM  文档</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../README.html">
+   TVM 文档
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../../start.html">
+   快速上手
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../install/index.html">
+     安装 TVM
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../install/from_source.html">
+       从源码安装
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../install/nnpack.html">
+         NNPACK Contrib Installation
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../install/docker.html">
+       Docker 镜像
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../install/tlcpack.html">
+       TLCPack
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../contribute/index.html">
+     Contributor Guide
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/community.html">
+       TVM Community Guidelines
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/pull_request.html">
+       Submit a Pull Request
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/code_review.html">
+       Code Reviews
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/committer_guide.html">
+       Committer Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/document.html">
+       Documentation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/code_guide.html">
+       Code Guide and Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/git_howto.html">
+       Git Usage Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/ci.html">
+       Using TVM’s CI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/release_process.html">
+       Release Process
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../contribute/error_handling.html">
+       Error Handling Guide
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../../study/index.html">
+   学习笔记
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../study/quantize.html">
+     量化
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../study/start.html">
+     TVM 入门指南
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../study/test.html">
+     测试 TVM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../../user-guide.html">
+   用户手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../tutorial/index.html">
+     用户指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/introduction.html">
+       TVM 和模型优化的概述
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/tvmc_command_line_driver.html">
+       用 TVMC 编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/tvmc_python.html">
+       开始使用 TVMC Python：TVM 的高级 API
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/autotvm_relay_x86.html">
+       用 Python 接口编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/tensor_expr_get_started.html">
+       使用张量表达式处理算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/autotvm_matmul_x86.html">
+       用调度模板和 AutoTVM 优化算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/auto_scheduler_matmul_x86.html">
+       使用自动调度优化运算
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/tensor_ir_blitz_course.html">
+       TensorIR 的突击课程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/cross_compilation_and_rpc.html">
+       交叉编译和RPC
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/relay_quick_start.html">
+       编译深度学习模型的快速入门教程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../tutorial/intro_topi.html">
+       TOPI 简介
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../how_to/index.html">
+     How To 指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/compile_models/index.html">
+       编译深度学习模型
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+      <label for="toctree-checkbox-9">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_pytorch.html">
+         编译 PyTorch 模型
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_tensorflow.html">
+         Compile Tensorflow Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_mxnet.html">
+         Compile MXNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_onnx.html">
+         Compile ONNX Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_keras.html">
+         Compile Keras Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_tflite.html">
+         Compile TFLite Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_coreml.html">
+         Compile CoreML Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_darknet.html">
+         Compile YOLO-V2 and YOLO-V3 in DarkNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_caffe2.html">
+         Compile Caffe2 Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/compile_models/from_paddle.html">
+         Compile PaddlePaddle Models
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/deploy/index.html">
+       部署模型，集成 TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy/cpp_deploy.html">
+         Deploy TVM Module using C++ API
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy/android.html">
+         Deploy to Android
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy/integrate.html">
+         Integrate TVM into Your Project
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy/hls.html">
+         HLS Backend Example
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy/arm_compute_lib.html">
+         Relay Arm
+         <sup>
+          ®
+         </sup>
+         Compute Library Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy/tensorrt.html">
+         Relay TensorRT Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy/vitis_ai.html">
+         Vitis AI Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy/bnns.html">
+         Relay BNNS Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/deploy_models/index.html">
+         部署深度学习模型
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/work_with_relay/index.html">
+       Work With Relay
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+      <label for="toctree-checkbox-11">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/work_with_schedules/index.html">
+       Work With Tensor Expression and Schedules
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+      <label for="toctree-checkbox-12">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/optimize_operators/index.html">
+       Optimize Tensor Operators
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+      <label for="toctree-checkbox-13">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/tune_with_autotvm/index.html">
+       Auto-Tune with Templates and AutoTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+      <label for="toctree-checkbox-14">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/tune_with_autotvm/tune_conv2d_cuda.html">
+         Tuning High Performance Convolution on NVIDIA GPUs
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/tune_with_autotvm/tune_relay_cuda.html">
+         Auto-tuning a Convolutional Network for NVIDIA GPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/tune_with_autotvm/tune_relay_x86.html">
+         Auto-tuning a Convolutional Network for x86 CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/tune_with_autotvm/tune_relay_arm.html">
+         Auto-tuning a Convolutional Network for ARM CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/tune_with_autotvm/tune_relay_mobile_gpu.html">
+         Auto-tuning a Convolutional Network for Mobile GPU
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/tune_with_autoscheduler/index.html">
+       Use AutoScheduler for Template-Free Scheduling
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+      <label for="toctree-checkbox-15">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/work_with_microtvm/index.html">
+       Work With microTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+      <label for="toctree-checkbox-16">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/extend_tvm/index.html">
+       Extend TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+      <label for="toctree-checkbox-17">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../how_to/profile/index.html">
+       Profile Models
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+      <label for="toctree-checkbox-18">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../how_to/profile/papi.html">
+         Getting Started With PAPI
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../errors.html">
+       处理 TVM 的错误
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../faq.html">
+       常见问题
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../../developer-guide.html">
+   开发手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../dev/tutorial/index.html">
+     开发者教程
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+    <label for="toctree-checkbox-20">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../dev/tutorial/codebase_walkthrough.html">
+       TVM 代码库的实例演练
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../dev/how_to/how_to.html">
+     开发者 How-To 指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../dev/how_to/relay_add_op.html">
+       Adding an Operator to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../dev/how_to/relay_add_pass.html">
+       Adding a Compiler Pass to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../dev/how_to/relay_bring_your_own_codegen.html">
+       Bring Your Own Codegen To TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../dev/how_to/pytest_target_parametrization.html">
+       Python Target Parametrization
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../arch/index.html">
+   设计与架构
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/runtime.html">
+     TVM 运行时系统
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/debugger.html">
+     Debugger
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/virtual_machine.html">
+     Putting the VM in TVM: The Relay Virtual Machine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/introduction_to_module_serialization.html">
+     Introduction to Module Serialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/pass_infra.html">
+     Pass Infrastructure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/inferbound.html">
+     InferBound Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/hybrid_script.html">
+     Hybrid Frontend Developer Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/relay_intro.html">
+     Introduction to Relay IR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/relay_op_strategy.html">
+     Relay Operator Strategy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/convert_layout.html">
+     Convert Layout Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/benchmark.html">
+     Benchmark Performance Log Format
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/frontend/tensorflow.html">
+     TensorFlow Frontend
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/security.html">
+     Security Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/microtvm_design.html">
+     microTVM Design Document
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/microtvm_project_api.html">
+     microTVM Project API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../arch/model_library_format.html">
+     Model Library Format
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../../topic-guides.html">
+   主题指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../topic/microtvm/index.html">
+     microTVM：裸机上的 TVM
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../topic/vta/index.html">
+     VTA：通用张量加速器
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+    <label for="toctree-checkbox-24">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../topic/vta/install.html">
+       VTA 安装指南
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../topic/vta/dev/index.html">
+       VTA 设计和开发指南
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../topic/vta/dev/config.html">
+         VTA 配置
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../topic/vta/dev/hardware.html">
+         VTA 硬件指南
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../topic/vta/tutorials/index.html">
+       VTA 教程
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../topic/vta/tutorials/matrix_multiply.html">
+         Simple Matrix Multiply
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../topic/vta/tutorials/vta_get_started.html">
+         Get Started with VTA
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../topic/vta/tutorials/frontend/index.html">
+         Compile Deep Learning Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../topic/vta/tutorials/optimize/index.html">
+         Optimize Tensor Operators
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../topic/vta/tutorials/autotvm/index.html">
+         Auto tuning
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../../../../reference-guide.html">
+   参考指南
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../langref/index.html">
+     语言参考
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+    <label for="toctree-checkbox-28">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../langref/relay_expr.html">
+       Expressions in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../langref/relay_type.html">
+       Relay’s Type System
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../langref/relay_adt.html">
+       Algebraic Data Types in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../langref/relay_op.html">
+       Relay Core Tensor Operators
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../langref/relay_pattern.html">
+       Pattern Matching in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../langref/hybrid_script.html">
+       Hybrid Frontend Language Reference
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="../index.html">
+     Python API
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../runtime.html">
+       tvm.runtime
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../ndarray.html">
+       tvm.runtime.ndarray
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../error.html">
+       tvm.error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../ir.html">
+       tvm.ir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../target.html">
+       tvm.target
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tir.html">
+       tvm.tir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../te.html">
+       tvm.te
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../driver.html">
+       tvm.driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="index.html">
+       tvm.relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="frontend.html">
+       tvm.relay.frontend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="nn.html">
+       tvm.relay.nn
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vision.html">
+       tvm.relay.vision
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="image.html">
+       tvm.relay.image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="transform.html">
+       tvm.relay.transform
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="analysis.html">
+       tvm.relay.analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="backend.html">
+       tvm.relay.backend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="dataflow_pattern.html">
+       tvm.relay.dataflow_pattern
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       tvm.relay.testing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autotvm.html">
+       tvm.autotvm
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../auto_scheduler.html">
+       tvm.auto_scheduler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../rpc.html">
+       tvm.rpc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../micro.html">
+       tvm.micro
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../contrib.html">
+       tvm.contrib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../graph_executor.html">
+       tvm.contrib.graph_executor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../topi.html">
+       tvm.topi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../vta/index.html">
+       vta
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../links.html">
+     其他 API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../publications.html">
+     出版物
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../../refs/index.html">
+   参考
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+  <label for="toctree-checkbox-30">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../../refs/_ffi/index.html">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _ffi
+      </span>
+     </code>
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../../refs/_ffi/base.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.base
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../../refs/_ffi/libinfo.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.libinfo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../../refs/_ffi/object.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi._ctypes.object
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../../refs/_ffi/registry.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.registry
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../../refs/_ffi/runtime_ctypes.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.runtime_ctypes
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/xinetzone/torch-quantization/edit/main/docs/docs/reference/api/python/relay/testing.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../../_sources/docs/reference/api/python/relay/testing.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>tvm.relay.testing</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="module-tvm.relay.testing.mlp">
+<span id="tvm-relay-testing"></span><h1>tvm.relay.testing<a class="headerlink" href="#module-tvm.relay.testing.mlp" title="永久链接至标题">#</a></h1>
+<p>a simple multilayer perceptron</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.mlp.get_net">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.mlp.</span></span><span class="sig-name descname"><span class="pre">get_net</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">28,</span> <span class="pre">28)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/mlp.html#get_net"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.mlp.get_net" title="永久链接至目标">#</a></dt>
+<dd><p>Get network a simple multilayer perceptron.</p>
+<dl class="simple">
+<dt>batch_size<span class="classifier">int</span></dt><dd><p>The batch size used in the model</p>
+</dd>
+<dt>num_classes<span class="classifier">int, optional</span></dt><dd><p>Number of claseses</p>
+</dd>
+<dt>image_shape<span class="classifier">tuple, optional</span></dt><dd><p>The input image shape</p>
+</dd>
+<dt>dtype<span class="classifier">str, optional</span></dt><dd><p>The data type</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>net<span class="classifier">relay.Function</span></dt><dd><p>The dataflow.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.mlp.get_workload">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.mlp.</span></span><span class="sig-name descname"><span class="pre">get_workload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">28,</span> <span class="pre">28)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/mlp.html#get_workload"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.mlp.get_workload" title="永久链接至目标">#</a></dt>
+<dd><p>Get benchmark workload for a simple multilayer perceptron.</p>
+<dl class="simple">
+<dt>batch_size<span class="classifier">int</span></dt><dd><p>The batch size used in the model</p>
+</dd>
+<dt>num_classes<span class="classifier">int, optional</span></dt><dd><p>Number of claseses</p>
+</dd>
+<dt>image_shape<span class="classifier">tuple, optional</span></dt><dd><p>The input image shape</p>
+</dd>
+<dt>dtype<span class="classifier">str, optional</span></dt><dd><p>The data type</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>mod<span class="classifier">tvm.IRModule</span></dt><dd><p>The relay module that contains a mlp network.</p>
+</dd>
+<dt>params<span class="classifier">dict of str to NDArray</span></dt><dd><p>The parameters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-tvm.relay.testing.resnet"></span><p>Adapted from <a class="reference external" href="https://github.com/tornadomeet/ResNet/blob/master/symbol_resnet.py">https://github.com/tornadomeet/ResNet/blob/master/symbol_resnet.py</a>
+Original author Wei Wu</p>
+<p>Implemented the following paper:</p>
+<p>Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun. “Identity Mappings in Deep Residual Networks”</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.resnet.get_net">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.resnet.</span></span><span class="sig-name descname"><span class="pre">get_net</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3,</span> <span class="pre">224,</span> <span class="pre">224)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NCHW'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/resnet.html#get_net"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.resnet.get_net" title="永久链接至目标">#</a></dt>
+<dd><p>Adapted from <a class="reference external" href="https://github.com/tornadomeet/ResNet/blob/master/train_resnet.py">https://github.com/tornadomeet/ResNet/blob/master/train_resnet.py</a>
+Original author Wei Wu</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.resnet.get_workload">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.resnet.</span></span><span class="sig-name descname"><span class="pre">get_workload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">18</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3,</span> <span class="pre">224,</span> <span class="pre">224)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NCHW'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/resnet.html#get_workload"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.resnet.get_workload" title="永久链接至目标">#</a></dt>
+<dd><p>Get benchmark workload for resnet</p>
+<dl class="simple">
+<dt>batch_size<span class="classifier">int</span></dt><dd><p>The batch size used in the model</p>
+</dd>
+<dt>num_classes<span class="classifier">int, optional</span></dt><dd><p>Number of classes</p>
+</dd>
+<dt>num_layers<span class="classifier">int, optional</span></dt><dd><p>Number of layers</p>
+</dd>
+<dt>image_shape<span class="classifier">tuple, optional</span></dt><dd><p>The input image shape</p>
+</dd>
+<dt>layout: str</dt><dd><p>The data layout for conv2d</p>
+</dd>
+<dt>dtype<span class="classifier">str, optional</span></dt><dd><p>The data type</p>
+</dd>
+<dt>kwargs<span class="classifier">dict</span></dt><dd><p>Extra arguments</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>mod<span class="classifier">tvm.IRModule</span></dt><dd><p>The relay module that contains a ResNet network.</p>
+</dd>
+<dt>params<span class="classifier">dict of str to NDArray</span></dt><dd><p>The parameters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.resnet.residual_unit">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.resnet.</span></span><span class="sig-name descname"><span class="pre">residual_unit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_filter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim_match</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottle_neck</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NCHW'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'IOHW'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/resnet.html#residual_unit"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.resnet.residual_unit" title="永久链接至目标">#</a></dt>
+<dd><p>Return ResNet Unit symbol for building ResNet</p>
+<dl class="simple">
+<dt>data<span class="classifier">str</span></dt><dd><p>Input data</p>
+</dd>
+<dt>num_filter<span class="classifier">int</span></dt><dd><p>Number of output channels</p>
+</dd>
+<dt>bnf<span class="classifier">int</span></dt><dd><p>Bottle neck channels factor with regard to num_filter</p>
+</dd>
+<dt>stride<span class="classifier">tuple</span></dt><dd><p>Stride used in convolution</p>
+</dd>
+<dt>dim_match<span class="classifier">bool</span></dt><dd><p>True means channel number between input and output is the same,
+otherwise means differ</p>
+</dd>
+<dt>name<span class="classifier">str</span></dt><dd><p>Base name of the operators</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.resnet.resnet">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.resnet.</span></span><span class="sig-name descname"><span class="pre">resnet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">units</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_stages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottle_neck</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NCHW'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/resnet.html#resnet"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.resnet.resnet" title="永久链接至目标">#</a></dt>
+<dd><p>Return ResNet Program.</p>
+<dl class="simple">
+<dt>units<span class="classifier">list</span></dt><dd><p>Number of units in each stage</p>
+</dd>
+<dt>num_stages<span class="classifier">int</span></dt><dd><p>Number of stages</p>
+</dd>
+<dt>filter_list<span class="classifier">list</span></dt><dd><p>Channel size of each stage</p>
+</dd>
+<dt>num_classes<span class="classifier">int</span></dt><dd><p>Output size of symbol</p>
+</dd>
+<dt>data_shape<span class="classifier">tuple of int.</span></dt><dd><p>The shape of input data.</p>
+</dd>
+<dt>bottle_neck<span class="classifier">bool</span></dt><dd><p>Whether apply bottleneck transformation.</p>
+</dd>
+<dt>layout: str</dt><dd><p>The data layout for conv2d</p>
+</dd>
+<dt>dtype<span class="classifier">str</span></dt><dd><p>The global data type.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-tvm.relay.testing.dcgan"></span><p>Net of the generator of DCGAN</p>
+<p>Adopted from:
+<a class="reference external" href="https://github.com/tqchen/mxnet-gan/blob/main/mxgan/generator.py">https://github.com/tqchen/mxnet-gan/blob/main/mxgan/generator.py</a></p>
+<p>Reference:
+Radford, Alec, Luke Metz, and Soumith Chintala.
+“Unsupervised representation learning with deep convolutional generative adversarial networks.”
+arXiv preprint arXiv:1511.06434 (2015).</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.dcgan.deconv2d">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.dcgan.</span></span><span class="sig-name descname"><span class="pre">deconv2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ishape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oshape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kshape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(2,</span> <span class="pre">2)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/dcgan.html#deconv2d"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.dcgan.deconv2d" title="永久链接至目标">#</a></dt>
+<dd><p>a deconv layer that enlarges the feature map</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.dcgan.deconv2d_bn_relu">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.dcgan.</span></span><span class="sig-name descname"><span class="pre">deconv2d_bn_relu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/dcgan.html#deconv2d_bn_relu"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.dcgan.deconv2d_bn_relu" title="永久链接至目标">#</a></dt>
+<dd><p>a block of deconv + batch norm + relu</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.dcgan.get_net">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.dcgan.</span></span><span class="sig-name descname"><span class="pre">get_net</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oshape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3,</span> <span class="pre">64,</span> <span class="pre">64)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ngf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NCHW'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/dcgan.html#get_net"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.dcgan.get_net" title="永久链接至目标">#</a></dt>
+<dd><p>get net of dcgan generator</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.dcgan.get_workload">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.dcgan.</span></span><span class="sig-name descname"><span class="pre">get_workload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oshape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3,</span> <span class="pre">64,</span> <span class="pre">64)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ngf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NCHW'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/dcgan.html#get_workload"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.dcgan.get_workload" title="永久链接至目标">#</a></dt>
+<dd><p>Get benchmark workload for a DCGAN generator</p>
+<dl class="simple">
+<dt>batch_size<span class="classifier">int</span></dt><dd><p>The batch size used in the model</p>
+</dd>
+<dt>oshape<span class="classifier">tuple, optional</span></dt><dd><p>The shape of output image, layout=”CHW”</p>
+</dd>
+<dt>ngf: int, optional</dt><dd><p>The number of final feature maps in the generator</p>
+</dd>
+<dt>random_len<span class="classifier">int, optional</span></dt><dd><p>The length of random input</p>
+</dd>
+<dt>layout: str, optional</dt><dd><p>The layout of conv2d transpose</p>
+</dd>
+<dt>dtype<span class="classifier">str, optional</span></dt><dd><p>The data type</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>mod<span class="classifier">tvm.IRModule</span></dt><dd><p>The relay module that contains a DCGAN network.</p>
+</dd>
+<dt>params<span class="classifier">dict of str to NDArray</span></dt><dd><p>The parameters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-tvm.relay.testing.mobilenet"></span><p>Port of NNVM version of MobileNet to Relay.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.mobilenet.conv_block">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.mobilenet.</span></span><span class="sig-name descname"><span class="pre">conv_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3,</span> <span class="pre">3)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NCHW'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/mobilenet.html#conv_block"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.mobilenet.conv_block" title="永久链接至目标">#</a></dt>
+<dd><p>Helper function to construct conv_bn-relu</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.mobilenet.get_workload">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.mobilenet.</span></span><span class="sig-name descname"><span class="pre">get_workload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3,</span> <span class="pre">224,</span> <span class="pre">224)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NCHW'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/mobilenet.html#get_workload"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.mobilenet.get_workload" title="永久链接至目标">#</a></dt>
+<dd><p>Get benchmark workload for mobilenet</p>
+<dl class="simple">
+<dt>batch_size<span class="classifier">int, optional</span></dt><dd><p>The batch size used in the model</p>
+</dd>
+<dt>num_classes<span class="classifier">int, optional</span></dt><dd><p>Number of classes</p>
+</dd>
+<dt>image_shape<span class="classifier">tuple, optional</span></dt><dd><p>The input image shape, cooperate with layout</p>
+</dd>
+<dt>dtype<span class="classifier">str, optional</span></dt><dd><p>The data type</p>
+</dd>
+<dt>layout<span class="classifier">str, optional</span></dt><dd><p>The data layout of image_shape and the operators
+cooperate with image_shape</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>mod<span class="classifier">tvm.IRModule</span></dt><dd><p>The relay module that contains a MobileNet network.</p>
+</dd>
+<dt>params<span class="classifier">dict of str to NDArray</span></dt><dd><p>The parameters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.mobilenet.mobile_net">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.mobilenet.</span></span><span class="sig-name descname"><span class="pre">mobile_net</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">3,</span> <span class="pre">224,</span> <span class="pre">224)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_shallow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NCHW'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/mobilenet.html#mobile_net"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.mobilenet.mobile_net" title="永久链接至目标">#</a></dt>
+<dd><p>Function to construct a MobileNet</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.mobilenet.separable_conv_block">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.mobilenet.</span></span><span class="sig-name descname"><span class="pre">separable_conv_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depthwise_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pointwise_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3,</span> <span class="pre">3)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">downsample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NCHW'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/mobilenet.html#separable_conv_block"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.mobilenet.separable_conv_block" title="永久链接至目标">#</a></dt>
+<dd><p>Helper function to get a separable conv block</p>
+</dd></dl>
+
+<span class="target" id="module-tvm.relay.testing.lstm"></span><p>Implementation of a Long Short-Term Memory (LSTM) cell.</p>
+<p>Adapted from:
+<a class="reference external" href="https://gist.github.com/merrymercy/5eb24e3b019f84200645bd001e9caae9">https://gist.github.com/merrymercy/5eb24e3b019f84200645bd001e9caae9</a></p>
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.lstm.get_net">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.lstm.</span></span><span class="sig-name descname"><span class="pre">get_net</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_hidden</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/lstm.html#get_net"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.lstm.get_net" title="永久链接至目标">#</a></dt>
+<dd><p>Constructs an unrolled RNN with LSTM cells</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.lstm.get_workload">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.lstm.</span></span><span class="sig-name descname"><span class="pre">get_workload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_hidden</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/lstm.html#get_workload"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.lstm.get_workload" title="永久链接至目标">#</a></dt>
+<dd><p>Get benchmark workload for an LSTM RNN.</p>
+<dl class="simple">
+<dt>iterations<span class="classifier">int</span></dt><dd><p>The number of iterations in the desired LSTM RNN.</p>
+</dd>
+<dt>num_hidden<span class="classifier">int</span></dt><dd><p>The size of the hiddxen state</p>
+</dd>
+<dt>batch_size<span class="classifier">int, optional (default 1)</span></dt><dd><p>The batch size used in the model</p>
+</dd>
+<dt>dtype<span class="classifier">str, optional (default “float32”)</span></dt><dd><p>The data type</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>mod<span class="classifier">tvm.IRModule</span></dt><dd><p>The relay module that contains a LSTM network.</p>
+</dd>
+<dt>params<span class="classifier">dict of str to NDArray</span></dt><dd><p>The parameters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.lstm.lstm_cell">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.lstm.</span></span><span class="sig-name descname"><span class="pre">lstm_cell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_hidden</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/lstm.html#lstm_cell"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.lstm.lstm_cell" title="永久链接至目标">#</a></dt>
+<dd><p>Long-Short Term Memory (LSTM) network cell.</p>
+<dl class="simple">
+<dt>num_hidden<span class="classifier">int</span></dt><dd><p>Number of units in output symbol.</p>
+</dd>
+<dt>batch_size<span class="classifier">int</span></dt><dd><p>Batch size (length of states).</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>result<span class="classifier">tvm.relay.Function</span></dt><dd><p>A Relay function that evaluates an LSTM cell.
+The function takes in a tensor of input data, a tuple of two
+states, and weights and biases for dense operations on the
+inputs and on the state. It returns a tuple with two members,
+an output tensor and a tuple of two new states.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-tvm.relay.testing.inception_v3"></span><p>Inception V3, suitable for images with around 299 x 299</p>
+<p>Reference:
+Szegedy, Christian, et al. “Rethinking the Inception Architecture for Computer Vision.”
+arXiv preprint arXiv:1512.00567 (2015).</p>
+<dl class="simple">
+<dt>Adopted from <a class="reference external" href="https://github.com/apache/incubator-mxnet/blob/">https://github.com/apache/incubator-mxnet/blob/</a></dt><dd><p>master/example/image-classification/symbols/inception-v3.py</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.inception_v3.get_net">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.inception_v3.</span></span><span class="sig-name descname"><span class="pre">get_net</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/inception_v3.html#get_net"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.inception_v3.get_net" title="永久链接至目标">#</a></dt>
+<dd><p>Get network a Inception v3 network.</p>
+<dl class="simple">
+<dt>batch_size<span class="classifier">int</span></dt><dd><p>The batch size used in the model</p>
+</dd>
+<dt>num_classes<span class="classifier">int, optional</span></dt><dd><p>Number of claseses</p>
+</dd>
+<dt>image_shape<span class="classifier">tuple, optional</span></dt><dd><p>The input image shape</p>
+</dd>
+<dt>dtype<span class="classifier">str, optional</span></dt><dd><p>The data type</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>net<span class="classifier">relay.Function</span></dt><dd><p>The dataflow.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.inception_v3.get_workload">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.inception_v3.</span></span><span class="sig-name descname"><span class="pre">get_workload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3,</span> <span class="pre">299,</span> <span class="pre">299)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/inception_v3.html#get_workload"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.inception_v3.get_workload" title="永久链接至目标">#</a></dt>
+<dd><p>Get benchmark workload for InceptionV3</p>
+<dl class="simple">
+<dt>batch_size<span class="classifier">int</span></dt><dd><p>The batch size used in the model</p>
+</dd>
+<dt>num_classes<span class="classifier">int, optional</span></dt><dd><p>Number of classes</p>
+</dd>
+<dt>image_shape<span class="classifier">tuple, optional</span></dt><dd><p>The input image shape</p>
+</dd>
+<dt>dtype<span class="classifier">str, optional</span></dt><dd><p>The data type</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>mod<span class="classifier">tvm.IRModule</span></dt><dd><p>The relay module that contains an Inception V3 network.</p>
+</dd>
+<dt>params<span class="classifier">dict of str to NDArray</span></dt><dd><p>The parameters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-tvm.relay.testing.squeezenet"></span><p>Symbol of SqueezeNet</p>
+<p>Reference:
+Iandola, Forrest N., et al.
+“Squeezenet: Alexnet-level accuracy with 50x fewer parameters and&lt; 0.5 mb model size.” (2016).</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.squeezenet.get_net">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.squeezenet.</span></span><span class="sig-name descname"><span class="pre">get_net</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/squeezenet.html#get_net"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.squeezenet.get_net" title="永久链接至目标">#</a></dt>
+<dd><p>Get symbol of SqueezeNet</p>
+<dl class="simple">
+<dt>batch_size<span class="classifier">int</span></dt><dd><p>The batch size used in the model</p>
+</dd>
+<dt>image_shape<span class="classifier">tuple, optional</span></dt><dd><p>The input image shape</p>
+</dd>
+<dt>num_classes: int</dt><dd><p>The number of classification results</p>
+</dd>
+<dt>version<span class="classifier">str, optional</span></dt><dd><p>“1.0” or “1.1” of SqueezeNet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.squeezenet.get_workload">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.squeezenet.</span></span><span class="sig-name descname"><span class="pre">get_workload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3,</span> <span class="pre">224,</span> <span class="pre">224)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/squeezenet.html#get_workload"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.squeezenet.get_workload" title="永久链接至目标">#</a></dt>
+<dd><p>Get benchmark workload for SqueezeNet</p>
+<dl class="simple">
+<dt>batch_size<span class="classifier">int</span></dt><dd><p>The batch size used in the model</p>
+</dd>
+<dt>num_classes<span class="classifier">int, optional</span></dt><dd><p>Number of classes</p>
+</dd>
+<dt>version<span class="classifier">str, optional</span></dt><dd><p>“1.0” or “1.1” of SqueezeNet</p>
+</dd>
+<dt>image_shape<span class="classifier">tuple, optional</span></dt><dd><p>The input image shape</p>
+</dd>
+<dt>dtype<span class="classifier">str, optional</span></dt><dd><p>The data type</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>mod<span class="classifier">tvm.IRModule</span></dt><dd><p>The relay module that contains a SqueezeNet network.</p>
+</dd>
+<dt>params<span class="classifier">dict of str to NDArray</span></dt><dd><p>The parameters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-tvm.relay.testing.vgg"></span><p>References:</p>
+<p>Simonyan, Karen, and Andrew Zisserman. “Very deep convolutional networks for
+large-scale image recognition.” arXiv preprint arXiv:1409.1556 (2014).</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.vgg.get_classifier">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.vgg.</span></span><span class="sig-name descname"><span class="pre">get_classifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/vgg.html#get_classifier"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.vgg.get_classifier" title="永久链接至目标">#</a></dt>
+<dd><p>Get VGG classifier layers as fc layers.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.vgg.get_feature">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.vgg.</span></span><span class="sig-name descname"><span class="pre">get_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">internal_layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/vgg.html#get_feature"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.vgg.get_feature" title="永久链接至目标">#</a></dt>
+<dd><p>Get VGG feature body as stacks of convolutions.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.vgg.get_net">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.vgg.</span></span><span class="sig-name descname"><span class="pre">get_net</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/vgg.html#get_net"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.vgg.get_net" title="永久链接至目标">#</a></dt>
+<dd><dl class="simple">
+<dt>batch_size<span class="classifier">int</span></dt><dd><p>The batch size used in the model</p>
+</dd>
+<dt>image_shape<span class="classifier">tuple, optional</span></dt><dd><p>The input image shape</p>
+</dd>
+<dt>num_classes<span class="classifier">int, optional</span></dt><dd><p>Number of claseses</p>
+</dd>
+<dt>dtype<span class="classifier">str, optional</span></dt><dd><p>The data type</p>
+</dd>
+<dt>num_layers<span class="classifier">int</span></dt><dd><p>Number of layers for the variant of vgg. Options are 11, 13, 16, 19.</p>
+</dd>
+<dt>batch_norm<span class="classifier">bool, default False</span></dt><dd><p>Use batch normalization.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.vgg.get_workload">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.vgg.</span></span><span class="sig-name descname"><span class="pre">get_workload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3,</span> <span class="pre">224,</span> <span class="pre">224)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/vgg.html#get_workload"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.vgg.get_workload" title="永久链接至目标">#</a></dt>
+<dd><p>Get benchmark workload for VGG nets.</p>
+<dl class="simple">
+<dt>batch_size<span class="classifier">int</span></dt><dd><p>The batch size used in the model</p>
+</dd>
+<dt>num_classes<span class="classifier">int, optional</span></dt><dd><p>Number of claseses</p>
+</dd>
+<dt>image_shape<span class="classifier">tuple, optional</span></dt><dd><p>The input image shape</p>
+</dd>
+<dt>dtype<span class="classifier">str, optional</span></dt><dd><p>The data type</p>
+</dd>
+<dt>num_layers<span class="classifier">int</span></dt><dd><p>Number of layers for the variant of vgg. Options are 11, 13, 16, 19.</p>
+</dd>
+<dt>batch_norm<span class="classifier">bool</span></dt><dd><p>Use batch normalization.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>mod<span class="classifier">tvm.IRModule</span></dt><dd><p>The relay module that contains a VGG network.</p>
+</dd>
+<dt>params<span class="classifier">dict of str to NDArray</span></dt><dd><p>The parameters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-tvm.relay.testing.densenet"></span><p>Port of MxNet version of Densenet to Relay.
+<a class="reference external" href="https://github.com/apache/incubator-mxnet/blob/master/python/mxnet/gluon/model_zoo/vision/densenet.py">https://github.com/apache/incubator-mxnet/blob/master/python/mxnet/gluon/model_zoo/vision/densenet.py</a></p>
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.densenet._make_dense_block">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.densenet.</span></span><span class="sig-name descname"><span class="pre">_make_dense_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bn_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">growth_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/densenet.html#_make_dense_block"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.densenet._make_dense_block" title="永久链接至目标">#</a></dt>
+<dd><p>Makes a block of dense layers of the specified size.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.densenet._make_dense_layer">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.densenet.</span></span><span class="sig-name descname"><span class="pre">_make_dense_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">growth_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bn_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/densenet.html#_make_dense_layer"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.densenet._make_dense_layer" title="永久链接至目标">#</a></dt>
+<dd><p>Single densenet layer.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.densenet._make_dense_net">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.densenet.</span></span><span class="sig-name descname"><span class="pre">_make_dense_net</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_init_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">growth_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bn_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/densenet.html#_make_dense_net"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.densenet._make_dense_net" title="永久链接至目标">#</a></dt>
+<dd><p>Builds up a densenet.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.densenet._make_transition">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.densenet.</span></span><span class="sig-name descname"><span class="pre">_make_transition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_output_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/densenet.html#_make_transition"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.densenet._make_transition" title="永久链接至目标">#</a></dt>
+<dd><p>Transition between layers.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tvm.relay.testing.densenet.get_workload">
+<span class="sig-prename descclassname"><span class="pre">tvm.relay.testing.densenet.</span></span><span class="sig-name descname"><span class="pre">get_workload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">densenet_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">121</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3,</span> <span class="pre">224,</span> <span class="pre">224)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/testing/densenet.html#get_workload"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.testing.densenet.get_workload" title="永久链接至目标">#</a></dt>
+<dd><p>Gets benchmark workload for densenet.</p>
+<dl class="simple">
+<dt>densenet_size<span class="classifier">int, optional (default 121)</span></dt><dd><p>Parameter for the network size. The supported sizes
+are 121, 161, 169, and 201.</p>
+</dd>
+<dt>classes<span class="classifier">int, optional (default 1000)</span></dt><dd><p>The number of classes.</p>
+</dd>
+<dt>batch_size<span class="classifier">int, optional (detault 4)</span></dt><dd><p>The batch size for the network.</p>
+</dd>
+<dt>image_shape<span class="classifier">shape, optional (default (3, 224, 224))</span></dt><dd><p>The shape of the input data.</p>
+</dd>
+<dt>dtype<span class="classifier">data type, optional (default ‘float32’)</span></dt><dd><p>The data type of the input data.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>mod: tvm.IRModule</dt><dd><p>The relay module that contains a DenseNet network.</p>
+</dd>
+<dt>params<span class="classifier">dict of str to NDArray</span></dt><dd><p>The benchmark paraeters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="dataflow_pattern.html" title="上一页 页">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一页</p>
+            <p class="prev-next-title">tvm.relay.dataflow_pattern</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../autotvm.html" title="下一页 页">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">tvm.autotvm</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By xinetzone<br/>
+  
+      &copy; Copyright 2022, xinetzone.<br/>
+    Last updated on 2022-04-07, 15:51:47.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,1952 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Vitis AI Integration &#8212; TVM  文档</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <link rel="shortcut icon" href="../../../_static/tvm-logo-square.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="Relay BNNS Integration" href="bnns.html" />
+    <link rel="prev" title="Relay TensorRT Integration" href="tensorrt.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_CN">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/tvm-logo-small.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">TVM  文档</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   TVM 文档
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../start.html">
+   快速上手
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../install/index.html">
+     安装 TVM
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../install/from_source.html">
+       从源码安装
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../install/nnpack.html">
+         NNPACK Contrib Installation
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../install/docker.html">
+       Docker 镜像
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../install/tlcpack.html">
+       TLCPack
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../contribute/index.html">
+     Contributor Guide
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/community.html">
+       TVM Community Guidelines
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/pull_request.html">
+       Submit a Pull Request
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/code_review.html">
+       Code Reviews
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/committer_guide.html">
+       Committer Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/document.html">
+       Documentation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/code_guide.html">
+       Code Guide and Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/git_howto.html">
+       Git Usage Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/ci.html">
+       Using TVM’s CI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/release_process.html">
+       Release Process
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/error_handling.html">
+       Error Handling Guide
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../study/index.html">
+   学习笔记
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../study/quantize.html">
+     量化
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../study/start.html">
+     TVM 入门指南
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../study/test.html">
+     测试 TVM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../../user-guide.html">
+   用户手册
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../tutorial/index.html">
+     用户指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/introduction.html">
+       TVM 和模型优化的概述
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tvmc_command_line_driver.html">
+       用 TVMC 编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tvmc_python.html">
+       开始使用 TVMC Python：TVM 的高级 API
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/autotvm_relay_x86.html">
+       用 Python 接口编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tensor_expr_get_started.html">
+       使用张量表达式处理算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/autotvm_matmul_x86.html">
+       用调度模板和 AutoTVM 优化算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/auto_scheduler_matmul_x86.html">
+       使用自动调度优化运算
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tensor_ir_blitz_course.html">
+       TensorIR 的突击课程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/cross_compilation_and_rpc.html">
+       交叉编译和RPC
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/relay_quick_start.html">
+       编译深度学习模型的快速入门教程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/intro_topi.html">
+       TOPI 简介
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="../index.html">
+     How To 指南
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../compile_models/index.html">
+       编译深度学习模型
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+      <label for="toctree-checkbox-9">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_pytorch.html">
+         编译 PyTorch 模型
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_tensorflow.html">
+         Compile Tensorflow Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_mxnet.html">
+         Compile MXNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_onnx.html">
+         Compile ONNX Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_keras.html">
+         Compile Keras Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_tflite.html">
+         Compile TFLite Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_coreml.html">
+         Compile CoreML Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_darknet.html">
+         Compile YOLO-V2 and YOLO-V3 in DarkNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_caffe2.html">
+         Compile Caffe2 Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_paddle.html">
+         Compile PaddlePaddle Models
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 current active has-children">
+      <a class="reference internal" href="index.html">
+       部署模型，集成 TVM
+      </a>
+      <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="current">
+       <li class="toctree-l4">
+        <a class="reference internal" href="cpp_deploy.html">
+         Deploy TVM Module using C++ API
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="android.html">
+         Deploy to Android
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="integrate.html">
+         Integrate TVM into Your Project
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="hls.html">
+         HLS Backend Example
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="arm_compute_lib.html">
+         Relay Arm
+         <sup>
+          ®
+         </sup>
+         Compute Library Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="tensorrt.html">
+         Relay TensorRT Integration
+        </a>
+       </li>
+       <li class="toctree-l4 current active">
+        <a class="current reference internal" href="#">
+         Vitis AI Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="bnns.html">
+         Relay BNNS Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy_models/index.html">
+         部署深度学习模型
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../work_with_relay/index.html">
+       Work With Relay
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+      <label for="toctree-checkbox-11">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../work_with_schedules/index.html">
+       Work With Tensor Expression and Schedules
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+      <label for="toctree-checkbox-12">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../optimize_operators/index.html">
+       Optimize Tensor Operators
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+      <label for="toctree-checkbox-13">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../tune_with_autotvm/index.html">
+       Auto-Tune with Templates and AutoTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+      <label for="toctree-checkbox-14">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autotvm/tune_conv2d_cuda.html">
+         Tuning High Performance Convolution on NVIDIA GPUs
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autotvm/tune_relay_cuda.html">
+         Auto-tuning a Convolutional Network for NVIDIA GPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autotvm/tune_relay_x86.html">
+         Auto-tuning a Convolutional Network for x86 CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autotvm/tune_relay_arm.html">
+         Auto-tuning a Convolutional Network for ARM CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autotvm/tune_relay_mobile_gpu.html">
+         Auto-tuning a Convolutional Network for Mobile GPU
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../tune_with_autoscheduler/index.html">
+       Use AutoScheduler for Template-Free Scheduling
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+      <label for="toctree-checkbox-15">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../work_with_microtvm/index.html">
+       Work With microTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+      <label for="toctree-checkbox-16">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extend_tvm/index.html">
+       Extend TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+      <label for="toctree-checkbox-17">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../profile/index.html">
+       Profile Models
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+      <label for="toctree-checkbox-18">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../profile/papi.html">
+         Getting Started With PAPI
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../errors.html">
+       处理 TVM 的错误
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../faq.html">
+       常见问题
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../developer-guide.html">
+   开发手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../dev/tutorial/index.html">
+     开发者教程
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+    <label for="toctree-checkbox-20">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/tutorial/codebase_walkthrough.html">
+       TVM 代码库的实例演练
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../dev/how_to/how_to.html">
+     开发者 How-To 指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/relay_add_op.html">
+       Adding an Operator to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/relay_add_pass.html">
+       Adding a Compiler Pass to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/relay_bring_your_own_codegen.html">
+       Bring Your Own Codegen To TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/pytest_target_parametrization.html">
+       Python Target Parametrization
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../arch/index.html">
+   设计与架构
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/runtime.html">
+     TVM 运行时系统
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/debugger.html">
+     Debugger
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/virtual_machine.html">
+     Putting the VM in TVM: The Relay Virtual Machine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/introduction_to_module_serialization.html">
+     Introduction to Module Serialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/pass_infra.html">
+     Pass Infrastructure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/inferbound.html">
+     InferBound Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/hybrid_script.html">
+     Hybrid Frontend Developer Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/relay_intro.html">
+     Introduction to Relay IR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/relay_op_strategy.html">
+     Relay Operator Strategy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/convert_layout.html">
+     Convert Layout Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/benchmark.html">
+     Benchmark Performance Log Format
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/frontend/tensorflow.html">
+     TensorFlow Frontend
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/security.html">
+     Security Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/microtvm_design.html">
+     microTVM Design Document
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/microtvm_project_api.html">
+     microTVM Project API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/model_library_format.html">
+     Model Library Format
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../topic-guides.html">
+   主题指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../topic/microtvm/index.html">
+     microTVM：裸机上的 TVM
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../topic/vta/index.html">
+     VTA：通用张量加速器
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+    <label for="toctree-checkbox-24">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../topic/vta/install.html">
+       VTA 安装指南
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../topic/vta/dev/index.html">
+       VTA 设计和开发指南
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/dev/config.html">
+         VTA 配置
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/dev/hardware.html">
+         VTA 硬件指南
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../topic/vta/tutorials/index.html">
+       VTA 教程
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/matrix_multiply.html">
+         Simple Matrix Multiply
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/vta_get_started.html">
+         Get Started with VTA
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/frontend/index.html">
+         Compile Deep Learning Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/optimize/index.html">
+         Optimize Tensor Operators
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/autotvm/index.html">
+         Auto tuning
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../reference-guide.html">
+   参考指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../reference/langref/index.html">
+     语言参考
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+    <label for="toctree-checkbox-28">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_expr.html">
+       Expressions in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_type.html">
+       Relay’s Type System
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_adt.html">
+       Algebraic Data Types in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_op.html">
+       Relay Core Tensor Operators
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_pattern.html">
+       Pattern Matching in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/hybrid_script.html">
+       Hybrid Frontend Language Reference
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../reference/api/python/index.html">
+     Python API
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/runtime.html">
+       tvm.runtime
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/ndarray.html">
+       tvm.runtime.ndarray
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/error.html">
+       tvm.error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/ir.html">
+       tvm.ir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/target.html">
+       tvm.target
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/tir.html">
+       tvm.tir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/te.html">
+       tvm.te
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/driver.html">
+       tvm.driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/index.html">
+       tvm.relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/frontend.html">
+       tvm.relay.frontend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/nn.html">
+       tvm.relay.nn
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/vision.html">
+       tvm.relay.vision
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/image.html">
+       tvm.relay.image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/transform.html">
+       tvm.relay.transform
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/analysis.html">
+       tvm.relay.analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/backend.html">
+       tvm.relay.backend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/dataflow_pattern.html">
+       tvm.relay.dataflow_pattern
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/testing.html">
+       tvm.relay.testing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/autotvm.html">
+       tvm.autotvm
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/auto_scheduler.html">
+       tvm.auto_scheduler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/rpc.html">
+       tvm.rpc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/micro.html">
+       tvm.micro
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/contrib.html">
+       tvm.contrib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/graph_executor.html">
+       tvm.contrib.graph_executor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/topi.html">
+       tvm.topi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/vta/index.html">
+       vta
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../reference/api/links.html">
+     其他 API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../reference/publications.html">
+     出版物
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../refs/index.html">
+   参考
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+  <label for="toctree-checkbox-30">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../refs/_ffi/index.html">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _ffi
+      </span>
+     </code>
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/base.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.base
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/libinfo.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.libinfo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/object.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi._ctypes.object
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/registry.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.registry
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/runtime_ctypes.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.runtime_ctypes
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/xinetzone/torch-quantization/edit/main/docs/docs/how_to/deploy/vitis_ai.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/docs/how_to/deploy/vitis_ai.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> 导航
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-requirements">
+   System Requirements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup-instructions">
+   Setup instructions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alveo-setup">
+     Alveo Setup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#versal-vck5000-setup">
+     Versal VCK5000 Setup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zynq-setup">
+     Zynq Setup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#versal-vck190-setup">
+     Versal VCK190 Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compiling-a-model">
+   Compiling a Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inference">
+   Inference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-on-alveo-and-vck5000">
+     Running on Alveo and VCK5000
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-on-zynq-and-vck190">
+     Running on Zynq and VCK190
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Vitis AI Integration</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> 导航 </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-requirements">
+   System Requirements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup-instructions">
+   Setup instructions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alveo-setup">
+     Alveo Setup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#versal-vck5000-setup">
+     Versal VCK5000 Setup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zynq-setup">
+     Zynq Setup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#versal-vck190-setup">
+     Versal VCK190 Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compiling-a-model">
+   Compiling a Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inference">
+   Inference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-on-alveo-and-vck5000">
+     Running on Alveo and VCK5000
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-on-zynq-and-vck190">
+     Running on Zynq and VCK190
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="vitis-ai-integration">
+<h1>Vitis AI Integration<a class="headerlink" href="#vitis-ai-integration" title="永久链接至标题">#</a></h1>
+<p><a class="reference external" href="https://github.com/Xilinx/Vitis-AI">Vitis AI</a> is Xilinx’s
+development stack for hardware-accelerated AI inference on Xilinx
+platforms, including both edge devices and Alveo cards. It consists of
+optimized IP, tools, libraries, models, and example designs. It is
+designed with high efficiency and ease of use in mind, unleashing the
+full potential of AI acceleration on Xilinx FPGA and ACAP.</p>
+<p>The current Vitis AI flow inside TVM enables acceleration of Neural
+Network model inference on edge and cloud with the <a class="reference external" href="https://www.xilinx.com/products/silicon-devices/soc/zynq-ultrascale-mpsoc.html">Zynq Ultrascale+
+MPSoc</a>,
+<a class="reference external" href="https://www.xilinx.com/products/boards-and-kits/alveo.html">Alveo</a>
+and <a class="reference external" href="https://www.xilinx.com/products/silicon-devices/acap/versal.html">Versal</a> platforms.
+The identifiers for the supported edge and cloud Deep Learning Processor Units (DPU’s) are:</p>
+<table class="table">
+<colgroup>
+<col style="width: 64%" />
+<col style="width: 16%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Target Board</strong></p></th>
+<th class="head"><p><strong>DPU ID</strong></p></th>
+<th class="head"><p><strong>TVM Target ID</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.xilinx.com/products/boards-and-kits/zcu104.html">ZCU104</a></p></td>
+<td><p>DPUCZDX8G</p></td>
+<td><p>DPUCZDX8G-zcu104</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.xilinx.com/products/boards-and-kits/ek-u1-zcu102-g.html">ZCU102</a></p></td>
+<td><p>DPUCZDX8G</p></td>
+<td><p>DPUCZDX8G-zcu102</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit.html">Kria KV260</a></p></td>
+<td><p>DPUCZDX8G</p></td>
+<td><p>DPUCZDX8G-kv260</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.xilinx.com/products/boards-and-kits/vck190.html">VCK190</a></p></td>
+<td><p>DPUCVDX8G</p></td>
+<td><p>DPUCVDX8G</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.xilinx.com/products/boards-and-kits/vck5000.html">VCK5000</a></p></td>
+<td><p>DPUCVDX8H</p></td>
+<td><p>DPUCVDX8H</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.xilinx.com/products/boards-and-kits/alveo/u200.html">U200</a></p></td>
+<td><p>DPUCADF8H</p></td>
+<td><p>DPUCADF8H</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.xilinx.com/products/boards-and-kits/alveo/u250.html">U250</a></p></td>
+<td><p>DPUCADF8H</p></td>
+<td><p>DPUCADF8H</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.xilinx.com/products/boards-and-kits/alveo/u50.html">U50</a></p></td>
+<td><p>DPUCAHX8H / DPUCAHX8L</p></td>
+<td><p>DPUCAHX8H-u50 / DPUCAHX8L</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.xilinx.com/products/boards-and-kits/alveo/u280.html">U280</a></p></td>
+<td><p>DPUCAHX8H / DPUCAHX8L</p></td>
+<td><p>DPUCAHX8H-u280 / DPUCAHX8L</p></td>
+</tr>
+</tbody>
+</table>
+<p>For more information about the DPU identifiers see following table:</p>
+<table class="table">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 10%" />
+<col style="width: 24%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>DPU</p></th>
+<th class="head"><p>Application</p></th>
+<th class="head"><p>HW Platform</p></th>
+<th class="head"><p>Quantization Method</p></th>
+<th class="head"><p>Quantization Bitwidth</p></th>
+<th class="head"><p>Design Target</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Deep Learning</div>
+<div class="line">Processing Unit</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">C: CNN</div>
+<div class="line">R: RNN</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">AD: Alveo DDR</div>
+<div class="line">AH: Alveo HBM</div>
+<div class="line">VD: Versal DDR with AIE &amp; PL</div>
+<div class="line">ZD: Zynq DDR</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">X: DECENT</div>
+<div class="line">I: Integer threshold</div>
+<div class="line">F: Float threshold</div>
+<div class="line">R: RNN</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">4: 4-bit</div>
+<div class="line">8: 8-bit</div>
+<div class="line">16: 16-bit</div>
+<div class="line">M: Mixed Precision</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">G: General purpose</div>
+<div class="line">H: High throughput</div>
+<div class="line">L: Low latency</div>
+<div class="line">C: Cost optimized</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>On this page you will find information on how to <a class="reference external" href="#setup-instructions">setup</a> TVM with Vitis AI
+on different platforms (Zynq, Alveo, Versal) and on how to get started with <a class="reference external" href="#compiling-a-model">Compiling a Model</a>
+and executing on different platforms: <a class="reference external" href="#inference">Inference</a>.</p>
+<section id="system-requirements">
+<h2>System Requirements<a class="headerlink" href="#system-requirements" title="永久链接至标题">#</a></h2>
+<p>The <a class="reference external" href="https://github.com/Xilinx/Vitis-AI/blob/master/docs/learn/system_requirements.md">Vitis AI System Requirements page</a>
+lists the system requirements for running docker containers as well as doing executing on Alveo cards.
+For edge devices (e.g. Zynq), deploying models requires a host machine for compiling models using the TVM with Vitis AI flow,
+and an edge device for running the compiled models. The host system requirements are the same as specified in the link above.</p>
+</section>
+<section id="setup-instructions">
+<h2>Setup instructions<a class="headerlink" href="#setup-instructions" title="永久链接至标题">#</a></h2>
+<p>This section provide the instructions for setting up the TVM with Vitis AI flow for both cloud and edge.
+TVM with Vitis AI support is provided through a docker container. The provided scripts and Dockerfile
+compiles TVM and Vitis AI into a single image.</p>
+<ol class="arabic">
+<li><p>Clone TVM repo</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone --recursive https://github.com/apache/tvm.git
+<span class="nb">cd</span> tvm
+</pre></div>
+</div>
+</li>
+<li><p>Build and start the TVM - Vitis AI docker container.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./docker/build.sh demo_vitis_ai bash
+./docker/bash.sh tvm.demo_vitis_ai
+
+<span class="c1"># Setup inside container</span>
+conda activate vitis-ai-tensorflow
+</pre></div>
+</div>
+</li>
+<li><p>Build TVM inside the container with Vitis AI (inside tvm directory)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir build
+cp cmake/config.cmake build
+<span class="nb">cd</span> build
+<span class="nb">echo</span> set<span class="se">\(</span>USE_LLVM ON<span class="se">\)</span> &gt;&gt; config.cmake
+<span class="nb">echo</span> set<span class="se">\(</span>USE_VITIS_AI ON<span class="se">\)</span> &gt;&gt; config.cmake
+cmake ..
+make -j<span class="k">$(</span>nproc<span class="k">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Install TVM</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ../python
+pip3 install -e . --user
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Inside this docker container you can now compile models for both cloud and edge targets.
+To run on cloud Alveo or Versal VCK5000 cards inside the docker container, please follow the
+<a class="reference external" href="#alveo-setup">Alveo</a> respectively  <a class="reference external" href="#versal-vck5000-setup">Versal VCK5000</a> setup instructions.
+To setup your Zynq or Versal VCK190 evaluation board for inference, please follow
+the <a class="reference external" href="#zynq-setup">Zynq</a> respectively <a class="reference external" href="#versal-vck190-setup">Versal VCK190</a> instructions.</p>
+<section id="alveo-setup">
+<h3>Alveo Setup<a class="headerlink" href="#alveo-setup" title="永久链接至标题">#</a></h3>
+<p>Check out following page for setup information: <a class="reference external" href="https://github.com/Xilinx/Vitis-AI/blob/v1.4/setup/alveo/README.md">Alveo Setup</a>.</p>
+<p>After setup, you can select the right DPU inside the docker container in the following way:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /workspace
+git clone --branch v1.4 --single-branch --recursive https://github.com/Xilinx/Vitis-AI.git
+<span class="nb">cd</span> Vitis-AI/setup/alveo
+<span class="nb">source</span> setup.sh <span class="o">[</span>DPU-IDENTIFIER<span class="o">]</span>
+</pre></div>
+</div>
+<p>The DPU identifier for this can be found in the second column of the DPU Targets table at the top of this page.</p>
+</section>
+<section id="versal-vck5000-setup">
+<h3>Versal VCK5000 Setup<a class="headerlink" href="#versal-vck5000-setup" title="永久链接至标题">#</a></h3>
+<p>Check out following page for setup information: <a class="reference external" href="https://github.com/Xilinx/Vitis-AI/blob/v1.4/setup/vck5000/README.md">VCK5000 Setup</a>.</p>
+<p>After setup, you can select the right DPU inside the docker container in the following way:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /workspace
+git clone --branch v1.4 --single-branch --recursive https://github.com/Xilinx/Vitis-AI.git
+<span class="nb">cd</span> Vitis-AI/setup/vck5000
+<span class="nb">source</span> setup.sh
+</pre></div>
+</div>
+</section>
+<section id="zynq-setup">
+<h3>Zynq Setup<a class="headerlink" href="#zynq-setup" title="永久链接至标题">#</a></h3>
+<p>For the Zynq target (DPUCZDX8G) the compilation stage will run inside the docker on a host machine.
+This doesn’t require any specific setup except for building the TVM - Vitis AI docker. For executing the model,
+the Zynq board will first have to be set up and more information on that can be found here.</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Download the Petalinux image for your target:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://www.xilinx.com/member/forms/download/design-license-xef.html?filename=xilinx-zcu104-dpu-v2021.1-v1.4.0.img.gz">ZCU104</a></p></li>
+<li><p><a class="reference external" href="https://www.xilinx.com/member/forms/download/design-license-xef.html?filename=xilinx-zcu102-dpu-v2021.1-v1.4.0.img.gz">ZCU102</a></p></li>
+<li><p><a class="reference external" href="https://www.xilinx.com/member/forms/download/design-license-xef.html?filename=xilinx-kv260-dpu-v2020.2-v1.4.0.img.gz">Kria KV260</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Use Etcher software to burn the image file onto the SD card.</p></li>
+<li><p>Insert the SD card with the image into the destination board.</p></li>
+<li><p>Plug in the power and boot the board using the serial port to operate on the system.</p></li>
+<li><p>Set up the IP information of the board using the serial port. For more details on step 1 to 5, please refer to <a class="reference external" href="https://www.xilinx.com/html_docs/vitis_ai/1_4/installation.html#ariaid-title8">Setting Up The Evaluation Board</a>.</p></li>
+<li><p>Create 4GB of swap space on the board</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fallocate -l 4G /swapfile
+chmod <span class="m">600</span> /swapfile
+mkswap /swapfile
+swapon /swapfile
+<span class="nb">echo</span> <span class="s2">&quot;/swapfile swap swap defaults 0 0&quot;</span> &gt; /etc/fstab
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>Install hdf5 dependency (will take between 30 min and 1 hour to finish)</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /tmp <span class="o">&amp;&amp;</span> <span class="se">\</span>
+  wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.7/src/hdf5-1.10.7.tar.gz <span class="o">&amp;&amp;</span> <span class="se">\</span>
+  tar -zxvf hdf5-1.10.7.tar.gz <span class="o">&amp;&amp;</span> <span class="se">\</span>
+  <span class="nb">cd</span> hdf5-1.10.7 <span class="o">&amp;&amp;</span> <span class="se">\</span>
+  ./configure --prefix<span class="o">=</span>/usr <span class="o">&amp;&amp;</span> <span class="se">\</span>
+  make -j<span class="k">$(</span>nproc<span class="k">)</span> <span class="o">&amp;&amp;</span> <span class="se">\</span>
+  make install <span class="o">&amp;&amp;</span> <span class="se">\</span>
+  <span class="nb">cd</span> /tmp <span class="o">&amp;&amp;</span> rm -rf hdf5-1.10.7*
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>Install Python dependencies</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install <span class="nv">Cython</span><span class="o">==</span><span class="m">0</span>.29.23 <span class="nv">h5py</span><span class="o">==</span><span class="m">2</span>.10.0 pillow
+</pre></div>
+</div>
+<ol class="arabic simple" start="9">
+<li><p>Install PyXIR</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone --recursive --branch rel-v0.3.1 --single-branch https://github.com/Xilinx/pyxir.git
+<span class="nb">cd</span> pyxir
+sudo python3 setup.py install --use_vart_edge_dpu
+</pre></div>
+</div>
+<ol class="arabic simple" start="10">
+<li><p>Build and install TVM with Vitis AI</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone --recursive https://github.com/apache/tvm
+<span class="nb">cd</span> tvm
+mkdir build
+cp cmake/config.cmake build
+<span class="nb">cd</span> build
+<span class="nb">echo</span> set<span class="se">\(</span>USE_LLVM OFF<span class="se">\)</span> &gt;&gt; config.cmake
+<span class="nb">echo</span> set<span class="se">\(</span>USE_VITIS_AI ON<span class="se">\)</span> &gt;&gt; config.cmake
+cmake ..
+make tvm_runtime -j<span class="k">$(</span>nproc<span class="k">)</span>
+<span class="nb">cd</span> ../python
+pip3 install --no-deps  -e .
+</pre></div>
+</div>
+<ol class="arabic simple" start="11">
+<li><p>Check whether the setup was successful in the Python shell:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 -c <span class="s1">&#39;import pyxir; import tvm&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>You might see a warning about the ‘cpu-tf’ runtime not being found. This warning is
+expected on the board and can be ignored.</p>
+</div>
+</section>
+<section id="versal-vck190-setup">
+<h3>Versal VCK190 Setup<a class="headerlink" href="#versal-vck190-setup" title="永久链接至标题">#</a></h3>
+<p>For the Versal VCK190 setup, please follow the instructions for <a class="reference external" href="#zynq-setup">Zynq Setup</a>,
+but now use the <a class="reference external" href="https://www.xilinx.com/member/forms/download/design-license-xef.html?filename=xilinx-vck190-dpu-v2020.2-v1.4.0.img.gz">VCK190 image</a>
+in step 1. The other steps are the same.</p>
+</section>
+</section>
+<section id="compiling-a-model">
+<h2>Compiling a Model<a class="headerlink" href="#compiling-a-model" title="永久链接至标题">#</a></h2>
+<p>The TVM with Vitis AI flow contains two stages: Compilation and Inference.
+During the compilation a user can choose a model to compile for the cloud or
+edge target devices that are currently supported. Once a model is compiled,
+the generated files can be used to run the model on a the specified target
+device during the <a class="reference external" href="#inference">Inference</a> stage. Currently, the TVM with
+Vitis AI flow supported a selected number of Xilinx data center and edge devices.</p>
+<p>In this section we walk through the typical flow for compiling models with Vitis AI
+inside TVM.</p>
+<p><strong>Imports</strong></p>
+<p>Make sure to import PyXIR and the DPU target (<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pyxir.contrib.target.DPUCADF8H</span></code> for DPUCADF8H):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyxir</span>
+<span class="kn">import</span> <span class="nn">pyxir.contrib.target.DPUCADF8H</span>
+
+<span class="kn">import</span> <span class="nn">tvm</span>
+<span class="kn">import</span> <span class="nn">tvm.relay</span> <span class="k">as</span> <span class="nn">relay</span>
+<span class="kn">from</span> <span class="nn">tvm.contrib.target</span> <span class="kn">import</span> <span class="n">vitis_ai</span>
+<span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">utils</span><span class="p">,</span> <span class="n">graph_executor</span>
+<span class="kn">from</span> <span class="nn">tvm.relay.op.contrib.vitis_ai</span> <span class="kn">import</span> <span class="n">partition_for_vitis_ai</span>
+</pre></div>
+</div>
+<p><strong>Declare the Target</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tvm_target</span> <span class="o">=</span> <span class="s1">&#39;llvm&#39;</span>
+<span class="n">dpu_target</span> <span class="o">=</span> <span class="s1">&#39;DPUCADF8H&#39;</span> <span class="c1"># options: &#39;DPUCADF8H&#39;, &#39;DPUCAHX8H-u50&#39;, &#39;DPUCAHX8H-u280&#39;, &#39;DPUCAHX8L&#39;, &#39;DPUCVDX8H&#39;, &#39;DPUCZDX8G-zcu104&#39;, &#39;DPUCZDX8G-zcu102&#39;, &#39;DPUCZDX8G-kv260&#39;</span>
+</pre></div>
+</div>
+<p>The TVM with Vitis AI flow currently supports the DPU targets listed in
+the table at the top of this page. Once the appropriate targets are defined,
+we invoke the TVM compiler to build the graph for the specified target.</p>
+<p><strong>Import the Model</strong></p>
+<p>Example code to import an MXNet model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">frontend</span><span class="o">.</span><span class="n">from_mxnet</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Partition the Model</strong></p>
+<p>After importing the model, we utilize the Relay API to annotate the Relay expression for the provided DPU target and partition the graph.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span> <span class="o">=</span> <span class="n">partition_for_vitis_ai</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">dpu</span><span class="o">=</span><span class="n">dpu_target</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Build the Model</strong></p>
+<p>The partitioned model is passed to the TVM compiler to generate the runtime libraries for the TVM Runtime.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">export_rt_mod_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;vitis_ai.rtmod&#39;</span><span class="p">)</span>
+<span class="n">build_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;dpu&#39;</span><span class="p">:</span> <span class="n">dpu_target</span><span class="p">,</span>
+    <span class="s1">&#39;export_runtime_module&#39;</span><span class="p">:</span> <span class="n">export_rt_mod_file</span>
+<span class="p">}</span>
+<span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;relay.ext.vitis_ai.options&#39;</span><span class="p">:</span> <span class="n">build_options</span><span class="p">}):</span>
+    <span class="n">lib</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">tvm_target</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Quantize the Model</strong></p>
+<p>Usually, to be able to accelerate inference of Neural Network models
+with Vitis AI DPU accelerators, those models need to quantized upfront.
+In TVM - Vitis AI flow, we make use of on-the-fly quantization to remove
+this additional preprocessing step. In this flow, one doesn’t need to
+quantize his/her model upfront but can make use of the typical inference
+execution calls (module.run) to quantize the model on-the-fly using the
+first N inputs that are provided (see more information below). This will
+set up and calibrate the Vitis-AI DPU and from that point onwards
+inference will be accelerated for all next inputs. Note that the edge
+flow deviates slightly from the explained flow in that inference won’t
+be accelerated after the first N inputs but the model will have been
+quantized and compiled and can be moved to the edge device for
+deployment. Please check out the <a class="reference external" href="#running-on-zynq">Running on Zynq</a>
+section below for more information.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="o">=</span> <span class="n">graph_executor</span><span class="o">.</span><span class="n">GraphModule</span><span class="p">(</span><span class="n">lib</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">](</span><span class="n">tvm</span><span class="o">.</span><span class="n">cpu</span><span class="p">()))</span>
+
+<span class="c1"># First N (default = 128) inputs are used for quantization calibration and will</span>
+<span class="c1"># be executed on the CPU</span>
+<span class="c1"># This config can be changed by setting the &#39;PX_QUANT_SIZE&#39; (e.g. export PX_QUANT_SIZE=64)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">):</span>
+   <span class="n">module</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="n">input_name</span><span class="p">,</span> <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+   <span class="n">module</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>By default, the number of images used for quantization is set to 128.
+You could change the number of images used for On-The-Fly Quantization
+with the PX_QUANT_SIZE environment variable. For example, execute the
+following line in the terminal before calling the compilation script
+to reduce the quantization calibration dataset to eight images.
+This can be used for quick testing.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PX_QUANT_SIZE</span><span class="o">=</span><span class="m">8</span>
+</pre></div>
+</div>
+<p>Lastly, we store the compiled output from the TVM compiler on disk for
+running the model on the target device. This happens as follows for
+cloud DPU’s (Alveo, VCK5000):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lib_path</span> <span class="o">=</span> <span class="s2">&quot;deploy_lib.so&quot;</span>
+<span class="n">lib</span><span class="o">.</span><span class="n">export_library</span><span class="p">(</span><span class="n">lib_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For edge targets (Zynq, VCK190) we have to rebuild for aarch64. To do this
+we first have to normally export the module to also serialize the Vitis AI
+runtime module (vitis_ai.rtmod). We will load this runtime module again
+afterwards to rebuild and export for aarch64.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">tempdir</span><span class="p">()</span>
+<span class="n">lib</span><span class="o">.</span><span class="n">export_library</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="s2">&quot;tvm_lib.so&quot;</span><span class="p">))</span>
+
+<span class="c1"># Build and export lib for aarch64 target</span>
+<span class="n">tvm_target</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">arm_cpu</span><span class="p">(</span><span class="s1">&#39;ultra96&#39;</span><span class="p">)</span>
+<span class="n">lib_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s1">&#39;fcompile&#39;</span><span class="p">:</span> <span class="n">contrib</span><span class="o">.</span><span class="n">cc</span><span class="o">.</span><span class="n">create_shared</span><span class="p">,</span>
+   <span class="s1">&#39;cc&#39;</span><span class="p">:</span> <span class="s2">&quot;/usr/aarch64-linux-gnu/bin/ld&quot;</span>
+<span class="p">}</span>
+
+<span class="n">build_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;load_runtime_module&#39;</span><span class="p">:</span> <span class="n">export_rt_mod_file</span>
+<span class="p">}</span>
+<span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;relay.ext.vitis_ai.options&#39;</span><span class="p">:</span> <span class="n">build_options</span><span class="p">}):</span>
+     <span class="n">lib_edge</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">tvm_target</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">lib_edge</span><span class="o">.</span><span class="n">export_library</span><span class="p">(</span><span class="s1">&#39;deploy_lib_edge.so&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">lib_kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This concludes the tutorial to compile a model using TVM with Vitis AI.
+For instructions on how to run a compiled model please refer to the next section.</p>
+</section>
+<section id="inference">
+<h2>Inference<a class="headerlink" href="#inference" title="永久链接至标题">#</a></h2>
+<p>The TVM with Vitis AI flow contains two stages: Compilation and Inference.
+During the compilation a user can choose to compile a model for any of the
+target devices that are currently supported. Once a model is compiled, the
+generated files can be used to run the model on a target device during the
+Inference stage.</p>
+<p>Check out the <a class="reference external" href="#running-on-alveo-and-vck5000">Running on Alveo and VCK5000</a>
+and <a class="reference external" href="#running-on-zynq-and-vck190">Running on Zynq and VCK190</a> sections for
+doing inference on cloud accelerator cards respectively edge boards.</p>
+<section id="running-on-alveo-and-vck5000">
+<h3>Running on Alveo and VCK5000<a class="headerlink" href="#running-on-alveo-and-vck5000" title="永久链接至标题">#</a></h3>
+<p>After having followed the steps in the <a class="reference external" href="#compiling-a-model">Compiling a Model</a>
+section, you can continue running on new inputs inside the docker for accelerated
+inference:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">module</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="n">input_name</span><span class="p">,</span> <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">module</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Alternatively, you can load the exported runtime module (the deploy_lib.so
+exported in  <a class="reference external" href="#compiling-a-model">Compiling a Model</a>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyxir</span>
+<span class="kn">import</span> <span class="nn">tvm</span>
+<span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">graph_executor</span>
+
+<span class="n">dev</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+
+<span class="c1"># input_name = ...</span>
+<span class="c1"># input_data = ...</span>
+
+<span class="c1"># load the module into memory</span>
+<span class="n">lib</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">load_module</span><span class="p">(</span><span class="s2">&quot;deploy_lib.so&quot;</span><span class="p">)</span>
+
+<span class="n">module</span> <span class="o">=</span> <span class="n">graph_executor</span><span class="o">.</span><span class="n">GraphModule</span><span class="p">(</span><span class="n">lib</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">](</span><span class="n">dev</span><span class="p">))</span>
+<span class="n">module</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="n">input_name</span><span class="p">,</span> <span class="n">input_data</span><span class="p">)</span>
+<span class="n">module</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="running-on-zynq-and-vck190">
+<h3>Running on Zynq and VCK190<a class="headerlink" href="#running-on-zynq-and-vck190" title="永久链接至标题">#</a></h3>
+<p>Before proceeding, please follow the  <a class="reference external" href="#zynq-setup">Zynq</a> or
+<a class="reference external" href="#versal-vck190-setup">Versal VCK190</a> setup instructions.</p>
+<p>Prior to running a model on the board, you need to compile the model for
+your target evaluation board and transfer the compiled model on to the board.
+Please refer to the <a class="reference external" href="#compiling-a-model">Compiling a Model</a> section for
+information on how to compile a model.</p>
+<p>Afterwards, you will have to transfer the compiled model (deploy_lib_edge.so)
+to the evaluation board. Then, on the board you can use the typical
+“load_module” and “module.run” APIs to execute. For this, please make sure to
+run the script as root (execute <code class="docutils literal notranslate"><span class="pre">su</span></code> in terminal to log into root).</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Note also that you <strong>shouldn’t</strong> import the
+PyXIR DPU targets in the run script (<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pyxir.contrib.target.DPUCZDX8G</span></code>).</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyxir</span>
+<span class="kn">import</span> <span class="nn">tvm</span>
+<span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">graph_executor</span>
+
+<span class="n">dev</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+
+<span class="c1"># input_name = ...</span>
+<span class="c1"># input_data = ...</span>
+
+<span class="c1"># load the module into memory</span>
+<span class="n">lib</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">load_module</span><span class="p">(</span><span class="s2">&quot;deploy_lib_edge.so&quot;</span><span class="p">)</span>
+
+<span class="n">module</span> <span class="o">=</span> <span class="n">graph_executor</span><span class="o">.</span><span class="n">GraphModule</span><span class="p">(</span><span class="n">lib</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">](</span><span class="n">dev</span><span class="p">))</span>
+<span class="n">module</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="n">input_name</span><span class="p">,</span> <span class="n">input_data</span><span class="p">)</span>
+<span class="n">module</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="tensorrt.html" title="上一页 页">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一页</p>
+            <p class="prev-next-title">Relay TensorRT Integration</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="bnns.html" title="下一页 页">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">Relay BNNS Integration</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By xinetzone<br/>
+  
+      &copy; Copyright 2022, xinetzone.<br/>
+    Last updated on 2022-04-07, 15:51:47.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

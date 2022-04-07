@@ -1,0 +1,2887 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>索引 &#8212; TVM  文档</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <link rel="shortcut icon" href="_static/tvm-logo-square.png"/>
+    <link rel="index" title="索引" href="#" />
+    <link rel="search" title="搜索" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_CN">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/tvm-logo-small.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">TVM  文档</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/README.html">
+   TVM 文档
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="start.html">
+   快速上手
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="docs/install/index.html">
+     安装 TVM
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="docs/install/from_source.html">
+       从源码安装
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/install/nnpack.html">
+         NNPACK Contrib Installation
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/install/docker.html">
+       Docker 镜像
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/install/tlcpack.html">
+       TLCPack
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="docs/contribute/index.html">
+     Contributor Guide
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/contribute/community.html">
+       TVM Community Guidelines
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/contribute/pull_request.html">
+       Submit a Pull Request
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/contribute/code_review.html">
+       Code Reviews
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/contribute/committer_guide.html">
+       Committer Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/contribute/document.html">
+       Documentation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/contribute/code_guide.html">
+       Code Guide and Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/contribute/git_howto.html">
+       Git Usage Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/contribute/ci.html">
+       Using TVM’s CI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/contribute/release_process.html">
+       Release Process
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/contribute/error_handling.html">
+       Error Handling Guide
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="study/index.html">
+   学习笔记
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="study/quantize.html">
+     量化
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="study/start.html">
+     TVM 入门指南
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="study/test.html">
+     测试 TVM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="user-guide.html">
+   用户手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="docs/tutorial/index.html">
+     用户指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/tutorial/introduction.html">
+       TVM 和模型优化的概述
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/tutorial/tvmc_command_line_driver.html">
+       用 TVMC 编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/tutorial/tvmc_python.html">
+       开始使用 TVMC Python：TVM 的高级 API
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/tutorial/autotvm_relay_x86.html">
+       用 Python 接口编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/tutorial/tensor_expr_get_started.html">
+       使用张量表达式处理算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/tutorial/autotvm_matmul_x86.html">
+       用调度模板和 AutoTVM 优化算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/tutorial/auto_scheduler_matmul_x86.html">
+       使用自动调度优化运算
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/tutorial/tensor_ir_blitz_course.html">
+       TensorIR 的突击课程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/tutorial/cross_compilation_and_rpc.html">
+       交叉编译和RPC
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/tutorial/relay_quick_start.html">
+       编译深度学习模型的快速入门教程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/tutorial/intro_topi.html">
+       TOPI 简介
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="docs/how_to/index.html">
+     How To 指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="docs/how_to/compile_models/index.html">
+       编译深度学习模型
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+      <label for="toctree-checkbox-9">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/compile_models/from_pytorch.html">
+         编译 PyTorch 模型
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/compile_models/from_tensorflow.html">
+         Compile Tensorflow Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/compile_models/from_mxnet.html">
+         Compile MXNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/compile_models/from_onnx.html">
+         Compile ONNX Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/compile_models/from_keras.html">
+         Compile Keras Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/compile_models/from_tflite.html">
+         Compile TFLite Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/compile_models/from_coreml.html">
+         Compile CoreML Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/compile_models/from_darknet.html">
+         Compile YOLO-V2 and YOLO-V3 in DarkNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/compile_models/from_caffe2.html">
+         Compile Caffe2 Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/compile_models/from_paddle.html">
+         Compile PaddlePaddle Models
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="docs/how_to/deploy/index.html">
+       部署模型，集成 TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/deploy/cpp_deploy.html">
+         Deploy TVM Module using C++ API
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/deploy/android.html">
+         Deploy to Android
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/deploy/integrate.html">
+         Integrate TVM into Your Project
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/deploy/hls.html">
+         HLS Backend Example
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/deploy/arm_compute_lib.html">
+         Relay Arm
+         <sup>
+          ®
+         </sup>
+         Compute Library Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/deploy/tensorrt.html">
+         Relay TensorRT Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/deploy/vitis_ai.html">
+         Vitis AI Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/deploy/bnns.html">
+         Relay BNNS Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/deploy_models/index.html">
+         部署深度学习模型
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="docs/how_to/work_with_relay/index.html">
+       Work With Relay
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+      <label for="toctree-checkbox-11">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="docs/how_to/work_with_schedules/index.html">
+       Work With Tensor Expression and Schedules
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+      <label for="toctree-checkbox-12">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="docs/how_to/optimize_operators/index.html">
+       Optimize Tensor Operators
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+      <label for="toctree-checkbox-13">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="docs/how_to/tune_with_autotvm/index.html">
+       Auto-Tune with Templates and AutoTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+      <label for="toctree-checkbox-14">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/tune_with_autotvm/tune_conv2d_cuda.html">
+         Tuning High Performance Convolution on NVIDIA GPUs
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/tune_with_autotvm/tune_relay_cuda.html">
+         Auto-tuning a Convolutional Network for NVIDIA GPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/tune_with_autotvm/tune_relay_x86.html">
+         Auto-tuning a Convolutional Network for x86 CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/tune_with_autotvm/tune_relay_arm.html">
+         Auto-tuning a Convolutional Network for ARM CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/tune_with_autotvm/tune_relay_mobile_gpu.html">
+         Auto-tuning a Convolutional Network for Mobile GPU
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="docs/how_to/tune_with_autoscheduler/index.html">
+       Use AutoScheduler for Template-Free Scheduling
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+      <label for="toctree-checkbox-15">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="docs/how_to/work_with_microtvm/index.html">
+       Work With microTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+      <label for="toctree-checkbox-16">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="docs/how_to/extend_tvm/index.html">
+       Extend TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+      <label for="toctree-checkbox-17">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="docs/how_to/profile/index.html">
+       Profile Models
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+      <label for="toctree-checkbox-18">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/how_to/profile/papi.html">
+         Getting Started With PAPI
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/errors.html">
+       处理 TVM 的错误
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/faq.html">
+       常见问题
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="developer-guide.html">
+   开发手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="docs/dev/tutorial/index.html">
+     开发者教程
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+    <label for="toctree-checkbox-20">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/dev/tutorial/codebase_walkthrough.html">
+       TVM 代码库的实例演练
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="docs/dev/how_to/how_to.html">
+     开发者 How-To 指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/dev/how_to/relay_add_op.html">
+       Adding an Operator to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/dev/how_to/relay_add_pass.html">
+       Adding a Compiler Pass to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/dev/how_to/relay_bring_your_own_codegen.html">
+       Bring Your Own Codegen To TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/dev/how_to/pytest_target_parametrization.html">
+       Python Target Parametrization
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="docs/arch/index.html">
+   设计与架构
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/runtime.html">
+     TVM 运行时系统
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/debugger.html">
+     Debugger
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/virtual_machine.html">
+     Putting the VM in TVM: The Relay Virtual Machine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/introduction_to_module_serialization.html">
+     Introduction to Module Serialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/pass_infra.html">
+     Pass Infrastructure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/inferbound.html">
+     InferBound Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/hybrid_script.html">
+     Hybrid Frontend Developer Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/relay_intro.html">
+     Introduction to Relay IR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/relay_op_strategy.html">
+     Relay Operator Strategy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/convert_layout.html">
+     Convert Layout Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/benchmark.html">
+     Benchmark Performance Log Format
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/frontend/tensorflow.html">
+     TensorFlow Frontend
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/security.html">
+     Security Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/microtvm_design.html">
+     microTVM Design Document
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/microtvm_project_api.html">
+     microTVM Project API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/arch/model_library_format.html">
+     Model Library Format
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="topic-guides.html">
+   主题指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/topic/microtvm/index.html">
+     microTVM：裸机上的 TVM
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="docs/topic/vta/index.html">
+     VTA：通用张量加速器
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+    <label for="toctree-checkbox-24">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/topic/vta/install.html">
+       VTA 安装指南
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="docs/topic/vta/dev/index.html">
+       VTA 设计和开发指南
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/topic/vta/dev/config.html">
+         VTA 配置
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/topic/vta/dev/hardware.html">
+         VTA 硬件指南
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="docs/topic/vta/tutorials/index.html">
+       VTA 教程
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/topic/vta/tutorials/matrix_multiply.html">
+         Simple Matrix Multiply
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/topic/vta/tutorials/vta_get_started.html">
+         Get Started with VTA
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/topic/vta/tutorials/frontend/index.html">
+         Compile Deep Learning Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/topic/vta/tutorials/optimize/index.html">
+         Optimize Tensor Operators
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="docs/topic/vta/tutorials/autotvm/index.html">
+         Auto tuning
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="reference-guide.html">
+   参考指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="docs/reference/langref/index.html">
+     语言参考
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+    <label for="toctree-checkbox-28">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/langref/relay_expr.html">
+       Expressions in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/langref/relay_type.html">
+       Relay’s Type System
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/langref/relay_adt.html">
+       Algebraic Data Types in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/langref/relay_op.html">
+       Relay Core Tensor Operators
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/langref/relay_pattern.html">
+       Pattern Matching in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/langref/hybrid_script.html">
+       Hybrid Frontend Language Reference
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="docs/reference/api/python/index.html">
+     Python API
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/runtime.html">
+       tvm.runtime
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/ndarray.html">
+       tvm.runtime.ndarray
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/error.html">
+       tvm.error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/ir.html">
+       tvm.ir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/target.html">
+       tvm.target
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/tir.html">
+       tvm.tir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/te.html">
+       tvm.te
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/driver.html">
+       tvm.driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/relay/index.html">
+       tvm.relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/relay/frontend.html">
+       tvm.relay.frontend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/relay/nn.html">
+       tvm.relay.nn
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/relay/vision.html">
+       tvm.relay.vision
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/relay/image.html">
+       tvm.relay.image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/relay/transform.html">
+       tvm.relay.transform
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/relay/analysis.html">
+       tvm.relay.analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/relay/backend.html">
+       tvm.relay.backend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/relay/dataflow_pattern.html">
+       tvm.relay.dataflow_pattern
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/relay/testing.html">
+       tvm.relay.testing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/autotvm.html">
+       tvm.autotvm
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/auto_scheduler.html">
+       tvm.auto_scheduler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/rpc.html">
+       tvm.rpc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/micro.html">
+       tvm.micro
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/contrib.html">
+       tvm.contrib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/graph_executor.html">
+       tvm.contrib.graph_executor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/topi.html">
+       tvm.topi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docs/reference/api/python/vta/index.html">
+       vta
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/reference/api/links.html">
+     其他 API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docs/reference/publications.html">
+     出版物
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="refs/index.html">
+   参考
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+  <label for="toctree-checkbox-30">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="refs/_ffi/index.html">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _ffi
+      </span>
+     </code>
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="refs/_ffi/base.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.base
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="refs/_ffi/libinfo.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.libinfo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="refs/_ffi/object.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi._ctypes.object
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="refs/_ffi/registry.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.registry
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="refs/_ffi/runtime_ctypes.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.runtime_ctypes
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1></h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+
+<h1 id="index">索引</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#_"><strong>_</strong></a>
+ | <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#Q"><strong>Q</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ | <a href="#X"><strong>X</strong></a>
+ | <a href="#模"><strong>模</strong></a>
+ 
+</div>
+<h2 id="_">_</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.NDArray.__dlpack__">__dlpack__() (tvm.nd.NDArray 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.NDArray.__dlpack_device__">__dlpack_device__() (tvm.nd.NDArray 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigSpace.__getitem__">__getitem__() (tvm.autotvm.task.space.ConfigSpace 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.TransformSpace.__getitem__">(tvm.autotvm.task.space.TransformSpace 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/graph_executor.html#tvm.contrib.graph_executor.GraphModule.__getitem__">(tvm.contrib.graph_executor.GraphModule 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.ApplyGraphBest.__init__">__init__() (tvm.autotvm.task.dispatcher.ApplyGraphBest 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.sparse.CSRNDArray.__init__">(tvm.contrib.sparse.CSRNDArray 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.sparse.CSRPlaceholderOp.__init__">(tvm.contrib.sparse.CSRPlaceholderOp 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.sparse.SparsePlaceholderOp.__init__">(tvm.contrib.sparse.SparsePlaceholderOp 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.NDArray.__init__">(tvm.nd.NDArray 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="refs/_ffi/object.html#tvm._ffi._ctypes.object.__init_by_constructor__">__init_by_constructor__() (在 tvm._ffi._ctypes.object 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/object.html#tvm._ffi._ctypes.object.ObjectBase.__init_handle_by_constructor__">__init_handle_by_constructor__() (tvm._ffi._ctypes.object.ObjectBase 方法)</a>
+</li>
+      <li><a href="refs/_ffi/object.html#tvm._ffi._ctypes.object.PyNativeObject.__init_tvm_object_by_constructor__">__init_tvm_object_by_constructor__() (tvm._ffi._ctypes.object.PyNativeObject 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.FallbackConfigEntity.__setitem__">__setitem__() (tvm.autotvm.task.space.FallbackConfigEntity 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.NDArray.__setitem__">(tvm.nd.NDArray 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigSpace._add_new_transform">_add_new_transform() (tvm.autotvm.task.space.ConfigSpace 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.pickle_memoize._atexit">_atexit() (在 tvm.contrib.pickle_memoize 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.interface.DefaultVizParser._call">_call() (tvm.contrib.relay_viz.interface.DefaultVizParser 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.interpreter.Executor._convert_args">_convert_args() (tvm.relay.backend.interpreter.Executor 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.NDArray._copyto">_copyto() (tvm.nd.NDArray 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.NDArray._create_view">_create_view() (tvm.nd.NDArray 方法)</a>
+</li>
+      <li><a href="refs/_ffi/base.html#tvm._ffi.base._find_error_type">_find_error_type() (在 tvm._ffi.base 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.interface.DefaultVizParser._function">_function() (tvm.contrib.relay_viz.interface.DefaultVizParser 方法)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.AnnotateSpace._generate_space">_generate_space() (tvm.autotvm.task.space.AnnotateSpace 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.SplitSpace._generate_space">(tvm.autotvm.task.space.SplitSpace 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.miopen._get_np_int32_array_handle">_get_np_int32_array_handle() (在 tvm.contrib.miopen 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device._GetDeviceAttr">_GetDeviceAttr() (tvm._ffi.runtime_ctypes.Device 方法)</a>
+</li>
+      <li><a href="refs/_ffi/registry.html#tvm._ffi.registry._init_api">_init_api() (在 tvm._ffi.registry 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/base.html#tvm._ffi.base._load_lib">_load_lib() (在 tvm._ffi.base 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.densenet._make_dense_block">_make_dense_block() (在 tvm.relay.testing.densenet 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.densenet._make_dense_layer">_make_dense_layer() (在 tvm.relay.testing.densenet 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.densenet._make_dense_net">_make_dense_net() (在 tvm.relay.testing.densenet 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.interpreter.Executor._make_executor">_make_executor() (tvm.relay.backend.interpreter.Executor 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.densenet._make_transition">_make_transition() (在 tvm.relay.testing.densenet 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ReorderSpace._merge_chain">_merge_chain() (tvm.autotvm.task.space.ReorderSpace 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.ApplyConfig._query_inside">_query_inside() (tvm.autotvm.task.dispatcher.ApplyConfig 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.ApplyGraphBest._query_inside">(tvm.autotvm.task.dispatcher.ApplyGraphBest 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.DispatchContext._query_inside">(tvm.autotvm.task.dispatcher.DispatchContext 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.task._register_customized_task">_register_customized_task() (在 tvm.autotvm.task.task 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/object.html#tvm._ffi._ctypes.object._register_object">_register_object() (在 tvm._ffi._ctypes.object 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.task._register_task_compute">_register_task_compute() (在 tvm.autotvm.task.task 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.task._register_task_schedule">_register_task_schedule() (在 tvm.autotvm.task.task 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.vm.VMCompiler._tophub_context">_tophub_context() (tvm.relay.backend.vm.VMCompiler 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.vm.VMCompiler._update_target">_update_target() (tvm.relay.backend.vm.VMCompiler 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.vm.VMCompiler._update_target_host">_update_target_host() (tvm.relay.backend.vm.VMCompiler 方法)</a>
+</li>
+      <li><a href="refs/_ffi/base.html#tvm._ffi.base._valid_error_name">_valid_error_name() (在 tvm._ffi.base 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.interface.DefaultVizParser._var">_var() (tvm.contrib.relay_viz.interface.DefaultVizParser 方法)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigSpace.add_flop">add_flop() (tvm.autotvm.task.space.ConfigSpace 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.topi_integration.TaskExtractEnv.add_task">add_task() (tvm.autotvm.task.topi_integration.TaskExtractEnv 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.AnnotateEntity">AnnotateEntity (tvm.autotvm.task.space 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.AnnotateSpace">AnnotateSpace (tvm.autotvm.task.space 中的类)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device.api_version">api_version (tvm._ffi.runtime_ctypes.Device property)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.AnnotateEntity.apply">apply() (tvm.autotvm.task.space.AnnotateEntity 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ReorderEntity.apply">(tvm.autotvm.task.space.ReorderEntity 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.SplitEntity.apply">(tvm.autotvm.task.space.SplitEntity 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.apply_history_best">apply_history_best() (在 tvm.autotvm 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.ApplyConfig">ApplyConfig (tvm.autotvm.task.dispatcher 中的类)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.ApplyGraphBest">ApplyGraphBest (tvm.autotvm.task.dispatcher 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.ApplyHistoryBest">ApplyHistoryBest (tvm.autotvm.task.dispatcher 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.task.args_to_workload">args_to_workload() (在 tvm.autotvm.task.task 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.ArgTypeCode">ArgTypeCode (tvm._ffi.runtime_ctypes 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.sparse.array">array() (在 tvm.contrib.sparse 模块中)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.array">(在 tvm.nd 模块中)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.sparse.CSRNDArray.asnumpy">asnumpy() (tvm.contrib.sparse.CSRNDArray 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.NDArray.asnumpy">(tvm.nd.NDArray 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.Axis">Axis (tvm.autotvm.task.space 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigSpace.axis">axis() (tvm.autotvm.task.space.ConfigSpace 静态方法)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.cblas.batch_matmul">batch_matmul() (在 tvm.contrib.cblas 模块中)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.cublas.batch_matmul">(在 tvm.contrib.cublas 模块中)</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.rocblas.batch_matmul">(在 tvm.contrib.rocblas 模块中)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/graph_executor.html#tvm.contrib.graph_executor.GraphModule.benchmark">benchmark() (tvm.contrib.graph_executor.GraphModule 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/driver.html#tvm.build">build() (在 tvm 模块中)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/vta/index.html#vta.build">(在 vta 模块中)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/vta/index.html#vta.build_config">build_config() (在 vta 模块中)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="refs/_ffi/base.html#tvm._ffi.base.c2pyerror">c2pyerror() (在 tvm._ffi.base 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/base.html#tvm._ffi.base.c_array">c_array() (在 tvm._ffi.base 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/base.html#tvm._ffi.base.c_str">c_str() (在 tvm._ffi.base 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.pickle_memoize.Cache">Cache (tvm.contrib.pickle_memoize 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.te_compiler.CCacheKey">CCacheKey (tvm.relay.backend.te_compiler 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.te_compiler.CCacheValue">CCacheValue (tvm.relay.backend.te_compiler 中的类)</a>
+</li>
+      <li><a href="refs/_ffi/base.html#tvm._ffi.base.check_call">check_call() (在 tvm._ffi.base 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.te_compiler.TECompiler.clear">clear() (tvm.relay.backend.te_compiler.TECompiler 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.FallbackContext.clear_cache">clear_cache() (tvm.autotvm.task.dispatcher.FallbackContext 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.clear_fallback_cache">clear_fallback_cache() (在 tvm.autotvm.task.dispatcher 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen.codegen">codegen() (tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.vm.VMCompiler.codegen">(tvm.relay.backend.vm.VMCompiler 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.vm.compile">compile() (在 tvm.relay.backend.vm 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.xcode.compile_coreml">compile_coreml() (在 tvm.contrib.xcode 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.nvcc.compile_cuda">compile_cuda() (在 tvm.contrib.nvcc 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.xcode.compile_metal">compile_metal() (在 tvm.contrib.xcode 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.task.compute_flop">compute_flop() (在 tvm.autotvm.task.task 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device.compute_version">compute_version (tvm._ffi.runtime_ctypes.Device property)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigEntity">ConfigEntity (tvm.autotvm.task.space 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigSpace">ConfigSpace (tvm.autotvm.task.space 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.interpreter.ConstructorValue">ConstructorValue (tvm.relay.backend.interpreter 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.miopen.conv2d_forward">conv2d_forward() (在 tvm.contrib.miopen 模块中)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.mobilenet.conv_block">conv_block() (在 tvm.relay.testing.mobilenet 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.dlpack.convert_func">convert_func() (在 tvm.contrib.dlpack 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.nnpack.convolution_inference">convolution_inference() (在 tvm.contrib.nnpack 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.nnpack.convolution_inference_weight_transform">convolution_inference_weight_transform() (在 tvm.contrib.nnpack 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.nnpack.convolution_inference_without_weight_transform">convolution_inference_without_weight_transform() (在 tvm.contrib.nnpack 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.NDArray.copyfrom">copyfrom() (tvm.nd.NDArray 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.NDArray.copyto">copyto() (tvm.nd.NDArray 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.task.create">create() (在 tvm.autotvm.task.task 模块中)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/graph_executor.html#tvm.contrib.graph_executor.create">(在 tvm.contrib.graph_executor 模块中)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.xcode.create_dylib">create_dylib() (在 tvm.contrib.xcode 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.cc.create_executable">create_executable() (在 tvm.contrib.cc 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.interface.Plotter.create_graph">create_graph() (tvm.contrib.relay_viz.interface.Plotter 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.terminal.TermPlotter.create_graph">(tvm.contrib.relay_viz.terminal.TermPlotter 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.clang.create_llvm">create_llvm() (在 tvm.contrib.clang 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.measure.create_measure_batch">create_measure_batch() (在 tvm.autotvm.measure 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device.create_raw_stream">create_raw_stream() (tvm._ffi.runtime_ctypes.Device 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.cc.create_shared">create_shared() (在 tvm.contrib.cc 模块中)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.ndk.create_shared">(在 tvm.contrib.ndk 模块中)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.emcc.create_tvmjs_wasm">create_tvmjs_wasm() (在 tvm.contrib.emcc 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.cc.cross_compiler">cross_compiler() (在 tvm.contrib.cc 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.sparse.CSRNDArray">CSRNDArray (tvm.contrib.sparse 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.sparse.CSRPlaceholderOp">CSRPlaceholderOp (tvm.contrib.sparse 中的类)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.DataType">DataType (tvm._ffi.runtime_ctypes 中的类)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.DataTypeCode">DataTypeCode (tvm._ffi.runtime_ctypes 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/graph_executor.html#tvm.contrib.graph_executor.GraphModule.debug_get_output">debug_get_output() (tvm.contrib.graph_executor.GraphModule 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.record.decode">decode() (在 tvm.autotvm.record 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.dcgan.deconv2d">deconv2d() (在 tvm.relay.testing.dcgan 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.dcgan.deconv2d_bn_relu">deconv2d_bn_relu() (在 tvm.relay.testing.dcgan 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/base.html#tvm._ffi.base.decorate">decorate() (在 tvm._ffi.base 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.interface.DefaultVizParser">DefaultVizParser (tvm.contrib.relay_viz.interface 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigSpace.define_annotate">define_annotate() (tvm.autotvm.task.space.ConfigSpace 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigSpace.define_knob">define_knob() (tvm.autotvm.task.space.ConfigSpace 方法)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigSpace.define_reorder">define_reorder() (tvm.autotvm.task.space.ConfigSpace 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigSpace.define_split">define_split() (tvm.autotvm.task.space.ConfigSpace 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.task.deserialize_args">deserialize_args() (在 tvm.autotvm.task.task 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device">Device (tvm._ffi.runtime_ctypes 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.NDArray.device">device (tvm.nd.NDArray property)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device.device_name">device_name (tvm._ffi.runtime_ctypes.Device property)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.utils.DirectoryCreatedPastAtExit">DirectoryCreatedPastAtExit</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.DispatchContext">DispatchContext (tvm.autotvm.task.dispatcher 中的类)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device.driver_version">driver_version (tvm._ffi.runtime_ctypes.Device property)</a>
+</li>
+      <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.NDArray.dtype">dtype (tvm.nd.NDArray property)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.interface.VizGraph.edge">edge() (tvm.contrib.relay_viz.interface.VizGraph 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.terminal.TermGraph.edge">(tvm.contrib.relay_viz.terminal.TermGraph 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.empty">empty() (在 tvm.nd 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.record.encode">encode() (在 tvm.autotvm.record 模块中)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/vta/index.html#vta.Environment">Environment() (在 vta 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.interpreter.Executor.evaluate">evaluate() (tvm.relay.backend.interpreter.Executor 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.interpreter.Executor">Executor (tvm.relay.backend.interpreter 中的类)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device.exist">exist (tvm._ffi.runtime_ctypes.Device property)</a>
+</li>
+      <li><a href="refs/_ffi/registry.html#tvm._ffi.registry.extract_ext_funcs">extract_ext_funcs() (在 tvm._ffi.registry 模块中)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.FallbackConfigEntity.fallback_split">fallback_split() (tvm.autotvm.task.space.FallbackConfigEntity 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.FallbackConfigEntity.fallback_with_reference_log">fallback_with_reference_log() (tvm.autotvm.task.space.FallbackConfigEntity 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.FallbackConfigEntity">FallbackConfigEntity (tvm.autotvm.task.space 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.FallbackContext">FallbackContext (tvm.autotvm.task.dispatcher 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.utils.FileLock">FileLock (tvm.contrib.utils 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.utils.filelock">filelock() (在 tvm.contrib.utils 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.clang.find_clang">find_clang() (在 tvm.contrib.clang 模块中)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.nvcc.find_cuda_path">find_cuda_path() (在 tvm.contrib.nvcc 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/libinfo.html#tvm._ffi.libinfo.find_include_path">find_include_path() (在 tvm._ffi.libinfo 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/libinfo.html#tvm._ffi.libinfo.find_lib_path">find_lib_path() (在 tvm._ffi.libinfo 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.rocm.find_lld">find_lld() (在 tvm.contrib.rocm 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.task.FlopCalculationError">FlopCalculationError</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device.free_raw_stream">free_raw_stream() (tvm._ffi.runtime_ctypes.Device 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigEntity.from_json_dict">from_json_dict() (tvm.autotvm.task.space.ConfigEntity 静态方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.nnpack.fully_connected_inference">fully_connected_inference() (在 tvm.contrib.nnpack 模块中)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GATuner">GATuner (tvm.autotvm.tuner 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigSpace.get">get() (tvm.autotvm.task.space.ConfigSpace 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.topi_integration.TaskExtractEnv.get">(tvm.autotvm.task.topi_integration.TaskExtractEnv 静态方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.te_compiler.get">(在 tvm.relay.backend.te_compiler 模块中)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.cc.get_cc">get_cc() (在 tvm.contrib.cc 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.vgg.get_classifier">get_classifier() (在 tvm.relay.testing.vgg 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.task.get_config">get_config() (在 tvm.autotvm.task.task 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.nvcc.get_cuda_version">get_cuda_version() (在 tvm.contrib.nvcc 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/graph_executor.html#tvm.contrib.graph_executor.get_device">get_device() (在 tvm.contrib.graph_executor 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/libinfo.html#tvm._ffi.libinfo.get_dll_directories">get_dll_directories() (在 tvm._ffi.libinfo 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/vta/index.html#vta.get_env">get_env() (在 vta 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.vm.VMCompiler.get_exec">get_exec() (tvm.relay.backend.vm.VMCompiler 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.get_factors">get_factors() (在 tvm.autotvm.task.space 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.vgg.get_feature">get_feature() (在 tvm.relay.testing.vgg 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigEntity.get_flatten_feature">get_flatten_feature() (tvm.autotvm.task.space.ConfigEntity 方法)</a>
+</li>
+      <li><a href="refs/_ffi/registry.html#tvm._ffi.registry.get_global_func">get_global_func() (在 tvm._ffi.registry 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/graph_executor.html#tvm.contrib.graph_executor.GraphModule.get_input">get_input() (tvm.contrib.graph_executor.GraphModule 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/graph_executor.html#tvm.contrib.graph_executor.GraphModule.get_input_index">get_input_index() (tvm.contrib.graph_executor.GraphModule 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/graph_executor.html#tvm.contrib.graph_executor.GraphModule.get_input_info">get_input_info() (tvm.contrib.graph_executor.GraphModule 方法)</a>
+</li>
+      <li><a href="refs/_ffi/base.html#tvm._ffi.base.get_last_ffi_error">get_last_ffi_error() (在 tvm._ffi.base 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.dcgan.get_net">get_net() (在 tvm.relay.testing.dcgan 模块中)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.inception_v3.get_net">(在 tvm.relay.testing.inception_v3 模块中)</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.lstm.get_net">(在 tvm.relay.testing.lstm 模块中)</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.mlp.get_net">(在 tvm.relay.testing.mlp 模块中)</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.resnet.get_net">(在 tvm.relay.testing.resnet 模块中)</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.squeezenet.get_net">(在 tvm.relay.testing.squeezenet 模块中)</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.vgg.get_net">(在 tvm.relay.testing.vgg 模块中)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.interface.DefaultVizParser.get_node_edges">get_node_edges() (tvm.contrib.relay_viz.interface.DefaultVizParser 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.interface.VizParser.get_node_edges">(tvm.contrib.relay_viz.interface.VizParser 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.terminal.TermVizParser.get_node_edges">(tvm.contrib.relay_viz.terminal.TermVizParser 方法)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/graph_executor.html#tvm.contrib.graph_executor.GraphModule.get_num_inputs">get_num_inputs() (tvm.contrib.graph_executor.GraphModule 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.AnnotateSpace.get_num_output">get_num_output() (tvm.autotvm.task.space.AnnotateSpace 静态方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.OtherOptionSpace.get_num_output">(tvm.autotvm.task.space.OtherOptionSpace 静态方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ReorderSpace.get_num_output">(tvm.autotvm.task.space.ReorderSpace 静态方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.SplitSpace.get_num_output">(tvm.autotvm.task.space.SplitSpace 静态方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.TransformSpace.get_num_output">(tvm.autotvm.task.space.TransformSpace 静态方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.VirtualAxis.get_num_output">(tvm.autotvm.task.space.VirtualAxis 静态方法)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/graph_executor.html#tvm.contrib.graph_executor.GraphModule.get_num_outputs">get_num_outputs() (tvm.contrib.graph_executor.GraphModule 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigEntity.get_other_option">get_other_option() (tvm.autotvm.task.space.ConfigEntity 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/graph_executor.html#tvm.contrib.graph_executor.GraphModule.get_output">get_output() (tvm.contrib.graph_executor.GraphModule 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.vm.VMCompiler.get_params">get_params() (tvm.relay.backend.vm.VMCompiler 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.get_pow2s">get_pow2s() (在 tvm.autotvm.task.space 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.te_compiler.get_shape">get_shape() (在 tvm.relay.backend.te_compiler 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.cc.get_target_by_dump_machine">get_target_by_dump_machine() (在 tvm.contrib.cc 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.nvcc.get_target_compute_version">get_target_compute_version() (在 tvm.contrib.nvcc 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.topi_integration.TaskExtractEnv.get_tasks">get_tasks() (tvm.autotvm.task.topi_integration.TaskExtractEnv 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.te_compiler.get_valid_implementations">get_valid_implementations() (在 tvm.relay.backend.te_compiler 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.topi_integration.get_workload">get_workload() (在 tvm.autotvm.task.topi_integration 模块中)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.dcgan.get_workload">(在 tvm.relay.testing.dcgan 模块中)</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.densenet.get_workload">(在 tvm.relay.testing.densenet 模块中)</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.inception_v3.get_workload">(在 tvm.relay.testing.inception_v3 模块中)</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.lstm.get_workload">(在 tvm.relay.testing.lstm 模块中)</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.mlp.get_workload">(在 tvm.relay.testing.mlp 模块中)</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.mobilenet.get_workload">(在 tvm.relay.testing.mobilenet 模块中)</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.resnet.get_workload">(在 tvm.relay.testing.resnet 模块中)</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.squeezenet.get_workload">(在 tvm.relay.testing.squeezenet 模块中)</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.vgg.get_workload">(在 tvm.relay.testing.vgg 模块中)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen">GraphExecutorCodegen (tvm.relay.backend.graph_executor_codegen 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/graph_executor.html#tvm.contrib.graph_executor.GraphModule">GraphModule (tvm.contrib.graph_executor 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GridSearchTuner">GridSearchTuner (tvm.autotvm.tuner 中的类)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GATuner.has_next">has_next() (tvm.autotvm.tuner.GATuner 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GridSearchTuner.has_next">(tvm.autotvm.tuner.GridSearchTuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.RandomTuner.has_next">(tvm.autotvm.tuner.RandomTuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.Tuner.has_next">(tvm.autotvm.tuner.Tuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.XGBTuner.has_next">(tvm.autotvm.tuner.XGBTuner 方法)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.nvcc.have_bf16">have_bf16() (在 tvm.contrib.nvcc 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.nvcc.have_cudagraph">have_cudagraph() (在 tvm.contrib.nvcc 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.nvcc.have_fp16">have_fp16() (在 tvm.contrib.nvcc 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.nvcc.have_int8">have_int8() (在 tvm.contrib.nvcc 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.nvcc.have_tensorcore">have_tensorcore() (在 tvm.contrib.nvcc 模块中)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.Axis.index">index (tvm.autotvm.task.space.Axis 属性)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.task.Task.instantiate">instantiate() (tvm.autotvm.task.task.Task 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.InstantiationError">InstantiationError</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.interpreter.Interpreter">Interpreter (tvm.relay.backend.interpreter 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.nnpack.is_available">is_available() (在 tvm.contrib.nnpack 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.utils.is_source_path">is_source_path() (在 tvm.contrib.utils 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.te_compiler.TECompiler.items">items() (tvm.relay.backend.te_compiler.TECompiler 方法)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.te_compiler.TECompiler.jit">jit() (tvm.relay.backend.te_compiler.TECompiler 方法)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="refs/_ffi/registry.html#tvm._ffi.registry.list_global_func_names">list_global_func_names() (在 tvm._ffi.registry 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.utils.TempDirectory.listdir">listdir() (tvm.contrib.utils.TempDirectory 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.ApplyHistoryBest.load">load() (tvm.autotvm.task.dispatcher.ApplyHistoryBest 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.record.load_from_file">load_from_file() (在 tvm.autotvm.record 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GATuner.load_history">load_history() (tvm.autotvm.tuner.GATuner 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GridSearchTuner.load_history">(tvm.autotvm.tuner.GridSearchTuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.RandomTuner.load_history">(tvm.autotvm.tuner.RandomTuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.Tuner.load_history">(tvm.autotvm.tuner.Tuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.XGBTuner.load_history">(tvm.autotvm.tuner.XGBTuner 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/graph_executor.html#tvm.contrib.graph_executor.GraphModule.load_params">load_params() (tvm.contrib.graph_executor.GraphModule 方法)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.measure.measure_methods.LocalBuilder">LocalBuilder (tvm.autotvm.measure.measure_methods 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.measure.measure_methods.LocalRunner">LocalRunner (tvm.autotvm.measure.measure_methods 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.miopen.log_softmax">log_softmax() (在 tvm.contrib.miopen 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.callback.log_to_database">log_to_database() (在 tvm.autotvm.tuner.callback 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.callback.log_to_file">log_to_file() (在 tvm.autotvm.tuner.callback 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.te_compiler.TECompiler.lower">lower() (tvm.relay.backend.te_compiler.TECompiler 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.vm.VMCompiler.lower">(tvm.relay.backend.vm.VMCompiler 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/driver.html#tvm.lower">(在 tvm 模块中)</a>
+</li>
+        <li><a href="docs/reference/api/python/vta/index.html#vta.lower">(在 vta 模块中)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.te_compiler.LoweredOutput">LoweredOutput (tvm.relay.backend.te_compiler 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.lstm.lstm_cell">lstm_cell() (在 tvm.relay.testing.lstm 模块中)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.cblas.matmul">matmul() (在 tvm.contrib.cblas 模块中)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.cublas.matmul">(在 tvm.contrib.cublas 模块中)</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.rocblas.matmul">(在 tvm.contrib.rocblas 模块中)</a>
+</li>
+      </ul></li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device.max_clock_rate">max_clock_rate (tvm._ffi.runtime_ctypes.Device property)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device.max_shared_memory_per_block">max_shared_memory_per_block (tvm._ffi.runtime_ctypes.Device property)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device.max_thread_dimensions">max_thread_dimensions (tvm._ffi.runtime_ctypes.Device property)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device.max_threads_per_block">max_threads_per_block (tvm._ffi.runtime_ctypes.Device property)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.measure.measure_option">measure_option() (在 tvm.autotvm.measure 模块中)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.record.measure_str_key">measure_str_key() (在 tvm.autotvm.record 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.measure.MeasureInput">MeasureInput (tvm.autotvm.measure 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.measure.MeasureResult">MeasureResult (tvm.autotvm.measure 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.pickle_memoize.memoize">memoize() (在 tvm.contrib.pickle_memoize 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.task.MissingTask">MissingTask (tvm.autotvm.task.task 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.mobilenet.mobile_net">mobile_net() (在 tvm.relay.testing.mobilenet 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.callback.Monitor">Monitor (tvm.autotvm.tuner.callback 中的类)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device.multi_processor_count">multi_processor_count (tvm._ffi.runtime_ctypes.Device property)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.NDArray">NDArray (tvm.nd 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GATuner.next_batch">next_batch() (tvm.autotvm.tuner.GATuner 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GridSearchTuner.next_batch">(tvm.autotvm.tuner.GridSearchTuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.RandomTuner.next_batch">(tvm.autotvm.tuner.RandomTuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.Tuner.next_batch">(tvm.autotvm.tuner.Tuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.XGBTuner.next_batch">(tvm.autotvm.tuner.XGBTuner 方法)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.interface.VizGraph.node">node() (tvm.contrib.relay_viz.interface.VizGraph 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.terminal.TermGraph.node">(tvm.contrib.relay_viz.terminal.TermGraph 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.random.normal">normal() (在 tvm.contrib.random 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.sparse.CSRNDArray.numpy">numpy() (tvm.contrib.sparse.CSRNDArray 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.NDArray.numpy">(tvm.nd.NDArray 方法)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="refs/_ffi/object.html#tvm._ffi._ctypes.object.ObjectBase">ObjectBase (tvm._ffi._ctypes.object 中的类)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.ObjectRValueRef">ObjectRValueRef (tvm._ffi.runtime_ctypes 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.vm.VMCompiler.optimize">optimize() (tvm.relay.backend.vm.VMCompiler 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.spirv.optimize">(在 tvm.contrib.spirv 模块中)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.OtherOptionEntity">OtherOptionEntity (tvm.autotvm.task.space 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.OtherOptionSpace">OtherOptionSpace (tvm.autotvm.task.space 中的类)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.nvcc.parse_compute_version">parse_compute_version() (在 tvm.contrib.nvcc 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.record.pick_best">pick_best() (在 tvm.autotvm.record 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.sparse.placeholder">placeholder() (在 tvm.contrib.sparse 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.interface.Plotter">Plotter (tvm.contrib.relay_viz.interface 中的类)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/vta/index.html#vta.program_fpga">program_fpga() (在 vta 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.callback.progress_bar">progress_bar() (在 tvm.autotvm.tuner.callback 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/base.html#tvm._ffi.base.py2cerror">py2cerror() (在 tvm._ffi.base 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/object.html#tvm._ffi._ctypes.object.PyNativeObject">PyNativeObject (tvm._ffi._ctypes.object 中的类)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Q">Q</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.DispatchContext.query">query() (tvm.autotvm.task.dispatcher.DispatchContext 方法)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigSpace.raise_error">raise_error() (tvm.autotvm.task.space.ConfigSpace 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.random.randint">randint() (在 tvm.contrib.random 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.RandomTuner">RandomTuner (tvm.autotvm.tuner 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/vta/index.html#vta.reconfig_runtime">reconfig_runtime() (在 vta 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigSpace.reduce_axis">reduce_axis() (tvm.autotvm.task.space.ConfigSpace 静态方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.interpreter.RefValue">RefValue (tvm.relay.backend.interpreter 中的类)</a>
+</li>
+      <li><a href="refs/_ffi/base.html#tvm._ffi.base.register_error">register_error() (在 tvm._ffi.base 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/registry.html#tvm._ffi.registry.register_extension">register_extension() (在 tvm._ffi.registry 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/registry.html#tvm._ffi.registry.register_func">register_func() (在 tvm._ffi.registry 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/registry.html#tvm._ffi.registry.register_object">register_object() (在 tvm._ffi.registry 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.topi_integration.register_topi_compute">register_topi_compute() (在 tvm.autotvm.task.topi_integration 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.topi_integration.register_topi_schedule">register_topi_schedule() (在 tvm.autotvm.task.topi_integration 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.utils.FileLock.release">release() (tvm.contrib.utils.FileLock 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.utils.TempDirectory.relpath">relpath() (tvm.contrib.utils.TempDirectory 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.utils.TempDirectory.remove">remove() (tvm.contrib.utils.TempDirectory 方法)</a>
+</li>
+      <li><a href="refs/_ffi/registry.html#tvm._ffi.registry.remove_global_func">remove_global_func() (在 tvm._ffi.registry 模块中)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.interface.Plotter.render">render() (tvm.contrib.relay_viz.interface.Plotter 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.terminal.TermGraph.render">(tvm.contrib.relay_viz.terminal.TermGraph 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.terminal.TermPlotter.render">(tvm.contrib.relay_viz.terminal.TermPlotter 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ReorderEntity">ReorderEntity (tvm.autotvm.task.space 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ReorderSpace">ReorderSpace (tvm.autotvm.task.space 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.topi_integration.TaskExtractEnv.reset">reset() (tvm.autotvm.task.topi_integration.TaskExtractEnv 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GATuner.reset">(tvm.autotvm.tuner.GATuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GridSearchTuner.reset">(tvm.autotvm.tuner.GridSearchTuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.RandomTuner.reset">(tvm.autotvm.tuner.RandomTuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.Tuner.reset">(tvm.autotvm.tuner.Tuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.XGBTuner.reset">(tvm.autotvm.tuner.XGBTuner 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.resnet.residual_unit">residual_unit() (在 tvm.relay.testing.resnet 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.resnet.resnet">resnet() (在 tvm.relay.testing.resnet 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.rocm.rocm_link">rocm_link() (在 tvm.contrib.rocm 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.measure.measure_methods.RPCRunner">RPCRunner (tvm.autotvm.measure.measure_methods 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/graph_executor.html#tvm.contrib.graph_executor.GraphModule.run">run() (tvm.contrib.graph_executor.GraphModule 方法)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="refs/_ffi/object.html#tvm._ffi._ctypes.object.ObjectBase.same_as">same_as() (tvm._ffi._ctypes.object.ObjectBase 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.NDArray.same_as">(tvm.nd.NDArray 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.te_compiler.select_implementation">select_implementation() (在 tvm.relay.backend.te_compiler 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/testing.html#tvm.relay.testing.mobilenet.separable_conv_block">separable_conv_block() (在 tvm.relay.testing.mobilenet 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.task.serialize_args">serialize_args() (在 tvm.autotvm.task.task 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GATuner.set_error_threshold">set_error_threshold() (tvm.autotvm.tuner.GATuner 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GridSearchTuner.set_error_threshold">(tvm.autotvm.tuner.GridSearchTuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.RandomTuner.set_error_threshold">(tvm.autotvm.tuner.RandomTuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.Tuner.set_error_threshold">(tvm.autotvm.tuner.Tuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.XGBTuner.set_error_threshold">(tvm.autotvm.tuner.XGBTuner 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/graph_executor.html#tvm.contrib.graph_executor.GraphModule.set_input">set_input() (tvm.contrib.graph_executor.GraphModule 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.utils.TempDirectory.set_keep_for_debug">set_keep_for_debug() (tvm.contrib.utils.TempDirectory 类方法)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.vm.VMCompiler.set_params">set_params() (tvm.relay.backend.vm.VMCompiler 方法)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device.set_raw_stream">set_raw_stream() (tvm._ffi.runtime_ctypes.Device 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.NDArray.shape">shape (tvm.nd.NDArray property)</a>
+</li>
+      <li><a href="docs/reference/api/python/graph_executor.html#tvm.contrib.graph_executor.GraphModule.share_params">share_params() (tvm.contrib.graph_executor.GraphModule 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.miopen.softmax">softmax() (在 tvm.contrib.miopen 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.Axis.space">space (tvm.autotvm.task.space.Axis 属性)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.sparse.SparsePlaceholderOp">SparsePlaceholderOp (tvm.contrib.sparse 中的类)</a>
+</li>
+      <li><a href="refs/_ffi/libinfo.html#tvm._ffi.libinfo.split_env_var">split_env_var() (在 tvm._ffi.libinfo 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.record.split_workload">split_workload() (在 tvm.autotvm.record 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.SplitEntity">SplitEntity (tvm.autotvm.task.space 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.SplitSpace">SplitSpace (tvm.autotvm.task.space 中的类)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device.sync">sync() (tvm._ffi.runtime_ctypes.Device 方法)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.tar.tar">tar() (在 tvm.contrib.tar 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.task.Task">Task (tvm.autotvm.task.task 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.topi_integration.TaskExtractEnv">TaskExtractEnv (tvm.autotvm.task.topi_integration 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.task.TaskTemplate">TaskTemplate (tvm.autotvm.task.task 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.te_compiler.TECompiler">TECompiler (tvm.relay.backend.te_compiler 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.utils.tempdir">tempdir() (在 tvm.contrib.utils 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.utils.TempDirectory">TempDirectory (tvm.contrib.utils 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.task.template">template() (在 tvm.autotvm.task.task 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.terminal.TermGraph">TermGraph (tvm.contrib.relay_viz.terminal 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.terminal.TermNode">TermNode (tvm.contrib.relay_viz.terminal 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.terminal.TermPlotter">TermPlotter (tvm.contrib.relay_viz.terminal 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.terminal.TermVizParser">TermVizParser (tvm.contrib.relay_viz.terminal 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/ndarray.html#tvm.nd.NDArray.to_dlpack">to_dlpack() (tvm.nd.NDArray 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigEntity.to_json_dict">to_json_dict() (tvm.autotvm.task.space.ConfigEntity 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.mxnet.to_mxnet_func">to_mxnet_func() (在 tvm.contrib.mxnet 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.dlpack.to_pytorch_func">to_pytorch_func() (在 tvm.contrib.dlpack 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.TransformSpace">TransformSpace (tvm.autotvm.task.space 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.callback.Monitor.trial_scores">trial_scores() (tvm.autotvm.tuner.callback.Monitor 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.callback.Monitor.trial_timestamps">trial_timestamps() (tvm.autotvm.tuner.callback.Monitor 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GATuner.tune">tune() (tvm.autotvm.tuner.GATuner 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GridSearchTuner.tune">(tvm.autotvm.tuner.GridSearchTuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.RandomTuner.tune">(tvm.autotvm.tuner.RandomTuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.Tuner.tune">(tvm.autotvm.tuner.Tuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.XGBTuner.tune">(tvm.autotvm.tuner.XGBTuner 方法)</a>
+</li>
+      </ul></li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.Tuner">Tuner (tvm.autotvm.tuner 中的类)</a>
+</li>
+      <li>
+    tvm._ffi
+
+      <ul>
+        <li><a href="refs/_ffi/index.html#module-tvm._ffi">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm._ffi._ctypes.object
+
+      <ul>
+        <li><a href="refs/_ffi/object.html#module-tvm._ffi._ctypes.object">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm._ffi.base
+
+      <ul>
+        <li><a href="refs/_ffi/base.html#module-tvm._ffi.base">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm._ffi.libinfo
+
+      <ul>
+        <li><a href="refs/_ffi/libinfo.html#module-tvm._ffi.libinfo">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm._ffi.registry
+
+      <ul>
+        <li><a href="refs/_ffi/registry.html#module-tvm._ffi.registry">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm._ffi.runtime_ctypes
+
+      <ul>
+        <li><a href="refs/_ffi/runtime_ctypes.html#module-tvm._ffi.runtime_ctypes">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.autotvm
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.autotvm.measure.measure
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.measure.measure">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.autotvm.record
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.record">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.autotvm.task
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.task">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.autotvm.task.dispatcher
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.task.dispatcher">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.autotvm.task.space
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.task.space">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.autotvm.task.task
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.task.task">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.autotvm.task.topi_integration
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.task.topi_integration">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.autotvm.tuner
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.tuner">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.autotvm.tuner.callback
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.tuner.callback">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.cblas
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.cblas">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.cc
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.cc">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.clang
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.clang">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.cublas
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.cublas">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.dlpack
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.dlpack">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.emcc
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.emcc">模块</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    tvm.contrib.graph_executor
+
+      <ul>
+        <li><a href="docs/reference/api/python/graph_executor.html#module-tvm.contrib.graph_executor">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.miopen
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.miopen">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.mxnet
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.mxnet">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.ndk
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.ndk">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.nnpack
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.nnpack">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.nvcc
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.nvcc">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.pickle_memoize
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.pickle_memoize">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.random
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.random">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.relay_viz.interface
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.relay_viz.interface">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.relay_viz.terminal
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.relay_viz.terminal">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.rocblas
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.rocblas">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.rocm
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.rocm">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.sparse
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.sparse">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.spirv
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.spirv">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.tar
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.tar">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.utils
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.utils">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.contrib.xcode
+
+      <ul>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.xcode">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.driver
+
+      <ul>
+        <li><a href="docs/reference/api/python/driver.html#module-tvm.driver">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.relay.backend
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/backend.html#module-tvm.relay.backend">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.relay.backend.graph_executor_codegen
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/backend.html#module-tvm.relay.backend.graph_executor_codegen">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.relay.backend.interpreter
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/backend.html#module-tvm.relay.backend.interpreter">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.relay.backend.te_compiler
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/backend.html#module-tvm.relay.backend.te_compiler">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.relay.backend.vm
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/backend.html#module-tvm.relay.backend.vm">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.relay.testing.dcgan
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.dcgan">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.relay.testing.densenet
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.densenet">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.relay.testing.inception_v3
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.inception_v3">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.relay.testing.lstm
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.lstm">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.relay.testing.mlp
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.mlp">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.relay.testing.mobilenet
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.mobilenet">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.relay.testing.resnet
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.resnet">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.relay.testing.squeezenet
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.squeezenet">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.relay.testing.vgg
+
+      <ul>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.vgg">模块</a>
+</li>
+      </ul></li>
+      <li>
+    tvm.runtime.ndarray
+
+      <ul>
+        <li><a href="docs/reference/api/python/ndarray.html#module-tvm.runtime.ndarray">模块</a>
+</li>
+      </ul></li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.TVMArray">TVMArray (tvm._ffi.runtime_ctypes 中的类)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.TVMArrayHandle">TVMArrayHandle() (在 tvm._ffi.runtime_ctypes 模块中)</a>
+</li>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.TVMByteArray">TVMByteArray (tvm._ffi.runtime_ctypes 中的类)</a>
+</li>
+      <li><a href="refs/_ffi/base.html#tvm._ffi.base.TVMError">TVMError</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.random.uniform">uniform() (在 tvm.contrib.random 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.tar.untar">untar() (在 tvm.contrib.tar 模块中)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.ApplyConfig.update">update() (tvm.autotvm.task.dispatcher.ApplyConfig 方法)</a>
+
+      <ul>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.ApplyGraphBest.update">(tvm.autotvm.task.dispatcher.ApplyGraphBest 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.ApplyHistoryBest.update">(tvm.autotvm.task.dispatcher.ApplyHistoryBest 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.DispatchContext.update">(tvm.autotvm.task.dispatcher.DispatchContext 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.dispatcher.FallbackContext.update">(tvm.autotvm.task.dispatcher.FallbackContext 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GATuner.update">(tvm.autotvm.tuner.GATuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GridSearchTuner.update">(tvm.autotvm.tuner.GridSearchTuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.RandomTuner.update">(tvm.autotvm.tuner.RandomTuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.Tuner.update">(tvm.autotvm.tuner.Tuner 方法)</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.XGBTuner.update">(tvm.autotvm.tuner.XGBTuner 方法)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.ConfigSpace.valid">valid() (tvm.autotvm.task.space.ConfigSpace 方法)</a>
+</li>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.task.space.VirtualAxis">VirtualAxis (tvm.autotvm.task.space 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.interface.VizEdge">VizEdge (tvm.contrib.relay_viz.interface 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.interface.VizGraph">VizGraph (tvm.contrib.relay_viz.interface 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.interface.VizNode">VizNode (tvm.contrib.relay_viz.interface 中的类)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.interface.VizParser">VizParser (tvm.contrib.relay_viz.interface 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.vm.VMCompiler">VMCompiler (tvm.relay.backend.vm 中的类)</a>
+</li>
+      <li><a href="docs/reference/api/python/relay/backend.html#tvm.relay.backend.vm.VMExecutor">VMExecutor (tvm.relay.backend.vm 中的类)</a>
+</li>
+      <li>
+    vta
+
+      <ul>
+        <li><a href="docs/reference/api/python/vta/index.html#module-vta">模块</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device.warp_size">warp_size (tvm._ffi.runtime_ctypes.Device property)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.utils.which">which() (在 tvm.contrib.utils 模块中)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="X">X</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/contrib.html#tvm.contrib.xcode.xcrun">xcrun() (在 tvm.contrib.xcode 模块中)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.XGBTuner">XGBTuner (tvm.autotvm.tuner 中的类)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="模">模</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    模块
+
+      <ul>
+        <li><a href="refs/_ffi/index.html#module-tvm._ffi">tvm._ffi</a>
+</li>
+        <li><a href="refs/_ffi/object.html#module-tvm._ffi._ctypes.object">tvm._ffi._ctypes.object</a>
+</li>
+        <li><a href="refs/_ffi/base.html#module-tvm._ffi.base">tvm._ffi.base</a>
+</li>
+        <li><a href="refs/_ffi/libinfo.html#module-tvm._ffi.libinfo">tvm._ffi.libinfo</a>
+</li>
+        <li><a href="refs/_ffi/registry.html#module-tvm._ffi.registry">tvm._ffi.registry</a>
+</li>
+        <li><a href="refs/_ffi/runtime_ctypes.html#module-tvm._ffi.runtime_ctypes">tvm._ffi.runtime_ctypes</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm">tvm.autotvm</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.measure.measure">tvm.autotvm.measure.measure</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.record">tvm.autotvm.record</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.task">tvm.autotvm.task</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.task.dispatcher">tvm.autotvm.task.dispatcher</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.task.space">tvm.autotvm.task.space</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.task.task">tvm.autotvm.task.task</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.task.topi_integration">tvm.autotvm.task.topi_integration</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.tuner">tvm.autotvm.tuner</a>
+</li>
+        <li><a href="docs/reference/api/python/autotvm.html#module-tvm.autotvm.tuner.callback">tvm.autotvm.tuner.callback</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib">tvm.contrib</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.cblas">tvm.contrib.cblas</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.cc">tvm.contrib.cc</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.clang">tvm.contrib.clang</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.cublas">tvm.contrib.cublas</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.dlpack">tvm.contrib.dlpack</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.emcc">tvm.contrib.emcc</a>
+</li>
+        <li><a href="docs/reference/api/python/graph_executor.html#module-tvm.contrib.graph_executor">tvm.contrib.graph_executor</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.miopen">tvm.contrib.miopen</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.mxnet">tvm.contrib.mxnet</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.ndk">tvm.contrib.ndk</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.nnpack">tvm.contrib.nnpack</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.nvcc">tvm.contrib.nvcc</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.pickle_memoize">tvm.contrib.pickle_memoize</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.random">tvm.contrib.random</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.relay_viz.interface">tvm.contrib.relay_viz.interface</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.relay_viz.terminal">tvm.contrib.relay_viz.terminal</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.rocblas">tvm.contrib.rocblas</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.rocm">tvm.contrib.rocm</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.sparse">tvm.contrib.sparse</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.spirv">tvm.contrib.spirv</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.tar">tvm.contrib.tar</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.utils">tvm.contrib.utils</a>
+</li>
+        <li><a href="docs/reference/api/python/contrib.html#module-tvm.contrib.xcode">tvm.contrib.xcode</a>
+</li>
+        <li><a href="docs/reference/api/python/driver.html#module-tvm.driver">tvm.driver</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/backend.html#module-tvm.relay.backend">tvm.relay.backend</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/backend.html#module-tvm.relay.backend.graph_executor_codegen">tvm.relay.backend.graph_executor_codegen</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/backend.html#module-tvm.relay.backend.interpreter">tvm.relay.backend.interpreter</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/backend.html#module-tvm.relay.backend.te_compiler">tvm.relay.backend.te_compiler</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/backend.html#module-tvm.relay.backend.vm">tvm.relay.backend.vm</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.dcgan">tvm.relay.testing.dcgan</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.densenet">tvm.relay.testing.densenet</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.inception_v3">tvm.relay.testing.inception_v3</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.lstm">tvm.relay.testing.lstm</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.mlp">tvm.relay.testing.mlp</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.mobilenet">tvm.relay.testing.mobilenet</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.resnet">tvm.relay.testing.resnet</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.squeezenet">tvm.relay.testing.squeezenet</a>
+</li>
+        <li><a href="docs/reference/api/python/relay/testing.html#module-tvm.relay.testing.vgg">tvm.relay.testing.vgg</a>
+</li>
+        <li><a href="docs/reference/api/python/ndarray.html#module-tvm.runtime.ndarray">tvm.runtime.ndarray</a>
+</li>
+        <li><a href="docs/reference/api/python/vta/index.html#module-vta">vta</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By xinetzone<br/>
+  
+      &copy; Copyright 2022, xinetzone.<br/>
+    Last updated on 2022-04-07, 15:51:47.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,1731 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>从源码安装 &#8212; TVM  文档</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <link rel="shortcut icon" href="../../_static/tvm-logo-square.png"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="NNPACK Contrib Installation" href="nnpack.html" />
+    <link rel="prev" title="安装 TVM" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_CN">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/tvm-logo-small.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">TVM  文档</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../README.html">
+   TVM 文档
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../start.html">
+   快速上手
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="index.html">
+     安装 TVM
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active has-children">
+      <a class="current reference internal" href="#">
+       从源码安装
+      </a>
+      <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="nnpack.html">
+         NNPACK Contrib Installation
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="docker.html">
+       Docker 镜像
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="tlcpack.html">
+       TLCPack
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../contribute/index.html">
+     Contributor Guide
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../contribute/community.html">
+       TVM Community Guidelines
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../contribute/pull_request.html">
+       Submit a Pull Request
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../contribute/code_review.html">
+       Code Reviews
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../contribute/committer_guide.html">
+       Committer Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../contribute/document.html">
+       Documentation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../contribute/code_guide.html">
+       Code Guide and Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../contribute/git_howto.html">
+       Git Usage Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../contribute/ci.html">
+       Using TVM’s CI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../contribute/release_process.html">
+       Release Process
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../contribute/error_handling.html">
+       Error Handling Guide
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../study/index.html">
+   学习笔记
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../study/quantize.html">
+     量化
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../study/start.html">
+     TVM 入门指南
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../study/test.html">
+     测试 TVM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../user-guide.html">
+   用户手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../tutorial/index.html">
+     用户指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tutorial/introduction.html">
+       TVM 和模型优化的概述
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tutorial/tvmc_command_line_driver.html">
+       用 TVMC 编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tutorial/tvmc_python.html">
+       开始使用 TVMC Python：TVM 的高级 API
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tutorial/autotvm_relay_x86.html">
+       用 Python 接口编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tutorial/tensor_expr_get_started.html">
+       使用张量表达式处理算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tutorial/autotvm_matmul_x86.html">
+       用调度模板和 AutoTVM 优化算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tutorial/auto_scheduler_matmul_x86.html">
+       使用自动调度优化运算
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tutorial/tensor_ir_blitz_course.html">
+       TensorIR 的突击课程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tutorial/cross_compilation_and_rpc.html">
+       交叉编译和RPC
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tutorial/relay_quick_start.html">
+       编译深度学习模型的快速入门教程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tutorial/intro_topi.html">
+       TOPI 简介
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../how_to/index.html">
+     How To 指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../how_to/compile_models/index.html">
+       编译深度学习模型
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+      <label for="toctree-checkbox-9">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/compile_models/from_pytorch.html">
+         编译 PyTorch 模型
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/compile_models/from_tensorflow.html">
+         Compile Tensorflow Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/compile_models/from_mxnet.html">
+         Compile MXNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/compile_models/from_onnx.html">
+         Compile ONNX Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/compile_models/from_keras.html">
+         Compile Keras Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/compile_models/from_tflite.html">
+         Compile TFLite Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/compile_models/from_coreml.html">
+         Compile CoreML Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/compile_models/from_darknet.html">
+         Compile YOLO-V2 and YOLO-V3 in DarkNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/compile_models/from_caffe2.html">
+         Compile Caffe2 Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/compile_models/from_paddle.html">
+         Compile PaddlePaddle Models
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../how_to/deploy/index.html">
+       部署模型，集成 TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/deploy/cpp_deploy.html">
+         Deploy TVM Module using C++ API
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/deploy/android.html">
+         Deploy to Android
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/deploy/integrate.html">
+         Integrate TVM into Your Project
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/deploy/hls.html">
+         HLS Backend Example
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/deploy/arm_compute_lib.html">
+         Relay Arm
+         <sup>
+          ®
+         </sup>
+         Compute Library Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/deploy/tensorrt.html">
+         Relay TensorRT Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/deploy/vitis_ai.html">
+         Vitis AI Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/deploy/bnns.html">
+         Relay BNNS Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/deploy_models/index.html">
+         部署深度学习模型
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../how_to/work_with_relay/index.html">
+       Work With Relay
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+      <label for="toctree-checkbox-11">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../how_to/work_with_schedules/index.html">
+       Work With Tensor Expression and Schedules
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+      <label for="toctree-checkbox-12">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../how_to/optimize_operators/index.html">
+       Optimize Tensor Operators
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+      <label for="toctree-checkbox-13">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../how_to/tune_with_autotvm/index.html">
+       Auto-Tune with Templates and AutoTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+      <label for="toctree-checkbox-14">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/tune_with_autotvm/tune_conv2d_cuda.html">
+         Tuning High Performance Convolution on NVIDIA GPUs
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/tune_with_autotvm/tune_relay_cuda.html">
+         Auto-tuning a Convolutional Network for NVIDIA GPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/tune_with_autotvm/tune_relay_x86.html">
+         Auto-tuning a Convolutional Network for x86 CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/tune_with_autotvm/tune_relay_arm.html">
+         Auto-tuning a Convolutional Network for ARM CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/tune_with_autotvm/tune_relay_mobile_gpu.html">
+         Auto-tuning a Convolutional Network for Mobile GPU
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../how_to/tune_with_autoscheduler/index.html">
+       Use AutoScheduler for Template-Free Scheduling
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+      <label for="toctree-checkbox-15">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../how_to/work_with_microtvm/index.html">
+       Work With microTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+      <label for="toctree-checkbox-16">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../how_to/extend_tvm/index.html">
+       Extend TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+      <label for="toctree-checkbox-17">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../how_to/profile/index.html">
+       Profile Models
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+      <label for="toctree-checkbox-18">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/profile/papi.html">
+         Getting Started With PAPI
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../errors.html">
+       处理 TVM 的错误
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../faq.html">
+       常见问题
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../developer-guide.html">
+   开发手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../dev/tutorial/index.html">
+     开发者教程
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+    <label for="toctree-checkbox-20">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dev/tutorial/codebase_walkthrough.html">
+       TVM 代码库的实例演练
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../dev/how_to/how_to.html">
+     开发者 How-To 指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dev/how_to/relay_add_op.html">
+       Adding an Operator to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dev/how_to/relay_add_pass.html">
+       Adding a Compiler Pass to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dev/how_to/relay_bring_your_own_codegen.html">
+       Bring Your Own Codegen To TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dev/how_to/pytest_target_parametrization.html">
+       Python Target Parametrization
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../arch/index.html">
+   设计与架构
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/runtime.html">
+     TVM 运行时系统
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/debugger.html">
+     Debugger
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/virtual_machine.html">
+     Putting the VM in TVM: The Relay Virtual Machine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/introduction_to_module_serialization.html">
+     Introduction to Module Serialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/pass_infra.html">
+     Pass Infrastructure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/inferbound.html">
+     InferBound Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/hybrid_script.html">
+     Hybrid Frontend Developer Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/relay_intro.html">
+     Introduction to Relay IR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/relay_op_strategy.html">
+     Relay Operator Strategy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/convert_layout.html">
+     Convert Layout Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/benchmark.html">
+     Benchmark Performance Log Format
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/frontend/tensorflow.html">
+     TensorFlow Frontend
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/security.html">
+     Security Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/microtvm_design.html">
+     microTVM Design Document
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/microtvm_project_api.html">
+     microTVM Project API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../arch/model_library_format.html">
+     Model Library Format
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../topic-guides.html">
+   主题指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../topic/microtvm/index.html">
+     microTVM：裸机上的 TVM
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../topic/vta/index.html">
+     VTA：通用张量加速器
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+    <label for="toctree-checkbox-24">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../topic/vta/install.html">
+       VTA 安装指南
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../topic/vta/dev/index.html">
+       VTA 设计和开发指南
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../topic/vta/dev/config.html">
+         VTA 配置
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../topic/vta/dev/hardware.html">
+         VTA 硬件指南
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../topic/vta/tutorials/index.html">
+       VTA 教程
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../topic/vta/tutorials/matrix_multiply.html">
+         Simple Matrix Multiply
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../topic/vta/tutorials/vta_get_started.html">
+         Get Started with VTA
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../topic/vta/tutorials/frontend/index.html">
+         Compile Deep Learning Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../topic/vta/tutorials/optimize/index.html">
+         Optimize Tensor Operators
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../topic/vta/tutorials/autotvm/index.html">
+         Auto tuning
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../reference-guide.html">
+   参考指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../reference/langref/index.html">
+     语言参考
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+    <label for="toctree-checkbox-28">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/langref/relay_expr.html">
+       Expressions in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/langref/relay_type.html">
+       Relay’s Type System
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/langref/relay_adt.html">
+       Algebraic Data Types in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/langref/relay_op.html">
+       Relay Core Tensor Operators
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/langref/relay_pattern.html">
+       Pattern Matching in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/langref/hybrid_script.html">
+       Hybrid Frontend Language Reference
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../reference/api/python/index.html">
+     Python API
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/runtime.html">
+       tvm.runtime
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/ndarray.html">
+       tvm.runtime.ndarray
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/error.html">
+       tvm.error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/ir.html">
+       tvm.ir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/target.html">
+       tvm.target
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/tir.html">
+       tvm.tir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/te.html">
+       tvm.te
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/driver.html">
+       tvm.driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/relay/index.html">
+       tvm.relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/relay/frontend.html">
+       tvm.relay.frontend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/relay/nn.html">
+       tvm.relay.nn
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/relay/vision.html">
+       tvm.relay.vision
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/relay/image.html">
+       tvm.relay.image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/relay/transform.html">
+       tvm.relay.transform
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/relay/analysis.html">
+       tvm.relay.analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/relay/backend.html">
+       tvm.relay.backend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/relay/dataflow_pattern.html">
+       tvm.relay.dataflow_pattern
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/relay/testing.html">
+       tvm.relay.testing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/autotvm.html">
+       tvm.autotvm
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/auto_scheduler.html">
+       tvm.auto_scheduler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/rpc.html">
+       tvm.rpc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/micro.html">
+       tvm.micro
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/contrib.html">
+       tvm.contrib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/graph_executor.html">
+       tvm.contrib.graph_executor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/topi.html">
+       tvm.topi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/vta/index.html">
+       vta
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/api/links.html">
+     其他 API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../reference/publications.html">
+     出版物
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../refs/index.html">
+   参考
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+  <label for="toctree-checkbox-30">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../refs/_ffi/index.html">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _ffi
+      </span>
+     </code>
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../refs/_ffi/base.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.base
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../refs/_ffi/libinfo.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.libinfo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../refs/_ffi/object.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi._ctypes.object
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../refs/_ffi/registry.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.registry
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../refs/_ffi/runtime_ctypes.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.runtime_ctypes
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/xinetzone/torch-quantization/edit/main/docs/docs/install/from_source.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/docs/install/from_source.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> 导航
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#developers-get-source-from-github">
+   开发者：从 Github 获取源码
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-the-shared-library">
+   构建共享库
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-with-a-conda-environment">
+     用 Conda 环境构建
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-on-windows">
+     构建在 Windows 上
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-rocm-support">
+     建立 ROCm 支持
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-package-installation">
+   Python 软件包的安装
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tvm-package">
+     TVM 包
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-dependencies">
+     Python 依赖
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-contrib-libraries">
+   安装 Contrib 库
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enable-c-tests">
+   启用 C++ 测试
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>从源码安装</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> 导航 </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#developers-get-source-from-github">
+   开发者：从 Github 获取源码
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-the-shared-library">
+   构建共享库
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-with-a-conda-environment">
+     用 Conda 环境构建
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-on-windows">
+     构建在 Windows 上
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-rocm-support">
+     建立 ROCm 支持
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-package-installation">
+   Python 软件包的安装
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tvm-package">
+     TVM 包
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-dependencies">
+     Python 依赖
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-contrib-libraries">
+   安装 Contrib 库
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enable-c-tests">
+   启用 C++ 测试
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="install-from-source">
+<span id="id1"></span><h1>从源码安装<a class="headerlink" href="#install-from-source" title="永久链接至标题">#</a></h1>
+<p>这个页面给出了如何在各种系统上从头开始构建和安装 TVM 软件包的说明。它包括两个步骤：</p>
+<ol class="arabic simple">
+<li><p>首先从 C++ 代码中构建共享库（linux 为 <code class="docutils literal notranslate"><span class="pre">libtvm.so</span></code>，macOS 为 <code class="docutils literal notranslate"><span class="pre">libtvm.dylib</span></code>，windows 为 <code class="docutils literal notranslate"><span class="pre">libtvm.dll</span></code>）。</p></li>
+<li><p>语言包的设置（如 Python 包）。</p></li>
+</ol>
+<p>要开始使用，请从 <a class="reference external" href="https://tvm.apache.org/download">下载页面</a> 下载 tvm 源代码。</p>
+<section id="developers-get-source-from-github">
+<h2>开发者：从 Github 获取源码<a class="headerlink" href="#developers-get-source-from-github" title="永久链接至标题">#</a></h2>
+<p>你也可以选择从 github 克隆源码 repo。重要的是，要用 <code class="docutils literal notranslate"><span class="pre">--recursive</span></code> 选项来克隆子模块。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone --recursive https://github.com/apache/tvm tvm
+</pre></div>
+</div>
+<p>对于使用 github 工具的 windows 用户，你可以打开 git shell，并输入以下命令。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git submodule init
+git submodule update
+</pre></div>
+</div>
+</section>
+<section id="build-the-shared-library">
+<span id="build-shared-library"></span><h2>构建共享库<a class="headerlink" href="#build-the-shared-library" title="永久链接至标题">#</a></h2>
+<p>我们的目标是建立共享库：</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>在 Linux 上，目标库是 <code class="docutils literal notranslate"><span class="pre">libtvm.so</span></code> 和 <code class="docutils literal notranslate"><span class="pre">libtvm_runtime.so</span></code>。</p></li>
+<li><p>在 macOS 上，目标库是 <code class="docutils literal notranslate"><span class="pre">libtvm.dylib</span></code> 和 <code class="docutils literal notranslate"><span class="pre">libtvm_runtime.dylib</span></code></p></li>
+<li><p>在 Windows 上，目标库是 <code class="docutils literal notranslate"><span class="pre">libtvm.dll</span></code> 和 <code class="docutils literal notranslate"><span class="pre">libtvm_runtime.dll</span></code></p></li>
+</ul>
+</div></blockquote>
+<p>也可以只 <a class="reference internal" href="../how_to/deploy/index.html#deploy-and-integration"><span class="std std-ref">构建运行时的</span></a> 库。</p>
+<p><code class="docutils literal notranslate"><span class="pre">TVM</span></code> 库的最低构建要求是：</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>支持 C++14 的最新 C++ 编译器（g++-5 或更高）。</p></li>
+<li><p>CMake 3.10 或更高版本</p></li>
+<li><p>我们强烈建议使用 LLVM 构建，以启用所有的功能。</p></li>
+<li><p>如果你想使用 CUDA，需要 CUDA 工具箱版本 &gt;=8.0。如果你从旧版本升级，请确保在安装后清除旧版本并重新启动。</p></li>
+<li><p>在 macOS 上，你可能想安装 <a class="reference external" href="https://brew.sh">Homebrew</a> 以方便安装和管理依赖性。</p></li>
+<li><p>Python 也是必需的。避免使用 Python 3.9.X+，它不 <a class="reference external" href="https://github.com/apache/tvm/issues/8577">支持</a>。然而，3.7.X+ 和 3.8.X+ 应该得到良好的支持。</p></li>
+</ul>
+</div></blockquote>
+<p>要在 Ubuntu/Debian 等 linux 操作系统上安装这些最小的先决条件，请执行（在终端）：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get update
+sudo apt-get install -y python3 python3-dev python3-setuptools gcc libtinfo-dev zlib1g-dev build-essential cmake libedit-dev libxml2-dev
+</pre></div>
+</div>
+<p>使用 Homebrew 为运行英特尔或 M1 处理器的 macOS 安装所需的依赖项。你必须遵循 Homebrew 指定的安装后步骤，以确保正确地安装和配置这些依赖项：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install gcc git cmake
+brew install llvm
+brew install python@3.8
+</pre></div>
+</div>
+<p>我们使用 cmake 来构建库。TVM 的配置可以通过编辑 <code class="docutils literal notranslate"><span class="pre">config.cmake</span></code> 和/或在命令行传递 cmake 标志来修改：</p>
+<ul>
+<li><p>首先，检查你系统中的 cmake。如果你没有 cmake，你可以从 <a class="reference external" href="https://cmake.org/download/">官方网站</a> 获得最新版本。</p></li>
+<li><p>首先创建 build 目录，将 <code class="docutils literal notranslate"><span class="pre">cmake/config.cmake</span></code> 复制到该目录。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir build
+cp cmake/config.cmake build
+</pre></div>
+</div>
+</li>
+<li><p>编辑 <code class="docutils literal notranslate"><span class="pre">build/config.cmake</span></code> 来定制编译选项</p>
+<ul>
+<li><p>在 macOS 上，对于某些版本的 Xcode，你需要在 LDFLAGS 中加入 <code class="docutils literal notranslate"><span class="pre">-lc++abi</span></code>，否则会出现链接错误。</p></li>
+<li><p>将 <code class="docutils literal notranslate"><span class="pre">set(USE_CUDA</span> <span class="pre">OFF)</span></code> 改为 <code class="docutils literal notranslate"><span class="pre">set(USE_CUDA</span> <span class="pre">ON)</span></code> 以启用 CUDA 后台。对其他你想构建的后端和库（OpenCL、RCOM、METAL、VULKAN …）做同样的处理。</p></li>
+<li><p>为了帮助调试，确保用 <code class="docutils literal notranslate"><span class="pre">set(USE_GRAPH_EXECUTOR</span> <span class="pre">ON)</span></code> 和 <code class="docutils literal notranslate"><span class="pre">set(USE_PROFILER</span> <span class="pre">ON)</span></code> 启用嵌入式图形执行器和调试功能</p></li>
+<li><p>要用 IR 进行调试，<code class="docutils literal notranslate"><span class="pre">set(USE_RELAY_DEBUG</span> <span class="pre">ON)</span></code> 并设置环境变量 <code class="docutils literal notranslate"><span class="pre">TVM_LOG_DEBUG</span></code>。</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">TVM_LOG_DEBUG</span><span class="o">=</span><span class="s2">&quot;ir/transform.cc=1;relay/ir/transform.cc=1&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p>TVM 需要 LLVM 用于 CPU 编码。我们强烈建议你使用 LLVM 支持来构建。</p>
+<ul class="simple">
+<li><p>使用 LLVM 构建时需要 LLVM 4.0 或更高版本。注意，默认的 apt 中的 LLVM 版本可能低于 4.0。</p></li>
+<li><p>由于 LLVM 从源代码构建需要很长时间，你可以从 <a class="reference external" href="http://releases.llvm.org/download.html">LLVM 下载页面</a> 下载预构建的 LLVM 版本。</p>
+<ul>
+<li><p>解压到某个位置，修改 <code class="docutils literal notranslate"><span class="pre">build/config.cmake</span></code>，加入 <code class="docutils literal notranslate"><span class="pre">set(USE_LLVM</span> <span class="pre">/path/to/your/llvm/bin/llvm-config)</span></code></p></li>
+<li><p>你也可以直接设置 <code class="docutils literal notranslate"><span class="pre">set(USE_LLVM</span> <span class="pre">ON)</span></code>，让 cmake 搜索可用的 LLVM 版本。</p></li>
+</ul>
+</li>
+<li><p>你也可以使用 <a class="reference external" href="https://apt.llvm.org/">LLVM Nightly Ubuntu 构建版</a></p>
+<ul>
+<li><p>注意，apt-package 会将 <code class="docutils literal notranslate"><span class="pre">llvm-config</span></code> 附加到版本号上。例如，如果你安装了 LLVM 10 软件包，请设置 <code class="docutils literal notranslate"><span class="pre">set(USE_LLVM</span> <span class="pre">llvm-config-10)</span></code></p></li>
+</ul>
+</li>
+<li><p>如果你是 PyTorch 的用户，建议设置 <code class="docutils literal notranslate"><span class="pre">(USE_LLVM</span> <span class="pre">&quot;/path/to/llvm-config</span> <span class="pre">--link-static&quot;)</span></code> 和 <code class="docutils literal notranslate"><span class="pre">set(HIDE_PRIVATE_SYMBOLS</span> <span class="pre">ON)</span></code>，以避免 TVM 和 PyTorch 使用的不同版本 LLVM 之间的潜在 symbol 冲突。</p></li>
+</ul>
+</li>
+<li><p>然后我们可以建立 tvm 和相关的库。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> build
+cmake ..
+make -j4
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>你也可以用 Ninja 构建系统来代替 Unix Makefiles。它可以比使用 Makefiles 更快地构建。</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> build
+cmake .. -G Ninja
+ninja
+</pre></div>
+</div>
+<ul>
+<li><p>在顶层的 tvm 目录下还有一个 makefile，可以自动完成其中的几个步骤。它将创建构建目录，将默认的 <code class="docutils literal notranslate"><span class="pre">config.cmake</span></code> 复制到构建目录，运行 cmake，然后运行 make。</p>
+<p>构建目录可以使用环境变量 <code class="docutils literal notranslate"><span class="pre">TVM_BUILD_PATH</span></code> 来指定。如果 <code class="docutils literal notranslate"><span class="pre">TVM_BUILD_PATH</span></code> 没有设置，makefile 会假定使用 tvm 里面的 <code class="docutils literal notranslate"><span class="pre">build</span></code> 目录。<code class="docutils literal notranslate"><span class="pre">TVM_BUILD_PATH</span></code> 指定的路径可以是绝对路径或相对于 tvm 基本目录的路径。<code class="docutils literal notranslate"><span class="pre">TVM_BUILD_PATH</span></code> 也可以设置为一个空格分隔的路径列表，在这种情况下，所有列出的路径都将被构建。</p>
+<p>如果使用另一个编译目录，那么环境变量 <code class="docutils literal notranslate"><span class="pre">TVM_LIBRARY_PATH</span></code> 应该在运行时设置，指向编译的 <code class="docutils literal notranslate"><span class="pre">libtvm.so</span></code> 和 <code class="docutils literal notranslate"><span class="pre">libtvm_runtime.so</span></code> 的位置。如果没有设置，tvm 将寻找相对于 tvm python 模块的位置。与 <code class="docutils literal notranslate"><span class="pre">TVM_BUILD_PATH</span></code> 不同，这必须是一个绝对路径。</p>
+</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build in the &quot;build&quot; directory</span>
+make
+
+<span class="c1"># Alternate location, &quot;build_debug&quot;</span>
+<span class="nv">TVM_BUILD_PATH</span><span class="o">=</span>build_debug make
+
+<span class="c1"># Build both &quot;build_release&quot; and &quot;build_debug&quot;</span>
+<span class="nv">TVM_BUILD_PATH</span><span class="o">=</span><span class="s2">&quot;build_debug build_release&quot;</span> make
+
+<span class="c1"># Use debug build</span>
+<span class="nv">TVM_LIBRARY_PATH</span><span class="o">=</span>~/tvm/build_debug python3
+</pre></div>
+</div>
+</li>
+</ul>
+<p>如果一切顺利，我们可以去 <a class="reference internal" href="#python-package-installation"><span class="std std-ref">Python 软件包的安装</span></a>。</p>
+<section id="building-with-a-conda-environment">
+<span id="build-with-conda"></span><h3>用 Conda 环境构建<a class="headerlink" href="#building-with-a-conda-environment" title="永久链接至标题">#</a></h3>
+<p>Conda 是一种非常方便的方式，可以获得运行 TVM 所需的必要依赖。首先，如果你的系统中还没有 conda，请按照 <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/">conda 的安装指南</a> 来安装 miniconda 或 anaconda。在 conda 环境下运行以下命令：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a conda environment with the dependencies specified by the yaml</span>
+conda env create --file conda/build-environment.yaml
+<span class="c1"># Activate the created environment</span>
+conda activate tvm-build
+</pre></div>
+</div>
+<p>上述命令将安装所有必要的构建依赖项，如 cmake 和 LLVM。然后你就可以运行最后一节中的标准构建过程。</p>
+<p>如果你想在 conda 环境之外使用编译后的二进制文件，你可以将 LLVM 设置为静态链接模式 <code class="docutils literal notranslate"><span class="pre">set(USE_LLVM</span> <span class="pre">&quot;llvm-config</span> <span class="pre">--link-static&quot;)</span></code>。这样一来，生成的库就不会依赖于 conda 环境中的动态 LLVM 库。</p>
+<p>上面的说明显示了如何使用 conda 来提供必要的构建依赖项来构建 libtvm。如果你已经在使用 conda 作为你的软件包管理器，并且希望直接将 tvm 作为 conda 的软件包来构建和安装，你可以按照下面的说明进行：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda build --output-folder<span class="o">=</span>conda/pkg  conda/recipe
+<span class="c1"># Run conda/build_cuda.sh to build with cuda enabled</span>
+conda install tvm -c ./conda/pkg
+</pre></div>
+</div>
+</section>
+<section id="building-on-windows">
+<h3>构建在 Windows 上<a class="headerlink" href="#building-on-windows" title="永久链接至标题">#</a></h3>
+<p>TVM support build via MSVC using cmake. You will need to ontain a visual studio compiler.
+The minimum required VS version is <strong>Visual Studio Enterprise 2019</strong> (NOTE: we test
+against GitHub Actions’ <a class="reference external" href="https://github.com/actions/virtual-environments/blob/main/images/win/Windows2019-Readme.md">Windows 2019 Runner</a>, so see that page for full details.
+We recommend following <a class="reference internal" href="#build-with-conda"><span class="std std-ref">用 Conda 环境构建</span></a> to obtain necessary dependencies and
+get an activated tvm-build environment. Then you can run the following command to build</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir build
+<span class="nb">cd</span> build
+cmake -A x64 -Thost<span class="o">=</span>x64 ..
+<span class="nb">cd</span> ..
+</pre></div>
+</div>
+<p>上述命令在构建目录下生成了解决方案文件。然后你可以运行以下命令来构建</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake --build build --config Release -- /m
+</pre></div>
+</div>
+</section>
+<section id="building-rocm-support">
+<h3>建立 ROCm 支持<a class="headerlink" href="#building-rocm-support" title="永久链接至标题">#</a></h3>
+<p>目前，ROCm 只支持 linux，所以所有说明都是在考虑到 linux 的情况下编写的。</p>
+<ul class="simple">
+<li><p>设置 <code class="docutils literal notranslate"><span class="pre">set(USE_ROCM</span> <span class="pre">ON)</span></code>，将 ROCM_PATH 设为正确的路径。</p></li>
+<li><p>你需要首先从 ROCm 安装 HIP 运行时。确保安装系统中已经安装了 ROCm。</p></li>
+<li><p>安装最新的 LLVM 稳定版本（v6.0.1），以及 LLD，确保 <code class="docutils literal notranslate"><span class="pre">ld.lld</span></code> 可以通过命令行使用。</p></li>
+</ul>
+</section>
+</section>
+<section id="python-package-installation">
+<span id="id2"></span><h2>Python 软件包的安装<a class="headerlink" href="#python-package-installation" title="永久链接至标题">#</a></h2>
+<section id="tvm-package">
+<h3>TVM 包<a class="headerlink" href="#tvm-package" title="永久链接至标题">#</a></h3>
+<p>根据你的开发环境，你可能想使用一个虚拟环境和软件包管理器，如 <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> 或 <code class="docutils literal notranslate"><span class="pre">conda</span></code>，来管理你的 Python 软件包和依赖关系。</p>
+<p>来安装和维护你的 Python 开发环境。</p>
+<p>Python 软件包位于 <code class="docutils literal notranslate"><span class="pre">tvm/python</span></code>，有两种方法来安装软件包：</p>
+<dl>
+<dt>方法 1</dt><dd><p>这种方法是 <strong>推荐给可能改变代码的开发者</strong> 的。</p>
+<p>设置环境变量 <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> 来告诉 python 在哪里找到这个库。例如，假设我们在 <code class="docutils literal notranslate"><span class="pre">/path/to/tvm</span></code> 目录下克隆了 <code class="docutils literal notranslate"><span class="pre">tvm</span></code>，那么我们可以在 <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> 中添加以下一行。一旦你拉出代码并重建项目，这些变化将立即反映出来（不需要再次调用 <code class="docutils literal notranslate"><span class="pre">setup</span></code>）</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">TVM_HOME</span><span class="o">=</span>/path/to/tvm
+<span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$TVM_HOME</span>/python:<span class="si">${</span><span class="nv">PYTHONPATH</span><span class="si">}</span>
+</pre></div>
+</div>
+</dd>
+<dt>方法 2</dt><dd><p>通过 <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> 安装 TVM 的 python 绑定：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># install tvm package for the current user</span>
+<span class="c1"># NOTE: if you installed python via homebrew, --user is not needed during installaiton</span>
+<span class="c1">#       it will be automatically installed to your user directory.</span>
+<span class="c1">#       providing --user flag may trigger error during installation in such case.</span>
+<span class="nb">export</span> <span class="nv">MACOSX_DEPLOYMENT_TARGET</span><span class="o">=</span><span class="m">10</span>.9  <span class="c1"># This is required for mac to avoid symbol conflicts with libstdc++</span>
+<span class="nb">cd</span> python<span class="p">;</span> python setup.py install --user<span class="p">;</span> <span class="nb">cd</span> ..
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="python-dependencies">
+<h3>Python 依赖<a class="headerlink" href="#python-dependencies" title="永久链接至标题">#</a></h3>
+<p>注意，如果你要安装到一个受管理的本地环境，如 <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code>，则不需要 <code class="docutils literal notranslate"><span class="pre">--user</span></code> flag。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>必要的依赖性：</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install --user numpy decorator attrs
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>如果你想使用 RPC Tracker</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install --user tornado
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>如果你想使用 auto-tuning 模块</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install --user tornado psutil xgboost cloudpickle
+</pre></div>
+</div>
+</div></blockquote>
+<p>注意在 M1 macs 上，你可能在安装 xgboost / scipy 时遇到麻烦。scipy 和 xgboost 需要安装一些额外的依赖，包括 openblas 及其依赖。使用下面的命令来安装 scipy 和 xgboost 以及所需的依赖和配置。一个变通的方法是执行以下命令：</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install openblas gfortran
+
+pip install pybind11 cython pythran
+
+<span class="nb">export</span> <span class="nv">OPENBLAS</span><span class="o">=</span>/opt/homebrew/opt/openblas/lib/
+
+pip install scipy --no-use-pep517
+
+pip install xgboost
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<section id="install-contrib-libraries">
+<h2>安装 Contrib 库<a class="headerlink" href="#install-contrib-libraries" title="永久链接至标题">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="nnpack.html">NNPACK Contrib Installation</a></li>
+</ul>
+</div>
+</section>
+<section id="enable-c-tests">
+<span id="install-from-source-cpp-tests"></span><h2>启用 C++ 测试<a class="headerlink" href="#enable-c-tests" title="永久链接至标题">#</a></h2>
+<p>我们使用 <a class="reference external" href="https://github.com/google/googletest">Google Test</a> 来驱动 TVM 中的 C++ 测试。安装 GTest 的最简单方法是从源码开始。</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/google/googletest
+<span class="nb">cd</span> googletest
+mkdir build
+<span class="nb">cd</span> build
+cmake -DBUILD_SHARED_LIBS<span class="o">=</span>ON ..
+make
+sudo make install
+</pre></div>
+</div>
+</div></blockquote>
+<p>安装 GTest 后，可以用 <code class="docutils literal notranslate"><span class="pre">./tests/scripts/task_cpp_unittest.sh</span></code> 构建和启动 C++ 测试，或者直接用 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">cpptest</span></code> 构建。</p>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="index.html" title="上一页 页">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一页</p>
+            <p class="prev-next-title">安装 TVM</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="nnpack.html" title="下一页 页">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">NNPACK Contrib Installation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By xinetzone<br/>
+  
+      &copy; Copyright 2022, xinetzone.<br/>
+    Last updated on 2022-04-07, 15:51:47.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
