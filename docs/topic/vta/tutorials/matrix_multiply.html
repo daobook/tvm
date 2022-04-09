@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Simple Matrix Multiply &#8212; TVM  文档</title>
+    <title>简单的矩阵乘法 &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -47,8 +47,8 @@
     <link rel="shortcut icon" href="../../../../_static/tvm-logo-square.png"/>
     <link rel="index" title="索引" href="../../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../../search.html" />
-    <link rel="next" title="Get Started with VTA" href="vta_get_started.html" />
-    <link rel="prev" title="VTA 教程" href="index.html" />
+    <link rel="next" title="Compile Deep Learning Models" href="frontend/index.html" />
+    <link rel="prev" title="VTA 入门" href="vta_get_started.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -821,14 +821,14 @@
        </i>
       </label>
       <ul class="current">
-       <li class="toctree-l4 current active">
-        <a class="current reference internal" href="#">
-         Simple Matrix Multiply
-        </a>
-       </li>
        <li class="toctree-l4">
         <a class="reference internal" href="vta_get_started.html">
-         Get Started with VTA
+         VTA 入门
+        </a>
+       </li>
+       <li class="toctree-l4 current active">
+        <a class="current reference internal" href="#">
+         简单的矩阵乘法
         </a>
        </li>
        <li class="toctree-l4">
@@ -1278,12 +1278,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#rpc-setup">
-   RPC Setup
+   RPC 设置
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#computation-declaration">
-   Computation Declaration
+   计算声明
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -1359,7 +1359,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Simple Matrix Multiply</h1>
+                <h1>简单的矩阵乘法</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1371,12 +1371,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#rpc-setup">
-   RPC Setup
+   RPC 设置
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#computation-declaration">
-   Computation Declaration
+   计算声明
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -1459,15 +1459,12 @@ title="Print to PDF"
 to download the full example code</p>
 </div>
 <section class="sphx-glr-example-title" id="simple-matrix-multiply">
-<span id="basic-mat-mult"></span><span id="sphx-glr-topic-vta-tutorials-matrix-multiply-py"></span><h1>Simple Matrix Multiply<a class="headerlink" href="#simple-matrix-multiply" title="永久链接至标题">#</a></h1>
+<span id="basic-mat-mult"></span><span id="sphx-glr-topic-vta-tutorials-matrix-multiply-py"></span><h1>简单的矩阵乘法<a class="headerlink" href="#simple-matrix-multiply" title="永久链接至标题">#</a></h1>
 <p><strong>Author</strong>: <a class="reference external" href="https://homes.cs.washington.edu/~moreau/">Thierry Moreau</a></p>
-<p>In this tutorial, we will build on top of the <a class="reference internal" href="vta_get_started.html#vta-get-started"><span class="std std-ref">Get Started with VTA</span></a> tutorial
-and introduce additional concepts required to implement matrix multiplication
-on VTA with the TVM workflow.</p>
+<p>在本教程构建在 <a class="reference internal" href="vta_get_started.html#vta-get-started"><span class="std std-ref">VTA 入门</span></a> 教程的基础上，并介绍在 VTA 上使用 TVM 工作流实现矩阵乘法所需的额外概念。</p>
 <section id="rpc-setup">
-<h2>RPC Setup<a class="headerlink" href="#rpc-setup" title="永久链接至标题">#</a></h2>
-<p>We start by programming the Pynq’s FPGA and building its RPC runtime
-as we did in the VTA introductory tutorial.</p>
+<h2>RPC 设置<a class="headerlink" href="#rpc-setup" title="永久链接至标题">#</a></h2>
+<p>我们从编程 Pynq 的 FPGA 和构建它的 RPC 运行时开始，就像我们在 VTA 介绍性教程中做的那样。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">print_function</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
@@ -1509,7 +1506,7 @@ as we did in the VTA introductory tutorial.</p>
 </div>
 </section>
 <section id="computation-declaration">
-<h2>Computation Declaration<a class="headerlink" href="#computation-declaration" title="永久链接至标题">#</a></h2>
+<h2>计算声明<a class="headerlink" href="#computation-declaration" title="永久链接至标题">#</a></h2>
 <p>In this example we describe a simple matrix multiplication addition, which
 requires multiple computation stages, as shown in the dataflow diagram below.
 First we describe the input tensors <code class="code docutils literal notranslate"><span class="pre">A</span></code> and <code class="code docutils literal notranslate"><span class="pre">B</span></code> that are living
@@ -1888,17 +1885,17 @@ The general workflow includes:</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="index.html" title="上一页 页">
+    <a class='left-prev' id="prev-link" href="vta_get_started.html" title="上一页 页">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">上一页</p>
-            <p class="prev-next-title">VTA 教程</p>
+            <p class="prev-next-title">VTA 入门</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="vta_get_started.html" title="下一页 页">
+    <a class='right-next' id="next-link" href="frontend/index.html" title="下一页 页">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">下一页</p>
-        <p class="prev-next-title">Get Started with VTA</p>
+        <p class="prev-next-title">Compile Deep Learning Models</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -1912,7 +1909,7 @@ The general workflow includes:</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-04-07, 15:51:47.<br/>
+    Last updated on 2022-04-09, 08:25:47.<br/>
 </p>
         </footer>
     </div>

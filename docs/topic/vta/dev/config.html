@@ -822,13 +822,13 @@
       </label>
       <ul>
        <li class="toctree-l4">
-        <a class="reference internal" href="../tutorials/matrix_multiply.html">
-         Simple Matrix Multiply
+        <a class="reference internal" href="../tutorials/vta_get_started.html">
+         VTA 入门
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="../tutorials/vta_get_started.html">
-         Get Started with VTA
+        <a class="reference internal" href="../tutorials/matrix_multiply.html">
+         简单的矩阵乘法
         </a>
        </li>
        <li class="toctree-l4">
@@ -1383,15 +1383,15 @@ title="Print to PDF"
 <blockquote>
 <div><div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>当参数名称前面带有 <code class="docutils literal notranslate"><span class="pre">LOG</span></code> 时，这意味着它描述的值只能表示为 2 的幂。因此，用它们的 log2 值来描述这些参数。例如，为了描述输入数据类型的 8 位整数宽度，将 <code class="docutils literal notranslate"><span class="pre">LOG_INP_WIDTH</span></code> 设置为 3，即 8 的 log2。类似地，为了描述 64kB 的 micro-op buffer，将 <code class="docutils literal notranslate"><span class="pre">LOG_UOP_BUFF_SIZE</span></code> 设置为 16。</p>
+<p>当参数名称前面带有 <code class="docutils literal notranslate"><span class="pre">LOG</span></code> 时，这意味着它描述的值只能表示为 2 的幂。因此，用它们的 log2 值来描述这些参数。例如，为了描述输入数据类型的 8 位整型宽度，将 <code class="docutils literal notranslate"><span class="pre">LOG_INP_WIDTH</span></code> 设置为 3，即 8 的 log2。类似地，为了描述 64kB 的 micro-op buffer，将 <code class="docutils literal notranslate"><span class="pre">LOG_UOP_BUFF_SIZE</span></code> 设置为 16。</p>
 </div>
 </div></blockquote>
-<p>我们在下面提供了关于每个参数的额外细节：</p>
+<p>下面提供关于每个参数的额外细节：</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">TARGET</span></code>：可以设置为 <code class="docutils literal notranslate"><span class="pre">&quot;pynq&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;ultra96&quot;</span></code>、 <code class="docutils literal notranslate"><span class="pre">&quot;sim&quot;</span></code> （快速仿真器）或 <code class="docutils literal notranslate"><span class="pre">&quot;tsim&quot;</span></code>  （cycle accurate sim with verilator）。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">HW_VER</span></code>：硬件版本，每次 VTA 硬件设计改变时增加。该参数用于唯一标识硬件位流。”</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">LOG_BATCH</span></code>：在形状 (A, B) x (B, C) 的乘法中等价于 A，或典型地，内部张量计算的 batch 维度。”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOG_BATCH</span></code>：在形状 (A, B) x (B, C) 的乘法中等价于 A，或典型地，内部张量计算的 batch 维度。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">LOG_BLOCK</span></code>：相当于 B 和 C 的形状 (A, B) x (B, C) 的乘法，或者通常是内部张量计算的输入/输出通道维数。</p></li>
 </ul>
 </div></blockquote>
@@ -1430,7 +1430,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-04-07, 15:51:47.<br/>
+    Last updated on 2022-04-09, 08:25:47.<br/>
 </p>
         </footer>
     </div>

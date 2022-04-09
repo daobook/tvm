@@ -822,13 +822,13 @@
       </label>
       <ul>
        <li class="toctree-l4">
-        <a class="reference internal" href="../tutorials/matrix_multiply.html">
-         Simple Matrix Multiply
+        <a class="reference internal" href="../tutorials/vta_get_started.html">
+         VTA 入门
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="../tutorials/vta_get_started.html">
-         Get Started with VTA
+        <a class="reference internal" href="../tutorials/matrix_multiply.html">
+         简单的矩阵乘法
         </a>
        </li>
        <li class="toctree-l4">
@@ -1451,13 +1451,10 @@ title="Print to PDF"
 </section>
 <section id="hls-hardware-source-organization">
 <h2>HLS 硬件资源组织<a class="headerlink" href="#hls-hardware-source-organization" title="永久链接至标题">#</a></h2>
-<p>The VTA design is currently specified in Vivado HLS C++, which is only supported
-by Xilinx toolchains.
-The VTA hardware sources are contained under <code class="docutils literal notranslate"><span class="pre">3rdparty/vta-hw/hardware/xilinx/sources</span></code>:</p>
+<p>VTA 设计目前是在 Vivado HLS C++ 中指定的，而这只被 Xilinx 工具链所支持。VTA 硬件资源包含在 <code class="docutils literal notranslate"><span class="pre">3rdparty/vta-hw/hardware/xilinx/sources</span></code> 下：</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">vta.cc</span></code> contains the definitions for each VTA module, as well as a top
-level behavioral model for the top-level VTA design.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vta.cc</span></code> 包含了每个 VTA 模块的定义，以及用于顶层 VTA 设计的顶层行为模型。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">vta.h</span></code> contains type definitions using Xilinx <code class="docutils literal notranslate"><span class="pre">ap_int</span></code> types, and
 function prototypes declarations.</p></li>
 </ul>
@@ -1678,7 +1675,7 @@ provides a much more in-depth, and complete specification of HLS for the Xilinx 
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-04-07, 15:51:47.<br/>
+    Last updated on 2022-04-09, 08:25:47.<br/>
 </p>
         </footer>
     </div>

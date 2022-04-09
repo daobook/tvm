@@ -822,13 +822,13 @@
       </label>
       <ul>
        <li class="toctree-l4">
-        <a class="reference internal" href="../topic/vta/tutorials/matrix_multiply.html">
-         Simple Matrix Multiply
+        <a class="reference internal" href="../topic/vta/tutorials/vta_get_started.html">
+         VTA 入门
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="../topic/vta/tutorials/vta_get_started.html">
-         Get Started with VTA
+        <a class="reference internal" href="../topic/vta/tutorials/matrix_multiply.html">
+         简单的矩阵乘法
         </a>
        </li>
        <li class="toctree-l4">
@@ -1721,8 +1721,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numpy running time: 0.000026
-naive: 0.000022
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numpy running time: 0.000017
+naive: 0.000016
 </pre></div>
 </div>
 </div>
@@ -1773,7 +1773,7 @@ naive: 0.000022
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>parallel: 0.000010
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>parallel: 0.000404
 </pre></div>
 </div>
 </div>
@@ -1810,7 +1810,7 @@ naive: 0.000022
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vector: 0.000018
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vector: 0.000012
 @main = primfn(A_1: handle, B_1: handle, C_1: handle) -&gt; ()
   attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
   buffers = {A: Buffer(A_2: Pointer(float32), float32, [(stride: int32*n: int32)], [], type=&quot;auto&quot;),
@@ -1848,10 +1848,10 @@ naive: 0.000022
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            Operator	              Timing	         Performance
-               numpy	2.6225759647786617e-05	                 1.0
-               naive	         2.18464e-05	  0.8330130487504783
-            parallel	1.0207900000000001e-05	  0.3892318139528713
-              vector	1.8498200000000002e-05	  0.7053446782259822
+               numpy	1.685864757746458e-05	                 1.0
+               naive	         1.58021e-05	  0.9373290429964918
+            parallel	0.00040369789999999994	  23.946043011162654
+              vector	1.2195599999999999e-05	   0.723403223417648
 </pre></div>
 </div>
 </div>
@@ -2050,58 +2050,6 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
 
 <span class="n">fadd1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 <span class="n">tvm</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">a</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="o">+</span> <span class="n">b</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TVMError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">/media/pc/data/4tb/lxw/study/tvm/_toc/tutorial/tensor_expr_get_started.ipynb Cell 31&#39;</span> in <span class="ni">&lt;cell line: 14&gt;</span><span class="nt">()</span>
-     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/lxw/study/tvm/_toc/tutorial/tensor_expr_get_started.ipynb#ch0000030vscode-remote?line=10&#39;</span><span class="o">&gt;</span><span class="mi">11</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">fadd1_dev</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">load_module</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="s2">&quot;myadd.cl&quot;</span><span class="p">))</span>
-     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/lxw/study/tvm/_toc/tutorial/tensor_expr_get_started.ipynb#ch0000030vscode-remote?line=11&#39;</span><span class="o">&gt;</span><span class="mi">12</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">fadd1</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">fadd1_dev</span><span class="p">)</span>
-<span class="o">---&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/lxw/study/tvm/_toc/tutorial/tensor_expr_get_started.ipynb#ch0000030vscode-remote?line=13&#39;</span><span class="o">&gt;</span><span class="mi">14</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">fadd1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
-     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/lxw/study/tvm/_toc/tutorial/tensor_expr_get_started.ipynb#ch0000030vscode-remote?line=14&#39;</span><span class="o">&gt;</span><span class="mi">15</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">tvm</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">a</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="o">+</span> <span class="n">b</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
-
-<span class="nn">File /media/pc/data/4tb/lxw/study/tvm/python/tvm/runtime/module.py:178,</span> in <span class="ni">Module.__call__</span><span class="nt">(self, *args)</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/runtime/module.py?line=175&#39;</span><span class="o">&gt;</span><span class="mi">176</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_entry</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/runtime/module.py?line=176&#39;</span><span class="o">&gt;</span><span class="mi">177</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># pylint: disable=not-callable</span>
-<span class="o">--&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/runtime/module.py?line=177&#39;</span><span class="o">&gt;</span><span class="mi">178</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">entry_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-
-<span class="nn">File /media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py:237,</span> in <span class="ni">PackedFuncBase.__call__</span><span class="nt">(self, *args)</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=224&#39;</span><span class="o">&gt;</span><span class="mi">225</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">ret_tcode</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">()</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=225&#39;</span><span class="o">&gt;</span><span class="mi">226</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">if</span> <span class="p">(</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=226&#39;</span><span class="o">&gt;</span><span class="mi">227</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">_LIB</span><span class="o">.</span><span class="n">TVMFuncCall</span><span class="p">(</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=227&#39;</span><span class="o">&gt;</span><span class="mi">228</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>         <span class="bp">self</span><span class="o">.</span><span class="n">handle</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=234&#39;</span><span class="o">&gt;</span><span class="mi">235</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="o">!=</span> <span class="mi">0</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=235&#39;</span><span class="o">&gt;</span><span class="mi">236</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="p">):</span>
-<span class="o">--&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=236&#39;</span><span class="o">&gt;</span><span class="mi">237</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="k">raise</span> <span class="n">get_last_ffi_error</span><span class="p">()</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=237&#39;</span><span class="o">&gt;</span><span class="mi">238</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">_</span> <span class="o">=</span> <span class="n">temp_args</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=238&#39;</span><span class="o">&gt;</span><span class="mi">239</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">_</span> <span class="o">=</span> <span class="n">args</span>
-
-<span class="ne">TVMError</span>: Traceback (most recent call last):
-<span class="g g-Whitespace">  </span><span class="mi">1</span><span class="p">:</span> <span class="n">TVMFuncCall</span>
-<span class="g g-Whitespace">  </span><span class="mi">0</span><span class="p">:</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">PackedFuncObj</span><span class="p">::</span><span class="n">Extractor</span><span class="o">&lt;</span><span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">PackedFuncSubObj</span><span class="o">&lt;</span><span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">WrapPackedFunc</span><span class="p">(</span><span class="nb">int</span> <span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="n">TVMValue</span><span class="o">*</span><span class="p">,</span> <span class="nb">int</span><span class="o">*</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">TVMValue</span><span class="o">*</span><span class="p">,</span> <span class="nb">int</span><span class="o">*</span><span class="p">,</span> <span class="n">void</span><span class="o">*</span><span class="p">),</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">ObjectPtr</span><span class="o">&lt;</span><span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">const</span><span class="o">&amp;</span><span class="p">)::{</span><span class="k">lambda</span><span class="p">(</span><span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">TVMArgs</span><span class="p">,</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">TVMRetValue</span><span class="o">*</span><span class="p">)</span><span class="c1">#1}&gt; &gt;::Call(tvm::runtime::PackedFuncObj const*, tvm::runtime::TVMArgs, tvm::runtime::TVMRetValue*)</span>
-<span class="g g-Whitespace">  </span><span class="mi">5</span><span class="p">:</span> <span class="n">TVMFuncCall</span>
-<span class="g g-Whitespace">  </span><span class="mi">4</span><span class="p">:</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">PackedFuncObj</span><span class="p">::</span><span class="n">Extractor</span><span class="o">&lt;</span><span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">PackedFuncSubObj</span><span class="o">&lt;</span><span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">WrapPackedFunc</span><span class="p">(</span><span class="nb">int</span> <span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="n">TVMValue</span><span class="o">*</span><span class="p">,</span> <span class="nb">int</span><span class="o">*</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">TVMValue</span><span class="o">*</span><span class="p">,</span> <span class="nb">int</span><span class="o">*</span><span class="p">,</span> <span class="n">void</span><span class="o">*</span><span class="p">),</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">ObjectPtr</span><span class="o">&lt;</span><span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">const</span><span class="o">&amp;</span><span class="p">)::{</span><span class="k">lambda</span><span class="p">(</span><span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">TVMArgs</span><span class="p">,</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">TVMRetValue</span><span class="o">*</span><span class="p">)</span><span class="c1">#1}&gt; &gt;::Call(tvm::runtime::PackedFuncObj const*, tvm::runtime::TVMArgs, tvm::runtime::TVMRetValue*)</span>
-<span class="g g-Whitespace">  </span><span class="mi">3</span><span class="p">:</span> <span class="n">myadd</span>
-<span class="g g-Whitespace">  </span><span class="mi">2</span><span class="p">:</span> <span class="n">myadd_compute_</span>
-<span class="g g-Whitespace">  </span><span class="mi">1</span><span class="p">:</span> <span class="n">TVMBackendGetFuncFromEnv</span>
-<span class="g g-Whitespace">  </span><span class="mi">0</span><span class="p">:</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">ModuleNode</span><span class="p">::</span><span class="n">GetFuncFromEnv</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">__cxx11</span><span class="p">::</span><span class="n">basic_string</span><span class="o">&lt;</span><span class="n">char</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">char_traits</span><span class="o">&lt;</span><span class="n">char</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">allocator</span><span class="o">&lt;</span><span class="n">char</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">const</span><span class="o">&amp;</span><span class="p">)</span>
-<span class="gt">  File</span><span class="nn"> &quot;/media/pc/data/4tb/lxw/study/tvm/src/runtime/module.cc&quot;</span><span class="gt">, line </span><span class="mi">118</span>
-<span class="gt">  File</span><span class="nn"> &quot;/media/pc/data/4tb/lxw/study/tvm/src/runtime/library_module.cc&quot;</span><span class="gt">, line </span><span class="mi">80</span>
-<span class="ne">TVMError</span>: 
-<span class="gt">---------------------------------------------------------------</span>
-<span class="n">An</span> <span class="n">error</span> <span class="n">occurred</span> <span class="n">during</span> <span class="n">the</span> <span class="n">execution</span> <span class="n">of</span> <span class="n">TVM</span><span class="o">.</span>
-<span class="n">For</span> <span class="n">more</span> <span class="n">information</span><span class="p">,</span> <span class="n">please</span> <span class="n">see</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">tvm</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">errors</span><span class="o">.</span><span class="n">html</span>
-<span class="gt">---------------------------------------------------------------</span>
-
-  <span class="n">Check</span> <span class="n">failed</span><span class="p">:</span> <span class="n">ret</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="n">vs</span><span class="o">.</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span> <span class="n">TVMError</span><span class="p">:</span> 
-<span class="gt">---------------------------------------------------------------</span>
-<span class="n">An</span> <span class="n">error</span> <span class="n">occurred</span> <span class="n">during</span> <span class="n">the</span> <span class="n">execution</span> <span class="n">of</span> <span class="n">TVM</span><span class="o">.</span>
-<span class="n">For</span> <span class="n">more</span> <span class="n">information</span><span class="p">,</span> <span class="n">please</span> <span class="n">see</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">tvm</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">errors</span><span class="o">.</span><span class="n">html</span>
-<span class="gt">---------------------------------------------------------------</span>
-  <span class="n">Check</span> <span class="n">failed</span><span class="p">:</span> <span class="p">(</span><span class="n">f</span> <span class="o">!=</span> <span class="n">nullptr</span><span class="p">)</span> <span class="ow">is</span> <span class="n">false</span><span class="p">:</span> <span class="n">Cannot</span> <span class="n">find</span> <span class="n">function</span> <span class="n">myadd_kernel0</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">imported</span> <span class="n">modules</span> <span class="ow">or</span> <span class="k">global</span> <span class="n">registry</span><span class="o">.</span> <span class="n">If</span> <span class="n">this</span> <span class="n">involves</span> <span class="n">ops</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">contrib</span> <span class="n">library</span> <span class="n">like</span> <span class="n">cuDNN</span><span class="p">,</span> <span class="n">ensure</span> <span class="n">TVM</span> <span class="n">was</span> <span class="n">built</span> <span class="k">with</span> <span class="n">the</span> <span class="n">relevant</span> <span class="n">library</span><span class="o">.</span>
 </pre></div>
 </div>
 </div>
@@ -2514,7 +2462,7 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-04-07, 15:51:47.<br/>
+    Last updated on 2022-04-09, 08:25:47.<br/>
 </p>
         </footer>
     </div>
