@@ -2,12 +2,11 @@
 
 .. _vta-tutorial-frontend:
 
-Compile Deep Learning Models
+编译深度学习模型
 ----------------------------
 
 
 .. toctree::
-   :hidden:
 
    deploy_classification
    deploy_detection

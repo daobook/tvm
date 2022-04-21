@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Compile Deep Learning Models &#8212; TVM  文档</title>
+    <title>编译深度学习模型 &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -47,7 +47,7 @@
     <link rel="shortcut icon" href="../../../../../_static/tvm-logo-square.png"/>
     <link rel="index" title="索引" href="../../../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../../../search.html" />
-    <link rel="next" title="Deploy Pretrained Vision Model from MxNet on VTA" href="deploy_classification.html" />
+    <link rel="next" title="在 VTA 上从 MxNet 部署预先训练的视觉模型" href="deploy_classification.html" />
     <link rel="prev" title="简单的矩阵乘法" href="../matrix_multiply.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
@@ -833,7 +833,7 @@
        </li>
        <li class="toctree-l4 current active">
         <a class="current reference internal" href="#">
-         Compile Deep Learning Models
+         编译深度学习模型
         </a>
        </li>
        <li class="toctree-l4">
@@ -1266,7 +1266,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Compile Deep Learning Models</h1>
+                <h1>编译深度学习模型</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1278,9 +1278,28 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="compile-deep-learning-models">
-<span id="vta-tutorial-frontend"></span><span id="sphx-glr-topic-vta-tutorials-frontend"></span><h1>Compile Deep Learning Models<a class="headerlink" href="#compile-deep-learning-models" title="永久链接至标题">#</a></h1>
+  <section id="vta-tutorial-frontend">
+<span id="sphx-glr-topic-vta-tutorials-frontend"></span><span id="id1"></span><h1>编译深度学习模型<a class="headerlink" href="#vta-tutorial-frontend" title="永久链接至标题">#</a></h1>
 <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deploy_classification.html">在 VTA 上从 MxNet 部署预先训练的视觉模型</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deploy_classification.html#id1">安装依赖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_classification.html#platform-model">定义 platform 和 model 目标</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_classification.html#id2">获取远程执行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_classification.html#graph-executor">构建 graph executor 推理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_classification.html#id3">进行图像分类推理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deploy_detection.html">Deploy Pretrained Vision Detection Model from Darknet on VTA</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deploy_detection.html#install-dependencies">Install dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_detection.html#download-yolo-categories-and-illustration-front">Download yolo categories and illustration front.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_detection.html#define-the-platform-and-model-targets">Define the platform and model targets.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_detection.html#obtain-an-execution-remote">Obtain an execution remote.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_detection.html#build-the-inference-graph-executor">Build the inference graph executor.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_detection.html#perform-image-detection-inference">Perform image detection inference.</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </section>
 
@@ -1302,7 +1321,7 @@ title="Print to PDF"
     <a class='right-next' id="next-link" href="deploy_classification.html" title="下一页 页">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">下一页</p>
-        <p class="prev-next-title">Deploy Pretrained Vision Model from MxNet on VTA</p>
+        <p class="prev-next-title">在 VTA 上从 MxNet 部署预先训练的视觉模型</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -1316,7 +1335,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-04-20, 16:23:00.<br/>
+    Last updated on 2022-04-21, 01:19:55.<br/>
 </p>
         </footer>
     </div>

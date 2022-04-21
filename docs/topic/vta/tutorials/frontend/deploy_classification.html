@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Deploy Pretrained Vision Model from MxNet on VTA &#8212; TVM  文档</title>
+    <title>在 VTA 上从 MxNet 部署预先训练的视觉模型 &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -48,7 +48,7 @@
     <link rel="index" title="索引" href="../../../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../../../search.html" />
     <link rel="next" title="Deploy Pretrained Vision Detection Model from Darknet on VTA" href="deploy_detection.html" />
-    <link rel="prev" title="Compile Deep Learning Models" href="index.html" />
+    <link rel="prev" title="编译深度学习模型" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -833,7 +833,7 @@
        </li>
        <li class="toctree-l4 current active">
         <a class="reference internal" href="index.html">
-         Compile Deep Learning Models
+         编译深度学习模型
         </a>
        </li>
        <li class="toctree-l4">
@@ -1195,7 +1195,7 @@ title="Fullscreen mode"
   </span>
 
 </button>
-<a href="https://github.com/xinetzone/torch-quantization/edit/main/docs/docs/topic/vta/tutorials/frontend/deploy_classification.rst"
+<a href="https://github.com/xinetzone/torch-quantization/edit/main/docs/docs/topic/vta/tutorials/frontend/deploy_classification.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="bottom"
@@ -1217,7 +1217,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../../../_sources/docs/topic/vta/tutorials/frontend/deploy_classification.rst.txt"
+        <a href="../../../../../_sources/docs/topic/vta/tutorials/frontend/deploy_classification.ipynb.txt"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -1228,7 +1228,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.rst</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -1277,28 +1277,28 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#install-dependencies">
-   Install dependencies
+  <a class="reference internal nav-link" href="#id1">
+   安装依赖
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-the-platform-and-model-targets">
-   Define the platform and model targets
+  <a class="reference internal nav-link" href="#platform-model">
+   定义 platform 和 model 目标
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#obtain-an-execution-remote">
-   Obtain an execution remote
+  <a class="reference internal nav-link" href="#id2">
+   获取远程执行
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#build-the-inference-graph-executor">
-   Build the inference graph executor
+  <a class="reference internal nav-link" href="#graph-executor">
+   构建 graph executor 推理
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perform-image-classification-inference">
-   Perform image classification inference
+  <a class="reference internal nav-link" href="#id3">
+   进行图像分类推理
   </a>
  </li>
 </ul>
@@ -1310,7 +1310,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Deploy Pretrained Vision Model from MxNet on VTA</h1>
+                <h1>在 VTA 上从 MxNet 部署预先训练的视觉模型</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1321,28 +1321,28 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#install-dependencies">
-   Install dependencies
+  <a class="reference internal nav-link" href="#id1">
+   安装依赖
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-the-platform-and-model-targets">
-   Define the platform and model targets
+  <a class="reference internal nav-link" href="#platform-model">
+   定义 platform 和 model 目标
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#obtain-an-execution-remote">
-   Obtain an execution remote
+  <a class="reference internal nav-link" href="#id2">
+   获取远程执行
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#build-the-inference-graph-executor">
-   Build the inference graph executor
+  <a class="reference internal nav-link" href="#graph-executor">
+   构建 graph executor 推理
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perform-image-classification-inference">
-   Perform image classification inference
+  <a class="reference internal nav-link" href="#id3">
+   进行图像分类推理
   </a>
  </li>
 </ul>
@@ -1355,31 +1355,30 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="sphx-glr-download-link-note admonition note">
-<p class="admonition-title">备注</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-topic-vta-tutorials-frontend-deploy-classification-py"><span class="std std-ref">here</span></a>
-to download the full example code</p>
-</div>
-<section class="sphx-glr-example-title" id="deploy-pretrained-vision-model-from-mxnet-on-vta">
-<span id="sphx-glr-topic-vta-tutorials-frontend-deploy-classification-py"></span><h1>Deploy Pretrained Vision Model from MxNet on VTA<a class="headerlink" href="#deploy-pretrained-vision-model-from-mxnet-on-vta" title="永久链接至标题">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="vta-mxnet">
+<span id="sphx-glr-topic-vta-tutorials-frontend-deploy-classification-py"></span><h1>在 VTA 上从 MxNet 部署预先训练的视觉模型<a class="headerlink" href="#vta-mxnet" title="永久链接至标题">#</a></h1>
 <p><strong>Author</strong>: <a class="reference external" href="https://homes.cs.washington.edu/~moreau/">Thierry Moreau</a></p>
-<p>This tutorial provides an end-to-end demo, on how to run ImageNet classification
-inference onto the VTA accelerator design to perform ImageNet classification tasks.
-It showcases Relay as a front end compiler that can perform quantization (VTA
-only supports int8/32 inference) as well as graph packing (in order to enable
-tensorization in the core) to massage the compute graph for the hardware target.</p>
-<section id="install-dependencies">
-<h2>Install dependencies<a class="headerlink" href="#install-dependencies" title="永久链接至标题">#</a></h2>
-<p>To use the autotvm package in tvm, we need to install some extra dependencies.
-(change “3” to “2” if you use python2):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install --user mxnet requests <span class="s2">&quot;Pillow&lt;7&quot;</span>
+<p>本教程提供了端到端的演示，介绍了如何在 VTA 加速器设计上运行 ImageNet 分类推理来执行 ImageNet 分类任务。
+它将 Relay 展示为前端编译器，它可以执行量化（VTA 只支持 int8/32 推断）和 graph packing（以便在 core 中支持张量化），从而为硬件目标处理计算图。</p>
+<section id="id1">
+<h2>安装依赖<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
+<p>要在 tvm 中使用 autovm 包，需要安装一些额外的依赖项。（如果你使用 python2，将 “3” 改为 “2”）：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip3 install --user mxnet requests <span class="s2">&quot;Pillow&lt;7&quot;</span>
 </pre></div>
 </div>
-<p>Now return to the python code. Import packages.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">print_function</span>
+<p>现在回到 python 代码。导入包。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">set_env</span> <span class="c1"># 加载 TVM/VTA 环境</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">print_function</span>
 
-<span class="kn">import</span> <span class="nn">argparse</span><span class="o">,</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">requests</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">isfile</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
@@ -1388,34 +1387,37 @@ tensorization in the core) to massage the compute graph for the hardware target.
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 <span class="kn">import</span> <span class="nn">tvm</span>
-<span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">te</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">rpc</span><span class="p">,</span> <span class="n">autotvm</span><span class="p">,</span> <span class="n">relay</span>
 <span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">graph_executor</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">download</span>
-<span class="kn">from</span> <span class="nn">tvm.contrib.debugger</span> <span class="kn">import</span> <span class="n">debug_executor</span>
-<span class="kn">from</span> <span class="nn">tvm.relay</span> <span class="kn">import</span> <span class="n">transform</span>
+<span class="c1"># from tvm.contrib.debugger import debug_executor</span>
+<span class="c1"># from tvm.relay import transform</span>
 
 <span class="kn">import</span> <span class="nn">vta</span>
 <span class="kn">from</span> <span class="nn">vta.testing</span> <span class="kn">import</span> <span class="n">simulator</span>
 <span class="kn">from</span> <span class="nn">vta.top</span> <span class="kn">import</span> <span class="n">graph_pack</span>
 
 
-<span class="c1"># Make sure that TVM was compiled with RPC=1</span>
+<span class="c1"># 确保使用 RPC=1 编译 TVM</span>
 <span class="k">assert</span> <span class="n">tvm</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">enabled</span><span class="p">(</span><span class="s2">&quot;rpc&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 </section>
-<section id="define-the-platform-and-model-targets">
-<h2>Define the platform and model targets<a class="headerlink" href="#define-the-platform-and-model-targets" title="永久链接至标题">#</a></h2>
-<p>Execute on CPU vs. VTA, and define the model.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load VTA parameters from the 3rdparty/vta-hw/config/vta_config.json file</span>
+<section id="platform-model">
+<h2>定义 platform 和 model 目标<a class="headerlink" href="#platform-model" title="永久链接至标题">#</a></h2>
+<p>在 CPU 和 VTA 上执行，并定义模型。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 从 3rdparty/vta-hw/config/vta_config.json 文件加载 VTA 参数</span>
 <span class="n">env</span> <span class="o">=</span> <span class="n">vta</span><span class="o">.</span><span class="n">get_env</span><span class="p">()</span>
 
-<span class="c1"># Set ``device=arm_cpu`` to run inference on the CPU</span>
-<span class="c1"># or ``device=vta`` to run inference on the FPGA.</span>
+<span class="c1"># 设置 ``device=arm_cpu`` 以在 CPU 运行推理</span>
+<span class="c1"># 或 ``device=vta`` 以在 FPGA 运行推理。</span>
 <span class="n">device</span> <span class="o">=</span> <span class="s2">&quot;vta&quot;</span>
 <span class="n">target</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">target</span> <span class="k">if</span> <span class="n">device</span> <span class="o">==</span> <span class="s2">&quot;vta&quot;</span> <span class="k">else</span> <span class="n">env</span><span class="o">.</span><span class="n">target_vta_cpu</span>
 
-<span class="c1"># Dictionary lookup for when to start/end bit packing</span>
+<span class="c1"># 字典查找何时开始/结束 bit packing</span>
 <span class="n">pack_dict</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;resnet18_v1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;nn.max_pool2d&quot;</span><span class="p">,</span> <span class="s2">&quot;nn.global_avg_pool2d&quot;</span><span class="p">],</span>
     <span class="s2">&quot;resnet34_v1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;nn.max_pool2d&quot;</span><span class="p">,</span> <span class="s2">&quot;nn.global_avg_pool2d&quot;</span><span class="p">],</span>
@@ -1424,30 +1426,32 @@ tensorization in the core) to massage the compute graph for the hardware target.
     <span class="s2">&quot;resnet50_v2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;nn.max_pool2d&quot;</span><span class="p">,</span> <span class="s2">&quot;nn.global_avg_pool2d&quot;</span><span class="p">],</span>
     <span class="s2">&quot;resnet101_v2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;nn.max_pool2d&quot;</span><span class="p">,</span> <span class="s2">&quot;nn.global_avg_pool2d&quot;</span><span class="p">],</span>
 <span class="p">}</span>
-
-<span class="c1"># Name of Gluon model to compile</span>
-<span class="c1"># The ``start_pack`` and ``stop_pack`` labels indicate where</span>
-<span class="c1"># to start and end the graph packing relay pass: in other words</span>
-<span class="c1"># where to start and finish offloading to VTA.</span>
+<span class="c1"># 要编译的 Gluon 模型的名称</span>
 <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;resnet18_v1&quot;</span>
 <span class="k">assert</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">pack_dict</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p><code class="docutils literal notranslate"><span class="pre">start_pack</span></code> 和 <code class="docutils literal notranslate"><span class="pre">stop_pack</span></code> 标签指示从哪里开始和结束 graph packing relay pass：换句话说，从哪里开始和结束向 VTA 卸载。</p>
+</div>
 </section>
-<section id="obtain-an-execution-remote">
-<h2>Obtain an execution remote<a class="headerlink" href="#obtain-an-execution-remote" title="永久链接至标题">#</a></h2>
-<p>When target is ‘pynq’, reconfigure FPGA and runtime.
-Otherwise, if target is ‘sim’, execute locally.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">TARGET</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;sim&quot;</span><span class="p">,</span> <span class="s2">&quot;tsim&quot;</span><span class="p">,</span> <span class="s2">&quot;intelfocl&quot;</span><span class="p">]:</span>
+<section id="id2">
+<h2>获取远程执行<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
+<p>当 target 为 ‘pynq’ 时，重新配置 FPGA 和 runtime。否则，如果 target 为 ‘sim’，则在本地执行。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span> 
 
-    <span class="c1"># Get remote from tracker node if environment variable is set.</span>
-    <span class="c1"># To set up the tracker, you&#39;ll need to follow the &quot;Auto-tuning</span>
-    <span class="c1"># a convolutional network for VTA&quot; tutorial.</span>
+<span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">TARGET</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;sim&quot;</span><span class="p">,</span> <span class="s2">&quot;tsim&quot;</span><span class="p">,</span> <span class="s2">&quot;intelfocl&quot;</span><span class="p">]:</span>
+    <span class="c1"># 如果设置了环境变量，则从 tracker 节点获取远程数据。</span>
+    <span class="c1"># 要设置 tracker，您需要遵循“自动调优 VTA 卷积网络”教程。</span>
     <span class="n">tracker_host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;TVM_TRACKER_HOST&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">tracker_port</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;TVM_TRACKER_PORT&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="c1"># Otherwise if you have a device you want to program directly from</span>
-    <span class="c1"># the host, make sure you&#39;ve set the variables below to the IP of</span>
-    <span class="c1"># your board.</span>
+    <span class="c1"># 否则，如果您有 device，您想要直接从主机编程，</span>
+    <span class="c1"># 确保您已经将下面的变量设置为您的 board 的 IP。</span>
     <span class="n">device_host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;VTA_RPC_HOST&quot;</span><span class="p">,</span> <span class="s2">&quot;192.168.2.99&quot;</span><span class="p">)</span>
     <span class="n">device_port</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;VTA_RPC_PORT&quot;</span><span class="p">,</span> <span class="s2">&quot;9091&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">tracker_host</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">tracker_port</span><span class="p">:</span>
@@ -1456,17 +1460,16 @@ Otherwise, if target is ‘sim’, execute locally.</p>
         <span class="n">remote</span> <span class="o">=</span> <span class="n">autotvm</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">request_remote</span><span class="p">(</span>
             <span class="n">env</span><span class="o">.</span><span class="n">TARGET</span><span class="p">,</span> <span class="n">tracker_host</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">tracker_port</span><span class="p">),</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10000</span>
         <span class="p">)</span>
-
-    <span class="c1"># Reconfigure the JIT runtime and FPGA.</span>
-    <span class="c1"># You can program the FPGA with your own custom bitstream</span>
-    <span class="c1"># by passing the path to the bitstream file instead of None.</span>
+    <span class="c1"># 重新配置 JIT 运行时和 FPGA。</span>
+    <span class="c1"># 通过将路径传递到 bitstream 文件而不是 None，</span>
+    <span class="c1"># 您可以使用自己的自定义 bitstream 来编程 FPGA。</span>
     <span class="n">reconfig_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="n">vta</span><span class="o">.</span><span class="n">reconfig_runtime</span><span class="p">(</span><span class="n">remote</span><span class="p">)</span>
     <span class="n">vta</span><span class="o">.</span><span class="n">program_fpga</span><span class="p">(</span><span class="n">remote</span><span class="p">,</span> <span class="n">bitstream</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
     <span class="n">reconfig_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">reconfig_start</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reconfigured FPGA and RPC runtime in </span><span class="si">{0:.2f}</span><span class="s2">s!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reconfig_time</span><span class="p">))</span>
 
-<span class="c1"># In simulation mode, host the RPC server locally.</span>
+<span class="c1"># 在仿真模式下，本地托管 RPC 服务器。</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">remote</span> <span class="o">=</span> <span class="n">rpc</span><span class="o">.</span><span class="n">LocalSession</span><span class="p">()</span>
 
@@ -1474,52 +1477,53 @@ Otherwise, if target is ‘sim’, execute locally.</p>
         <span class="c1"># program intelfocl aocx</span>
         <span class="n">vta</span><span class="o">.</span><span class="n">program_fpga</span><span class="p">(</span><span class="n">remote</span><span class="p">,</span> <span class="n">bitstream</span><span class="o">=</span><span class="s2">&quot;vta.bitstream&quot;</span><span class="p">)</span>
 
-<span class="c1"># Get execution context from remote</span>
+<span class="c1"># 从远程获取执行上下文</span>
 <span class="n">ctx</span> <span class="o">=</span> <span class="n">remote</span><span class="o">.</span><span class="n">ext_dev</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="n">device</span> <span class="o">==</span> <span class="s2">&quot;vta&quot;</span> <span class="k">else</span> <span class="n">remote</span><span class="o">.</span><span class="n">cpu</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 </section>
-<section id="build-the-inference-graph-executor">
-<h2>Build the inference graph executor<a class="headerlink" href="#build-the-inference-graph-executor" title="永久链接至标题">#</a></h2>
-<p>Grab vision model from Gluon model zoo and compile with Relay.
-The compilation steps are:</p>
-<ol class="arabic simple">
-<li><p>Front end translation from MxNet into Relay module.</p></li>
-<li><p>Apply 8-bit quantization: here we skip the first conv layer,
-and dense layer which will both be executed in fp32 on the CPU.</p></li>
-<li><p>Perform graph packing to alter the data layout for tensorization.</p></li>
-<li><p>Perform constant folding to reduce number of operators (e.g. eliminate batch norm multiply).</p></li>
-<li><p>Perform relay build to object file.</p></li>
-<li><p>Load the object file onto remote (FPGA device).</p></li>
-<li><p>Generate graph executor, <cite>m</cite>.</p></li>
+<section id="graph-executor">
+<h2>构建 graph executor 推理<a class="headerlink" href="#graph-executor" title="永久链接至标题">#</a></h2>
+<p>从 Gluon 模型动物园抓取视觉模型，用 Relay 编译。编译步骤如下：</p>
+<ol class="simple">
+<li><p>将 MXNet 前端模块翻译为 Relay 模块。</p></li>
+<li><p>应用 8-bit 量化：这里我们跳过了第一个 conv 层和 dense 层，这两个层都将在 CPU 上的 fp32 中执行。</p></li>
+<li><p>执行  graph packing 来改变张量化的数据布局。</p></li>
+<li><p>进行常数折叠以减少算子的数量（例如，消除 batch norm multiply）。</p></li>
+<li><p>执行对 object 文件的 relay 构建。</p></li>
+<li><p>将 object 文件加载到远程（FPGA 设备）。</p></li>
+<li><p>生成图执行器（graph executor） <code class="docutils literal notranslate"><span class="pre">m</span></code>。</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load pre-configured AutoTVM schedules</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载预配置 AutoTVM 调度</span>
 <span class="k">with</span> <span class="n">autotvm</span><span class="o">.</span><span class="n">tophub</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="n">target</span><span class="p">):</span>
-
-    <span class="c1"># Populate the shape and data type dictionary for ImageNet classifier input</span>
+    <span class="c1"># 为 ImageNet 分类器输入填充形状和数据类型字典</span>
     <span class="n">dtype_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;float32&quot;</span><span class="p">}</span>
     <span class="n">shape_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">BATCH</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">)}</span>
 
-    <span class="c1"># Get off the shelf gluon model, and convert to relay</span>
+    <span class="c1"># 取下架子上的 gluon 模型，并转换为 relay</span>
     <span class="n">gluon_model</span> <span class="o">=</span> <span class="n">vision</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="c1"># Measure build start time</span>
+    <span class="c1"># 度量开始构建的时间</span>
     <span class="n">build_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
-    <span class="c1"># Start front end compilation</span>
+    <span class="c1"># 开始前端编译</span>
     <span class="n">mod</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">frontend</span><span class="o">.</span><span class="n">from_mxnet</span><span class="p">(</span><span class="n">gluon_model</span><span class="p">,</span> <span class="n">shape_dict</span><span class="p">)</span>
 
-    <span class="c1"># Update shape and type dictionary</span>
+    <span class="c1"># 更新 shape 和 type 字典</span>
     <span class="n">shape_dict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
     <span class="n">dtype_dict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
 
     <span class="k">if</span> <span class="n">target</span><span class="o">.</span><span class="n">device_name</span> <span class="o">==</span> <span class="s2">&quot;vta&quot;</span><span class="p">:</span>
-        <span class="c1"># Perform quantization in Relay</span>
-        <span class="c1"># Note: We set opt_level to 3 in order to fold batch norm</span>
+        <span class="c1"># 在 Relay 中执行量化</span>
+        <span class="c1"># 注意：将 opt_level 设置为 3，以便折叠 batch norm</span>
         <span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
             <span class="k">with</span> <span class="n">relay</span><span class="o">.</span><span class="n">quantize</span><span class="o">.</span><span class="n">qconfig</span><span class="p">(</span><span class="n">global_scale</span><span class="o">=</span><span class="mf">8.0</span><span class="p">,</span> <span class="n">skip_conv_layers</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
                 <span class="n">mod</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">quantize</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
-            <span class="c1"># Perform graph packing and constant folding for VTA target</span>
+            <span class="c1"># 对 VTA target 进行 graph packing 和常数折叠</span>
             <span class="k">assert</span> <span class="n">env</span><span class="o">.</span><span class="n">BLOCK_IN</span> <span class="o">==</span> <span class="n">env</span><span class="o">.</span><span class="n">BLOCK_OUT</span>
             <span class="c1"># do device annotation if target is intelfocl or sim</span>
             <span class="n">relay_prog</span> <span class="o">=</span> <span class="n">graph_pack</span><span class="p">(</span>
@@ -1534,7 +1538,7 @@ and dense layer which will both be executed in fp32 on the CPU.</p></li>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">relay_prog</span> <span class="o">=</span> <span class="n">mod</span><span class="p">[</span><span class="s2">&quot;main&quot;</span><span class="p">]</span>
 
-    <span class="c1"># Compile Relay program with AlterOpLayout disabled</span>
+    <span class="c1"># 于 AlterOpLayout 禁用下，编译 Relay 程序</span>
     <span class="k">if</span> <span class="n">target</span><span class="o">.</span><span class="n">device_name</span> <span class="o">!=</span> <span class="s2">&quot;vta&quot;</span><span class="p">:</span>
         <span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">disabled_pass</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;AlterOpLayout&quot;</span><span class="p">}):</span>
             <span class="n">graph</span><span class="p">,</span> <span class="n">lib</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">build</span><span class="p">(</span>
@@ -1542,18 +1546,18 @@ and dense layer which will both be executed in fp32 on the CPU.</p></li>
             <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">TARGET</span> <span class="o">==</span> <span class="s2">&quot;intelfocl&quot;</span><span class="p">:</span>
-            <span class="c1"># multiple targets to run both on cpu and vta</span>
+            <span class="c1"># 多 target 运行（cpu 和 vta） </span>
             <span class="n">target</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;cpu&quot;</span><span class="p">:</span> <span class="n">env</span><span class="o">.</span><span class="n">target_vta_cpu</span><span class="p">,</span> <span class="s2">&quot;ext_dev&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">}</span>
         <span class="k">with</span> <span class="n">vta</span><span class="o">.</span><span class="n">build_config</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">disabled_pass</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;AlterOpLayout&quot;</span><span class="p">}):</span>
             <span class="n">graph</span><span class="p">,</span> <span class="n">lib</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">build</span><span class="p">(</span>
                 <span class="n">relay_prog</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">tvm</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">Target</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">target_host</span><span class="p">),</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span>
             <span class="p">)</span>
 
-    <span class="c1"># Measure Relay build time</span>
+    <span class="c1"># 度量 Relay 构建时间</span>
     <span class="n">build_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">build_start</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">model</span> <span class="o">+</span> <span class="s2">&quot; inference graph built in </span><span class="si">{0:.2f}</span><span class="s2">s!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">build_time</span><span class="p">))</span>
 
-    <span class="c1"># Send the inference library over to the remote RPC server</span>
+    <span class="c1"># 将 inference 库发送到远程 RPC 服务器</span>
     <span class="n">temp</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">tempdir</span><span class="p">()</span>
     <span class="n">lib</span><span class="o">.</span><span class="n">export_library</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="s2">&quot;graphlib.tar&quot;</span><span class="p">))</span>
     <span class="n">remote</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="s2">&quot;graphlib.tar&quot;</span><span class="p">))</span>
@@ -1561,19 +1565,48 @@ and dense layer which will both be executed in fp32 on the CPU.</p></li>
 
     <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">TARGET</span> <span class="o">==</span> <span class="s2">&quot;intelfocl&quot;</span><span class="p">:</span>
         <span class="n">ctxes</span> <span class="o">=</span> <span class="p">[</span><span class="n">remote</span><span class="o">.</span><span class="n">ext_dev</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">remote</span><span class="o">.</span><span class="n">cpu</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span>
+        <span class="c1"># m = graph_executor.GraphModule()</span>
         <span class="n">m</span> <span class="o">=</span> <span class="n">graph_executor</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">lib</span><span class="p">,</span> <span class="n">ctxes</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># Graph runtime</span>
         <span class="n">m</span> <span class="o">=</span> <span class="n">graph_executor</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">lib</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>resnet18_v1 inference graph built in 34.30s!
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>One or more operators have not been tuned. Please tune your model for better performance. Use DEBUG logging level to see more details.
+[16:54:56] /media/pc/data/4tb/lxw/study/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[16:54:56] /media/pc/data/4tb/lxw/study/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[16:54:57] /media/pc/data/4tb/lxw/study/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[16:54:57] /media/pc/data/4tb/lxw/study/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[16:54:57] /media/pc/data/4tb/lxw/study/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[16:54:57] /media/pc/data/4tb/lxw/study/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[16:54:58] /media/pc/data/4tb/lxw/study/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[16:54:58] /media/pc/data/4tb/lxw/study/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[16:54:58] /media/pc/data/4tb/lxw/study/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[16:54:58] /media/pc/data/4tb/lxw/study/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[16:54:58] /media/pc/data/4tb/lxw/study/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[16:54:59] /media/pc/data/4tb/lxw/study/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[16:54:59] /media/pc/data/4tb/lxw/study/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[16:54:59] /media/pc/data/4tb/lxw/study/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[16:54:59] /media/pc/data/4tb/lxw/study/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[16:54:59] /media/pc/data/4tb/lxw/study/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+/tmp/ipykernel_2668352/2984134424.py:52: DeprecationWarning: legacy graph executor behavior of producing json / lib / params will be removed in the next release. Please see documents of tvm.contrib.graph_executor.GraphModule for the  new recommended usage.
+  graph, lib, params = relay.build(
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="perform-image-classification-inference">
-<h2>Perform image classification inference<a class="headerlink" href="#perform-image-classification-inference" title="永久链接至标题">#</a></h2>
-<p>We run classification on an image sample from ImageNet
-We just need to download the categories files, <cite>synset.txt</cite>
-and an input test image.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download ImageNet categories</span>
+<section id="id3">
+<h2>进行图像分类推理<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h2>
+<p>只需要下载 category 文件，synset.txt 和输入测试图像。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download ImageNet categories</span>
 <span class="n">categ_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/uwsampl/web-data/raw/main/vta/models/&quot;</span>
 <span class="n">categ_fn</span> <span class="o">=</span> <span class="s2">&quot;synset.txt&quot;</span>
 <span class="n">download</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">categ_url</span><span class="p">,</span> <span class="n">categ_fn</span><span class="p">),</span> <span class="n">categ_fn</span><span class="p">)</span>
@@ -1644,7 +1677,57 @@ and an input test image.</p>
     <span class="k">assert</span> <span class="n">cat_detected</span>
 </pre></div>
 </div>
-<span class="target" id="sphx-glr-download-topic-vta-tutorials-frontend-deploy-classification-py"></span></section>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/deploy_classification_10_0.png" src="../../../../../_images/deploy_classification_10_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TVMError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">/media/pc/data/4tb/lxw/study/tvm/_toc/topic/vta/tutorials/frontend/deploy_classification.ipynb Cell 11&#39;</span> in <span class="ni">&lt;cell line: 32&gt;</span><span class="nt">()</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/lxw/study/tvm/_toc/topic/vta/tutorials/frontend/deploy_classification.ipynb#ch0000010vscode-remote?line=31&#39;</span><span class="o">&gt;</span><span class="mi">32</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">TARGET</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;sim&quot;</span><span class="p">,</span> <span class="s2">&quot;tsim&quot;</span><span class="p">]:</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/lxw/study/tvm/_toc/topic/vta/tutorials/frontend/deploy_classification.ipynb#ch0000010vscode-remote?line=32&#39;</span><span class="o">&gt;</span><span class="mi">33</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">simulator</span><span class="o">.</span><span class="n">clear_stats</span><span class="p">()</span>
+<span class="o">---&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/lxw/study/tvm/_toc/topic/vta/tutorials/frontend/deploy_classification.ipynb#ch0000010vscode-remote?line=33&#39;</span><span class="o">&gt;</span><span class="mi">34</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">timer</span><span class="p">()</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/lxw/study/tvm/_toc/topic/vta/tutorials/frontend/deploy_classification.ipynb#ch0000010vscode-remote?line=34&#39;</span><span class="o">&gt;</span><span class="mi">35</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">sim_stats</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">stats</span><span class="p">()</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/lxw/study/tvm/_toc/topic/vta/tutorials/frontend/deploy_classification.ipynb#ch0000010vscode-remote?line=35&#39;</span><span class="o">&gt;</span><span class="mi">36</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Execution statistics:&quot;</span><span class="p">)</span>
+
+<span class="nn">File /media/pc/data/4tb/lxw/study/tvm/python/tvm/runtime/module.py:297,</span> in <span class="ni">Module.time_evaluator.&lt;locals&gt;.evaluator</span><span class="nt">(*args)</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/runtime/module.py?line=294&#39;</span><span class="o">&gt;</span><span class="mi">295</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="s2">&quot;&quot;&quot;Internal wrapped evaluator.&quot;&quot;&quot;</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/runtime/module.py?line=295&#39;</span><span class="o">&gt;</span><span class="mi">296</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># Wrap feval so we can add more stats in future.</span>
+<span class="o">--&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/runtime/module.py?line=296&#39;</span><span class="o">&gt;</span><span class="mi">297</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">blob</span> <span class="o">=</span> <span class="n">feval</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/runtime/module.py?line=297&#39;</span><span class="o">&gt;</span><span class="mi">298</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">fmt</span> <span class="o">=</span> <span class="s2">&quot;@&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&quot;d&quot;</span> <span class="o">*</span> <span class="n">repeat</span><span class="p">)</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/runtime/module.py?line=298&#39;</span><span class="o">&gt;</span><span class="mi">299</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">results</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">blob</span><span class="p">)</span>
+
+<span class="nn">File /media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py:237,</span> in <span class="ni">PackedFuncBase.__call__</span><span class="nt">(self, *args)</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=224&#39;</span><span class="o">&gt;</span><span class="mi">225</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">ret_tcode</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">()</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=225&#39;</span><span class="o">&gt;</span><span class="mi">226</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">if</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=226&#39;</span><span class="o">&gt;</span><span class="mi">227</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">_LIB</span><span class="o">.</span><span class="n">TVMFuncCall</span><span class="p">(</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=227&#39;</span><span class="o">&gt;</span><span class="mi">228</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>         <span class="bp">self</span><span class="o">.</span><span class="n">handle</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=234&#39;</span><span class="o">&gt;</span><span class="mi">235</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="o">!=</span> <span class="mi">0</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=235&#39;</span><span class="o">&gt;</span><span class="mi">236</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="p">):</span>
+<span class="o">--&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=236&#39;</span><span class="o">&gt;</span><span class="mi">237</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="k">raise</span> <span class="n">get_last_ffi_error</span><span class="p">()</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=237&#39;</span><span class="o">&gt;</span><span class="mi">238</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">_</span> <span class="o">=</span> <span class="n">temp_args</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///media/pc/data/4tb/lxw/study/tvm/python/tvm/_ffi/_ctypes/packed_func.py?line=238&#39;</span><span class="o">&gt;</span><span class="mi">239</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">_</span> <span class="o">=</span> <span class="n">args</span>
+
+<span class="ne">TVMError</span>: Traceback (most recent call last):
+<span class="g g-Whitespace">  </span><span class="mi">11</span><span class="p">:</span> <span class="n">TVMFuncCall</span>
+<span class="g g-Whitespace">  </span><span class="mi">10</span><span class="p">:</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">RPCWrappedFunc</span><span class="p">::</span><span class="n">operator</span><span class="p">()(</span><span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">TVMArgs</span><span class="p">,</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">TVMRetValue</span><span class="o">*</span><span class="p">)</span> <span class="n">const</span>
+<span class="g g-Whitespace">  </span><span class="mi">9</span><span class="p">:</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">LocalSession</span><span class="p">::</span><span class="n">CallFunc</span><span class="p">(</span><span class="n">void</span><span class="o">*</span><span class="p">,</span> <span class="n">TVMValue</span> <span class="n">const</span><span class="o">*</span><span class="p">,</span> <span class="nb">int</span> <span class="n">const</span><span class="o">*</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">function</span><span class="o">&lt;</span><span class="n">void</span> <span class="p">(</span><span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">TVMArgs</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">const</span><span class="o">&amp;</span><span class="p">)</span>
+<span class="g g-Whitespace">  </span><span class="mi">8</span><span class="p">:</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">WrapTimeEvaluator</span><span class="p">(</span><span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">PackedFunc</span><span class="p">,</span> <span class="n">DLDevice</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">PackedFunc</span><span class="p">)::{</span><span class="k">lambda</span><span class="p">(</span><span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">TVMArgs</span><span class="p">,</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">TVMRetValue</span><span class="o">*</span><span class="p">)</span><span class="c1">#1}::operator()(tvm::runtime::TVMArgs, tvm::runtime::TVMRetValue*) [clone .isra.0]</span>
+<span class="g g-Whitespace">  </span><span class="mi">7</span><span class="p">:</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">GraphExecutor</span><span class="p">::</span><span class="n">Run</span><span class="p">()</span>
+<span class="g g-Whitespace">  </span><span class="mi">6</span><span class="p">:</span> <span class="n">std</span><span class="p">::</span><span class="n">_Function_handler</span><span class="o">&lt;</span><span class="n">void</span> <span class="p">(),</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">GraphExecutor</span><span class="p">::</span><span class="n">CreateTVMOp</span><span class="p">(</span><span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">TVMOpParam</span> <span class="n">const</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DLTensor</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">allocator</span><span class="o">&lt;</span><span class="n">DLTensor</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">const</span><span class="o">&amp;</span><span class="p">)::{</span><span class="k">lambda</span><span class="p">()</span><span class="c1">#3}&gt;::_M_invoke(std::_Any_data const&amp;)</span>
+<span class="g g-Whitespace">  </span><span class="mi">5</span><span class="p">:</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">PackedFuncObj</span><span class="p">::</span><span class="n">Extractor</span><span class="o">&lt;</span><span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">PackedFuncSubObj</span><span class="o">&lt;</span><span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">WrapPackedFunc</span><span class="p">(</span><span class="nb">int</span> <span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="n">TVMValue</span><span class="o">*</span><span class="p">,</span> <span class="nb">int</span><span class="o">*</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">TVMValue</span><span class="o">*</span><span class="p">,</span> <span class="nb">int</span><span class="o">*</span><span class="p">,</span> <span class="n">void</span><span class="o">*</span><span class="p">),</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">ObjectPtr</span><span class="o">&lt;</span><span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">const</span><span class="o">&amp;</span><span class="p">)::{</span><span class="k">lambda</span><span class="p">(</span><span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">TVMArgs</span><span class="p">,</span> <span class="n">tvm</span><span class="p">::</span><span class="n">runtime</span><span class="p">::</span><span class="n">TVMRetValue</span><span class="o">*</span><span class="p">)</span><span class="c1">#1}&gt; &gt;::Call(tvm::runtime::PackedFuncObj const*, tvm::runtime::TVMArgs, tvm::runtime::TVMRetValue*)</span>
+<span class="g g-Whitespace">  </span><span class="mi">4</span><span class="p">:</span> <span class="mh">0x00007fda21aa0442</span>
+<span class="g g-Whitespace">  </span><span class="mi">3</span><span class="p">:</span> <span class="mh">0x00007fda21aa0b36</span>
+<span class="g g-Whitespace">  </span><span class="mi">2</span><span class="p">:</span> <span class="n">VTAPushALUOp</span>
+<span class="g g-Whitespace">  </span><span class="mi">1</span><span class="p">:</span> <span class="n">vta</span><span class="p">::</span><span class="n">CommandQueue</span><span class="p">::</span><span class="n">PushALUUop</span><span class="p">(</span><span class="n">void</span><span class="o">**</span><span class="p">,</span> <span class="nb">int</span> <span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="n">void</span><span class="o">*</span><span class="p">),</span> <span class="n">void</span><span class="o">*</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+<span class="g g-Whitespace">  </span><span class="mi">0</span><span class="p">:</span> <span class="n">vta</span><span class="p">::</span><span class="n">UopKernelMap</span><span class="p">::</span><span class="n">Get</span><span class="p">(</span><span class="n">void</span><span class="o">*</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="p">[</span><span class="n">clone</span> <span class="o">.</span><span class="n">part</span><span class="mf">.0</span><span class="p">]</span>
+<span class="gt">  File</span><span class="nn"> &quot;/media/pc/data/4tb/lxw/study/tvm/vta/runtime/runtime.cc&quot;</span><span class="gt">, line </span><span class="mi">565</span>
+<span class="ne">TVMError</span>: Check failed: (nbytes == 0 || nbytes == sizeof(int)) is false: 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
 
@@ -1659,7 +1742,7 @@ and an input test image.</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">上一页</p>
-            <p class="prev-next-title">Compile Deep Learning Models</p>
+            <p class="prev-next-title">编译深度学习模型</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="deploy_detection.html" title="下一页 页">
@@ -1679,7 +1762,7 @@ and an input test image.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-04-20, 16:23:00.<br/>
+    Last updated on 2022-04-21, 01:19:55.<br/>
 </p>
         </footer>
     </div>
