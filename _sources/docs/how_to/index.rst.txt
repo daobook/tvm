@@ -15,13 +15,15 @@
     specific language governing permissions and limitations
     under the License.
 
-How To 指南
+How To Guides
 =============
 
-这些以用户为中心的“如何”指南旨在帮助您找到特定问题的答案，比如“我如何编译模型？”或“我如何用 tensor 表达式优化调度？”
+These user-focused "how to" guides are designed to help you find answers to
+specific questions, like "How do I compile a model?" or "How to I optimize a
+schedule with tesor expressions?"
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    compile_models/index
    deploy/index

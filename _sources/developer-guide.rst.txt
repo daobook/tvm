@@ -6,4 +6,4 @@ Developer Guide
    :maxdepth: 1
 
    docs/dev/tutorial/index
-   docs/dev/how_to/how_to.rst
+   docs/dev/how_to/how_to

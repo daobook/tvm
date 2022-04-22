@@ -4,7 +4,6 @@
 :maxdepth: 4
 :hidden:
 
-quantize
 start
 test
 ```
