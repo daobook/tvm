@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -997,17 +998,17 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#xilinx-pynq-fpga-setup">
-   Xilinx Pynq FPGA Setup
+   Xilinx Pynq FPGA 设置
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pynq-board-setup">
-     Pynq Board Setup
+     Pynq Board 设置
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pynq-side-rpc-server-build-deployment">
-     Pynq-Side RPC Server Build &amp; Deployment
+     Pynq 端 RPC 服务器构建和部署
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -1152,17 +1153,17 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#xilinx-pynq-fpga-setup">
-   Xilinx Pynq FPGA Setup
+   Xilinx Pynq FPGA 设置
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pynq-board-setup">
-     Pynq Board Setup
+     Pynq Board 设置
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pynq-side-rpc-server-build-deployment">
-     Pynq-Side RPC Server Build &amp; Deployment
+     Pynq 端 RPC 服务器构建和部署
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -1311,13 +1312,13 @@ cp cmake/config.cmake build/.
 </div>
 <section id="testing-your-vta-simulation-setup">
 <h3>测试 VTA 仿真设置<a class="headerlink" href="#testing-your-vta-simulation-setup" title="永久链接至标题">#</a></h3>
-<p>为了确保正确安装了 VTA python 包，请运行以下 2D convolution 测试台。</p>
+<p>为了确保正确安装了 VTA python 包，请运行以下 2D convolution 测试基准。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python &lt;tvm root&gt;/vta/tests/python/integration/test_benchmark_topi_conv2d.py
 </pre></div>
 </div>
 <p>邀请您试用我们的 <a class="reference external" href="https://tvm.apache.org/docs/topic/vta/tutorials/index.html#vta-tutorials" title="(在 tvm v0.9.dev0)"><span class="xref std std-ref">VTA 编程指南</span></a>。</p>
 <blockquote>
-<div><p><strong>注</strong>：你会注意到，对于每一个卷积层，吞吐量都以 GOPS 报告。这些数字实际上是仿真器通过在软件中评估卷积实现的计算吞吐量。</p>
+<div><p><strong>注</strong>：你会注意到，对于每一个卷积层，吞吐量都以 GOPS 报告。这些数字实际上是仿真器通过在软件中评估卷积实现的吞吐量计算。</p>
 </div></blockquote>
 </section>
 <section id="advanced-configuration-optional">
@@ -1333,38 +1334,37 @@ make
 </section>
 </section>
 <section id="xilinx-pynq-fpga-setup">
-<h2>Xilinx Pynq FPGA Setup<a class="headerlink" href="#xilinx-pynq-fpga-setup" title="永久链接至标题">#</a></h2>
-<p>This second guide extends the <em>VTA Simulator Installation</em> guide above to run FPGA hardware tests of the complete TVM and VTA software-hardware stack.
-In terms of hardware components you’ll need:</p>
+<h2>Xilinx Pynq FPGA 设置<a class="headerlink" href="#xilinx-pynq-fpga-setup" title="永久链接至标题">#</a></h2>
+<p>第二份指南扩展了上面的 <em>VTA 仿真安装</em> 指南，以运行完整的 TVM 和 VTA 软硬件栈的 FPGA 硬件测试。就硬件组件而言，你需要：</p>
 <ul class="simple">
-<li><p>The <a class="reference external" href="http://www.pynq.io/">Pynq</a> FPGA development board which can be acquired for $200, or $150 for academics from <a class="reference external" href="https://store.digilentinc.com/pynq-z1-python-productivity-for-zynq/">Digilent</a>.</p></li>
-<li><p>An Ethernet-to-USB adapter to connect the Pynq board to your development machine.</p></li>
-<li><p>An 8+GB micro SD card.</p></li>
-<li><p>An AC to DC 12V 3A power adapter.</p></li>
+<li><p><a class="reference external" href="http://www.pynq.io/">Pynq</a> FPGA 开发板，可以花 200 美元买到，或者花 150 美元从 <a class="reference external" href="https://store.digilentinc.com/pynq-z1-python-productivity-for-zynq/">Digilent</a> 买到。</p></li>
+<li><p>连接 Pynq 板到开发机器的 Ethernet-to-USB 适配器。</p></li>
+<li><p>8+GB 微型 SD 卡。</p></li>
+<li><p>交流到直流 12V 3A 电源适配器。</p></li>
 </ul>
-<p>This guide covers the following themes:</p>
+<p>本指南涵盖以下主题：</p>
 <ol class="arabic simple">
-<li><p>Pynq board setup instructions.</p></li>
-<li><p>Pynq-side RPC server build and deployment.</p></li>
-<li><p>Revisiting the test examples from the <em>VTA Simulator Installation</em> guide, this time executing on the Pynq board.</p></li>
+<li><p>Pynq 板设置说明。</p></li>
+<li><p>Pynq 端 RPC 服务器构建和部署。</p></li>
+<li><p>重温 <em>VTA 仿真器设置</em> 指南中的测试示例，这次在 Pynq 板上执行。</p></li>
 </ol>
 <section id="pynq-board-setup">
-<h3>Pynq Board Setup<a class="headerlink" href="#pynq-board-setup" title="永久链接至标题">#</a></h3>
-<p>Setup your Pynq board based on the <a class="reference external" href="http://pynq.readthedocs.io/en/latest/getting_started.html">Pynq board getting started tutorial</a>.</p>
-<p>You should follow the instructions up to and including the <em>Turning On the PYNQ-Z1</em> step (no need to pursue the tutorial beyond this point).</p>
+<h3>Pynq Board 设置<a class="headerlink" href="#pynq-board-setup" title="永久链接至标题">#</a></h3>
+<p>根据 <a class="reference external" href="http://pynq.readthedocs.io/en/latest/getting_started.html">Pynq 板入门教程</a> 设置你的 Pynq 板。</p>
+<p>您应该遵循说明，直到并包括 <em>打开 PYNQ-Z1</em> 步骤（没有必要继续学习其他教程）。</p>
 <ul class="simple">
-<li><p>Make sure that you’ve downloaded the latest Pynq image, <a class="reference external" href="http://www.pynq.io/board.html">PYNQ-Z1 v2.5</a>, and have imaged your SD card with it (we recommend the free <a class="reference external" href="https://etcher.io/">Etcher</a> program).</p></li>
-<li><p>For this test setup, follow the <a class="reference external" href="https://pynq.readthedocs.io/en/latest/getting_started/pynq_z1_setup.html">“Connect to a Computer”</a> Ethernet setup instructions. To be able to talk to the board, make sure to <a class="reference external" href="https://pynq.readthedocs.io/en/latest/appendix.html#assign-your-computer-a-static-ip">assign your computer a static IP address</a></p></li>
+<li><p>确保已经下载了最新的 Pynq 映像，<a class="reference external" href="http://www.pynq.io/board.html">PYNQ-Z1 v2.5</a>，并且用它映像了你的 SD 卡（推荐使用免费的 <a class="reference external" href="https://etcher.io/">Etcher</a> 程序）。</p></li>
+<li><p>对于此测试设置，请遵循 <a class="reference external" href="https://pynq.readthedocs.io/en/latest/getting_started/pynq_z1_setup.html">“连接到计算机”</a> 的以太网设置说明。为了能够与板子对话，请确保 <a class="reference external" href="https://pynq.readthedocs.io/en/latest/appendix.html#assign-your-computer-a-static-ip">给你的电脑分配静态 IP 地址</a></p></li>
 </ul>
-<p>Once the board is powered on and connected to your development machine, try connecting to it to make sure you’ve properly set up your Pynq board:</p>
+<p>一旦板子上电并连接到你的开发机器，试着连接它以确保你已经正确地设置了你的 Pynq 板子：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># To connect to the Pynq board use the &lt;username, password&gt; combo: &lt;xilinx, xilinx&gt;</span>
 ssh xilinx@192.168.2.99
 </pre></div>
 </div>
 </section>
 <section id="pynq-side-rpc-server-build-deployment">
-<h3>Pynq-Side RPC Server Build &amp; Deployment<a class="headerlink" href="#pynq-side-rpc-server-build-deployment" title="永久链接至标题">#</a></h3>
-<p>Because the direct board-to-computer connection prevents the board from directly accessing the internet, we’ll need to mount the Pynq’s file system to your development machine’s file system with <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh">sshfs</a>. Next we directly clone the TVM repository into the sshfs mountpoint on your development machine.</p>
+<h3>Pynq 端 RPC 服务器构建和部署<a class="headerlink" href="#pynq-side-rpc-server-build-deployment" title="永久链接至标题">#</a></h3>
+<p>因为板子到计算机的直接连接会阻止板子直接访问互联网，所以需要使用 <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh">sshfs</a> 将 Pynq 的文件系统挂载到开发机器的文件系统上。接下来，直接将 TVM 存储库克隆到开发机器上的 sshfs 挂载点。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># On the Host-side</span>
 mkdir &lt;mountpoint&gt;
 sshfs xilinx@192.168.2.99:/home/xilinx &lt;mountpoint&gt;
@@ -1375,8 +1375,7 @@ git clone --recursive https://github.com/apache/tvm tvm
 sudo umount &lt;mountpoint&gt;
 </pre></div>
 </div>
-<p>Now that we’ve cloned the VTA repository in the Pynq’s file system, we can ssh into it and launch the build of the TVM-based RPC server.
-The build process should take roughly 5 minutes.</p>
+<p>现在已经在 Pynq 的文件系统中克隆了 VTA 存储库，可以 ssh 进入它并启动基于 kvm 的 RPC 服务器的构建。构建过程大约需要 5 分钟。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh xilinx@192.168.2.99
 <span class="c1"># Build TVM runtime library (takes 5 mins)</span>
 <span class="nb">cd</span> /home/xilinx/tvm
@@ -1395,7 +1394,7 @@ make clean<span class="p">;</span> make runtime vta -j2
 sudo ./apps/vta_rpc/start_rpc_server.sh <span class="c1"># pw is &#39;xilinx&#39;</span>
 </pre></div>
 </div>
-<p>You should see the following being displayed when starting the RPC server. In order to run the next examples, you’ll need to leave the RPC server running in an <code class="docutils literal notranslate"><span class="pre">ssh</span></code> session.</p>
+<p>启动 RPC 服务器时，您应该看到如下显示。为了运行下一个示例，您需要让 RPC 服务器在 <code class="docutils literal notranslate"><span class="pre">ssh</span></code> 会话中运行。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>INFO:root:RPCServer: <span class="nb">bind</span> to <span class="m">0</span>.0.0.0:9091
 </pre></div>
 </div>
@@ -1690,7 +1689,7 @@ make ip
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-04-25, 02:12:57.<br/>
+    Last updated on 2022-04-27, 11:33:49.<br/>
 </p>
         </footer>
     </div>

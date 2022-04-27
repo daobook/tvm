@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -990,7 +991,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#hls-module-example">
-     HLS Module Example
+     HLS Module 示例
     </a>
    </li>
   </ul>
@@ -1070,7 +1071,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#hls-module-example">
-     HLS Module Example
+     HLS Module 示例
     </a>
    </li>
   </ul>
@@ -1143,11 +1144,11 @@ title="Print to PDF"
 <p>VTA 是通用的深度学习加速器，用于快速和高效的密集线性代数。VTA 集成了简单的类 RISC 处理器，可以在 1 级或 2 级张量寄存器上执行密集的线性代数操作。此外，该设计采用解耦的访问-执行来隐藏内存访问延迟。</p>
 <p>在更广泛的范围内，VTA 可以作为模板深度学习加速器设计，用于全堆栈优化，向编译器堆栈公开通用张量计算接口。</p>
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/uwsampl/web-data/main/vta/blogpost/vta_overview.png"><img alt="https://raw.githubusercontent.com/uwsampl/web-data/main/vta/blogpost/vta_overview.png" class="align-center" src="https://raw.githubusercontent.com/uwsampl/web-data/main/vta/blogpost/vta_overview.png" style="width: 80%;" /></a>
-<p>上图给出了 VTA 硬件组织的高级概述。VTA 由四个模块组成，通过 FIFO 队列和本地内存块（SRAM）相互通信，以实现任务级管道并行：</p>
+<p>上图给出了 VTA 硬件组织的高级概述。VTA 由四个模块组成，通过 FIFO 队列和局部内存块（local memory blocks，简称 SRAM）相互通信，以实现任务级管道并行：</p>
 <ul class="simple">
 <li><p>fetch 模块负责从 DRAM 中加载指令流。它还解码这些指令，将它们路由到三个命令队列中的一个。</p></li>
-<li><p>load 模块负责将 DRAM 的输入量和权重张量加载到数据专用的片上存储器中。</p></li>
-<li><p>compute 模块使用 GEMM 核心进行密集线性代数计算，使用张量 ALU 进行通用计算。它还负责将数据从 DRAM 加载到寄存器文件，并将微操作内核加载到微操作缓存。</p></li>
+<li><p>load 模块负责将 DRAM 的输入张量和权重张量加载到数据专用的 on-chip 内存中。</p></li>
+<li><p>compute 模块使用 GEMM 核心进行密集线性代数计算，使用张量 ALU 进行通用计算。它还负责将数据从 DRAM 加载到 register 文件，并将微操作内核加载到 micro-op cache。</p></li>
 <li><p>store 模块将计算核心产生的结果存储回 DRAM。</p></li>
 </ul>
 </section>
@@ -1157,21 +1158,13 @@ title="Print to PDF"
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">vta.cc</span></code> 包含了每个 VTA 模块的定义，以及用于顶层 VTA 设计的顶层行为模型。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">vta.h</span></code> contains type definitions using Xilinx <code class="docutils literal notranslate"><span class="pre">ap_int</span></code> types, and
-function prototypes declarations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vta.h</span></code> 包含使用 Xilinx <code class="docutils literal notranslate"><span class="pre">ap_int</span></code> 类型的类型定义和函数原型声明。</p></li>
 </ul>
 </div></blockquote>
-<p>In addition preprocessor macros are defined under <code class="docutils literal notranslate"><span class="pre">3rdparty/vta-hw/include/vta/hw_spec.h</span></code>.
-Much of these macro definitions are derived from the parameters listed in the
-<code class="docutils literal notranslate"><span class="pre">3rdparty/vta-hw/config/vta_config.json</span></code> file.
-The json file is processed by <code class="docutils literal notranslate"><span class="pre">3rdparty/vta-hw/config/vta_config.py</span></code> to produce a string of
-compile flags that define the preprocessor macros.
-That string is used by the makefile in order to set those high-level
-parameters in both the HLS hardware synthesis compiler, and the C++
-compiler that builds the VTA runtime.</p>
+<p>此外，预处理器宏定义在 <code class="docutils literal notranslate"><span class="pre">3rdparty/vta-hw/include/vta/hw_spec.h</span></code> 下。这些宏的定义大多来自于 <code class="docutils literal notranslate"><span class="pre">3rdparty/vta-</span> <span class="pre">hw/config/vta_config.json</span></code> 文件中列出的参数。该 json 文件被 <code class="docutils literal notranslate"><span class="pre">3rdparty/vta-hw/config/vta_config.py</span></code> 处理，以产生定义预处理器宏的编译标志字符串。该字符串被 makefile 用于设置 HLS 硬件合成编译器和构建 VTA 运行时的 C++ 编译器中的高级参数。</p>
 <section id="hls-module-example">
-<h3>HLS Module Example<a class="headerlink" href="#hls-module-example" title="永久链接至标题">#</a></h3>
-<p>We show a definition of one of the VTA modules defined in C++:</p>
+<h3>HLS Module 示例<a class="headerlink" href="#hls-module-example" title="永久链接至标题">#</a></h3>
+<p>我们展示了 C++ 中定义的 VTA 模块之一的定义：</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">fetch</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">insn_count</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="k">volatile</span><span class="w"> </span><span class="n">insn_T</span><span class="w"> </span><span class="o">*</span><span class="n">insns</span><span class="p">,</span><span class="w"></span>
@@ -1206,64 +1199,36 @@ compiler that builds the VTA runtime.</p>
 </pre></div>
 </div>
 <dl>
-<dt>A few observations on HLS coding:</dt><dd><ul>
-<li><p><em>Parameters:</em> The parameter list of each function, combined with the
-interface pragmas define the hardware interface exposed by the
-generated hardware module.</p>
+<dt>关于HLS编码的几点观察：</dt><dd><ul>
+<li><p><em>Parameters:</em> 每个函数的参数列表，结合 interface pragmas 定义由生成的硬件模块公开的硬件接口。</p>
 <blockquote>
 <div><ul>
-<li><p>Parameters passed by value indicate a read-only hardware memory-mapped
-register that the host can write to.
-This fetch function for instance has an <code class="docutils literal notranslate"><span class="pre">insn_count</span></code> parameter
-which will be synthesized as a memory mapped register for the host
-to write to, in order to set the length of a given VTA instruction
-sequence.</p></li>
-<li><p>Pointer parameters can mean one of two things depending on the interface
-pragma being used.</p>
+<li><p>通过 value 传递的参数表示主机可以写入的只读硬件内存映射寄存器。例如，这个 fetch 函数有 <code class="docutils literal notranslate"><span class="pre">insn_count</span></code> 参数，它将被合成为主机写入的内存映射寄存器，以便设置给定 VTA 指令序列的长度。</p></li>
+<li><p>指针参数可能意味着两种情况之一，这取决于所使用的 interface pragma。</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>When used with a <code class="docutils literal notranslate"><span class="pre">m_axi</span></code> interface pragma, an AXI master interface
-gets generated to provide DMA access to DRAM.</p></li>
-<li><p>When used with a <code class="docutils literal notranslate"><span class="pre">bram</span></code> interface pragma, a BRAM interface gets
-generated to expose read and/or write ports to an FPGA block-RAM.</p></li>
+<li><p>当与 <code class="docutils literal notranslate"><span class="pre">m_axi</span></code> interface pragma 一起使用时，将生成 AXI 主接口来提供对 DRAM 的 DMA 访问。</p></li>
+<li><p>当与 <code class="docutils literal notranslate"><span class="pre">bram</span></code> interface pragma 一起使用时，将生成 bram 接口来公开到 FPGA block-RAM 的读和/或写端口。</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>HLS streams being passed by reference combined with the <code class="docutils literal notranslate"><span class="pre">axis</span></code> interface
-pragma produce FIFO interfaces to the module. Hardware FIFOs provide a
-useful synchronization mechanism between modules.</p></li>
+<li><p>HLS 流通过引用与 <code class="docutils literal notranslate"><span class="pre">axis</span></code> interface pragma 结合来传递，产生模块的 FIFO 接口。硬件 FIFO 提供了有用的模块间同步机制。</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p><em>Pragmas</em>: Compiler pragmas are essential to define hardware implementation
-of each module. We list several pragmas used in the VTA design to communicate
-implementation requirements to the compiler.</p>
+<li><p><em>Pragmas</em>: 编译器 pragmas 对于定义每个模块的硬件实现至关重要。下面列出了 VTA 设计中用于与编译器沟通实现需求的几个 pragmas。</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">HLS</span> <span class="pre">INTERFACE</span></code>: specifies the interface of the synthesized
-hardware module.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">HLS</span> <span class="pre">PIPELINE</span></code>: defines hardware pipeline performance target by setting
-an initiation interval goal. When the <code class="docutils literal notranslate"><span class="pre">II</span> <span class="pre">==</span> <span class="pre">1</span></code> target is set, it tells
-the compiler that the synthesized hardware pipeline should be able to
-execute one loop iteration per cycle.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">HLS</span> <span class="pre">DEPENDENCE</span></code>: instructs the compiler to ignore certain types
-of dependence checks in a given loop. Consider a loop body that writes
-and reads to the same BRAM structure, and needs to achieve an II of 1.
-The HLS compiler has to assume worst-case scenario, whereby a read is
-issued to an address that a past write updated the cycle prior: this
-cannot be achieved given BRAM timing characteristics (it takes at least
-2 cycles to see the updated value). Therefore in order to achieve an II of 1,
-the dependence checks have to be relaxed.
-Note that when turning this optimization on, it falls onto
-the software stack to prevent writes followed by reads to the same address.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HLS</span> <span class="pre">INTERFACE</span></code>: 指定 synthesized 硬件模块的接口。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HLS</span> <span class="pre">PIPELINE</span></code>: 通过设置启动间隔目标定义硬件管道性能目标。当设置了 <code class="docutils literal notranslate"><span class="pre">II</span> <span class="pre">==</span> <span class="pre">1</span></code> 目标时，它告诉编译器，合成硬件管道应该能够每个周期执行一个循环迭代。”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HLS</span> <span class="pre">DEPENDENCE</span></code>：指示编译器在给定循环中忽略某些类型的依赖检查。考虑循环体，它对相同的 BRAM 结构进行读写，并且需要实现 II 为 1。HLS 编译器必须假设最坏的情况，即一个读被发送到一个地址，而过去的写更新了之前的周期：这是无法实现的 BRAM 计时特征（它需要至少 2 个周期才能看到更新的值）。因此，为了实现 II 为 1，必须放松依赖检查。请注意，当这个优化开启时，它会落到软件堆栈上，以防止写后再读到同一个地址。</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>This <a class="reference external" href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2018_2/ug902-vivado-high-level-synthesis.pdf">reference guide</a>
-provides a much more in-depth, and complete specification of HLS for the Xilinx 2018.2 toolchains.</p>
+<p>这个 <a class="reference external" href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2018_2/ug902-vivado-high-level-synthesis.pdf">参考指南</a> 提供了更深入、更完整的 Xilinx 2018.2 工具链的 HLS 规范。</p>
 </div>
 </dd>
 </dl>
@@ -1377,7 +1342,7 @@ provides a much more in-depth, and complete specification of HLS for the Xilinx 
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-04-25, 02:12:57.<br/>
+    Last updated on 2022-04-27, 11:33:49.<br/>
 </p>
         </footer>
     </div>
