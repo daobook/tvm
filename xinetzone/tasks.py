@@ -25,7 +25,7 @@ def init(ctx,
                    'build-essential cmake libedit-dev libxml2-dev')
     ctx.run(package_cmd)
     ctx.run('sudo apt install clang-12 clangd-12 llvm-12 liblldb-12-dev')
-    #ctx.run(f'pip install -r {ROOT}/xin/requirements.txt')
+    ctx.run(f'pip install -r {ROOT}/xin/requirements.txt')
 
 @task
 def config(ctx, cuda=False):
