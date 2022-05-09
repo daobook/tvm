@@ -1,0 +1,397 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# 开始使用 TVMC Python：TVM 的高级 API\n",
+        "\n",
+        "**原作者**: [Jocelyn Shiue](https://github.com/CircleSpin)\n",
+        "\n",
+        "## Step 0: 导入\n",
+        "\n",
+        "导入本地 TVM 环境："
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {},
+      "outputs": [],
+      "source": [
+        "import env\n",
+        "from tvm.driver import tvmc"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Step 1: 加载模型\n",
+        "\n",
+        "将模型导入到 tvmc 中。这一步将机器学习模型从受支持的框架转换为 TVM 的高级图表示语言 Relay。这将为 TVM 中的所有模型提供一个统一的起点。目前支持的框架有：Keras、ONNX、Tensorflow、TFLite 和 PyTorch。"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {},
+      "outputs": [],
+      "source": [
+        "import onnx\n",
+        "import cudnn\n",
+        "\n",
+        "model_path = '../../_models/resnet50-v2-7.onnx'\n",
+        "onnx_model = onnx.load(model_path)\n",
+        "\n",
+        "model = tvmc.load(model_path) # Step 1: Load"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "所有框架都支持使用 `shape_dict` 参数覆盖输入 shape。对于大多数框架来说，这是可选的，但对于 Pytorch 来说，这是必要的，因为 TVM 不能自动搜索它。\n",
+        "\n",
+        "```python\n",
+        "model = tvmc.load(my_model, shape_dict={'input1' : [1, 2, 3, 4], 'input2' : [1, 2, 3, 4]}) #Step 1: Load + shape_dict\n",
+        "```\n",
+        "\n",
+        "```{tip}\n",
+        "查看模型的 input/shape_dict 的推荐方法是通过 [netron](https://netron.app/)。打开模型后，单击第一个节点，在 inputs 部分查看名称和形状。\n",
+        "```\n",
+        "\n",
+        "如果你想看 Relay，你可以运行："
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {},
+      "outputs": [],
+      "source": [
+        "model.summary() # 输出内容太多，此处已省略"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Step 2: 编译\n",
+        "\n",
+        "既然我们的模型已经在 Relay 中，下一步就是将它编译到需要运行的硬件上。我们把这个硬件称为目标（target）。此编译过程将模型从 Relay 转换为目标机器可以理解的较低级语言。\n",
+        "\n",
+        "为了编译模型 ``tvm.target`` 字符串是必需的。查看[文档](https://tvm.apache.org/docs/api/python/target.html)，了解更多关于 `tvm.target` 的信息及其选项。一些例子包括：\n",
+        "\n",
+        "1. cuda (Nvidia GPU)\n",
+        "2. llvm (CPU)\n",
+        "3. llvm -mcpu=cascadelake (Intel CPU)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {},
+      "outputs": [
+        {
+          "name": "stderr",
+          "output_type": "stream",
+          "text": [
+            "One or more operators have not been tuned. Please tune your model for better performance. Use DEBUG logging level to see more details.\n"
+          ]
+        }
+      ],
+      "source": [
+        "package = tvmc.compile(model, target=\"cuda\") #Step 2: Compile"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "编译步骤返回 `package`。\n",
+        "\n",
+        "## Step 3: 运行\n",
+        "\n",
+        "编译后的包现在可以在硬件目标上运行。设备输入选项有：CPU、Cuda、CL、Metal 和 Vulkan。\n",
+        "\n",
+        "````{note}\n",
+        "使用 CUDA，需要：\n",
+        "\n",
+        "```bash\n",
+        "conda install -c conda-forge py-xgboost-gpu\n",
+        "pip install cloudpickle\n",
+        "```\n",
+        "````"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 5,
+      "metadata": {},
+      "outputs": [],
+      "source": [
+        "results = tvmc.run(package, device=\"cuda\") #Step 3: Run"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "也可以打印结果："
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 6,
+      "metadata": {},
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Execution time summary:\n",
+            " mean (ms)   median (ms)    max (ms)     min (ms)     std (ms)  \n",
+            "   7.6833       7.5673       9.0150       7.3076       0.4640   \n",
+            "               \n",
+            "Output Names:\n",
+            " ['output_0']\n"
+          ]
+        }
+      ],
+      "source": [
+        "print(results)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Tune [可选 && 推荐]\n",
+        "\n",
+        "通过调优可以进一步提高运行速度。这个可选步骤使用机器学习来查看模型（函数）中的每个运算，并试图找到更快的方法来运行它。通过成本模型来做到这一点，并对可能的调度进行基准测试。\n",
+        "\n",
+        "此处 `target` 与编译相同。"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 8,
+      "metadata": {},
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "[Task  1/28]  Current/Best:  186.04/1823.54 GFLOPS | Progress: (48/357) | 56.40 s"
+          ]
+        },
+        {
+          "name": "stderr",
+          "output_type": "stream",
+          "text": [
+            "/media/workspace/anaconda3/envs/tvm39/lib/python3.9/site-packages/xgboost/training.py:17: UserWarning: Old style callback is deprecated.  See: https://xgboost.readthedocs.io/en/latest/python/callbacks.html\n",
+            "  warnings.warn(f'Old style callback is deprecated.  See: {link}', UserWarning)\n"
+          ]
+        },
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "[Task  1/28]  Current/Best: 3054.94/3338.36 GFLOPS | Progress: (357/357) | 2056.27 s Done.\n",
+            "[Task  2/28]  Current/Best: 1210.61/1374.25 GFLOPS | Progress: (240/357) | 1088.08 s"
+          ]
+        }
+      ],
+      "source": [
+        "# 可以是 \"llvm\"\n",
+        "tvmc.tune(model, target=\"cuda\") #Step 1.5: Optional Tune"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "可能存在可以忽略的用户警告。这将使最终结果更快，但可能需要数小时来调优。\n",
+        "\n",
+        "请参阅下面的 [保存调优结果](保存调优结果)。如果希望应用调优结果，请确保将调优结果传递到 `compile` 中。"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {},
+      "outputs": [],
+      "source": [
+        "# Step 2: Compile\n",
+        "tvmc.compile(model,\n",
+        "             target=\"cuda\",\n",
+        "             tuning_records=\"records.log\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## 额外的 TVMC 功能\n",
+        "\n",
+        "### 保存模型\n",
+        "\n",
+        "为了以后更快，加载模型（Step 1）后保存 Relay 版本。然后，模型将出现在您为稍后转换语法保存它的地方。"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {},
+      "outputs": [],
+      "source": [
+        "model = tvmc.load(model_path) #Step 1: Load\n",
+        "desired_model_path = 'new_model.onnx'\n",
+        "model.save(desired_model_path)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### 保存包\n",
+        "\n",
+        "在模型被编译（Step 2）之后，包也可以被保存。"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {},
+      "outputs": [],
+      "source": [
+        "tvmc.compile(model, target=\"llvm\", package_path=\"whatever\")\n",
+        "\n",
+        "new_package = tvmc.TVMCPackage(package_path=\"whatever\")\n",
+        "result = tvmc.run(new_package, device='cpu') #Step 3: Run"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### 使用 Autoscheduler\n",
+        "\n",
+        "使用下一代 tvm 来启用可能更快的运行速度结果。调度的搜索空间是自动生成的，不像之前需要手写。\n",
+        "\n",
+        "```{seealso}\n",
+        "1. 博文：[引入 Auto-scheduler TVM](https://tvm.apache.org/2021/03/03/intro-auto-scheduler)\n",
+        "2. 论文：[Ansor : Generating High-Performance Tensor Programs for Deep Learning](https://arxiv.org/abs/2006.06762)\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {},
+      "outputs": [],
+      "source": [
+        "tvmc.tune(model, target=\"llvm\", enable_autoscheduler = True)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### 保存调优结果\n",
+        "\n",
+        "调优结果可以保存在文件中，以便以后重用。\n",
+        "\n",
+        "````{tabbed} 方式1\n",
+        "```python\n",
+        "log_file = \"hello.json\"\n",
+        "\n",
+        "# Run tuning\n",
+        "tvmc.tune(model, target=\"llvm\", tuning_records=log_file)\n",
+        "\n",
+        "...\n",
+        "\n",
+        "# Later run tuning and reuse tuning results\n",
+        "tvmc.tune(model, target=\"llvm\",tuning_records=log_file)\n",
+        "```\n",
+        "````\n",
+        "````{tabbed} 方式2\n",
+        "```python\n",
+        "# Run tuning\n",
+        "tuning_records = tvmc.tune(model, target=\"llvm\")\n",
+        "\n",
+        "...\n",
+        "\n",
+        "# Later run tuning and reuse tuning results\n",
+        "tvmc.tune(model, target=\"llvm\",tuning_records=tuning_records)\n",
+        "```\n",
+        "````"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### 调优更多复杂模型\n",
+        "\n",
+        "你可能注意到 T 的打印像 ``.........T.T..T..T..T.T.T.T.T.T.`` 增加了搜索时间范围："
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {},
+      "outputs": [],
+      "source": [
+        "tvmc.tune(model, target='cpu', trials=10000, timeout=10)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### 为远程设备编译模型\n",
+        "\n",
+        "当您希望为不在本地机器上的硬件进行编译时，远程过程调用（remote procedural call，简称 RPC）非常有用。`tvmc` 方法支持这一点。要设置 RPC 服务器，请查看[交叉编译和 RPC 文档](https://tvm.apache.org/docs/tutorials/get_started/cross_compilation_and_rpc.html)中的“在设备上设置 RPC 服务器”一节。\n",
+        "\n",
+        "在 TVMC 脚本中包括以下内容并进行相应调整：\n",
+        "\n",
+        "```python\n",
+        "tvmc.tune(\n",
+        "     model,\n",
+        "     target=target, # Compilation target as string // Device to compile for\n",
+        "     target_host=target_host, # Host processor\n",
+        "     hostname=host_ip_address, # The IP address of an RPC tracker, used when benchmarking remotely.\n",
+        "     port=port_number, # The port of the RPC tracker to connect to. Defaults to 9090.\n",
+        "     rpc_key=your_key, # The RPC tracker key of the target device. Required when rpc_tracker is provided\n",
+        ")\n",
+        "```"
+      ]
+    }
+  ],
+  "metadata": {
+    "interpreter": {
+      "hash": "b54347e850e69469c8524212595ff99b655294a29eceda3ef2f00ff77f3cf39e"
+    },
+    "kernelspec": {
+      "display_name": "Python 3.9.12 ('tvm39')",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.9.12"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
