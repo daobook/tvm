@@ -63,4 +63,5 @@ jobs:
 
       - name: 🔥 Clean up files
         run: |
+          cd xinetzone
           invoke doc.clean
