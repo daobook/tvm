@@ -1,0 +1,433 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-31 18:33+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/reference/api/python/relay/image.rst:20
+msgid "tvm.relay.image"
+msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`grid_sample <tvm.relay.image.grid_sample>`\\ "
+#~ "\\(data\\, grid\\[\\, method\\, layout\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":math:`x_{dst}`, :math:`y_{dst}` enumerate all "
+#~ "spatial locations in :math:`output`, and "
+#~ ":math:`G()` denotes the interpolation "
+#~ "function. The out-boundary points will"
+#~ " be padded with zeros. The shape "
+#~ "of the output will be (data.shape[0],"
+#~ " data.shape[1], grid.shape[2], grid.shape[3])."
+#~ msgstr ""
+
+#~ msgid "Image network related operators."
+#~ msgstr ""
+
+#~ msgid "**Functions:**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`affine_grid <tvm.relay.image.affine_grid>`\\ "
+#~ "\\(data\\[\\, target\\_shape\\]\\)"
+#~ msgstr ""
+
+#~ msgid "affine_grid operator that generates 2D sampling grid."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`const <tvm.relay.image.const>`\\ \\(value\\[\\, dtype\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a constant value."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`crop_and_resize <tvm.relay.image.crop_and_resize>`\\"
+#~ " \\(data\\, boxes\\, box\\_indices\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Crop input images and resize them."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`dilation2d <tvm.relay.image.dilation2d>`\\ "
+#~ "\\(data\\, weight\\[\\, strides\\, padding\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Morphological Dilation 2D."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`grid_sample <tvm.relay.image.grid_sample>`\\ "
+#~ "\\(data\\, grid\\[\\, method\\, layout\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Applies bilinear sampling to input feature map."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`resize1d <tvm.relay.image.resize1d>`\\ \\(data\\,"
+#~ " size\\[\\, roi\\, layout\\, method\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Image resize1d operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`resize2d <tvm.relay.image.resize2d>`\\ \\(data\\,"
+#~ " size\\[\\, roi\\, layout\\, method\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Image resize2d operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`resize3d <tvm.relay.image.resize3d>`\\ \\(data\\,"
+#~ " size\\[\\, roi\\, layout\\, method\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Image resize3d operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This operation is described in "
+#~ "https://arxiv.org/pdf/1506.02025.pdf. It generates a"
+#~ " uniform sampling grid within the "
+#~ "target shape and normalizes it to "
+#~ "[-1, 1]. The provided affine "
+#~ "transformation is then applied on the"
+#~ " sampling grid."
+#~ msgstr ""
+
+#~ msgid "参数"
+#~ msgstr ""
+
+#~ msgid "3-D with shape [batch, 2, 3]. The affine matrix."
+#~ msgstr ""
+
+#~ msgid "Specifies the output shape (H, W)."
+#~ msgstr ""
+
+#~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid "**Output** -- 4-D with shape [batch, 2, target_height, target_width]"
+#~ msgstr ""
+
+#~ msgid "返回类型"
+#~ msgstr ""
+
+#~ msgid "The constant value."
+#~ msgstr ""
+
+#~ msgid "The data type of the resulting constant."
+#~ msgstr ""
+
+#~ msgid "When dtype is None, we use the following rule:"
+#~ msgstr ""
+
+#~ msgid "int maps to \"int32\""
+#~ msgstr ""
+
+#~ msgid "float maps to \"float32\""
+#~ msgstr ""
+
+#~ msgid "bool maps to \"bool\""
+#~ msgstr ""
+
+#~ msgid "other using the same default rule as numpy."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "method indicates the algorithm to be "
+#~ "used while calculating the out value "
+#~ "and method can be either \"bilinear\""
+#~ " or \"nearest_neighbor\"."
+#~ msgstr ""
+
+#~ msgid "The input data to the operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 2-D tensor of shape [num_boxes, "
+#~ "4]. Each row of the tensor "
+#~ "specifies the coordinates of a box."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 1-D tensor of shape [num_boxes], "
+#~ "box_ind[i] specifies the data that the"
+#~ " i-th box refers to."
+#~ msgstr ""
+
+#~ msgid "The target size to which each box will be resized."
+#~ msgstr ""
+
+#~ msgid "Layout of the input."
+#~ msgstr ""
+
+#~ msgid "Scale method, it can be either \"nearest_neighbor\" or \"bilinear\"."
+#~ msgstr ""
+
+#~ msgid "Value used for extrapolation, when applicable."
+#~ msgstr ""
+
+#~ msgid "Type to return. If left None returns the same type as input."
+#~ msgstr ""
+
+#~ msgid "**result** -- The computed result."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Morphological Dilation 2D. This operator "
+#~ "takes the weight as the dilation "
+#~ "kernel and dilates it with data to"
+#~ " produce an output. In the default"
+#~ " case, where the data_layout is "
+#~ "`NCHW` and kernel_layout is `OIHW`, "
+#~ "dilation2d takes in a data Tensor "
+#~ "with shape `(batch_size, in_channels, height,"
+#~ " width)`, and a weight Tensor with"
+#~ " shape `(channels, kernel_height, kernel_width)`"
+#~ " to produce an output Tensor with "
+#~ "the following rule:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\\mbox{out}[b, c, y, x] = \\max_{dy, dx}\n"
+#~ "   \\mbox{data}[b, c, \\mbox{strides}[0] * "
+#~ "y  + dy, \\mbox{strides}[1] * x +"
+#~ " dx] +\n"
+#~ "   \\mbox{weight}[c, dy, dx]\n"
+#~ "\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Padding and dilation are applied to "
+#~ "data and weight respectively before the"
+#~ " computation. This operator accepts data"
+#~ " layout specification. Semantically, the "
+#~ "operator will convert the layout to "
+#~ "the canonical layout (`NCHW` for data"
+#~ " and `IHW` for weight) and perform"
+#~ " the computation."
+#~ msgstr ""
+
+#~ msgid "weight"
+#~ msgstr ""
+
+#~ msgid "tvm.relay.Expr"
+#~ msgstr ""
+
+#~ msgid "The weight expressions."
+#~ msgstr ""
+
+#~ msgid "strides"
+#~ msgstr ""
+
+#~ msgid "Optional[Tuple[int]]"
+#~ msgstr ""
+
+#~ msgid "The strides of convolution."
+#~ msgstr ""
+
+#~ msgid "padding"
+#~ msgstr ""
+
+#~ msgid "The padding of convolution on both sides of inputs before convolution."
+#~ msgstr ""
+
+#~ msgid "dilations"
+#~ msgstr ""
+
+#~ msgid "Specifies the dilation rate to be used for dilated convolution."
+#~ msgstr ""
+
+#~ msgid "data_layout"
+#~ msgstr ""
+
+#~ msgid "Optional[str]"
+#~ msgstr ""
+
+#~ msgid "kernel_layout"
+#~ msgstr ""
+
+#~ msgid "Layout of the weight."
+#~ msgstr ""
+
+#~ msgid "out_dtype"
+#~ msgstr ""
+
+#~ msgid "Specifies the output data type."
+#~ msgstr ""
+
+#~ msgid "Given :math:`data` and :math:`grid`, then the output is computed by"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "x_{src} = grid[batch, 0, y_{dst}, x_{dst}] \\\n"
+#~ "y_{src} = grid[batch, 1, y_{dst}, x_{dst}] \\\n"
+#~ "output[batch, channel, y_{dst}, x_{dst}] = "
+#~ "G(data[batch, channel, y_{src}, x_{src})"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":math:`x_{dst}`, :math:`y_{dst}` enumerate all "
+#~ "spatial locations in :math:`output`, and "
+#~ ":math:`G()` denotes the interpolation "
+#~ "function. The out-boundary points will"
+#~ " be padded with zeros if padding_mode"
+#~ " is \"zeros\". The shape of the "
+#~ "output will be (data.shape[0], data.shape[1],"
+#~ " grid.shape[2], grid.shape[3])."
+#~ msgstr ""
+
+#~ msgid "The operator assumes that :math:`grid` has been normalized to [-1, 1]."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "grid_sample often cooperates with affine_grid"
+#~ " which generates sampling grids for "
+#~ "grid_sample."
+#~ msgstr ""
+
+#~ msgid "4-D with shape [batch, in_channel, in_height, in_width]"
+#~ msgstr ""
+
+#~ msgid "4-D with shape [batch, 2, out_height, out_width]"
+#~ msgstr ""
+
+#~ msgid "The interpolation method. Only 'bilinear' is supported."
+#~ msgstr ""
+
+#~ msgid "The layout of input data and the output."
+#~ msgstr ""
+
+#~ msgid "The padding mode for outside grid values."
+#~ msgstr ""
+
+#~ msgid "**Output** -- 4-D with shape [batch, 2, out_height, out_width]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This operator takes data as input "
+#~ "and does 1D scaling to the given"
+#~ " scale factor. In the default case,"
+#~ " where the data_layout is `NCW` with"
+#~ " data of shape (n, c, w) out"
+#~ " will have a shape (n, c, "
+#~ "size[0])"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "method indicates the algorithm to be "
+#~ "used while calculating the out value "
+#~ "and method can be one of "
+#~ "(\"linear\", \"nearest_neighbor\", \"cubic\")"
+#~ msgstr ""
+
+#~ msgid "The out size to which the image will be resized."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The region of interest for cropping "
+#~ "the input image. Expected to be of"
+#~ " size 2, and format [start_w, end_w]."
+#~ " Only used if coordinate_transformation_mode "
+#~ "is tf_crop_and_resize."
+#~ msgstr ""
+
+#~ msgid "Scale method to used [nearest_neighbor, linear, cubic]."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Describes how to transform the "
+#~ "coordinate in the resized tensor to "
+#~ "the coordinate in the original tensor."
+#~ " Defintions can be found in "
+#~ "topi/image/resize.py. [half_pixel, align_corners, "
+#~ "asymmetric, pytorch_half_pixel, tf_half_pixel_for_nn, "
+#~ "and tf_crop_and_resize]."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "indicates how to find the \"nearest\""
+#~ " pixel in nearest_neighbor method [round,"
+#~ " floor, ceil]"
+#~ msgstr ""
+
+#~ msgid "Spline Coefficient for cubic interpolation"
+#~ msgstr ""
+
+#~ msgid "Flag to exclude exterior of the image during cubic interpolation"
+#~ msgstr ""
+
+#~ msgid "Fill value to use when roi is outside of the image"
+#~ msgstr ""
+
+#~ msgid "**result** -- The resized result."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This operator takes data as input "
+#~ "and does 2D scaling to the given"
+#~ " scale factor. In the default case,"
+#~ " where the data_layout is `NCHW` with"
+#~ " data of shape (n, c, h, w) "
+#~ "out will have a shape (n, c, "
+#~ "size[0], size[1])"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The region of interest for cropping "
+#~ "the input image. Expected to be of"
+#~ " size 4, and format [start_h, "
+#~ "start_w, end_h, end_w]. Only used if "
+#~ "coordinate_transformation_mode is tf_crop_and_resize."
+#~ msgstr ""
+
+#~ msgid "Spline Coefficient for bicubic interpolation"
+#~ msgstr ""
+
+#~ msgid "Flag to exclude exterior of the image during bicubic interpolation"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This operator takes data as input "
+#~ "and does 3D scaling to the given"
+#~ " scale factor. In the default case,"
+#~ " where the data_layout is `NCDHW` "
+#~ "with data of shape `(n, c, d, "
+#~ "h, w)` out will have a shape "
+#~ "`(n, c, size[0], size[1], size[2])`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The region of interest for cropping "
+#~ "the input image. Expected to be of"
+#~ " size 6, and format [start_d, "
+#~ "start_h, start_w, end_d, end_h, end_w]. "
+#~ "Only used if coordinate_transformation_mode is"
+#~ " tf_crop_and_resize."
+#~ msgstr ""
+

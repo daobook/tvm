@@ -1,0 +1,473 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-31 18:33+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/reference/api/python/rpc.rst:19
+msgid "tvm.rpc"
+msgstr ""
+
+#~ msgid "Lightweight TVM RPC module."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "RPC enables connect to a remote "
+#~ "server, upload and launch functions. "
+#~ "This is useful to for cross-"
+#~ "compile and remote testing, The compiler"
+#~ " stack runs on local server, while"
+#~ " we use RPC server to run on"
+#~ " remote runtime which don't have a"
+#~ " compiler available."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The test program compiles the program"
+#~ " on local server, upload and run "
+#~ "remote RPC server, get the result "
+#~ "back to verify correctness."
+#~ msgstr ""
+
+#~ msgid "**Classes:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`LocalSession <tvm.rpc.LocalSession>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "RPCSession interface backed by local environment."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PopenSession <tvm.rpc.PopenSession>`\\ \\(binary\\)"
+#~ msgstr ""
+
+#~ msgid "RPCSession interface backed by popen."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`RPCSession <tvm.rpc.RPCSession>`\\ \\(sess\\)"
+#~ msgstr ""
+
+#~ msgid "RPC Client session module"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Server <tvm.rpc.Server>`\\ \\(\\[host\\, "
+#~ "port\\, port\\_end\\, is\\_proxy\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Start RPC server on a separate process."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TrackerSession <tvm.rpc.TrackerSession>`\\ \\(addr\\)"
+#~ msgstr ""
+
+#~ msgid "Tracker client session."
+#~ msgstr ""
+
+#~ msgid "**Functions:**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`connect <tvm.rpc.connect>`\\ \\(url\\, "
+#~ "port\\[\\, key\\, session\\_timeout\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Connect to RPC Server"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`connect_tracker <tvm.rpc.connect_tracker>`\\ \\(url\\, port\\)"
+#~ msgstr ""
+
+#~ msgid "Connect to a RPC tracker"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`with_minrpc <tvm.rpc.with_minrpc>`\\ "
+#~ "\\(compile\\_func\\[\\, server\\, runtime\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Attach the compiler function with minrpc related options."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This class can be used to "
+#~ "implement functions that need to be "
+#~ "ran both locally and remotely."
+#~ msgstr ""
+
+#~ msgid "参数"
+#~ msgstr ""
+
+#~ msgid "The binary to be executed."
+#~ msgstr ""
+
+#~ msgid "Do not directly create the obhect, call connect"
+#~ msgstr ""
+
+#~ msgid "**Methods:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`cl <tvm.rpc.RPCSession.cl>`\\ \\(\\[dev\\_id\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Construct OpenCL device."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`cpu <tvm.rpc.RPCSession.cpu>`\\ \\(\\[dev\\_id\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Construct CPU device."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`cuda <tvm.rpc.RPCSession.cuda>`\\ \\(\\[dev\\_id\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Construct CUDA GPU device."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`device <tvm.rpc.RPCSession.device>`\\ "
+#~ "\\(dev\\_type\\[\\, dev\\_id\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Construct a remote device."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`download <tvm.rpc.RPCSession.download>`\\ \\(path\\)"
+#~ msgstr ""
+
+#~ msgid "Download file from remote temp folder."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`download_linked_module "
+#~ "<tvm.rpc.RPCSession.download_linked_module>`\\ \\(path\\)"
+#~ msgstr ""
+
+#~ msgid "Link a module in the remote and download it."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ext_dev <tvm.rpc.RPCSession.ext_dev>`\\ \\(\\[dev\\_id\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Construct extension device."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get_function <tvm.rpc.RPCSession.get_function>`\\ \\(name\\)"
+#~ msgstr ""
+
+#~ msgid "Get function from the session."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`hexagon <tvm.rpc.RPCSession.hexagon>`\\ \\(\\[dev\\_id\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Construct Hexagon device."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`load_module <tvm.rpc.RPCSession.load_module>`\\ \\(path\\)"
+#~ msgstr ""
+
+#~ msgid "Load a remote module, the file need to be uploaded first."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`metal <tvm.rpc.RPCSession.metal>`\\ \\(\\[dev\\_id\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Construct Metal device."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`remove <tvm.rpc.RPCSession.remove>`\\ \\(path\\)"
+#~ msgstr ""
+
+#~ msgid "Remove file from remote temp folder."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`rocm <tvm.rpc.RPCSession.rocm>`\\ \\(\\[dev\\_id\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Construct ROCm device."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`system_lib <tvm.rpc.RPCSession.system_lib>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Get system-wide library module."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`upload <tvm.rpc.RPCSession.upload>`\\ "
+#~ "\\(data\\[\\, target\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Upload file to remote runtime temp folder"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`vulkan <tvm.rpc.RPCSession.vulkan>`\\ \\(\\[dev\\_id\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Construct Vulkan device."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`webgpu <tvm.rpc.RPCSession.webgpu>`\\ \\(\\[dev\\_id\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Construct WebGPU device."
+#~ msgstr ""
+
+#~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid "**dev** -- The corresponding encoded remote device."
+#~ msgstr ""
+
+#~ msgid "返回类型"
+#~ msgstr ""
+
+#~ msgid "The relative location to remote temp folder."
+#~ msgstr ""
+
+#~ msgid "**blob** -- The result blob from the file."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This function can be helpful when "
+#~ "a linker is not available on the"
+#~ " local client."
+#~ msgstr ""
+
+#~ msgid "实际案例"
+#~ msgstr ""
+
+#~ msgid "The name of the function"
+#~ msgstr ""
+
+#~ msgid "**f** -- The result function."
+#~ msgstr ""
+
+#~ msgid "**m** -- The remote module containing remote function."
+#~ msgstr ""
+
+#~ msgid "**module** -- The system-wide library module."
+#~ msgstr ""
+
+#~ msgid ":obj:`tvm.runtime.system_lib`"
+#~ msgstr ""
+
+#~ msgid "The file name or binary in local to upload."
+#~ msgstr ""
+
+#~ msgid "The path in remote"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This is a simple python implementation"
+#~ " based on multi-processing. It is "
+#~ "also possible to implement a similar "
+#~ "C based server with TVM runtime "
+#~ "which does not depend on the "
+#~ "python."
+#~ msgstr ""
+
+#~ msgid "The host url of the server."
+#~ msgstr ""
+
+#~ msgid "The port to be bind to"
+#~ msgstr ""
+
+#~ msgid "The end port to search"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Whether the address specified is a "
+#~ "proxy. If this is true, the host"
+#~ " and port actually corresponds to the"
+#~ " address of the proxy server."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The address of RPC Tracker in "
+#~ "tuple(host, ip) format. If is not "
+#~ "None, the server will register itself"
+#~ " to the tracker."
+#~ msgstr ""
+
+#~ msgid "The key used to identify the device type in tracker."
+#~ msgstr ""
+
+#~ msgid "List of additional libraries to be loaded during execution."
+#~ msgstr ""
+
+#~ msgid "Custom IP Address to Report to RPC Tracker"
+#~ msgstr ""
+
+#~ msgid "Whether run this server in silent mode."
+#~ msgstr ""
+
+#~ msgid "Whether forbid fork in multiprocessing."
+#~ msgstr ""
+
+#~ msgid "Additional initialization function when starting the server."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The RPC server only sees functions "
+#~ "in the tvm namespace. To bring "
+#~ "additional custom functions to the "
+#~ "server env, you can use "
+#~ "server_init_callback."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`terminate <tvm.rpc.Server.terminate>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Terminate the server process"
+#~ msgstr ""
+
+#~ msgid "The address tuple"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`close <tvm.rpc.TrackerSession.close>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Close the tracker connection."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`request <tvm.rpc.TrackerSession.request>`\\ "
+#~ "\\(key\\[\\, priority\\, session\\_timeout\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Request a new connection from the tracker."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`request_and_run "
+#~ "<tvm.rpc.TrackerSession.request_and_run>`\\ \\(key\\, "
+#~ "func\\[\\, priority\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Request a resource from tracker and run the func."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`summary <tvm.rpc.TrackerSession.summary>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Get the summary dict of the tracker."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`text_summary <tvm.rpc.TrackerSession.text_summary>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Get a text summary of the tracker."
+#~ msgstr ""
+
+#~ msgid "The type key of the device."
+#~ msgstr ""
+
+#~ msgid "The priority of the request."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The duration of the session, allows "
+#~ "server to kill the connection when "
+#~ "duration is longer than this value. "
+#~ "When duration is zero, it means "
+#~ "the request must always be kept "
+#~ "alive."
+#~ msgstr ""
+
+#~ msgid "Maximum number of times to retry before give up."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "List of additional arguments to passed"
+#~ " as the remote session constructor. "
+#~ "The first element of the list is"
+#~ " always a string specifying the name"
+#~ " of the session constructor, the "
+#~ "following args are the positional args"
+#~ " to that function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This function safe-guard rare server "
+#~ "node dropout during execution. In such"
+#~ " case, a new resource will be "
+#~ "requested and func will be ran "
+#~ "again."
+#~ msgstr ""
+
+#~ msgid "A stateless function"
+#~ msgstr ""
+
+#~ msgid "Maximum number of times to retry the function before give up."
+#~ msgstr ""
+
+#~ msgid "The url of the host"
+#~ msgstr ""
+
+#~ msgid "The port to connect to"
+#~ msgstr ""
+
+#~ msgid "Additional key to match server"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The duration of the session in "
+#~ "seconds, allows server to kill the "
+#~ "connection when duration is longer than"
+#~ " this value. When duration is zero,"
+#~ " it means the request must always "
+#~ "be kept alive."
+#~ msgstr ""
+
+#~ msgid "**sess** -- The connected session."
+#~ msgstr ""
+
+#~ msgid "Normal usage .. code-block:: python"
+#~ msgstr ""
+
+#~ msgid "client = rpc.connect(server_url, server_port, server_key)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Session_constructor can be used to "
+#~ "customize the session in the remote "
+#~ "The following code connects to a "
+#~ "remote internal server via a proxy "
+#~ "by constructing another RPCClientSession on"
+#~ " the proxy machine and use that "
+#~ "as the serving session of the "
+#~ "proxy endpoint."
+#~ msgstr ""
+
+#~ msgid "**sess** -- The connected tracker session."
+#~ msgstr ""
+
+#~ msgid "The compilation function to decorate."
+#~ msgstr ""
+
+#~ msgid "The server type."
+#~ msgstr ""
+
+#~ msgid "The runtime library."
+#~ msgstr ""
+
+#~ msgid "**fcompile** -- The return compilation."
+#~ msgstr ""
+

@@ -1,0 +1,575 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-31 18:33+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/reference/api/python/target.rst:19
+msgid "tvm.target"
+msgstr ""
+
+#~ msgid ":py:obj:`GenericFunc <tvm.target.GenericFunc>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TargetKind <tvm.target.TargetKind>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`GenericFunc <tvm.target.GenericFunc>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TargetKind <tvm.target.TargetKind>`\\"
+#~ msgstr ""
+
+#~ msgid "Target description and codgen module."
+#~ msgstr ""
+
+#~ msgid "TVM's target string is in format ``<target_kind> [-option=value]...``."
+#~ msgstr ""
+
+#~ msgid "The list of options include:"
+#~ msgstr ""
+
+#~ msgid "**-device=<device name>**"
+#~ msgstr ""
+
+#~ msgid "The device name."
+#~ msgstr ""
+
+#~ msgid "**-mtriple=<target triple>**"
+#~ msgstr ""
+
+#~ msgid "Specify the target triple, which is useful for cross compilation."
+#~ msgstr ""
+
+#~ msgid "**-mcpu=<cpuname>**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Specify a specific chip in the "
+#~ "current architecture to generate code "
+#~ "for. By default this is infered "
+#~ "from the target triple and autodetected"
+#~ " to the current architecture."
+#~ msgstr ""
+
+#~ msgid "**-mattr=a1,+a2,-a3,...**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Override or control specific attributes "
+#~ "of the target, such as whether "
+#~ "SIMD operations are enabled or not. "
+#~ "The default set of attributes is "
+#~ "set by the current CPU."
+#~ msgstr ""
+
+#~ msgid "**-mabi=<abi>**"
+#~ msgstr ""
+
+#~ msgid "Generate code for the specified ABI, for example \"lp64d\"."
+#~ msgstr ""
+
+#~ msgid "**-system-lib**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Build TVM system library module. System"
+#~ " lib is a global module that "
+#~ "contains self registered functions in "
+#~ "program startup. User can get the "
+#~ "module using :any:`tvm.runtime.system_lib`. It "
+#~ "is useful in environments where dynamic"
+#~ " loading api like dlopen is banned."
+#~ " The system lib will be available "
+#~ "as long as the result code is "
+#~ "linked by the program."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "We can use :py:func:`tvm.target.Target` to "
+#~ "create a tvm.target.Target from the "
+#~ "target string. We can also use "
+#~ "other specific function in this module"
+#~ " to create specific targets."
+#~ msgstr ""
+
+#~ msgid "**Classes:**"
+#~ msgstr ""
+
+#~ msgid "GenericFunc node reference."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Target <tvm.target.Target>`\\ \\(target\\[\\, host\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Target device information, use through TVM API."
+#~ msgstr ""
+
+#~ msgid "Kind of a compilation target"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`VirtualDevice <tvm.target.VirtualDevice>`\\ "
+#~ "\\(device\\[\\, target\\, memory\\_scope\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A compile time representation for where"
+#~ " data is to be stored at "
+#~ "runtime, and how to compile code "
+#~ "to compute it."
+#~ msgstr ""
+
+#~ msgid "**Functions:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`arm_cpu <tvm.target.arm_cpu>`\\ \\(\\[model\\, options\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Returns a ARM CPU target."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`bifrost <tvm.target.bifrost>`\\ \\(\\[model\\, options\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Return an ARM Mali GPU target (Bifrost architecture)."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`create <tvm.target.create>`\\ \\(target\\)"
+#~ msgstr ""
+
+#~ msgid "Deprecated."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`cuda <tvm.target.cuda>`\\ \\(\\[model\\, arch\\, options\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Returns a cuda target."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`generic_func <tvm.target.generic_func>`\\ \\(fdefault\\)"
+#~ msgstr ""
+
+#~ msgid "Wrap a target generic function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_native_generic_func "
+#~ "<tvm.target.get_native_generic_func>`\\ \\(name\\)"
+#~ msgstr ""
+
+#~ msgid "Get a generic function from the global registry."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`hexagon <tvm.target.hexagon>`\\ \\(\\[cpu\\_ver\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Returns a Hexagon target."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`intel_graphics <tvm.target.intel_graphics>`\\ "
+#~ "\\(\\[model\\, options\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Returns an Intel Graphics target."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`list_tags <tvm.target.list_tags>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns a dict of tags, which maps"
+#~ " each tag name to its corresponding"
+#~ " target."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`make_compilation_config "
+#~ "<tvm.target.make_compilation_config>`\\ \\(ctxt\\, "
+#~ "targets\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns a CompilationConfig appropriate for"
+#~ " targets and an optional host_target."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`mali <tvm.target.mali>`\\ \\(\\[model\\, options\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Returns a ARM Mali GPU target."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`override_native_generic_func "
+#~ "<tvm.target.override_native_generic_func>`\\ \\(func\\_name\\)"
+#~ msgstr ""
+
+#~ msgid "Override a generic function defined in C++"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`rasp <tvm.target.rasp>`\\ \\(\\[options\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Return a Raspberry 3b target."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`riscv_cpu <tvm.target.riscv_cpu>`\\ "
+#~ "\\(\\[model\\, options\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Returns a RISC-V CPU target."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`rocm <tvm.target.rocm>`\\ \\(\\[model\\, options\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Returns a ROCM target."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "GenericFunc node reference. This represents"
+#~ " a generic function that may be "
+#~ "specialized for different targets. When "
+#~ "this object is called, a specialization"
+#~ " is chosen based on the current "
+#~ "target."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Do not construct an instance of "
+#~ "this object, it should only ever "
+#~ "be used as a return value from "
+#~ "calling into C++."
+#~ msgstr ""
+
+#~ msgid "**Methods:**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_packed_func "
+#~ "<tvm.target.GenericFunc.get_packed_func>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Get the packed function specified for the current target."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`register <tvm.target.GenericFunc.register>`\\ "
+#~ "\\(func\\, key\\_list\\[\\, allow\\_override\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Register a specialization for this GenericFunc."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`set_default <tvm.target.GenericFunc.set_default>`\\ "
+#~ "\\(func\\[\\, allow\\_override\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Set the default function to be "
+#~ "used if no specializations match the "
+#~ "current target."
+#~ msgstr ""
+
+#~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**func** -- The function specified for"
+#~ " the current target. Return the "
+#~ "default function if no specializations "
+#~ "match the current target."
+#~ msgstr ""
+
+#~ msgid "返回类型"
+#~ msgstr ""
+
+#~ msgid "参数"
+#~ msgstr ""
+
+#~ msgid "The function to be registered."
+#~ msgstr ""
+
+#~ msgid "The key to be registered."
+#~ msgstr ""
+
+#~ msgid "Whether to allow existing keys to be overridden."
+#~ msgstr ""
+
+#~ msgid "The default function"
+#~ msgstr ""
+
+#~ msgid "Whether to allow the current default to be overridden"
+#~ msgstr ""
+
+#~ msgid "You can create target using the constructor or the following functions"
+#~ msgstr ""
+
+#~ msgid ":py:func:`tvm.target.arm_cpu` create arm_cpu target"
+#~ msgstr ""
+
+#~ msgid ":py:func:`tvm.target.cuda` create CUDA target"
+#~ msgstr ""
+
+#~ msgid ":py:func:`tvm.target.rocm` create ROCM target"
+#~ msgstr ""
+
+#~ msgid ":py:func:`tvm.target.mali` create Mali target"
+#~ msgstr ""
+
+#~ msgid ":py:func:`tvm.target.intel_graphics` create Intel Graphics target"
+#~ msgstr ""
+
+#~ msgid "**Attributes:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`arch <tvm.target.Target.arch>`\\"
+#~ msgstr ""
+
+#~ msgid "Returns the cuda arch from the target if it exists."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`mattr <tvm.target.Target.mattr>`\\"
+#~ msgstr ""
+
+#~ msgid "Returns the mattr from the target if it exists."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`max_num_threads <tvm.target.Target.max_num_threads>`\\"
+#~ msgstr ""
+
+#~ msgid "Returns the max_num_threads from the target if it exists."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`mcpu <tvm.target.Target.mcpu>`\\"
+#~ msgstr ""
+
+#~ msgid "Returns the mcpu from the target if it exists."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`model <tvm.target.Target.model>`\\"
+#~ msgstr ""
+
+#~ msgid "Returns model from the target if it exists."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`thread_warp_size <tvm.target.Target.thread_warp_size>`\\"
+#~ msgstr ""
+
+#~ msgid "Returns the thread_warp_size from the target if it exists."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`check_and_update_host_consist "
+#~ "<tvm.target.Target.check_and_update_host_consist>`\\ "
+#~ "\\(target\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A helper function that merges a "
+#~ "legacy \"target, target_host\" pair, then "
+#~ "returns the merged target and its "
+#~ "host field."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`current <tvm.target.Target.current>`\\ "
+#~ "\\(\\[allow\\_none\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Returns the current target."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_kind_attr <tvm.target.Target.get_kind_attr>`\\ "
+#~ "\\(attr\\_name\\)"
+#~ msgstr ""
+
+#~ msgid "Get additional attribute about the target kind."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`list_kinds <tvm.target.Target.list_kinds>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Returns the list of available target names."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A helper function that merges a "
+#~ "legacy \"target, target_host\" pair, then "
+#~ "returns the merged target and its "
+#~ "host field. The function is for "
+#~ "legacy target and target host pair "
+#~ "only, and should not be used in"
+#~ " the new target system."
+#~ msgstr ""
+
+#~ msgid "The target or heterogeneous target"
+#~ msgstr ""
+
+#~ msgid "The target host"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "When the type of target is dict,"
+#~ " whether Target is the key (Otherwise"
+#~ " the value)"
+#~ msgstr ""
+
+#~ msgid "Whether allow the current target to be none"
+#~ msgstr ""
+
+#~ msgid "引发"
+#~ msgstr ""
+
+#~ msgid "The attribute name."
+#~ msgstr ""
+
+#~ msgid "**value** -- The attribute value"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`options <tvm.target.TargetKind.options>`\\"
+#~ msgstr ""
+
+#~ msgid "Returns the dict of available option names and types"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`options_from_name "
+#~ "<tvm.target.TargetKind.options_from_name>`\\ \\(kind\\_name\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns the dict of available option "
+#~ "names and types from a name of "
+#~ "TargetKind"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns a ARM CPU target. This "
+#~ "function will also download pre-tuned"
+#~ " op parameters when there is none."
+#~ msgstr ""
+
+#~ msgid "SoC name or phone name of the arm board."
+#~ msgstr ""
+
+#~ msgid "Additional options"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Deprecated. Use the constructor of "
+#~ ":py:mod:`tvm.target.Target` directly."
+#~ msgstr ""
+
+#~ msgid "The model of cuda device (e.g. 1080ti)"
+#~ msgstr ""
+
+#~ msgid "The cuda architecture (e.g. sm_61)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Generic function allows registration of "
+#~ "further functions that can be dispatched"
+#~ " on current target context. If no "
+#~ "registered dispatch is matched, the "
+#~ "fdefault will be called."
+#~ msgstr ""
+
+#~ msgid "The default function."
+#~ msgstr ""
+
+#~ msgid "**fgeneric** -- A wrapped generic function."
+#~ msgstr ""
+
+#~ msgid "示例"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Get a generic function from the "
+#~ "global registry. If no function is "
+#~ "registered under the given name, a "
+#~ "new generic function is created."
+#~ msgstr ""
+
+#~ msgid "The name of the generic function to get"
+#~ msgstr ""
+
+#~ msgid "**func** -- The generic function for the given name"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "CPU version used for code generation."
+#~ " Not all allowed cpu str will "
+#~ "be valid, LLVM will throw an "
+#~ "error."
+#~ msgstr ""
+
+#~ msgid "Size of HVX vector in bytes. Value of 0 disables HVX codegen."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "User defined sim arguments. CPU version"
+#~ " defaults to cpu_ver. Otherwise, separate"
+#~ " versions are used for codegen and"
+#~ " sim. Not all allowed cpu strings "
+#~ "will be valid, simulator will throw "
+#~ "an error if invalid. Does not "
+#~ "affect codegen."
+#~ msgstr ""
+
+#~ msgid "User defined compiler arguments."
+#~ msgstr ""
+
+#~ msgid "Whether to link graph parameters into the LLVM module."
+#~ msgstr ""
+
+#~ msgid "The model of this device"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**tag_dict** -- The dict of tags "
+#~ "mapping each tag name to to its"
+#~ " corresponding target. None if TVM is"
+#~ " built in runtime-only mode."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns a CompilationConfig appropriate for"
+#~ " targets and an optional host_target. "
+#~ "Currently intended just for unit tests"
+#~ " and will be replaced by a "
+#~ "Python CompilationConfig class in the "
+#~ "future. Note that targets must be "
+#~ "a dictionary from IntImm objects to "
+#~ "Targets and we do not support any"
+#~ " of the lighter-weight conventions "
+#~ "used by the various build(...) APIs."
+#~ msgstr ""
+
+#~ msgid "The name of the generic func to be overridden"
+#~ msgstr ""
+
+#~ msgid "Returns a RISC-V CPU target. Default: sifive-u54 rv64gc"
+#~ msgstr ""
+
+#~ msgid "CPU name."
+#~ msgstr ""
+

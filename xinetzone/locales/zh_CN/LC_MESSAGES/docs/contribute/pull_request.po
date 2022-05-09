@@ -1,0 +1,180 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-07 11:03+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/docs/contribute/pull_request.rst:19
+msgid "Submit a Pull Request"
+msgstr "提交 Pull Request"
+
+#: ../../../xin/docs/contribute/pull_request.rst:26
+msgid "Guidelines"
+msgstr "指南"
+
+#: ../../../xin/docs/contribute/pull_request.rst:28
+msgid ""
+"We recommend authors send well scoped PRs that are easy to review and "
+"revert in case there is a problem. As such, authors should avoid merging "
+"multiple unrelated changes into a single PR"
+msgstr ""
+"建议作者发送范围明确的 PR，以便在出现问题时进行审查和回复。"
+"因此，作者应该避免将多个不相关的变化合并成单个 PR。"
+
+#: ../../../xin/docs/contribute/pull_request.rst:29
+msgid ""
+"Before you submit a PR, please rebase your code on the most recent "
+"version of ``main``, you can do it by running"
+msgstr ""
+"在你提交 PR 之前，请根据 ``main`` 的最新版本重新编写代码，你可以通过运行"
+
+#: ../../../xin/docs/contribute/pull_request.rst:38
+msgid "Make sure code passes lint checks"
+msgstr "确保代码通过 lint 检查"
+
+#: ../../../xin/docs/contribute/pull_request.rst:54
+msgid ""
+"If the clang-format lint check fails, run git-clang-format as follows to "
+"automatically reformat your code:"
+msgstr ""
+"如果 clang-format lint 检查失败，运行如下 git-clang-format 来自动重新格式化你的代码："
+
+#: ../../../xin/docs/contribute/pull_request.rst:62
+msgid "Add test-cases to cover the new features or bugfix the patch introduces."
+msgstr "添加测试用例来覆盖新特性或修复补丁引入的 bug。"
+
+#: ../../../xin/docs/contribute/pull_request.rst:63
+msgid "Document the code you wrote, see more at :ref:`doc_guide`"
+msgstr "记录你写的代码，参见 :ref:`doc_guide`"
+
+#: ../../../xin/docs/contribute/pull_request.rst:64
+msgid ""
+"`Create a pull request <https://docs.github.com/en/pull-requests"
+"/collaborating-with-pull-requests/proposing-changes-to-your-work-with-"
+"pull-requests/creating-a-pull-request>`_ and fix the problems reported by"
+" CI checks."
+msgstr ""
+"`创建 pull request <https://docs.github.com/en/pull-requests"
+"/collaborating-with-pull-requests/proposing-changes-to-your-work-with-"
+"pull-requests/creating-a-pull-request>`_ 并修复 CI 检查报告的问题。"
+
+#: ../../../xin/docs/contribute/pull_request.rst:65
+msgid ""
+"Request code reviews from other contributors and improve your patch "
+"according to their reviews by ``@``-ing them in your pull request. Tags "
+"in PR titles will automatically tag subscribed users, so make sure to put"
+" relevant topics in your PR titles (e.g. ``[microTVM] a cool change`` and"
+" not ``a cool change for microTVM``)."
+msgstr ""
+"向其他贡献者请求代码评审，并根据他们的评审，通过在你的 pull request中 ``@`` 他们来改进你的补丁。"
+"PR 标题中的标签会自动标记订阅用户，所以请确保在 PR 标题中添加相关主题（例如：``[microTVM] a cool change``，而不是 ``a cool change for microTVM``）。"
+
+#: ../../../xin/docs/contribute/pull_request.rst:67
+msgid ""
+"To get your code reviewed quickly, we encourage you to help review "
+"others' code so they can do the favor in return."
+msgstr ""
+"为了让您的代码快速被评审，鼓励您帮助评审其他人的代码，这样他们就可以反过来帮助您。"
+
+#: ../../../xin/docs/contribute/pull_request.rst:68
+msgid ""
+"Code review is a shepherding process that helps to improve contributor's "
+"code quality. We should treat it proactively, to improve the code as much"
+" as possible before the review. We highly value patches that can get in "
+"without extensive reviews."
+msgstr ""
+"代码评审是帮助改进贡献者代码质量的指导过程。"
+"应该积极地对待它，在评审之前尽可能地改进代码。我们非常重视那些没有大量评论的补丁。"
+
+#: ../../../xin/docs/contribute/pull_request.rst:71
+msgid "The detailed guidelines and summarizes useful lessons."
+msgstr "详细的指导方针并总结了有益的经验教训。"
+
+#: ../../../xin/docs/contribute/pull_request.rst:73
+msgid "The PR can be merged after the reviewers approve the pull request."
+msgstr "审核人员批准拉请求后，可以合并 PR。"
+
+#: ../../../xin/docs/contribute/pull_request.rst:76
+msgid "CI Environment"
+msgstr "CI 环境"
+
+#: ../../../xin/docs/contribute/pull_request.rst:77
+msgid ""
+"We use Docker images to create stable CI environments that can be "
+"deployed to multiple machines. Follow the steps in `this issue template "
+"<https://github.com/apache/tvm/issues/new?assignees=&labels=&template=ci-"
+"image.md&title=%5BCI+Image%5D+>`_ to update a CI Docker image."
+msgstr ""
+"使用 Docker 映像创建稳定的 CI 环境，可以部署到多台机器上。"
+"按照 `此 issue 模板 <https://github.com/apache/tvm/issues/new?assignees=&labels=&template=ci-"
+"image.md&title=%5BCI+Image%5D+>`_ 中的步骤来更新 CI Docker 映像。"
+
+#: ../../../xin/docs/contribute/pull_request.rst:84
+msgid "Testing"
+msgstr "测试"
+
+#: ../../../xin/docs/contribute/pull_request.rst:85
+msgid ""
+"Even though we have hooks to run unit tests automatically for each pull "
+"request, it's always recommended to run unit tests locally beforehand to "
+"reduce reviewers' burden and speedup review process."
+msgstr ""
+"尽管有钩子为每个拉请求自动运行单元测试，但总是建议提前在本地运行单元测试，以减少审阅人员的负担，加快审阅过程。"
+
+#: ../../../xin/docs/contribute/pull_request.rst:89
+msgid "Docker (recommended)"
+msgstr "Docker（推荐）"
+
+#: ../../../xin/docs/contribute/pull_request.rst:90
+msgid ""
+"``tests/scripts/ci.py`` replicates the CI environment locally and "
+"provides a user-friendly interface. The same Docker images and scripts "
+"used in CI are used directly to run tests. It also deposits builds in "
+"different folders so you can maintain multiple test environments without "
+"rebuilding from scratch each time (e.g. you can test a change in CPU and "
+"i386 while retaining incremental rebuilds)."
+msgstr ""
+"``tests/scripts/ci.py`` 在本地复制 CI 环境并提供用户友好的界面。"
+"在 CI 中使用的 Docker 映像和脚本直接用于运行测试。"
+"它还将构建版本存储在不同的文件夹中，这样你就可以维护多个测试环境，"
+"而不必每次都从头开始重新构建（例如，你可以测试 CPU 和 i386 中的变化，同时保持增量重新构建）。"
+
+#: ../../../xin/docs/contribute/pull_request.rst:118
+msgid "C++ (local)"
+msgstr "C++（本地）"
+
+#: ../../../xin/docs/contribute/pull_request.rst:120
+msgid ""
+"Running the C++ tests requires installation of gtest, following the "
+"instructions in :ref:`install-from-source-cpp-tests`"
+msgstr ""
+"运行 C++ 测试需要安装 gtest，请参见 :ref:`install-from-source-cpp-tests`"
+
+#: ../../../xin/docs/contribute/pull_request.rst:132
+msgid "Python (local)"
+msgstr "Python（本地）"
+
+#: ../../../xin/docs/contribute/pull_request.rst:133
+msgid "Necessary dependencies:"
+msgstr "必要的依赖关系："
+
+#: ../../../xin/docs/contribute/pull_request.rst:139
+msgid "If you want to run all tests:"
+msgstr "如果要运行所有测试："
+
+#: ../../../xin/docs/contribute/pull_request.rst:148
+msgid "If you want to run a single test:"
+msgstr "如果要运行单个测试："

@@ -1,0 +1,235 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-10 21:32+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/arch/microtvm_project_api.rst:21
+msgid "microTVM Project API"
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:24
+msgid "About microTVM Project API"
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:26
+msgid ""
+"The microTVM Project API allows TVM to automatically run models on "
+"unconventional or embedded platforms. It allows platforms to define a "
+"standard function to integrate TVM compiler output with boilerplate "
+"platform-specific code, producing a runnable **Project**. Project API "
+"then further defines functions to build that project, program compatible "
+"devices accessible from the TVM machine, and communicate with the running"
+" code so that TVM can perform host-driven inference and autotuning."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:34
+msgid ""
+"There are many cases where it might be desirable simply to invoke "
+"microTVM as a tool from your platform's build process. Indeed, for the "
+"average firmware developer, this is likely to be all they need. However, "
+"there are a couple of use cases when you may want to teach microTVM how "
+"to build firmware using your platform's build tool:"
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:40
+msgid ""
+"To enable AutoTVM and AutoScheduling on your platform. Defining a Project"
+" API implementation allows TVM to tune models for peak performance on "
+"your platform."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:43
+msgid ""
+"To enable engineers without firmware expertise to experiment with models "
+"on your platform. Defining a Project API implementation allows these "
+"engineers to leverage the standard TVM Python workflows to perform host-"
+"driven inference on your platform."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:47
+msgid ""
+"Integration Testing. Defining a Project API implementation allows you to "
+"create Continuous Integration Tests which verify model correctness and "
+"performance on your platform."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:52
+msgid "API Definition"
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:54
+msgid ""
+"The full API is the ``abstractmethod`` defined on ``ProjectAPIHandler`` "
+"in `python/tvm/micro/project_api/server.py "
+"<https://github.com/apache/tvm/blob/main/python/tvm/micro/project_api/server.py>`_."
+" Rather than duplicate the documentation here, we simply refer you to "
+"that class."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:59
+msgid "How TVM uses Project API"
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:61
+msgid ""
+"This section explains how the Project API should be used with TVM. "
+"Project API is defined around the *Project* as the buildable unit of "
+"firmware. TVM expects to be provided initially with a directory "
+"containing a *Template Project*, which together with a :ref:`Model "
+"Library Format <model_library_format>` file can be built into a runnable "
+"project."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:67
+msgid ""
+"Inside the Template Directory is (typically) a Python script implementing"
+" the API server. TVM launches this script in a subprocess and sends "
+"commands to the server to perform each of the actions outlined above."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:71
+msgid "The typical usage flow is as follows:"
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:73
+msgid "Launch Project API server in Template Project."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:74
+#: ../../docs/arch/microtvm_project_api.rst:83
+msgid ""
+"Verify the API server is version-compatible with TVM, plus read "
+"properties of the implementation, by sending ``server_info_query`` "
+"command."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:76
+msgid ""
+"Generate a new project by sending command ``generate_project`` to create "
+"a new project. The arguments to this command is a Model Library Format "
+"and a non-existent directory which should be populated with the generated"
+" project. The Template Project API server should copy itself into the "
+"newly-generated project."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:81
+msgid "Terminate the Template Project API server."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:82
+msgid "Launch Project API server in Generated Project."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:85
+msgid ""
+"Build and flash the projec by sending commands ``build`` and ``flash`` to"
+" the API server."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:87
+msgid ""
+"Communicate with the target. Send command ``open_transport`` followed by "
+"commands ``write_transport`` and ``read_transport`` to write and read "
+"from e.g. a serial port attached to the target. Upon completion, "
+"``close_transport`` is sent."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:91
+msgid "Terminate Project API server."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:94
+msgid "Disk Layout of the Project"
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:96
+msgid ""
+"In the root directory of a project (template or generated), one of the "
+"following two files must exist:"
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:99
+msgid ""
+"``microtvm_api_server.py`` - the suggested approach. Place a "
+"python3-compatible Python script in the root directory. TVM will execute "
+"this script in its own process using the same interpreter used to execute"
+" TVM."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:102
+msgid ""
+"``microtvm_api_server.sh`` (on Windows, ``microtvm_api_server.bat``) - "
+"alternate approach. When a different Python interpreter is necessary, or "
+"when you want to implement the server in a different language, create "
+"this executable file. TVM will launch this file in a separate process."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:107
+msgid "Aside from these two files, no other restrictions are made on the layout."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:110
+msgid "Communication between TVM and Project API Server"
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:112
+msgid ""
+"TVM communicates with the Project API server using `JSON-RPC 2.0 "
+"<https://www.jsonrpc.org/specification>`_. TVM always launches API "
+"servers using the following command-line:"
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:116
+msgid "``microtvm_api_server.py --read-fd <n> --write-fd <n>``"
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:118
+msgid ""
+"Commands are sent from TVM to the server over the file descriptor given "
+"by ``--read-fd`` and replies are received by TVM from the server over the"
+" file descriptor given by ``--write-fd``."
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:123
+msgid "Helpers for Implementing the API server in Python"
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:125
+msgid ""
+"TVM provides helper utilities that make it easy to implement the server "
+"in Python. To implement the server in Python, create "
+"``microtvm_api_server.py`` and add ``from tvm.micro.project_api import "
+"server`` (or, copy this file into your template project--there are no "
+"dependencies--and import it there instead). Next, subclass "
+"``ProjectAPIHander``::"
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:140
+msgid "Finally, invoke the helper ``main()``::"
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:146
+msgid "Using Project API from ``tvmc``"
+msgstr ""
+
+#: ../../docs/arch/microtvm_project_api.rst:148
+msgid ""
+"Each major Project API command is available through the ``tvmc micro`` "
+"sub-command to make debugging interactions simple. Invoke ``tvmc micro "
+"--help`` for more information."
+msgstr ""
+

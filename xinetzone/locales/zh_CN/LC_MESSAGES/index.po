@@ -1,0 +1,57 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# xinetzone <xinzone@outlook.com>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-21 12:57+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: xinetzone <xinzone@outlook.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/index.md:1
+msgid "Apache TVM 中文文档"
+msgstr ""
+
+#: ../../../xin/index.md:3
+msgid "欢迎来到 Apache TVM 的文档，这是一个深度学习编译器，可以让每个人都能在任何地方获得高性能的机器学习。"
+msgstr ""
+
+#: ../../../xin/index.md:5
+msgid ""
+"TVM 是一个由硬件供应商、编译器工程师和 ML 研究人员组成的多样化社区。研究人员共同构建了一个统一的、可编程的软件栈，从而丰富了整个 ML "
+"技术生态系统，并使其能够被更广泛的 ML 社区。TVM 使用户能够利用社区驱动的基于 ML "
+"的优化来推动其研究和开发的极限并扩大其范围，这反过来又提高了所有 ML 的集体性能，同时推动其成本下降。"
+msgstr ""
+
+#: ../../../xin/index.md:22
+msgid "目录和索引"
+msgstr ""
+
+#: ../../../xin/index.md:24
+msgid "{ref}`genindex`"
+msgstr ""
+
+#: ../../../xin/index.md:25
+msgid "{ref}`modindex`"
+msgstr ""
+
+#: ../../../xin/index.md:26
+msgid "{ref}`search`"
+msgstr ""
+
+#~ msgid ""
+#~ "TVM 是由硬件供应商、编译器工程师和 ML "
+#~ "研究人员组成的多样化社区。研究人员共同构建了统一的、可编程的软件栈，从而丰富了整个 ML "
+#~ "技术生态系统，并使其能够被更广泛的 ML 社区。TVM 使用户能够利用社区驱动的基于 ML"
+#~ " 的优化来推动其研究和开发的极限并扩大其范围，这反过来又提高了所有 ML 的集体性能，同时推动其成本下降。"
+#~ msgstr ""
+

@@ -1,0 +1,146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-27 19:13+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/refs/_ffi/object.rst:3
+msgid "``_ffi._ctypes.object``"
+msgstr ""
+
+#: of tvm._ffi._ctypes.object:1
+msgid "Runtime Object api"
+msgstr ""
+
+#: of tvm._ffi._ctypes.object.ObjectBase:1
+msgid "Base object for all object types"
+msgstr ""
+
+#: of tvm._ffi._ctypes.object.ObjectBase.__init_handle_by_constructor__:1
+msgid "Initialize the handle by calling constructor function."
+msgstr ""
+
+#: of tvm._ffi._ctypes.object.ObjectBase.__init_handle_by_constructor__:6
+#: tvm._ffi._ctypes.object.PyNativeObject.__init_tvm_object_by_constructor__:6
+msgid "fconstructor"
+msgstr ""
+
+#: of
+msgid "Function"
+msgstr ""
+
+#: of tvm._ffi._ctypes.object.ObjectBase.__init_handle_by_constructor__:6
+#: tvm._ffi._ctypes.object.PyNativeObject.__init_tvm_object_by_constructor__:6
+msgid "Constructor function."
+msgstr ""
+
+#: of tvm._ffi._ctypes.object.ObjectBase.__init_handle_by_constructor__:9
+#: tvm._ffi._ctypes.object.PyNativeObject.__init_tvm_object_by_constructor__:9
+msgid "args: list of objects"
+msgstr ""
+
+#: of tvm._ffi._ctypes.object.ObjectBase.__init_handle_by_constructor__:9
+#: tvm._ffi._ctypes.object.PyNativeObject.__init_tvm_object_by_constructor__:9
+msgid "The arguments to the constructor"
+msgstr ""
+
+#: of tvm._ffi._ctypes.object.ObjectBase.__init_handle_by_constructor__:13
+msgid ""
+"We have a special calling convention to call constructor functions. So "
+"the return handle is directly set into the Node object instead of "
+"creating a new Node."
+msgstr ""
+
+#: of tvm._ffi._ctypes.object.ObjectBase.same_as:1
+msgid "Check object identity."
+msgstr ""
+
+#: of tvm._ffi._ctypes.object.ObjectBase.same_as:6
+msgid "other"
+msgstr ""
+
+#: of
+msgid "object"
+msgstr ""
+
+#: of tvm._ffi._ctypes.object.ObjectBase.same_as:6
+msgid "The other object to compare against."
+msgstr ""
+
+#: of tvm._ffi._ctypes.object.ObjectBase.same_as:10
+msgid "result"
+msgstr ""
+
+#: of
+msgid "bool"
+msgstr ""
+
+#: of tvm._ffi._ctypes.object.ObjectBase.same_as:11
+msgid "The comparison result."
+msgstr ""
+
+#: of tvm._ffi._ctypes.object.PyNativeObject:1
+msgid "Base class of all TVM objects that also subclass python's builtin types."
+msgstr ""
+
+#: of
+#: tvm._ffi._ctypes.object.PyNativeObject.__init_tvm_object_by_constructor__:1
+msgid "Initialize the internal tvm_object by calling constructor function."
+msgstr ""
+
+#: of
+#: tvm._ffi._ctypes.object.PyNativeObject.__init_tvm_object_by_constructor__:13
+msgid ""
+"We have a special calling convention to call constructor functions. So "
+"the return object is directly set into the object"
+msgstr ""
+
+#: of tvm._ffi._ctypes.object._register_object:1
+msgid "register object class"
+msgstr ""
+
+#~ msgid "Runtime Object api"
+#~ msgstr "运行时对象 API"
+
+#~ msgid "Base object for all object types"
+#~ msgstr "全部对象类型的基对象"
+
+#~ msgid "Check object identity."
+#~ msgstr "检查对象的 ID"
+
+#~ msgid "参数"
+#~ msgstr ""
+
+#~ msgid "The other object to compare against."
+#~ msgstr "另一个比较对象。"
+
+#~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid "**result** -- The comparison result."
+#~ msgstr ""
+
+#~ msgid "返回类型"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Base class of all TVM objects that"
+#~ " also subclass python's builtin types."
+#~ msgstr ""
+
+#~ msgid "Maps object type to its constructor"
+#~ msgstr ""
+

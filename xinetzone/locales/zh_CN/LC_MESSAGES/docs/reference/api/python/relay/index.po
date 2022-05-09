@@ -1,0 +1,3203 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-31 18:33+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/reference/api/python/relay/index.rst:19
+msgid "tvm.relay"
+msgstr ""
+
+#~ msgid ":py:obj:`Pattern <tvm.relay.Pattern>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sliding_window <tvm.relay.sliding_window>`\\ "
+#~ "\\(data\\, axis\\, window\\_shape\\, strides\\)"
+#~ msgstr ""
+
+#~ msgid "Slide a window over the data tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "What axis the window begins sliding "
+#~ "over. Window will be slid over "
+#~ "this axis and all following axes. "
+#~ "The axis value determines the window "
+#~ "shape (and thus, the number of "
+#~ "strides): window shape and strides must"
+#~ " both be of length `data.ndim-axis`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The window shape to form over the"
+#~ " input. Window shape must be of "
+#~ "length `data.ndim-axis`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "How to stride the window along "
+#~ "each dimension. Strides must be of "
+#~ "length `data.ndim-axis`."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Pattern <tvm.relay.Pattern>`\\"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`TupleGetItem <tvm.relay.TupleGetItem>`\\ "
+#~ "\\(tuple\\_value\\, index\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`mean_variance <tvm.relay.mean_variance>`\\ "
+#~ "\\(data\\[\\, axis\\, keepdims\\, exclude\\]\\)"
+#~ msgstr ""
+
+#~ msgid "The Relay IR namespace containing the IR definition and compiler."
+#~ msgstr "包含 IR 定义和编译器的 Relay IR 名称空间。"
+
+#~ msgid "**Classes:**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Call <tvm.relay.Call>`\\ \\(op\\, "
+#~ "args\\[\\, attrs\\, type\\_args\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Function call node in Relay."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Clause <tvm.relay.Clause>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Clause for pattern matching in Relay."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Constant <tvm.relay.Constant>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "A constant expression in Relay."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Expr <tvm.relay.Expr>`\\"
+#~ msgstr ""
+
+#~ msgid "alias of :py:class:`tvm.ir.expr.RelayExpr`"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ExprFunctor <tvm.relay.ExprFunctor>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "An abstract visitor defined over Expr."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ExprMutator <tvm.relay.ExprMutator>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "A functional visitor over Expr."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ExprVisitor <tvm.relay.ExprVisitor>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "A visitor over Expr."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Function <tvm.relay.Function>`\\ \\(params\\, "
+#~ "body\\[\\, ret\\_type\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "A function declaration expression."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`If <tvm.relay.If>`\\ \\(cond\\, "
+#~ "true\\_branch\\, false\\_branch\\)"
+#~ msgstr ""
+
+#~ msgid "A conditional expression in Relay."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Let <tvm.relay.Let>`\\ \\(variable\\, value\\, body\\)"
+#~ msgstr ""
+
+#~ msgid "Let variable binding expression."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Match <tvm.relay.Match>`\\ \\(data\\, "
+#~ "clauses\\[\\, complete\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Pattern matching expression in Relay."
+#~ msgstr ""
+
+#~ msgid "Base type for pattern matching constructs."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`PatternConstructor <tvm.relay.PatternConstructor>`\\"
+#~ " \\(constructor\\[\\, patterns\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Constructor pattern in Relay: Matches an"
+#~ " ADT of the given constructor, binds"
+#~ " recursively."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PatternTuple <tvm.relay.PatternTuple>`\\ \\(\\[patterns\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Constructor pattern in Relay: Matches a tuple, binds recursively."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PatternVar <tvm.relay.PatternVar>`\\ \\(var\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Variable pattern in Relay: Matches "
+#~ "anything and binds it to the "
+#~ "variable."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PatternWildcard <tvm.relay.PatternWildcard>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Wildcard pattern in Relay: Matches any ADT and binds nothing."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Prelude <tvm.relay.Prelude>`\\ \\(\\[mod\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Contains standard definitions."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`RefCreate <tvm.relay.RefCreate>`\\ \\(value\\)"
+#~ msgstr ""
+
+#~ msgid "Create a new reference from initial value."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`RefRead <tvm.relay.RefRead>`\\ \\(ref\\)"
+#~ msgstr ""
+
+#~ msgid "Get the value inside the reference."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`RefType <tvm.relay.RefType>`\\"
+#~ msgstr ""
+
+#~ msgid "alias of :py:class:`tvm.ir.type.RelayRefType`"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`RefWrite <tvm.relay.RefWrite>`\\ \\(ref\\, value\\)"
+#~ msgstr ""
+
+#~ msgid "Update the value inside the reference."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ScopeBuilder <tvm.relay.ScopeBuilder>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Scope builder class."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Tuple <tvm.relay.Tuple>`\\ \\(fields\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Tuple expression that groups several fields together."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`TupleGetItem <tvm.relay.TupleGetItem>`\\ "
+#~ "\\(tuple\\_value\\, index\\)"
+#~ msgstr ""
+
+#~ msgid "Get index-th item from a tuple."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`TupleWrapper <tvm.relay.TupleWrapper>`\\ "
+#~ "\\(tuple\\_value\\, size\\)"
+#~ msgstr ""
+
+#~ msgid "TupleWrapper."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`TypeData <tvm.relay.TypeData>`\\ \\(header\\, "
+#~ "type\\_vars\\, constructors\\)"
+#~ msgstr ""
+
+#~ msgid "Stores the definition for an Algebraic Data Type (ADT) in Relay."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TypeFunctor <tvm.relay.TypeFunctor>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "An abstract visitor defined over Type."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TypeMutator <tvm.relay.TypeMutator>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "A functional visitor over Type."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TypeVisitor <tvm.relay.TypeVisitor>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "A visitor over Type."
+#~ msgstr ""
+
+#~ msgid "**Functions:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ShapeVar <tvm.relay.ShapeVar>`\\ \\(name\\)"
+#~ msgstr ""
+
+#~ msgid "A helper which constructs a type var of which the shape kind."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`abs <tvm.relay.abs>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise absolute of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`acos <tvm.relay.acos>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise acos of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`acosh <tvm.relay.acosh>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise acosh of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`add <tvm.relay.add>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Addition with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`adv_index <tvm.relay.adv_index>`\\ \\(inputs\\)"
+#~ msgstr ""
+
+#~ msgid "Numpy style advanced indexing."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`all <tvm.relay.all>`\\ \\(data\\[\\, "
+#~ "axis\\, keepdims\\, exclude\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Computes the logical AND of boolean array elements over given axes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`any <tvm.relay.any>`\\ \\(data\\[\\, "
+#~ "axis\\, keepdims\\, exclude\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Computes the logical OR of boolean array elements over given axes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`arange <tvm.relay.arange>`\\ \\(start\\[\\, "
+#~ "stop\\, step\\, dtype\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Return evenly spaced values within a given interval."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`argmax <tvm.relay.argmax>`\\ \\(data\\[\\, "
+#~ "axis\\, keepdims\\, exclude\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Returns the indices of the maximum values along an axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`argmin <tvm.relay.argmin>`\\ \\(data\\[\\, "
+#~ "axis\\, keepdims\\, exclude\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Returns the indices of the minimum values along an axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`argsort <tvm.relay.argsort>`\\ \\(data\\[\\, "
+#~ "axis\\, is\\_ascend\\, dtype\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Performs sorting along the given axis"
+#~ " and returns an array of indicies "
+#~ "having same shape as an input "
+#~ "array that index data in sorted "
+#~ "order."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`argwhere <tvm.relay.argwhere>`\\ \\(condition\\)"
+#~ msgstr ""
+
+#~ msgid "Find the indices of elements of a tensor that are non-zero."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`asin <tvm.relay.asin>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise asin of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`asinh <tvm.relay.asinh>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise asinh of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`atan <tvm.relay.atan>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise atan of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`atanh <tvm.relay.atanh>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise atanh of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`bind <tvm.relay.bind>`\\ \\(expr\\, binds\\)"
+#~ msgstr ""
+
+#~ msgid "Bind an free variables in expr or function arguments."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`bitwise_and <tvm.relay.bitwise_and>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "bitwise AND with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`bitwise_not <tvm.relay.bitwise_not>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise bitwise not of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`bitwise_or <tvm.relay.bitwise_or>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "bitwise OR with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`bitwise_xor <tvm.relay.bitwise_xor>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "bitwise XOR with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`broadcast_to <tvm.relay.broadcast_to>`\\ \\(data\\, shape\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Return a scalar value array with "
+#~ "the same type, broadcast to the "
+#~ "provided shape."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`broadcast_to_like <tvm.relay.broadcast_to_like>`\\ "
+#~ "\\(data\\, broadcast\\_type\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Return a scalar value array with "
+#~ "the same shape and type as the "
+#~ "input array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`build <tvm.relay.build>`\\ \\(ir\\_mod\\[\\, "
+#~ "target\\, target\\_host\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Helper function that builds a Relay "
+#~ "function to run on TVM graph "
+#~ "executor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`build_config <tvm.relay.build_config>`\\ "
+#~ "\\(\\[opt\\_level\\, required\\_pass\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Configure the build behavior by setting config variables."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`cast <tvm.relay.cast>`\\ \\(data\\, dtype\\)"
+#~ msgstr ""
+
+#~ msgid "Cast input tensor to data type."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`cast_like <tvm.relay.cast_like>`\\ \\(data\\, dtype\\_like\\)"
+#~ msgstr ""
+
+#~ msgid "Cast input tensor to data type of another tensor."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ceil <tvm.relay.ceil>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise ceil of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`clip <tvm.relay.clip>`\\ \\(a\\, a\\_min\\, a\\_max\\)"
+#~ msgstr ""
+
+#~ msgid "Clip the elements in `a` between `a_min` and `a_max`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`collapse_sum_like <tvm.relay.collapse_sum_like>`\\ "
+#~ "\\(data\\, collapse\\_type\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`collapse_sum_to <tvm.relay.collapse_sum_to>`\\ "
+#~ "\\(data\\, shape\\)"
+#~ msgstr ""
+
+#~ msgid "Return a summation of data to the specified shape."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`concatenate <tvm.relay.concatenate>`\\ \\(data\\, axis\\)"
+#~ msgstr ""
+
+#~ msgid "Concatenate the input tensors along the given axis."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`const <tvm.relay.const>`\\ \\(value\\[\\, dtype\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a constant value."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`copy <tvm.relay.copy>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Copy a tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`copy_shape_func <tvm.relay.copy_shape_func>`\\ "
+#~ "\\(attrs\\, inputs\\, \\_\\)"
+#~ msgstr ""
+
+#~ msgid "Shape function for copy op."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`cos <tvm.relay.cos>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise cos of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`cosh <tvm.relay.cosh>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise cosh of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`create_executor <tvm.relay.create_executor>`\\ "
+#~ "\\(\\[kind\\, mod\\, device\\, target\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Factory function to create an executor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`cumprod <tvm.relay.cumprod>`\\ \\(data\\[\\, "
+#~ "axis\\, dtype\\, exclusive\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Numpy style cumprod op."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`cumsum <tvm.relay.cumsum>`\\ \\(data\\[\\, "
+#~ "axis\\, dtype\\, exclusive\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Numpy style cumsum op."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`device_copy <tvm.relay.device_copy>`\\ \\(data\\,"
+#~ " src\\_device\\, dst\\_device\\)"
+#~ msgstr ""
+
+#~ msgid "Copy data from the source device to the destination device."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`divide <tvm.relay.divide>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Division with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`einsum <tvm.relay.einsum>`\\ \\(data\\, equation\\)"
+#~ msgstr ""
+
+#~ msgid "Evaluates the Einstein summation convention on data"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`equal <tvm.relay.equal>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Broadcasted elementwise test for (lhs == rhs)."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`erf <tvm.relay.erf>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise error function of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`exp <tvm.relay.exp>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise exp of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`expand_dims <tvm.relay.expand_dims>`\\ \\(data\\,"
+#~ " axis\\[\\, num\\_newaxis\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Insert `num_newaxis` axes at the position given by `axis`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`fixed_point_multiply "
+#~ "<tvm.relay.fixed_point_multiply>`\\ \\(data\\, "
+#~ "multiplier\\, shift\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Fixed point multiplication between data "
+#~ "and a fixed point constant expressed "
+#~ "as multiplier * 2^(-shift), where "
+#~ "multiplier is a Q-number with 31 "
+#~ "fractional bits"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`floor <tvm.relay.floor>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise floor of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`floor_divide <tvm.relay.floor_divide>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Floor division with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`floor_mod <tvm.relay.floor_mod>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Floor mod with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`full <tvm.relay.full>`\\ \\(fill\\_value\\[\\,"
+#~ " shape\\, dtype\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Fill array with scalar value."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`full_like <tvm.relay.full_like>`\\ \\(data\\, fill\\_value\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`gather <tvm.relay.gather>`\\ \\(data\\, axis\\, indices\\)"
+#~ msgstr ""
+
+#~ msgid "Gather values along given axis from given indices."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`gather_nd <tvm.relay.gather_nd>`\\ \\(data\\, "
+#~ "indices\\[\\, batch\\_dims\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Gather elements or slices from data "
+#~ "and store to a tensor whose shape"
+#~ " is defined by indices."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`greater <tvm.relay.greater>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Broadcasted elementwise test for (lhs > rhs)."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`greater_equal <tvm.relay.greater_equal>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Broadcasted elementwise test for (lhs >= rhs)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`invert_permutation <tvm.relay.invert_permutation>`\\"
+#~ " \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Computes the inverse permutation of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`isfinite <tvm.relay.isfinite>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise finiteness of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`isinf <tvm.relay.isinf>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise infiniteness of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`isnan <tvm.relay.isnan>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Check nan in input data element-wise."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`layout_transform <tvm.relay.layout_transform>`\\ "
+#~ "\\(data\\, src\\_layout\\, dst\\_layout\\)"
+#~ msgstr ""
+
+#~ msgid "Transform the layout of a tensor"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`left_shift <tvm.relay.left_shift>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Left shift with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`less <tvm.relay.less>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Broadcasted elementwise test for (lhs < rhs)."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`less_equal <tvm.relay.less_equal>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Broadcasted elementwise test for (lhs <= rhs)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`load_param_dict <tvm.relay.load_param_dict>`\\ "
+#~ "\\(param\\_bytes\\)"
+#~ msgstr ""
+
+#~ msgid "Load parameter dictionary to binary bytes."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`log <tvm.relay.log>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise log of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`log10 <tvm.relay.log10>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise log to the base 10 of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`log2 <tvm.relay.log2>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise log to the base 2 of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`logical_and <tvm.relay.logical_and>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "logical AND with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`logical_not <tvm.relay.logical_not>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise logical not of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`logical_or <tvm.relay.logical_or>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "logical OR with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`logical_xor <tvm.relay.logical_xor>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "logical XOR with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`logsumexp <tvm.relay.logsumexp>`\\ \\(data\\[\\,"
+#~ " axis\\, keepdims\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Compute the log of the sum of "
+#~ "exponentials of input elements over "
+#~ "given axes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`matrix_set_diag <tvm.relay.matrix_set_diag>`\\ "
+#~ "\\(data\\, diagonal\\[\\, k\\, align\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns a tensor with the diagonals "
+#~ "of input tensor replaced with the "
+#~ "provided diagonal values."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`max <tvm.relay.max>`\\ \\(data\\[\\, "
+#~ "axis\\, keepdims\\, exclude\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Computes the max of array elements over given axes."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`maximum <tvm.relay.maximum>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Maximum with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`mean <tvm.relay.mean>`\\ \\(data\\[\\, "
+#~ "axis\\, keepdims\\, exclude\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Computes the mean of array elements over given axes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`mean_std <tvm.relay.mean_std>`\\ \\(data\\[\\,"
+#~ " axis\\, keepdims\\, exclude\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Computes the mean and standard deviation of data over given axes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`mean_variance <tvm.relay.mean_variance>`\\ "
+#~ "\\(data\\[\\, axis\\, keepdims\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Computes the mean and variance of data over given axes."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`meshgrid <tvm.relay.meshgrid>`\\ \\(data\\[\\, indexing\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create coordinate matrices from coordinate vectors."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`min <tvm.relay.min>`\\ \\(data\\[\\, "
+#~ "axis\\, keepdims\\, exclude\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Computes the min of array elements over given axes."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`minimum <tvm.relay.minimum>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Minimum with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`mod <tvm.relay.mod>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Mod with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`multiply <tvm.relay.multiply>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Multiplication with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`ndarray_size <tvm.relay.ndarray_size>`\\ "
+#~ "\\(data\\[\\, dtype\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get number of elements of input tensor."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`negative <tvm.relay.negative>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise negative of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`not_equal <tvm.relay.not_equal>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Broadcasted elementwise test for (lhs != rhs)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`one_hot <tvm.relay.one_hot>`\\ \\(indices\\, "
+#~ "on\\_value\\, off\\_value\\, depth\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns a one-hot tensor where the"
+#~ " locations repsented by indices take "
+#~ "value on_value, other locations take "
+#~ "value off_value."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ones <tvm.relay.ones>`\\ \\(shape\\, dtype\\)"
+#~ msgstr ""
+
+#~ msgid "Fill array with ones."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ones_like <tvm.relay.ones_like>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Returns an array of ones, with same type and shape as the input."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`optimize <tvm.relay.optimize>`\\ \\(mod\\[\\, "
+#~ "target\\, params\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Helper function that optimizes a Relay module."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`power <tvm.relay.power>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Power with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`prod <tvm.relay.prod>`\\ \\(data\\[\\, "
+#~ "axis\\, keepdims\\, exclude\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Computes the products of array elements over given axes."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`reinterpret <tvm.relay.reinterpret>`\\ \\(data\\, dtype\\)"
+#~ msgstr ""
+
+#~ msgid "Reinterpret input tensor to data type."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`repeat <tvm.relay.repeat>`\\ \\(data\\, repeats\\, axis\\)"
+#~ msgstr ""
+
+#~ msgid "Repeats elements of an array."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`reshape <tvm.relay.reshape>`\\ \\(data\\, newshape\\)"
+#~ msgstr ""
+
+#~ msgid "Reshape the input array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`reshape_like <tvm.relay.reshape_like>`\\ "
+#~ "\\(data\\, shape\\_like\\[\\, lhs\\_begin\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Reshapes the input tensor by the size of another tensor."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`reverse <tvm.relay.reverse>`\\ \\(data\\, axis\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Reverses the order of elements along "
+#~ "given axis while preserving array shape."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`reverse_reshape <tvm.relay.reverse_reshape>`\\ "
+#~ "\\(data\\, newshape\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Reshapes the input array where the "
+#~ "special values are inferred from right"
+#~ " to left."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`reverse_sequence <tvm.relay.reverse_sequence>`\\ "
+#~ "\\(data\\, seq\\_lengths\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Reverse the tensor for variable length slices."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`right_shift <tvm.relay.right_shift>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Right shift with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`round <tvm.relay.round>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise round of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`rsqrt <tvm.relay.rsqrt>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise rsqrt of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`save_param_dict <tvm.relay.save_param_dict>`\\ \\(params\\)"
+#~ msgstr ""
+
+#~ msgid "Save parameter dictionary to binary bytes."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`scalar_type <tvm.relay.scalar_type>`\\ \\(dtype\\)"
+#~ msgstr ""
+
+#~ msgid "Creates a scalar type."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`scatter <tvm.relay.scatter>`\\ \\(data\\, "
+#~ "indices\\, updates\\, axis\\)"
+#~ msgstr ""
+
+#~ msgid "Update data at positions defined by indices with values in updates"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`scatter_add <tvm.relay.scatter_add>`\\ \\(data\\,"
+#~ " indices\\, updates\\, axis\\)"
+#~ msgstr ""
+
+#~ msgid "Update data by adding values in updates at positions defined by indices"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`scatter_nd <tvm.relay.scatter_nd>`\\ \\(data\\,"
+#~ " indices\\, updates\\[\\, mode\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Scatter values from an array and update."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`script <tvm.relay.script>`\\ \\(pyfunc\\)"
+#~ msgstr ""
+
+#~ msgid "Decorate a python function function as hybrid script."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`searchsorted <tvm.relay.searchsorted>`\\ "
+#~ "\\(sorted\\_sequence\\, values\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Find indices where elements should be inserted to maintain order."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`segment_sum <tvm.relay.segment_sum>`\\ \\(data\\,"
+#~ " segment\\_ids\\[\\, num\\_segments\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Computes the sum along segment_ids along axis 0."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sequence_mask <tvm.relay.sequence_mask>`\\ "
+#~ "\\(data\\, valid\\_length\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Sets all elements outside the expected"
+#~ " length of the sequence to a "
+#~ "constant value."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`setrecursionlimit <tvm.relay.setrecursionlimit>`\\ "
+#~ "\\(limit\\, \\/\\)"
+#~ msgstr ""
+
+#~ msgid "Set the maximum depth of the Python interpreter stack to n."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`shape_of <tvm.relay.shape_of>`\\ \\(data\\[\\, dtype\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get shape of a tensor."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sigmoid <tvm.relay.sigmoid>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise sigmoid of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sign <tvm.relay.sign>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sin <tvm.relay.sin>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise sin of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sinh <tvm.relay.sinh>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise sinh of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`slice_like <tvm.relay.slice_like>`\\ \\(data\\,"
+#~ " shape\\_like\\[\\, axes\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Slice the first input with respect to the second input."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sort <tvm.relay.sort>`\\ \\(data\\[\\, "
+#~ "axis\\, is\\_ascend\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Performs sorting along the given axis and returns data in sorted order."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sparse_fill_empty_rows "
+#~ "<tvm.relay.sparse_fill_empty_rows>`\\ \\(sparse\\_indices\\, "
+#~ "...\\)"
+#~ msgstr ""
+
+#~ msgid "Fill rows in a sparse matrix that do no contain any values."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sparse_reshape <tvm.relay.sparse_reshape>`\\ "
+#~ "\\(sparse\\_indices\\, prev\\_shape\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Reshape a Sparse Tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sparse_to_dense <tvm.relay.sparse_to_dense>`\\ "
+#~ "\\(sparse\\_indices\\, ...\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Converts a sparse representation into a dense tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`split <tvm.relay.split>`\\ \\(data\\, "
+#~ "indices\\_or\\_sections\\[\\, axis\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Split input tensor along axis by sections or indices."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sqrt <tvm.relay.sqrt>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise sqrt of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`squeeze <tvm.relay.squeeze>`\\ \\(data\\[\\, axis\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Squeeze axes in the array."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`stack <tvm.relay.stack>`\\ \\(data\\, axis\\)"
+#~ msgstr ""
+
+#~ msgid "Join a sequence of arrays along a new axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`std <tvm.relay.std>`\\ \\(data\\[\\, "
+#~ "axis\\, keepdims\\, exclude\\, unbiased\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Computes the standard deviation of data over given axes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`strided_set <tvm.relay.strided_set>`\\ \\(data\\,"
+#~ " v\\, begin\\, end\\[\\, strides\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Strided set of an array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`strided_slice <tvm.relay.strided_slice>`\\ "
+#~ "\\(data\\, begin\\, end\\[\\, strides\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Strided slice of an array."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`subtract <tvm.relay.subtract>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Subtraction with numpy-style broadcasting."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sum <tvm.relay.sum>`\\ \\(data\\[\\, "
+#~ "axis\\, keepdims\\, exclude\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Computes the sum of array elements over given axes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`take <tvm.relay.take>`\\ \\(data\\, "
+#~ "indices\\[\\, axis\\, batch\\_dims\\, mode\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Take elements from an array along an axis."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`tan <tvm.relay.tan>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute elementwise tan of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`tanh <tvm.relay.tanh>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise tanh of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`tile <tvm.relay.tile>`\\ \\(data\\, reps\\)"
+#~ msgstr ""
+
+#~ msgid "Repeats the whole array multiple times."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`topk <tvm.relay.topk>`\\ \\(data\\[\\, k\\,"
+#~ " axis\\, ret\\_type\\, is\\_ascend\\, dtype\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get the top k elements in an input tensor along the given axis."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`transpose <tvm.relay.transpose>`\\ \\(data\\[\\, axes\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Permutes the dimensions of an array."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`trunc <tvm.relay.trunc>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise trunc of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`unique <tvm.relay.unique>`\\ \\(data\\[\\, "
+#~ "is\\_sorted\\, return\\_counts\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Find the unique elements of a 1-D tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`unravel_index <tvm.relay.unravel_index>`\\ "
+#~ "\\(indices\\, shape\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Convert a flat index or array of"
+#~ " flat indices into a tuple of "
+#~ "coordinate arrays."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`var <tvm.relay.var>`\\ \\(name\\_hint\\[\\, "
+#~ "type\\_annotation\\, shape\\, dtype\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a new tvm.relay.Var."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`variance <tvm.relay.variance>`\\ \\(data\\[\\,"
+#~ " axis\\, keepdims\\, exclude\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Computes the variance of data over given axes."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`where <tvm.relay.where>`\\ \\(condition\\, x\\, y\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Selecting elements from either x or "
+#~ "y depending on the value of the"
+#~ " condition."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`zeros <tvm.relay.zeros>`\\ \\(shape\\, dtype\\)"
+#~ msgstr ""
+
+#~ msgid "Fill array with zeros."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`zeros_like <tvm.relay.zeros_like>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Returns an array of zeros, with same type and shape as the input."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Call node corresponds the operator "
+#~ "application node in computational graph "
+#~ "terminology."
+#~ msgstr ""
+
+#~ msgid "参数"
+#~ msgstr ""
+
+#~ msgid "The operation to be called."
+#~ msgstr ""
+
+#~ msgid "The arguments to the call."
+#~ msgstr ""
+
+#~ msgid "Attributes to the call, can be None"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The additional type arguments, this is"
+#~ " only used in advanced usecase of "
+#~ "template functions."
+#~ msgstr ""
+
+#~ msgid "Span that points to original source code"
+#~ msgstr ""
+
+#~ msgid "The data content of the constant expression."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`checked_type <tvm.relay.Expr.checked_type>`\\"
+#~ msgstr ""
+
+#~ msgid "Get the checked type of tvm.relay.Expr."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Defines the default dispatch over "
+#~ "expressions, and implements memoization."
+#~ msgstr ""
+
+#~ msgid "**Methods:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`visit <tvm.relay.ExprFunctor.visit>`\\ \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid "Apply the visitor to an expression."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The default behavior recursively traverses "
+#~ "the AST and reconstructs the AST."
+#~ msgstr ""
+
+#~ msgid "The default behavior recursively traverses the AST."
+#~ msgstr ""
+
+#~ msgid "List of input parameters to the function."
+#~ msgstr ""
+
+#~ msgid "The body of the function."
+#~ msgstr ""
+
+#~ msgid "The return type annotation of the function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The additional type parameters, this is"
+#~ " only used in advanced usecase of "
+#~ "template functions."
+#~ msgstr ""
+
+#~ msgid "The condition."
+#~ msgstr ""
+
+#~ msgid "The expression evaluated when condition is true."
+#~ msgstr ""
+
+#~ msgid "The expression evaluated when condition is false."
+#~ msgstr ""
+
+#~ msgid "The local variable to be bound."
+#~ msgstr ""
+
+#~ msgid "The value to be bound."
+#~ msgstr ""
+
+#~ msgid "The body of the let binding."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_ctor <tvm.relay.Prelude.get_ctor>`\\ "
+#~ "\\(ty\\_name\\, canonical\\, dtype\\)"
+#~ msgstr ""
+
+#~ msgid "Get constructor corresponding to the canonical name"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_ctor_static <tvm.relay.Prelude.get_ctor_static>`\\"
+#~ " \\(ty\\_name\\, name\\, dtype\\, shape\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_global_var <tvm.relay.Prelude.get_global_var>`\\"
+#~ " \\(canonical\\, dtype\\)"
+#~ msgstr ""
+
+#~ msgid "Get global var corresponding to the canonical name"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_global_var_static "
+#~ "<tvm.relay.Prelude.get_global_var_static>`\\ \\(canonical\\, "
+#~ "dtype\\, shape\\)"
+#~ msgstr ""
+
+#~ msgid "Get var corresponding to the canonical name"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_name <tvm.relay.Prelude.get_name>`\\ "
+#~ "\\(canonical\\, dtype\\)"
+#~ msgstr ""
+
+#~ msgid "Get name corresponding to the canonical name"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_name_static <tvm.relay.Prelude.get_name_static>`\\"
+#~ " \\(canonical\\, dtype\\, shape\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_tensor_ctor_static "
+#~ "<tvm.relay.Prelude.get_tensor_ctor_static>`\\ \\(name\\, "
+#~ "dtype\\, shape\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_type <tvm.relay.Prelude.get_type>`\\ "
+#~ "\\(canonical\\, dtype\\)"
+#~ msgstr ""
+
+#~ msgid "Get type corresponding to the canonical name"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_type_static <tvm.relay.Prelude.get_type_static>`\\"
+#~ " \\(canonical\\, dtype\\, shape\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`load_prelude <tvm.relay.Prelude.load_prelude>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Parses the Prelude from Relay's text format into a module."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Create a new reference from initial "
+#~ "value. :param value: The initial value."
+#~ " :type value: tvm.relay.Expr"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Get the value inside the reference. "
+#~ ":param ref: The reference. :type ref:"
+#~ " tvm.relay.Expr"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Update the value inside the reference."
+#~ " The whole expression will evaluate "
+#~ "to an empty tuple. :param ref: The"
+#~ " reference. :type ref: tvm.relay.Expr "
+#~ ":param value: The new value. :type "
+#~ "value: tvm.relay.Expr"
+#~ msgstr ""
+
+#~ msgid "Enables users to build up a nested scope(let, if) expression easily."
+#~ msgstr ""
+
+#~ msgid "实际案例"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`else_scope <tvm.relay.ScopeBuilder.else_scope>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Create a new else scope."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get <tvm.relay.ScopeBuilder.get>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Get the generated result."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`if_scope <tvm.relay.ScopeBuilder.if_scope>`\\ \\(cond\\)"
+#~ msgstr ""
+
+#~ msgid "Create a new if scope."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`let <tvm.relay.ScopeBuilder.let>`\\ \\(var\\, value\\)"
+#~ msgstr ""
+
+#~ msgid "Create a new let binding."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ret <tvm.relay.ScopeBuilder.ret>`\\ \\(value\\)"
+#~ msgstr ""
+
+#~ msgid "Set the return value of this scope."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`type_of <tvm.relay.ScopeBuilder.type_of>`\\ \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid "Compute the type of an expression."
+#~ msgstr ""
+
+#~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid "**scope** -- The if scope."
+#~ msgstr ""
+
+#~ msgid "返回类型"
+#~ msgstr ""
+
+#~ msgid "**value** -- The final result of the expression."
+#~ msgstr ""
+
+#~ msgid "The condition"
+#~ msgstr ""
+
+#~ msgid "The user must follows with an else scope."
+#~ msgstr ""
+
+#~ msgid "The variable or name of variable."
+#~ msgstr ""
+
+#~ msgid "The value to be bound"
+#~ msgstr ""
+
+#~ msgid "The return value."
+#~ msgstr ""
+
+#~ msgid "The expression to compute the type of."
+#~ msgstr ""
+
+#~ msgid "**type_var** -- The shape variable."
+#~ msgstr ""
+
+#~ msgid "The fields in the tuple."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`astype <tvm.relay.Tuple.astype>`\\ \\(\\_\\)"
+#~ msgstr ""
+
+#~ msgid "Cast the content type of the current data to dtype."
+#~ msgstr ""
+
+#~ msgid "The target data type."
+#~ msgstr ""
+
+#~ msgid "This function only works for TensorType Exprs."
+#~ msgstr ""
+
+#~ msgid "**result** -- The result expression."
+#~ msgstr ""
+
+#~ msgid "The input tuple expression."
+#~ msgstr ""
+
+#~ msgid "The index."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This class is a Python wrapper for"
+#~ " a Relay tuple of known size. "
+#~ "It allows for accessing the fields "
+#~ "of the Relay tuple as though it"
+#~ " were a Python tuple."
+#~ msgstr ""
+
+#~ msgid "The input tuple"
+#~ msgstr ""
+
+#~ msgid "The size of the tuple."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`astext <tvm.relay.TupleWrapper.astext>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Get the text format of the tuple expression."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`astuple <tvm.relay.TupleWrapper.astuple>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns the underlying Relay tuple if"
+#~ " this wrapper is passed as an "
+#~ "argument to an FFI function."
+#~ msgstr ""
+
+#~ msgid "**text** -- The text format of the tuple expression."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Note that ADT definitions are treated"
+#~ " as type-level functions because the"
+#~ " type parameters need to be given "
+#~ "for an instance of the ADT. Thus,"
+#~ " any global type var that is an"
+#~ " ADT header needs to be wrapped "
+#~ "in a type call that passes in "
+#~ "the type params."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The name of the ADT. ADTs with "
+#~ "the same constructors but different "
+#~ "names are treated as different types."
+#~ msgstr ""
+
+#~ msgid "Type variables that appear in constructors."
+#~ msgstr ""
+
+#~ msgid "The constructors for the ADT."
+#~ msgstr ""
+
+#~ msgid "Defines the default dispatch over types."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`visit <tvm.relay.TypeFunctor.visit>`\\ \\(typ\\)"
+#~ msgstr ""
+
+#~ msgid "Apply the visitor to a type."
+#~ msgstr ""
+
+#~ msgid "The input data"
+#~ msgstr ""
+
+#~ msgid "**result** -- The computed result."
+#~ msgstr ""
+
+#~ msgid "The left hand side input data"
+#~ msgstr ""
+
+#~ msgid "The right hand side input data"
+#~ msgstr ""
+
+#~ msgid "Numpy style advanced indexing. Index with a list of tensors."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Input tensor and indices. The first "
+#~ "tensor is input data and rests are"
+#~ " indices."
+#~ msgstr ""
+
+#~ msgid "**result** -- Output tensor."
+#~ msgstr ""
+
+#~ msgid "The input boolean tensor"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a sum "
+#~ "is performed. The default, axis=None, "
+#~ "will sum all of the elements of"
+#~ " the input array. If axis is "
+#~ "negative it counts from the last "
+#~ "to the first axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If this is set to True, the "
+#~ "axes which are reduced are left in"
+#~ " the result as dimensions with size"
+#~ " one. With this option, the result"
+#~ " will broadcast correctly against the "
+#~ "input array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If `exclude` is true, reduction will "
+#~ "be performed on the axes that are"
+#~ " NOT in axis instead."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Similar to ``numpy.arange``, when only "
+#~ "one argument is given, it is used"
+#~ " as `stop` instead of `start` while"
+#~ " `start` takes default value 0."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Warning: Undefined behavior when dtype "
+#~ "is incompatible with start/stop/step. It "
+#~ "could lead to different results compared"
+#~ " to numpy, MXNet, pytorch, etc."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Start of interval. The interval includes"
+#~ " this value. The default start value"
+#~ " is 0."
+#~ msgstr ""
+
+#~ msgid "Stop of interval. The interval does not include this value."
+#~ msgstr ""
+
+#~ msgid "Spacing between values. The default step size is 1."
+#~ msgstr ""
+
+#~ msgid "**result** -- The resulting tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a argmax"
+#~ " operation is performed. The default, "
+#~ "axis=None, will find the indices of "
+#~ "the maximum element of the elements "
+#~ "of the input array. If axis is "
+#~ "negative it counts from the last "
+#~ "to the first axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Whether to select the last index "
+#~ "or the first index if the max "
+#~ "element appears in multiple indices, "
+#~ "default is False (first index)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a argmin"
+#~ " operation is performed. The default, "
+#~ "axis=None, will find the indices of "
+#~ "minimum element all of the elements "
+#~ "of the input array. If axis is "
+#~ "negative it counts from the last "
+#~ "to the first axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Whether to select the last index "
+#~ "or the first index if the min "
+#~ "element appears in multiple indices, "
+#~ "default is False (first index)."
+#~ msgstr ""
+
+#~ msgid "The input data tensor."
+#~ msgstr ""
+
+#~ msgid "The number of valid elements to be sorted."
+#~ msgstr ""
+
+#~ msgid "Axis long which to sort the input tensor."
+#~ msgstr ""
+
+#~ msgid "Whether to sort in ascending or descending order."
+#~ msgstr ""
+
+#~ msgid "The data type of the output indices."
+#~ msgstr ""
+
+#~ msgid "**out** -- Tensor with same shape as data."
+#~ msgstr ""
+
+#~ msgid "The input condition tensor."
+#~ msgstr ""
+
+#~ msgid "**out** -- Tensor with the indices of elements that are non-zero."
+#~ msgstr ""
+
+#~ msgid "We can bind parameters expr if it is a function."
+#~ msgstr ""
+
+#~ msgid "The input expression."
+#~ msgstr ""
+
+#~ msgid "The specific bindings."
+#~ msgstr ""
+
+#~ msgid "**result** -- The expression or function after binding."
+#~ msgstr ""
+
+#~ msgid "The input tensor."
+#~ msgstr ""
+
+#~ msgid "Provide the shape to broadcast to."
+#~ msgstr ""
+
+#~ msgid "Provide the type to broadcast to."
+#~ msgstr ""
+
+#~ msgid "The IR module to build. Using relay.Function is deprecated."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "For heterogeneous compilation, it is a"
+#~ " dictionary indicating context to target"
+#~ " mapping. For homogeneous compilation, it"
+#~ " is a build target."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Host compilation target, if target is"
+#~ " device. When TVM compiles device "
+#~ "specific program such as CUDA, we "
+#~ "also need host(CPU) side code to "
+#~ "interact with the driver setup the "
+#~ "dimensions and parameters correctly. "
+#~ "target_host is used to specify the "
+#~ "host side codegen target. By default,"
+#~ " llvm is used if it is enabled,"
+#~ " otherwise a stackvm interpreter is "
+#~ "used."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The executor configuration with which to"
+#~ " build the model. Defaults to "
+#~ "\"graph\" if no executor specified."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Runtime configuration to use when "
+#~ "building the model. Defaults to \"cpp\""
+#~ " if no runtime specified."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Input parameters to the graph that "
+#~ "do not change during inference time. "
+#~ "Used for constant folding."
+#~ msgstr ""
+
+#~ msgid "The module name we will build"
+#~ msgstr ""
+
+#~ msgid "**factory_module** -- The runtime factory for the TVM graph executor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Configure the build behavior by setting"
+#~ " config variables. This function will "
+#~ "be deprecated in TVM v0.7. Instead, "
+#~ "we should directly use "
+#~ "tvm.transform.PassContext."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Optimization level. The optimization pass "
+#~ "name and level are as the "
+#~ "following:  .. code-block:: python      "
+#~ "OPT_PASS_LEVEL = {         \"SimplifyInference\":"
+#~ " 0,         \"OpFusion\": 1,         "
+#~ "\"FoldConstant\": 2,         \"FoldScaleAxis\": 3,"
+#~ "         \"AlterOpLayout\": 3,         "
+#~ "\"CanonicalizeOps\": 3,         \"CanonicalizeCast\": "
+#~ "3,         \"EliminateCommonSubexpr\": 3,         "
+#~ "\"CombineParallelConv2D\": 4,         "
+#~ "\"CombineParallelDense\": 4,         "
+#~ "\"CombineParallelBatchMatmul\": 4,         \"FastMath\":"
+#~ " 4     }"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Optimization level. The optimization pass "
+#~ "name and level are as the "
+#~ "following:"
+#~ msgstr ""
+
+#~ msgid "Optimization passes that are required regardless of optimization level."
+#~ msgstr ""
+
+#~ msgid "Optimization passes to be disabled during optimization."
+#~ msgstr ""
+
+#~ msgid "A tracing function for debugging or introspection."
+#~ msgstr ""
+
+#~ msgid "**pass_context** -- The pass context for optimizations."
+#~ msgstr ""
+
+#~ msgid "The input data to the operator."
+#~ msgstr ""
+
+#~ msgid "The target data type"
+#~ msgstr ""
+
+#~ msgid "**result** -- The casted result."
+#~ msgstr ""
+
+#~ msgid "The tensor to cast to."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Clip the elements in `a` between "
+#~ "`a_min` and `a_max`. `a_min` and `a_max`"
+#~ " are cast to `a`'s dtype."
+#~ msgstr ""
+
+#~ msgid "The clip minimum."
+#~ msgstr ""
+
+#~ msgid "The clip maximum."
+#~ msgstr ""
+
+#~ msgid "**result** -- `a` with elements clipped between `a_min` and `a_max`."
+#~ msgstr ""
+
+#~ msgid "Provide the type to collapse to."
+#~ msgstr ""
+
+#~ msgid "Shape to collapse to."
+#~ msgstr ""
+
+#~ msgid "A list of tensors."
+#~ msgstr ""
+
+#~ msgid "The axis along which the tensors are concatenated."
+#~ msgstr ""
+
+#~ msgid "**result** -- The concatenated tensor."
+#~ msgstr ""
+
+#~ msgid "The constant value."
+#~ msgstr ""
+
+#~ msgid "The data type of the resulting constant."
+#~ msgstr ""
+
+#~ msgid "When dtype is None, we use the following rule:"
+#~ msgstr ""
+
+#~ msgid "int maps to \"int32\""
+#~ msgstr ""
+
+#~ msgid "float maps to \"float32\""
+#~ msgstr ""
+
+#~ msgid "bool maps to \"bool\""
+#~ msgstr ""
+
+#~ msgid "other using the same default rule as numpy."
+#~ msgstr ""
+
+#~ msgid "The tensor to be copied."
+#~ msgstr ""
+
+#~ msgid "**result** -- The copied result."
+#~ msgstr ""
+
+#~ msgid "示例"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The type of executor. Avaliable options"
+#~ " are `debug` for the interpreter, "
+#~ "`graph` for the graph executor, and "
+#~ "`vm` for the virtual machine."
+#~ msgstr ""
+
+#~ msgid "The Relay module containing collection of functions"
+#~ msgstr ""
+
+#~ msgid "The device to execute the code."
+#~ msgstr ""
+
+#~ msgid "The corresponding context"
+#~ msgstr ""
+
+#~ msgid "Input parameters to the graph that do not change during inference time."
+#~ msgstr ""
+
+#~ msgid "**executor**"
+#~ msgstr ""
+
+#~ msgid ":py:class:`~tvm.relay.backend.interpreter.Executor`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Numpy style cumprod op. Return the "
+#~ "cumulative inclusive product of the "
+#~ "elements along a given axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis along which the cumulative product"
+#~ " is computed. The default (None) is"
+#~ " to compute the cumprod over the "
+#~ "flattened array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Type of the returned array and of"
+#~ " the accumulator in which the "
+#~ "elements are multiplied. If dtype is "
+#~ "not specified, it defaults to the "
+#~ "dtype of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If true will return exclusive product"
+#~ " in which the first element is "
+#~ "not included. In other terms, if "
+#~ "true, the j-th output element would "
+#~ "be the product of the first (j-1)"
+#~ " elements. Otherwise, it would be the"
+#~ " product of the first j elements. "
+#~ "The product of zero elements will "
+#~ "be 1."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**result** -- The result has the "
+#~ "same size as data, and the same"
+#~ " shape as data if axis is not"
+#~ " None. If axis is None, the "
+#~ "result is a 1-d array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Numpy style cumsum op. Return the "
+#~ "cumulative inclusive sum of the elements"
+#~ " along a given axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis along which the cumulative sum "
+#~ "is computed. The default (None) is "
+#~ "to compute the cumsum over the "
+#~ "flattened array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Type of the returned array and of"
+#~ " the accumulator in which the "
+#~ "elements are summed. If dtype is "
+#~ "not specified, it defaults to the "
+#~ "dtype of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If true will return exclusive sum "
+#~ "in which the first element is not"
+#~ " included. In other terms, if true,"
+#~ " the j-th output element would be "
+#~ "the sum of the first (j-1) "
+#~ "elements. Otherwise, it would be the "
+#~ "sum of the first j elements."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Copy data from the source device "
+#~ "to the destination device. This operator"
+#~ " helps data transferring between difference"
+#~ " devices for heterogeneous execution."
+#~ msgstr ""
+
+#~ msgid "The source device where the data is copied from."
+#~ msgstr ""
+
+#~ msgid "The destination device where the data is copied to."
+#~ msgstr ""
+
+#~ msgid "The einsum expression string."
+#~ msgstr ""
+
+#~ msgid "**result** -- The output tensor from the einsum op."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The axis at which the input array"
+#~ " is expanded. Should lie in range "
+#~ "`[-data.ndim - 1, data.ndim]`. If `axis"
+#~ " < 0`, it is the first axis "
+#~ "inserted; If `axis >= 0`, it is"
+#~ " the last axis inserted in Python's"
+#~ " negative indexing."
+#~ msgstr ""
+
+#~ msgid "Number of axes to be inserted. Should be >= 0."
+#~ msgstr ""
+
+#~ msgid "**result** -- The reshaped result."
+#~ msgstr ""
+
+#~ msgid "The integer multiplier of the fixed point constant."
+#~ msgstr ""
+
+#~ msgid "The integer shift of the fixed point constant."
+#~ msgstr ""
+
+#~ msgid "**result** -- The output of the fixed point multiplication"
+#~ msgstr ""
+
+#~ msgid "The value to fill. Must be a scalar."
+#~ msgstr ""
+
+#~ msgid "The shape of the target."
+#~ msgstr ""
+
+#~ msgid "The data type of the target."
+#~ msgstr ""
+
+#~ msgid "The scalar value to fill."
+#~ msgstr ""
+
+#~ msgid "E.g. for a 3D tensor, output is computed as:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "``indices`` must have same shape as "
+#~ "``data``, except at dimension ``axis`` "
+#~ "which must just be not null. "
+#~ "Output will have same shape as "
+#~ "``indices``."
+#~ msgstr ""
+
+#~ msgid "The axis along which to index. negative axis is supported."
+#~ msgstr ""
+
+#~ msgid "The indices of values to gather."
+#~ msgstr ""
+
+#~ msgid "The shape of output tensor."
+#~ msgstr ""
+
+#~ msgid "The number of batch dimensions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The size of an indexing tuple, "
+#~ "which is a fixed value and the "
+#~ "same as indices.shape[0] Only needed "
+#~ "when other dimensions of indices are "
+#~ "dynamic."
+#~ msgstr ""
+
+#~ msgid "**ret** -- The computed result."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Computes the inverse permutation of "
+#~ "data. This operation computes the "
+#~ "inverse of an index permutation. It "
+#~ "takes a 1-D integer tensor x, "
+#~ "which represents the indices of a "
+#~ "zero-based array and swaps each value"
+#~ " with its index position."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "For an output tensor y and an "
+#~ "input tensor x, this operation computes"
+#~ " the following: y[x[i]] = i for "
+#~ "i in [0, 1, ..., len(x) - 1]"
+#~ msgstr ""
+
+#~ msgid "The source data to be invert permuated."
+#~ msgstr ""
+
+#~ msgid "**ret** -- Invert permuated data. Has the same type as data."
+#~ msgstr ""
+
+#~ msgid "The source tensor to be transformed"
+#~ msgstr ""
+
+#~ msgid "The source layout.  (e.g NCHW)"
+#~ msgstr ""
+
+#~ msgid "The destination layout.  (e.g. NCHW16c)"
+#~ msgstr ""
+
+#~ msgid "**ret** -- The transformed tensor."
+#~ msgstr ""
+
+#~ msgid "Use :py:func:`tvm.runtime.load_param_dict` instead."
+#~ msgstr ""
+
+#~ msgid "Serialized parameters."
+#~ msgstr ""
+
+#~ msgid "**params** -- The parameter dictionary."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This function is more numerically stable"
+#~ " than log(sum(exp(input))). It avoids "
+#~ "overflows caused by taking the exp "
+#~ "of large inputs and underflows caused"
+#~ " by taking the log of small "
+#~ "inputs."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a "
+#~ "standard deviation operation is performed. "
+#~ "The default, axis=None, will compute the"
+#~ " log of the sum of exponentials "
+#~ "of all elements in the input "
+#~ "array. If axis is negative it "
+#~ "counts from the last to the first"
+#~ " axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If this is set to True, the "
+#~ "axes which are reduced are left in"
+#~ " the result as dimensions with size"
+#~ " one."
+#~ msgstr ""
+
+#~ msgid "Input Tensor."
+#~ msgstr ""
+
+#~ msgid "Values to be filled in the diagonal."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Diagonal Offset(s). The diagonal or "
+#~ "range of diagonals to set. (0 by"
+#~ " default) Positive value means "
+#~ "superdiagonal, 0 refers to the main "
+#~ "diagonal, and negative value means "
+#~ "subdiagonals. k can be a single "
+#~ "integer (for a single diagonal) or "
+#~ "a pair of integers specifying the "
+#~ "low and high ends of a matrix "
+#~ "band. k[0] must not be larger than"
+#~ " k[1]."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Some diagonals are shorter than "
+#~ "max_diag_len and need to be padded. "
+#~ "align is a string specifying how "
+#~ "superdiagonals and subdiagonals should be "
+#~ "aligned, respectively. There are four "
+#~ "possible alignments: \"RIGHT_LEFT\" (default), "
+#~ "\"LEFT_RIGHT\", \"LEFT_LEFT\", and \"RIGHT_RIGHT\"."
+#~ " \"RIGHT_LEFT\" aligns superdiagonals to "
+#~ "the right (left-pads the row) and"
+#~ " subdiagonals to the left (right-pads"
+#~ " the row). It is the packing "
+#~ "format LAPACK uses. cuSPARSE uses "
+#~ "\"LEFT_RIGHT\", which is the opposite "
+#~ "alignment."
+#~ msgstr ""
+
+#~ msgid "**result** -- New tensor with given diagonal values."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which the max"
+#~ " operation is performed. The default, "
+#~ "axis=None, will find the max element "
+#~ "from all of the elements of the"
+#~ " input array. If axis is negative "
+#~ "it counts from the last to the "
+#~ "first axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a mean"
+#~ " operation is performed. The default, "
+#~ "axis=None, will compute the mean of "
+#~ "all elements in the input array. "
+#~ "If axis is negative it counts from"
+#~ " the last to the first axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a mean"
+#~ " and standard deviation operation is "
+#~ "performed. The default, axis=None, will "
+#~ "compute the mean and standard deviation"
+#~ " of all elements in the input "
+#~ "array. If axis is negative it "
+#~ "counts from the last to the first"
+#~ " axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a mean"
+#~ " and variance operation is performed. "
+#~ "The default, axis=None, will compute the"
+#~ " mean and variance of all elements"
+#~ " in the input array. If axis is"
+#~ " negative it counts from the last "
+#~ "to the first axis."
+#~ msgstr ""
+
+#~ msgid "If this is set to True, the unbiased estimation will be used."
+#~ msgstr ""
+
+#~ msgid "Similar to ``numpy.meshgrid``."
+#~ msgstr ""
+
+#~ msgid "A list of tensors, which must be either scalars or 1-D vectors."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Indexing mode, either \"ij\" for matrix"
+#~ " indexing or \"xy\" for Cartesian "
+#~ "indexing."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a minimum"
+#~ " operation is performed. The default, "
+#~ "axis=None, will find the minimum element"
+#~ " from all of the elements of "
+#~ "the input array. If axis is "
+#~ "negative it counts from the last "
+#~ "to the first axis."
+#~ msgstr ""
+
+#~ msgid "**result** -- The number of elements of input tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns a one-hot tensor where the"
+#~ " locations repsented by indices take "
+#~ "value on_value, other locations take "
+#~ "value off_value. Final dimension is "
+#~ "<indices outer dimensions> x depth x "
+#~ "<indices inner dimensions>."
+#~ msgstr ""
+
+#~ msgid "Locations to set to on_value."
+#~ msgstr ""
+
+#~ msgid "Value to fill at indices."
+#~ msgstr ""
+
+#~ msgid "Value to fill at all other positions besides indices."
+#~ msgstr ""
+
+#~ msgid "Depth of the one-hot dimension."
+#~ msgstr ""
+
+#~ msgid "Axis to fill."
+#~ msgstr ""
+
+#~ msgid "Data type of the output tensor."
+#~ msgstr ""
+
+#~ msgid "**ret** -- The one-hot tensor."
+#~ msgstr ""
+
+#~ msgid "The module to build. Using relay.Function is deprecated."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **mod** (:py:class:`~tvm.IRModule`) -- The"
+#~ " optimized relay module. * **params** "
+#~ "(*dict*) -- The parameters of the "
+#~ "final graph."
+#~ msgstr ""
+
+#~ msgid "**mod** (:py:class:`~tvm.IRModule`) -- The optimized relay module."
+#~ msgstr ""
+
+#~ msgid "**params** (*dict*) -- The parameters of the final graph."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a product"
+#~ " is performed. The default, axis=None, "
+#~ "will find the indices of minimum "
+#~ "element all of the elements of the"
+#~ " input array. If axis is negative "
+#~ "it counts from the last to the "
+#~ "first axis."
+#~ msgstr ""
+
+#~ msgid "**result** -- The reinterpreted result."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Repeats elements of an array. By "
+#~ "default, repeat flattens the input array"
+#~ " into 1-D and then repeats the "
+#~ "elements."
+#~ msgstr ""
+
+#~ msgid "repeats"
+#~ msgstr ""
+
+#~ msgid "int"
+#~ msgstr ""
+
+#~ msgid "The number of repetitions for each element."
+#~ msgstr ""
+
+#~ msgid "axis: int"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The axis along which to repeat "
+#~ "values. The negative numbers are "
+#~ "interpreted counting from the backward. "
+#~ "By default, use the flattened input "
+#~ "array, and return a flat output "
+#~ "array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "To give user more convenience in "
+#~ "without doing manual shape inference, "
+#~ "some dimensions of the shape can "
+#~ "take special values from the set "
+#~ "{0, -1, -2, -3, -4}. The "
+#~ "significance of each is explained below:"
+#~ msgstr ""
+
+#~ msgid "``0`` copy this dimension from the input to the output shape."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "``-1`` infers the dimension of the "
+#~ "output shape by using the remainder "
+#~ "of the input dimensions keeping the "
+#~ "size of the new array same as "
+#~ "that of the input array. At most"
+#~ " one dimension of shape can be "
+#~ "-1."
+#~ msgstr ""
+
+#~ msgid "``-2`` copy all/remainder of the input dimensions to the output shape."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "``-3`` use the product of two "
+#~ "consecutive dimensions of the input "
+#~ "shape as the output dimension."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "``-4`` split one dimension of the "
+#~ "input into two dimensions passed "
+#~ "subsequent to -4 in shape (can "
+#~ "contain -1)."
+#~ msgstr ""
+
+#~ msgid "The new shape. Should be compatible with the original shape."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Reshapes the input tensor by the "
+#~ "size of another tensor. For an "
+#~ "input tensor with shape ``(d0, d1, "
+#~ "..., d(k-1))``, `reshape_like` operation "
+#~ "reshapes the input tensor into an "
+#~ "output tensor with the same shape "
+#~ "as the second input tensor, in "
+#~ "particular reshaping the dimensions of "
+#~ "`data` in `[lhs_begin, lhs_end)` using "
+#~ "the dimensions from `shape_like` in "
+#~ "`[rhs_begin, rhs_end)`."
+#~ msgstr ""
+
+#~ msgid "Sizes for `data` and the output tensor should be compatible."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The tensor to reshape data like. "
+#~ "Should be compatible with the original"
+#~ " shape on the reshaped dimensions."
+#~ msgstr ""
+
+#~ msgid "The axis of data to begin reshaping. Default is 0."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The axis of data where reshaping "
+#~ "should stop, exclusive. Default is None"
+#~ " which reshapes to the end."
+#~ msgstr ""
+
+#~ msgid "The axis of shape_like where the target shape begins. Default is 0."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The axis of shape_like where the "
+#~ "target shape ends, exclusive. Default is"
+#~ " None which extends to the end."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Reverses the order of elements along "
+#~ "given axis while preserving array shape."
+#~ " By default, repeat flattens the "
+#~ "input array into 1-D and then "
+#~ "repeats the elements."
+#~ msgstr ""
+
+#~ msgid "The axis along which to reverse elements."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The special values have the same "
+#~ "semantics as :py:class:`tvm.relay.reshape`. The "
+#~ "difference is that special values are"
+#~ " inferred from right to left. It "
+#~ "can be explained in the example "
+#~ "below."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Reverse the tensor for variable length"
+#~ " slices. Input is first sliced along"
+#~ " batch axis and then elements are "
+#~ "reversed along seq axis."
+#~ msgstr ""
+
+#~ msgid "The tensor to be reversed."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 1D Tensor with length "
+#~ "a.dims[batch_axis] Must be one of the"
+#~ " following types: int32, int64 if "
+#~ "seq_lengths[i] > a.dims[seq_axis], it is "
+#~ "rounded to a.dims[seq_axis] if seq_lengths[i]"
+#~ " < 1, it is rounded to 1"
+#~ msgstr ""
+
+#~ msgid "The axis along which the elements will be reversed. Default is 1."
+#~ msgstr ""
+
+#~ msgid "The axis along which the tensor will be sliced. Default is 0."
+#~ msgstr ""
+
+#~ msgid "**ret** -- The computed result of same shape and type as of input."
+#~ msgstr ""
+
+#~ msgid "1/sqrt(x)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The result binary bytes can be "
+#~ "loaded by the GraphModule with API "
+#~ "\"load_params\"."
+#~ msgstr ""
+
+#~ msgid "Use :py:func:`tvm.runtime.save_param_dict` instead."
+#~ msgstr ""
+
+#~ msgid "The parameter dictionary."
+#~ msgstr ""
+
+#~ msgid "**param_bytes** -- Serialized parameters."
+#~ msgstr ""
+
+#~ msgid "This function returns TensorType((), dtype)"
+#~ msgstr ""
+
+#~ msgid "The content data type."
+#~ msgstr ""
+
+#~ msgid "**s_type** -- The result type."
+#~ msgstr ""
+
+#~ msgid "The index locations to update."
+#~ msgstr ""
+
+#~ msgid "The values to update."
+#~ msgstr ""
+
+#~ msgid "The axis to scatter on"
+#~ msgstr ""
+
+#~ msgid "The values to add."
+#~ msgstr ""
+
+#~ msgid "The axis to scatter_add on"
+#~ msgstr ""
+
+#~ msgid "See :py:func:`tvm.topi.scatter` for how data is scattered."
+#~ msgstr ""
+
+#~ msgid "The accumulation mode for scatter. \"update\" or \"add\""
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The hybrid function support emulation "
+#~ "mode and parsing to the internal "
+#~ "language IR."
+#~ msgstr ""
+
+#~ msgid "**hybrid_func** -- A decorated hybrid script function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If `sorted_sequence` is N-dimensional, the "
+#~ "innermost dimension of `values` are "
+#~ "searched in the corresponding dimension "
+#~ "of `sorted_sequence`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "N-D or 1-D Tensor, containing "
+#~ "monotonically increasing sequence on the "
+#~ "innermost dimension."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "N-D Tensor containing the search values."
+#~ " When `sorted_sequence` is 1-D, the "
+#~ "shape of `values` can be arbitrary. "
+#~ "Otherwise, ranks of `sorted_sequence` and "
+#~ "`values` must be the same, and "
+#~ "outer N-1 axes must have the same"
+#~ " size."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Controls which index is returned if "
+#~ "a value lands exactly on one of"
+#~ " sorted values. If False, the index"
+#~ " of the first suitable location found"
+#~ " is given. If true, return the "
+#~ "last such index. If there is no"
+#~ " suitable index, return either 0 or"
+#~ " N (where N is the size of "
+#~ "the innermost dimension)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**indices** -- Tensor with same shape"
+#~ " as values, representing the indices "
+#~ "of elements of `values` if they "
+#~ "are inserted in `sorted_sequence`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Computes the sum along segment_ids along"
+#~ " axis 0. If multiple segment_ids "
+#~ "reference the same location their "
+#~ "contributions add up. result[index, j, "
+#~ "k, ...] = Σi... data[i, j, k,..]"
+#~ " where index = segment_ids[i] This op"
+#~ " is much better understood with "
+#~ "visualization articulated in the following "
+#~ "links and examples at the end of"
+#~ " this docstring."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "https://www.tensorflow.org/api_docs/python/tf/math/unsorted_segment_sum"
+#~ " https://caffe2.ai/docs/sparse-operations.html"
+#~ "#null__unsorted-segment-reduction-ops"
+#~ msgstr ""
+
+#~ msgid "Input Tensor. It can be of any type and multi-dimensional"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 1-D int32/int64 tensor containing the"
+#~ " segment_ids of the rows to calculate"
+#~ " the output sum upon. It defines "
+#~ "a mapping from the zeroth dimension "
+#~ "of data onto segment_ids. The "
+#~ "segment_ids tensor should be the size"
+#~ " of the first dimension, d0, with "
+#~ "consecutive IDs in the range 0 to"
+#~ " k, where k<d0. In particular, a "
+#~ "segmentation of a matrix tensor is "
+#~ "a mapping of rows to segments. "
+#~ "This tensor doesn't need to be "
+#~ "sorted"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "An integer describing the shape of "
+#~ "the zeroth dimension. If unspecified, "
+#~ "its calculated equivalent to the number"
+#~ " of unique segment_ids"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This function takes an n-dimensional "
+#~ "input array of the form [MAX_LENGTH, "
+#~ "batch_size, ...] or [batch_size, MAX_LENGTH,"
+#~ " ...] and returns an array of "
+#~ "the same shape."
+#~ msgstr ""
+
+#~ msgid "The input data."
+#~ msgstr ""
+
+#~ msgid "The expected (valid) length of each sequence in the tensor."
+#~ msgstr ""
+
+#~ msgid "The masking value."
+#~ msgstr ""
+
+#~ msgid "The axis of the length dimension."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This limit prevents infinite recursion "
+#~ "from causing an overflow of the C"
+#~ " stack and crashing Python.  The "
+#~ "highest possible limit is platform- "
+#~ "dependent."
+#~ msgstr ""
+
+#~ msgid "**result** -- The shape tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "For an input array with shape "
+#~ "``(d1, d2, ..., dk)``, `slice_like` "
+#~ "operation slices the the input array "
+#~ "corresponding size of second array. By"
+#~ " default will slice on all axes."
+#~ msgstr ""
+
+#~ msgid "The source array."
+#~ msgstr ""
+
+#~ msgid "The new shape."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "List of axes on which input data"
+#~ " will be sliced according to the "
+#~ "corresponding size of the second input."
+#~ " By default will slice on all "
+#~ "axes. Negative axes mean counting in "
+#~ "reverse."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Fill rows in a sparse matrix that"
+#~ " do no contain any values. Values "
+#~ "are placed in the first column of"
+#~ " empty rows. The sparse array is "
+#~ "in COO format. It returns a "
+#~ "TupleWrapper with 3 outputs"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 2-D tensor[N, ndims] of integers "
+#~ "containing location of sparse values, "
+#~ "where N is the number of sparse"
+#~ " values and n_dim is the number "
+#~ "of dimensions of the dense_shape. The"
+#~ " first column of this relay parameter"
+#~ " must be sorted in ascending order."
+#~ msgstr ""
+
+#~ msgid "A 1-D tensor[N] containing the sparse values for the sparse indices."
+#~ msgstr ""
+
+#~ msgid "A 1-D tensor[ndims] which contains shape of the dense output tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 1-D tensor[1] containing the default"
+#~ " value for the remaining locations."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **new_sparse_indices** (*relay.Expr*) -- A"
+#~ " 2-D tensor[?, ndims] of integers "
+#~ "containing location of new sparse   "
+#~ "indices. The first column outputs must"
+#~ " be sorted in ascending order. * "
+#~ "**new_sparse_values** (*relay.Expr*) -- A 1-D"
+#~ " tensor[?] containing the sparse values "
+#~ "for the sparse indices. * "
+#~ "**empty_row_indicator** (*relay.Expr*) -- A "
+#~ "1-D tensor[dense_shape[0]] filled with zeros"
+#~ " and ones   indicating whether the "
+#~ "particular row is empty or full "
+#~ "respectively"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**new_sparse_indices** (*relay.Expr*) -- A 2-D"
+#~ " tensor[?, ndims] of integers containing"
+#~ " location of new sparse indices. The"
+#~ " first column outputs must be sorted"
+#~ " in ascending order."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**new_sparse_values** (*relay.Expr*) -- A 1-D"
+#~ " tensor[?] containing the sparse values "
+#~ "for the sparse indices."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**empty_row_indicator** (*relay.Expr*) -- A "
+#~ "1-D tensor[dense_shape[0]] filled with zeros"
+#~ " and ones indicating whether the "
+#~ "particular row is empty or full "
+#~ "respectively"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This op exactly follows the "
+#~ "documentation here: "
+#~ "https://www.tensorflow.org/api_docs/python/tf/sparse/fill_empty_rows"
+#~ " There are two exceptions: 1. Input"
+#~ " Sparse Indices are expected to be"
+#~ " in row-major order. 2. Empty "
+#~ "Row Indicator has int64 output type "
+#~ "with 1(for True) and 0(for False)."
+#~ msgstr ""
+
+#~ msgid "Reshape a Sparse Tensor. The sparse array is in COO format."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 2-D tensor[N, n_dim] of integers "
+#~ "containing location of sparse values, "
+#~ "where N is the number of sparse"
+#~ " values and n_dim is the number "
+#~ "of dimensions of the dense_shape"
+#~ msgstr ""
+
+#~ msgid "A 1-D tensor containing the previous shape of the dense tensor"
+#~ msgstr ""
+
+#~ msgid "A 1-D tensor containing the new shape of the dense tensor"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Example:: -   sparse_to_dense([[0, 0], [1, "
+#~ "1]], [2, 2], [3, 3], 0) = "
+#~ "[[3, 0], [0, 3]]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 0-D, 1-D, or 2-D tensor of "
+#~ "integers containing location of sparse "
+#~ "values."
+#~ msgstr ""
+
+#~ msgid "A list of integers. Shape of the dense output tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 0-D or 1-D tensor containing the"
+#~ " sparse values for the sparse "
+#~ "indices."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 0-D tensor containing the default "
+#~ "value for the remaining locations. "
+#~ "Defaults to 0."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**result** -- Dense tensor of shape "
+#~ "output_shape. Has the same type as "
+#~ "sparse_values."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If indices_or_sections is an integer, "
+#~ "the input will be divided equally "
+#~ "along given axis. If such a split"
+#~ " is not possible, an error is "
+#~ "raised."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If indices_or_sections is a tuple of "
+#~ "sorted integers, the entries indicate "
+#~ "where along axis the array is "
+#~ "split."
+#~ msgstr ""
+
+#~ msgid "Indices or sections to split into. Accepts an int or a tuple"
+#~ msgstr ""
+
+#~ msgid "The axis over which to split."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The set of axes to remove. If "
+#~ "axis = None, remove all axis of"
+#~ " dimensions 1. If any specified axis"
+#~ " has dimension that does not equal"
+#~ " 1, it is an error."
+#~ msgstr ""
+
+#~ msgid "**result** -- The squeezed result."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A list of tensors or a Relay "
+#~ "expression that evaluates to a tuple "
+#~ "of tensors."
+#~ msgstr ""
+
+#~ msgid "The axis in the result array along which the input arrays are stacked."
+#~ msgstr ""
+
+#~ msgid "**ret** -- The stacked tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a "
+#~ "standard deviation operation is performed. "
+#~ "The default, axis=None, will compute the"
+#~ " standard deviation of all elements "
+#~ "in the input array. If axis is "
+#~ "negative it counts from the last "
+#~ "to the first axis."
+#~ msgstr ""
+
+#~ msgid "The source array to be sliced."
+#~ msgstr ""
+
+#~ msgid "The data to be set."
+#~ msgstr ""
+
+#~ msgid "The indices to begin with in the slicing."
+#~ msgstr ""
+
+#~ msgid "Indices indicating end of the slice."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Specifies the stride values, it can "
+#~ "be negative in that case, the "
+#~ "input tensor will be reversed in "
+#~ "that particular axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axes along which slicing is applied. "
+#~ "When it is specified, the length "
+#~ "of begin, end, strides, and axes "
+#~ "must be equal. Moreover, begin, end, "
+#~ "strides, and axes must be static "
+#~ "(cannot be relay.Expr). Axes argument "
+#~ "for dynamic parameter slicing is not "
+#~ "supported yet."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The slice mode [end, size]. end: "
+#~ "The ending indices for the slice "
+#~ "[default]. size: The input strides will"
+#~ " be ignored, input end in this "
+#~ "mode indicates the size of a slice"
+#~ " starting at the location specified "
+#~ "by begin. If end[i] is -1, all "
+#~ "remaining elements in that dimension are"
+#~ " included in the slice."
+#~ msgstr ""
+
+#~ msgid "The indices of the values to extract."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The axis over which to select "
+#~ "values. By default, the flattened input"
+#~ " array is used."
+#~ msgstr ""
+
+#~ msgid "The number of batch dimensions. By default is 0."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Specifies how out-of-bound indices "
+#~ "will behave [clip, wrap, fast]. clip:"
+#~ " clip to the range (default). wrap:"
+#~ " wrap around the indices. fast: no"
+#~ " clip or wrap around (user must "
+#~ "make sure indices are in-bound)."
+#~ msgstr ""
+
+#~ msgid "The number of times repeating the tensor data."
+#~ msgstr ""
+
+#~ msgid "提示"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Each dim size of reps must be "
+#~ "a positive integer. If reps has "
+#~ "length d, the result will have "
+#~ "dimension of max(d, data.ndim); If "
+#~ "data.ndim < d, data is promoted to"
+#~ " be d-dimensional by prepending new "
+#~ "axes. If data.ndim >=  d, reps is"
+#~ " promoted to a.ndim by pre-pending"
+#~ " 1's to it."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "ret_type specifies the return type, can"
+#~ " be one of (\"both\", \"values\", "
+#~ "\"indices\")."
+#~ msgstr ""
+
+#~ msgid "Number of top elements to select. Return all elements if k < 1."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The return type [both, values, indices]."
+#~ " \"both\": return both top k data "
+#~ "and indices. \"values\": return top k"
+#~ " data only. \"indices\": return top k"
+#~ " indices only."
+#~ msgstr ""
+
+#~ msgid "The data type of the indices output."
+#~ msgstr ""
+
+#~ msgid "**out** -- The computed result."
+#~ msgstr ""
+
+#~ msgid "The target axes order, reverse order if not specified."
+#~ msgstr ""
+
+#~ msgid "**result** -- The transposed result."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Find the unique elements of a 1-D"
+#~ " tensor. Please note `output` and "
+#~ "`counts` are all padded to have "
+#~ "the same length of `data` and "
+#~ "element with index >= num_unique[0] has"
+#~ " undefined value."
+#~ msgstr ""
+
+#~ msgid "A 1-D tensor of integers."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Whether to sort the unique elements "
+#~ "in ascending order before returning as"
+#~ " output."
+#~ msgstr ""
+
+#~ msgid "Whether to return the count of each unique element."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **unique** (*relay.Expr*) -- A 1-D "
+#~ "tensor containing the unique elements of"
+#~ " the input data tensor. * **indices**"
+#~ " (*relay.Expr*) -- A 1-D tensor "
+#~ "containing the index of each data "
+#~ "element in the output tensor. * "
+#~ "**inverse_indices** (*relay.Expr*) -- A 1-D"
+#~ " tensor. For each entry in data, "
+#~ "it contains the index of that data"
+#~ " element in the   unique array. * "
+#~ "**num_unique** (*relay.Expr*) -- A 1-D "
+#~ "tensor with size=1 containing the number"
+#~ " of unique elements in the input "
+#~ "data tensor. * **counts (optional)** "
+#~ "(*relay.Expr*) -- A 1-D tensor "
+#~ "containing the count of each unique "
+#~ "element in the output."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**unique** (*relay.Expr*) -- A 1-D "
+#~ "tensor containing the unique elements of"
+#~ " the input data tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**indices** (*relay.Expr*) -- A 1-D "
+#~ "tensor containing the index of each "
+#~ "data element in the output tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**inverse_indices** (*relay.Expr*) -- A 1-D"
+#~ " tensor. For each entry in data, "
+#~ "it contains the index of that data"
+#~ " element in the unique array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**num_unique** (*relay.Expr*) -- A 1-D "
+#~ "tensor with size=1 containing the number"
+#~ " of unique elements in the input "
+#~ "data tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**counts (optional)** (*relay.Expr*) -- A "
+#~ "1-D tensor containing the count of "
+#~ "each unique element in the output."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Example:: -   unravel_index([22, 41, 37], "
+#~ "[7, 6]) = [[3, 6, 6],[4, 5, "
+#~ "1]]"
+#~ msgstr ""
+
+#~ msgid "An integer array containing indices."
+#~ msgstr ""
+
+#~ msgid "The shape of the array."
+#~ msgstr ""
+
+#~ msgid "**result** -- The tuple of coordinate arrays."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This is a simple wrapper function "
+#~ "that allows specify shape and dtype "
+#~ "directly."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The name of the variable. This "
+#~ "name only acts as a hint, and "
+#~ "is not used for equality."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The type annotation on the variable. "
+#~ "When type_annotation is a str, we "
+#~ "will create a scalar variable."
+#~ msgstr ""
+
+#~ msgid "The shape of the tensor type."
+#~ msgstr ""
+
+#~ msgid "The data type of the tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a "
+#~ "variance operation is performed. The "
+#~ "default, axis=None, will compute the "
+#~ "variance of all elements in the "
+#~ "input array. If axis is negative "
+#~ "it counts from the last to the "
+#~ "first axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Shapes of condition, x, and y must"
+#~ " be broadcastable to a common shape."
+#~ " Semantics follow numpy where function "
+#~ "https://numpy.org/doc/stable/reference/generated/numpy.where.html"
+#~ msgstr ""
+
+#~ msgid "Where True, yield x, otherwise yield y"
+#~ msgstr ""
+
+#~ msgid "The first array or scalar to be selected."
+#~ msgstr ""
+
+#~ msgid "The second array or scalar to be selected."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**result** -- The selected array. The"
+#~ " output shape is the broadcasted "
+#~ "shape from condition, x, and y."
+#~ msgstr ""
+

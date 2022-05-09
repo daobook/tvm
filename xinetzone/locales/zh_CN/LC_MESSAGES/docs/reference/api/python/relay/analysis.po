@@ -1,0 +1,528 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-31 18:33+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/reference/api/python/relay/analysis.rst:19
+msgid "tvm.relay.analysis"
+msgstr ""
+
+#~ msgid "The Relay IR namespace containing the analysis passes."
+#~ msgstr ""
+
+#~ msgid "**Classes:**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`AnnotatedRegionSet "
+#~ "<tvm.relay.analysis.AnnotatedRegionSet>`\\ \\(expr\\, "
+#~ "region\\_begin\\_op\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Class to represent a relay expression split into regions."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`CallGraph <tvm.relay.analysis.CallGraph>`\\ \\(module\\)"
+#~ msgstr ""
+
+#~ msgid "Class to represent a call graph."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Feature <tvm.relay.analysis.Feature>`\\ \\(value\\)"
+#~ msgstr ""
+
+#~ msgid "The features a program might contain."
+#~ msgstr ""
+
+#~ msgid "**Functions:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`all_dtypes <tvm.relay.analysis.all_dtypes>`\\ \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid "Collect set of all data types used in `expr`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`all_type_vars <tvm.relay.analysis.all_type_vars>`\\ "
+#~ "\\(expr\\[\\, mod\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get all type variables from expression/type e"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`all_vars <tvm.relay.analysis.all_vars>`\\ \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid "Get all vars from expression expr in post-DFS order."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`bound_type_vars <tvm.relay.analysis.bound_type_vars>`\\"
+#~ " \\(expr\\[\\, mod\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get bound type variables from expression/type e"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`bound_vars <tvm.relay.analysis.bound_vars>`\\ \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid "Get bound vars from expression expr in post-DFS order."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`check_basic_block_normal_form "
+#~ "<tvm.relay.analysis.check_basic_block_normal_form>`\\ \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid "Check whether an expression is in the basic block form"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`check_constant <tvm.relay.analysis.check_constant>`\\"
+#~ " \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid "Check whether an expression is constant"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`check_kind <tvm.relay.analysis.check_kind>`\\ "
+#~ "\\(t\\[\\, mod\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Check that the type is well kinded and return the kind."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`count_layers <tvm.relay.analysis.count_layers>`\\ "
+#~ "\\(expr\\, valid\\_ops\\)"
+#~ msgstr ""
+
+#~ msgid "Determine the number of layers of specified ops in a graph."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`cpu <tvm.relay.analysis.cpu>`\\ \\(\\[dev\\_id\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Construct a CPU device"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`detect_feature <tvm.relay.analysis.detect_feature>`\\"
+#~ " \\(a\\[\\, b\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Detect the feature used in a relay program."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`extract_fused_functions "
+#~ "<tvm.relay.analysis.extract_fused_functions>`\\ \\(mod\\)"
+#~ msgstr ""
+
+#~ msgid "Pass to extract IRModule of only fused primitive functions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`free_type_vars <tvm.relay.analysis.free_type_vars>`\\"
+#~ " \\(expr\\[\\, mod\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get free type variables from expression/type e"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`free_vars <tvm.relay.analysis.free_vars>`\\ \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid "Get free Vars from expression expr in Post DFS order."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_calibration_data "
+#~ "<tvm.relay.analysis.get_calibration_data>`\\ \\(mod\\, "
+#~ "data\\)"
+#~ msgstr ""
+
+#~ msgid "Get the calibration data of a given relay graph"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_total_mac_number "
+#~ "<tvm.relay.analysis.get_total_mac_number>`\\ \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid "Count the number of MACs (multiply-accumulate) of a model"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`list_fake_quantized_op_freqs "
+#~ "<tvm.relay.analysis.list_fake_quantized_op_freqs>`\\ \\(mod\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Pass to extract fake quantized op "
+#~ "names and the frequency that they "
+#~ "appear in fake quantized regions of "
+#~ "an IRModule."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`list_op_freqs <tvm.relay.analysis.list_op_freqs>`\\ \\(mod\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Pass to extract unique operator names"
+#~ " and how frequently they appear in"
+#~ " an IRModule."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`post_order_visit "
+#~ "<tvm.relay.analysis.post_order_visit>`\\ \\(expr\\, "
+#~ "fvisit\\)"
+#~ msgstr ""
+
+#~ msgid "Recursively visit the ir in post DFS order node, apply fvisit."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`search_fc_transpose "
+#~ "<tvm.relay.analysis.search_fc_transpose>`\\ \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Search fc weight name in the "
+#~ "patten: y = nn.dense(x, transpose(w, [1,"
+#~ " 0]))"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`unmatched_cases <tvm.relay.analysis.unmatched_cases>`\\"
+#~ " \\(match\\[\\, mod\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Finds cases that the match expression does not catch, if any."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`well_formed <tvm.relay.analysis.well_formed>`\\ \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid "Check that each Var is only bound once (well formed)."
+#~ msgstr ""
+
+#~ msgid "**Methods:**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_region "
+#~ "<tvm.relay.analysis.AnnotatedRegionSet.get_region>`\\ \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid "Get the region an expression belongs to."
+#~ msgstr ""
+
+#~ msgid "参数"
+#~ msgstr ""
+
+#~ msgid "The expression."
+#~ msgstr ""
+
+#~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid "The region containing the expression. None if not found."
+#~ msgstr ""
+
+#~ msgid "返回类型"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`global_call_count "
+#~ "<tvm.relay.analysis.CallGraph.global_call_count>`\\ \\(var\\)"
+#~ msgstr ""
+
+#~ msgid "Return the number of global function calls from a given global var."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`is_recursive "
+#~ "<tvm.relay.analysis.CallGraph.is_recursive>`\\ \\(var\\)"
+#~ msgstr ""
+
+#~ msgid "Return if the function corresponding to a var is a recursive function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`print_var <tvm.relay.analysis.CallGraph.print_var>`\\"
+#~ " \\(var\\)"
+#~ msgstr ""
+
+#~ msgid "Print a call graph of a global function by name or by variable."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`ref_count <tvm.relay.analysis.CallGraph.ref_count>`\\"
+#~ " \\(var\\)"
+#~ msgstr ""
+
+#~ msgid "Return the number of references to the global var"
+#~ msgstr ""
+
+#~ msgid "**Attributes:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`module <tvm.relay.analysis.CallGraph.module>`\\"
+#~ msgstr ""
+
+#~ msgid "Return the contained Relay IR module."
+#~ msgstr ""
+
+#~ msgid "**ret** -- The number of global function calls from the given var."
+#~ msgstr ""
+
+#~ msgid "**ret** -- If the function corresponding to var is recurisve."
+#~ msgstr ""
+
+#~ msgid "**ret** -- The contained IRModule"
+#~ msgstr ""
+
+#~ msgid "The name or global variable."
+#~ msgstr ""
+
+#~ msgid "**ret** -- The call graph represented in string."
+#~ msgstr ""
+
+#~ msgid "**ret** -- The number reference to the global var"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`fGraph <tvm.relay.analysis.Feature.fGraph>`\\"
+#~ msgstr ""
+
+#~ msgid "Whether there is local fixpoint in the program."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`fMatch <tvm.relay.analysis.Feature.fMatch>`\\"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Whether any non-atom fragment of "
+#~ "the program is shared, making the "
+#~ "program a graph."
+#~ msgstr ""
+
+#~ msgid "The input expression"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**ret** -- Set of data types used"
+#~ " in the expression (e.g., `{'int8', "
+#~ "'int32'}`)"
+#~ msgstr ""
+
+#~ msgid "The input expression/type"
+#~ msgstr ""
+
+#~ msgid "The global module"
+#~ msgstr ""
+
+#~ msgid "**free** -- The list of all type variables in post-DFS order"
+#~ msgstr ""
+
+#~ msgid "**free** -- The list of all variables in post-DFS order."
+#~ msgstr ""
+
+#~ msgid "**free** -- The list of bound type variables in post-DFS order"
+#~ msgstr ""
+
+#~ msgid "**free** -- The list of bound variables in post-DFS order."
+#~ msgstr ""
+
+#~ msgid "**result** -- Whether the expression is in the basic block form."
+#~ msgstr ""
+
+#~ msgid "**result** -- Whether the expression is constant."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Check that the type is well kinded"
+#~ " and return the kind. For example,"
+#~ " this mean type cannot has tensor "
+#~ "of tensor, or is a tuple type "
+#~ "of 2 shapes."
+#~ msgstr ""
+
+#~ msgid "The type to check"
+#~ msgstr ""
+
+#~ msgid "The global module."
+#~ msgstr ""
+
+#~ msgid "**kind** -- the kind of t"
+#~ msgstr ""
+
+#~ msgid "实际案例"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Determine the number of layers of "
+#~ "specified ops in a graph. This "
+#~ "pass computes only the deepest chain "
+#~ "of ops rather than the total "
+#~ "number of ops in a graph. Thus,"
+#~ " if there are two parallel "
+#~ "convolutions (for example), they would "
+#~ "be considered a single layer."
+#~ msgstr ""
+
+#~ msgid "The input expression."
+#~ msgstr ""
+
+#~ msgid "A list of the operations that should be included in the count."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**layer_count** -- The number of layers"
+#~ " of the specified operations found in"
+#~ " the graph."
+#~ msgstr ""
+
+#~ msgid "The integer device id"
+#~ msgstr ""
+
+#~ msgid "**dev** -- The created device"
+#~ msgstr ""
+
+#~ msgid "The input expression or module."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The input expression or module. The "
+#~ "two arguments cannot both be expression"
+#~ " or module."
+#~ msgstr ""
+
+#~ msgid "**features** -- Features used in the program."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The ExtractFusedFunctions pass invokes "
+#~ "SimplifyInference, FuseOps(3), and "
+#~ "ExtractFusedFunctions in that order"
+#~ msgstr ""
+
+#~ msgid "**ret** -- A module containing only fused primitive functions"
+#~ msgstr ""
+
+#~ msgid "**free** -- The list of free type variables in post-DFS order"
+#~ msgstr ""
+
+#~ msgid "**free** -- The list of free variables in post DFS order."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The fact that Vars are post-DFS"
+#~ " ordred are useful in neural "
+#~ "networks: usually this means weights of"
+#~ " previous are ordered first."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This pass uses the graph executor "
+#~ "to get the calibration data of a"
+#~ " module, which includes the input and"
+#~ " output values of each function. The"
+#~ " returned data uses the GlobalVar of"
+#~ " each function as a key. Users "
+#~ "can further access the inputs and "
+#~ "outputs by using `inputs` or  `outputs`"
+#~ " as the key."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Following are some limitations: 1. The"
+#~ " input module (graph) cannot have "
+#~ "control flows. 2. The input arguments"
+#~ " of each function cannot be tuples"
+#~ " (outputs can be tuples). 3. We "
+#~ "only handle top-level functions (i.e.,"
+#~ " nested function is not handled). 4."
+#~ " We only handle functions with "
+#~ "`Compiler` attribute being set."
+#~ msgstr ""
+
+#~ msgid "The input module for collecting the calibration data"
+#~ msgstr ""
+
+#~ msgid "The input data for running the module"
+#~ msgstr ""
+
+#~ msgid "**data**"
+#~ msgstr ""
+
+#~ msgid "**result** -- The number of MACs (multiply-accumulate) of a model"
+#~ msgstr ""
+
+#~ msgid "**ret** -- Dict of fake quantized operator names to frequency"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Pass to extract unique operator names"
+#~ " and how frequently they appear in"
+#~ " an IRModule. Fused functions are "
+#~ "traversed to count the operators that"
+#~ " compose them."
+#~ msgstr ""
+
+#~ msgid "**ret** -- Dict of unique operator names to frequency"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Recursively visit the ir in post "
+#~ "DFS order node, apply fvisit. Each "
+#~ "node is guaranteed to be visited "
+#~ "only once."
+#~ msgstr ""
+
+#~ msgid "The visitor function to be applied."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This function is used in the "
+#~ "data_dep_optimization.simplify_fc_transpose method"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**ret** -- Array of weight variable "
+#~ "name in pattern y = nn.dense(x, "
+#~ "transpose(w, [1, 0]))"
+#~ msgstr ""
+
+#~ msgid "The match expression"
+#~ msgstr ""
+
+#~ msgid "The module (defaults to an empty module)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**missing_patterns** -- Patterns that the "
+#~ "match expression does not catch."
+#~ msgstr ""
+
+#~ msgid "**well_form** -- Whether the input expression is well formed"
+#~ msgstr ""
+

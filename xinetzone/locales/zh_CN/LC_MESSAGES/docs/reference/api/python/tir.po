@@ -1,0 +1,4521 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-31 18:33+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/reference/api/python/tir.rst:21
+msgid "tvm.tir"
+msgstr ""
+
+#: ../../docs/reference/api/python/tir.rst:30
+msgid "tvm.tir.transform"
+msgstr ""
+
+#: ../../docs/reference/api/python/tir.rst:38
+msgid "tvm.tir.analysis"
+msgstr ""
+
+#: ../../docs/reference/api/python/tir.rst:47
+msgid "tvm.tir.stmt_functor"
+msgstr ""
+
+#~ msgid ":py:obj:`BijectiveLayout <tvm.tir.BijectiveLayout>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`BlockScope <tvm.tir.BlockScope>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Buffer <tvm.tir.Buffer>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`DataProducer <tvm.tir.DataProducer>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Layout <tvm.tir.Layout>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Stmt <tvm.tir.Stmt>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`StmtSRef <tvm.tir.StmtSRef>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PrimFuncPass <tvm.tir.transform.PrimFuncPass>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Buffer <tvm.tir.analysis.Buffer>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Object <tvm.tir.analysis.Object>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PrimExpr <tvm.tir.analysis.PrimExpr>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Stmt <tvm.tir.analysis.Stmt>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`BijectiveLayout <tvm.tir.BijectiveLayout>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`BlockScope <tvm.tir.BlockScope>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Buffer <tvm.tir.Buffer>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`DataProducer <tvm.tir.DataProducer>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Layout <tvm.tir.Layout>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Stmt <tvm.tir.Stmt>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`StmtSRef <tvm.tir.StmtSRef>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PrimFuncPass <tvm.tir.transform.PrimFuncPass>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Buffer <tvm.tir.analysis.Buffer>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Object <tvm.tir.analysis.Object>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PrimExpr <tvm.tir.analysis.PrimExpr>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Stmt <tvm.tir.analysis.Stmt>`\\"
+#~ msgstr ""
+
+#~ msgid "Namespace for Tensor-level IR"
+#~ msgstr ""
+
+#~ msgid "**Classes:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Add <tvm.tir.Add>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Add node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Allocate <tvm.tir.Allocate>`\\ \\(buffer\\_var\\,"
+#~ " dtype\\, extents\\, ...\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Allocate node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`And <tvm.tir.And>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "And node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Any <tvm.tir.Any>`\\ \\(\\[span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Any node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`AssertStmt <tvm.tir.AssertStmt>`\\ "
+#~ "\\(condition\\, message\\, body\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "AssertStmt node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`AttrStmt <tvm.tir.AttrStmt>`\\ \\(node\\, "
+#~ "attr\\_key\\, value\\, body\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "AttrStmt node."
+#~ msgstr ""
+
+#~ msgid "Bijective mapping for two layouts (src-layout and dst-layout)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Block <tvm.tir.Block>`\\ \\(iter\\_vars\\, "
+#~ "reads\\, writes\\, name\\_hint\\, body\\)"
+#~ msgstr ""
+
+#~ msgid "Block node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`BlockRealize <tvm.tir.BlockRealize>`\\ "
+#~ "\\(iter\\_values\\, predicate\\, block\\)"
+#~ msgstr ""
+
+#~ msgid "BlockRealize node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "An object corresponds to each block "
+#~ "sref in the sref tree, which "
+#~ "tracks the producer-consumer dependency "
+#~ "between blocks."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Broadcast <tvm.tir.Broadcast>`\\ \\(value\\, "
+#~ "lanes\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Broadcast node."
+#~ msgstr ""
+
+#~ msgid "Symbolic data buffer in TVM."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`BufferLoad <tvm.tir.BufferLoad>`\\ \\(buffer\\,"
+#~ " indices\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Buffer load node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`BufferRealize <tvm.tir.BufferRealize>`\\ "
+#~ "\\(buffer\\, bounds\\, condition\\, body\\)"
+#~ msgstr ""
+
+#~ msgid "Buffer realize node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`BufferRegion <tvm.tir.BufferRegion>`\\ \\(buffer\\, region\\)"
+#~ msgstr ""
+
+#~ msgid "BufferRegion node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`BufferStore <tvm.tir.BufferStore>`\\ \\(buffer\\,"
+#~ " value\\, indices\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Buffer store node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Call <tvm.tir.Call>`\\ \\(dtype\\, op\\, args\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Call node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`CallEffectKind <tvm.tir.CallEffectKind>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Possible kinds of Call effects."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Cast <tvm.tir.Cast>`\\ \\(dtype\\, value\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Cast expression."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`CommReducer <tvm.tir.CommReducer>`\\ \\(lhs\\,"
+#~ " rhs\\, result\\, identity\\_element\\)"
+#~ msgstr ""
+
+#~ msgid "Commutative reduce operator"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Div <tvm.tir.Div>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Div node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`EQ <tvm.tir.EQ>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "EQ node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Evaluate <tvm.tir.Evaluate>`\\ \\(value\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Evaluate node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`FloatImm <tvm.tir.FloatImm>`\\ \\(dtype\\, "
+#~ "value\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Float constant."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`FloorDiv <tvm.tir.FloorDiv>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "FloorDiv node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`FloorMod <tvm.tir.FloorMod>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "FloorMod node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`For <tvm.tir.For>`\\ \\(loop\\_var\\, "
+#~ "min\\_val\\, extent\\, kind\\, body\\[\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "For node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ForKind <tvm.tir.ForKind>`\\ \\(value\\)"
+#~ msgstr ""
+
+#~ msgid "The kind of the for loop."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`GE <tvm.tir.GE>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "GE node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`GT <tvm.tir.GT>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "GT node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`IfThenElse <tvm.tir.IfThenElse>`\\ "
+#~ "\\(condition\\, then\\_case\\, else\\_case\\)"
+#~ msgstr ""
+
+#~ msgid "IfThenElse node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`IntImm <tvm.tir.IntImm>`\\ \\(dtype\\, value\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Int constant."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`IterVar <tvm.tir.IterVar>`\\ \\(dom\\, "
+#~ "var\\, iter\\_type\\[\\, thread\\_tag\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Represent iteration variable."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`LE <tvm.tir.LE>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "LE node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`LT <tvm.tir.LT>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "LT node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Layout is composed of upper cases, "
+#~ "lower cases and numbers, where upper "
+#~ "case indicates a primal axis and "
+#~ "the corresponding lower case with factor"
+#~ " size indicates the subordinate axis."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Let <tvm.tir.Let>`\\ \\(var\\, value\\, body\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Let node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`LetStmt <tvm.tir.LetStmt>`\\ \\(var\\, "
+#~ "value\\, body\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "LetStmt node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Load <tvm.tir.Load>`\\ \\(dtype\\, "
+#~ "buffer\\_var\\, index\\[\\, predicate\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Load node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`MatchBufferRegion <tvm.tir.MatchBufferRegion>`\\ "
+#~ "\\(buffer\\, source\\)"
+#~ msgstr ""
+
+#~ msgid "MatchBufferRegion node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Max <tvm.tir.Max>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Max node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Min <tvm.tir.Min>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Min node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Mod <tvm.tir.Mod>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Mod node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Mul <tvm.tir.Mul>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Mul node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`NE <tvm.tir.NE>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "NE node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Not <tvm.tir.Not>`\\ \\(a\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Not node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Or <tvm.tir.Or>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Or node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Prefetch <tvm.tir.Prefetch>`\\ \\(buffer\\, "
+#~ "bounds\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Prefetch node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`PrimFunc <tvm.tir.PrimFunc>`\\ \\(params\\, "
+#~ "body\\[\\, ret\\_type\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "A function declaration expression."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`ProducerLoad <tvm.tir.ProducerLoad>`\\ "
+#~ "\\(producer\\, indices\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Producer load node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`ProducerRealize <tvm.tir.ProducerRealize>`\\ "
+#~ "\\(producer\\, bounds\\, condition\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "ProducerRealize node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`ProducerStore <tvm.tir.ProducerStore>`\\ "
+#~ "\\(producer\\, value\\, indices\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "ProducerStore node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Ramp <tvm.tir.Ramp>`\\ \\(base\\, stride\\,"
+#~ " lanes\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Ramp node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Reduce <tvm.tir.Reduce>`\\ \\(combiner\\, "
+#~ "src\\, rdom\\, condition\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Reduce node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Schedule <tvm.tir.Schedule>`\\ \\(mod\\, "
+#~ "\\*\\[\\, seed\\, debug\\_mask\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "The user-facing schedule class"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`ScheduleState <tvm.tir.ScheduleState>`\\ "
+#~ "\\(mod\\, \\*\\[\\, debug\\_mask\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The state of scheduling, which exposes"
+#~ " a `Replace` method as the primary"
+#~ " resort for all the scheduling "
+#~ "primitives to manipulate the TensorIR."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Select <tvm.tir.Select>`\\ \\(condition\\, "
+#~ "true\\_value\\, false\\_value\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Select node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`SeqStmt <tvm.tir.SeqStmt>`\\ \\(seq\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Sequence of statements."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Shuffle <tvm.tir.Shuffle>`\\ \\(vectors\\, "
+#~ "indices\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Shuffle node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`SizeVar <tvm.tir.SizeVar>`\\ \\(name\\, dtype\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Symbolic variable to represent a tensor index size"
+#~ msgstr ""
+
+#~ msgid "Base class of all the statements."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "An object that refers to schedulable "
+#~ "elements in the TensorIR, aka \"sref\"."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Store <tvm.tir.Store>`\\ \\(buffer\\_var\\, "
+#~ "value\\, index\\[\\, predicate\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Store node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`StringImm <tvm.tir.StringImm>`\\ \\(value\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "String constant."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Sub <tvm.tir.Sub>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Sub node."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TensorIntrin <tvm.tir.TensorIntrin>`\\ \\(desc\\, impl\\)"
+#~ msgstr ""
+
+#~ msgid "A tensor intrinsic."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Var <tvm.tir.Var>`\\ \\(name\\, dtype\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Symbolic variable."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`While <tvm.tir.While>`\\ \\(condition\\, body\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "While node."
+#~ msgstr ""
+
+#~ msgid "**Exceptions:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ScheduleError <tvm.tir.ScheduleError>`\\"
+#~ msgstr ""
+
+#~ msgid "Error that happens during TensorIR scheduling."
+#~ msgstr ""
+
+#~ msgid "**Functions:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`abs <tvm.tir.abs>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get absolute value of the input element-wise."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`acos <tvm.tir.acos>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take acos of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`acosh <tvm.tir.acosh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`all <tvm.tir.all>`\\ \\(\\*args\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a new expression of the intersection of all conditions in the"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`any <tvm.tir.any>`\\ \\(\\*args\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a new experssion of the union of all conditions in the arguments"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`asin <tvm.tir.asin>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take asin of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`asinh <tvm.tir.asinh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take asinh of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`atan <tvm.tir.atan>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take atan of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`atan2 <tvm.tir.atan2>`\\ \\(x1\\, x2\\)"
+#~ msgstr ""
+
+#~ msgid "Take arctan2(x1, x2)."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`atanh <tvm.tir.atanh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take atanh of input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`bijective_layout <tvm.tir.bijective_layout>`\\ "
+#~ "\\(src\\_layout\\, dst\\_layout\\)"
+#~ msgstr ""
+
+#~ msgid "Create a bijective layout mapping."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`call_extern <tvm.tir.call_extern>`\\ \\(dtype\\,"
+#~ " func\\_name\\, \\*args\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Build expression by calling a extern function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`call_intrin <tvm.tir.call_intrin>`\\ \\(dtype\\,"
+#~ " func\\_name\\, \\*args\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Build expression by calling an intrinsic function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`call_llvm_intrin <tvm.tir.call_llvm_intrin>`\\ "
+#~ "\\(dtype\\, name\\, \\*args\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Build expression by calling a llvm intrinsic function"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`call_llvm_pure_intrin "
+#~ "<tvm.tir.call_llvm_pure_intrin>`\\ \\(dtype\\, name\\, "
+#~ "\\*args\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Build expression by calling a pure llvm intrinsic function"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`call_packed <tvm.tir.call_packed>`\\ "
+#~ "\\(\\*args\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Build expression by call an external packed function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`call_pure_extern <tvm.tir.call_pure_extern>`\\ "
+#~ "\\(dtype\\, func\\_name\\, \\*args\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Build expression by calling a pure extern function."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ceil <tvm.tir.ceil>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Take ceil of float input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`clz <tvm.tir.clz>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Count leading zero bits of an integer x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`comm_reducer <tvm.tir.comm_reducer>`\\ "
+#~ "\\(fcombine\\, fidentity\\[\\, name\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a commutative reducer for reduction."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`copysign <tvm.tir.copysign>`\\ \\(x1\\, x2\\)"
+#~ msgstr ""
+
+#~ msgid "Change the sign of x1 to that of x2, element-wise."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`cos <tvm.tir.cos>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take cos of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`cosh <tvm.tir.cosh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take cosh of input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`decl_buffer <tvm.tir.decl_buffer>`\\ "
+#~ "\\(shape\\[\\, dtype\\, name\\, data\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Declare a new symbolic buffer."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`div <tvm.tir.div>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute a / b as in C/C++ semantics."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`erf <tvm.tir.erf>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take gauss error function of the input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`exp <tvm.tir.exp>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take exponential of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`exp10 <tvm.tir.exp10>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Calculate 10**x"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`exp2 <tvm.tir.exp2>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Calculate 2**x"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`floor <tvm.tir.floor>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Take floor of float input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`floordiv <tvm.tir.floordiv>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute the floordiv of two expressions."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`floormod <tvm.tir.floormod>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute the floormod of two expressions."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`fmod <tvm.tir.fmod>`\\ \\(x\\, y\\)"
+#~ msgstr ""
+
+#~ msgid "Return the remainder of x divided by y with the same sign as x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`hypot <tvm.tir.hypot>`\\ \\(x1\\, x2\\)"
+#~ msgstr ""
+
+#~ msgid "Equivalent to sqrt(x1**2 + x2**2), element-wise."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`if_then_else <tvm.tir.if_then_else>`\\ \\(cond\\,"
+#~ " t\\, f\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Conditional selection expression."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`indexdiv <tvm.tir.indexdiv>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute floor(a / b) where a and b are non-negative."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`indexmod <tvm.tir.indexmod>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute the remainder of indexdiv."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`isfinite <tvm.tir.isfinite>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Check if input value is finite."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`isinf <tvm.tir.isinf>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Check if input value is infinite."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`isnan <tvm.tir.isnan>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Check if input value is Nan."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`layout <tvm.tir.layout>`\\ \\(layout\\_str\\)"
+#~ msgstr ""
+
+#~ msgid "Create a layout node from a string."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ldexp <tvm.tir.ldexp>`\\ \\(x1\\, x2\\)"
+#~ msgstr ""
+
+#~ msgid "Returns x1 * (2 ** x2)."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`log <tvm.tir.log>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take log of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`log10 <tvm.tir.log10>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take log10 of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`log1p <tvm.tir.log1p>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take log(x + 1) with respect to input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`log2 <tvm.tir.log2>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take log2 of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`max <tvm.tir.max>`\\ \\(expr\\, axis\\[\\, where\\, init\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a max expression over axis."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`max_value <tvm.tir.max_value>`\\ \\(dtype\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "maximum value of dtype"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`min <tvm.tir.min>`\\ \\(expr\\, axis\\[\\, where\\, init\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a min expression over axis."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`min_value <tvm.tir.min_value>`\\ \\(dtype\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "minimum value of dtype"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`nearbyint <tvm.tir.nearbyint>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Round elements of the array to the nearest integer."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`nextafter <tvm.tir.nextafter>`\\ \\(x1\\, x2\\)"
+#~ msgstr ""
+
+#~ msgid "Return the next floating-point value after x1 towards x2."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`popcount <tvm.tir.popcount>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Count the number of set bits in input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`power <tvm.tir.power>`\\ \\(x\\, y\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "x power y"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`q_multiply_shift <tvm.tir.q_multiply_shift>`\\ "
+#~ "\\(x\\, y\\, q\\, s\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Execute a multiplication between two "
+#~ "Q-numbers x and y followed by a"
+#~ " right shift s."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ret <tvm.tir.ret>`\\ \\(val\\)"
+#~ msgstr ""
+
+#~ msgid "Create a tir return expression"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`round <tvm.tir.round>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`rsqrt <tvm.tir.rsqrt>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take reciprocal of square root of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sigmoid <tvm.tir.sigmoid>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Quick function to get sigmoid"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sin <tvm.tir.sin>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take sin of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sinh <tvm.tir.sinh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take sinh of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sqrt <tvm.tir.sqrt>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take square root of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`stmt_list <tvm.tir.stmt_list>`\\ \\(stmt\\)"
+#~ msgstr ""
+
+#~ msgid "Make list of stmt from blocks."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`stmt_seq <tvm.tir.stmt_seq>`\\ \\(\\*args\\)"
+#~ msgstr ""
+
+#~ msgid "Make sequence of statements"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sum <tvm.tir.sum>`\\ \\(expr\\, axis\\[\\, where\\, init\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a sum expression over axis."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`tan <tvm.tir.tan>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take tan of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`tanh <tvm.tir.tanh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take hyperbolic tanh of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`trace <tvm.tir.trace>`\\ \\(args\\[\\, trace\\_action\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Trace tensor data at the runtime."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`trunc <tvm.tir.trunc>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get truncated value of the input."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`truncdiv <tvm.tir.truncdiv>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute the truncdiv of two expressions."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`truncmod <tvm.tir.truncmod>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute the truncmod of two expressions."
+#~ msgstr ""
+
+#~ msgid "参数"
+#~ msgstr ""
+
+#~ msgid "The left hand operand."
+#~ msgstr ""
+
+#~ msgid "The right hand operand."
+#~ msgstr ""
+
+#~ msgid "The location of this itervar in the source code."
+#~ msgstr ""
+
+#~ msgid "The buffer variable."
+#~ msgstr ""
+
+#~ msgid "The data type of the buffer."
+#~ msgstr ""
+
+#~ msgid "The extents of the allocate"
+#~ msgstr ""
+
+#~ msgid "The condition."
+#~ msgstr ""
+
+#~ msgid "The body statement."
+#~ msgstr ""
+
+#~ msgid "Additional annotation hints"
+#~ msgstr ""
+
+#~ msgid "span"
+#~ msgstr ""
+
+#~ msgid "Optional[Span]"
+#~ msgstr ""
+
+#~ msgid "The assert condition."
+#~ msgstr ""
+
+#~ msgid "The error message."
+#~ msgstr ""
+
+#~ msgid "The node to annotate the attribute"
+#~ msgstr ""
+
+#~ msgid "Attribute type key."
+#~ msgstr ""
+
+#~ msgid "The value of the attribute"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Bijective mapping for two layouts "
+#~ "(src-layout and dst-layout). It "
+#~ "provides shape and index conversion "
+#~ "between each other."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Do not construct directly, use "
+#~ ":any:`bijective_layout` instead. See the "
+#~ "documentation of :any:`bijective_layout` for "
+#~ "more details."
+#~ msgstr ""
+
+#~ msgid "source layout."
+#~ msgstr ""
+
+#~ msgid "destination layout."
+#~ msgstr ""
+
+#~ msgid ":obj:`bijective_layout`"
+#~ msgstr ""
+
+#~ msgid "Declare a layout"
+#~ msgstr ""
+
+#~ msgid "**Methods:**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`backward_index "
+#~ "<tvm.tir.BijectiveLayout.backward_index>`\\ \\(index\\)"
+#~ msgstr ""
+
+#~ msgid "Given the indices of the dst-layout, infer the src index."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`backward_shape "
+#~ "<tvm.tir.BijectiveLayout.backward_shape>`\\ \\(shape\\)"
+#~ msgstr ""
+
+#~ msgid "Given the shape of the dst-layout, infer the src shape."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`forward_index "
+#~ "<tvm.tir.BijectiveLayout.forward_index>`\\ \\(index\\)"
+#~ msgstr ""
+
+#~ msgid "Given the indices of the src-layout, infer the dst index."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`forward_shape "
+#~ "<tvm.tir.BijectiveLayout.forward_shape>`\\ \\(shape\\)"
+#~ msgstr ""
+
+#~ msgid "Given the shape of the src-layout, infer the dst shape."
+#~ msgstr ""
+
+#~ msgid "The indices in dst-layout."
+#~ msgstr ""
+
+#~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid "**src_index** -- The inferred indices in src-layout."
+#~ msgstr ""
+
+#~ msgid "返回类型"
+#~ msgstr ""
+
+#~ msgid "The shape in dst-layout."
+#~ msgstr ""
+
+#~ msgid "**src_shape** -- The inferred shape in src-layout."
+#~ msgstr ""
+
+#~ msgid "The indices in src-layout."
+#~ msgstr ""
+
+#~ msgid "**dst_index** -- The inferred indices in dst-layout."
+#~ msgstr ""
+
+#~ msgid "The shape in src-layout."
+#~ msgstr ""
+
+#~ msgid "**dst_shape** -- The inferred shape in dst-layout."
+#~ msgstr ""
+
+#~ msgid "The block Variable."
+#~ msgstr ""
+
+#~ msgid "The read buffer regions of the block."
+#~ msgstr ""
+
+#~ msgid "The write buffer regions of the block."
+#~ msgstr ""
+
+#~ msgid "the name_hint of the block."
+#~ msgstr ""
+
+#~ msgid "The body of the block."
+#~ msgstr ""
+
+#~ msgid "The init block of the reduction block"
+#~ msgstr ""
+
+#~ msgid "The buffer allocations"
+#~ msgstr ""
+
+#~ msgid "The subregion buffer match"
+#~ msgstr ""
+
+#~ msgid "Additional annotation hints."
+#~ msgstr ""
+
+#~ msgid "The location of this block in the source code."
+#~ msgstr ""
+
+#~ msgid "The binding values of the block var."
+#~ msgstr ""
+
+#~ msgid "The predicate of the block."
+#~ msgstr ""
+
+#~ msgid "The block to realize"
+#~ msgstr ""
+
+#~ msgid "The location of this block_realize in the source code."
+#~ msgstr ""
+
+#~ msgid "Glossary:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Block scope: A contiguous subtree of "
+#~ "the sref tree, rooted at each "
+#~ "block sref, whose components are:"
+#~ msgstr ""
+
+#~ msgid "scope root: a block sref"
+#~ msgstr ""
+
+#~ msgid "internal srefs: loop srefs"
+#~ msgstr ""
+
+#~ msgid "scope leaves: block srefs"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Child block: The scope leaf blocks "
+#~ "under the scope root or a specific"
+#~ " internal sref"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_deps_by_dst <tvm.tir.BlockScope.get_deps_by_dst>`\\"
+#~ " \\(block\\)"
+#~ msgstr ""
+
+#~ msgid "Get all dependencies whose `dst` is the target `block`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_deps_by_src <tvm.tir.BlockScope.get_deps_by_src>`\\"
+#~ " \\(block\\)"
+#~ msgstr ""
+
+#~ msgid "Get all dependencies whose `src` is the target`block`."
+#~ msgstr ""
+
+#~ msgid "The queried block"
+#~ msgstr ""
+
+#~ msgid "**blocks** -- The dependencies"
+#~ msgstr ""
+
+#~ msgid "The value of the expression."
+#~ msgstr ""
+
+#~ msgid "The lanes of the expression."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Buffer provide a way to represent "
+#~ "data layout specialization of data "
+#~ "structure in TVM."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Do not construct directly, use "
+#~ ":py:func:`~decl_buffer` instead. See the "
+#~ "documentation of :py:func:`decl_buffer` for "
+#~ "more details."
+#~ msgstr ""
+
+#~ msgid ":obj:`decl_buffer`"
+#~ msgstr ""
+
+#~ msgid "Declare a buffer"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`access_ptr <tvm.tir.Buffer.access_ptr>`\\ "
+#~ "\\(access\\_mask\\[\\, ptr\\_type\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get an access pointer to the head of buffer."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`scope <tvm.tir.Buffer.scope>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Return the storage scope associated with this buffer."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`vload <tvm.tir.Buffer.vload>`\\ \\(begin\\[\\, dtype\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Generate an Expr that loads dtype from begin index."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`vstore <tvm.tir.Buffer.vstore>`\\ \\(begin\\, value\\)"
+#~ msgstr ""
+
+#~ msgid "Generate a Stmt that store value into begin index."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This is the recommended method to "
+#~ "get buffer data ptress when interacting"
+#~ " with external functions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The access pattern MASK. Indicate "
+#~ "whether the access will read or "
+#~ "write to the data content."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The data type of the result "
+#~ "pointer. Do not specify unless we "
+#~ "want to cast pointer to specific "
+#~ "type."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The number of lanes for the data"
+#~ " type. This value is greater than "
+#~ "one for vector types."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The offset of pointer. We can use"
+#~ " it to offset by the number of"
+#~ " elements from the address of ptr."
+#~ msgstr ""
+
+#~ msgid "实际案例"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Return the storage scope associated with"
+#~ " this buffer. :returns: **scope** -- "
+#~ "The storage scope associated with this"
+#~ " buffer. :rtype: str"
+#~ msgstr ""
+
+#~ msgid "The beginning index in unit of Buffer.dtype"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The data type to be loaded, can"
+#~ " be vector type which have lanes "
+#~ "that is multiple of Buffer.dtype"
+#~ msgstr ""
+
+#~ msgid "**load** -- The corresponding load expression."
+#~ msgstr ""
+
+#~ msgid "The value to be stored."
+#~ msgstr ""
+
+#~ msgid "**store** -- The corresponding store stmt."
+#~ msgstr ""
+
+#~ msgid "The buffer to be loaded."
+#~ msgstr ""
+
+#~ msgid "The buffer indices."
+#~ msgstr ""
+
+#~ msgid "The buffer."
+#~ msgstr ""
+
+#~ msgid "The value we to be stored."
+#~ msgstr ""
+
+#~ msgid "The realize condition."
+#~ msgstr ""
+
+#~ msgid "The body of the statement."
+#~ msgstr ""
+
+#~ msgid "The buffer of the buffer region"
+#~ msgstr ""
+
+#~ msgid "The region array of the buffer region"
+#~ msgstr ""
+
+#~ msgid "The indices location to be stored."
+#~ msgstr ""
+
+#~ msgid "The return data type"
+#~ msgstr ""
+
+#~ msgid "The function to be called, or the name to the global tvm.Op"
+#~ msgstr ""
+
+#~ msgid "The input arguments to the call"
+#~ msgstr ""
+
+#~ msgid "The data type"
+#~ msgstr ""
+
+#~ msgid "The value of the function."
+#~ msgstr ""
+
+#~ msgid "The left arguments of the reducer."
+#~ msgstr ""
+
+#~ msgid "The right arguments of the reducer."
+#~ msgstr ""
+
+#~ msgid "The reduction results."
+#~ msgstr ""
+
+#~ msgid "The identity elements."
+#~ msgstr ""
+
+#~ msgid "The expression to be evalued."
+#~ msgstr ""
+
+#~ msgid "The constant value."
+#~ msgstr ""
+
+#~ msgid "The loop variable."
+#~ msgstr ""
+
+#~ msgid "The beginning value."
+#~ msgstr ""
+
+#~ msgid "The length of the loop."
+#~ msgstr ""
+
+#~ msgid "The type of the for."
+#~ msgstr ""
+
+#~ msgid "The thread this loop binds to. Only valid if kind is ThreadBinding"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "ForKind can change the control flow "
+#~ "semantics of the loop and need to"
+#~ " be considered in all TIR passes."
+#~ msgstr ""
+
+#~ msgid "The expression"
+#~ msgstr ""
+
+#~ msgid "The statement to execute if condition is true."
+#~ msgstr ""
+
+#~ msgid "The statement to execute if condition is false."
+#~ msgstr ""
+
+#~ msgid "IterVar represents axis iterations in the computation."
+#~ msgstr ""
+
+#~ msgid "The domain of the iteration."
+#~ msgstr ""
+
+#~ msgid "The internal variable that is used for iteration."
+#~ msgstr ""
+
+#~ msgid "The iteration type."
+#~ msgstr ""
+
+#~ msgid "The thread type tag."
+#~ msgstr ""
+
+#~ msgid ":obj:`te.thread_axis`"
+#~ msgstr ""
+
+#~ msgid "Create thread axis IterVar."
+#~ msgstr ""
+
+#~ msgid ":obj:`te.reduce_axis`"
+#~ msgstr ""
+
+#~ msgid "Create reduce axis IterVar."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Layout is composed of upper cases, "
+#~ "lower cases and numbers, where upper "
+#~ "case indicates a primal axis and "
+#~ "the corresponding lower case with factor"
+#~ " size indicates the subordinate axis. "
+#~ "For example, NCHW16c can describe a "
+#~ "5-D tensor of [batch_size, channel, "
+#~ "height, width, channel_block]. Here "
+#~ "subordinate axis channel_block=16 is the "
+#~ "factor size of the primal axis C"
+#~ " (channel)."
+#~ msgstr ""
+
+#~ msgid ":obj:`layout`"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`factor_of <tvm.tir.Layout.factor_of>`\\ \\(axis\\)"
+#~ msgstr ""
+
+#~ msgid "Get the factor size of the subordinate axis."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`index_of <tvm.tir.Layout.index_of>`\\ \\(axis\\)"
+#~ msgstr ""
+
+#~ msgid "Get the index of an axis"
+#~ msgstr ""
+
+#~ msgid "The axis name, need to be [a-z,A-Z]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**factor** -- the size of the "
+#~ "subordinate-axis of axis (if axis is"
+#~ " a primal-axis), or the size of"
+#~ " axis itself (if axis is a "
+#~ "subordinate-axis). Return -1 if axis "
+#~ "is not in the layout."
+#~ msgstr ""
+
+#~ msgid "**index** -- The index of the axis, -1 if not found."
+#~ msgstr ""
+
+#~ msgid "The variable in the binding."
+#~ msgstr ""
+
+#~ msgid "The value in to be binded."
+#~ msgstr ""
+
+#~ msgid "The body expression."
+#~ msgstr ""
+
+#~ msgid "The data type."
+#~ msgstr ""
+
+#~ msgid "The buffer variable in the load expression."
+#~ msgstr ""
+
+#~ msgid "The index in the load."
+#~ msgstr ""
+
+#~ msgid "The load predicate."
+#~ msgstr ""
+
+#~ msgid "The target buffer"
+#~ msgstr ""
+
+#~ msgid "The region of source buffer"
+#~ msgstr ""
+
+#~ msgid "The input value"
+#~ msgstr ""
+
+#~ msgid "The buffer to be prefetched."
+#~ msgstr ""
+
+#~ msgid "The bounds to be prefetched."
+#~ msgstr ""
+
+#~ msgid "List of input parameters to the function."
+#~ msgstr ""
+
+#~ msgid "The body of the function."
+#~ msgstr ""
+
+#~ msgid "The return type annotation of the function."
+#~ msgstr ""
+
+#~ msgid "The buffer binding map."
+#~ msgstr ""
+
+#~ msgid "Attributes of the function, can be None"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`script <tvm.tir.PrimFunc.script>`\\ "
+#~ "\\(\\[tir\\_prefix\\, show\\_meta\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Print IRModule into TVMScript"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`specialize <tvm.tir.PrimFunc.specialize>`\\ \\(param\\_map\\)"
+#~ msgstr ""
+
+#~ msgid "Specialize parameters of PrimFunc"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`with_body <tvm.tir.PrimFunc.with_body>`\\ "
+#~ "\\(new\\_body\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a new PrimFunc with the same set signatures but a new body."
+#~ msgstr ""
+
+#~ msgid "The tir namespace prefix"
+#~ msgstr ""
+
+#~ msgid "Whether to show meta information"
+#~ msgstr ""
+
+#~ msgid "**script** -- The TVM Script of the PrimFunc"
+#~ msgstr ""
+
+#~ msgid "The mapping from function params to the instance"
+#~ msgstr ""
+
+#~ msgid "We can define a Meta TIR function with symbolic shape:"
+#~ msgstr ""
+
+#~ msgid "Then we can make it specialized with given shapes or buffers."
+#~ msgstr ""
+
+#~ msgid "The specialized function:"
+#~ msgstr ""
+
+#~ msgid "**func** -- The new function with parameter specialized"
+#~ msgstr ""
+
+#~ msgid "The new body."
+#~ msgstr ""
+
+#~ msgid "**new_func** -- The created new function."
+#~ msgstr ""
+
+#~ msgid "The data producer."
+#~ msgstr ""
+
+#~ msgid "The bound of realize"
+#~ msgstr ""
+
+#~ msgid "The realize body"
+#~ msgstr ""
+
+#~ msgid "The storage scope associated with this realization"
+#~ msgstr ""
+
+#~ msgid "The index arguments of the store."
+#~ msgstr ""
+
+#~ msgid "The base expression."
+#~ msgstr ""
+
+#~ msgid "The stride of the ramp."
+#~ msgstr ""
+
+#~ msgid "The combiner."
+#~ msgstr ""
+
+#~ msgid "The source expression."
+#~ msgstr ""
+
+#~ msgid "The iteration domain"
+#~ msgstr ""
+
+#~ msgid "The reduce condition."
+#~ msgstr ""
+
+#~ msgid "The value index."
+#~ msgstr ""
+
+#~ msgid "The initial value for output. This can be an int, float or ProducerLoad"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A schedule is a set of "
+#~ "transformations that change the order of"
+#~ " computation but preserve the semantics "
+#~ "of computation. Some example of "
+#~ "schedules: 1) Split a loop into "
+#~ "two; 2) Reorder two loops; 3) "
+#~ "Inline the computation of a specific "
+#~ "buffer into its consumer"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The schedule class stores auxiliary "
+#~ "information to schedule correctly and "
+#~ "efficiently."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Link to tutorial: "
+#~ "https://tvm.apache.org/docs/tutorials/language/schedule_primitives.html"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`annotate <tvm.tir.Schedule.annotate>`\\ "
+#~ "\\(block\\_or\\_loop\\, ann\\_key\\, ann\\_val\\)"
+#~ msgstr ""
+
+#~ msgid "Annotate a block/loop with a key value pair"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`bind <tvm.tir.Schedule.bind>`\\ \\(loop\\, thread\\_axis\\)"
+#~ msgstr ""
+
+#~ msgid "Bind the input loop to the given thread axis."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`blockize <tvm.tir.Schedule.blockize>`\\ \\(loop\\)"
+#~ msgstr ""
+
+#~ msgid "Convert the subtree rooted at a specific loop into a block."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`cache_read <tvm.tir.Schedule.cache_read>`\\ "
+#~ "\\(block\\, read\\_buffer\\_index\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Create a block that reads a buffer region into a read cache."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`cache_write <tvm.tir.Schedule.cache_write>`\\ "
+#~ "\\(block\\, write\\_buffer\\_index\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Create a block that reads a buffer region into a write cache."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`compute_at <tvm.tir.Schedule.compute_at>`\\ "
+#~ "\\(block\\, loop\\[\\, preserve\\_unit\\_loops\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute-At."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`compute_inline <tvm.tir.Schedule.compute_inline>`\\ "
+#~ "\\(block\\)"
+#~ msgstr ""
+
+#~ msgid "Inline a block into its consumer(s)."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`copy <tvm.tir.Schedule.copy>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns a copy of the schedule, "
+#~ "including both the state and the "
+#~ "symbol table, * guaranteeing that * "
+#~ "1) SRef tree is completely "
+#~ "reconstructed; * 2) The IRModule being"
+#~ " scheduled is untouched; * 3) All "
+#~ "the random variables are valid in "
+#~ "the copy, pointing to the corresponding"
+#~ " sref * reconstructed"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`decompose_reduction "
+#~ "<tvm.tir.Schedule.decompose_reduction>`\\ \\(block\\, "
+#~ "loop\\)"
+#~ msgstr ""
+
+#~ msgid "Decompose a reduction block into two separate blocks."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`enter_postproc <tvm.tir.Schedule.enter_postproc>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "A no-op that marks the start of postprocessing phase of scheduling"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`fork_seed <tvm.tir.Schedule.fork_seed>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Returns a forked random state as seed for new schedules"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`fuse <tvm.tir.Schedule.fuse>`\\ \\(\\*loops\\)"
+#~ msgstr ""
+
+#~ msgid "Fuse a list of consecutive loops into one."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get <tvm.tir.Schedule.get>`\\ \\(rand\\_var\\_or\\_sref\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns: - the corresponding Block that"
+#~ " a BlockRV evaluates to; - the "
+#~ "corresponding For that a LoopRV "
+#~ "evaluates to; - the corresponding "
+#~ "integer that a ExprRV evaluates to; "
+#~ "- the corresponding Block that a "
+#~ "block sref points to; - the "
+#~ "corresponding For that a loop sref "
+#~ "points to;"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_block <tvm.tir.Schedule.get_block>`\\ "
+#~ "\\(name\\[\\, func\\_name\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Retrieve a block in a specific function with its name"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_child_blocks <tvm.tir.Schedule.get_child_blocks>`\\"
+#~ " \\(block\\_or\\_loop\\)"
+#~ msgstr ""
+
+#~ msgid "Get the leaf blocks of a specific block/loop"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get_consumers <tvm.tir.Schedule.get_consumers>`\\ \\(block\\)"
+#~ msgstr ""
+
+#~ msgid "Get the consumers of a specific block"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get_loops <tvm.tir.Schedule.get_loops>`\\ \\(block\\)"
+#~ msgstr ""
+
+#~ msgid "Get the parent loops of the block in its scope, from outer to inner"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get_producers <tvm.tir.Schedule.get_producers>`\\ \\(block\\)"
+#~ msgstr ""
+
+#~ msgid "Get the producers of a specific block"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_sref <tvm.tir.Schedule.get_sref>`\\ "
+#~ "\\(rand\\_var\\_or\\_stmt\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns the corresponding sref to the"
+#~ " given 1) LoopRV 2) BlockRV 3) "
+#~ "Block 4) For"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`parallel <tvm.tir.Schedule.parallel>`\\ \\(loop\\)"
+#~ msgstr ""
+
+#~ msgid "Parallelize the input loop."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`remove_rv <tvm.tir.Schedule.remove_rv>`\\ \\(rand\\_var\\)"
+#~ msgstr ""
+
+#~ msgid "Remove a random variable from the symbol table"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`reorder <tvm.tir.Schedule.reorder>`\\ \\(\\*ordered\\_loops\\)"
+#~ msgstr ""
+
+#~ msgid "Reorder a list of loops."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`reverse_compute_at "
+#~ "<tvm.tir.Schedule.reverse_compute_at>`\\ \\(block\\, "
+#~ "loop\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Reverse-Compute-At."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`reverse_compute_inline "
+#~ "<tvm.tir.Schedule.reverse_compute_inline>`\\ \\(block\\)"
+#~ msgstr ""
+
+#~ msgid "Inline a block into its only producer."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`rfactor <tvm.tir.Schedule.rfactor>`\\ \\(loop\\,"
+#~ " factor\\_axis\\)"
+#~ msgstr ""
+
+#~ msgid "Factorize an associative reduction block by the specified loop."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sample_categorical "
+#~ "<tvm.tir.Schedule.sample_categorical>`\\ \\(candidates\\, "
+#~ "probs\\[\\, decision\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Sample an integer given the probability distribution"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sample_compute_location "
+#~ "<tvm.tir.Schedule.sample_compute_location>`\\ \\(block\\[\\, "
+#~ "decision\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Sample a compute-at location of the given block"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sample_perfect_tile "
+#~ "<tvm.tir.Schedule.sample_perfect_tile>`\\ \\(loop\\, "
+#~ "n\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Sample the factors to perfect tile a specific loop"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`seed <tvm.tir.Schedule.seed>`\\ \\(seed\\)"
+#~ msgstr ""
+
+#~ msgid "Seed the randomness"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`set_scope <tvm.tir.Schedule.set_scope>`\\ "
+#~ "\\(block\\, buffer\\_index\\, storage\\_scope\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Set the storage scope of a buffer,"
+#~ " where the buffer is specified by "
+#~ "the a block and a write-index"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`show <tvm.tir.Schedule.show>`\\ \\(rand\\_var\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns a string representation of the"
+#~ " value that the random variable "
+#~ "evaluates to"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`split <tvm.tir.Schedule.split>`\\ \\(loop\\, factors\\)"
+#~ msgstr ""
+
+#~ msgid "Split a loop into a list of consecutive loops."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`storage_align <tvm.tir.Schedule.storage_align>`\\ "
+#~ "\\(block\\, buffer\\_index\\, axis\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Set alignment requirement for specific "
+#~ "dimension such that stride[axis] == k"
+#~ " * factor + offset for some k."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`tensorize <tvm.tir.Schedule.tensorize>`\\ "
+#~ "\\(block\\_or\\_loop\\, tensor\\_intrin\\)"
+#~ msgstr ""
+
+#~ msgid "Tensorize the computation enclosed by loop with the tensor intrinsic."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`unannotate <tvm.tir.Schedule.unannotate>`\\ "
+#~ "\\(block\\_or\\_loop\\, ann\\_key\\)"
+#~ msgstr ""
+
+#~ msgid "Unannotate a block/loop's annotation with key ann_key"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`unroll <tvm.tir.Schedule.unroll>`\\ \\(loop\\)"
+#~ msgstr ""
+
+#~ msgid "Unroll the input loop."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`vectorize <tvm.tir.Schedule.vectorize>`\\ \\(loop\\)"
+#~ msgstr ""
+
+#~ msgid "Vectorize the input loop."
+#~ msgstr ""
+
+#~ msgid "**Attributes:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`mod <tvm.tir.Schedule.mod>`\\"
+#~ msgstr ""
+
+#~ msgid "Returns the AST of the module being scheduled"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`state <tvm.tir.Schedule.state>`\\"
+#~ msgstr ""
+
+#~ msgid "Returns the ScheduleState in the current schedule class"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`trace <tvm.tir.Schedule.trace>`\\"
+#~ msgstr ""
+
+#~ msgid "Returns the internally maintained trace of scheduling program execution"
+#~ msgstr ""
+
+#~ msgid "The block/loop to be annotated"
+#~ msgstr ""
+
+#~ msgid "The annotation key"
+#~ msgstr ""
+
+#~ msgid "The annotation value"
+#~ msgstr ""
+
+#~ msgid "Before annotate, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and do annotate:"
+#~ msgstr ""
+
+#~ msgid "After applying annotate, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Bind the input loop to the given"
+#~ " thread axis. It requires: 1) The "
+#~ "scope block that the loop is in"
+#~ " should have stage-pipeline property "
+#~ "2) All the blocks under the loop"
+#~ " are complete blocks or reduction "
+#~ "blocks, and have affine bindings 3) "
+#~ "For each block under the loop, if"
+#~ " the thread axis starts with "
+#~ "\"threadIdx`, the loop can only be "
+#~ "contained in data-parallel block iter"
+#~ " and reduction block iters' bindings. "
+#~ "Otherwise the loop can only be "
+#~ "contained in data-parallel block iters'"
+#~ " bindings"
+#~ msgstr ""
+
+#~ msgid "The loop to be bound to the thread axis"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The thread axis to be bound to "
+#~ "the loop. Possible candidates: - "
+#~ "blockIdx.x/y/z - threadIdx.x/y/z - "
+#~ "vthread.x/y/z - vthread (It is a "
+#~ "legacy behavior that will be deprecated."
+#~ " Please use `vthread.x/y/z` instead.)"
+#~ msgstr ""
+
+#~ msgid "Before bind, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and do bind:"
+#~ msgstr ""
+
+#~ msgid "After applying bind, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid "The root of the subtree."
+#~ msgstr ""
+
+#~ msgid "**result** -- The new block."
+#~ msgstr ""
+
+#~ msgid "Before blockize, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and do set_scope:"
+#~ msgstr ""
+
+#~ msgid "After applying blockize, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "blockize requires there is exactly one"
+#~ " block under the given loop and "
+#~ "the bindings of the block are "
+#~ "divisible by the subspace represented by"
+#~ " the loops starting at the given "
+#~ "loop."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Create a block that reads a buffer"
+#~ " region into a read cache. It "
+#~ "requires:"
+#~ msgstr ""
+
+#~ msgid "There is at most one block who write the buffer in the scope."
+#~ msgstr ""
+
+#~ msgid "The scope block have stage-pipeline property."
+#~ msgstr ""
+
+#~ msgid "The consumer block of the target buffer."
+#~ msgstr ""
+
+#~ msgid "The index of the buffer in block's read region."
+#~ msgstr ""
+
+#~ msgid "The target storage scope."
+#~ msgstr ""
+
+#~ msgid "**cached_block** -- The block of the cache stage"
+#~ msgstr ""
+
+#~ msgid "Before cache_read, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and cache_read:"
+#~ msgstr ""
+
+#~ msgid "After applying cache_read, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Create a block that reads a buffer"
+#~ " region into a write cache. It "
+#~ "requires:"
+#~ msgstr ""
+
+#~ msgid "There is only one block who write the buffer in the scope."
+#~ msgstr ""
+
+#~ msgid "The producer block of the target buffer."
+#~ msgstr ""
+
+#~ msgid "The index of the buffer in block's write region."
+#~ msgstr ""
+
+#~ msgid "Before cache_write, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and cache_write:"
+#~ msgstr ""
+
+#~ msgid "After applying cache_write, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Compute-At. Move a producer block "
+#~ "under the specific loop, and regenerate"
+#~ " the loops induced by the block "
+#~ "so that the buffer region produced "
+#~ "by the producer block could cover "
+#~ "those regions consumed by its consumer"
+#~ " blocks under the given loop. It "
+#~ "requires:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`block` and `loop` are under the "
+#~ "same scope, `loop` is not the "
+#~ "ancestor of `block`"
+#~ msgstr ""
+
+#~ msgid "The scope block has stage-pipeline property"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "3) The subtree of the scope block,"
+#~ " where the given block is in, "
+#~ "satisfies the compact dataflow condition. "
+#~ "i.e. all the blocks in the scope"
+#~ " block's subtree must be either "
+#~ "complete block or reduction block"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "4) The block is not an output "
+#~ "block with regard to the scope "
+#~ "block, i.e. the buffers written by "
+#~ "the block are allocated under the "
+#~ "scope block"
+#~ msgstr ""
+
+#~ msgid "All the consumers of the block are under the given loop"
+#~ msgstr ""
+
+#~ msgid "The block to be moved"
+#~ msgstr ""
+
+#~ msgid "The loop where the block to be moved under"
+#~ msgstr ""
+
+#~ msgid "Whether to keep the trivial loops whose extents are 1"
+#~ msgstr ""
+
+#~ msgid "Before compute-at, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and do compute-at:"
+#~ msgstr ""
+
+#~ msgid "After applying compute-at, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid "Inline a block into its consumer(s). It requires:"
+#~ msgstr ""
+
+#~ msgid "The block is a complete non-root block, which only produces one buffer"
+#~ msgstr ""
+
+#~ msgid "The block must not be the only leaf in the scope."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The body of the block must be "
+#~ "a BufferStore statement in the form "
+#~ "of, ``A[i, j, k, ...] = ...`` "
+#~ "where the indices of the LHS are"
+#~ " all distinct atomic variables, and "
+#~ "no variables other than those indexing"
+#~ " variables are allowed in the "
+#~ "statement."
+#~ msgstr ""
+
+#~ msgid "The block to be inlined to its consumer(s)"
+#~ msgstr ""
+
+#~ msgid "Before compute-inline, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and do compute-inline:"
+#~ msgstr ""
+
+#~ msgid "After applying compute-inline, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid "**copy** -- A new copy of the schedule"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The init block, which is translated "
+#~ "from the init statement of the "
+#~ "reduction block;"
+#~ msgstr ""
+
+#~ msgid "The update block, which is the original block without init statement."
+#~ msgstr ""
+
+#~ msgid "The init block is inserted right before the given loop."
+#~ msgstr ""
+
+#~ msgid "The schedule primitive requires:"
+#~ msgstr ""
+
+#~ msgid "The input block is a reduction block."
+#~ msgstr ""
+
+#~ msgid "The input loop is the ancestor of the block."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The input loop is not lower than"
+#~ " all the loops related to reduce "
+#~ "block var."
+#~ msgstr ""
+
+#~ msgid "The reduction block to be decomposed"
+#~ msgstr ""
+
+#~ msgid "The loop above which the init block is inserted before."
+#~ msgstr ""
+
+#~ msgid "**init_block** -- The init block"
+#~ msgstr ""
+
+#~ msgid "Before decompose-reduction, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and do decompose-reduction with specified loop:"
+#~ msgstr ""
+
+#~ msgid "After applying decompose-reduction, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**seed** -- The forked random state, "
+#~ "not the same as the current random"
+#~ " state"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Fuse a list of consecutive loops "
+#~ "into one. It requires: 1) The "
+#~ "loops can't have annotations or thread"
+#~ " bindings. 2) The (i+1)-th loop must"
+#~ " be the only child of the i-th"
+#~ " loop. 3) All loops must start "
+#~ "with 0. 4) The domain of a "
+#~ "loop to be fused cannot depend on"
+#~ " another loop to be fused."
+#~ msgstr ""
+
+#~ msgid "The loops to be fused"
+#~ msgstr ""
+
+#~ msgid "**fused_loop** -- The new loop after fusion"
+#~ msgstr ""
+
+#~ msgid "Before applying fuse, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and do fuse:"
+#~ msgstr ""
+
+#~ msgid "After applying fuse, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid "The random variable / sref to be evaluated"
+#~ msgstr ""
+
+#~ msgid "**result** -- The corresponding result"
+#~ msgstr ""
+
+#~ msgid "The name of the block"
+#~ msgstr ""
+
+#~ msgid "The name of the function"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**block** -- The block retrieved "
+#~ "IndexError is raised if 0 or "
+#~ "multiple blocks exist with the specific"
+#~ " name."
+#~ msgstr ""
+
+#~ msgid "The query block/loop"
+#~ msgstr ""
+
+#~ msgid "**blocks** -- A list of leaf blocks inside a specific block/loop"
+#~ msgstr ""
+
+#~ msgid "The block in the query"
+#~ msgstr ""
+
+#~ msgid "**consumers** -- A list of consumers of the given block"
+#~ msgstr ""
+
+#~ msgid "The query block"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**loops** -- A list of loops above"
+#~ " the given block in its scope, "
+#~ "from outer to inner"
+#~ msgstr ""
+
+#~ msgid "**producers** -- A list of producers of the given block"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Parallelize the input loop. It requires:"
+#~ " 1) The scope block that the "
+#~ "loop is in should have stage-"
+#~ "pipeline property 2) All the blocks "
+#~ "under the loop are complete blocks "
+#~ "or reduction blocks, and have affine "
+#~ "bindings 3) For each block under "
+#~ "the loop, the loop can only be "
+#~ "contained in data-parallel block iters'"
+#~ " bindings"
+#~ msgstr ""
+
+#~ msgid "The loop to be parallelized"
+#~ msgstr ""
+
+#~ msgid "Before parallel, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and do parallel:"
+#~ msgstr ""
+
+#~ msgid "After applying parallel, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid "The random variable to be removed"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Reorder a list of loops. It "
+#~ "doesn't require the loops to be "
+#~ "consecutive. It requires: 1) The loops"
+#~ " are in the same chain. That "
+#~ "means: the loops can be ordered to"
+#~ " [l_1, l_2, ... , l_n] where "
+#~ "l_i is an ancestor of l_{i+1} and"
+#~ " there are only single-branch loops"
+#~ " between l_1 and l_n (which also "
+#~ "indicates they are under the same "
+#~ "scope). 2) After reordering, the domain"
+#~ " of an outer loop cannot depend "
+#~ "on any of the inner loops. 3) "
+#~ "For every block under the loop "
+#~ "nests, its block binding must be "
+#~ "affine, and the block variables must "
+#~ "be either data parallel or reduction."
+#~ " 4) No duplicated loops are allowed"
+#~ " in the arguments."
+#~ msgstr ""
+
+#~ msgid "The loops in the new order"
+#~ msgstr ""
+
+#~ msgid "Before reorder, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and do reorder:"
+#~ msgstr ""
+
+#~ msgid "After applying reorder, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Reverse-Compute-At. Move a consumer "
+#~ "block under the specific loop, and "
+#~ "regenerate the loops induced by the "
+#~ "block so that the buffer region "
+#~ "consumed by the consumer block could "
+#~ "cover those regions produced by its "
+#~ "producer blocks under the given loop."
+#~ " It requires:"
+#~ msgstr ""
+
+#~ msgid "All the producers of the block are under the given loop"
+#~ msgstr ""
+
+#~ msgid "Before reverse-compute-at, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and do reverse-compute-at:"
+#~ msgstr ""
+
+#~ msgid "After applying reverse-compute-at, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid "Inline a block into its only producer. It requires:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The block is a complete non-root"
+#~ " block, which only produces and "
+#~ "consumes one buffer"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The only producer of the block is"
+#~ " a read-after-write producer and "
+#~ "a complete non-root block"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The body of the block must be "
+#~ "a BufferStore statement in the form "
+#~ "of, ``B[f(i, j, k, ...)] = g(i,"
+#~ " j, k, A[i, j, k, ...] ...)``"
+#~ " where the indices of each "
+#~ "`BufferLoad` on the RHS are all "
+#~ "distinct atomic variables, and no "
+#~ "variables other than those indexing "
+#~ "variables are allowed in the statement."
+#~ msgstr ""
+
+#~ msgid "The block to be inlined to its producer"
+#~ msgstr ""
+
+#~ msgid "Before reverse-compute-inline, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and do reverse-compute-inline:"
+#~ msgstr ""
+
+#~ msgid "After applying reverse-compute-inline, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "An associative reduction cannot be "
+#~ "parallelized directly, because it leads "
+#~ "to potential race condition during "
+#~ "accumulation. Alternatively, the reduction "
+#~ "could be factorized on a loop with"
+#~ " the following steps: - Step 1: "
+#~ "evenly slice the reduction into `n` "
+#~ "separate chunks, where `n` is the "
+#~ "loop extent - Step 2: compute the"
+#~ " chunks separately and write the "
+#~ "result into `n` intermediate buffers; -"
+#~ " Step 3: accumulate the `n` separate"
+#~ " buffer into the result buffer. Note"
+#~ " that the Step 2 above introduces "
+#~ "opportunities for parallelization."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "RFactor is a schedule primitive that "
+#~ "implements the transformation described above:"
+#~ " Given a block that writes to "
+#~ "buffer `B`, it factorizes a loop "
+#~ "of extent `n`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "For example, the pseudocode below "
+#~ "accumulates `B[i] = sum(A[i, : , :"
+#~ " ])`:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Suppose RFactor is applied on the "
+#~ "innermost loop `k` and `factor_axis ="
+#~ " 1`. RFactor then creates an "
+#~ "intermediate buffer and two blocks."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "1. The intermediate buffer, or \"rf-"
+#~ "buffer\" is a buffer of rank "
+#~ "`ndim(B) + 1` and size `size(B) *"
+#~ " n`, whose shape expands from "
+#~ "`shape(B)` by adding an axis of "
+#~ "`n` at the position specified by "
+#~ "`factor_axis`. For example,"
+#~ msgstr ""
+
+#~ msgid "shape(B) = [1, 2, 3], factor_axis = 0  => shape(B_rf) = [n, 1, 2, 3]"
+#~ msgstr ""
+
+#~ msgid "shape(B) = [1, 2, 3], factor_axis = 1  => shape(B_rf) = [1, n, 2, 3]"
+#~ msgstr ""
+
+#~ msgid "shape(B) = [1, 2, 3], factor_axis = 2  => shape(B_rf) = [1, 2, n, 3]"
+#~ msgstr ""
+
+#~ msgid "shape(B) = [1, 2, 3], factor_axis = 3  => shape(B_rf) = [1, 2, 3, n]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "2. The rfactor block, or \"rf-"
+#~ "block\", is a block that writes to"
+#~ " the `rf-buffer` without accumulating "
+#~ "over the loop `k`, i.e. the loop"
+#~ " `k` is converted from a reduction"
+#~ " loop to a data parallel loop. "
+#~ "In our example, the rf-block is:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "3. The write-back block, or "
+#~ "`wb-block`, is a block that "
+#~ "accumulates the rf-buffer into the "
+#~ "result buffer. All the reduction loops"
+#~ " are removed except the loop `k` "
+#~ "for accumulation. In our example, the"
+#~ " wb-block is:"
+#~ msgstr ""
+
+#~ msgid "The loop outside block for which we want to do rfactor"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The position where the new dimension "
+#~ "is placed in the new introduced "
+#~ "rfactor buffer"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**rf_block** -- The block which computes"
+#~ " partial results over each slices "
+#~ "(i.e., the first block as described "
+#~ "in the above illustration)"
+#~ msgstr ""
+
+#~ msgid "Before rfactor, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and do rfactor:"
+#~ msgstr ""
+
+#~ msgid "After applying rfactor, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Rfactor requires: 1) `loop` has only "
+#~ "one child block, and it is a "
+#~ "reduction block; 2) `loop` is a "
+#~ "reduction loop, i.e. the loop variable"
+#~ " is bound to only reduction variables"
+#~ " in the block binding; 3) `loop` "
+#~ "is not parallelized, vectorized, unrolled "
+#~ "or bound to any thread axis; 4)"
+#~ " The block scope that `loop` is "
+#~ "in is a staged-pipeline; 5) The"
+#~ " outermost loop outside the reduction "
+#~ "block should has the reduction block "
+#~ "as its first child block; 6) The"
+#~ " outermost reduction loop should have "
+#~ "only one child block; 7) An unary"
+#~ " extent loop that is not bound "
+#~ "to any reduction or data parallel "
+#~ "variables in the block binding should"
+#~ " not appear under some reduction "
+#~ "loop; 8) The reduction block should "
+#~ "write to only one buffer, and its"
+#~ " init and body are both simple "
+#~ "`BufferStore`s, and the pattern is "
+#~ "registered as an associative reducer. "
+#~ "The pre-defined patterns include: plus,"
+#~ " multiplication, min and max; 9) Each"
+#~ " of the loops on top of the "
+#~ "block cannot be bound to a data"
+#~ " parallel and a reduction block "
+#~ "binding at the same time; 10) "
+#~ "`factor_axis` should be in range "
+#~ "`[-ndim(B) - 1, ndim(B)]`, where `B` "
+#~ "is the buffer that the reduction "
+#~ "block writes to. Negative indexing is"
+#~ " normalized according to numpy convention."
+#~ msgstr ""
+
+#~ msgid "The candidates to be sampled from"
+#~ msgstr ""
+
+#~ msgid "The probability of each candidate"
+#~ msgstr ""
+
+#~ msgid "The sampling decision, if any"
+#~ msgstr ""
+
+#~ msgid "**result** -- The random variable sampled from candidates"
+#~ msgstr ""
+
+#~ msgid "The block whose compute-at location is to be sampled"
+#~ msgstr ""
+
+#~ msgid "The sampling decision"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**result** -- The sampled loop where "
+#~ "the input block is to be computed"
+#~ " at"
+#~ msgstr ""
+
+#~ msgid "The loop to be tiled"
+#~ msgstr ""
+
+#~ msgid "The number of tiles to be sampled"
+#~ msgstr ""
+
+#~ msgid "The maximum tile size allowed to be sampled in the innermost loop"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**result** -- A list of length "
+#~ "`n`, the random perfect tile sizes "
+#~ "sampled"
+#~ msgstr ""
+
+#~ msgid "The new random seed, -1 if use device random, otherwise non-negative"
+#~ msgstr ""
+
+#~ msgid "The producer block of the buffer"
+#~ msgstr ""
+
+#~ msgid "The index of the buffer in block's write region"
+#~ msgstr ""
+
+#~ msgid "The storage scope to be set"
+#~ msgstr ""
+
+#~ msgid "Before set_scope, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "After applying set_scope, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Set_scope requires the buffer to be "
+#~ "an intermediate buffer defined via "
+#~ "`alloc_buffer`."
+#~ msgstr ""
+
+#~ msgid "The random variable to be evaluated"
+#~ msgstr ""
+
+#~ msgid "**str_repr** -- The string representation"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Split a loop into a list of "
+#~ "consecutive loops. It requires: 1) The"
+#~ " loop can't have annotation or thread"
+#~ " binding. 2) The loop must start "
+#~ "with 0. Predicates may be added to"
+#~ " ensure the total loop numbers keeps"
+#~ " unchanged. In `factors`, at most one"
+#~ " of the factors can be None, "
+#~ "which will be automatically inferred."
+#~ msgstr ""
+
+#~ msgid "The loop to be split"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The splitting factors Potential inputs "
+#~ "are: - None - ExprRV - Positive"
+#~ " constant integers"
+#~ msgstr ""
+
+#~ msgid "**split_loops** -- The new loops after split"
+#~ msgstr ""
+
+#~ msgid "Before split, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and do split:"
+#~ msgstr ""
+
+#~ msgid "After applying split, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Set alignment requirement for specific "
+#~ "dimension such that stride[axis] == k"
+#~ " * factor + offset for some k."
+#~ " This is useful to set memory "
+#~ "layout for more friendly memory access"
+#~ " pattern. For example, we can set "
+#~ "alignment to be factor=2, offset=1 to"
+#~ " avoid bank conflict for thread "
+#~ "access on higher dimension in GPU "
+#~ "shared memory."
+#~ msgstr ""
+
+#~ msgid "The producer block of the buffer."
+#~ msgstr ""
+
+#~ msgid "The dimension to be specified for alignment."
+#~ msgstr ""
+
+#~ msgid "The factor multiple of alignment."
+#~ msgstr ""
+
+#~ msgid "The required offset factor."
+#~ msgstr ""
+
+#~ msgid "Before storage_align, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and do storage_align:"
+#~ msgstr ""
+
+#~ msgid "After applying storage_align, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid "After lowering passes, buffer B will have strides as [129, 1]."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Storage_align requires the buffer to be"
+#~ " an intermediate buffer defined via "
+#~ "`alloc_buffer`."
+#~ msgstr ""
+
+#~ msgid "The loop to be tensorized."
+#~ msgstr ""
+
+#~ msgid "The tensor intrin or the name of the tensor intrin."
+#~ msgstr ""
+
+#~ msgid "Before tensorize, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Declare and register the tensor intrinsic:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and do tensorize:"
+#~ msgstr ""
+
+#~ msgid "After applying tensorize, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid "The block/loop to be unannotated"
+#~ msgstr ""
+
+#~ msgid "Before unannotate, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "After applying unannotate, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid "Unroll the input loop. It requires nothing"
+#~ msgstr ""
+
+#~ msgid "The loop to be unrolled"
+#~ msgstr ""
+
+#~ msgid "Before unroll, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and do unroll:"
+#~ msgstr ""
+
+#~ msgid "After applying unroll, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Vectorize the input loop. It requires:"
+#~ " 1) The scope block that the "
+#~ "loop is in should have stage-"
+#~ "pipeline property 2) All the blocks "
+#~ "under the loop are complete blocks "
+#~ "or reduction blocks, and have affine "
+#~ "bindings 3) For each block under "
+#~ "the loop, the loop can only be "
+#~ "contained in data-parallel block iters'"
+#~ " bindings"
+#~ msgstr ""
+
+#~ msgid "The loop to be vectorized"
+#~ msgstr ""
+
+#~ msgid "Before vectorize, in TensorIR, the IR is:"
+#~ msgstr ""
+
+#~ msgid "Create the schedule and do vectorize:"
+#~ msgstr ""
+
+#~ msgid "After applying vectorize, the IR becomes:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The data structure contains the "
+#~ "following information 1) The AST being"
+#~ " scheduled (mod) 2) The sref tree "
+#~ "of schedulable statements (indicated by "
+#~ "the srefs) 3) The dependency information"
+#~ " of each block scope (block_info) 4)"
+#~ " A reverse mapping from the AST "
+#~ "nodes to that in the sref tree "
+#~ "(get_sref) 5) A debug flag, if "
+#~ "set, extra checking is enabled "
+#~ "(debug_mask)"
+#~ msgstr ""
+
+#~ msgid "The AST of the module being scheduled"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Do extra correctness checking after the"
+#~ " object construction and each time "
+#~ "after calling the Replace method."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_block_scope "
+#~ "<tvm.tir.ScheduleState.get_block_scope>`\\ \\(block\\_sref\\)"
+#~ msgstr ""
+
+#~ msgid "Get the BlockScope correpsonding to the block sref"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get_sref <tvm.tir.ScheduleState.get_sref>`\\ \\(stmt\\)"
+#~ msgstr ""
+
+#~ msgid "Return the corresponding sref that points to the stmt"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`replace <tvm.tir.ScheduleState.replace>`\\ "
+#~ "\\(src\\_sref\\, tgt\\_stmt\\[\\, "
+#~ "block\\_sref\\_reuse\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Replace the part of the AST, as"
+#~ " being pointed to by `src_sref`, with"
+#~ " a specific statement `tgt_stmt`, and "
+#~ "maintain the sref tree accordingly."
+#~ msgstr ""
+
+#~ msgid "The block sref to be retrieved"
+#~ msgstr ""
+
+#~ msgid "**sref** -- The corresponding sref"
+#~ msgstr ""
+
+#~ msgid "The schedulable statement in the TensorIR to be retrieved for its sref"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Replace the part of the AST, as"
+#~ " being pointed to by `src_sref`, with"
+#~ " a specific statement `tgt_stmt`, and "
+#~ "maintain the sref tree accordingly. "
+#~ "Replace will try to perform copy "
+#~ "on write as much as possible when"
+#~ " the ScheduleState holds the only "
+#~ "copy to the IRModule and IR nodes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Only 3 types of replacements are "
+#~ "allowed: from `src_sref->stmt` to `tgt_stmt`."
+#~ " 1) Block -> Block 2) Loop ->"
+#~ " Loop 3) Loop -> BlockRealize"
+#~ msgstr ""
+
+#~ msgid "The sref to the statement to be replaced in the TensorIR AST"
+#~ msgstr ""
+
+#~ msgid "The statement to be replaced to"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Maps an old block (to be replaced"
+#~ " in the subtree under `src_sref->stmt`) "
+#~ "to a new block (replaced to, in"
+#~ " the subtree under `tgt_stmt`), and "
+#~ "enforces reuse of srefs between them "
+#~ "(rather than create new srefs) i.e. "
+#~ "after being replaced, the sref that "
+#~ "points to the old block will point"
+#~ " to the new one"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The reuse of loop srefs are "
+#~ "detected automatically according to the "
+#~ "reuse of loop vars."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Select may compute both true_value and"
+#~ " false_value. Use :py:class:`tvm.tir.if_then_else` "
+#~ "instead if you want to get a "
+#~ "conditional expression that only evaluates "
+#~ "the correct branch."
+#~ msgstr ""
+
+#~ msgid "The condition expression."
+#~ msgstr ""
+
+#~ msgid "The value to take when condition is true."
+#~ msgstr ""
+
+#~ msgid "The value to take when condition is false."
+#~ msgstr ""
+
+#~ msgid "The statements"
+#~ msgstr ""
+
+#~ msgid "The vectors"
+#~ msgstr ""
+
+#~ msgid "The indices"
+#~ msgstr ""
+
+#~ msgid "which is greater or equal to zero."
+#~ msgstr ""
+
+#~ msgid "The name"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Glossary - Block sref: An StmtSref "
+#~ "that points to a TensorIR block. -"
+#~ " Loop sref: An StmtSRef that points"
+#~ " to a TensorIR for loop. - "
+#~ "Parent sref: The parent sref of an"
+#~ " sref is the block/loop sref that "
+#~ "points to its closest schedulable "
+#~ "statement of its ancestors on the "
+#~ "TensorIR AST. - Root sref: Sref to"
+#~ " the root block. Every sref has "
+#~ "exactly one parent sref except for "
+#~ "root sref. - Sref tree: The "
+#~ "parent-children-relationship of srefs that"
+#~ " forms a tree, uniquely determined by"
+#~ " the TensorIR AST."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`inline_mark <tvm.tir.StmtSRef.inline_mark>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A special StmtSRef, which doesn't point"
+#~ " to any stmt in the AST, only"
+#~ " serving as a \"mark\" to hint "
+#~ "compute-at to do the work of "
+#~ "compute-inline"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`root_mark <tvm.tir.StmtSRef.root_mark>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A special StmtSRef, which doesn't point"
+#~ " to any stmt in the AST, only"
+#~ " serving as a \"mark\" to hint "
+#~ "compute-at to do nothing"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`parent <tvm.tir.StmtSRef.parent>`\\"
+#~ msgstr ""
+
+#~ msgid "The parent sref"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`stmt <tvm.tir.StmtSRef.stmt>`\\"
+#~ msgstr ""
+
+#~ msgid "The block/for stmt the object refers to"
+#~ msgstr ""
+
+#~ msgid "The buffer Variable."
+#~ msgstr ""
+
+#~ msgid "The value we want to store."
+#~ msgstr ""
+
+#~ msgid "The index in the store expression."
+#~ msgstr ""
+
+#~ msgid "The store predicate."
+#~ msgstr ""
+
+#~ msgid "The function to describe the computation."
+#~ msgstr ""
+
+#~ msgid "The function of the implementation for the execution."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get <tvm.tir.TensorIntrin.get>`\\ \\(name\\)"
+#~ msgstr ""
+
+#~ msgid "Look up a tensor intrinsic by its name."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`register <tvm.tir.TensorIntrin.register>`\\ "
+#~ "\\(name\\, desc\\, impl\\)"
+#~ msgstr ""
+
+#~ msgid "Register a tensor intrinsic with its name."
+#~ msgstr ""
+
+#~ msgid "The name of the TensorIntrin to look up."
+#~ msgstr ""
+
+#~ msgid "**result** -- The TensorIntrin with the specified name."
+#~ msgstr ""
+
+#~ msgid "The name of the TensorIntrin to register."
+#~ msgstr ""
+
+#~ msgid "The termination condition."
+#~ msgstr ""
+
+#~ msgid "Input argument."
+#~ msgstr ""
+
+#~ msgid "The location of this operator in the source code."
+#~ msgstr ""
+
+#~ msgid "**y** -- The result."
+#~ msgstr ""
+
+#~ msgid "arguments"
+#~ msgstr ""
+
+#~ msgid "List of symbolic boolean expressions"
+#~ msgstr ""
+
+#~ msgid "**expr** -- Expression"
+#~ msgstr ""
+
+#~ msgid "**bijective_layout** -- The created bijective layout"
+#~ msgstr ""
+
+#~ msgid "The data type of the result."
+#~ msgstr ""
+
+#~ msgid "The extern function name."
+#~ msgstr ""
+
+#~ msgid "Positional arguments."
+#~ msgstr ""
+
+#~ msgid "**call** -- The call expression."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Intrinsics can be overloaded with "
+#~ "multiple data types via the intrinsic"
+#~ " translation rule."
+#~ msgstr ""
+
+#~ msgid "The intrinsic function name."
+#~ msgstr ""
+
+#~ msgid "The name of the llvm intrinsic function."
+#~ msgstr ""
+
+#~ msgid "Poistional arguments."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The argument to packed function can "
+#~ "be Expr or Buffer. The argument is"
+#~ " the corresponding POD type when Expr"
+#~ " is presented."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "When the argument is Buffer, the "
+#~ "corresponding PackedFunc will recieve an "
+#~ "TVMArrayHandle whose content is valid "
+#~ "during the callback period. If the "
+#~ "PackedFunc is a python callback, then"
+#~ " the corresponding argument is NDArray."
+#~ msgstr ""
+
+#~ msgid ":obj:`te.extern`"
+#~ msgstr ""
+
+#~ msgid "Create tensor with extern function call."
+#~ msgstr ""
+
+#~ msgid "Input 32 or 64 bit integer. The result is undefined if the input is 0."
+#~ msgstr ""
+
+#~ msgid "A binary function which takes two Expr as input to return a Expr."
+#~ msgstr ""
+
+#~ msgid "A function which takes a type string as input to return a const Expr."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**reducer** -- A function which creates"
+#~ " a reduce expression over axis. There"
+#~ " are two ways to use it:  1."
+#~ " accept (expr, axis, where) to "
+#~ "produce an Reduce Expr on    specified"
+#~ " axis; 2. simply use it with "
+#~ "multiple Exprs."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**reducer** -- A function which creates"
+#~ " a reduce expression over axis. There"
+#~ " are two ways to use it:"
+#~ msgstr ""
+
+#~ msgid "accept (expr, axis, where) to produce an Reduce Expr on specified axis;"
+#~ msgstr ""
+
+#~ msgid "simply use it with multiple Exprs."
+#~ msgstr ""
+
+#~ msgid "示例"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Normally buffer is created automatically "
+#~ "during lower and build. This is "
+#~ "only needed if user want to "
+#~ "specify their own buffer layout."
+#~ msgstr ""
+
+#~ msgid "See the note below for detailed discussion on usage of buffer."
+#~ msgstr ""
+
+#~ msgid "The shape of the buffer."
+#~ msgstr ""
+
+#~ msgid "The name of the buffer."
+#~ msgstr ""
+
+#~ msgid "The data pointer in the buffer."
+#~ msgstr ""
+
+#~ msgid "The stride of the buffer."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The beginning offset of the array "
+#~ "to data. In terms of number of "
+#~ "elements of dtype."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The storage scope of the buffer, "
+#~ "if not global. If scope equals "
+#~ "empty string, it means it is "
+#~ "global memory."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The alignment of data pointer in "
+#~ "bytes. If -1 is passed, the "
+#~ "alignment will be set to TVM's "
+#~ "internal default."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The factor of elem_offset field, when"
+#~ " set, elem_offset is required to be"
+#~ " multiple of offset_factor. If 0 is"
+#~ " pssed, the alignment will be set "
+#~ "to 1. if non-zero is passed, "
+#~ "we will created a Var for "
+#~ "elem_offset if elem_offset is not None."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "auto_broadcast buffer allows one to "
+#~ "implement broadcast computation without "
+#~ "considering whether dimension size equals "
+#~ "to one. TVM maps buffer[i][j][k] -> "
+#~ "buffer[i][0][k] if dimension j's shape "
+#~ "equals 1."
+#~ msgstr ""
+
+#~ msgid "The location of the decl_buffer creation in the source."
+#~ msgstr ""
+
+#~ msgid "**buffer** -- The created buffer"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Here's an example of how broadcast "
+#~ "buffer can be used to define a "
+#~ "symbolic broadcast operation,"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Buffer data structure reflects the "
+#~ "DLTensor structure in dlpack. While "
+#~ "DLTensor data structure is very general,"
+#~ " it is usually helpful to create "
+#~ "function that only handles specific case"
+#~ " of data structure and make compiled"
+#~ " function benefit from it."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If user pass strides and elem_offset "
+#~ "is passed as None when constructing "
+#~ "the function, then the function will "
+#~ "be specialized for the DLTensor that "
+#~ "is compact and aligned. If user "
+#~ "pass a fully generic symbolic array "
+#~ "to the strides, then the resulting "
+#~ "function becomes fully generic."
+#~ msgstr ""
+
+#~ msgid "The left hand operand, known to be non-negative."
+#~ msgstr ""
+
+#~ msgid "The right hand operand, known to be non-negative."
+#~ msgstr ""
+
+#~ msgid "The location of this operator in the source."
+#~ msgstr ""
+
+#~ msgid "**res** -- The result expression."
+#~ msgstr ""
+
+#~ msgid "When operands are integers, returns truncdiv(a, b, span)."
+#~ msgstr ""
+
+#~ msgid "The left hand operand"
+#~ msgstr ""
+
+#~ msgid "The right hand operand"
+#~ msgstr ""
+
+#~ msgid "**z** -- The result."
+#~ msgstr ""
+
+#~ msgid "The condition"
+#~ msgstr ""
+
+#~ msgid "The result expression if cond is true."
+#~ msgstr ""
+
+#~ msgid "The result expression if cond is false."
+#~ msgstr ""
+
+#~ msgid "**result** -- The result of conditional expression."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Unlike Select, if_then_else will not "
+#~ "execute the branch that does not "
+#~ "satisfy the condition. You can use "
+#~ "it to guard against out of bound"
+#~ " access. Unlike Select, if_then_else cannot"
+#~ " be vectorized if some lanes in "
+#~ "the vector have different conditions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Use this function to split non-"
+#~ "negative indices. This function may take"
+#~ " advantage of operands' non-negativeness."
+#~ msgstr ""
+
+#~ msgid "Compute the remainder of indexdiv. a and b are non-negative."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A layout representation is composed of"
+#~ " upper cases, lower cases and "
+#~ "numbers, where upper case indicates a"
+#~ " primal axis and the corresponding "
+#~ "lower case with factor size indicates"
+#~ " the subordinate axis. For example, "
+#~ "NCHW16c can describe a 5-D tensor "
+#~ "of [batch_size, channel, height, width, "
+#~ "channel_block]. Here subordinate axis "
+#~ "channel_block=16 is the factor size of"
+#~ " the primal axis C (channel)."
+#~ msgstr ""
+
+#~ msgid "**layout** -- The created layout"
+#~ msgstr ""
+
+#~ msgid "The reduction IterVar axis"
+#~ msgstr ""
+
+#~ msgid "Filtering predicate of the reduction."
+#~ msgstr ""
+
+#~ msgid "**value** -- The result value."
+#~ msgstr ""
+
+#~ msgid "**value** -- The maximum value of dtype."
+#~ msgstr ""
+
+#~ msgid "**value** -- The minimum value of dtype."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Round elements of the array to the"
+#~ " nearest integer. This intrinsic uses "
+#~ "llvm.nearbyint instead of llvm.round which "
+#~ "is faster but will results different "
+#~ "from te.round. Notably nearbyint rounds "
+#~ "according to the rounding mode, whereas"
+#~ " te.round (llvm.round) ignores that. For"
+#~ " differences between the two see: "
+#~ "https://en.cppreference.com/w/cpp/numeric/math/round "
+#~ "https://en.cppreference.com/w/cpp/numeric/math/nearbyint"
+#~ msgstr ""
+
+#~ msgid "The exponent"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Execute a multiplication between two "
+#~ "Q-numbers x and y followed by a"
+#~ " right shift s. The mathematical "
+#~ "expression is:"
+#~ msgstr ""
+
+#~ msgid "out = round(x*y*2^-s)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "More about Q-numbers here: "
+#~ "https://en.wikipedia.org/wiki/Q_(number_format) The "
+#~ "rounding rule is to the nearest "
+#~ "value, rounding half up (i.e., "
+#~ "round(x.1) = x and round (x.5) ="
+#~ " x+1)"
+#~ msgstr ""
+
+#~ msgid "First Q-number"
+#~ msgstr ""
+
+#~ msgid "Second Q-number"
+#~ msgstr ""
+
+#~ msgid "Number of fractional bits in x and y. Needs to be > 0"
+#~ msgstr ""
+
+#~ msgid "Integer shift"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The returned tir expression, whose data"
+#~ " type is int, float or void "
+#~ "pointer."
+#~ msgstr ""
+
+#~ msgid "**ret** -- The return expression"
+#~ msgstr ""
+
+#~ msgid "**stmt_list** -- The unpacked list of statements"
+#~ msgstr ""
+
+#~ msgid "List of statements to be combined as sequence."
+#~ msgstr ""
+
+#~ msgid "**stmt** -- The combined statement."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The trace function allows to trace "
+#~ "specific tensor at the runtime. The "
+#~ "tracing value should come as last "
+#~ "argument. The trace action should be "
+#~ "specified, by default tvm.default_trace_action "
+#~ "is used."
+#~ msgstr ""
+
+#~ msgid "The name of the trace action."
+#~ msgstr ""
+
+#~ msgid ":obj:`tvm.tir.call_packed`"
+#~ msgstr ""
+
+#~ msgid "Creates packed function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The truncated value of the scalar "
+#~ "x is the nearest integer i which"
+#~ " is closer to zero than x is."
+#~ msgstr ""
+
+#~ msgid "This is the default integer division behavior in C."
+#~ msgstr ""
+
+#~ msgid "Namespace of all TIR transformations"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Apply <tvm.tir.transform.Apply>`\\ \\(ftransform\\)"
+#~ msgstr ""
+
+#~ msgid "Apply ftransform to each function in the Module."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`BF16CastElimination "
+#~ "<tvm.tir.transform.BF16CastElimination>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Eliminate verbose casting between fp32 "
+#~ "and bf16 Checks if the AST has "
+#~ "the pattern: castto32(castto16(some_fp32_op(...))) "
+#~ "The verbose casting is generated by "
+#~ "BF16Promote for multiple bf16 Ops in "
+#~ "a row."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`BF16Legalize <tvm.tir.transform.BF16Legalize>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Legalize bf16 typed Ops."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`BF16Promote <tvm.tir.transform.BF16Promote>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Promote bf16 to fp32."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`BF16TypeLowering "
+#~ "<tvm.tir.transform.BF16TypeLowering>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Replace all bf16 type with uint16."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`CoProcSync <tvm.tir.transform.CoProcSync>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Detect and insert sync points to co-processor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`CombineContextCall "
+#~ "<tvm.tir.transform.CombineContextCall>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Combine context calls in the host function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`CommonSubexprElimTIR "
+#~ "<tvm.tir.transform.CommonSubexprElimTIR>`\\ "
+#~ "\\(\\[enable\\_cse\\_tir\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Replace redundant computations by new variables."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`CompactBufferAllocation "
+#~ "<tvm.tir.transform.CompactBufferAllocation>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Compact the buffer access region."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`ConvertBlocksToOpaque "
+#~ "<tvm.tir.transform.ConvertBlocksToOpaque>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Substitute all the block vars with "
+#~ "the PrimExprs they are bound to, "
+#~ "indicated by the corresponding iter_values "
+#~ "in BlockRealize, and then convert the"
+#~ " blocks into opaque ones by removing"
+#~ " all the iter_values in BlockRealize "
+#~ "and iter_vars in Block."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`ConvertForLoopsToSerial "
+#~ "<tvm.tir.transform.ConvertForLoopsToSerial>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Convert Parallel For Loops to Serial For Loops."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`DecorateDeviceScope "
+#~ "<tvm.tir.transform.DecorateDeviceScope>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Decorate all the function's body as device function."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Filter <tvm.tir.transform.Filter>`\\ \\(fcond\\)"
+#~ msgstr ""
+
+#~ msgid "Filter functions by the calling convention attribute."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`FlattenBuffer <tvm.tir.transform.FlattenBuffer>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Flatten the multi-dimensional BufferLoad "
+#~ "and BufferStore to single dimensional "
+#~ "Load/Store."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`HoistIfThenElse <tvm.tir.transform.HoistIfThenElse>`\\"
+#~ " \\(\\[variant\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Hoist loop-invariant IfThenElse nodes to outside the eligible loops."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`InferFragment <tvm.tir.transform.InferFragment>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Infer the TensorCore fragment infomation using tensor intrinsics."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`InjectCopyIntrin "
+#~ "<tvm.tir.transform.InjectCopyIntrin>`\\ \\(pragma\\_key\\, "
+#~ "fintrin\\)"
+#~ msgstr ""
+
+#~ msgid "Inject virtual thread loops."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`InjectDoubleBuffer "
+#~ "<tvm.tir.transform.InjectDoubleBuffer>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Inject double buffer statements."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`InjectPrefetch <tvm.tir.transform.InjectPrefetch>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Inject prefetch instructions into stmt."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`InjectRollingBuffer "
+#~ "<tvm.tir.transform.InjectRollingBuffer>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Inject rolling buffer statements."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`InjectVirtualThread "
+#~ "<tvm.tir.transform.InjectVirtualThread>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`InstrumentBoundCheckers "
+#~ "<tvm.tir.transform.InstrumentBoundCheckers>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Instruments bound checkers."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`LegalizePackedCalls "
+#~ "<tvm.tir.transform.LegalizePackedCalls>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Legalize packed calls to have its arguments wrapped in TVMValues"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`LiftAttrScope <tvm.tir.transform.LiftAttrScope>`\\ "
+#~ "\\(attr\\_key\\)"
+#~ msgstr ""
+
+#~ msgid "Lift common attrs with attr_key to outer scope."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`LoopPartition <tvm.tir.transform.LoopPartition>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`LowerCrossThreadReduction "
+#~ "<tvm.tir.transform.LowerCrossThreadReduction>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Lower cross-thread reduction from thread"
+#~ " bindings to intrinsic function calls."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`LowerCustomDatatypes "
+#~ "<tvm.tir.transform.LowerCustomDatatypes>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Lower custom datatypes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`LowerDeviceStorageAccessInfo "
+#~ "<tvm.tir.transform.LowerDeviceStorageAccessInfo>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Lower attached storage access information on device."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`LowerInitBlock <tvm.tir.transform.LowerInitBlock>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Lower block init stmt into IfThenElse statements."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`LowerIntrin <tvm.tir.transform.LowerIntrin>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Lower target specific intrinsic calls."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`LowerMatchBuffer "
+#~ "<tvm.tir.transform.LowerMatchBuffer>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Remove match buffers inside the block."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`LowerTVMBuiltin <tvm.tir.transform.LowerTVMBuiltin>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Lower tvm builtin intrinsics."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`LowerThreadAllreduce "
+#~ "<tvm.tir.transform.LowerThreadAllreduce>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Lower cross thread alleduce."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`LowerWarpMemory <tvm.tir.transform.LowerWarpMemory>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Lower warp memory access to low-level device related function calls."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`MakePackedAPI <tvm.tir.transform.MakePackedAPI>`\\ "
+#~ "\\(\\[num\\_unpacked\\_params\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Transform the PrimFuncs in the module to a packed func API."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`MakeUnpackedAPI <tvm.tir.transform.MakeUnpackedAPI>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Transform the PrimFuncs in the module"
+#~ " to a C API compatible with "
+#~ "internal calls."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`MergeDynamicSharedMemoryAllocations "
+#~ "<tvm.tir.transform.MergeDynamicSharedMemoryAllocations>`\\ "
+#~ "\\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This pass merges multiple TIR-level "
+#~ "dynamic shared memory allocations into "
+#~ "one allocation."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`NarrowDataType <tvm.tir.transform.NarrowDataType>`\\"
+#~ " \\(target\\_bits\\)"
+#~ msgstr ""
+
+#~ msgid "Narrow down PrimExpr datatype in stmt to target_bits."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`PlanAndUpdateBufferAllocationLocation "
+#~ "<tvm.tir.transform.PlanAndUpdateBufferAllocationLocation>`\\ "
+#~ "\\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Locate the buffer allocation to the "
+#~ "exact position (usually is the lca "
+#~ "of buffer access)."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`RemoveNoOp <tvm.tir.transform.RemoveNoOp>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Remove No Op from the Stmt."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`RewriteUnsafeSelect "
+#~ "<tvm.tir.transform.RewriteUnsafeSelect>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Detect and rewrite unsafe select that contains memory access."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Simplify <tvm.tir.transform.Simplify>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Run arithmetic simplifications on the statements and expressions."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`SkipAssert <tvm.tir.transform.SkipAssert>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Skip assert stmt."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`SplitHostDevice <tvm.tir.transform.SplitHostDevice>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Split the function into a host function and device functions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`StorageFlatten <tvm.tir.transform.StorageFlatten>`\\"
+#~ " \\(cache\\_line\\_size\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Flatten the multi-dimensional read/write to 1D."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`StorageRewrite <tvm.tir.transform.StorageRewrite>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Rewrite storage allocation pattern."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TextureFlatten <tvm.tir.transform.TextureFlatten>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Flatten the multi-dimensional read/write to 2D."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`ThreadSync <tvm.tir.transform.ThreadSync>`\\ "
+#~ "\\(storage\\_scope\\)"
+#~ msgstr ""
+
+#~ msgid "Insert sync between parallel read/write of shared buffers."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`UnifyThreadBinding "
+#~ "<tvm.tir.transform.UnifyThreadBinding>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Unify all the thread bindings for "
+#~ "\"blockIdx.x/y/z\", \"threadIdx.x/y/z\", and "
+#~ "\"vthread.x/y/z\"."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`UnrollLoop <tvm.tir.transform.UnrollLoop>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Unroll the constant loop marked by unroll."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`VectorizeLoop <tvm.tir.transform.VectorizeLoop>`\\ "
+#~ "\\(\\[enable\\_vectorize\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Lower vectorization loops."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`VerifyMemory <tvm.tir.transform.VerifyMemory>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Verify if func contains illegal host side direct memory access."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`prim_func_pass <tvm.tir.transform.prim_func_pass>`\\"
+#~ " \\(\\[pass\\_func\\, opt\\_level\\, name\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Decorate a function pass."
+#~ msgstr ""
+
+#~ msgid "A pass that works on each :py:func:`tvm.tir.PrimFunc` in a module."
+#~ msgstr ""
+
+#~ msgid "This function is a thin wrapper around tvm.tir.transform.prim_func_pass"
+#~ msgstr ""
+
+#~ msgid "The transformation pass."
+#~ msgstr ""
+
+#~ msgid "**fpass** -- The result pass"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Eliminate verbose casting between fp32 "
+#~ "and bf16 Checks if the AST has "
+#~ "the pattern: castto32(castto16(some_fp32_op(...))) "
+#~ "The verbose casting is generated by "
+#~ "BF16Promote for multiple bf16 Ops in "
+#~ "a row. e.g.: X[i] + Y[i] + "
+#~ "T[i] => bf16((float32(bf16((float32(X[i]) + "
+#~ "float32(Y[i])))) + float32(T[i]))) After this"
+#~ " pass: bf16(float32(X[i]) + float32(Y[i]) +"
+#~ " float32(T[i]))"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Legalize bf16 typed Ops. Runs "
+#~ "BF16Promote, BF16CastElimination and "
+#~ "BF16TypeLowering"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Promote bf16 to fp32. Add a cast"
+#~ " to fp32 before Ops, then add a"
+#~ " cast back to bf16."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Replace all bf16 type with uint16. "
+#~ "Also lower the casting between fp32 "
+#~ "and bf16"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Compact the buffer access region. by "
+#~ "removing the buffer regions that are "
+#~ "not accessed, i.e. narrowing the buffer"
+#~ " shape and adjust the access region"
+#~ " if necessary."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Before narrowing, ``B`` is a ``[16, "
+#~ "16]`` buffer, but only a skinny "
+#~ "vector ``B[i, 0:16]`` is accessed."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This pass narrows the buffer shape "
+#~ "and adjust its accessed region "
+#~ "accordingly.  In this particular case, "
+#~ "because only a ``1 * 16`` vector"
+#~ " of ``B`` is accessed, the pass "
+#~ "narrows ``B`` to shape ``[1, 16]``, "
+#~ "and changes the access to ``B[i, "
+#~ "j]`` to ``B[0, j]``."
+#~ msgstr ""
+
+#~ msgid "The condition of the filtering."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Flatten the multi-dimensional BufferLoad "
+#~ "and BufferStore to single dimensional "
+#~ "Load/Store. Also remove Block to ensure"
+#~ " that the flattened TIR can not "
+#~ "be scheduled again."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The variant of the pass. variant "
+#~ "can have any one of following "
+#~ "values [\"basic\", None(Default)].  The basic"
+#~ " variant supports basic hoisting scenarios"
+#~ " where it expects the For & If"
+#~ " Nodes are in place consecutively and"
+#~ " does not involve global scope "
+#~ "variables or more advanced scenarios.  "
+#~ "Default variant supports all hoisting "
+#~ "scenarios,i.e., {\"Basic\" + \"Advanced\"} "
+#~ "supported with control with PassContext "
+#~ "configs like below:      "
+#~ "config={\"tir.HoistIfThenElse\": "
+#~ "{\"support_block_scope_hosting\": True}}"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The variant of the pass. variant "
+#~ "can have any one of following "
+#~ "values [\"basic\", None(Default)]."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The basic variant supports basic "
+#~ "hoisting scenarios where it expects the"
+#~ " For & If Nodes are in place"
+#~ " consecutively and does not involve "
+#~ "global scope variables or more advanced"
+#~ " scenarios."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Default variant supports all hoisting "
+#~ "scenarios,i.e., {\"Basic\" + \"Advanced\"} "
+#~ "supported with control with PassContext "
+#~ "configs like below:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "config={\"tir.HoistIfThenElse\": "
+#~ "{\"support_block_scope_hosting\": True}}"
+#~ msgstr ""
+
+#~ msgid "The pragma key for hint of copy."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The function with signature copyintrin(src,"
+#~ " dst, pad_before, pad_after, pad_value)"
+#~ msgstr ""
+
+#~ msgid "The attribute key to be checked."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "See tvm::datatypes::Registry for more "
+#~ "information on adding custom datatypes."
+#~ msgstr ""
+
+#~ msgid "Run this pass after all storage access analysis finish."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Remove match buffers inside the block."
+#~ " Also, it will validate the binding."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Number of parameters that we hope "
+#~ "to directly pass via normal arguments"
+#~ " following the PackedFunc input signature."
+#~ " If it is specified as -1 or"
+#~ " it is less than the number of"
+#~ " arguments, the pass will packed "
+#~ "arguments still."
+#~ msgstr ""
+
+#~ msgid "The target bit configuration."
+#~ msgstr ""
+
+#~ msgid "Run this pass after StorageFlatten."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Locate the buffer allocation to the "
+#~ "exact position (usually is the lca "
+#~ "of buffer access). This pass will "
+#~ "inject opaque block with alloc_buffers "
+#~ "at the allocation site."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A pass that works on each "
+#~ ":py:func:`tvm.tir.PrimFunc` in a module. A "
+#~ "function pass class should be created"
+#~ " through py:func:`tvm.tir.transform.function_pass`."
+#~ msgstr ""
+
+#~ msgid "The size of CPU cache line."
+#~ msgstr ""
+
+#~ msgid "Whether to create bound attributes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Moves the allocation to outer most "
+#~ "possible scope. Trying to share space"
+#~ " between allocations to make a static"
+#~ " allocation plan when possible."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Unify all the thread bindings for "
+#~ "\"blockIdx.x/y/z\", \"threadIdx.x/y/z\", and "
+#~ "\"vthread.x/y/z\". Before the unification, two"
+#~ " vars that are bound to a "
+#~ "thread axis (e.g., \"threadIdx.x\") use "
+#~ "different IterVars and variables in "
+#~ "their AttrStmts. After the unification, "
+#~ "we use a consolidated IterVar and "
+#~ "a variable for them."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`vthread` is a legacy behavior that "
+#~ "will be deprecated, though thread "
+#~ "bindings of `vthread` are still also "
+#~ "unified in this pass. Please use "
+#~ "`vthread.x`, `vthread.y` and `vthread.z` "
+#~ "instead."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This pass also automatically attach "
+#~ "pragma unroll tag to loops which "
+#~ "meets the standard."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Whether vectorization is enabled. Will "
+#~ "lower to scalar loop when it is"
+#~ " turned off."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This function returns a callback when"
+#~ " pass_func is provided. Otherwise, it "
+#~ "returns the created function pass using"
+#~ " the given optimization function."
+#~ msgstr ""
+
+#~ msgid "The transformation function or class."
+#~ msgstr ""
+
+#~ msgid "The optimization level of this module pass."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The name of the function pass. The"
+#~ " name could be empty. In this "
+#~ "case, the name of the optimization "
+#~ "function will be used as the pass"
+#~ " name."
+#~ msgstr ""
+
+#~ msgid "The list of passes that the function pass is dependent on."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**create_function_pass** -- A decorator will"
+#~ " be returned if pass_func is not "
+#~ "provided, otherwise return the decorated "
+#~ "result. The returned decorator has two"
+#~ " behaviors depending on the input: A"
+#~ " new FunctionPass will be returned "
+#~ "when we decorate a pass function. "
+#~ "A new FunctionPass class will be "
+#~ "returned when we decorate a class "
+#~ "type."
+#~ msgstr ""
+
+#~ msgid "The following code block decorates a function pass class."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The following code creates a function"
+#~ " pass by decorating a user defined"
+#~ " transform function."
+#~ msgstr ""
+
+#~ msgid "Namespace of all TIR analysis utils."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Block <tvm.tir.analysis.Block>`\\ "
+#~ "\\(iter\\_vars\\, reads\\, writes\\, name\\_hint\\,"
+#~ " body\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`BufferRegion <tvm.tir.analysis.BufferRegion>`\\ "
+#~ "\\(buffer\\, region\\)"
+#~ msgstr ""
+
+#~ msgid "Base class for all tvm's runtime objects."
+#~ msgstr ""
+
+#~ msgid "Base class of all primitive expressions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`PrimFunc <tvm.tir.analysis.PrimFunc>`\\ "
+#~ "\\(params\\, body\\[\\, ret\\_type\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Var <tvm.tir.analysis.Var>`\\ \\(name\\, "
+#~ "dtype\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`apply_prim_func_arg_and_result_memory_constraints "
+#~ "<tvm.tir.analysis.apply_prim_func_arg_and_result_memory_constraints>`\\"
+#~ " \\(...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns func written to capture the "
+#~ "memory (aka storage) scope constraints "
+#~ "for each of the func's parameters "
+#~ "given by arg_and_result_memory_scopes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`calculate_workspace_bytes "
+#~ "<tvm.tir.analysis.calculate_workspace_bytes>`\\ \\(func\\, "
+#~ "...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Calculate the workspace size in bytes"
+#~ " needed by the TIR allocates inside"
+#~ " the TIR PrimFunc."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`detect_buffer_access_lca "
+#~ "<tvm.tir.analysis.detect_buffer_access_lca>`\\ \\(func\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Detect the lowest common ancestor(LCA) "
+#~ "of buffer access, including both "
+#~ "high-level access(BufferLoad, BufferStore) and"
+#~ " low-level access(Load, Store and "
+#~ "opaque access)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`expr_deep_equal <tvm.tir.analysis.expr_deep_equal>`\\"
+#~ " \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Deeply compare two nested expressions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_block_access_region "
+#~ "<tvm.tir.analysis.get_block_access_region>`\\ \\(block\\, "
+#~ "buffer\\_var\\_map\\)"
+#~ msgstr ""
+
+#~ msgid "Detect which regions of tensors in this block are read or written to."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_block_read_write_region "
+#~ "<tvm.tir.analysis.get_block_read_write_region>`\\ \\(block\\,"
+#~ " ...\\)"
+#~ msgstr ""
+
+#~ msgid "Auto detect the block read/write region according to its body stmt."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_prim_func_arg_and_result_memory_constraints "
+#~ "<tvm.tir.analysis.get_prim_func_arg_and_result_memory_constraints>`\\"
+#~ " \\(...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns the memory (aka storage) scope"
+#~ " constraints for all the arguments "
+#~ "and result of func."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`verify_gpu_code <tvm.tir.analysis.verify_gpu_code>`\\"
+#~ " \\(func\\, constraints\\)"
+#~ msgstr ""
+
+#~ msgid "Verify if module contains illegal host side direct memory access."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`verify_memory <tvm.tir.analysis.verify_memory>`\\ \\(func\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`verify_ssa <tvm.tir.analysis.verify_ssa>`\\ \\(func\\)"
+#~ msgstr ""
+
+#~ msgid "Verify if the func is in SSA form."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`access_ptr <tvm.tir.analysis.Buffer.access_ptr>`\\ "
+#~ "\\(access\\_mask\\[\\, ptr\\_type\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`scope <tvm.tir.analysis.Buffer.scope>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`vload <tvm.tir.analysis.Buffer.vload>`\\ "
+#~ "\\(begin\\[\\, dtype\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`vstore <tvm.tir.analysis.Buffer.vstore>`\\ "
+#~ "\\(begin\\, value\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "PrimExpr is used in the low-level"
+#~ " code optimizations and integer analysis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`script <tvm.tir.analysis.PrimFunc.script>`\\ "
+#~ "\\(\\[tir\\_prefix\\, show\\_meta\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`specialize <tvm.tir.analysis.PrimFunc.specialize>`\\"
+#~ " \\(param\\_map\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`with_body <tvm.tir.analysis.PrimFunc.with_body>`\\ "
+#~ "\\(new\\_body\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns func written to capture the "
+#~ "memory (aka storage) scope constraints "
+#~ "for each of the func's parameters "
+#~ "given by arg_and_result_memory_scopes. However, "
+#~ "arg_and_result_memory_scopes should be w.r.t. "
+#~ "the func's representation as a Relay "
+#~ "Function of relay_func_type before lowering"
+#~ " and conversion to DPS."
+#~ msgstr ""
+
+#~ msgid "Visible for testing."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "CAUTION: This is experimental. The "
+#~ "resulting PrimFunc may not have fully"
+#~ " accounted for all new memory scopes."
+#~ msgstr ""
+
+#~ msgid "The function to retrieve constraints from."
+#~ msgstr ""
+
+#~ msgid "The type of the Relay Function from which the func was derived."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Memory constraints for funcs args and"
+#~ " result in Relay form. The empty "
+#~ "string denotes 'no constraint'."
+#~ msgstr ""
+
+#~ msgid "**result** -- The rewritten func."
+#~ msgstr ""
+
+#~ msgid "The function to be detected."
+#~ msgstr ""
+
+#~ msgid "The byte alignment required for each tensor"
+#~ msgstr ""
+
+#~ msgid "**result** -- Workspace size in bytes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Detect the lowest common ancestor(LCA) "
+#~ "of buffer access, including both "
+#~ "high-level access(BufferLoad, BufferStore) and"
+#~ " low-level access(Load, Store and "
+#~ "opaque access). The LCA may be a"
+#~ " For loop or a Block."
+#~ msgstr ""
+
+#~ msgid "**result** -- Map from buffer to the LCA of all access to it."
+#~ msgstr ""
+
+#~ msgid "The left operand."
+#~ msgstr ""
+
+#~ msgid "The right operand."
+#~ msgstr ""
+
+#~ msgid "**result** -- The comparison result"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This function does not remap variable"
+#~ " bindings, it will not return true"
+#~ " for (let x = 1 in x +"
+#~ " 1) vs (let y = 1 in y"
+#~ " + 1), unless x.same_as(y). Use "
+#~ "py:func:`tvm.ir.structural_equal` to handle "
+#~ "structural variable remapping."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Due to the restriction of not "
+#~ "remapping variables, this function can "
+#~ "run faster than StructuralEqual and can"
+#~ " be used as a utility function "
+#~ "during arithmetic simplifications."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Always consider py:func:`tvm.ir.structural_equal` "
+#~ "first, which handles the structural "
+#~ "remapping."
+#~ msgstr ""
+
+#~ msgid ":obj:`tvm.ir.structural_equal`"
+#~ msgstr ""
+
+#~ msgid "Regions are sorted by order of appearance in the AST."
+#~ msgstr ""
+
+#~ msgid "The block in which we are detecting read/write regions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The outside buffers which may access "
+#~ "the block. Mapping from buffer var "
+#~ "to the buffer"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**result** --  Array of access regions."
+#~ " There are three arrays of "
+#~ "BufferRegion:     - first: read regions"
+#~ "     - second: write regions     - "
+#~ "third: opaque regions"
+#~ msgstr ""
+
+#~ msgid "**result** --"
+#~ msgstr ""
+
+#~ msgid "Array of access regions. There are three arrays of BufferRegion:"
+#~ msgstr ""
+
+#~ msgid "first: read regions"
+#~ msgstr ""
+
+#~ msgid "second: write regions"
+#~ msgstr ""
+
+#~ msgid "third: opaque regions"
+#~ msgstr ""
+
+#~ msgid "An opaque access will be counted as both a read and a write access"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**result** -- An array only consisting"
+#~ " of the read regions and write "
+#~ "regions of the input block"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns the memory (aka storage) scope"
+#~ " constraints for all the arguments "
+#~ "and result of func. However the "
+#~ "result will be w.r.t. the func's "
+#~ "representation as a Relay Function of"
+#~ " relay_func_type before lowering and "
+#~ "conversion to DPS."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**result** -- Memory scope constraints "
+#~ "for funcs args and result in Relay"
+#~ " form. The empty string denotes 'no"
+#~ " constraint'."
+#~ msgstr ""
+
+#~ msgid "The module to be verified."
+#~ msgstr ""
+
+#~ msgid "The attribute constraints."
+#~ msgstr ""
+
+#~ msgid "**result** -- The result of verification."
+#~ msgstr ""
+
+#~ msgid "Statement functor utilities for IR transformations"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`ir_transform <tvm.tir.stmt_functor.ir_transform>`\\ "
+#~ "\\(stmt\\, preorder\\, postorder\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Recursively visit and transform ir nodes in post DFS order."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`post_order_visit "
+#~ "<tvm.tir.stmt_functor.post_order_visit>`\\ \\(stmt\\, "
+#~ "fvisit\\)"
+#~ msgstr ""
+
+#~ msgid "Recursively visit the ir in post DFS order node, apply fvisit"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`substitute <tvm.tir.stmt_functor.substitute>`\\ "
+#~ "\\(node\\, vmap\\)"
+#~ msgstr ""
+
+#~ msgid "Substitute the var specified by vmap."
+#~ msgstr ""
+
+#~ msgid "The input to be transformed."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The function called in before recursive"
+#~ " mutation If preorder returns None, "
+#~ "then the transform will proceed to "
+#~ "recursive call. If preorder returns a"
+#~ " not None tvm.tir.Stmt/Expr, the "
+#~ "transformer will simply return it and"
+#~ " won't do further recursion."
+#~ msgstr ""
+
+#~ msgid "The function called after recursive mutation."
+#~ msgstr ""
+
+#~ msgid "List of types that we only enable."
+#~ msgstr ""
+
+#~ msgid "**result** -- The result."
+#~ msgstr ""
+
+#~ msgid "Each node is guaranteed to be visited only once."
+#~ msgstr ""
+
+#~ msgid "The visitor function."
+#~ msgstr ""
+
+#~ msgid "The input."
+#~ msgstr ""
+
+#~ msgid "The variable mapping."
+#~ msgstr ""
+

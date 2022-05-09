@@ -1,0 +1,485 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-31 18:33+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/reference/api/python/relay/vision.rst:20
+msgid "tvm.relay.vision"
+msgstr ""
+
+#~ msgid "Vision network related operators."
+#~ msgstr ""
+
+#~ msgid "**Functions:**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`all_class_non_max_suppression "
+#~ "<tvm.relay.vision.all_class_non_max_suppression>`\\ \\(boxes\\,"
+#~ " scores\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Non-maximum suppression operator for "
+#~ "object detection, corresponding to ONNX "
+#~ "NonMaxSuppression and TensorFlow "
+#~ "combined_non_max_suppression."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_valid_counts <tvm.relay.vision.get_valid_counts>`\\"
+#~ " \\(data\\, score\\_threshold\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get valid count of bounding boxes given a score threshold."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`multibox_prior <tvm.relay.vision.multibox_prior>`\\ "
+#~ "\\(data\\[\\, sizes\\, ratios\\, steps\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Generate prior(anchor) boxes from data, sizes and ratios."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`multibox_transform_loc "
+#~ "<tvm.relay.vision.multibox_transform_loc>`\\ \\(cls\\_prob\\,"
+#~ " loc\\_pred\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Location transformation for multibox detection"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`non_max_suppression "
+#~ "<tvm.relay.vision.non_max_suppression>`\\ \\(data\\, "
+#~ "valid\\_count\\, indices\\)"
+#~ msgstr ""
+
+#~ msgid "Non-maximum suppression operator for object detection."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`proposal <tvm.relay.vision.proposal>`\\ "
+#~ "\\(cls\\_prob\\, bbox\\_pred\\, im\\_info\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Proposal operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`roi_align <tvm.relay.vision.roi_align>`\\ "
+#~ "\\(data\\, rois\\, pooled\\_size\\, "
+#~ "spatial\\_scale\\)"
+#~ msgstr ""
+
+#~ msgid "ROI align operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`roi_pool <tvm.relay.vision.roi_pool>`\\ "
+#~ "\\(data\\, rois\\, pooled\\_size\\, "
+#~ "spatial\\_scale\\)"
+#~ msgstr ""
+
+#~ msgid "ROI pool operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`yolo_reorg <tvm.relay.vision.yolo_reorg>`\\ "
+#~ "\\(data\\, stride\\)"
+#~ msgstr ""
+
+#~ msgid "Yolo reorg operation used in darknet models."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Non-maximum suppression operator for "
+#~ "object detection, corresponding to ONNX "
+#~ "NonMaxSuppression and TensorFlow "
+#~ "combined_non_max_suppression. NMS is performed "
+#~ "for each class separately."
+#~ msgstr ""
+
+#~ msgid "参数"
+#~ msgstr ""
+
+#~ msgid "3-D tensor with shape (batch_size, num_boxes, 4)"
+#~ msgstr ""
+
+#~ msgid "3-D tensor with shape (batch_size, num_classes, num_boxes)"
+#~ msgstr ""
+
+#~ msgid "The maxinum number of output selected boxes per class"
+#~ msgstr ""
+
+#~ msgid "IoU test threshold"
+#~ msgstr ""
+
+#~ msgid "Score threshold to filter out low score boxes early"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\"onnx\" or \"tensorflow\". Specify by "
+#~ "which frontends the outputs are intented"
+#~ " to be consumed."
+#~ msgstr ""
+
+#~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**out** -- If `output_format` is "
+#~ "\"onnx\", the output is a relay.Tuple"
+#~ " of two tensors, the first is "
+#~ "`indices` of size `(batch_size * "
+#~ "num_class* num_boxes , 3)` and the "
+#~ "second is a scalar tensor "
+#~ "`num_total_detection` of shape `(1,)` "
+#~ "representing the total number of "
+#~ "selected boxes. The three values in "
+#~ "`indices` encode batch, class, and box"
+#~ " indices. Rows of `indices` are "
+#~ "ordered such that selected boxes from"
+#~ " batch 0, class 0 come first, "
+#~ "in descending of scores, followed by "
+#~ "boxes from batch 0, class 1 etc."
+#~ " Out of `batch_size * num_class* "
+#~ "num_boxes` rows of indices,  only the"
+#~ " first `num_total_detection` rows are "
+#~ "valid.  If `output_format` is \"tensorflow\","
+#~ " the output is a relay.Tuple of "
+#~ "three tensors, the first is `indices`"
+#~ " of size `(batch_size, num_class * "
+#~ "num_boxes , 2)`, the second is "
+#~ "`scores` of size `(batch_size, num_class "
+#~ "* num_boxes)`, and the third is "
+#~ "`num_total_detection` of size `(batch_size,)` "
+#~ "representing the total number of "
+#~ "selected boxes per batch. The two "
+#~ "values in `indices` encode class and "
+#~ "box indices. Of num_class * num_boxes"
+#~ " boxes in `indices` at batch b, "
+#~ "only the first `num_total_detection[b]` "
+#~ "entries are valid. The second axis "
+#~ "of `indices` and `scores` are sorted "
+#~ "within each class by box scores, "
+#~ "but not across classes. So the box"
+#~ " indices and scores for the class "
+#~ "0 come first in a sorted order,"
+#~ " followed by the class 1 etc."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**out** -- If `output_format` is "
+#~ "\"onnx\", the output is a relay.Tuple"
+#~ " of two tensors, the first is "
+#~ "`indices` of size `(batch_size * "
+#~ "num_class* num_boxes , 3)` and the "
+#~ "second is a scalar tensor "
+#~ "`num_total_detection` of shape `(1,)` "
+#~ "representing the total number of "
+#~ "selected boxes. The three values in "
+#~ "`indices` encode batch, class, and box"
+#~ " indices. Rows of `indices` are "
+#~ "ordered such that selected boxes from"
+#~ " batch 0, class 0 come first, "
+#~ "in descending of scores, followed by "
+#~ "boxes from batch 0, class 1 etc."
+#~ " Out of `batch_size * num_class* "
+#~ "num_boxes` rows of indices,  only the"
+#~ " first `num_total_detection` rows are "
+#~ "valid."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If `output_format` is \"tensorflow\", the "
+#~ "output is a relay.Tuple of three "
+#~ "tensors, the first is `indices` of "
+#~ "size `(batch_size, num_class * num_boxes "
+#~ ", 2)`, the second is `scores` of"
+#~ " size `(batch_size, num_class * "
+#~ "num_boxes)`, and the third is "
+#~ "`num_total_detection` of size `(batch_size,)` "
+#~ "representing the total number of "
+#~ "selected boxes per batch. The two "
+#~ "values in `indices` encode class and "
+#~ "box indices. Of num_class * num_boxes"
+#~ " boxes in `indices` at batch b, "
+#~ "only the first `num_total_detection[b]` "
+#~ "entries are valid. The second axis "
+#~ "of `indices` and `scores` are sorted "
+#~ "within each class by box scores, "
+#~ "but not across classes. So the box"
+#~ " indices and scores for the class "
+#~ "0 come first in a sorted order,"
+#~ " followed by the class 1 etc."
+#~ msgstr ""
+
+#~ msgid "返回类型"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Get valid count of bounding boxes "
+#~ "given a score threshold. Also moves "
+#~ "valid boxes to the top of input"
+#~ " data."
+#~ msgstr ""
+
+#~ msgid "Input data. 3-D tensor with shape [batch_size, num_anchors, 6]."
+#~ msgstr ""
+
+#~ msgid "Lower limit of score for valid bounding boxes."
+#~ msgstr ""
+
+#~ msgid "index of the class categories, -1 to disable."
+#~ msgstr ""
+
+#~ msgid "Index of the scores/confidence of boxes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **valid_count** (*relay.Expr*) -- 1-D "
+#~ "tensor for valid number of boxes. "
+#~ "* **out_tensor** (*relay.Expr*) -- Rearranged"
+#~ " data tensor. * **out_indices** "
+#~ "(*relay.Expr*) -- Indices in input data"
+#~ msgstr ""
+
+#~ msgid "**valid_count** (*relay.Expr*) -- 1-D tensor for valid number of boxes."
+#~ msgstr ""
+
+#~ msgid "**out_tensor** (*relay.Expr*) -- Rearranged data tensor."
+#~ msgstr ""
+
+#~ msgid "**out_indices** (*relay.Expr*) -- Indices in input data"
+#~ msgstr ""
+
+#~ msgid "The input data tensor."
+#~ msgstr ""
+
+#~ msgid "Tuple of sizes for anchor boxes."
+#~ msgstr ""
+
+#~ msgid "Tuple of ratios for anchor boxes."
+#~ msgstr ""
+
+#~ msgid "Priorbox step across y and x, -1 for auto calculation."
+#~ msgstr ""
+
+#~ msgid "Priorbox center offsets, y and x respectively."
+#~ msgstr ""
+
+#~ msgid "Whether to clip out-of-boundary boxes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**out** -- 3-D tensor with shape "
+#~ "[1, h_in * w_in * (num_sizes + "
+#~ "num_ratios - 1), 4]"
+#~ msgstr ""
+
+#~ msgid "Class probabilities."
+#~ msgstr ""
+
+#~ msgid "Location regression predictions."
+#~ msgstr ""
+
+#~ msgid "Prior anchor boxes."
+#~ msgstr ""
+
+#~ msgid "Threshold to be a positive prediction."
+#~ msgstr ""
+
+#~ msgid "variances to be decoded from box regression output."
+#~ msgstr ""
+
+#~ msgid "**ret**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "3-D tensor with shape [batch_size, "
+#~ "num_anchors, 6] or [batch_size, num_anchors,"
+#~ " 5]. The last dimension should be "
+#~ "in format of [class_id, score, box_left,"
+#~ " box_top, box_right, box_bottom] or [score,"
+#~ " box_left, box_top, box_right, box_bottom]. "
+#~ "It could be the second output "
+#~ "out_tensor of get_valid_counts."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "1-D tensor for valid number of "
+#~ "boxes. It could be the output "
+#~ "valid_count of get_valid_counts."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "2-D tensor with shape [batch_size, "
+#~ "num_anchors], represents the index of "
+#~ "box in original data. It could be"
+#~ " the third output out_indices of "
+#~ "get_valid_counts. The values in the "
+#~ "second dimension are like the output "
+#~ "of arange(num_anchors) if get_valid_counts is"
+#~ " not used before non_max_suppression."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Max number of output valid boxes "
+#~ "for each instance. Return all valid "
+#~ "boxes if the value of max_output_size"
+#~ " is less than 0."
+#~ msgstr ""
+
+#~ msgid "Non-maximum suppression threshold."
+#~ msgstr ""
+
+#~ msgid "Suppress all detections regardless of class_id."
+#~ msgstr ""
+
+#~ msgid "Keep maximum top k detections before nms, -1 for no limit."
+#~ msgstr ""
+
+#~ msgid "The starting index of the consecutive 4 coordinates."
+#~ msgstr ""
+
+#~ msgid "Whether to return box indices in input data."
+#~ msgstr ""
+
+#~ msgid "Whether to move all valid bounding boxes to the top."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**out** -- return relay.Expr if "
+#~ "return_indices is disabled, a 3-D tensor"
+#~ " with shape [batch_size, num_anchors, 6]"
+#~ " or [batch_size, num_anchors, 5]. If "
+#~ "return_indices is True, return relay.Tuple "
+#~ "of two 2-D tensors, with shape "
+#~ "[batch_size, num_anchors] and [batch_size, "
+#~ "num_valid_anchors] respectively."
+#~ msgstr ""
+
+#~ msgid "4-D tensor with shape [batch, 2 * num_anchors, height, width]."
+#~ msgstr ""
+
+#~ msgid "4-D tensor with shape [batch, 4 * num_anchors, height, width]."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "2-D tensor with shape [batch, 3]. "
+#~ "The last dimension should be in "
+#~ "format of [im_height, im_width, im_scale]"
+#~ msgstr ""
+
+#~ msgid "Scales of anchor windows."
+#~ msgstr ""
+
+#~ msgid "Ratios of anchor windows."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The size of the receptive field "
+#~ "each unit in the convolution layer "
+#~ "of the rpn, for example the "
+#~ "product of all stride's prior to "
+#~ "this layer."
+#~ msgstr ""
+
+#~ msgid "Number of top scoring boxes to apply NMS. -1 to use all boxes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Number of top scoring boxes to "
+#~ "keep after applying NMS to RPN "
+#~ "proposals."
+#~ msgstr ""
+
+#~ msgid "Minimum height or width in proposal."
+#~ msgstr ""
+
+#~ msgid "Usage of IoU loss."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- 2-D tensor with shape "
+#~ "[batch * rpn_post_nms_top_n, 5]. The "
+#~ "last dimension is in format of "
+#~ "[batch_index, w_start, h_start, w_end, h_end]."
+#~ msgstr ""
+
+#~ msgid "4-D tensor with shape [batch, channel, height, width]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "2-D tensor with shape [num_roi, 5]. "
+#~ "The last dimension should be in "
+#~ "format of [batch_index, w_start, h_start, "
+#~ "w_end, h_end]"
+#~ msgstr ""
+
+#~ msgid "output size"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Ratio of input feature map height "
+#~ "(or w) to raw image height (or "
+#~ "w). Equals the reciprocal of total "
+#~ "stride in convolutional layers, which "
+#~ "should be in range (0.0, 1.0]"
+#~ msgstr ""
+
+#~ msgid "Optional sampling ratio of ROI align, using adaptive size by default."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The pooling method. Relay supports two"
+#~ " methods, 'avg' and 'max'. Default is"
+#~ " 'avg'."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- 4-D tensor with shape "
+#~ "[num_roi, channel, pooled_size, pooled_size]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Yolo reorg operation used in darknet "
+#~ "models. This layer shuffles the input"
+#~ " tensor values based on the stride"
+#~ " value. Along with the shuffling, it"
+#~ " does the shape transform. If '(n,"
+#~ " c, h, w)' is the data shape"
+#~ " and 's' is stride, output shape "
+#~ "is '(n, c*s*s, h/s, w/s)'."
+#~ msgstr ""
+
+#~ msgid "Example:"
+#~ msgstr ""
+
+#~ msgid "stride=1 has no significance for reorg operation."
+#~ msgstr ""
+
+#~ msgid "The stride value for reorganisation."
+#~ msgstr ""
+
+#~ msgid "**ret** -- The computed result."
+#~ msgstr ""
+

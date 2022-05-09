@@ -1,0 +1,766 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-31 18:33+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/reference/api/python/relay/dataflow_pattern.rst:19
+msgid "tvm.relay.dataflow_pattern"
+msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`DFPattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DFPattern>`\\"
+#~ " \\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`DFPattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DFPattern>`\\"
+#~ msgstr ""
+
+#~ msgid "The Relay Pattern Language and tooling."
+#~ msgstr ""
+
+#~ msgid "**Classes:**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`AltPattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.AltPattern>`\\"
+#~ " \\(left\\, right\\)"
+#~ msgstr ""
+
+#~ msgid "Create a Pattern that can match one of two conditions"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`AttrPattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.AttrPattern>`\\"
+#~ " \\(pattern\\, attrs\\)"
+#~ msgstr ""
+
+#~ msgid "Get match an expression with a certain attributes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`CallPattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.CallPattern>`\\"
+#~ " \\(op\\, args\\)"
+#~ msgstr ""
+
+#~ msgid "A pattern matching a function call node in Relay."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`ConstantPattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.ConstantPattern>`\\"
+#~ " \\(\\)"
+#~ msgstr ""
+
+#~ msgid "A pattern matching a Relay Constant."
+#~ msgstr ""
+
+#~ msgid "Base class of all Patterns."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`DFPatternCallback "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DFPatternCallback>`\\"
+#~ " \\(\\[require\\_type\\, rewrite\\_once\\]\\)"
+#~ msgstr ""
+
+#~ msgid "A Callback for Pattern Rewriting."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`DataTypePattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DataTypePattern>`\\"
+#~ " \\(pattern\\, dtype\\)"
+#~ msgstr ""
+
+#~ msgid "A pattern that matches another pattern with certain data type"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`DominatorPattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DominatorPattern>`\\"
+#~ " \\(parent\\, path\\, child\\)"
+#~ msgstr ""
+
+#~ msgid "Match a domination graph."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Expr "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.Expr>`\\"
+#~ msgstr ""
+
+#~ msgid "alias of :py:class:`tvm.ir.expr.RelayExpr`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`ExprPattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.ExprPattern>`\\"
+#~ " \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid "A pattern which matches a constant expression."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`FunctionPattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.FunctionPattern>`\\"
+#~ " \\(params\\, body\\)"
+#~ msgstr ""
+
+#~ msgid "A pattern matching a function node in Relay."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`IfPattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.IfPattern>`\\"
+#~ " \\(cond\\, true\\_branch\\, false\\_branch\\)"
+#~ msgstr ""
+
+#~ msgid "A patern matching a Relay If."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`LetPattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.LetPattern>`\\"
+#~ " \\(var\\, value\\, body\\)"
+#~ msgstr ""
+
+#~ msgid "A patern matching a Relay Let."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`ShapePattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.ShapePattern>`\\"
+#~ " \\(pattern\\, shape\\)"
+#~ msgstr ""
+
+#~ msgid "A pattern that matches another pattern with a certain tensor shape"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`TupleGetItemPattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.TupleGetItemPattern>`\\"
+#~ " \\(tuple\\_value\\[\\, index\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get index-th item from a TuplePattern."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`TuplePattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.TuplePattern>`\\"
+#~ " \\(fields\\)"
+#~ msgstr ""
+
+#~ msgid "A patern matching a Relay Tuple."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`TypePattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.TypePattern>`\\"
+#~ " \\(pattern\\, ttype\\)"
+#~ msgstr ""
+
+#~ msgid "A pattern that matches another pattern with a certain type annotation."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`VarPattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.VarPattern>`\\"
+#~ " \\(\\[name\\_hint\\]\\)"
+#~ msgstr ""
+
+#~ msgid "A local variable in Relay."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`WildcardPattern "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.WildcardPattern>`\\"
+#~ " \\(\\)"
+#~ msgstr ""
+
+#~ msgid "A pattern which matches anything."
+#~ msgstr ""
+
+#~ msgid "**Functions:**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`dominates "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.dominates>`\\"
+#~ " \\(parent\\, path\\, child\\)"
+#~ msgstr ""
+
+#~ msgid "Syntatic sugar for creating an Dominator pattern"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.get>`\\ "
+#~ "\\(op\\_name\\)"
+#~ msgstr ""
+
+#~ msgid "Get the Op for a given name"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`has_attr "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.has_attr>`\\"
+#~ " \\(attrs\\[\\, pattern\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Syntatic sugar for creating an AttrPattern"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`has_dtype "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.has_dtype>`\\"
+#~ " \\(dtype\\[\\, pattern\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Syntatic sugar for creating a DataTypePattern"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`has_shape "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.has_shape>`\\"
+#~ " \\(shape\\[\\, pattern\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Syntatic sugar for creating a ShapePattern"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`has_type "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.has_type>`\\"
+#~ " \\(ttype\\[\\, pattern\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Syntatic sugar for creating a TypePattern"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`is_constant "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.is_constant>`\\"
+#~ " \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Syntatic sugar for creating a ConstantPattern."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`is_expr "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.is_expr>`\\ "
+#~ "\\(expr\\)"
+#~ msgstr ""
+
+#~ msgid "Syntatic sugar for creating an ExprPattern."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`is_if "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.is_if>`\\ "
+#~ "\\(cond\\, true\\_branch\\, false\\_branch\\)"
+#~ msgstr ""
+
+#~ msgid "Syntatic sugar for creating an IfPattern."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`is_let "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.is_let>`\\ "
+#~ "\\(var\\, value\\, body\\)"
+#~ msgstr ""
+
+#~ msgid "Syntatic sugar for creating a LetPattern."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`is_op "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.is_op>`\\ "
+#~ "\\(op\\_name\\)"
+#~ msgstr ""
+
+#~ msgid "Syntatic sugar for creating an operator ExprPattern."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`is_tuple "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.is_tuple>`\\"
+#~ " \\(fields\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`is_tuple_get_item "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.is_tuple_get_item>`\\"
+#~ " \\(tuple\\_value\\[\\, index\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`is_var "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.is_var>`\\ "
+#~ "\\(\\[name\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Syntatic sugar for creating an optionally named VarPattern."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`make_node "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.make_node>`\\"
+#~ " \\(type\\_key\\, \\*\\*kwargs\\)"
+#~ msgstr ""
+
+#~ msgid "Make a new IR node by its type key and fields"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`match "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.match>`\\ "
+#~ "\\(pattern\\, expr\\)"
+#~ msgstr ""
+
+#~ msgid "Match a pattern to an expression"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`partition "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.partition>`\\"
+#~ " \\(pattern\\, expr\\[\\, attrs\\, check\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Parition the expression into a series"
+#~ " of functions that match the pattern"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`register_df_node "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.register_df_node>`\\"
+#~ " \\(\\[type\\_key\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Register a Relay node type."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`rewrite "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.rewrite>`\\ "
+#~ "\\(callbacks\\, expr\\[\\, mod\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Rewrite expression with the given callbacks."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`wildcard "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.wildcard>`\\"
+#~ " \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Syntatic sugar for creating a WildcardPattern."
+#~ msgstr ""
+
+#~ msgid "参数"
+#~ msgstr ""
+
+#~ msgid "One possible matching pattern."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Get match an expression with a "
+#~ "certain attributes. Currently only supports"
+#~ " Op Attributes, not call Attributes."
+#~ msgstr ""
+
+#~ msgid "The input pattern."
+#~ msgstr ""
+
+#~ msgid "The attributes to match."
+#~ msgstr ""
+
+#~ msgid "The operation to be called."
+#~ msgstr ""
+
+#~ msgid "The arguments to the call or None to match any arguments."
+#~ msgstr ""
+
+#~ msgid "**Methods:**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`dominates "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DFPattern.dominates>`\\"
+#~ " \\(parent\\[\\, path\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a dominator for this pattern."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`has_attr "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DFPattern.has_attr>`\\"
+#~ " \\(attrs\\)"
+#~ msgstr ""
+
+#~ msgid "Add an attribute constraint to this pattern"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`has_dtype "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DFPattern.has_dtype>`\\"
+#~ " \\(dtype\\)"
+#~ msgstr ""
+
+#~ msgid "Add a type constraint to this pattern"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`has_shape "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DFPattern.has_shape>`\\"
+#~ " \\(shape\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`has_type "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DFPattern.has_type>`\\"
+#~ " \\(ttype\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`match "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DFPattern.match>`\\"
+#~ " \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid "Match this pattern to an expression"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`optional "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DFPattern.optional>`\\"
+#~ " \\(option\\_constructor\\)"
+#~ msgstr ""
+
+#~ msgid "Create a optional user of this pattern."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`partition "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DFPattern.partition>`\\"
+#~ " \\(expr\\[\\, attrs\\, check\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Partition the expression into functions defined by this pattern"
+#~ msgstr ""
+
+#~ msgid "The parent pattern this pattern dominates."
+#~ msgstr ""
+
+#~ msgid "The fuzzy path pattern."
+#~ msgstr ""
+
+#~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid "**result** -- The resulting DominatorPattern."
+#~ msgstr ""
+
+#~ msgid "返回类型"
+#~ msgstr ""
+
+#~ msgid "**result** -- The resulting AttrPattern"
+#~ msgstr ""
+
+#~ msgid "The dtype to match"
+#~ msgstr ""
+
+#~ msgid "**result** -- The resulting DataTypePattern"
+#~ msgstr ""
+
+#~ msgid "The shape to match"
+#~ msgstr ""
+
+#~ msgid "**result** -- The resulting ShapePattern"
+#~ msgstr ""
+
+#~ msgid "The type to match"
+#~ msgstr ""
+
+#~ msgid "**result** -- The resulting TypePattern"
+#~ msgstr ""
+
+#~ msgid "The expression to match."
+#~ msgstr ""
+
+#~ msgid "**result** -- Whether or not the expression matches the pattern"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A function that takes a single "
+#~ "Pattern parameter and returns a "
+#~ "constructed pattern matching the option"
+#~ msgstr ""
+
+#~ msgid "**result** -- The resulting Pattern"
+#~ msgstr ""
+
+#~ msgid "A dictionary of Attribute name/values to add to the paritioned function"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A function to perform more complicated"
+#~ " checks on the matched expression. "
+#~ "Returns true if partitioning should "
+#~ "proceed, false otherwise."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**result** -- The Expression with "
+#~ "matched subgraphs replaced by function "
+#~ "calls to that subgraph"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "When rewrite is called on this "
+#~ "DFPatternCallback, the backend will find "
+#~ "matches for the pattern, call the "
+#~ "callback function, and replace the "
+#~ "matched expression with whatever the "
+#~ "callback returns."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Users are expect to inherit from "
+#~ "this class and provide a "
+#~ "\"self.pattern\" to match"
+#~ msgstr ""
+
+#~ msgid "Whether InferType is required to be run before the callback."
+#~ msgstr ""
+
+#~ msgid "If True, run the callback only once."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`callback "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DFPatternCallback.callback>`\\"
+#~ " \\(pre\\, post\\, node\\_map\\)"
+#~ msgstr ""
+
+#~ msgid "Callback function to use when we found a match to the pattern"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`rewrite "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.DFPatternCallback.rewrite>`\\"
+#~ " \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid "Rewrite expression with this callback"
+#~ msgstr ""
+
+#~ msgid "The matching expression from the original graph."
+#~ msgstr ""
+
+#~ msgid "The matching expression with rewritten inputs"
+#~ msgstr ""
+
+#~ msgid "The map between patterns and matched expressions"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**result** -- The Expression with "
+#~ "matched subgraph rewritten by the "
+#~ "callback"
+#~ msgstr ""
+
+#~ msgid "The expression to rewrite."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**result** -- The Expression with "
+#~ "matched subgraphs rewritten by the "
+#~ "callbacks."
+#~ msgstr ""
+
+#~ msgid "The input pattern that needs type annotation."
+#~ msgstr ""
+
+#~ msgid "The dtype to match."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The parent, i.e., the single node "
+#~ "which produces something, later aggregated "
+#~ "by the child."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The fuzzy path pattern between parent"
+#~ " and child, typically matches elementwise"
+#~ " ops."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The last node in the domination "
+#~ "which is the end user for all "
+#~ "nodes in the path and the parent."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`checked_type "
+#~ "<tvm.relay.dataflow_pattern.tvm.relay.dataflow_pattern.Expr.checked_type>`\\"
+#~ msgstr ""
+
+#~ msgid "Get the checked type of tvm.relay.Expr."
+#~ msgstr ""
+
+#~ msgid "The parameters to the Function or None to match any parameters."
+#~ msgstr ""
+
+#~ msgid "The body fo the Function"
+#~ msgstr ""
+
+#~ msgid "The pattern describing the condition of If."
+#~ msgstr ""
+
+#~ msgid "The pattern describing the true branch of If."
+#~ msgstr ""
+
+#~ msgid "The pattern describing the false branch of If."
+#~ msgstr ""
+
+#~ msgid "The pattern describing the variable of Let."
+#~ msgstr ""
+
+#~ msgid "The pattern describing the value of Let."
+#~ msgstr ""
+
+#~ msgid "The pattern describing the body where the binding is in effect."
+#~ msgstr ""
+
+#~ msgid "The shape to match."
+#~ msgstr ""
+
+#~ msgid "The input tuple expression."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The index to match; Default (None) "
+#~ "to match a TupleGetItem with any "
+#~ "index."
+#~ msgstr ""
+
+#~ msgid "The fields in the tuple."
+#~ msgstr ""
+
+#~ msgid "The type to match."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Local variable can be used to "
+#~ "declare input arguments to a function,"
+#~ " or intermediate variables."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The name of the variable. Optional, "
+#~ "if not provided, the pattern will "
+#~ "match any VarNode."
+#~ msgstr ""
+
+#~ msgid "The type annotation on the variable."
+#~ msgstr ""
+
+#~ msgid "The parent pattern."
+#~ msgstr ""
+
+#~ msgid "The child pattern."
+#~ msgstr ""
+
+#~ msgid "The operator name"
+#~ msgstr ""
+
+#~ msgid "**op** -- The op of the corresponding name"
+#~ msgstr ""
+
+#~ msgid "The attributes to match"
+#~ msgstr ""
+
+#~ msgid "The pattern that needs type annotation"
+#~ msgstr ""
+
+#~ msgid "The name of the input pattern to match."
+#~ msgstr ""
+
+#~ msgid "**result** -- The resulting pattern."
+#~ msgstr ""
+
+#~ msgid "The Relay expression to match."
+#~ msgstr ""
+
+#~ msgid "The name of the relay op"
+#~ msgstr ""
+
+#~ msgid "**result** -- The resulting ExprPattern"
+#~ msgstr ""
+
+#~ msgid "The type key of the node."
+#~ msgstr ""
+
+#~ msgid "The fields of the node."
+#~ msgstr ""
+
+#~ msgid "**node** -- The corresponding IR Node"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If the created node is instance of"
+#~ " AttrsNode, then the creator function "
+#~ "will also run bound checks and "
+#~ "default value setup as supported by "
+#~ "Attrs."
+#~ msgstr ""
+
+#~ msgid "示例"
+#~ msgstr ""
+
+#~ msgid "The following code constructs a IntImm object"
+#~ msgstr ""
+
+#~ msgid "The pattern to match"
+#~ msgstr ""
+
+#~ msgid "The expression to split into functions"
+#~ msgstr ""
+
+#~ msgid "A dict of attributes to apply to the partitioned function"
+#~ msgstr ""
+
+#~ msgid "The input callback or list of callbacks."
+#~ msgstr ""
+
+#~ msgid "The module that associates with the expression."
+#~ msgstr ""
+

@@ -1,0 +1,15 @@
+site/
+*.tar
+whatever
+doxygen
+modules
+gen_modules
+_build/
+*.mo
+_models/
+*.log
+*.onnx
+*.h5
+*.pth
+*.npz
+*.log

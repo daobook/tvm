@@ -1,0 +1,448 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-27 19:13+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/docs/reference/api/python/ndarray.rst:19
+msgid "tvm.runtime.ndarray"
+msgstr ""
+
+#: of tvm.runtime.ndarray:1
+msgid "Runtime NDArray API"
+msgstr ""
+
+#: of tvm.runtime.ndarray.NDArray:1
+msgid "Lightweight NDArray class of TVM runtime."
+msgstr "轻量的 TVM 运行时 NDArray 类"
+
+#: of tvm.runtime.ndarray.NDArray:3
+msgid ""
+"Strictly this is only an Array Container (a buffer object) No arthimetic "
+"operations are defined. All operations are performed by TVM functions."
+msgstr ""
+"严格地说，这只是数组容器（buffer 对象），没有定义算术运算。所有运算都由 TVM 函数来完成。"
+
+#: of tvm.runtime.ndarray.NDArray:7
+msgid ""
+"The goal is not to re-build yet another array library. Instead, this is a"
+" minimal data structure to demonstrate how can we use TVM in existing "
+"project which might have their own array containers."
+msgstr ""
+"目标不是重新构建另一个数组库。"
+"相反，这是最小的数据结构，展示如何在现有的项目中使用 TVM，这些项目可能有自己的数组容器。"
+
+#: of tvm.runtime.ndarray.NDArray.__dlpack__:1
+msgid "Export the array for consumption by from_dlpack() as a DLPack capsule."
+msgstr "将 from_dlpack() 使用的数组导出为 DLPack capsule。"
+
+#: of tvm.runtime.ndarray.NDArray.__dlpack__:8
+msgid "stream"
+msgstr ""
+
+#: of
+msgid "int, optional"
+msgstr ""
+
+#: of tvm.runtime.ndarray.NDArray.__dlpack__:6
+msgid ""
+"A Python integer representing a pointer to a stream. Stream is provided "
+"by the consumer to the producer to instruct the producer to ensure that "
+"operations can safely be performed on the array."
+msgstr ""
+"Python 整数，表示指向 stream 的指针。"
+"stream 是由 consumer 提供给 producer，以指导 producer 确保对数组的运算能够安全执行。"
+
+#: of tvm.runtime.ndarray.NDArray.__dlpack__:12
+msgid "capsule"
+msgstr ""
+
+#: of
+msgid "PyCapsule"
+msgstr ""
+
+#: of tvm.runtime.ndarray.NDArray.__dlpack__:13
+msgid "A DLPack capsule for the array, containing a DLPackManagedTensor."
+msgstr "数组的 DLPack 容器，包含 DLPackManagedTensor。"
+
+#: of tvm.runtime.ndarray.NDArray.__dlpack_device__:1
+msgid "Return a tuple of device_type, device_id in DLPack convention"
+msgstr "根据 DLPack convention 返回 device_type 和 device_id 的元组"
+
+#: of tvm.runtime.ndarray.NDArray.__setitem__:1
+msgid "Set ndarray value"
+msgstr "设置 ndarray 的值"
+
+#: of tvm.runtime.ndarray.NDArray._create_view:1
+msgid "Create a view into an existing array."
+msgstr "在现有数组中创建视图。"
+
+#: of tvm.runtime.ndarray.NDArray._create_view:3
+msgid ""
+"The view shares the same allocation and datatype as the existing array, "
+"but can have a different array shape.  This is useful for runtimes that "
+"support non-flat memory, where both the physical shape of an allocation "
+"and the logical shape of the tensor it represents may need to be "
+"independently specified."
+msgstr ""
+"视图与现有数组共享相同的 allocation 和数据类型，但可以有不同的数组形状。"
+"这对于支持 non-flat 内存的运行时非常有用，在这种情况下，allocation 的物理形状和它所表示的张量的逻辑形状可能需要独立指定。"
+
+#: of tvm.runtime.ndarray.NDArray._create_view:10
+msgid ""
+"Warning: This function should not be used outside of low-level "
+"manipulations, as it breaks non-aliasing assumptions made by TVM.  This "
+"function may also be removed/replaced in the future."
+msgstr ""
+"警告：这个函数不应该在低级 manipulations 之外使用，因为它打破了 TVM 做出的 non-aliasing 假设。"
+"这个函数也可能在未来被删除/替换。"
+
+#: of tvm.runtime.ndarray.NDArray._create_view:17
+msgid "shape: Union[tvm.runtime.ShapeTuple, Sequence[typing.SupportsInt]]"
+msgstr ""
+
+#: of tvm.runtime.ndarray.NDArray._create_view:19
+msgid "The shape of the view."
+msgstr "视图的形状。"
+
+#: of tvm.runtime.ndarray.NDArray.asnumpy:1
+msgid ""
+"Convert this array to numpy array. This API will be deprecated in TVM "
+"v0.8 release. Please use `numpy` instead."
+msgstr ""
+"将数组转换为 numpy 数组。这个 API 将在 TVM v0.8 版本中弃用。请改用 ``numpy``。"
+
+#: of tvm.runtime.ndarray.NDArray.copyfrom:1
+msgid "Perform an synchronize copy from the array."
+msgstr "从数组执行同步副本。"
+
+#: of tvm.runtime.ndarray.NDArray.copyfrom:6
+msgid "source_array"
+msgstr ""
+
+#: of
+msgid "array_like"
+msgstr ""
+
+#: of tvm.runtime.ndarray.NDArray.copyfrom:6
+msgid "The data source we should like to copy from."
+msgstr "想要 copy 的数据源。"
+
+#: of tvm.runtime.ndarray.NDArray.copyfrom:10 tvm.runtime.ndarray.array:6
+#: tvm.runtime.ndarray.empty:19
+msgid "arr"
+msgstr ""
+
+#: of
+msgid "NDArray"
+msgstr ""
+
+#: of tvm.runtime.ndarray.NDArray.copyfrom:11
+msgid "Reference to self."
+msgstr ""
+
+#: of tvm.runtime.ndarray.NDArray.copyto:1
+msgid "Copy array to target"
+msgstr ""
+
+#: of tvm.runtime.ndarray.NDArray.copyto:5
+msgid "target"
+msgstr ""
+
+#: of tvm.runtime.ndarray.NDArray.copyto:6
+msgid "The target array to be copied, must have same shape as this array."
+msgstr "要复制的目标数组必须与此数组具有相同的形状。"
+
+#: of tvm.nd.NDArray.device:1
+msgid "Device of this array"
+msgstr ""
+
+#: of tvm.nd.NDArray.dtype:1
+msgid "Type of this array"
+msgstr ""
+
+#: of tvm.runtime.ndarray.NDArray.numpy:1
+msgid "Convert this array to numpy array"
+msgstr ""
+
+#: of tvm.runtime.ndarray.NDArray.numpy:5
+msgid "np_arr"
+msgstr ""
+
+#: of
+msgid "numpy.ndarray"
+msgstr ""
+
+#: of tvm.runtime.ndarray.NDArray.numpy:6
+msgid "The corresponding numpy array."
+msgstr ""
+
+#: of tvm.runtime.ndarray.NDArray.same_as:1
+msgid "Check object identity equality"
+msgstr ""
+
+#: of tvm.runtime.ndarray.NDArray.same_as:6
+msgid "other"
+msgstr ""
+
+#: of
+msgid "object"
+msgstr ""
+
+#: of tvm.runtime.ndarray.NDArray.same_as:6
+msgid "The other object to compare to"
+msgstr ""
+
+#: of tvm.runtime.ndarray.NDArray.same_as:10
+msgid "same"
+msgstr ""
+
+#: of
+msgid "bool"
+msgstr ""
+
+#: of tvm.runtime.ndarray.NDArray.same_as:11
+msgid "Whether other is same as self."
+msgstr ""
+
+#: ../../docstring of tvm.nd.NDArray.shape:1
+msgid "Shape of this array"
+msgstr ""
+
+#: of tvm.nd.NDArray.to_dlpack:1
+msgid "Produce an array from a DLPack Tensor without copying memory"
+msgstr ""
+
+#: of tvm.nd.NDArray.to_dlpack:5
+msgid "dlpack : DLPack tensor view of the array data"
+msgstr ""
+
+#: of tvm.runtime.ndarray.array:1
+msgid "Create an array from source arr."
+msgstr ""
+
+#: of tvm.runtime.ndarray.array:6
+msgid "The array to be copied from"
+msgstr ""
+
+#: of tvm.runtime.ndarray.array:9 tvm.runtime.ndarray.empty:12
+msgid "device"
+msgstr ""
+
+#: of
+msgid "Device, optional"
+msgstr ""
+
+#: of tvm.runtime.ndarray.array:9
+msgid "The device device to create the array"
+msgstr ""
+
+#: of tvm.runtime.ndarray.array:13
+msgid "ret"
+msgstr ""
+
+#: of tvm.runtime.ndarray.array:14
+msgid "The created array"
+msgstr ""
+
+#: of tvm.runtime.ndarray.empty:1
+msgid "Create an empty array given shape and device"
+msgstr ""
+
+#: of tvm.runtime.ndarray.empty:6
+msgid "shape"
+msgstr ""
+
+#: of
+msgid "Union[tvm.runtime.ShapeTuple, Sequence[typing.SupportsInt]]"
+msgstr ""
+
+#: of tvm.runtime.ndarray.empty:6
+msgid "The shape of the array."
+msgstr ""
+
+#: of tvm.runtime.ndarray.empty:9
+msgid "dtype"
+msgstr ""
+
+#: of
+msgid "type or str"
+msgstr ""
+
+#: of tvm.runtime.ndarray.empty:9
+msgid "The data type of the array."
+msgstr ""
+
+#: of
+msgid "Device"
+msgstr ""
+
+#: of tvm.runtime.ndarray.empty:12
+msgid "The device of the array."
+msgstr ""
+
+#: of tvm.runtime.ndarray.empty:15
+msgid "mem_scope"
+msgstr ""
+
+#: of
+msgid "Optional[str]"
+msgstr ""
+
+#: of tvm.runtime.ndarray.empty:15
+msgid "The memory scope of the array."
+msgstr ""
+
+#: of
+msgid "tvm.nd.NDArray"
+msgstr ""
+
+#: of tvm.runtime.ndarray.empty:20
+msgid "The array tvm supported."
+msgstr ""
+
+#~ msgid "Peform an synchronize copy from the array."
+#~ msgstr ""
+
+#~ msgid "Runtime NDArray API"
+#~ msgstr ""
+
+#~ msgid "Lightweight NDArray class of TVM runtime."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Strictly this is only an Array "
+#~ "Container (a buffer object) No "
+#~ "arthimetic operations are defined. All "
+#~ "operations are performed by TVM "
+#~ "functions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The goal is not to re-build "
+#~ "yet another array library. Instead, this"
+#~ " is a minimal data structure to "
+#~ "demonstrate how can we use TVM in"
+#~ " existing project which might have "
+#~ "their own array containers."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Convert this array to numpy array. "
+#~ "This API will be deprecated in TVM"
+#~ " v0.8 release. Please use `numpy` "
+#~ "instead."
+#~ msgstr ""
+
+#~ msgid "Perform an synchronize copy from the array."
+#~ msgstr ""
+
+#~ msgid "参数"
+#~ msgstr ""
+
+#~ msgid "The data source we should like to copy from."
+#~ msgstr ""
+
+#~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid "**arr** -- Reference to self."
+#~ msgstr ""
+
+#~ msgid "返回类型"
+#~ msgstr ""
+
+#~ msgid "Copy array to target"
+#~ msgstr ""
+
+#~ msgid "The target array to be copied, must have same shape as this array."
+#~ msgstr ""
+
+#~ msgid "Device of this array"
+#~ msgstr ""
+
+#~ msgid "Type of this array"
+#~ msgstr ""
+
+#~ msgid "Convert this array to numpy array"
+#~ msgstr ""
+
+#~ msgid "**np_arr** -- The corresponding numpy array."
+#~ msgstr ""
+
+#~ msgid "Check object identity equality"
+#~ msgstr ""
+
+#~ msgid "The other object to compare to"
+#~ msgstr ""
+
+#~ msgid "**same** -- Whether other is same as self."
+#~ msgstr ""
+
+#~ msgid "Shape of this array"
+#~ msgstr ""
+
+#~ msgid "Produce an array from a DLPack Tensor without copying memory"
+#~ msgstr ""
+
+#~ msgid "**dlpack**"
+#~ msgstr ""
+
+#~ msgid "Create an array from source arr."
+#~ msgstr ""
+
+#~ msgid "The array to be copied from"
+#~ msgstr ""
+
+#~ msgid "The device device to create the array"
+#~ msgstr ""
+
+#~ msgid "**ret** -- The created array"
+#~ msgstr ""
+
+#~ msgid "Create an empty array given shape and device"
+#~ msgstr ""
+
+#~ msgid "The shape of the array."
+#~ msgstr ""
+
+#~ msgid "The data type of the array."
+#~ msgstr ""
+
+#~ msgid "The device of the array."
+#~ msgstr ""
+
+#~ msgid "The memory scope of the array."
+#~ msgstr ""
+
+#~ msgid "**arr** -- The array tvm supported."
+#~ msgstr ""
+
+#~ msgid "Initialize the function with handle"
+#~ msgstr ""
+
+#~ msgid "handle"
+#~ msgstr ""
+
+#~ msgid "TVMArrayHandle"
+#~ msgstr ""
+
+#~ msgid "the handle to the underlying C++ TVMArray"
+#~ msgstr ""
+
+#~ msgid "Internal function that implements copy to target ndarray."
+#~ msgstr ""
+

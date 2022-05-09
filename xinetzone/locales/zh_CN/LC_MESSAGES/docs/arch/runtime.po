@@ -1,0 +1,435 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-10 21:32+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/arch/runtime.rst:21
+msgid "TVM Runtime System"
+msgstr "TVM 运行时系统"
+
+#: ../../docs/arch/runtime.rst:23
+msgid ""
+"TVM supports multiple programming languages for the compiler stack "
+"development and deployment. In this note, we explain the key elements of "
+"the TVM runtime."
+msgstr ""
+"TVM 支持编译器堆栈开发和部署的多种编程语言。在这篇笔记中，解释了 TVM 运行时的关键元素。"
+
+#: ../../docs/arch/runtime.rst:28
+msgid "We need to satisfy quite a few interesting requirements:"
+msgstr "需要满足一些有趣的要求："
+
+#: ../../docs/arch/runtime.rst:30
+msgid ""
+"Deployment: invoke the compiled function from python/javascript/c++ "
+"language."
+msgstr ""
+"Deployment：从 python/javascript/c++ 语言中调用编译过的函数。"
+
+#: ../../docs/arch/runtime.rst:31
+msgid "Debug: define a function in python and call that from a compiled function."
+msgstr "Debug：用 python 定义函数，然后从编译过的函数中调用它。"
+
+#: ../../docs/arch/runtime.rst:32
+msgid ""
+"Link: write driver code to call device specific code (CUDA) and call it "
+"from compiled host function."
+msgstr ""
+"Link：编写驱动代码来调用设备专用代码（CUDA），并从编译的 host 函数中调用它。"
+
+#: ../../docs/arch/runtime.rst:33
+msgid "Prototype: define an IR pass from python and call that from C++ backend."
+msgstr "Prototype：从 python 定义 IR pass，并从 c++ 后端调用它。"
+
+#: ../../docs/arch/runtime.rst:34
+msgid "Expose: compiler stack developed in c++ to front-end (i.e, python)"
+msgstr "Expose：用 c++ 开发的编译器堆栈到前端（即 python）"
+
+#: ../../docs/arch/runtime.rst:35
+msgid ""
+"Experiment: ship a compiled function to an embedded device to directly "
+"run there."
+msgstr ""
+"Experiment：将编译过的函数传递到嵌入式设备中，直接运行。"
+
+#: ../../docs/arch/runtime.rst:37
+msgid ""
+"We want to be able to define a function from any language and call from "
+"another. We also want the runtime core to be minimal to deploy to "
+"embedded devices."
+msgstr ""
+"希望能够从任何语言定义函数，然后从另一种语言调用它。还希望运行时的核心最小化，以便部署到嵌入式设备上。"
+
+#: ../../docs/arch/runtime.rst:43
+msgid "PackedFunc"
+msgstr ""
+
+#: ../../docs/arch/runtime.rst:45
+msgid ""
+"`PackedFunc`_ is a simple but elegant solution we find to solve the "
+"challenges listed.  A single ``PackedFunc`` object represents a function "
+"call whose caller and callee may be in different languages."
+msgstr ""
+"`PackedFunc`_ 是简单且优雅的解决方案，可以解决列出的挑战。"
+"单独的 ``PackedFunc`` 对象表示函数调用，它的调用者和被调用者可能使用不同的语言。"
+
+#: ../../docs/arch/runtime.rst:49
+msgid "The following code block provides an example in C++"
+msgstr "下面的代码块提供了 C++ 示例"
+
+#: ../../docs/arch/runtime.rst:71
+msgid ""
+"In the above codeblock, we defined a PackedFunc MyAdd. It takes two "
+"arguments : ``args`` represents input arguments and ``rv`` represents "
+"return value. The function is type-erased, which means that the function "
+"signature does not restrict which input type to pass in or type to "
+"return. Under the hood, when we call a PackedFunc, it packs the input "
+"arguments to TVMArgs on stack, and gets the result back via TVMRetValue."
+msgstr ""
+"在上面的代码块中，定义了 PackedFunc MyAdd。"
+"它接受两个参数： ``args`` 表示输入参数，``rv`` 表示返回值。"
+"函数是类型擦除的，这意味着函数签名不限制传入的输入类型或返回的类型。"
+"在底层，当调用 PackedFunc 时，它会将输入参数打包到堆栈上的 TVMArgs，并通过 TVMRetValue 返回结果。"
+
+#: ../../docs/arch/runtime.rst:77
+msgid ""
+"Thanks to template tricks in C++, we can call a PackedFunc just like a "
+"normal function. Because of its type-erased nature, we can call a "
+"PackedFunc from dynamic languages like python, without additional glue "
+"code for each new type function created. The following example registers "
+"PackedFunc in C++ and calls from python."
+msgstr ""
+"多亏了 C++ 中的模板技巧，可以像调用普通函数一样调用 PackedFunc。"
+"由于它的类型消除特性，我们可以从动态语言（如 python）中调用 PackedFunc，"
+"而不需要为每个新创建的类型函数添加额外的胶水代码。"
+"下面的例子在 C++ 中注册了 PackedFunc 并从 python 调用。"
+
+#: ../../docs/arch/runtime.rst:94
+msgid ""
+"Most of the magic of PackedFunc lies in ``TVMArgs`` and ``TVMRetValue`` "
+"structure. We restrict a list of possible types which can be passed. Here"
+" are the common ones:"
+msgstr ""
+"PackedFunc 的大部分魔力在于 ``TVMArgs`` 和 ``TVMRetValue`` 结构。"
+"可以限制传递的可能类型的列表。下面是一些常见的："
+
+#: ../../docs/arch/runtime.rst:98
+msgid "int, float and string"
+msgstr "int、float 和 string"
+
+#: ../../docs/arch/runtime.rst:99
+msgid "PackedFunc itself"
+msgstr "PackedFunc 自身"
+
+#: ../../docs/arch/runtime.rst:100
+msgid "Module for compiled modules"
+msgstr "用于编译模块的 Module"
+
+#: ../../docs/arch/runtime.rst:101
+msgid "DLTensor* for tensor object exchange"
+msgstr "对于张量对象交换的 DLTensor*"
+
+#: ../../docs/arch/runtime.rst:102
+msgid "TVM Object to represent any object in IR"
+msgstr "TVM Object 表示 IR 中的任何对象"
+
+#: ../../docs/arch/runtime.rst:104
+msgid ""
+"The restriction makes the implementation simple without the need of "
+"serialization. Despite being minimum, the PackedFunc is sufficient for "
+"the use-case of deep learning deployment as most functions only take "
+"DLTensor or numbers."
+msgstr ""
+"这个限制使得实现变得简单，而不需要序列化。"
+"尽管是最小值，但 PackedFunc 对于深度学习部署的用例来说已经足够了，因为大多数函数只接受 DLTensor 或数字。"
+
+#: ../../docs/arch/runtime.rst:108
+msgid ""
+"Since one PackedFunc can take another PackedFunc as an argument, we can "
+"pass functions from python (as PackedFunc) to C++."
+msgstr ""
+"因为一个 PackedFunc 可以接受另一个 PackedFunc 作为参数，"
+"所以可以将函数从 python（作为 PackedFunc）传递给 C++。"
+
+#: ../../docs/arch/runtime.rst:132
+msgid ""
+"TVM provides a `minimum C API`_, which allows us to embed the PackedFunc "
+"into any languages. Besides python, so far we supported `java`_ and "
+"`javascript`_. This philosophy of embedded API is very like Lua, except "
+"that we don't have a new language but use C++."
+msgstr ""
+"TVM 提供了 `最小的 C API`_，它允许将 PackedFunc 嵌入到任何语言中。"
+"除了python，到目前为止，支持 `java`_ 和 `javascript`_。"
+"这种嵌入式 API 的理念与 Lua 非常相似，不同的是，并没有使用新的语言，而是使用 C++。"
+
+#: ../../docs/arch/runtime.rst:142
+msgid ""
+"One fun fact about PackedFunc is that we use it for both compiler and "
+"deployment stack."
+msgstr ""
+"关于 PackedFunc 的一个有趣的事实是，在编译器和部署堆栈中都使用了它。"
+
+#: ../../docs/arch/runtime.rst:144
+msgid "All compiler pass functions of TVM are exposed to frontend as PackedFunc"
+msgstr "所有编译器传递 TVM 的函数都以 PackedFunc 的形式暴露给前端"
+
+#: ../../docs/arch/runtime.rst:145
+msgid "The compiled module also returns the compiled function as PackedFunc"
+msgstr "已编译模块也会以 PackedFunc 的形式返回编译后的函数"
+
+#: ../../docs/arch/runtime.rst:147
+msgid ""
+"To keep the runtime minimum, we isolated the IR Object support from the "
+"deployment runtime. The resulting runtime takes around 200K - 600K "
+"depending on how many runtime driver modules (e.g., CUDA) get included."
+msgstr ""
+"为了使运行时最小化，将 IR Object support 与 deployment runtime 隔离开来。"
+"根据包含多少运行时驱动模块（如 CUDA），最终的运行时间大约需要 200K - 600K。"
+
+#: ../../docs/arch/runtime.rst:149
+msgid ""
+"The overhead of calling into PackedFunc vs. a normal function is small, "
+"as it is only saving a few values on the stack. So it is OK as long as we"
+" don't wrap small functions. In summary, the PackedFunc is the universal "
+"glue in TVM where we use it extensively to support our compiler and "
+"deployment."
+msgstr ""
+"与普通函数相比，调用 PackedFunc 的开销很小，因为它只在堆栈上保存了几个值。"
+"只要不封装小函数就可以了。"
+"总之，PackedFunc 是 TVM 中的通用粘合剂，广泛使用它来支持我们的编译器和部署。"
+
+#: ../../docs/arch/runtime.rst:156
+msgid "Module"
+msgstr ""
+
+#: ../../docs/arch/runtime.rst:158
+msgid ""
+"Since TVM supports multiple types of devices, we need to support "
+"different type of drivers. We have to use the driver API to load the "
+"kernel, set up the argument in packed format and perform kernel launch. "
+"We also need to patch up the driver API so that the exposed functions are"
+" threadsafe. So we often need to implement these driver glues in C++ and "
+"expose them to the user. We can certainly not do it for each type of "
+"functions, so again PackedFunc is our answer."
+msgstr ""
+"由于 TVM 支持多种类型的设备，需要支持不同类型的驱动程序。"
+"必须使用驱动程序 API 来加载内核，以 packed 格式设置参数，并执行内核启动。"
+"还需要修补驱动程序的 API，以便公开的函数是线程安全的。"
+"所以经常需要用 C++ 实现这些驱动程序，并将它们暴露给用户。"
+"当然不能对每种类型的函数都这样做，所以 PackedFunc 是我们要的答案。"
+
+#: ../../docs/arch/runtime.rst:164
+msgid ""
+"TVM defines the compiled object as `Module`_. The user can get the "
+"compiled function from Module as PackedFunc. The generated compiled code "
+"can dynamically get function from Module in runtime. It caches the "
+"function handle in the first call and reuses in subsequent calls. We use "
+"this to link device code and callback into any PackedFunc(e.g., python) "
+"from generated code."
+msgstr ""
+"TVM 将编译后的对象定义为 `Module`_。"
+"用户可以从 Module 获取编译后的函数 PackedFunc。"
+"生成的编译代码可以在运行时从 Module 中动态获取函数。"
+"它在第一次调用中缓存函数句柄，并在随后的调用中重用。"
+"使用它来链接设备代码，并从生成的代码回调到任何 PackedFunc（例如 python）。"
+
+#: ../../docs/arch/runtime.rst:170
+msgid ""
+"The ModuleNode is an abstract class that can be implemented by each type "
+"of device. So far we support modules for CUDA, Metal, OpenCL and loading "
+"dynamic shared libraries. This abstraction makes introduction of new "
+"device easy, and we do not need to redo the host code generation for each"
+" type of device."
+msgstr ""
+"ModuleNode 是抽象类，可以由每种类型的设备实现。"
+"到目前为止，支持 CUDA、Metal、OpenCL 和加载动态共享库的模块。"
+"这种抽象使得引入新设备变得容易，不需要为每种类型的设备重做主机代码生成。"
+
+#: ../../docs/arch/runtime.rst:175
+msgid "Remote Deployment"
+msgstr "远程开发"
+
+#: ../../docs/arch/runtime.rst:177
+msgid ""
+"The PackedFunc and Module system also makes it easy to ship the function "
+"into remote devices directly. Under the hood, we have an RPCModule that "
+"serializes the arguments to do the data movement and launches the "
+"computation on the remote."
+msgstr ""
+"PackedFunc 和 Module 系统也使得直接将函数传送到远程设备变得很容易。"
+"在底层，有 RPCModule，它序列化参数来进行数据移动，并在远程启动计算。"
+
+#: ../../docs/arch/runtime.rst:182
+msgid ""
+"The RPC server itself is minimum and can be bundled into the runtime. We "
+"can start a minimum TVM RPC server on iPhone/android/raspberry pi or even"
+" the browser. The cross compilation on server and shipping of the module "
+"for testing can be done in the same script. Checkout :ref:`tutorial-"
+"cross-compilation-and-rpc` for more details."
+msgstr ""
+"RPC 服务器本身是最小的，可以捆绑到运行时中。"
+"可以在 iPhone/android/raspberry pi 甚至浏览器上启动一个最小的 TVM RPC 服务器。"
+"服务器上的交叉编译和测试模块的交付可以在同一个脚本中完成。"
+"要了解更多细节，请查看 :ref:`tutorial-cross-compilation-and-rpc`。"
+
+#: ../../docs/arch/runtime.rst:187
+msgid ""
+"This instant feedback gives us a lot of advantages. For example, to test "
+"the correctness of generated code on iPhone, we no longer have to write "
+"test-cases in swift/objective-c from scratch -- We can use RPC to execute"
+" on iPhone, copy the result back and do verification on the host via "
+"numpy. We can also do the profiling using the same script."
+msgstr ""
+"这种即时反馈给我们很多好处。"
+"例如，为了测试 iPhone 上生成的代码的正确性，"
+"不再需要从头开始用 swift/objective-c 编写测试用例 —— 可以使用 RPC 在 iPhone 上执行，"
+"复制结果回来，并通过 numpy 在主机上进行验证。也可以使用相同的脚本进行分析。"
+
+#: ../../docs/arch/runtime.rst:190
+msgid "TVM Object and Compiler Stack"
+msgstr "TVM Object 和编译器堆栈"
+
+#: ../../docs/arch/runtime.rst:192
+msgid ""
+"As we mentioned earlier, we build compiler stack API on top of the "
+"PackedFunc runtime system. We faced a constant changing of the compiler "
+"API for the need of research. We need a new language object or IR node "
+"whenever we want to test out new primitives. However, we don't want to "
+"change our API from time to time. Besides that, we also want to"
+msgstr ""
+"正如我们之前提到的，在 PackedFunc 运行时系统之上构建编译器堆栈 API。"
+"为了研究的需要，面临着编译器 API 的不断变化。"
+"每当想要测试新的原语时，都需要新的语言对象或 IR 节点。"
+"然而，并不希望每次都改变 API。除此之外，还想"
+
+#: ../../docs/arch/runtime.rst:196
+msgid "be able to serialize any language object and IRs"
+msgstr "能够序列化任何语言对象和 IRs"
+
+#: ../../docs/arch/runtime.rst:197
+msgid ""
+"be able to explore, print, and manipulate the IR objects in front-end "
+"language to do quick prototyping."
+msgstr ""
+"能够在前端语言中探索、打印和操作 IR 对象来进行快速原型制作。"
+
+#: ../../docs/arch/runtime.rst:199
+msgid ""
+"We introduced a base class, called `Object`_ to solve this problem. All "
+"the language object in the compiler stack is a subclass of ``Object``. "
+"Each object contains a string type_key that uniquely identifies the type "
+"of object. We choose string instead of int as type key so new ``Object`` "
+"class can be added in the decentralized fashion without adding the code "
+"back to the central repo. To ease the speed of dispatching, we allocate "
+"an integer type_index at runtime for each type_key."
+msgstr ""
+"引入了名为 `Object`_ 的基类来解决这个问题。"
+"编译器栈中的所有语言对象都是 ``Object`` 的子类。"
+"每个对象包含一个 type_key 字符串，它唯一地标识对象的类型。"
+"选择 string 而不是 int 作为类型键，所以新的 ``Object`` 类可以去中心化的方式添加，而无需将代码添加回中央 repo。"
+"为了加快调度速度，在运行时为每个 type_key 分配一个整数 type_index。"
+
+#: ../../docs/arch/runtime.rst:206
+msgid ""
+"Since usually one ``Object`` could be referenced in multiple places in "
+"the language, we use a shared_ptr to keep track of reference. We use "
+"``ObjectRef`` class to represent a reference to the ``Object``. We can "
+"roughly view ``ObjectRef`` class as shared_ptr to the ``Object`` "
+"container. We can also define subclass ``ObjectRef`` to hold each "
+"subtypes of ``Object``. Each subclass of ``Object`` needs to define the "
+"VisitAttr function."
+msgstr ""
+"由于通常一个 ``Object`` 可以在语言的多个地方被引用，"
+"可以使用 shared_ptr 来跟踪引用。"
+"使用 ``ObjectRef`` 类表示对 ``Object`` 的引用。"
+"可以粗略地将 ``ObjectRef`` 类视为 shared_ptr 到 ``Object`` 容器。"
+"也可以定义子类 ``ObjectRef`` 来保存 ``Object`` 的每个子类型。"
+"``Object`` 的每个子类都需要定义 VisitAttr 函数。"
+
+#: ../../docs/arch/runtime.rst:233
+msgid ""
+"Each ``Object`` subclass will override this to visit its members. Here is"
+" an example implementation of TensorNode."
+msgstr ""
+"每个 ``Object`` 子类将重写这个来访问它的成员。下面是 TensorNode 的例子。"
+
+#: ../../docs/arch/runtime.rst:258
+msgid ""
+"In the above examples, both ``Operation`` and ``Array<Expr>`` are "
+"ObjectRef. The VisitAttrs gives us a reflection API to visit each member "
+"of the object. We can use this function to visit the node and serialize "
+"any language object recursively. It also allows us to get members of an "
+"object easily in front-end language. For example, in the following code, "
+"we accessed the op field of the TensorNode."
+msgstr ""
+"在上面的例子中，``Operation`` 和 ``Array<Expr>`` 都是 ObjectRef。"
+"VisitAttrs 提供了反射 API 来访问对象的每个成员。"
+"可以使用这个函数来访问节点并递归地序列化任何语言对象。"
+"它还允许在前端语言中轻松地获取对象的成员。"
+"例如，在下面的代码中，访问了 TensorNode 的 op 字段。"
+
+#: ../../docs/arch/runtime.rst:273
+msgid ""
+"New ``Object`` can be added to C++ without changing the front-end "
+"runtime, making it easy to make extensions to the compiler stack. Note "
+"that this is not the fastest way to expose members to front-end language,"
+" but might be one of the simplest approaches possible. We also find that "
+"it fits our purposes as we mainly use python for testing and prototyping "
+"and still use c++ to do the heavy lifting job."
+msgstr ""
+"新的 ``Object`` 可以在不改变前端运行时的情况下添加到 C++ 中，这使得对编译器堆栈进行扩展变得很容易。"
+"请注意，这不是向前端语言公开成员的最快方法，但可能是最简单的方法之一。"
+"还发现它符合我们的目的，因为我们主要使用 python 进行测试和原型设计，而仍然使用 c++ 来完成繁重的工作。"
+
+#: ../../docs/arch/runtime.rst:279
+msgid "Implementation Details"
+msgstr "实现细节"
+
+#: ../../docs/arch/runtime.rst:281
+msgid ""
+"Each argument in PackedFunc contains a union value `TVMValue`_ and a type"
+" code. This design allows the dynamically typed language to convert to "
+"the corresponding type directly, and statically typed language to do "
+"runtime type checking during conversion."
+msgstr ""
+"PackedFunc 中的每个参数包含 union 值 `TVMValue`_ 和类型代码。"
+"这种设计允许动态类型语言直接转换为相应的类型，而静态类型语言在转换过程中进行运行时类型检查。"
+
+#: ../../docs/arch/runtime.rst:287
+msgid "The relevant files are"
+msgstr "相关文件如下"
+
+#: ../../docs/arch/runtime.rst:289
+msgid "`packed_func.h`_ for C++ API"
+msgstr "`packed_func.h`_ 用于 C++ API"
+
+#: ../../docs/arch/runtime.rst:290
+msgid "`c_runtime_api.cc`_ for C API and how to provide callback."
+msgstr "`c_runtime_api.cc`_ 为 C API 和如何提供回调。"
+
+#: ../../docs/arch/runtime.rst:295
+msgid ""
+"To support extension types, we used a registry system to register type "
+"related information, like support of any in C++, see `Extension types`_ "
+"for more details."
+msgstr ""
+"为了支持扩展类型，使用了注册表系统来注册类型相关信息，就像 C++ 中对任何类型的支持一样，"
+"请参阅 `Extension types`_ 了解更多细节。"
+
+#: ../../docs/arch/runtime.rst:302
+msgid "Runtime-Specific Information"
+msgstr "专用运行时信息"

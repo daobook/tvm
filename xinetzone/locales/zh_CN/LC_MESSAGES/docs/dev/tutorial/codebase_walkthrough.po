@@ -1,0 +1,451 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-10 21:32+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:20
+msgid "TVM Codebase Walkthrough by Example"
+msgstr "TVM 代码库的实例演练"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:22
+msgid ""
+"Getting to know a new codebase can be a challenge. This is especially "
+"true for a codebase like that of TVM, where different components interact"
+" in non-obvious ways. In this guide, we try to illustrate the key "
+"elements that comprise a compilation pipeline with a simple example. For "
+"each important step, we show where in the codebase it is implemented. The"
+" purpose is to let new developers and interested users dive into the "
+"codebase more quickly."
+msgstr ""
+"了解新的代码库可能是个挑战。"
+"对于像 TVM 这样的代码库尤其如此，其中不同的组件以非明显的方式进行交互。"
+"在本指南中，试图通过简单的例子来说明构成编译管道的关键因素。"
+"对于每一个重要的步骤，我们都显示了它在代码库中的实现位置。"
+"其目的是让新的开发者和感兴趣的用户更快进入代码库。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:26
+msgid "Codebase Structure Overview"
+msgstr "代码库结构概述"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:28
+msgid ""
+"At the root of the TVM repository, we have following subdirectories that "
+"together comprise a bulk of the codebase."
+msgstr ""
+"在 TVM 资源库的根部，我们有以下子目录，它们共同构成了代码库的大部分。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:30
+msgid "``src`` - C++ code for operator compilation and deployment runtimes."
+msgstr "``src`` - 用于算子编译和运行时部署的 C++ 代码。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:31
+msgid ""
+"``src/relay`` - Implementation of Relay, a new functional IR for deep "
+"learning framework."
+msgstr ""
+"``src/relay`` - Relay 的实现，新的深度学习框架的函数式 IR。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:32
+msgid ""
+"``python`` - Python frontend that wraps C++ functions and objects "
+"implemented in ``src``."
+msgstr ""
+"``python`` - Python 前端，包装 ``src`` 中实现的 C++ 函数和对象。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:33
+msgid ""
+"``src/topi`` - Compute definitions and backend schedules for standard "
+"neural network operators."
+msgstr ""
+"``src/topi`` - 标准神经网络算子的计算定义和后端调度。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:35
+msgid ""
+"Using standard Deep Learning terminology, ``src/relay`` is the component "
+"that manages a computational graph, and nodes in a graph are compiled and"
+" executed using infrastructure implemented in the rest of ``src``. "
+"``python`` provides python bindings for the C++ API and driver code that "
+"users can use to execute compilation. Operators corresponding to each "
+"node are registered in ``src/relay/op``. Implementations of operators are"
+" in ``topi``, and they are coded in either C++ or Python."
+msgstr ""
+"使用标准的深度学习术语，``src/relay`` 是管理计算图的组件，"
+"图中的节点使用 ``src`` 其他部分实现的基础设施进行编译和执行。"
+"``python`` 为 C++ API 和 driver 代码提供 python 绑定，用户可以用它来执行编译。"
+"与每个节点对应的算子在 ``src/relay/op`` 中注册。"
+"算子的实现在 ``topi`` 中，它们是用 C++ 或 Python 编码的。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:37
+msgid ""
+"When a user invokes graph compilation by ``relay.build(...)``, the "
+"following sequence of actions happens for each node in the graph:"
+msgstr ""
+"当用户通过 ``relay.build(...)`` 调用图的编译时，对图中的每个节点都会发生以下一系列动作："
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:39
+msgid "Look up an operator implementation by querying the operator registry"
+msgstr "通过查询算子注册表查找算子实现"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:40
+msgid "Generate a compute expression and a schedule for the operator"
+msgstr "为算子生成计算表达式和调度"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:41
+msgid "Compile the operator into object code"
+msgstr "将算子编译成目标代码"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:43
+msgid ""
+"One of the interesting aspects of the TVM codebase is that "
+"interoperability between C++ and Python is not unidirectional. Typically,"
+" all code that performs heavy lifting is implemented in C++, and Python "
+"bindings are provided for the user interface. This is also true in TVM, "
+"but in the TVM codebase, C++ code can also call into functions defined in"
+" a Python module. For example, the convolution operator is implemented in"
+" Python, and its implementation is invoked from C++ code in Relay."
+msgstr ""
+"TVM 代码库的一个有趣方面是，C++ 和 Python 之间的互操作性不是单向的。"
+"通常情况下，所有执行繁重工作的代码都是用 C++ 实现的，而 Python 绑定是为用户界面提供的。"
+"这在 TVM 中也是如此，但在 TVM 代码库中，C++ 代码也可以调用 Python 模块中定义的函数。"
+"例如，卷积算子是用 Python 实现的，它的实现是由 Relay 中的 C++ 代码调用的。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:47
+msgid "Vector Add Example"
+msgstr "向量加法示例"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:49
+msgid ""
+"We use a simple example that uses the low level TVM API directly. The "
+"example is vector addition, which is covered in detail in :ref:`tutorial-"
+"tensor-expr-get-started`"
+msgstr ""
+"使用简单的例子介绍如何直接使用低级 TVM API。"
+"这个例子是向量加法，在 :ref:`tutorial-tensor-expr-get-started` 中详细介绍。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:58
+msgid ""
+"Here, types of ``A``, ``B``, ``C`` are ``tvm.tensor.Tensor``, defined in "
+"``python/tvm/te/tensor.py``. The Python ``Tensor`` is backed by C++ "
+"``Tensor``, implemented in ``include/tvm/te/tensor.h`` and "
+"``src/te/tensor.cc``. All Python types in TVM can be thought of as a "
+"handle to the underlying C++ type with the same name. If you look at the "
+"definition of Python ``Tensor`` type below, you can see it is a subclass "
+"of ``Object``."
+msgstr ""
+"这里，``A``、``B``、``C`` 的类型是 ``tvm.tensor.Tensor``，定义在 ``python/tvm/te/tensor.py``。"
+"Python 的 ``Tensor`` 由 C++ 的 ``Tensor`` 支持，在 ``include/tvm/te/tensor.h`` 和 ``src/te/tensor.cc`` 中实现。"
+"TVM 中的所有 Python 类型都可以被认为是底层 C++ 类型的句柄，具有相同的名称。"
+"Python ``Tensor`` 类型的定义是 ``Object`` 的子类。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:69
+msgid ""
+"The object protocol is the basis of exposing C++ types to frontend "
+"languages, including Python. The way TVM implements Python wrapping is "
+"not straightforward. It is briefly covered in :ref:`tvm-runtime-system`, "
+"and details are in ``python/tvm/_ffi/`` if you are interested."
+msgstr ""
+"对象协议（object protocol）是将 C++ 类型暴露给前端语言（包括 Python）的基础。"
+"TVM 实现 Python 封装的方式并不直接。"
+":ref:`tvm-runtime-system` 中简要介绍了这一点，如果你有兴趣，细节在 ``python/tvm/_ffi/`` 中。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:71
+msgid ""
+"We use the ``TVM_REGISTER_*`` macro to expose C++ functions to frontend "
+"languages, in the form of a :ref:`tvm-runtime-system-packed-func`. A "
+"``PackedFunc`` is another mechanism by which TVM implements "
+"interoperability between C++ and Python. In particular, this is what "
+"makes calling Python functions from the C++ codebase very easy. You can "
+"also checkout `FFI Navigator <https://github.com/tqchen/ffi-navigator>`_ "
+"which allows you to navigate between python and c++ FFI calls."
+msgstr ""
+"使用 ``TVM_REGISTER_*`` 宏，以 :ref:`tvm-runtime-system-packed-func` 的形式，将 C++ 函数暴露给前端语言。"
+"``PackedFunc`` 是 TVM 实现 C++ 和 Python 之间互操作的另一种机制。"
+"特别是，这使得从 C++ 代码库中调用 Python 函数非常容易。"
+"你也可以查看 `FFI Navigator <https://github.com/tqchen/ffi-navigator>`_，它允许你在 Python 和 C++ FFI 调用之间进行导航。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:74
+msgid ""
+"A ``Tensor`` object has an ``Operation`` object associated with it, "
+"defined in ``python/tvm/te/tensor.py``, ``include/tvm/te/operation.h``, "
+"and ``src/tvm/te/operation`` subdirectory. A ``Tensor`` is an output of "
+"its ``Operation`` object. Each ``Operation`` object has in turn "
+"``input_tensors()`` method, which returns a list of input ``Tensor`` to "
+"it. This way we can keep track of dependencies between ``Operation``."
+msgstr ""
+"``Tensor`` 对象有与之相关的 ``Operation`` 对象，"
+"定义在 ``python/tvm/te/tensor.py``，``include/tvm/te/operation.h``，以及 ``src/tvm/te/operation`` 子目录下。"
+"``Tensor`` 是其 ``Operation`` 对象的输出。"
+"每个 ``Operation`` 对象都有 ``input_tensors()`` 方法，该方法返回一个输入 ``Tensor`` 的列表。"
+"这样，就可以跟踪 ``Operation`` 之间的依赖关系。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:76
+msgid ""
+"We pass the operation corresponding to the output tensor ``C`` to "
+"``tvm.te.create_schedule()`` function in ``python/tvm/te/schedule.py``."
+msgstr ""
+"将输出张量 ``C`` 对应的算子传递给在 ``python/tvm/te/schedule.py`` 中的 ``tvm.te.create_schedule()`` 函数。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:82
+msgid "This function is mapped to the C++ function in ``include/tvm/schedule.h``."
+msgstr "这个函数被映射到 ``include/tvm/schedule.h`` 中的 C++ 函数。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:90
+msgid ""
+"``Schedule`` consists of collections of ``Stage`` and output "
+"``Operation``."
+msgstr ""
+"``Schedule`` 由 ``Stage`` 和输出 ``Operation`` 的集合组成。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:92
+msgid ""
+"``Stage`` corresponds to one ``Operation``. In the vector add example "
+"above, there are two placeholder ops and one compute op, so the schedule "
+"``s`` contains three stages. Each ``Stage`` holds information about a "
+"loop nest structure, types of each loop (``Parallel``, ``Vectorized``, "
+"``Unrolled``), and where to execute its computation in the loop nest of "
+"the next ``Stage``, if any."
+msgstr ""
+"``Stage`` 对应一个 ``Operation``。"
+"在上面的 vector add 例子中，有两个占位符算子和一个计算算子，所以调度 ``s`` 包含三个阶段。"
+"每个 ``Stage`` 都包含关于循环嵌套结构的信息，"
+"每个循环的类型（``Parallel``，``Vectorized``，``Unrolled``)，"
+"以及在下一个 ``Stage`` 的循环嵌套中执行计算的位置。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:94
+msgid ""
+"``Schedule`` and ``Stage`` are defined in ``tvm/python/te/schedule.py``, "
+"``include/tvm/te/schedule.h``, and ``src/te/schedule/schedule_ops.cc``."
+msgstr ""
+"``Schedule`` 和 ``Stage`` 被定义在 ``tvm/python/te/schedule.py``，"
+"``include/tvm/te/schedule.h`` 和 ``src/te/schedule/schedule_ops.cc``。"
+
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:96
+msgid ""
+"To keep it simple, we call ``tvm.build(...)`` on the default schedule "
+"created by ``create_schedule()`` function above."
+msgstr ""
+"为了简单起见，在上面的 ``create_schedule()`` 函数创建的默认调度上调用 ``tvm.build(...)``。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:103
+msgid ""
+"``tvm.build()``, defined in ``python/tvm/driver/build_module.py``, takes "
+"a schedule, input and output ``Tensor``, and a target, and returns a "
+":py:class:`tvm.runtime.Module` object. A :py:class:`tvm.runtime.Module` "
+"object contains a compiled function which can be invoked with function "
+"call syntax."
+msgstr ""
+"``tvm.build()`` （被定义在 ``python/tvm/driver/build_module.py``） 获取调度、"
+"输入和输出 ``Tensor`` 和目标，并返回 :py:class:`tvm.runtime.Module` 对象。"
+":py:class:`tvm.runtime.Module` 对象包含已编译的函数，它可以用函数调用语法调用。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:105
+msgid "The process of ``tvm.build()`` can be divided into two steps:"
+msgstr "``tvm.build()`` 的过程可以分为两个步骤："
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:107
+msgid ""
+"Lowering, where a high level, initial loop nest structures are "
+"transformed into a final, low level IR"
+msgstr ""
+"降级，即高级的初始循环嵌套结构变换为最终的低级 IR"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:108
+msgid ""
+"Code generation, where target machine code is generated from the low "
+"level IR"
+msgstr "代码生成，目标的机器码由低级 IR 生成"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:110
+msgid ""
+"Lowering is done by ``tvm.lower()`` function, defined in "
+"``python/tvm/build_module.py``. First, bound inference is performed, and "
+"an initial loop nest structure is created."
+msgstr ""
+"降级由 ``tvm.lower()`` 函数完成，该函数在 ``python/tvm/build_module.py`` 中定义。"
+"首先，执行边界推断，并创建初始的循环嵌套结构。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:124
+msgid ""
+"Bound inference is the process where all loop bounds and sizes of "
+"intermediate buffers are inferred. If you target the CUDA backend and you"
+" use shared memory, its required minimum size is automatically determined"
+" here. Bound inference is implemented in ``src/te/schedule/bound.cc``, "
+"``src/te/schedule/graph.cc`` and ``src/te/schedule/message_passing.cc``. "
+"For more information on how bound inference works, see :ref:`dev-"
+"InferBound-Pass`."
+msgstr ""
+"边界推断是推断所有循环边界和中间缓冲区 size 的过程。"
+"如果您的目标是 CUDA 后端，并且您使用共享内存，那么它所需的最小 size 将在这里自动确定。"
+"边界推断在 ``src/te/schedule/bound.cc``、 ``src/te/schedule/graph.cc`` "
+"和 ``src/te/schedule/message_passing.cc`` 中实现。"
+"有关边界推断如何工作的更多信息，请参阅 :ref:`dev-InferBound-Pass`。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:127
+msgid ""
+"``stmt``, which is the output of ``ScheduleOps()``, represents an initial"
+" loop nest structure. If you have applied ``reorder`` or ``split`` "
+"primitives to your schedule, then the initial loop nest already reflects "
+"those changes. ``ScheduleOps()`` is defined in "
+"``src/te/schedule/schedule_ops.cc``."
+msgstr ""
+"``stmt`` （``ScheduleOps()`` 的输出）表示初始循环嵌套结构。"
+"如果已经将 ``reorder`` 或 ``split`` 原语应用到调度中，那么初始的循环嵌套已经反映了这些变化。"
+"``ScheduleOps()`` 定义在 ``src/te/schedule/schedule_ops.cc`` 中。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:129
+msgid ""
+"Next, we apply a number of lowering passes to ``stmt``. These passes are "
+"implemented in ``src/tir/pass`` subdirectory. For example, if you have "
+"applied ``vectorize`` or ``unroll`` primitives to your schedule, they are"
+" applied in loop vectorization and unrolling passes below."
+msgstr ""
+"接下来，对 ``stmt`` 应用一些降级 pass。"
+"这些 pass 在 ``src/tir/pass`` 子目录中实现。"
+"例如，如果已经将 ``vectorize`` 或 ``unroll`` 原语应用到调度中，"
+"它们将在下面的循环 vectorization 和 unrolling passes 中应用。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:144
+msgid ""
+"After lowering is done, ``build()`` function generates target machine "
+"code from the lowered function. This code can contain SSE or AVX "
+"instructions if you target x86, or PTX instructions for CUDA target. In "
+"addition to target specific machine code, TVM also generates host side "
+"code that is responsible for memory management, kernel launch etc."
+msgstr ""
+"降级完成后，``build()`` 函数从降级的函数生成目标机器码。"
+"如果目标是 x86，这段代码可以包含 SSE 或 AVX 指令；"
+"如果目标是 CUDA，这段代码可以包含 PTX 指令。"
+"除了目标专用的机器码，TVM 还生成主机端代码，负责内存管理、内核启动等。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:146
+msgid ""
+"Code generation is done by ``build_module()`` function, defined in "
+"``python/tvm/target/codegen.py``. On the C++ side, code generation is "
+"implemented in ``src/target/codegen`` subdirectory. ``build_module()`` "
+"Python function will reach ``Build()`` function below in "
+"``src/target/codegen/codegen.cc``:"
+msgstr ""
+"代码生成是由在 ``python/tvm/target/codegen.py`` 中定义的 ``build_module()`` 函数完成的。"
+"在 C++ 方面，代码生成是在 ``src/target/codegen`` 子目录中实现的。"
+"``build_module()`` Python 函数将到达 ``src/target/codegen/codegen.cc`` 下面的 ``Build()`` 函数："
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:150
+msgid ""
+"The ``Build()`` function looks up the code generator for the given target"
+" in the ``PackedFunc`` registry, and invokes the function found. For "
+"example, ``codegen.build_cuda`` function is registered in "
+"``src/codegen/build_cuda_on.cc``, like this:"
+msgstr ""
+"``Build()`` 函数在 ``PackedFunc`` 注册表中查找给定目标的代码生成器，并调用找到的函数。"
+"例如 ``codegen.build_cuda`` 函数注册在 ``src/codegen/build_cuda_on.cc``，像这样："
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:159
+msgid ""
+"The ``BuildCUDA()`` above generates CUDA kernel source from the lowered "
+"IR using ``CodeGenCUDA`` class defined in "
+"``src/codegen/codegen_cuda.cc``, and compile the kernel using NVRTC. If "
+"you target a backend that uses LLVM, which includes x86, ARM, NVPTX and "
+"AMDGPU, code generation is done primarily by ``CodeGenLLVM`` class "
+"defined in ``src/codegen/llvm/codegen_llvm.cc``. ``CodeGenLLVM`` "
+"translates TVM IR into LLVM IR, runs a number of LLVM optimization "
+"passes, and generates target machine code."
+msgstr ""
+"上面的 ``BuildCUDA()`` 从降级的 IR 使用定义在 ``src/codegen/codegen_cuda.cc`` "
+"中的  ``CodeGenCUDA`` 类生成 CUDA 内核源代码，并使用 NVRTC 编译内核。"
+"如果你的后端使用了 LLVM，包括 x86, ARM, NVPTX 和 AMDGPU，"
+"代码生成主要是通过定义在 ``src/codegen/llvm/codegen_llvm.cc`` 中的 ``CodeGenLLVM`` 类。"
+"``CodeGenLLVM`` 将 TVM IR 翻译为 LLVM IR，运行一系列 LLVM 优化，并生成目标机器代码。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:161
+msgid ""
+"The ``Build()`` function in ``src/codegen/codegen.cc`` returns a "
+"``runtime::Module`` object, defined in ``include/tvm/runtime/module.h`` "
+"and ``src/runtime/module.cc``. A ``Module`` object is a container for the"
+" underlying target specific ``ModuleNode`` object. Each backend "
+"implements a subclass of ``ModuleNode`` to add target specific runtime "
+"API calls. For example, the CUDA backend implements ``CUDAModuleNode`` "
+"class in ``src/runtime/cuda/cuda_module.cc``, which manages the CUDA "
+"driver API. The ``BuildCUDA()`` function above wraps ``CUDAModuleNode`` "
+"with ``runtime::Module`` and return it to the Python side. The LLVM "
+"backend implements ``LLVMModuleNode`` in "
+"``src/codegen/llvm/llvm_module.cc``, which handles JIT execution of "
+"compiled code. Other subclasses of ``ModuleNode`` can be found under "
+"subdirectories of ``src/runtime`` corresponding to each backend."
+msgstr ""
+"``src/codegen/codegen.cc`` 中的 ``Build()`` 函数返回定义在 "
+"``include/tvm/runtime/module.h`` 中的 ``runtime::Module`` 对象。"
+"``Module`` 对象是底层目标专用的 ``ModuleNode`` 对象的容器。"
+"每个后端实现 ``ModuleNode`` 子类，以添加目标专用的运行时 API 调用。"
+"例如，CUDA 后端在 ``src/runtime/cuda/cuda_module.cc`` 中实现 ``CUDAModuleNode`` 类，它管理 CUDA 驱动程序 API。"
+"上面的 ``BuildCUDA()`` 函数用  ``runtime::Module`` 包装 ``CUDAModuleNode``，并将其返回到 Python 端。"
+"LLVM 后端在 ``src/codegen/llvm/llvm_module.cc`` 中实现 ``LLVMModuleNode``，它处理编译代码的 JIT 执行。"
+"``ModuleNode`` 的其他子类可以在对应每个后端的 ``src/runtime`` 的子目录下找到。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:163
+msgid ""
+"The returned module, which can be thought of as a combination of a "
+"compiled function and a device API, can be invoked on TVM's NDArray "
+"objects."
+msgstr ""
+"返回的模块，可以被认为是编译函数和设备 API 的组合，可以在 TVM 的 NDArray 对象上调用。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:174
+msgid ""
+"Under the hood, TVM allocates device memory and manages memory transfers "
+"automatically. To do that, each backend needs to subclass ``DeviceAPI`` "
+"class, defined in ``include/tvm/runtime/device_api.h``, and override "
+"memory management methods to use device specific API. For example, the "
+"CUDA backend implements ``CUDADeviceAPI`` in "
+"``src/runtime/cuda/cuda_device_api.cc`` to use ``cudaMalloc``, "
+"``cudaMemcpy`` etc."
+msgstr ""
+"在底层，TVM 自动分配设备内存并管理内存传输（memory transfer）。"
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:176
+msgid ""
+"The first time you invoke the compiled module with ``fadd(a, b, c)``, "
+"``GetFunction()`` method of ``ModuleNode`` is called to get a "
+"``PackedFunc`` that can be used for a kernel call. For example, in "
+"``src/runtime/cuda/cuda_module.cc`` the CUDA backend implements "
+"``CUDAModuleNode::GetFunction()`` like this:"
+msgstr ""
+"你首次用 ``fadd(a, b, c)`` 调用编译过的模块时，``ModuleNode`` 的 ``GetFunction()`` "
+"方法会被调用以获得 ``PackedFunc``，该方法可用于内核调用。"
+"例如，在 ``src/runtime/cuda/cuda_module.cc``  CUDA后端实现 ``CUDAModuleNode::GetFunction()`` 像这样："
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:190
+msgid ""
+"The ``PackedFunc``'s overloaded ``operator()`` will be called, which in "
+"turn calls ``operator()`` of ``CUDAWrappedFunc`` in "
+"``src/runtime/cuda/cuda_module.cc``, where finally we see the "
+"``cuLaunchKernel`` driver call:"
+msgstr ""
+"``PackedFunc`` 的重载 ``operator()`` 将被调用，"
+"这反过来调用 ``CUDAWrappedFunc`` 中的 ``operator()``，"
+"在 ``src/runtime/cuda/cuda_module.cc``，最后看到 ``cuLaunchKernel`` 驱动程序调用："
+
+#: ../../docs/dev/tutorial/codebase_walkthrough.rst:220
+msgid ""
+"This concludes an overview of how TVM compiles and executes a function. "
+"Although we did not detail TOPI or Relay, in the end, all neural network "
+"operators go through the same compilation process as above. You are "
+"encouraged to dive into the details of the rest of the codebase."
+msgstr ""
+"这总结了 TVM 如何编译和执行函数的概述。"
+"虽然没有详细说明 TOPI 或 Relay，但最终，所有的神经网络算子都经历了上述相同的编译过程。"
+"鼓励您深入研究其余代码库的细节。"

@@ -1,0 +1,1060 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-07 11:03+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/docs/reference/api/python/relay/backend.rst:19
+msgid "tvm.relay.backend"
+msgstr ""
+
+#: of tvm.relay.backend:1
+msgid "Backend codegen modules for relay."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter:1
+msgid "The Python interface to the Relay reference interpreter."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor:1
+msgid "An abstract interface for executing Relay programs."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._convert_args:1
+msgid ""
+"Convert the combination of arguments and keyword arguments into a "
+"sequence of arguments that may be passed to a Relay evaluator."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._convert_args:5
+msgid ""
+"We first provide all positional arguments, and then attempt to fill in "
+"the remaining arguments using the keyword arguments. We map the keyword "
+"arguments to the corresponding parameters, if there is an ambiguity "
+"between positional and keyword arguments this procedure will raise an "
+"error."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._convert_args:14
+msgid "expr: relay.Expr"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._convert_args:14
+msgid "The expression to evaluate"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._convert_args:17
+msgid "args: List[tvm.nd.NDArray]"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._convert_args:17
+msgid "The arguments to pass to the evaluator."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._convert_args:20
+msgid "kwargs: Dict[str, tvm.NDArrray]"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._convert_args:20
+msgid "The keyword arguments to pass to the evaluator."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._convert_args
+msgid "返回"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._convert_args:22
+msgid ""
+"List[tvm.nd.NDArray]     The new arguments with all keyword arguments "
+"placed in the correct slot."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._convert_args:24
+msgid "List[tvm.nd.NDArray]"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._convert_args:25
+msgid "The new arguments with all keyword arguments placed in the correct slot."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._convert_args
+msgid "返回类型"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._make_executor:1
+msgid "Construct a Python function that implements the evaluation of expression."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._make_executor:7
+msgid "expr: Optional[relay.Expr]"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._make_executor:7
+msgid "The Relay expression to execute."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._make_executor:11
+msgid "executor: function,"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor._make_executor:12
+msgid "A Python function which implements the behavior of `expr`."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor.evaluate:1
+msgid "Evaluate a Relay expression on the executor."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor.evaluate:6
+msgid "expr: Optional[tvm.relay.Expr]"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor.evaluate:6
+msgid "The expression to evaluate."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor.evaluate:9
+msgid "binds: Optional[Map[tvm.relay.Var, tvm.relay.Expr]]"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor.evaluate:9
+msgid "Additional binding of free variable."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor.evaluate:13
+msgid "val"
+msgstr ""
+
+#: of
+msgid "Union[function, Object]"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Executor.evaluate:14
+msgid "The evaluation result."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Interpreter:1
+msgid "Simple interpreter interface."
+msgstr ""
+
+#: of tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen.codegen:14
+#: tvm.relay.backend.interpreter.Interpreter:6
+#: tvm.relay.backend.vm.VMCompiler.lower:6
+#: tvm.relay.backend.vm.VMCompiler.optimize:22 tvm.relay.backend.vm.compile:6
+msgid "mod"
+msgstr ""
+
+#: of
+msgid "tvm.IRModule"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Interpreter:6
+#: tvm.relay.backend.vm.VMExecutor:11
+msgid "The module to support the execution."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Interpreter:9
+msgid "device"
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMExecutor:13
+msgid "Device"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Interpreter:9
+#: tvm.relay.backend.vm.VMExecutor:14
+msgid "The runtime device to run the code on."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Interpreter:12
+#: tvm.relay.backend.te_compiler.CCacheKey:8
+#: tvm.relay.backend.te_compiler.TECompiler.jit:9
+#: tvm.relay.backend.te_compiler.TECompiler.lower:9
+#: tvm.relay.backend.te_compiler.get_valid_implementations:20
+#: tvm.relay.backend.te_compiler.select_implementation:27
+msgid "target"
+msgstr ""
+
+#: of
+msgid "tvm.Target"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Interpreter:12
+#: tvm.relay.backend.vm.VMExecutor:17
+msgid "The target option to build the function."
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Interpreter:14
+msgid ""
+"CAUTION: Despite the API the module is prepared upon each call to "
+"evaluate rather than once in create_executor. That is: .. code-block:: "
+"python"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Interpreter:19
+msgid ""
+"executor = relay.create_executor(kind=\"debug\", mod=module) a = "
+"executor.evaluate(expr)(args1) b = executor.evaluate(expr)(args2)"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Interpreter:23
+msgid ""
+"will prepare all the bindings in module twice. For efficiency, try to "
+"hoist calls to evaluate as high as possible, preferably immediately after"
+" create_executor: .. code-block:: python"
+msgstr ""
+
+#: of tvm.relay.backend.interpreter.Interpreter:27
+msgid ""
+"func = relay.create_executor(kind=\"debug\", mod=module).evaluate(expr) a"
+" = func(args1) b = func(args2)"
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler:1
+msgid "TE compiler engine (replacing legacy compile_engine)."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.CCacheKey:1
+msgid "Key in the TE Compiler."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.CCacheKey:6
+#: tvm.relay.backend.te_compiler.TECompiler.jit:6
+#: tvm.relay.backend.te_compiler.TECompiler.lower:6
+msgid "source_func"
+msgstr ""
+
+#: of
+msgid "tvm.relay.Function"
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.CCacheKey:6
+msgid "The source function."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.CCacheKey:9
+msgid "The target we want to run the function on."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.CCacheValue:1
+msgid "Value in the TE Compiler, including usage statistics."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.LoweredOutput:1
+msgid "Lowered output"
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.TECompiler:1
+msgid "TECompiler to get lowered code."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.TECompiler.clear:1
+msgid "clear the existing cached functions"
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.TECompiler.items:1
+msgid ""
+"List items in the cache. Returns ------- item_list : "
+"List[Tuple[CCacheKey, CCacheValue]]"
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.TECompiler.items:5
+msgid "The list of items."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.TECompiler.jit:1
+msgid "JIT a source_func to a tvm.runtime.PackedFunc."
+msgstr ""
+
+#: of
+msgid "Union[tvm.relay.Function, CCacheKey]"
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.TECompiler.jit:6
+#: tvm.relay.backend.te_compiler.TECompiler.lower:6
+msgid "The source relay function."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.TECompiler.jit:9
+#: tvm.relay.backend.te_compiler.TECompiler.lower:9
+msgid "The target platform."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.TECompiler.jit:13
+msgid "jited_func: tvm.runtime.PackedFunc"
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.TECompiler.jit:14
+msgid "The result of jited function."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.TECompiler.lower:1
+msgid "Lower a source_func to a CachedFunc."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.TECompiler.lower:13
+msgid "cached_func: CachedFunc"
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.TECompiler.lower:14
+msgid "The result of lowering."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.get:1
+msgid "Get the global TE Compiler."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.get:5
+msgid "engine"
+msgstr ""
+
+#: of
+msgid "tvm.relay.backend.TECompiler"
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.get:6
+msgid "The TE Compiler."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.get_shape:1
+msgid "Convert the shape to correct dtype and vars."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.get_valid_implementations:1
+msgid "Get all valid implementations from the op strategy."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.get_valid_implementations:3
+#: tvm.relay.backend.te_compiler.select_implementation:10
+msgid "Note that this function doesn't support op with symbolic input shapes."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.get_valid_implementations:8
+#: tvm.relay.backend.te_compiler.select_implementation:15
+msgid "op"
+msgstr ""
+
+#: of
+msgid "tvm.ir.Op"
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.get_valid_implementations:8
+#: tvm.relay.backend.te_compiler.select_implementation:15
+msgid "Relay operator."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.get_valid_implementations:11
+#: tvm.relay.backend.te_compiler.select_implementation:18
+msgid "attrs"
+msgstr ""
+
+#: of
+msgid "object"
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.get_valid_implementations:11
+#: tvm.relay.backend.te_compiler.select_implementation:18
+msgid "The op attribute."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.get_valid_implementations:14
+#: tvm.relay.backend.te_compiler.select_implementation:21
+msgid "inputs"
+msgstr ""
+
+#: of
+msgid "List[tvm.te.Tensor]"
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.get_valid_implementations:14
+#: tvm.relay.backend.te_compiler.select_implementation:21
+msgid "Input tensors to the op."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.get_valid_implementations:17
+#: tvm.relay.backend.te_compiler.select_implementation:24
+msgid "out_type"
+msgstr ""
+
+#: of
+msgid "relay.Type"
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.get_valid_implementations:17
+#: tvm.relay.backend.te_compiler.select_implementation:24
+msgid "The output type."
+msgstr ""
+
+#: of
+msgid "tvm.target.Target"
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.get_valid_implementations:20
+#: tvm.relay.backend.te_compiler.select_implementation:27
+msgid "The target to compile the op."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.get_valid_implementations:24
+#: tvm.relay.backend.te_compiler.select_implementation:34
+msgid "ret"
+msgstr ""
+
+#: of
+msgid "List[relay.op.OpImplementation]"
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.get_valid_implementations:25
+msgid "The list of all valid op implementations."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.select_implementation:1
+msgid "Select the best implementation from the op strategy."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.select_implementation:3
+msgid ""
+"If use_autotvm is True, it'll first try to find the best implementation "
+"based on AutoTVM profile results. If no AutoTVM profile result is found, "
+"it'll choose the implementation with highest plevel."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.select_implementation:7
+msgid ""
+"If use_autotvm is False, it'll directly choose the implementation with "
+"highest plevel."
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.select_implementation:30
+msgid "use_autotvm"
+msgstr ""
+
+#: of
+msgid "bool"
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.select_implementation:30
+msgid "Whether query AutoTVM to pick the best."
+msgstr ""
+
+#: of
+msgid "tuple(relay.op.OpImplementation, List[tvm.te.Tensor])"
+msgstr ""
+
+#: of tvm.relay.backend.te_compiler.select_implementation:35
+msgid "The best op implementation and the corresponding output tensors."
+msgstr ""
+
+#: of tvm.relay.backend.graph_executor_codegen:1
+msgid "A compiler from a Relay expression to TVM's graph executor."
+msgstr ""
+
+#: of tvm.relay.backend.graph_executor_codegen:3
+msgid "The compiler is built from a few pieces."
+msgstr ""
+
+#: of tvm.relay.backend.graph_executor_codegen:5
+msgid ""
+"First we define a compiler from a single Relay expression to the graph "
+"language. We require the expression to be a function. The function's "
+"parameters correspond to the placeholder/inputs and model parameters "
+"found in the computation graph representation. The body of the function "
+"represents the computation graph."
+msgstr ""
+
+#: of tvm.relay.backend.graph_executor_codegen:11
+msgid ""
+"The compiler's output is a program in the graph language, which is "
+"composed of Node, NodeRef, InputNode, OpNode. This \"little language\" "
+"represents programs in TVM's graph format."
+msgstr ""
+
+#: of tvm.relay.backend.graph_executor_codegen:15
+msgid ""
+"To connect to the graph executor, we use a printer that converts our "
+"graph format into TVM's JSON format. The resulting string can be loaded "
+"by contrib.graph_executor or any other TVM runtime compatible systems."
+msgstr ""
+
+#: of tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen:1
+msgid "The compiler from Relay to the TVM runtime system."
+msgstr ""
+
+#: of tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen.codegen:1
+msgid "Compile a single function into a graph."
+msgstr ""
+
+#: of tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen.codegen:5
+msgid "ir_module: tvm.ir.Module"
+msgstr ""
+
+#: of tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen.codegen:6
+msgid "The module to compile"
+msgstr ""
+
+#: of tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen.codegen:8
+msgid "func: tvm.relay.Expr"
+msgstr ""
+
+#: of tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen.codegen:8
+msgid "The function to compile."
+msgstr ""
+
+#: of tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen.codegen:12
+msgid "graph_json"
+msgstr ""
+
+#: of
+msgid "str"
+msgstr ""
+
+#: of tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen.codegen:13
+msgid "The graph json that can be consumed by runtime."
+msgstr ""
+
+#: of
+msgid "IRModule or Dict[Target, IRModule]"
+msgstr ""
+
+#: of tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen.codegen:15
+msgid "The lowered functions."
+msgstr ""
+
+#: of tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen.codegen:16
+#: tvm.relay.backend.vm.VMCompiler.optimize:17
+#: tvm.relay.backend.vm.VMCompiler.optimize:24
+#: tvm.relay.backend.vm.VMCompiler.set_params:6 tvm.relay.backend.vm.compile:24
+msgid "params"
+msgstr ""
+
+#: of
+msgid "Dict[str, tvm.nd.NDArray]"
+msgstr ""
+
+#: of tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen.codegen:17
+msgid "Additional constant parameters."
+msgstr ""
+
+#: of tvm.relay.backend.vm:1
+msgid "The Relay Virtual Machine."
+msgstr ""
+
+#: of tvm.relay.backend.vm:3
+msgid "Implements a Python interface to compiling and executing on the Relay VM."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler:1
+msgid "Compiler that compiles Relay module to VM executable."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler._tophub_context:1
+msgid "Get the autotvm context."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler._update_target:1
+msgid "Update target."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler._update_target_host:1
+msgid "Update target host."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.codegen:1
+msgid "Generate the kernel library."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.get_exec:1
+msgid "Get the VM executable."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.get_exec:5
+#: tvm.relay.backend.vm.compile:28
+msgid "exec"
+msgstr ""
+
+#: of
+msgid "tvm.runtime.vm.Executable"
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.get_exec:6
+#: tvm.relay.backend.vm.compile:29
+msgid "The VM executable that contains both library code and bytecode."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.get_params:1
+msgid "Return the updated weights."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.lower:1
+msgid "Lower the module to VM bytecode."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.lower:6 tvm.relay.backend.vm.compile:6
+msgid "The Relay module to build."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.lower:11 tvm.relay.backend.vm.compile:11
+msgid "target : str, :any:`tvm.target.Target`, or dict of str(i.e."
+msgstr ""
+
+#: of
+msgid "str,"
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.lower:9 tvm.relay.backend.vm.compile:9
+msgid ""
+"device/context name) to str/tvm.target.Target, optional For heterogeneous"
+" compilation, it is a dictionary indicating context to target mapping. "
+"For homogeneous compilation, it is a build target."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.lower:19
+#: tvm.relay.backend.vm.VMCompiler.optimize:13 tvm.relay.backend.vm.compile:20
+msgid "target_host : str or :any:`tvm.target.Target`, optional"
+msgstr ""
+
+#: of
+msgid "str or"
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.lower:14 tvm.relay.backend.vm.compile:14
+msgid ""
+"Host compilation target, if target is device. When TVM compiles device "
+"specific program such as CUDA, we also need host(CPU) side code to "
+"interact with the driver to setup the dimensions and parameters "
+"correctly. target_host is used to specify the host side codegen target. "
+"By default, llvm is used if it is enabled, otherwise a stackvm intepreter"
+" is used."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.optimize:1
+msgid "Helper method that optimizes a Relay module via VM."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.optimize:5
+msgid "mod : tvm.IRModule"
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.optimize:8
+msgid "target : str, :any:`tvm.target.Target`, or dict of str (i.e."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.optimize:8
+msgid "device/context name) to str/tvm.target.Target, optional"
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.optimize:11
+msgid ""
+"The compilation target for host. By default, llvm is used if it is "
+"enabled, otherwise a stackvm intepreter is used."
+msgstr ""
+
+#: of
+msgid "dict of str to NDArray"
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.optimize:16
+#: tvm.relay.backend.vm.VMCompiler.set_params:6 tvm.relay.backend.vm.compile:23
+msgid ""
+"Input parameters to the graph that do not change during inference time. "
+"Used for constant folding."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.optimize:22
+msgid "The optimized relay module."
+msgstr ""
+
+#: of
+msgid "dict"
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.optimize:25
+msgid "The parameters of the final module."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.set_params:1
+msgid "Set constant parameters for the model."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMExecutor:1
+msgid "An implementation of the executor interface for the Relay VM."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMExecutor:4
+msgid ""
+"Useful interface for experimentation and debugging the VM can also be "
+"used directly from the API. supported by `tvm.runtime.vm`."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMExecutor:11
+msgid "mod : :py:class:`~tvm.IRModule`"
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMExecutor:10
+msgid "IRModule"
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMExecutor:14
+msgid "device : :py:class:`~tvm.runtime.Device`"
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMExecutor:16
+msgid "target : :py:class:`Target`"
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMExecutor:15
+msgid "Target"
+msgstr ""
+
+#: of tvm.relay.backend.vm.compile:1
+msgid "Compile the module to VM executable. A helper function for VMCompiler."
+msgstr ""
+
+#~ msgid "Backend codegen modules for relay."
+#~ msgstr ""
+
+#~ msgid "The Python interface to the Relay reference interpreter."
+#~ msgstr ""
+
+#~ msgid "An abstract interface for executing Relay programs."
+#~ msgstr ""
+
+#~ msgid "Evaluate a Relay expression on the executor."
+#~ msgstr ""
+
+#~ msgid "参数"
+#~ msgstr ""
+
+#~ msgid "The expression to evaluate."
+#~ msgstr ""
+
+#~ msgid "Additional binding of free variable."
+#~ msgstr ""
+
+#~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid "**val** -- The evaluation result."
+#~ msgstr ""
+
+#~ msgid "返回类型"
+#~ msgstr ""
+
+#~ msgid "Simple interpreter interface."
+#~ msgstr ""
+
+#~ msgid "The module to support the execution."
+#~ msgstr ""
+
+#~ msgid "The runtime device to run the code on."
+#~ msgstr ""
+
+#~ msgid "The target option to build the function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "python: executor = "
+#~ "relay.create_executor(kind=\"debug\", mod=module) a "
+#~ "= executor.evaluate(expr)(args1) b = "
+#~ "executor.evaluate(expr)(args2)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "python: func = relay.create_executor(kind=\"debug\","
+#~ " mod=module).evaluate(expr) a = func(args1) "
+#~ "b = func(args2)"
+#~ msgstr ""
+
+#~ msgid "TE compiler engine (replacing legacy compile_engine)."
+#~ msgstr ""
+
+#~ msgid "Key in the TE Compiler."
+#~ msgstr ""
+
+#~ msgid "The source function."
+#~ msgstr ""
+
+#~ msgid "The target we want to run the function on."
+#~ msgstr ""
+
+#~ msgid "Value in the TE Compiler, including usage statistics."
+#~ msgstr ""
+
+#~ msgid "Lowered output"
+#~ msgstr ""
+
+#~ msgid "TECompiler to get lowered code."
+#~ msgstr ""
+
+#~ msgid "clear the existing cached functions"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "List items in the cache. :returns: "
+#~ "**item_list** -- The list of items. "
+#~ ":rtype: List[Tuple[CCacheKey, CCacheValue]]"
+#~ msgstr ""
+
+#~ msgid "JIT a source_func to a tvm.runtime.PackedFunc."
+#~ msgstr ""
+
+#~ msgid "The source relay function."
+#~ msgstr ""
+
+#~ msgid "The target platform."
+#~ msgstr ""
+
+#~ msgid "**jited_func** -- The result of jited function."
+#~ msgstr ""
+
+#~ msgid "Lower a source_func to a CachedFunc."
+#~ msgstr ""
+
+#~ msgid "**cached_func** -- The result of lowering."
+#~ msgstr ""
+
+#~ msgid "Get the global TE Compiler."
+#~ msgstr ""
+
+#~ msgid "**engine** -- The TE Compiler."
+#~ msgstr ""
+
+#~ msgid "Convert the shape to correct dtype and vars."
+#~ msgstr ""
+
+#~ msgid "Get all valid implementations from the op strategy."
+#~ msgstr ""
+
+#~ msgid "Note that this function doesn't support op with symbolic input shapes."
+#~ msgstr ""
+
+#~ msgid "Relay operator."
+#~ msgstr ""
+
+#~ msgid "The op attribute."
+#~ msgstr ""
+
+#~ msgid "Input tensors to the op."
+#~ msgstr ""
+
+#~ msgid "The output type."
+#~ msgstr ""
+
+#~ msgid "The target to compile the op."
+#~ msgstr ""
+
+#~ msgid "**ret** -- The list of all valid op implementations."
+#~ msgstr ""
+
+#~ msgid "Select the best implementation from the op strategy."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If use_autotvm is True, it'll first "
+#~ "try to find the best implementation "
+#~ "based on AutoTVM profile results. If "
+#~ "no AutoTVM profile result is found, "
+#~ "it'll choose the implementation with "
+#~ "highest plevel."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If use_autotvm is False, it'll directly"
+#~ " choose the implementation with highest "
+#~ "plevel."
+#~ msgstr ""
+
+#~ msgid "Whether query AutoTVM to pick the best."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**ret** -- The best op implementation"
+#~ " and the corresponding output tensors."
+#~ msgstr ""
+
+#~ msgid "A compiler from a Relay expression to TVM's graph executor."
+#~ msgstr ""
+
+#~ msgid "The compiler is built from a few pieces."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "First we define a compiler from a"
+#~ " single Relay expression to the graph"
+#~ " language. We require the expression "
+#~ "to be a function. The function's "
+#~ "parameters correspond to the "
+#~ "placeholder/inputs and model parameters found"
+#~ " in the computation graph representation."
+#~ " The body of the function represents"
+#~ " the computation graph."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The compiler's output is a program "
+#~ "in the graph language, which is "
+#~ "composed of Node, NodeRef, InputNode, "
+#~ "OpNode. This \"little language\" represents"
+#~ " programs in TVM's graph format."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "To connect to the graph executor, "
+#~ "we use a printer that converts our"
+#~ " graph format into TVM's JSON format."
+#~ " The resulting string can be loaded"
+#~ " by contrib.graph_executor or any other "
+#~ "TVM runtime compatible systems."
+#~ msgstr ""
+
+#~ msgid "The compiler from Relay to the TVM runtime system."
+#~ msgstr ""
+
+#~ msgid "Compile a single function into a graph."
+#~ msgstr ""
+
+#~ msgid "The module to compile"
+#~ msgstr ""
+
+#~ msgid "The function to compile."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **graph_json** (*str*) -- The graph"
+#~ " json that can be consumed by "
+#~ "runtime. * **mod** (*IRModule or "
+#~ "Dict[Target, IRModule]*) -- The lowered "
+#~ "functions. * **params** (*Dict[str, "
+#~ "tvm.nd.NDArray]*) -- Additional constant "
+#~ "parameters."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**graph_json** (*str*) -- The graph json"
+#~ " that can be consumed by runtime."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**mod** (*IRModule or Dict[Target, IRModule]*)"
+#~ " -- The lowered functions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**params** (*Dict[str, tvm.nd.NDArray]*) -- "
+#~ "Additional constant parameters."
+#~ msgstr ""
+
+#~ msgid "The Relay Virtual Machine."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Implements a Python interface to "
+#~ "compiling and executing on the Relay "
+#~ "VM."
+#~ msgstr ""
+
+#~ msgid "Compiler that compiles Relay module to VM executable."
+#~ msgstr ""
+
+#~ msgid "Generate the kernel library."
+#~ msgstr ""
+
+#~ msgid "Get the VM executable."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**exec** -- The VM executable that "
+#~ "contains both library code and bytecode."
+#~ msgstr ""
+
+#~ msgid "Return the updated weights."
+#~ msgstr ""
+
+#~ msgid "Lower the module to VM bytecode."
+#~ msgstr ""
+
+#~ msgid "The Relay module to build."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "device/context name) to str/tvm.target.Target, "
+#~ "optional For heterogeneous compilation, it "
+#~ "is a dictionary indicating context to"
+#~ " target mapping. For homogeneous "
+#~ "compilation, it is a build target."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Host compilation target, if target is"
+#~ " device. When TVM compiles device "
+#~ "specific program such as CUDA, we "
+#~ "also need host(CPU) side code to "
+#~ "interact with the driver to setup "
+#~ "the dimensions and parameters correctly. "
+#~ "target_host is used to specify the "
+#~ "host side codegen target. By default,"
+#~ " llvm is used if it is enabled,"
+#~ " otherwise a stackvm intepreter is "
+#~ "used."
+#~ msgstr ""
+
+#~ msgid "Helper method that optimizes a Relay module via VM."
+#~ msgstr ""
+
+#~ msgid "device/context name) to str/tvm.target.Target, optional"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The compilation target for host. By "
+#~ "default, llvm is used if it is "
+#~ "enabled, otherwise a stackvm intepreter "
+#~ "is used."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Input parameters to the graph that "
+#~ "do not change during inference time. "
+#~ "Used for constant folding."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **mod** (*tvm.IRModule*) -- The "
+#~ "optimized relay module. * **params** "
+#~ "(*dict*) -- The parameters of the "
+#~ "final module."
+#~ msgstr ""
+
+#~ msgid "**mod** (*tvm.IRModule*) -- The optimized relay module."
+#~ msgstr ""
+
+#~ msgid "**params** (*dict*) -- The parameters of the final module."
+#~ msgstr ""
+
+#~ msgid "Set constant parameters for the model."
+#~ msgstr ""
+
+#~ msgid "An implementation of the executor interface for the Relay VM."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Useful interface for experimentation and "
+#~ "debugging the VM can also be used"
+#~ " directly from the API. supported by"
+#~ " `tvm.runtime.vm`."
+#~ msgstr ""
+
+#~ msgid "Compile the module to VM executable. A helper function for VMCompiler."
+#~ msgstr ""
+

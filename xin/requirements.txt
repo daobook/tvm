@@ -1,0 +1,19 @@
+Sphinx>=4.5
+sphinx-gallery
+numpy
+matplotlib
+scipy
+sphinx_book_theme
+autodocsumm
+sphinx_copybutton
+tlcpack-sphinx-addon
+babel
+synr
+pytest
+# cloudpickle
+jupyter-sphinx
+myst-nb
+sphinx_thebe
+sphinx_panels
+attrs
+sphinxext-rediraffe

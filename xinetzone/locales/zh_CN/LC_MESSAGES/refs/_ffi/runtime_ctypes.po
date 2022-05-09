@@ -1,0 +1,537 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-07 11:03+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/refs/_ffi/runtime_ctypes.rst:3
+msgid "``_ffi.runtime_ctypes``"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes:1
+msgid "Common runtime ctypes."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.ArgTypeCode:1
+msgid "Type code used in API calls"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.DataType:1
+msgid "TVM datatype structure"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.DataTypeCode:1
+msgid "DataType code in DLTensor."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device:1
+msgid "TVM device strucure."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device:3
+msgid ""
+"Typically constructed using convenience function "
+":meth:`tvm.runtime.device`."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device:6
+msgid ""
+"Exposes uniform interface to device-specific APIs such as CUDA or OpenCL."
+"  Some properties may return None depending on whether an API exposes "
+"that particular property."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device._GetDeviceAttr:1
+msgid "Internal helper function to invoke runtime.GetDeviceAttr"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.api_version:1
+msgid "Returns version number of the SDK used to compile TVM."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.api_version:3
+msgid "For example, CUDA_VERSION for cuda or VK_HEADER_VERSION for Vulkan."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.api_version:6
+#: tvm._ffi.runtime_ctypes.Device.compute_version:6
+#: tvm._ffi.runtime_ctypes.Device.device_name:3
+#: tvm._ffi.runtime_ctypes.Device.max_shared_memory_per_block:3
+#: tvm._ffi.runtime_ctypes.Device.max_thread_dimensions:3
+msgid ""
+"Returns device value for cuda, rocm, opencl, and vulkan. Returns remote "
+"device value for RPC devices.  Returns None for all other devices."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.api_version:12
+#: tvm._ffi.runtime_ctypes.Device.compute_version:12
+#: tvm._ffi.runtime_ctypes.Device.driver_version:12
+msgid "version"
+msgstr ""
+
+#: of
+msgid "int or None"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.api_version:13
+msgid "The version of the SDK"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.compute_version:1
+msgid "Get compute version number as string."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.compute_version:3
+msgid ""
+"Returns maximum API version (e.g. CUDA/OpenCL/Vulkan) supported by the "
+"device."
+msgstr ""
+
+#: of
+msgid "str or None"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.compute_version:13
+msgid "The version string in `major.minor` format."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.create_raw_stream:1
+msgid "Create a new runtime stream at the context."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.create_raw_stream:3
+msgid "User should free the stream after use."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.create_raw_stream:7
+#: tvm._ffi.runtime_ctypes.Device.free_raw_stream:5
+#: tvm._ffi.runtime_ctypes.Device.set_raw_stream:5
+#: tvm._ffi.runtime_ctypes.Device.sync:5
+msgid "stream"
+msgstr ""
+
+#: of
+msgid "TVMStreamHandle"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.create_raw_stream:8
+msgid "The created runtime stream."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.device_name:1
+msgid "Return the vendor-specific name of device."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.device_name:9
+msgid "device_name"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.device_name:10
+msgid "The name of the device."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.driver_version:1
+msgid "Returns version number of the driver"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.driver_version:3
+msgid ""
+"Returns driver vendor's internal version number. (e.g. \"450.408.256\" "
+"for nvidia-driver-450)"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.driver_version:6
+msgid ""
+"Returns device value for opencl and vulkan.  Returns remote device value "
+"for RPC devices.  Returns None for all other devices."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.driver_version:13
+msgid "The version string in `major.minor.patch` format."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.exist:1
+msgid "Whether this device exists."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.exist:3
+msgid ""
+"Returns True if TVM has support for the device, if the physical device is"
+" present, and the device is accessible through appropriate drivers (e.g. "
+"cuda/vulkan)."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.exist:9
+msgid "exist"
+msgstr ""
+
+#: of
+msgid "bool"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.exist:10
+msgid "True if the device exists"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.free_raw_stream:1
+msgid "Free a created stream handle."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.free_raw_stream:6
+msgid "The stream which should to be released."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.max_clock_rate:1
+msgid "Return the max clock frequency of device (kHz)."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.max_clock_rate:3
+#: tvm._ffi.runtime_ctypes.Device.multi_processor_count:3
+msgid ""
+"Returns device value for cuda, rocm, and opencl.  Returns remote device "
+"value for RPC devices.  Returns None for all other devices."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.max_clock_rate:9
+msgid "max_clock_rate"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.max_clock_rate:10
+msgid "The maximum clock frequency of the device (kHz)"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.max_shared_memory_per_block:1
+msgid "Total amount of shared memory per block in bytes."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.max_shared_memory_per_block:9
+msgid "max_shared_memory_per_block"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.max_shared_memory_per_block:10
+msgid "Total amount of shared memory per block in bytes"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.max_thread_dimensions:1
+msgid "Return the maximum size of each thread axis"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.max_thread_dimensions:9
+msgid "dims: List of int, or None"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.max_thread_dimensions:10
+msgid "The maximum length of threadIdx.x, threadIdx.y, threadIdx.z"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.max_threads_per_block:1
+msgid "Maximum number of threads on each block."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.max_threads_per_block:3
+msgid ""
+"Returns device value for cuda, metal, rocm, opencl, and vulkan devices.  "
+"Returns remote device value for RPC devices. Returns None for all other "
+"devices."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.max_threads_per_block:9
+msgid "max_threads_per_block"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.max_threads_per_block:10
+msgid "The number of threads on each block"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.multi_processor_count:1
+msgid "Return the number of compute units in the device."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.multi_processor_count:9
+msgid "multi_processor_count"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.multi_processor_count:10
+msgid "Thee number of compute units in the device"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.set_raw_stream:1
+msgid "Set a created stream handle."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.set_raw_stream:6
+msgid "The stream which should to be set to the device."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.sync:1
+msgid "Synchronize until jobs finished at the context."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.sync:6
+msgid "Jobs in this stream should be finished."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.warp_size:1
+msgid "Number of threads that execute concurrently."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.warp_size:3
+msgid ""
+"Returns device value for for cuda, rocm, and vulkan.  Returns 1 for metal"
+" and opencl devices, regardless of the physical device.  Returns remote "
+"device value for RPC devices.  Returns None for all other devices."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.warp_size:10
+msgid "warp_size"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.warp_size:11
+msgid "Number of threads that execute concurrently"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.ObjectRValueRef:1
+msgid "Represent an RValue ref to an object that can be moved."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.ObjectRValueRef:5
+msgid "obj"
+msgstr ""
+
+#: of
+msgid "tvm.runtime.Object"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.ObjectRValueRef:6
+msgid "The object that this value refers to"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.TVMArray:1
+msgid "TVMValue in C API"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.TVMByteArray:1
+msgid "Temp data structure for byte array."
+msgstr ""
+
+#~ msgid "`_ffi.runtime_ctypes`"
+#~ msgstr ""
+
+#~ msgid "Common runtime ctypes."
+#~ msgstr ""
+
+#~ msgid "Type code used in API calls"
+#~ msgstr ""
+
+#~ msgid "TVM datatype structure"
+#~ msgstr ""
+
+#~ msgid "DataType code in DLTensor."
+#~ msgstr ""
+
+#~ msgid "TVM device strucure."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Typically constructed using convenience "
+#~ "function :meth:`tvm.runtime.device`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Exposes uniform interface to device-"
+#~ "specific APIs such as CUDA or "
+#~ "OpenCL.  Some properties may return None"
+#~ " depending on whether an API exposes"
+#~ " that particular property."
+#~ msgstr ""
+
+#~ msgid "Returns version number of the SDK used to compile TVM."
+#~ msgstr ""
+
+#~ msgid "For example, CUDA_VERSION for cuda or VK_HEADER_VERSION for Vulkan."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns device value for cuda, rocm, "
+#~ "opencl, and vulkan. Returns remote "
+#~ "device value for RPC devices.  Returns"
+#~ " None for all other devices."
+#~ msgstr ""
+
+#~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid "**version** -- The version of the SDK"
+#~ msgstr ""
+
+#~ msgid "返回类型"
+#~ msgstr ""
+
+#~ msgid "Get compute version number as string."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns maximum API version (e.g. "
+#~ "CUDA/OpenCL/Vulkan) supported by the device."
+#~ msgstr ""
+
+#~ msgid "**version** -- The version string in `major.minor` format."
+#~ msgstr ""
+
+#~ msgid "Create a new runtime stream at the context."
+#~ msgstr ""
+
+#~ msgid "User should free the stream after use."
+#~ msgstr ""
+
+#~ msgid "**stream** -- The created runtime stream."
+#~ msgstr ""
+
+#~ msgid "Return the vendor-specific name of device."
+#~ msgstr ""
+
+#~ msgid "**device_name** -- The name of the device."
+#~ msgstr ""
+
+#~ msgid "Returns version number of the driver"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns driver vendor's internal version "
+#~ "number. (e.g. \"450.408.256\" for nvidia-"
+#~ "driver-450)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns device value for opencl and "
+#~ "vulkan.  Returns remote device value for"
+#~ " RPC devices.  Returns None for all"
+#~ " other devices."
+#~ msgstr ""
+
+#~ msgid "**version** -- The version string in `major.minor.patch` format."
+#~ msgstr ""
+
+#~ msgid "Whether this device exists."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns True if TVM has support "
+#~ "for the device, if the physical "
+#~ "device is present, and the device "
+#~ "is accessible through appropriate drivers "
+#~ "(e.g. cuda/vulkan)."
+#~ msgstr ""
+
+#~ msgid "**exist** -- True if the device exists"
+#~ msgstr ""
+
+#~ msgid "Free a created stream handle."
+#~ msgstr ""
+
+#~ msgid "参数"
+#~ msgstr ""
+
+#~ msgid "The stream which should to be released."
+#~ msgstr ""
+
+#~ msgid "Return the max clock frequency of device (kHz)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns device value for cuda, rocm, "
+#~ "and opencl.  Returns remote device value"
+#~ " for RPC devices.  Returns None for"
+#~ " all other devices."
+#~ msgstr ""
+
+#~ msgid "**max_clock_rate** -- The maximum clock frequency of the device (kHz)"
+#~ msgstr ""
+
+#~ msgid "Total amount of shared memory per block in bytes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**max_shared_memory_per_block** -- Total amount "
+#~ "of shared memory per block in "
+#~ "bytes"
+#~ msgstr ""
+
+#~ msgid "Return the maximum size of each thread axis"
+#~ msgstr ""
+
+#~ msgid "**dims** -- The maximum length of threadIdx.x, threadIdx.y, threadIdx.z"
+#~ msgstr ""
+
+#~ msgid "Maximum number of threads on each block."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns device value for cuda, metal,"
+#~ " rocm, opencl, and vulkan devices.  "
+#~ "Returns remote device value for RPC "
+#~ "devices. Returns None for all other "
+#~ "devices."
+#~ msgstr ""
+
+#~ msgid "**max_threads_per_block** -- The number of threads on each block"
+#~ msgstr ""
+
+#~ msgid "Return the number of compute units in the device."
+#~ msgstr ""
+
+#~ msgid "**multi_processor_count** -- Thee number of compute units in the device"
+#~ msgstr ""
+
+#~ msgid "Set a created stream handle."
+#~ msgstr ""
+
+#~ msgid "The stream which should to be set to the device."
+#~ msgstr ""
+
+#~ msgid "Synchronize until jobs finished at the context."
+#~ msgstr ""
+
+#~ msgid "Jobs in this stream should be finished."
+#~ msgstr ""
+
+#~ msgid "Number of threads that execute concurrently."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns device value for for cuda, "
+#~ "rocm, and vulkan.  Returns 1 for "
+#~ "metal and opencl devices, regardless of"
+#~ " the physical device.  Returns remote "
+#~ "device value for RPC devices.  Returns"
+#~ " None for all other devices."
+#~ msgstr ""
+
+#~ msgid "**warp_size** -- Number of threads that execute concurrently"
+#~ msgstr ""
+
+#~ msgid "Represent an RValue ref to an object that can be moved."
+#~ msgstr ""
+
+#~ msgid "The object that this value refers to"
+#~ msgstr ""
+
+#~ msgid "TVMValue in C API"
+#~ msgstr ""
+
+#~ msgid "Temp data structure for byte array."
+#~ msgstr ""
+

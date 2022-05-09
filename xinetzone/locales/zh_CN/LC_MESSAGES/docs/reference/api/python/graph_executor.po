@@ -1,0 +1,741 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-07 11:03+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/docs/reference/api/python/graph_executor.rst:19
+msgid "tvm.contrib.graph_executor"
+msgstr ""
+
+#: of tvm.contrib.graph_executor:1
+msgid "Minimum graph executor that executes graph containing TVM PackedFunc."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule:1
+msgid "Wrapper runtime module."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule:3
+msgid ""
+"This is a thin wrapper of the underlying TVM module. you can also "
+"directly call set_input, run, and get_output of underlying module "
+"functions"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule:10
+#: tvm.contrib.graph_executor.GraphModule:15
+msgid "module"
+msgstr ""
+
+#: of
+msgid "tvm.runtime.Module"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule:10
+#: tvm.contrib.graph_executor.GraphModule:15
+msgid "The internal tvm module that holds the actual graph functions."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.__getitem__:1
+msgid "Get internal module function"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.__getitem__:5
+#: tvm.contrib.graph_executor.GraphModule.set_input:6
+msgid "key"
+msgstr ""
+
+#: of
+msgid "str"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.__getitem__:6
+msgid "The key to the module."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.benchmark:1
+msgid "Calculate runtime of a function by repeatedly calling it."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.benchmark:3
+msgid ""
+"Use this function to get an accurate measurement of the runtime of a "
+"function. The function is run multiple times in order to account for "
+"variability in measurements, processor speed or other external factors.  "
+"Mean, median, standard deviation, min and max runtime are all reported.  "
+"On GPUs, CUDA and ROCm specifically, special on-device timers are used so"
+" that synchonization and data transfer operations are not counted towards"
+" the runtime. This allows for fair comparison of runtimes across "
+"different functions and models. The `end_to_end` flag switches this "
+"behavior to include data transfer operations in the runtime."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.benchmark:11
+msgid "The benchmarking loop looks approximately like so:"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.benchmark:26
+msgid "func_name"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.benchmark:26
+msgid "The function to benchmark. This is ignored if `end_to_end` is true."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.benchmark:30
+msgid "repeat"
+msgstr ""
+
+#: of
+msgid "int"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.benchmark:29
+msgid ""
+"Number of times to run the outer loop of the timing code (see above). The"
+" output will contain `repeat` number of datapoints."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.benchmark:36
+msgid "number"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.benchmark:33
+msgid ""
+"Number of times to run the inner loop of the timing code. This inner loop"
+" is run in between the timer starting and stopping. In order to amortize "
+"any timing overhead, `number` should be increased when the runtime of the"
+" function is small (less than a 1/10 of a millisecond)."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.benchmark:41
+msgid "min_repeat_ms"
+msgstr ""
+
+#: of
+msgid "Optional[float]"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.benchmark:39
+msgid ""
+"If set, the inner loop will be run until it takes longer than "
+"`min_repeat_ms` milliseconds. This can be used to ensure that the "
+"function is run enough to get an accurate measurement."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.benchmark:46
+msgid "end_to_end"
+msgstr ""
+
+#: of
+msgid "bool"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.benchmark:44
+msgid ""
+"If set, include time to transfer input tensors to the device and time to "
+"transfer returned tensors in the total runtime. This will give accurate "
+"timings for end to end workloads."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.benchmark:50
+msgid "kwargs"
+msgstr ""
+
+#: of
+msgid "Dict[str, Object]"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.benchmark:49
+msgid ""
+"Named arguments to the function. These are cached before running timing "
+"code, so that data transfer costs are not counted in the runtime."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.benchmark:55
+msgid "timing_results"
+msgstr ""
+
+#: of
+msgid "BenchmarkResult"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.benchmark:55
+msgid ""
+"Runtimes of the function. Use `.mean` to access the mean runtime, use "
+"`.results` to access the individual runtimes (in seconds)."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.debug_get_output:1
+msgid "Run graph up to node and get the output to out"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.debug_get_output:6
+msgid "node"
+msgstr ""
+
+#: of
+msgid "int / str"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.debug_get_output:6
+msgid "The node index or name"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.debug_get_output:8
+#: tvm.contrib.graph_executor.GraphModule.get_input:8
+#: tvm.contrib.graph_executor.GraphModule.get_output:8
+msgid "out"
+msgstr ""
+
+#: of
+msgid "NDArray"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.debug_get_output:9
+#: tvm.contrib.graph_executor.GraphModule.get_input:9
+#: tvm.contrib.graph_executor.GraphModule.get_output:9
+msgid "The output array container"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_input:1
+msgid "Get index-th input to out"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_input:6
+#: tvm.contrib.graph_executor.GraphModule.get_output:6
+msgid "index"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_input:6
+msgid "The input index"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_input_index:1
+msgid "Get inputs index via input name."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_input_index:6
+msgid "name"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_input_index:6
+msgid "The input key name"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_input_index:10
+msgid "index: int"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_input_index:11
+msgid "The input index. -1 will be returned if the given input name is not found."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_input_info:1
+msgid "Return the 'shape' and 'dtype' dictionaries of the graph."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_input_info:4
+msgid ""
+"We can't simply get the input tensors from a TVM graph because weight "
+"tensors are treated equivalently. Therefore, to find the input tensors we"
+" look at the 'arg_nodes' in the graph (which are either weights or "
+"inputs) and check which ones don't appear in the params (where the "
+"weights are stored). These nodes are therefore inferred to be input "
+"tensors."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_input_info:13
+msgid "shape_dict"
+msgstr ""
+
+#: of
+msgid "Map"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_input_info:14
+msgid "Shape dictionary - {input_name: tuple}."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_input_info:15
+msgid "dtype_dict"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_input_info:16
+msgid "dtype dictionary - {input_name: dtype}."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_num_inputs:1
+msgid "Get the number of inputs to the graph"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_num_inputs:5
+#: tvm.contrib.graph_executor.GraphModule.get_num_outputs:5
+msgid "count"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_num_inputs:6
+msgid "The number of inputs."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_num_outputs:1
+msgid "Get the number of outputs from the graph"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_num_outputs:6
+msgid "The number of outputs."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_output:1
+msgid "Get index-th output to out"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.get_output:6
+msgid "The output index"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.load_params:1
+msgid "Load parameters from serialized byte array of parameter dict."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.load_params:5
+#: tvm.contrib.graph_executor.GraphModule.share_params:8
+msgid "params_bytes"
+msgstr ""
+
+#: of
+msgid "bytearray"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.load_params:6
+msgid "The serialized parameter dict."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.run:1
+msgid "Run forward execution of the graph"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.run:5
+msgid "input_dict: dict of str to NDArray"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.run:6
+msgid "List of input values to be feed to"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.set_input:1
+msgid "Set inputs to the module via kwargs"
+msgstr ""
+
+#: of
+msgid "int or str"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.set_input:6
+#: tvm.contrib.graph_executor.GraphModule.set_input:9
+msgid "The input key"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.set_input:9
+msgid "value"
+msgstr ""
+
+#: of
+msgid "the input value."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.set_input:11
+msgid "params"
+msgstr ""
+
+#: of
+msgid "dict of str to NDArray"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.set_input:12
+msgid "Additional arguments"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.share_params:1
+msgid "Share parameters from pre-existing GraphExecutor instance."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.share_params:6
+msgid "other: GraphExecutor"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.share_params:6
+msgid ""
+"The parent GraphExecutor from which this instance should share it's "
+"parameters."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.GraphModule.share_params:9
+msgid "The serialized parameter dict (used only for the parameter names)."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.create:1
+msgid "Create a runtime executor module given a graph and module."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.create:8
+msgid "graph_json_str"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.create:6
+msgid ""
+"The graph to be deployed in json format output by json graph. The graph "
+"can contain operator(tvm_op) that points to the name of PackedFunc in the"
+" libmod."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.create:11
+#: tvm.contrib.graph_executor.get_device:6
+msgid "libmod"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.create:11
+#: tvm.contrib.graph_executor.get_device:6
+msgid "The module of the corresponding function"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.create:17
+msgid "device"
+msgstr ""
+
+#: of
+msgid "Device or list of Device"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.create:14
+msgid ""
+"The device to deploy the module. It can be local or remote when there is "
+"only one Device. Otherwise, the first device in the list will be used as "
+"this purpose. All device should be given for heterogeneous execution."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.create:22
+msgid "graph_module"
+msgstr ""
+
+#: of
+msgid "GraphModule"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.create:22
+msgid "Runtime graph module that can be used to execute the graph."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.create:26
+msgid ""
+"See also :py:class:`tvm.contrib.graph_executor.GraphModule` for examples "
+"to directly construct a GraphModule from an exported relay compiled "
+"library."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.get_device:1
+msgid "Parse and validate all the device(s)."
+msgstr ""
+
+#: of tvm.contrib.graph_executor.get_device:8
+msgid "device : Device or list of Device"
+msgstr ""
+
+#: of tvm.contrib.graph_executor.get_device:12
+msgid ""
+"device : list of Device num_rpc_dev : Number of rpc devices "
+"device_type_id : List of device type and device id"
+msgstr ""
+
+#~ msgid "Return the 'shape' and 'dtype' dictionaries of the graph."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "We can't simply get the input "
+#~ "tensors from a TVM graph because "
+#~ "weight tensors are treated equivalently. "
+#~ "Therefore, to find the input tensors "
+#~ "we look at the 'arg_nodes' in the"
+#~ " graph (which are either weights or"
+#~ " inputs) and check which ones don't"
+#~ " appear in the params (where the "
+#~ "weights are stored). These nodes are "
+#~ "therefore inferred to be input tensors."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **shape_dict** (*Map*) -- Shape "
+#~ "dictionary - {input_name: tuple}. * "
+#~ "**dtype_dict** (*Map*) -- dtype dictionary "
+#~ "- {input_name: dtype}."
+#~ msgstr ""
+
+#~ msgid "**shape_dict** (*Map*) -- Shape dictionary - {input_name: tuple}."
+#~ msgstr ""
+
+#~ msgid "**dtype_dict** (*Map*) -- dtype dictionary - {input_name: dtype}."
+#~ msgstr ""
+
+#~ msgid "Minimum graph executor that executes graph containing TVM PackedFunc."
+#~ msgstr ""
+
+#~ msgid "Wrapper runtime module."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This is a thin wrapper of the "
+#~ "underlying TVM module. you can also "
+#~ "directly call set_input, run, and "
+#~ "get_output of underlying module functions"
+#~ msgstr ""
+
+#~ msgid "参数"
+#~ msgstr ""
+
+#~ msgid "The internal tvm module that holds the actual graph functions."
+#~ msgstr ""
+
+#~ msgid "type"
+#~ msgstr ""
+
+#~ msgid "tvm.runtime.Module"
+#~ msgstr ""
+
+#~ msgid "实际案例"
+#~ msgstr ""
+
+#~ msgid "Calculate runtime of a function by repeatedly calling it."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Use this function to get an "
+#~ "accurate measurement of the runtime of"
+#~ " a function. The function is run "
+#~ "multiple times in order to account "
+#~ "for variability in measurements, processor "
+#~ "speed or other external factors.  Mean,"
+#~ " median, standard deviation, min and "
+#~ "max runtime are all reported.  On "
+#~ "GPUs, CUDA and ROCm specifically, "
+#~ "special on-device timers are used "
+#~ "so that synchonization and data transfer"
+#~ " operations are not counted towards "
+#~ "the runtime. This allows for fair "
+#~ "comparison of runtimes across different "
+#~ "functions and models. The `end_to_end` "
+#~ "flag switches this behavior to include"
+#~ " data transfer operations in the "
+#~ "runtime."
+#~ msgstr ""
+
+#~ msgid "The benchmarking loop looks approximately like so:"
+#~ msgstr ""
+
+#~ msgid "The function to benchmark. This is ignored if `end_to_end` is true."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Number of times to run the outer"
+#~ " loop of the timing code (see "
+#~ "above). The output will contain `repeat`"
+#~ " number of datapoints."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Number of times to run the inner"
+#~ " loop of the timing code. This "
+#~ "inner loop is run in between the"
+#~ " timer starting and stopping. In "
+#~ "order to amortize any timing overhead,"
+#~ " `number` should be increased when "
+#~ "the runtime of the function is "
+#~ "small (less than a 1/10 of a "
+#~ "millisecond)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If set, the inner loop will be "
+#~ "run until it takes longer than "
+#~ "`min_repeat_ms` milliseconds. This can be "
+#~ "used to ensure that the function "
+#~ "is run enough to get an accurate"
+#~ " measurement."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If set, include time to transfer "
+#~ "input tensors to the device and "
+#~ "time to transfer returned tensors in "
+#~ "the total runtime. This will give "
+#~ "accurate timings for end to end "
+#~ "workloads."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Named arguments to the function. These"
+#~ " are cached before running timing "
+#~ "code, so that data transfer costs "
+#~ "are not counted in the runtime."
+#~ msgstr ""
+
+#~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**timing_results** -- Runtimes of the "
+#~ "function. Use `.mean` to access the "
+#~ "mean runtime, use `.results` to access"
+#~ " the individual runtimes (in seconds)."
+#~ msgstr ""
+
+#~ msgid "返回类型"
+#~ msgstr ""
+
+#~ msgid "Run graph up to node and get the output to out"
+#~ msgstr ""
+
+#~ msgid "The node index or name"
+#~ msgstr ""
+
+#~ msgid "The output array container"
+#~ msgstr ""
+
+#~ msgid "Get index-th input to out"
+#~ msgstr ""
+
+#~ msgid "The input index"
+#~ msgstr ""
+
+#~ msgid "Get inputs index via input name."
+#~ msgstr ""
+
+#~ msgid "The input key name"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**index** -- The input index. -1 "
+#~ "will be returned if the given "
+#~ "input name is not found."
+#~ msgstr ""
+
+#~ msgid "Get the number of inputs to the graph"
+#~ msgstr ""
+
+#~ msgid "**count** -- The number of inputs."
+#~ msgstr ""
+
+#~ msgid "Get the number of outputs from the graph"
+#~ msgstr ""
+
+#~ msgid "**count** -- The number of outputs."
+#~ msgstr ""
+
+#~ msgid "Get index-th output to out"
+#~ msgstr ""
+
+#~ msgid "The output index"
+#~ msgstr ""
+
+#~ msgid "Load parameters from serialized byte array of parameter dict."
+#~ msgstr ""
+
+#~ msgid "The serialized parameter dict."
+#~ msgstr ""
+
+#~ msgid "Run forward execution of the graph"
+#~ msgstr ""
+
+#~ msgid "List of input values to be feed to"
+#~ msgstr ""
+
+#~ msgid "Set inputs to the module via kwargs"
+#~ msgstr ""
+
+#~ msgid "The input key"
+#~ msgstr ""
+
+#~ msgid "Additional arguments"
+#~ msgstr ""
+
+#~ msgid "Share parameters from pre-existing GraphExecutor instance."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The parent GraphExecutor from which this"
+#~ " instance should share it's parameters."
+#~ msgstr ""
+
+#~ msgid "The serialized parameter dict (used only for the parameter names)."
+#~ msgstr ""
+
+#~ msgid "Create a runtime executor module given a graph and module."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The graph to be deployed in json"
+#~ " format output by json graph. The "
+#~ "graph can contain operator(tvm_op) that "
+#~ "points to the name of PackedFunc "
+#~ "in the libmod."
+#~ msgstr ""
+
+#~ msgid "The module of the corresponding function"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The device to deploy the module. "
+#~ "It can be local or remote when "
+#~ "there is only one Device. Otherwise, "
+#~ "the first device in the list will"
+#~ " be used as this purpose. All "
+#~ "device should be given for heterogeneous"
+#~ " execution."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**graph_module** -- Runtime graph module "
+#~ "that can be used to execute the"
+#~ " graph."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "See also "
+#~ ":py:class:`tvm.contrib.graph_executor.GraphModule` for "
+#~ "examples to directly construct a "
+#~ "GraphModule from an exported relay "
+#~ "compiled library."
+#~ msgstr ""
+
+#~ msgid "Parse and validate all the device(s)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **device** (*list of Device*) * "
+#~ "**num_rpc_dev** (*Number of rpc devices*) "
+#~ "* **device_type_id** (*List of device "
+#~ "type and device id*)"
+#~ msgstr ""
+
+#~ msgid "**device** (*list of Device*)"
+#~ msgstr ""
+
+#~ msgid "**num_rpc_dev** (*Number of rpc devices*)"
+#~ msgstr ""
+
+#~ msgid "**device_type_id** (*List of device type and device id*)"
+#~ msgstr ""
+

@@ -1,0 +1,1682 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-31 18:33+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/reference/api/python/te.rst:19
+msgid "tvm.te"
+msgstr ""
+
+#: ../../docs/reference/api/python/te.rst:29
+msgid "tvm.te.hybrid"
+msgstr ""
+
+#~ msgid ":py:obj:`ComputeOp <tvm.te.ComputeOp>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ExternOp <tvm.te.ExternOp>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`HybridOp <tvm.te.HybridOp>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PlaceholderOp <tvm.te.PlaceholderOp>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ScanOp <tvm.te.ScanOp>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Schedule <tvm.te.Schedule>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Stage <tvm.te.Stage>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Tensor <tvm.te.Tensor>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TensorComputeOp <tvm.te.TensorComputeOp>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ComputeOp <tvm.te.ComputeOp>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ExternOp <tvm.te.ExternOp>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`HybridOp <tvm.te.HybridOp>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PlaceholderOp <tvm.te.PlaceholderOp>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ScanOp <tvm.te.ScanOp>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Schedule <tvm.te.Schedule>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Stage <tvm.te.Stage>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Tensor <tvm.te.Tensor>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TensorComputeOp <tvm.te.TensorComputeOp>`\\"
+#~ msgstr ""
+
+#~ msgid "Namespace for Tensor Expression Language"
+#~ msgstr ""
+
+#~ msgid "**Classes:**"
+#~ msgstr ""
+
+#~ msgid "Scalar operation."
+#~ msgstr ""
+
+#~ msgid "External operation."
+#~ msgstr ""
+
+#~ msgid "Hybrid operation."
+#~ msgstr ""
+
+#~ msgid "Placeholder operation."
+#~ msgstr ""
+
+#~ msgid "Scan operation."
+#~ msgstr ""
+
+#~ msgid "Schedule for all the stages."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`SpecializedCondition <tvm.te.SpecializedCondition>`\\"
+#~ " \\(conditions\\)"
+#~ msgstr ""
+
+#~ msgid "Specialized condition to enable op specialization."
+#~ msgstr ""
+
+#~ msgid "A Stage represents schedule for one operation."
+#~ msgstr ""
+
+#~ msgid "Tensor object, to construct, see function.Tensor"
+#~ msgstr ""
+
+#~ msgid "Tensor operation."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TensorSlice <tvm.te.TensorSlice>`\\ \\(tensor\\, indices\\)"
+#~ msgstr ""
+
+#~ msgid "Auxiliary data structure for enable slicing syntax from tensor."
+#~ msgstr ""
+
+#~ msgid "**Functions:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`abs <tvm.te.abs>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get absolute value of the input element-wise."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`acos <tvm.te.acos>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take acos of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`acosh <tvm.te.acosh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`all <tvm.te.all>`\\ \\(\\*args\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a new expression of the intersection of all conditions in the"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`any <tvm.te.any>`\\ \\(\\*args\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a new experssion of the union of all conditions in the arguments"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`asin <tvm.te.asin>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take asin of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`asinh <tvm.te.asinh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take asinh of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`atan <tvm.te.atan>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take atan of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`atanh <tvm.te.atanh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take atanh of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ceil <tvm.te.ceil>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Take ceil of float input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`comm_reducer <tvm.te.comm_reducer>`\\ "
+#~ "\\(fcombine\\, fidentity\\[\\, name\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a commutative reducer for reduction."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`compute <tvm.te.compute>`\\ \\(shape\\, "
+#~ "fcompute\\[\\, name\\, tag\\, attrs\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Construct a new tensor by computing over the shape domain."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`cos <tvm.te.cos>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take cos of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`cosh <tvm.te.cosh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take cosh of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`create_prim_func <tvm.te.create_prim_func>`\\ \\(ops\\)"
+#~ msgstr ""
+
+#~ msgid "Create a TensorIR PrimFunc from tensor expression"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`create_prim_func_from_outputs "
+#~ "<tvm.te.create_prim_func_from_outputs>`\\ \\(outputs\\)"
+#~ msgstr ""
+
+#~ msgid "Create a TensorIR PrimFunc from output tensor(s) in TE"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`create_schedule <tvm.te.create_schedule>`\\ \\(ops\\)"
+#~ msgstr ""
+
+#~ msgid "Create a schedule for list of ops"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`decl_tensor_intrin <tvm.te.decl_tensor_intrin>`\\ "
+#~ "\\(op\\, fcompute\\[\\, name\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Declare a tensor intrinsic function."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`div <tvm.te.div>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute a / b as in C/C++ semantics."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`erf <tvm.te.erf>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take gauss error function of the input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`exp <tvm.te.exp>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take exponential of input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`extern <tvm.te.extern>`\\ \\(shape\\, "
+#~ "inputs\\, fcompute\\[\\, name\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute several tensors via an extern function."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`floor <tvm.te.floor>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Take floor of float input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`floordiv <tvm.te.floordiv>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute the floordiv of two expressions."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`floormod <tvm.te.floormod>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute the floormod of two expressions."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`fmod <tvm.te.fmod>`\\ \\(x\\, y\\)"
+#~ msgstr ""
+
+#~ msgid "Return the remainder of x divided by y with the same sign as x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`gradient <tvm.te.gradient>`\\ \\(output\\, "
+#~ "inputs\\[\\, head\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Perform reverse-mode automatic differentiation."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`if_then_else <tvm.te.if_then_else>`\\ \\(cond\\,"
+#~ " t\\, f\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Conditional selection expression."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`indexdiv <tvm.te.indexdiv>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute floor(a / b) where a and b are non-negative."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`indexmod <tvm.te.indexmod>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute the remainder of indexdiv."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`isfinite <tvm.te.isfinite>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Check if input value is finite."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`isinf <tvm.te.isinf>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Check if input value is infinite."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`isnan <tvm.te.isnan>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Check if input value is Nan."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`log <tvm.te.log>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take log of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`log10 <tvm.te.log10>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take log10 of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`log2 <tvm.te.log2>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take log2 of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`max <tvm.te.max>`\\ \\(expr\\, axis\\[\\, where\\, init\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a max expression over axis."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`max_value <tvm.te.max_value>`\\ \\(dtype\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "maximum value of dtype"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`min <tvm.te.min>`\\ \\(expr\\, axis\\[\\, where\\, init\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a min expression over axis."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`min_value <tvm.te.min_value>`\\ \\(dtype\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "minimum value of dtype"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`nearbyint <tvm.te.nearbyint>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Round elements of the array to the nearest integer."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`placeholder <tvm.te.placeholder>`\\ "
+#~ "\\(shape\\[\\, dtype\\, name\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Construct an empty tensor object."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`popcount <tvm.te.popcount>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Count the number of set bits in input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`power <tvm.te.power>`\\ \\(x\\, y\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "x power y"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`reduce_axis <tvm.te.reduce_axis>`\\ \\(dom\\[\\,"
+#~ " name\\, thread\\_tag\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a new IterVar for reduction."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`round <tvm.te.round>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`rsqrt <tvm.te.rsqrt>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take reciprocal of square root of input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`scan <tvm.te.scan>`\\ \\(init\\, update\\,"
+#~ " state\\_placeholder\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Construct new tensors by scanning over axis."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sigmoid <tvm.te.sigmoid>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Quick function to get sigmoid"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sin <tvm.te.sin>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take sin of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sinh <tvm.te.sinh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take sinh of input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`size_var <tvm.te.size_var>`\\ \\(\\[name\\, "
+#~ "dtype\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Create a new variable represents a "
+#~ "tensor shape size, which is non-"
+#~ "negative."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sqrt <tvm.te.sqrt>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take square root of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sum <tvm.te.sum>`\\ \\(expr\\, axis\\[\\, where\\, init\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a sum expression over axis."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`tag_scope <tvm.te.tag_scope>`\\ \\(tag\\)"
+#~ msgstr ""
+
+#~ msgid "The operator tag scope."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`tan <tvm.te.tan>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take tan of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`tanh <tvm.te.tanh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take hyperbolic tanh of input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`thread_axis <tvm.te.thread_axis>`\\ \\(\\[dom\\,"
+#~ " tag\\, name\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a new IterVar to represent thread index."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`trace <tvm.te.trace>`\\ \\(args\\[\\, trace\\_action\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Trace tensor data at the runtime."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`trunc <tvm.te.trunc>`\\ \\(x\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get truncated value of the input."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`truncdiv <tvm.te.truncdiv>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute the truncdiv of two expressions."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`truncmod <tvm.te.truncmod>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute the truncmod of two expressions."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`var <tvm.te.var>`\\ \\(\\[name\\, dtype\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a new variable with specified name and dtype"
+#~ msgstr ""
+
+#~ msgid "**Attributes:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`axis <tvm.te.HybridOp.axis>`\\"
+#~ msgstr ""
+
+#~ msgid "Represent the IterVar axis, also defined when it is a HybridOp"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`scan_axis <tvm.te.ScanOp.scan_axis>`\\"
+#~ msgstr ""
+
+#~ msgid "Represent the scan axis, only defined when it is a ScanOp"
+#~ msgstr ""
+
+#~ msgid "**Methods:**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`cache_read <tvm.te.Schedule.cache_read>`\\ "
+#~ "\\(tensor\\, scope\\, readers\\)"
+#~ msgstr ""
+
+#~ msgid "Create a cache read of original tensor for readers."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`cache_write <tvm.te.Schedule.cache_write>`\\ "
+#~ "\\(tensor\\, scope\\)"
+#~ msgstr ""
+
+#~ msgid "Create a cache write of original tensor, before storing into tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`create_group <tvm.te.Schedule.create_group>`\\ "
+#~ "\\(outputs\\, inputs\\[\\, include\\_inputs\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create stage group by giving output and input boundary."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`normalize <tvm.te.Schedule.normalize>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Build a normalized schedule from the current schedule."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`rfactor <tvm.te.Schedule.rfactor>`\\ \\(tensor\\,"
+#~ " axis\\[\\, factor\\_axis\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Factor a reduction axis in tensor's schedule to be an explicit axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This will mutate the body of the"
+#~ " readers. A new cache stage will "
+#~ "be created for the tensor. Call "
+#~ "this before doing any split/fuse "
+#~ "schedule."
+#~ msgstr ""
+
+#~ msgid "参数"
+#~ msgstr ""
+
+#~ msgid "The tensor to be cached."
+#~ msgstr ""
+
+#~ msgid "The scope of cached"
+#~ msgstr ""
+
+#~ msgid "The readers to read the cache."
+#~ msgstr ""
+
+#~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid "**cache** -- The created cache tensor."
+#~ msgstr ""
+
+#~ msgid "返回类型"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This will mutate the body of the"
+#~ " tensor. A new cache stage will "
+#~ "created before feed into the tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This function can be used to "
+#~ "support data layout transformation. If "
+#~ "there is a split/fuse/reorder on the "
+#~ "data parallel axis of tensor before "
+#~ "cache_write is called. The intermediate "
+#~ "cache stores the data in the "
+#~ "layout as the iteration order of "
+#~ "leave axis. The data will be "
+#~ "transformed back to the original layout"
+#~ " in the original tensor. User can "
+#~ "further call compute_inline to inline "
+#~ "the original layout and keep the "
+#~ "data stored in the transformed layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The tensors to be feed to. All "
+#~ "the tensors must be produced by "
+#~ "one computeOp"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The operators between outputs and inputs"
+#~ " are placed as member of group. "
+#~ "outputs are include in the group, "
+#~ "while inputs are not included."
+#~ msgstr ""
+
+#~ msgid "The outputs of the group."
+#~ msgstr ""
+
+#~ msgid "The inputs of the group."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Whether include input operations in the"
+#~ " group if they are used by "
+#~ "outputs."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**group** -- A virtual stage represents"
+#~ " the group, user can use compute_at"
+#~ " to move the attachment point of "
+#~ "the group."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Insert necessary rebase to make certain"
+#~ " iter var to start from 0. This"
+#~ " is needed before bound inference and"
+#~ " followup step."
+#~ msgstr ""
+
+#~ msgid "**sch** -- The normalized schedule."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This will create a new stage that"
+#~ " generated the new tensor with axis"
+#~ " as the first dimension. The tensor's"
+#~ " body will be rewritten as a "
+#~ "reduction over the factored tensor."
+#~ msgstr ""
+
+#~ msgid "The tensor to be factored."
+#~ msgstr ""
+
+#~ msgid "The reduction axis in the schedule to be factored."
+#~ msgstr ""
+
+#~ msgid "The position where the new axis is placed."
+#~ msgstr ""
+
+#~ msgid "**tfactor** -- The created factored tensor."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`current <tvm.te.SpecializedCondition.current>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Returns the current specialized condition"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`bind <tvm.te.Stage.bind>`\\ \\(ivar\\, thread\\_ivar\\)"
+#~ msgstr ""
+
+#~ msgid "Bind ivar to thread index thread_ivar"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`compute_at <tvm.te.Stage.compute_at>`\\ \\(parent\\, scope\\)"
+#~ msgstr ""
+
+#~ msgid "Attach the stage at parent's scope"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`compute_inline <tvm.te.Stage.compute_inline>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Mark stage as inline"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`compute_root <tvm.te.Stage.compute_root>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Attach the stage at parent, and mark it as root"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`double_buffer <tvm.te.Stage.double_buffer>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Compute the current stage via double buffering."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`env_threads <tvm.te.Stage.env_threads>`\\ \\(threads\\)"
+#~ msgstr ""
+
+#~ msgid "Mark threads to be launched at the outer scope of composed op."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`fuse <tvm.te.Stage.fuse>`\\ \\(\\*args\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Fuse multiple consecutive iteration variables"
+#~ " into a single iteration variable."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`parallel <tvm.te.Stage.parallel>`\\ \\(var\\)"
+#~ msgstr ""
+
+#~ msgid "Parallelize the iteration."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`pragma <tvm.te.Stage.pragma>`\\ \\(var\\, "
+#~ "pragma\\_type\\[\\, pragma\\_value\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Annotate the iteration with pragma"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`prefetch <tvm.te.Stage.prefetch>`\\ \\(tensor\\,"
+#~ " var\\, offset\\)"
+#~ msgstr ""
+
+#~ msgid "Prefetch the specified variable"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`reorder <tvm.te.Stage.reorder>`\\ \\(\\*args\\)"
+#~ msgstr ""
+
+#~ msgid "reorder the arguments in the specified order."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`rolling_buffer <tvm.te.Stage.rolling_buffer>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Compute the current stage via rolling buffering."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`set_scope <tvm.te.Stage.set_scope>`\\ \\(scope\\)"
+#~ msgstr ""
+
+#~ msgid "Set the thread scope of this stage"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`set_store_predicate "
+#~ "<tvm.te.Stage.set_store_predicate>`\\ \\(predicate\\)"
+#~ msgstr ""
+
+#~ msgid "Set predicate under which store to the array can be performed."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`split <tvm.te.Stage.split>`\\ \\(parent\\[\\, "
+#~ "factor\\, nparts\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Split the stage either by factor providing outer scope, or both"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`storage_align <tvm.te.Stage.storage_align>`\\ "
+#~ "\\(axis\\, factor\\, offset\\)"
+#~ msgstr ""
+
+#~ msgid "Set alignment requirement for specific axis"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`tensorize <tvm.te.Stage.tensorize>`\\ \\(var\\,"
+#~ " tensor\\_intrin\\)"
+#~ msgstr ""
+
+#~ msgid "Tensorize the computation enclosed by var with tensor_intrin"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`tile <tvm.te.Stage.tile>`\\ \\(x\\_parent\\, "
+#~ "y\\_parent\\, x\\_factor\\, y\\_factor\\)"
+#~ msgstr ""
+
+#~ msgid "Perform tiling on two dimensions"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`unroll <tvm.te.Stage.unroll>`\\ \\(var\\)"
+#~ msgstr ""
+
+#~ msgid "Unroll the iteration."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`vectorize <tvm.te.Stage.vectorize>`\\ \\(var\\)"
+#~ msgstr ""
+
+#~ msgid "Vectorize the iteration."
+#~ msgstr ""
+
+#~ msgid "The iteration to be binded to thread."
+#~ msgstr ""
+
+#~ msgid "The thread to be binded."
+#~ msgstr ""
+
+#~ msgid "The parent stage"
+#~ msgstr ""
+
+#~ msgid "The loop scope t be attached to."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This can only be applied to "
+#~ "intermediate stage. This will double the"
+#~ " storage cost of the current stage."
+#~ " Can be useful to hide load "
+#~ "latency."
+#~ msgstr ""
+
+#~ msgid "The threads to be launched."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "fused = fuse(...fuse(fuse(args[0], args[1]), "
+#~ "args[2]),..., args[-1]) The order is "
+#~ "from outer to inner."
+#~ msgstr ""
+
+#~ msgid "Itervars that proceeds each other"
+#~ msgstr ""
+
+#~ msgid "**fused** -- The fused variable of iteration."
+#~ msgstr ""
+
+#~ msgid "The iteration to be parallelized."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This will translate to a pragma_scope"
+#~ " surrounding the corresponding loop "
+#~ "generated. Useful to support experimental "
+#~ "features and extensions."
+#~ msgstr ""
+
+#~ msgid "The iteration to be anotated"
+#~ msgstr ""
+
+#~ msgid "The pragma string to be annotated"
+#~ msgstr ""
+
+#~ msgid "The pragma value to pass along the pragma"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Most pragmas are advanced/experimental "
+#~ "features and may subject to change. "
+#~ "List of supported pragmas:"
+#~ msgstr ""
+
+#~ msgid "**debug_skip_region**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Force skip the region marked by "
+#~ "the axis and turn it into no-"
+#~ "op. This is useful for debug "
+#~ "purposes."
+#~ msgstr ""
+
+#~ msgid "**parallel_launch_point**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Specify to launch parallel threads "
+#~ "outside the specified iteration loop. By"
+#~ " default the threads launch at the"
+#~ " point of parallel construct. This "
+#~ "pragma moves the launching point to "
+#~ "even outer scope. The threads are "
+#~ "launched once and reused across multiple"
+#~ " parallel constructs as BSP style "
+#~ "program."
+#~ msgstr ""
+
+#~ msgid "**parallel_barrier_when_finish**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Insert a synchronization barrier between "
+#~ "working threads after the specified loop"
+#~ " iteration finishes."
+#~ msgstr ""
+
+#~ msgid "**parallel_stride_pattern**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Hint parallel loop to execute in "
+#~ "strided pattern. :code:`for (int i = "
+#~ "task_id; i < end; i += num_task)`"
+#~ msgstr ""
+
+#~ msgid "The tensor to be prefetched"
+#~ msgstr ""
+
+#~ msgid "The loop point at which the prefetching is applied"
+#~ msgstr ""
+
+#~ msgid "The number of iterations to be prefetched before actual execution"
+#~ msgstr ""
+
+#~ msgid "The order to be ordered"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This can only be applied to "
+#~ "intermediate stage. This will change the"
+#~ " storage cost of the current stage."
+#~ msgstr ""
+
+#~ msgid "The thread scope of this stage"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Use this when there are duplicated "
+#~ "threads doing the same store and "
+#~ "we only need one of them to "
+#~ "do the store."
+#~ msgstr ""
+
+#~ msgid "The guard condition fo store."
+#~ msgstr ""
+
+#~ msgid "The parent iter var."
+#~ msgstr ""
+
+#~ msgid "The splitting factor"
+#~ msgstr ""
+
+#~ msgid "The number of outer parts."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **outer** (*IterVar*) -- The outer "
+#~ "variable of iteration. * **inner** "
+#~ "(*IterVar*) -- The inner variable of "
+#~ "iteration."
+#~ msgstr ""
+
+#~ msgid "**outer** (*IterVar*) -- The outer variable of iteration."
+#~ msgstr ""
+
+#~ msgid "**inner** (*IterVar*) -- The inner variable of iteration."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This ensures that stride[axis] == k "
+#~ "* factor + offset for some k. "
+#~ "This is useful to set memory "
+#~ "layout to for more friendly memory "
+#~ "access pattern. For example, we can "
+#~ "set alignment to be factor=2, offset=1"
+#~ " to avoid bank conflict for thread"
+#~ " access on higher dimension in GPU"
+#~ " shared memory."
+#~ msgstr ""
+
+#~ msgid "The axis dimension to be aligned."
+#~ msgstr ""
+
+#~ msgid "The factor in alignment specification."
+#~ msgstr ""
+
+#~ msgid "The offset in the alignment specification."
+#~ msgstr ""
+
+#~ msgid "The iteration boundary of tensorization."
+#~ msgstr ""
+
+#~ msgid "The tensor intrinsic used for computation."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The final loop order from outmost "
+#~ "to inner most are [x_outer, y_outer, "
+#~ "x_inner, y_inner]"
+#~ msgstr ""
+
+#~ msgid "The original x dimension"
+#~ msgstr ""
+
+#~ msgid "The original y dimension"
+#~ msgstr ""
+
+#~ msgid "The stride factor on x axis"
+#~ msgstr ""
+
+#~ msgid "The stride factor on y axis"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **x_outer** (*IterVar*) -- Outer axis"
+#~ " of x dimension * **y_outer** "
+#~ "(*IterVar*) -- Outer axis of y "
+#~ "dimension * **x_inner** (*IterVar*) -- "
+#~ "Inner axis of x dimension * "
+#~ "**p_y_inner** (*IterVar*) -- Inner axis "
+#~ "of y dimension"
+#~ msgstr ""
+
+#~ msgid "**x_outer** (*IterVar*) -- Outer axis of x dimension"
+#~ msgstr ""
+
+#~ msgid "**y_outer** (*IterVar*) -- Outer axis of y dimension"
+#~ msgstr ""
+
+#~ msgid "**x_inner** (*IterVar*) -- Inner axis of x dimension"
+#~ msgstr ""
+
+#~ msgid "**p_y_inner** (*IterVar*) -- Inner axis of y dimension"
+#~ msgstr ""
+
+#~ msgid "The iteration to be unrolled."
+#~ msgstr ""
+
+#~ msgid "The iteration to be vectorize"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`axis <tvm.te.Tensor.axis>`\\"
+#~ msgstr ""
+
+#~ msgid "Axis of the tensor."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ndim <tvm.te.Tensor.ndim>`\\"
+#~ msgstr ""
+
+#~ msgid "Dimension of the tensor."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`op <tvm.te.Tensor.op>`\\"
+#~ msgstr ""
+
+#~ msgid "The corressponding :py:class:`Operation`."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`shape <tvm.te.Tensor.shape>`\\"
+#~ msgstr ""
+
+#~ msgid "The output shape of the tensor."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`value_index <tvm.te.Tensor.value_index>`\\"
+#~ msgstr ""
+
+#~ msgid "The output value index the tensor corresponds to."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`asobject <tvm.te.TensorSlice.asobject>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Convert slice to object."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`dtype <tvm.te.TensorSlice.dtype>`\\"
+#~ msgstr ""
+
+#~ msgid "Data content of the tensor."
+#~ msgstr ""
+
+#~ msgid "Input argument."
+#~ msgstr ""
+
+#~ msgid "The location of this operator in the source code."
+#~ msgstr ""
+
+#~ msgid "**y** -- The result."
+#~ msgstr ""
+
+#~ msgid "arguments"
+#~ msgstr ""
+
+#~ msgid "List of symbolic boolean expressions"
+#~ msgstr ""
+
+#~ msgid "**expr** -- Expression"
+#~ msgstr ""
+
+#~ msgid "A binary function which takes two Expr as input to return a Expr."
+#~ msgstr ""
+
+#~ msgid "A function which takes a type string as input to return a const Expr."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**reducer** -- A function which creates"
+#~ " a reduce expression over axis. There"
+#~ " are two ways to use it:  1."
+#~ " accept (expr, axis, where) to "
+#~ "produce an Reduce Expr on    specified"
+#~ " axis; 2. simply use it with "
+#~ "multiple Exprs."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**reducer** -- A function which creates"
+#~ " a reduce expression over axis. There"
+#~ " are two ways to use it:"
+#~ msgstr ""
+
+#~ msgid "accept (expr, axis, where) to produce an Reduce Expr on specified axis;"
+#~ msgstr ""
+
+#~ msgid "simply use it with multiple Exprs."
+#~ msgstr ""
+
+#~ msgid "示例"
+#~ msgstr ""
+
+#~ msgid "The compute rule is result[axis] = fcompute(axis)"
+#~ msgstr ""
+
+#~ msgid "The shape of the tensor"
+#~ msgstr ""
+
+#~ msgid "Specifies the input source expression"
+#~ msgstr ""
+
+#~ msgid "The name hint of the tensor"
+#~ msgstr ""
+
+#~ msgid "Additional tag information about the compute."
+#~ msgstr ""
+
+#~ msgid "The additional auxiliary attributes about the compute."
+#~ msgstr ""
+
+#~ msgid "**tensor** -- The created tensor"
+#~ msgstr ""
+
+#~ msgid "The source expression."
+#~ msgstr ""
+
+#~ msgid "We define a matmul kernel using following code:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If we want to use TensorIR "
+#~ "schedule to do transformations on such"
+#~ " kernel, we need to use "
+#~ "`create_prim_func([A, B, C])` to create "
+#~ "a schedulable PrimFunc. The generated "
+#~ "function looks like:"
+#~ msgstr ""
+
+#~ msgid "**func** -- The created function."
+#~ msgstr ""
+
+#~ msgid "**sch** -- The created schedule."
+#~ msgstr ""
+
+#~ msgid "The symbolic description of the intrinsic operation"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Specifies the IR statement to do "
+#~ "the computation. See the following note"
+#~ " for function signature of fcompute  "
+#~ ".. note::      **Parameters**       - **ins**"
+#~ " (list of :any:`tvm.tir.Buffer`) - "
+#~ "Placeholder for each inputs      - "
+#~ "**outs** (list of :any:`tvm.tir.Buffer`) - "
+#~ "Placeholder for each outputs       **Returns**"
+#~ "       - **stmt** (:any:`tvm.tir.Stmt`, or "
+#~ "tuple of three stmts)      - If a"
+#~ " single stmt is returned, it "
+#~ "represents the body      - If tuple "
+#~ "of three stmts are returned they "
+#~ "corresponds to body,        reduce_init, "
+#~ "reduce_update"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Specifies the IR statement to do "
+#~ "the computation. See the following note"
+#~ " for function signature of fcompute"
+#~ msgstr ""
+
+#~ msgid "**Parameters**"
+#~ msgstr ""
+
+#~ msgid "**ins** (list of :any:`tvm.tir.Buffer`) - Placeholder for each inputs"
+#~ msgstr ""
+
+#~ msgid "**outs** (list of :any:`tvm.tir.Buffer`) - Placeholder for each outputs"
+#~ msgstr ""
+
+#~ msgid "**Returns**"
+#~ msgstr ""
+
+#~ msgid "**stmt** (:any:`tvm.tir.Stmt`, or tuple of three stmts)"
+#~ msgstr ""
+
+#~ msgid "If a single stmt is returned, it represents the body"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If tuple of three stmts are "
+#~ "returned they corresponds to body, "
+#~ "reduce_init, reduce_update"
+#~ msgstr ""
+
+#~ msgid "The name of the intrinsic."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Dictionary that maps the Tensor to "
+#~ "Buffer which specified the data layout"
+#~ " requirement of the function. By "
+#~ "default, a new compact buffer is "
+#~ "created for each tensor in the "
+#~ "argument."
+#~ msgstr ""
+
+#~ msgid "as scalar_inputs when the tensor intrinsic is called."
+#~ msgstr ""
+
+#~ msgid "Dictionary of buffer arguments to be passed when constructing a buffer."
+#~ msgstr ""
+
+#~ msgid "**intrin** -- A TensorIntrin that can be used in tensorize schedule."
+#~ msgstr ""
+
+#~ msgid "The left hand operand, known to be non-negative."
+#~ msgstr ""
+
+#~ msgid "The right hand operand, known to be non-negative."
+#~ msgstr ""
+
+#~ msgid "The location of this operator in the source."
+#~ msgstr ""
+
+#~ msgid "**res** -- The result expression."
+#~ msgstr ""
+
+#~ msgid "When operands are integers, returns truncdiv(a, b, span)."
+#~ msgstr ""
+
+#~ msgid "The shape of the outputs."
+#~ msgstr ""
+
+#~ msgid "The inputs"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Specifies the IR statement to do "
+#~ "the computation. See the following note"
+#~ " for function signature of fcompute  "
+#~ ".. note::      **Parameters**       - **ins**"
+#~ " (list of :any:`tvm.tir.Buffer`) - "
+#~ "Placeholder for each inputs      - "
+#~ "**outs** (list of :any:`tvm.tir.Buffer`) - "
+#~ "Placeholder for each outputs       **Returns**"
+#~ "       - **stmt** (:any:`tvm.tir.Stmt`) - "
+#~ "The statement that carries out array "
+#~ "computation."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**stmt** (:any:`tvm.tir.Stmt`) - The statement"
+#~ " that carries out array computation."
+#~ msgstr ""
+
+#~ msgid "The data types of outputs, by default dtype will be same as inputs."
+#~ msgstr ""
+
+#~ msgid "Input buffers."
+#~ msgstr ""
+
+#~ msgid "Output buffers."
+#~ msgstr ""
+
+#~ msgid "tag: str, optional"
+#~ msgstr ""
+
+#~ msgid "Additonal tag information about the compute."
+#~ msgstr ""
+
+#~ msgid "attrs: dict, optional"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**tensor** -- The created tensor or "
+#~ "tuple of tensors it it contains "
+#~ "multiple outputs."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In the code below, C is generated"
+#~ " by calling external PackedFunc "
+#~ "`tvm.contrib.cblas.matmul`"
+#~ msgstr ""
+
+#~ msgid "The left hand operand"
+#~ msgstr ""
+
+#~ msgid "The right hand operand"
+#~ msgstr ""
+
+#~ msgid "**z** -- The result."
+#~ msgstr ""
+
+#~ msgid "The tensor to differentiate."
+#~ msgstr ""
+
+#~ msgid "The list of input tensors to be differentiated wrt."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The adjoint of the output, in "
+#~ "other words, some tensor, by which "
+#~ "the Jacobians will be multiplied. Its"
+#~ " shape must be of the form "
+#~ "`prefix + output.shape`. If `None` is"
+#~ " passed, the identity tensor of shape"
+#~ " `output.shape + output.shape` will be "
+#~ "used."
+#~ msgstr ""
+
+#~ msgid "**tensors** -- The result gradient, in the same order as the inputs"
+#~ msgstr ""
+
+#~ msgid "The condition"
+#~ msgstr ""
+
+#~ msgid "The result expression if cond is true."
+#~ msgstr ""
+
+#~ msgid "The result expression if cond is false."
+#~ msgstr ""
+
+#~ msgid "**result** -- The result of conditional expression."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Unlike Select, if_then_else will not "
+#~ "execute the branch that does not "
+#~ "satisfy the condition. You can use "
+#~ "it to guard against out of bound"
+#~ " access. Unlike Select, if_then_else cannot"
+#~ " be vectorized if some lanes in "
+#~ "the vector have different conditions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Use this function to split non-"
+#~ "negative indices. This function may take"
+#~ " advantage of operands' non-negativeness."
+#~ msgstr ""
+
+#~ msgid "Compute the remainder of indexdiv. a and b are non-negative."
+#~ msgstr ""
+
+#~ msgid "The reduction IterVar axis"
+#~ msgstr ""
+
+#~ msgid "Filtering predicate of the reduction."
+#~ msgstr ""
+
+#~ msgid "**value** -- The result value."
+#~ msgstr ""
+
+#~ msgid "The data type."
+#~ msgstr ""
+
+#~ msgid "**value** -- The maximum value of dtype."
+#~ msgstr ""
+
+#~ msgid "**value** -- The minimum value of dtype."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Round elements of the array to the"
+#~ " nearest integer. This intrinsic uses "
+#~ "llvm.nearbyint instead of llvm.round which "
+#~ "is faster but will results different "
+#~ "from te.round. Notably nearbyint rounds "
+#~ "according to the rounding mode, whereas"
+#~ " te.round (llvm.round) ignores that. For"
+#~ " differences between the two see: "
+#~ "https://en.cppreference.com/w/cpp/numeric/math/round "
+#~ "https://en.cppreference.com/w/cpp/numeric/math/nearbyint"
+#~ msgstr ""
+
+#~ msgid "The data type of the tensor"
+#~ msgstr ""
+
+#~ msgid "The exponent"
+#~ msgstr ""
+
+#~ msgid "The domain of iteration."
+#~ msgstr ""
+
+#~ msgid "The name of the variable."
+#~ msgstr ""
+
+#~ msgid "The name of the thread_tag."
+#~ msgstr ""
+
+#~ msgid "The location of this variable in the source."
+#~ msgstr ""
+
+#~ msgid "**axis** -- An iteration variable representing the value."
+#~ msgstr ""
+
+#~ msgid "The initial condition of first init.shape[0] timestamps"
+#~ msgstr ""
+
+#~ msgid "The update rule of the scan given by symbolic tensor."
+#~ msgstr ""
+
+#~ msgid "The placeholder variables used by update."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The list of inputs to the scan."
+#~ " This is not required, but can "
+#~ "be useful for the compiler to "
+#~ "detect scan body faster."
+#~ msgstr ""
+
+#~ msgid "The name"
+#~ msgstr ""
+
+#~ msgid "The data type"
+#~ msgstr ""
+
+#~ msgid "**var** -- The result symbolic shape variable."
+#~ msgstr ""
+
+#~ msgid "The tag name."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**tag_scope** -- The tag scope object,"
+#~ " which can be used as decorator "
+#~ "or context manger."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The domain of iteration When str "
+#~ "is passed, dom is set to None "
+#~ "and str is used as tag"
+#~ msgstr ""
+
+#~ msgid "The thread tag"
+#~ msgstr ""
+
+#~ msgid "The name of the var."
+#~ msgstr ""
+
+#~ msgid "**axis** -- The thread itervar."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The trace function allows to trace "
+#~ "specific tensor at the runtime. The "
+#~ "tracing value should come as last "
+#~ "argument. The trace action should be "
+#~ "specified, by default tvm.default_trace_action "
+#~ "is used."
+#~ msgstr ""
+
+#~ msgid "Positional arguments."
+#~ msgstr ""
+
+#~ msgid "The name of the trace action."
+#~ msgstr ""
+
+#~ msgid "**call** -- The call expression."
+#~ msgstr ""
+
+#~ msgid ":obj:`tvm.tir.call_packed`"
+#~ msgstr ""
+
+#~ msgid "Creates packed function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The truncated value of the scalar "
+#~ "x is the nearest integer i which"
+#~ " is closer to zero than x is."
+#~ msgstr ""
+
+#~ msgid "This is the default integer division behavior in C."
+#~ msgstr ""
+
+#~ msgid "**var** -- The result symbolic variable."
+#~ msgstr ""
+
+#~ msgid "Hybrid Programming APIs of TVM Python Package."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This package maps a subset of "
+#~ "python to HalideIR so that: 1. "
+#~ "Users can write some preliminary "
+#~ "versions of the computation patterns "
+#~ "have not been supported yet and "
+#~ "verify it across the real execution "
+#~ "and python semantic emulation. 2. So "
+#~ "far, it is a text format dedicated"
+#~ " to HalideIR Phase 0. Refer tvm.lower"
+#~ " for more details. A larger ambition"
+#~ " of this module is to support "
+#~ "all levels of HalideIR."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`HybridModule "
+#~ "<tvm.te.hybrid.tvm.te.hybrid.HybridModule>`\\ \\(\\[src\\, "
+#~ "name\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The usage of Hybrid Module is very"
+#~ " similar to conventional TVM module, "
+#~ "but conventional TVM module requires a"
+#~ " function body which is already fully"
+#~ " lowered."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`build <tvm.te.hybrid.tvm.te.hybrid.build>`\\ "
+#~ "\\(sch\\, inputs\\, outputs\\[\\, name\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Dump the current schedule to hybrid module"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`decorate <tvm.te.hybrid.tvm.te.hybrid.decorate>`\\ "
+#~ "\\(func\\, fwrapped\\)"
+#~ msgstr ""
+
+#~ msgid "A wrapper call of decorator package, differs to call time"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`script <tvm.te.hybrid.tvm.te.hybrid.script>`\\ \\(pyfunc\\)"
+#~ msgstr ""
+
+#~ msgid "Decorate a python function function as hybrid script."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`source_to_op "
+#~ "<tvm.te.hybrid.tvm.te.hybrid.source_to_op>`\\ \\(src\\, "
+#~ "args\\, symbols\\, closure\\_vars\\)"
+#~ msgstr ""
+
+#~ msgid "Another level of wrapper"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The usage of Hybrid Module is very"
+#~ " similar to conventional TVM module, "
+#~ "but conventional TVM module requires a"
+#~ " function body which is already fully"
+#~ " lowered. This contradicts to the "
+#~ "fact that Hybrid Module is originally"
+#~ " a text format for Phase 0 "
+#~ "HalideIR. Thus, a totally separated "
+#~ "module is defined."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`load <tvm.te.hybrid.tvm.te.hybrid.HybridModule.load>`\\"
+#~ " \\(path\\)"
+#~ msgstr ""
+
+#~ msgid "Load the module from a python file"
+#~ msgstr ""
+
+#~ msgid "Path to the given python file"
+#~ msgstr ""
+
+#~ msgid "The schedule to be dumped"
+#~ msgstr ""
+
+#~ msgid "The inputs of the function body"
+#~ msgstr ""
+
+#~ msgid "The outputs of the function body"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**module** -- The built results is "
+#~ "wrapped in a HybridModule. The usage "
+#~ "of HybridModule is roughly the same "
+#~ "as normal TVM-built modules."
+#~ msgstr ""
+
+#~ msgid "The original function"
+#~ msgstr ""
+
+#~ msgid "The wrapped function"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The hybrid function support emulation "
+#~ "mode and parsing to the internal "
+#~ "language IR."
+#~ msgstr ""
+
+#~ msgid "**hybrid_func** -- A decorated hybrid script function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If an ast.node, then directly lower "
+#~ "it. If a str, then parse it "
+#~ "to ast and lower it."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The argument lists to the function. "
+#~ "It is NOT encouraged to write a"
+#~ " function without arguments. It is "
+#~ "NOT encouraged to write a function "
+#~ "with side effect."
+#~ msgstr ""
+
+#~ msgid "The symbol list of the global context of the function."
+#~ msgstr ""
+
+#~ msgid "A dict of external name reference captured by this function."
+#~ msgstr ""
+
+#~ msgid "**res** -- The result of output tensors of the formed OpNode."
+#~ msgstr ""
+

@@ -1,0 +1,5556 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-31 18:33+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/reference/api/python/topi.rst:19
+msgid "tvm.topi"
+msgstr ""
+
+#: ../../docs/reference/api/python/topi.rst:27
+msgid "tvm.topi.nn"
+msgstr ""
+
+#: ../../docs/reference/api/python/topi.rst:35
+msgid "tvm.topi.image"
+msgstr ""
+
+#: ../../docs/reference/api/python/topi.rst:43
+msgid "tvm.topi.sparse"
+msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sliding_window <tvm.topi.tvm.topi.sliding_window>`\\"
+#~ " \\(data\\, axis\\, window\\_shape\\, strides\\)"
+#~ msgstr ""
+
+#~ msgid "Slide a window over the data tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "What axis the window begins sliding "
+#~ "over. Window will be slid over "
+#~ "this axis and all following axes. "
+#~ "The axis value determines the window "
+#~ "shape (and thus, the number of "
+#~ "strides): window shape and strides must"
+#~ " both be of length `data.ndim-axis`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The window shape to form over the"
+#~ " input. Window shape must be of "
+#~ "length `data.ndim-axis`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "How to stride the window along "
+#~ "each dimension. Strides must be of "
+#~ "length `data.ndim-axis`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`grid_sample "
+#~ "<tvm.topi.image.tvm.topi.image.grid_sample>`\\ \\(data\\, "
+#~ "grid\\[\\, method\\, layout\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":math:`x_{dst}`, :math:`y_{dst}` enumerate all "
+#~ "spatial locations in :math:`output`, and "
+#~ ":math:`G()` denotes the interpolation method."
+#~ " The out-boundary points will be "
+#~ "padded with zeros. The shape of "
+#~ "the output will be (data.shape[0], "
+#~ "data.shape[1], grid.shape[2], grid.shape[3])."
+#~ msgstr ""
+
+#~ msgid "**Output** -- 4-D with shape [batch, 2, out_height, out_width]"
+#~ msgstr ""
+
+#~ msgid "TVM Operator Inventory."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "TOPI is the operator collection library"
+#~ " for TVM, to provide sugars for "
+#~ "constructing compute declaration as well "
+#~ "as optimized schedules."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Some of the schedule function may "
+#~ "have been specially optimized for a "
+#~ "specific workload."
+#~ msgstr ""
+
+#~ msgid "**Classes:**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`AssertStmt <tvm.topi.tvm.topi.AssertStmt>`\\ "
+#~ "\\(condition\\, message\\, body\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "AssertStmt node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Cast <tvm.topi.tvm.topi.Cast>`\\ \\(dtype\\, "
+#~ "value\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Cast expression."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Evaluate <tvm.topi.tvm.topi.Evaluate>`\\ "
+#~ "\\(value\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Evaluate node."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`StringImm <tvm.topi.tvm.topi.StringImm>`\\ "
+#~ "\\(value\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "String constant."
+#~ msgstr ""
+
+#~ msgid "**Exceptions:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`InvalidShapeError <tvm.topi.tvm.topi.InvalidShapeError>`\\"
+#~ msgstr ""
+
+#~ msgid "Invalid shape for a topi function."
+#~ msgstr ""
+
+#~ msgid "**Functions:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`abs <tvm.topi.tvm.topi.abs>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take absolute value of the input of x, element-wise."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`acos <tvm.topi.tvm.topi.acos>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take arc cos of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`acosh <tvm.topi.tvm.topi.acosh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take arc cosh of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`add <tvm.topi.tvm.topi.add>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Addition with auto-broadcasting"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`adv_index <tvm.topi.tvm.topi.adv_index>`\\ "
+#~ "\\(data\\, indices\\)"
+#~ msgstr ""
+
+#~ msgid "Numpy style indexing with tensors."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`all <tvm.topi.tvm.topi.all>`\\ \\(data\\[\\, "
+#~ "axis\\, keepdims\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Logical AND of array elements over a given axis or a list of axes"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`any <tvm.topi.tvm.topi.any>`\\ \\(data\\[\\, "
+#~ "axis\\, keepdims\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Logical OR of array elements over a given axis or a list of axes"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`arange <tvm.topi.tvm.topi.arange>`\\ "
+#~ "\\(start\\[\\, stop\\, step\\, dtype\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Creates a tensor with evenly spaced values within a given interval."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`argmax <tvm.topi.tvm.topi.argmax>`\\ "
+#~ "\\(data\\[\\, axis\\, keepdims\\, "
+#~ "select\\_last\\_index\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Returns the indices of the maximum values along an axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`argmin <tvm.topi.tvm.topi.argmin>`\\ "
+#~ "\\(data\\[\\, axis\\, keepdims\\, "
+#~ "select\\_last\\_index\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Returns the indices of the minimum values along an axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`argsort <tvm.topi.tvm.topi.argsort>`\\ "
+#~ "\\(data\\[\\, valid\\_count\\, axis\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Performs sorting along the given axis"
+#~ " and returns an array of indices "
+#~ "having the same shape as an input"
+#~ " array that index data in sorted "
+#~ "order."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`argwhere <tvm.topi.tvm.topi.argwhere>`\\ "
+#~ "\\(output\\_shape\\, condition\\)"
+#~ msgstr ""
+
+#~ msgid "Find the indices of elements of a tensor that are non-zero."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`asin <tvm.topi.tvm.topi.asin>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take arc sin of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`asinh <tvm.topi.tvm.topi.asinh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take arc sinh of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`atan <tvm.topi.tvm.topi.atan>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take atan of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`atanh <tvm.topi.tvm.topi.atanh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take atanh of input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`binary_search <tvm.topi.tvm.topi.binary_search>`\\ "
+#~ "\\(ib\\, sequence\\_offset\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Common IR generator for binary search used by CPU and GPU backends."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`bitwise_and <tvm.topi.tvm.topi.bitwise_and>`\\ "
+#~ "\\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise bitwise and of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`bitwise_not <tvm.topi.tvm.topi.bitwise_not>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise bitwise not of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`bitwise_or <tvm.topi.tvm.topi.bitwise_or>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise bitwise or of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`bitwise_xor <tvm.topi.tvm.topi.bitwise_xor>`\\ "
+#~ "\\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise bitwise xor of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`broadcast_to <tvm.topi.tvm.topi.broadcast_to>`\\ "
+#~ "\\(data\\, shape\\)"
+#~ msgstr ""
+
+#~ msgid "Broadcast the src to the target shape"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`cast <tvm.topi.tvm.topi.cast>`\\ \\(x\\, "
+#~ "dtype\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Cast input to specified data type."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ceil <tvm.topi.tvm.topi.ceil>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take ceil of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ceil_log2 <tvm.topi.tvm.topi.ceil_log2>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Compute integer ceil log2 with a "
+#~ "special code path for vulkan SPIR-V "
+#~ "does not support log2 on fp64."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`clip <tvm.topi.tvm.topi.clip>`\\ \\(x\\, a\\_min\\, a\\_max\\)"
+#~ msgstr ""
+
+#~ msgid "Clip (limit) the values in an array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`concatenate <tvm.topi.tvm.topi.concatenate>`\\ "
+#~ "\\(a\\_tuple\\[\\, axis\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Join a sequence of arrays along an existing axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`const_vector <tvm.topi.tvm.topi.const_vector>`\\ "
+#~ "\\(vector\\[\\, name\\]\\)"
+#~ msgstr ""
+
+#~ msgid "convert a const numpy 1-dimensional vector to tvm tensor"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`cos <tvm.topi.tvm.topi.cos>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take cos of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`cosh <tvm.topi.tvm.topi.cosh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take cosh of input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`cumprod <tvm.topi.tvm.topi.cumprod>`\\ "
+#~ "\\(data\\[\\, axis\\, dtype\\, exclusive\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Numpy style cumprod op."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`cumsum <tvm.topi.tvm.topi.cumsum>`\\ "
+#~ "\\(data\\[\\, axis\\, dtype\\, exclusive\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Numpy style cumsum op."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`decl_buffer <tvm.topi.tvm.topi.decl_buffer>`\\ "
+#~ "\\(shape\\[\\, dtype\\, name\\, data\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Declare a new symbolic buffer."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`div <tvm.topi.tvm.topi.div>`\\ \\(a\\, b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute a / b as in C/C++ semantics."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`divide <tvm.topi.tvm.topi.divide>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Division with auto-broadcasting"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`einsum <tvm.topi.tvm.topi.einsum>`\\ "
+#~ "\\(subscripts\\, \\*operand\\)"
+#~ msgstr ""
+
+#~ msgid "Evaluates the Einstein summation convention on the operands."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`elemwise_sum <tvm.topi.tvm.topi.elemwise_sum>`\\ \\(xs\\)"
+#~ msgstr ""
+
+#~ msgid "Perform element-wise sum on inputs"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`equal <tvm.topi.tvm.topi.equal>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Compute (lhs==rhs) with auto-broadcasting"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`erf <tvm.topi.tvm.topi.erf>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take gauss error function of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`exp <tvm.topi.tvm.topi.exp>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take exponential of input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`expand_dims <tvm.topi.tvm.topi.expand_dims>`\\ "
+#~ "\\(a\\, axis\\[\\, num\\_newaxis\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Expand the shape of an array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`expand_like <tvm.topi.tvm.topi.expand_like>`\\ "
+#~ "\\(a\\, shape\\_like\\, axis\\)"
+#~ msgstr ""
+
+#~ msgid "Expand an input array with the shape of second array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`extern <tvm.topi.tvm.topi.extern>`\\ \\(shape\\,"
+#~ " inputs\\, fcompute\\[\\, name\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute several tensors via an extern function."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`fast_erf <tvm.topi.tvm.topi.fast_erf>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take gauss error function of input x using fast_erf implementation."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`fast_exp <tvm.topi.tvm.topi.fast_exp>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take exponential of input x using fast_exp implementation"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`fast_tanh <tvm.topi.tvm.topi.fast_tanh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take hyperbolic tangent of input x using fast_tanh implementation"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`fixed_point_multiply "
+#~ "<tvm.topi.tvm.topi.fixed_point_multiply>`\\ \\(x\\, "
+#~ "multiplier\\, shift\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Fixed point multiplication between data "
+#~ "and a fixed point constant expressed "
+#~ "as multiplier * 2^(-shift), where "
+#~ "multiplier is a Q-number with 31 "
+#~ "fractional bits"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`flip <tvm.topi.tvm.topi.flip>`\\ \\(a\\[\\, axis\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Flip/reverse elements of an array in a particular axis."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`floor <tvm.topi.tvm.topi.floor>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take floor of input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`floor_divide <tvm.topi.tvm.topi.floor_divide>`\\ "
+#~ "\\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Floor division with auto-broadcasting"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`floor_mod <tvm.topi.tvm.topi.floor_mod>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Floor modulus with auto-broadcasting"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`floordiv <tvm.topi.tvm.topi.floordiv>`\\ \\(a\\,"
+#~ " b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute the floordiv of two expressions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`floormod <tvm.topi.tvm.topi.floormod>`\\ \\(a\\,"
+#~ " b\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute the floormod of two expressions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`full <tvm.topi.tvm.topi.full>`\\ \\(shape\\, "
+#~ "dtype\\, fill\\_value\\)"
+#~ msgstr ""
+
+#~ msgid "Fill tensor with fill_value"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`full_like <tvm.topi.tvm.topi.full_like>`\\ "
+#~ "\\(x\\, fill\\_value\\)"
+#~ msgstr ""
+
+#~ msgid "Construct a tensor with same shape as input tensor,"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`gather <tvm.topi.tvm.topi.gather>`\\ \\(data\\,"
+#~ " axis\\, indices\\)"
+#~ msgstr ""
+
+#~ msgid "Gather values along given axis from given indices."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`gather_nd <tvm.topi.tvm.topi.gather_nd>`\\ \\(a\\, indices\\)"
+#~ msgstr ""
+
+#~ msgid "Gather elements from a n-dimension array.."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_const_tuple <tvm.topi.tvm.topi.get_const_tuple>`\\"
+#~ " \\(in\\_tuple\\)"
+#~ msgstr ""
+
+#~ msgid "Verifies input tuple is IntImm or Var, returns tuple of int or Var."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`greater <tvm.topi.tvm.topi.greater>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Compute (lhs>rhs) with auto-broadcasting"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`greater_equal <tvm.topi.tvm.topi.greater_equal>`\\ "
+#~ "\\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Compute (lhs>=rhs) with auto-broadcasting"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`hybrid_argwhere_1d "
+#~ "<tvm.topi.tvm.topi.hybrid_argwhere_1d>`\\ \\(output\\_shape\\,"
+#~ " condition\\)"
+#~ msgstr ""
+
+#~ msgid "Find the indices of elements of a 1-D tensor that are non-zero."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`hybrid_argwhere_2d "
+#~ "<tvm.topi.tvm.topi.hybrid_argwhere_2d>`\\ \\(output\\_shape\\,"
+#~ " condition\\)"
+#~ msgstr ""
+
+#~ msgid "Find the indices of elements of a 2-D tensor that are non-zero."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`hybrid_argwhere_3d "
+#~ "<tvm.topi.tvm.topi.hybrid_argwhere_3d>`\\ \\(output\\_shape\\,"
+#~ " condition\\)"
+#~ msgstr ""
+
+#~ msgid "Find the indices of elements of a 3-D tensor that are non-zero."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`hybrid_argwhere_4d "
+#~ "<tvm.topi.tvm.topi.hybrid_argwhere_4d>`\\ \\(output\\_shape\\,"
+#~ " condition\\)"
+#~ msgstr ""
+
+#~ msgid "Find the indices of elements of a 4-D tensor that are non-zero."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`hybrid_argwhere_5d "
+#~ "<tvm.topi.tvm.topi.hybrid_argwhere_5d>`\\ \\(output\\_shape\\,"
+#~ " condition\\)"
+#~ msgstr ""
+
+#~ msgid "Find the indices of elements of a 5-D tensor that are non-zero."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`identity <tvm.topi.tvm.topi.identity>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take identity of input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`invert_permutation "
+#~ "<tvm.topi.tvm.topi.invert_permutation>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Computes the inverse permutation of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`isfinite <tvm.topi.tvm.topi.isfinite>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Check if value of x is finite, element-wise."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`isinf <tvm.topi.tvm.topi.isinf>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Check if value of x is infinite, element-wise."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`isnan <tvm.topi.tvm.topi.isnan>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Check if value of x is NaN, element-wise."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`layout_transform "
+#~ "<tvm.topi.tvm.topi.layout_transform>`\\ \\(array\\, "
+#~ "src\\_layout\\, dst\\_layout\\)"
+#~ msgstr ""
+
+#~ msgid "Transform the layout according to src_layout and dst_layout"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`left_shift <tvm.topi.tvm.topi.left_shift>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Left shift with auto-broadcasting"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`less <tvm.topi.tvm.topi.less>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Compute (lhs<rhs) with auto-broadcasting"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`less_equal <tvm.topi.tvm.topi.less_equal>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Compute (lhs<=rhs) with auto-broadcasting"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`log <tvm.topi.tvm.topi.log>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take logarithm of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`log10 <tvm.topi.tvm.topi.log10>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take logarithm to the base 10 of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`log2 <tvm.topi.tvm.topi.log2>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take logarithm to the base 2 of input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`logical_and <tvm.topi.tvm.topi.logical_and>`\\ "
+#~ "\\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise logical and of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`logical_not <tvm.topi.tvm.topi.logical_not>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise logical not of data."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`logical_or <tvm.topi.tvm.topi.logical_or>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise logical or of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`logical_xor <tvm.topi.tvm.topi.logical_xor>`\\ "
+#~ "\\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Compute element-wise logical xor of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`make_idx <tvm.topi.tvm.topi.make_idx>`\\ \\(b\\,"
+#~ " e\\, s\\, z\\, i\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Return the array position in the "
+#~ "selection that corresponds to an array"
+#~ " position in the full array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`matmul <tvm.topi.tvm.topi.matmul>`\\ \\(a\\, "
+#~ "b\\[\\, transp\\_a\\, transp\\_b\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Creates an operation that calculates a"
+#~ " matrix multiplication (row-major "
+#~ "notation): A(i, k) * B(k, j) if"
+#~ " trans_a == trans_b, the usual "
+#~ "transposed combinations, otherwise"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`matrix_set_diag <tvm.topi.tvm.topi.matrix_set_diag>`\\"
+#~ " \\(data\\, diagonal\\[\\, k\\, align\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns a tensor with the diagonals "
+#~ "of input tensor replaced with the "
+#~ "provided diagonal values."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`max <tvm.topi.tvm.topi.max>`\\ \\(data\\[\\, "
+#~ "axis\\, keepdims\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Maximum of array elements over a given axis or a list of axes"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`maximum <tvm.topi.tvm.topi.maximum>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Take element-wise maximum of two tensors with auto-broadcasting"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`meshgrid <tvm.topi.tvm.topi.meshgrid>`\\ "
+#~ "\\(a\\_tuple\\, indexing\\)"
+#~ msgstr ""
+
+#~ msgid "Create coordinate matrices from coordinate vectors."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`min <tvm.topi.tvm.topi.min>`\\ \\(data\\[\\, "
+#~ "axis\\, keepdims\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Minimum of array elements over a given axis or a list of axes"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`minimum <tvm.topi.tvm.topi.minimum>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`mod <tvm.topi.tvm.topi.mod>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Modulus with auto-broadcasting"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`multiply <tvm.topi.tvm.topi.multiply>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Multiplication with auto-broadcasting"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`ndarray_size <tvm.topi.tvm.topi.ndarray_size>`\\ "
+#~ "\\(array\\[\\, dtype\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get the number of elements of input array"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`negative <tvm.topi.tvm.topi.negative>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take negation of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`not_equal <tvm.topi.tvm.topi.not_equal>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Compute (lhs!=rhs) with auto-broadcasting"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`one_hot <tvm.topi.tvm.topi.one_hot>`\\ "
+#~ "\\(indices\\, on\\_value\\, off\\_value\\, depth\\,"
+#~ " ...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns a one-hot tensor where the"
+#~ " locations repsented by indices take "
+#~ "value on_value, other locations take "
+#~ "value off_value."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`power <tvm.topi.tvm.topi.power>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Power with auto-broadcasting"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`prod <tvm.topi.tvm.topi.prod>`\\ \\(data\\[\\,"
+#~ " axis\\, keepdims\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Product of array elements over a given axis or a list of axes"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`reinterpret <tvm.topi.tvm.topi.reinterpret>`\\ "
+#~ "\\(x\\, dtype\\)"
+#~ msgstr ""
+
+#~ msgid "Reinterpret input to specified data type."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`repeat <tvm.topi.tvm.topi.repeat>`\\ \\(a\\, "
+#~ "repeats\\, axis\\)"
+#~ msgstr ""
+
+#~ msgid "Repeats elements of an array."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`reshape <tvm.topi.tvm.topi.reshape>`\\ \\(a\\, newshape\\)"
+#~ msgstr ""
+
+#~ msgid "Reshape the array"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`reverse_sequence "
+#~ "<tvm.topi.tvm.topi.reverse_sequence>`\\ \\(a\\, "
+#~ "seq\\_lengths\\[\\, seq\\_axis\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Reverse the tensor for variable length slices."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`right_shift <tvm.topi.tvm.topi.right_shift>`\\ "
+#~ "\\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Right shift with auto-broadcasting"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`round <tvm.topi.tvm.topi.round>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Round elements of x to nearest integer."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`rsqrt <tvm.topi.tvm.topi.rsqrt>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take inverse square root of input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`scanop <tvm.topi.tvm.topi.scanop>`\\ \\(data\\,"
+#~ " binop\\, identity\\_value\\, op\\_name\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Cumulative binary operator (scan) with "
+#~ "similar axis behavior as np.cumsum and"
+#~ " np.cumprod."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`scatter <tvm.topi.tvm.topi.scatter>`\\ \\(data\\,"
+#~ " indices\\, updates\\[\\, axis\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Update data at positions defined by indices with values in updates"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`scatter_add <tvm.topi.tvm.topi.scatter_add>`\\ "
+#~ "\\(data\\, indices\\, updates\\[\\, axis\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Update data by adding values in updates at positions defined by indices"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`scatter_nd <tvm.topi.tvm.topi.scatter_nd>`\\ "
+#~ "\\(data\\, indices\\, updates\\, mode\\)"
+#~ msgstr ""
+
+#~ msgid "Scatter elements from a n-dimension array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`searchsorted <tvm.topi.tvm.topi.searchsorted>`\\ "
+#~ "\\(sorted\\_sequence\\, values\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Find indices where elements should be inserted to maintain order."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sequence_mask <tvm.topi.tvm.topi.sequence_mask>`\\ "
+#~ "\\(data\\, valid\\_length\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Sets all elements outside the expected"
+#~ " length of the sequence to a "
+#~ "constant value."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`shape <tvm.topi.tvm.topi.shape>`\\ \\(array\\[\\, dtype\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get the shape of input array"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sigmoid <tvm.topi.tvm.topi.sigmoid>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take sigmoid tanh of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sign <tvm.topi.tvm.topi.sign>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Returns -1, 0, 1 based on sign of x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sin <tvm.topi.tvm.topi.sin>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take sin of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sinh <tvm.topi.tvm.topi.sinh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take sinh of input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sort <tvm.topi.tvm.topi.sort>`\\ \\(data\\[\\,"
+#~ " axis\\, is\\_ascend\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Performs sorting along the given axis"
+#~ " and returns an array in sorted "
+#~ "order."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sparse_reshape <tvm.topi.tvm.topi.sparse_reshape>`\\"
+#~ " \\(sparse\\_indices\\, prev\\_shape\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Reshape a Sparse Tensor"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sparse_to_dense <tvm.topi.tvm.topi.sparse_to_dense>`\\"
+#~ " \\(sparse\\_indices\\, ...\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Converts a sparse representation into a dense tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`split <tvm.topi.tvm.topi.split>`\\ \\(ary\\, "
+#~ "indices\\_or\\_sections\\[\\, axis\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Split an array into multiple sub-arrays."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`sqrt <tvm.topi.tvm.topi.sqrt>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take square root of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`squeeze <tvm.topi.tvm.topi.squeeze>`\\ \\(a\\[\\, axis\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Remove single-dimensional entries from the shape of an array."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`stack <tvm.topi.tvm.topi.stack>`\\ \\(a\\, axis\\)"
+#~ msgstr ""
+
+#~ msgid "Repeats the whole array multiple times."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`strided_set <tvm.topi.tvm.topi.strided_set>`\\ "
+#~ "\\(a\\, v\\, begin\\, end\\[\\, strides\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Set slice of an array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`strided_slice <tvm.topi.tvm.topi.strided_slice>`\\ "
+#~ "\\(a\\, begin\\, end\\[\\, strides\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Slice of an array."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`subtract <tvm.topi.tvm.topi.subtract>`\\ \\(lhs\\, rhs\\)"
+#~ msgstr ""
+
+#~ msgid "Subtraction with auto-broadcasting"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sum <tvm.topi.tvm.topi.sum>`\\ \\(data\\[\\, "
+#~ "axis\\, keepdims\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Sum of array elements over a given axis or a list of axes"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`take <tvm.topi.tvm.topi.take>`\\ \\(a\\, "
+#~ "indices\\[\\, axis\\, batch\\_dims\\, mode\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Take elements from an array along an axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`take_legalize <tvm.topi.tvm.topi.take_legalize>`\\ "
+#~ "\\(attrs\\, inputs\\, types\\)"
+#~ msgstr ""
+
+#~ msgid "Legalizes dyn.topk op."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`tan <tvm.topi.tvm.topi.tan>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take tan of input x."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`tanh <tvm.topi.tvm.topi.tanh>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take hyperbolic tanh of input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`tensordot <tvm.topi.tvm.topi.tensordot>`\\ "
+#~ "\\(a\\, b\\, axes\\)"
+#~ msgstr ""
+
+#~ msgid "A generalization of matrix multiplication to tensor."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`tile <tvm.topi.tvm.topi.tile>`\\ \\(a\\, reps\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`topk <tvm.topi.tvm.topi.topk>`\\ \\(data\\[\\,"
+#~ " k\\, axis\\, ret\\_type\\, is\\_ascend\\, "
+#~ "dtype\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get the top k elements in an input tensor along the given axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`transpose <tvm.topi.tvm.topi.transpose>`\\ "
+#~ "\\(a\\[\\, axes\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Permute the dimensions of an array."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`trunc <tvm.topi.tvm.topi.trunc>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take truncated value of the input of x, element-wise."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`unique <tvm.topi.tvm.topi.unique>`\\ "
+#~ "\\(data\\[\\, is\\_sorted\\, return\\_counts\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Find the unique elements of a 1-D tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`unravel_index <tvm.topi.tvm.topi.unravel_index>`\\ "
+#~ "\\(indices\\, shape\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Convert a flat index or array of"
+#~ " flat indices into a tuple of "
+#~ "coordinate arrays."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`where <tvm.topi.tvm.topi.where>`\\ \\(condition\\, x\\, y\\)"
+#~ msgstr ""
+
+#~ msgid "Get the elements, either from x or y, depending on the condition."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`within_index <tvm.topi.tvm.topi.within_index>`\\ "
+#~ "\\(b\\, e\\, s\\, i\\)"
+#~ msgstr ""
+
+#~ msgid "Return a boolean value that indicates if i is within the given index."
+#~ msgstr ""
+
+#~ msgid "参数"
+#~ msgstr ""
+
+#~ msgid "The assert condition."
+#~ msgstr ""
+
+#~ msgid "The error message."
+#~ msgstr ""
+
+#~ msgid "The body statement."
+#~ msgstr ""
+
+#~ msgid "The location of this itervar in the source code."
+#~ msgstr ""
+
+#~ msgid "The data type"
+#~ msgstr ""
+
+#~ msgid "The value of the function."
+#~ msgstr ""
+
+#~ msgid "The expression to be evalued."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Invalid shape for a topi function. "
+#~ "i.e. call winograd template for non-"
+#~ "3x3 kernel)"
+#~ msgstr ""
+
+#~ msgid "Input argument."
+#~ msgstr ""
+
+#~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid "**y** -- The result."
+#~ msgstr ""
+
+#~ msgid "返回类型"
+#~ msgstr ""
+
+#~ msgid "The left operand"
+#~ msgstr ""
+
+#~ msgid "The right operand"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**ret** -- Returns Expr if both "
+#~ "operands are Expr. Otherwise returns "
+#~ "Tensor."
+#~ msgstr ""
+
+#~ msgid "Input data."
+#~ msgstr ""
+
+#~ msgid "Tensor index."
+#~ msgstr ""
+
+#~ msgid "**result** -- Output tensor"
+#~ msgstr ""
+
+#~ msgid "The input tvm boolean tensor"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a logical"
+#~ " AND is performed. The default, "
+#~ "axis=None, will perform logical AND over"
+#~ " all elements of the input array. "
+#~ "If axis is negative it counts from"
+#~ " the last to the first axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If this is set to True, the "
+#~ "axes which are reduced are left in"
+#~ " the result as dimensions with size"
+#~ " one. With this option, the result"
+#~ " will broadcast correctly against the "
+#~ "input array."
+#~ msgstr ""
+
+#~ msgid "**ret**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a logical"
+#~ " OR is performed. The default, "
+#~ "axis=None, will perform logical OR over"
+#~ " all elements of the input array. "
+#~ "If axis is negative it counts from"
+#~ " the last to the first axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Start of interval. The interval includes"
+#~ " this value. The default start value"
+#~ " is 0."
+#~ msgstr ""
+
+#~ msgid "Stop of interval. The interval does not include this value."
+#~ msgstr ""
+
+#~ msgid "Spacing between values. The default step size is 1."
+#~ msgstr ""
+
+#~ msgid "The target data type."
+#~ msgstr ""
+
+#~ msgid "**result** -- The resulting tensor."
+#~ msgstr ""
+
+#~ msgid "The input tvm tensor"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a argmax"
+#~ " operation is performed. The default, "
+#~ "axis=None, will find the indices of "
+#~ "the maximum element of the elements "
+#~ "of the input array. If axis is "
+#~ "negative it counts from the last "
+#~ "to the first axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Whether to select the last index "
+#~ "if the maximum element appears multiple"
+#~ " times, else select the first index."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a argmin"
+#~ " operation is performed. The default, "
+#~ "axis=None, will find the indices of "
+#~ "minimum element all of the elements "
+#~ "of the input array. If axis is "
+#~ "negative it counts from the last "
+#~ "to the first axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Whether to select the last index "
+#~ "if the minimum element appears multiple"
+#~ " times, else select the first index."
+#~ msgstr ""
+
+#~ msgid "The input tensor."
+#~ msgstr ""
+
+#~ msgid "1-D tensor for valid number of boxes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis along which to sort the input"
+#~ " tensor. By default the flattened "
+#~ "array is used."
+#~ msgstr ""
+
+#~ msgid "Whether to sort in ascending or descending order."
+#~ msgstr ""
+
+#~ msgid "DType of the output indices."
+#~ msgstr ""
+
+#~ msgid "**out** -- Sorted index tensor."
+#~ msgstr ""
+
+#~ msgid "示例"
+#~ msgstr ""
+
+#~ msgid "Tensor with boolean values."
+#~ msgstr ""
+
+#~ msgid "**out** -- Indices of non-zero elements."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`sorted_sequence` is a N-D Buffer whose"
+#~ " innermost dimension we want to "
+#~ "search for `value`, and `search_range` "
+#~ "is the size of the innermost "
+#~ "dimension. `sequence_offset` is a 1-D "
+#~ "linearlized offset specifying which of "
+#~ "innermost sequences to search."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "So the search for `value` is "
+#~ "performed over "
+#~ "`sorted_sequence[sequence_offset:(sequence_offset + "
+#~ "search_range)]`. Note that we index N-D"
+#~ " Buffer by 1-D linearlized indices."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**ret** -- Returns Expr if the "
+#~ "operand are Expr. Otherwise returns "
+#~ "Tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "We follows the numpy broadcasting rule."
+#~ " See also "
+#~ "https://docs.scipy.org/doc/numpy/user/basics.broadcasting.html"
+#~ msgstr ""
+
+#~ msgid "The input data"
+#~ msgstr ""
+
+#~ msgid "The target shape to be broadcasted."
+#~ msgstr ""
+
+#~ msgid "Data type."
+#~ msgstr ""
+
+#~ msgid "The location of the cast in the source."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Compute integer ceil log2 with a "
+#~ "special code path for vulkan SPIR-V "
+#~ "does not support log2 on fp64. "
+#~ "Instead, we compute integer ceil_log2 "
+#~ "via clz intrinsic when the target "
+#~ "is vulkan."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Clip (limit) the values in an "
+#~ "array. Given an interval, values outside"
+#~ " the interval are clipped to the "
+#~ "interval edges."
+#~ msgstr ""
+
+#~ msgid "Minimum value."
+#~ msgstr ""
+
+#~ msgid "Maximum value."
+#~ msgstr ""
+
+#~ msgid "The arrays to concatenate"
+#~ msgstr ""
+
+#~ msgid "The axis along which the arrays will be joined. Default is 0."
+#~ msgstr ""
+
+#~ msgid "Const input array"
+#~ msgstr ""
+
+#~ msgid "The name of output op"
+#~ msgstr ""
+
+#~ msgid "**tensor** -- The created tensor"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Numpy style cumprod op. Return the "
+#~ "cumulative product of the elements along"
+#~ " a given axis."
+#~ msgstr ""
+
+#~ msgid "The input data to the operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis along which the cumulative product"
+#~ " is computed. The default (None) is"
+#~ " to compute the cumproduct over the"
+#~ " flattened array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Type of the returned array and of"
+#~ " the accumulator in which the "
+#~ "elements are multiplied. If dtype is "
+#~ "not specified, it defaults to the "
+#~ "dtype of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If True, will return exclusive product"
+#~ " in which the first element is "
+#~ "not included. In other terms, if "
+#~ "True, the j-th output element would "
+#~ "be the product of the first (j-1)"
+#~ " elements. Otherwise, it would be the"
+#~ " product of the first j elements."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**result** -- The result has the "
+#~ "same size as data, and the same"
+#~ " shape as data if axis is not"
+#~ " None. If axis is None, the "
+#~ "result is a 1-d array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Numpy style cumsum op. Return the "
+#~ "cumulative sum of the elements along "
+#~ "a given axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis along which the cumulative sum "
+#~ "is computed. The default (None) is "
+#~ "to compute the cumsum over the "
+#~ "flattened array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Type of the returned array and of"
+#~ " the accumulator in which the "
+#~ "elements are summed. If dtype is "
+#~ "not specified, it defaults to the "
+#~ "dtype of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If True, will return exclusive sum "
+#~ "in which the first element is not"
+#~ " included. In other terms, if True,"
+#~ " the j-th output element would be "
+#~ "the sum of the first (j-1) "
+#~ "elements. Otherwise, it would be the "
+#~ "sum of the first j elements."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Normally buffer is created automatically "
+#~ "during lower and build. This is "
+#~ "only needed if user want to "
+#~ "specify their own buffer layout."
+#~ msgstr ""
+
+#~ msgid "See the note below for detailed discussion on usage of buffer."
+#~ msgstr ""
+
+#~ msgid "The shape of the buffer."
+#~ msgstr ""
+
+#~ msgid "The data type of the buffer."
+#~ msgstr ""
+
+#~ msgid "The name of the buffer."
+#~ msgstr ""
+
+#~ msgid "The data pointer in the buffer."
+#~ msgstr ""
+
+#~ msgid "The stride of the buffer."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The beginning offset of the array "
+#~ "to data. In terms of number of "
+#~ "elements of dtype."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The storage scope of the buffer, "
+#~ "if not global. If scope equals "
+#~ "empty string, it means it is "
+#~ "global memory."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The alignment of data pointer in "
+#~ "bytes. If -1 is passed, the "
+#~ "alignment will be set to TVM's "
+#~ "internal default."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The factor of elem_offset field, when"
+#~ " set, elem_offset is required to be"
+#~ " multiple of offset_factor. If 0 is"
+#~ " pssed, the alignment will be set "
+#~ "to 1. if non-zero is passed, "
+#~ "we will created a Var for "
+#~ "elem_offset if elem_offset is not None."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "auto_broadcast buffer allows one to "
+#~ "implement broadcast computation without "
+#~ "considering whether dimension size equals "
+#~ "to one. TVM maps buffer[i][j][k] -> "
+#~ "buffer[i][0][k] if dimension j's shape "
+#~ "equals 1."
+#~ msgstr ""
+
+#~ msgid "The location of the decl_buffer creation in the source."
+#~ msgstr ""
+
+#~ msgid "**buffer** -- The created buffer"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Here's an example of how broadcast "
+#~ "buffer can be used to define a "
+#~ "symbolic broadcast operation,"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Buffer data structure reflects the "
+#~ "DLTensor structure in dlpack. While "
+#~ "DLTensor data structure is very general,"
+#~ " it is usually helpful to create "
+#~ "function that only handles specific case"
+#~ " of data structure and make compiled"
+#~ " function benefit from it."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If user pass strides and elem_offset "
+#~ "is passed as None when constructing "
+#~ "the function, then the function will "
+#~ "be specialized for the DLTensor that "
+#~ "is compact and aligned. If user "
+#~ "pass a fully generic symbolic array "
+#~ "to the strides, then the resulting "
+#~ "function becomes fully generic."
+#~ msgstr ""
+
+#~ msgid "The left hand operand, known to be non-negative."
+#~ msgstr ""
+
+#~ msgid "The right hand operand, known to be non-negative."
+#~ msgstr ""
+
+#~ msgid "The location of this operator in the source."
+#~ msgstr ""
+
+#~ msgid "**res** -- The result expression."
+#~ msgstr ""
+
+#~ msgid "When operands are integers, returns truncdiv(a, b, span)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Specifies the subscripts for summation "
+#~ "as comma separated list of subscript "
+#~ "labels. An implicit (classical Einstein "
+#~ "summation) calculation is performed unless "
+#~ "the explicit indicator ‘->’ is included"
+#~ " as well as subscript labels of "
+#~ "the precise output form."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "These are the Tensors for the "
+#~ "operation. The only difference of einsum"
+#~ " between in tvm and numpy is it"
+#~ " needs an extra brackets for the "
+#~ "tensors. For example, topi.einsum(\"ij, jk "
+#~ "-> ik\", (A, B))."
+#~ msgstr ""
+
+#~ msgid "**out** -- The calculation based on the Einstein summation convention."
+#~ msgstr ""
+
+#~ msgid "Input arguments."
+#~ msgstr ""
+
+#~ msgid "The tensor to be expanded."
+#~ msgstr ""
+
+#~ msgid "Number of newaxis to be inserted on axis"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Expand an input array with the "
+#~ "shape of second array. This operation"
+#~ " can always be composed of "
+#~ "unsqueezing and expanding dims on those"
+#~ " unsqueezed axes."
+#~ msgstr ""
+
+#~ msgid "实际案例"
+#~ msgstr ""
+
+#~ msgid "The tensor to with target shape."
+#~ msgstr ""
+
+#~ msgid "axis to be expanded on"
+#~ msgstr ""
+
+#~ msgid "The shape of the outputs."
+#~ msgstr ""
+
+#~ msgid "The inputs"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Specifies the IR statement to do "
+#~ "the computation. See the following note"
+#~ " for function signature of fcompute  "
+#~ ".. note::      **Parameters**       - **ins**"
+#~ " (list of :any:`tvm.tir.Buffer`) - "
+#~ "Placeholder for each inputs      - "
+#~ "**outs** (list of :any:`tvm.tir.Buffer`) - "
+#~ "Placeholder for each outputs       **Returns**"
+#~ "       - **stmt** (:any:`tvm.tir.Stmt`) - "
+#~ "The statement that carries out array "
+#~ "computation."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Specifies the IR statement to do "
+#~ "the computation. See the following note"
+#~ " for function signature of fcompute"
+#~ msgstr ""
+
+#~ msgid "**Parameters**"
+#~ msgstr ""
+
+#~ msgid "**ins** (list of :any:`tvm.tir.Buffer`) - Placeholder for each inputs"
+#~ msgstr ""
+
+#~ msgid "**outs** (list of :any:`tvm.tir.Buffer`) - Placeholder for each outputs"
+#~ msgstr ""
+
+#~ msgid "**Returns**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**stmt** (:any:`tvm.tir.Stmt`) - The statement"
+#~ " that carries out array computation."
+#~ msgstr ""
+
+#~ msgid "The name hint of the tensor"
+#~ msgstr ""
+
+#~ msgid "The data types of outputs, by default dtype will be same as inputs."
+#~ msgstr ""
+
+#~ msgid "Input buffers."
+#~ msgstr ""
+
+#~ msgid "Output buffers."
+#~ msgstr ""
+
+#~ msgid "tag: str, optional"
+#~ msgstr ""
+
+#~ msgid "Additonal tag information about the compute."
+#~ msgstr ""
+
+#~ msgid "attrs: dict, optional"
+#~ msgstr ""
+
+#~ msgid "The additional auxiliary attributes about the compute."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**tensor** -- The created tensor or "
+#~ "tuple of tensors it it contains "
+#~ "multiple outputs."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In the code below, C is generated"
+#~ " by calling external PackedFunc "
+#~ "`tvm.contrib.cblas.matmul`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Multiplier of a fixed floating point "
+#~ "number described as multiplier*2^(-shift)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Shift of a fixed floating point "
+#~ "number described as multiplier*2^(-shift)."
+#~ msgstr ""
+
+#~ msgid "The axis along which the tensors will be reveresed."
+#~ msgstr ""
+
+#~ msgid "The left hand operand"
+#~ msgstr ""
+
+#~ msgid "The right hand operand"
+#~ msgstr ""
+
+#~ msgid "Input tensor shape."
+#~ msgstr ""
+
+#~ msgid "Data type"
+#~ msgstr ""
+
+#~ msgid "Value to be filled"
+#~ msgstr ""
+
+#~ msgid "then fill tensor with fill_value."
+#~ msgstr ""
+
+#~ msgid "E.g. for a 3D tensor, output is computed as:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "``indices`` must have same shape as "
+#~ "``data``, except at dimension ``axis`` "
+#~ "which must just be not null. "
+#~ "Output will have same shape as "
+#~ "``indices``."
+#~ msgstr ""
+
+#~ msgid "The axis along which to index."
+#~ msgstr ""
+
+#~ msgid "The indices of the values to extract."
+#~ msgstr ""
+
+#~ msgid "The source array."
+#~ msgstr ""
+
+#~ msgid "The input."
+#~ msgstr ""
+
+#~ msgid "**out_tuple** -- The output."
+#~ msgstr ""
+
+#~ msgid "1-D tensor with boolean values."
+#~ msgstr ""
+
+#~ msgid "2-D tensor with boolean values."
+#~ msgstr ""
+
+#~ msgid "3-D tensor with boolean values."
+#~ msgstr ""
+
+#~ msgid "4-D tensor with boolean values."
+#~ msgstr ""
+
+#~ msgid "5-D tensor with boolean values."
+#~ msgstr ""
+
+#~ msgid "Input data"
+#~ msgstr ""
+
+#~ msgid "the source layout."
+#~ msgstr ""
+
+#~ msgid "the destination layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The returned value is only meaningful"
+#~ " if within_index() returns True for "
+#~ "the same set of parameters."
+#~ msgstr ""
+
+#~ msgid "beginning of the index"
+#~ msgstr ""
+
+#~ msgid "end of the index"
+#~ msgstr ""
+
+#~ msgid "strides of index"
+#~ msgstr ""
+
+#~ msgid "size of the indexed dimension"
+#~ msgstr ""
+
+#~ msgid "array position"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**position** -- int expression that "
+#~ "corresponds to an array position in "
+#~ "the selection."
+#~ msgstr ""
+
+#~ msgid "Input Tensor."
+#~ msgstr ""
+
+#~ msgid "Values to be filled in the diagonal."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Diagonal Offset(s). The diagonal or "
+#~ "range of diagonals to set. (0 by"
+#~ " default) Positive value means "
+#~ "superdiagonal, 0 refers to the main "
+#~ "diagonal, and negative value means "
+#~ "subdiagonals. k can be a single "
+#~ "integer (for a single diagonal) or "
+#~ "a pair of integers specifying the "
+#~ "low and high ends of a matrix "
+#~ "band. k[0] must not be larger than"
+#~ " k[1]."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Some diagonals are shorter than "
+#~ "max_diag_len and need to be padded. "
+#~ "align is a string specifying how "
+#~ "superdiagonals and subdiagonals should be "
+#~ "aligned, respectively. There are four "
+#~ "possible alignments: \"RIGHT_LEFT\" (default), "
+#~ "\"LEFT_RIGHT\", \"LEFT_LEFT\", and \"RIGHT_RIGHT\"."
+#~ " \"RIGHT_LEFT\" aligns superdiagonals to "
+#~ "the right (left-pads the row) and"
+#~ " subdiagonals to the left (right-pads"
+#~ " the row). It is the packing "
+#~ "format LAPACK uses. cuSPARSE uses "
+#~ "\"LEFT_RIGHT\", which is the opposite "
+#~ "alignment."
+#~ msgstr ""
+
+#~ msgid "**result** -- New tensor with given diagonal values."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which the max"
+#~ " operation is performed. The default, "
+#~ "axis=None, will find the max element "
+#~ "from all of the elements of the"
+#~ " input array. If axis is negative "
+#~ "it counts from the last to the "
+#~ "first axis."
+#~ msgstr ""
+
+#~ msgid "The coordinate vectors or scalars."
+#~ msgstr ""
+
+#~ msgid "Indexing mode, either \"ij\" or \"xy\"."
+#~ msgstr ""
+
+#~ msgid "**result** -- The resulting grids for each axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a minimum"
+#~ " operation is performed. The default, "
+#~ "axis=None, will find the minimum element"
+#~ " from all of the elements of "
+#~ "the input array. If axis is "
+#~ "negative it counts from the last "
+#~ "to the first axis."
+#~ msgstr ""
+
+#~ msgid "The source tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Returns a one-hot tensor where the"
+#~ " locations repsented by indices take "
+#~ "value on_value, other locations take "
+#~ "value off_value. Final dimension is "
+#~ "<indices outer dimensions> x depth x "
+#~ "<indices inner dimensions>."
+#~ msgstr ""
+
+#~ msgid "Locations to set to on_value."
+#~ msgstr ""
+
+#~ msgid "Value to fill at indices."
+#~ msgstr ""
+
+#~ msgid "Value to fill at all other positions besides indices."
+#~ msgstr ""
+
+#~ msgid "Depth of the one-hot dimension."
+#~ msgstr ""
+
+#~ msgid "Axis to fill."
+#~ msgstr ""
+
+#~ msgid "Data type of the output tensor."
+#~ msgstr ""
+
+#~ msgid "**ret** -- The one-hot tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a prod"
+#~ " operation is performed. The default, "
+#~ "axis=None, will get the prod element "
+#~ "over all of the elements of the"
+#~ " input array. If axis is negative "
+#~ "it counts from the last to the "
+#~ "first axis."
+#~ msgstr ""
+
+#~ msgid "The tensor to be repeated."
+#~ msgstr ""
+
+#~ msgid "Number of repetitions for each element"
+#~ msgstr ""
+
+#~ msgid "The axis along which to repeat values"
+#~ msgstr ""
+
+#~ msgid "The tensor to be reshaped"
+#~ msgstr ""
+
+#~ msgid "The new shape"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Reverse the tensor for variable length"
+#~ " slices. Input is first sliced along"
+#~ " batch axis and then elements are "
+#~ "reversed along seq axis."
+#~ msgstr ""
+
+#~ msgid "The tensor to be reversed."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 1D Tensor with length "
+#~ "a.dims[batch_axis] Must be one of the"
+#~ " following types: int32, int64 if "
+#~ "seq_lengths[i] > a.dims[seq_axis], it is "
+#~ "rounded to a.dims[seq_axis] if seq_lengths[i]"
+#~ " < 1, it is rounded to 1"
+#~ msgstr ""
+
+#~ msgid "The axis along which the elements will be reversed. Default is 1."
+#~ msgstr ""
+
+#~ msgid "The axis along which the tensor will be sliced. Default is 0."
+#~ msgstr ""
+
+#~ msgid "**ret** -- The computed result of same shape and type as of input."
+#~ msgstr ""
+
+#~ msgid "See cumprod and cumsum for an example of use."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "E.g. if * is your binary operator"
+#~ " and the input tensor is [1, 2,"
+#~ " 3, 4] the output may be [1,"
+#~ " 1 * 2, 1 * 2 * 3, "
+#~ "1 * 2 * 3 * 4]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A binary operator which should be "
+#~ "associative and commutative. E.g. if *"
+#~ " is your operator then a * (b"
+#~ " * c) = (a * b) * c "
+#~ "and a * b = b * a"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A value for the binary operation "
+#~ "which provides the identity property. "
+#~ "E.g. if * is your operator and "
+#~ "i is the identity_value then a *"
+#~ " i = a for all a in the"
+#~ " domain of your operation."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis along which the operation is "
+#~ "computed. The default (None) is to "
+#~ "compute the cumulative operation over "
+#~ "the flattened array."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Type of the returned array and of"
+#~ " the accumulator in which the "
+#~ "elements are computed. If dtype is "
+#~ "not specified, it defaults to the "
+#~ "dtype of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If True will return exclusive cumulative"
+#~ " operation in which the first element"
+#~ " is not included. In other terms, "
+#~ "if True, the j-th output element "
+#~ "would be the cumulative operation of "
+#~ "the first (j-1) elements. Otherwise, it"
+#~ " would be the cumulative operation of"
+#~ " the first j elements. The cumulative"
+#~ " operation of zero elements is "
+#~ "assumed to be the identity_value."
+#~ msgstr ""
+
+#~ msgid "The index locations to update."
+#~ msgstr ""
+
+#~ msgid "The values to update."
+#~ msgstr ""
+
+#~ msgid "The axis to scatter on"
+#~ msgstr ""
+
+#~ msgid "**ret** -- The computed result."
+#~ msgstr ""
+
+#~ msgid "The axis to scatter_add on"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Given updates with shape (Y_0, ..., "
+#~ "Y_{K-1}, X_M, ..., X_{N-1}), indices "
+#~ "with shape (M, Y_0, ..., Y_{K-1}), "
+#~ "and output copied from data with "
+#~ "shape (X_0, X_1, ..., X_{N-1}), "
+#~ "scatter_nd computes"
+#~ msgstr ""
+
+#~ msgid "where the update function f is determinted by the mode."
+#~ msgstr ""
+
+#~ msgid "The updates to apply at the Indices"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The update mode for the algorithm, "
+#~ "either \"update\" or \"add\" If update,"
+#~ " the update values will replace the"
+#~ " input data If add, the update "
+#~ "values will be added to the input"
+#~ " data"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If `sorted_sequence` is N-dimensional, the "
+#~ "innermost dimension of `values` are "
+#~ "searched in the corresponding dimension "
+#~ "of `sorted_sequence`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "N-D or 1-D Tensor, containing "
+#~ "monotonically increasing sequence on the "
+#~ "innermost dimension."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "N-D Tensor containing the search values."
+#~ " When `sorted_sequence` is 1-D, the "
+#~ "shape of `values` can be arbitrary. "
+#~ "Otherwise, ranks of `sorted_sequence` and "
+#~ "`values` must be the same, and "
+#~ "outer N-1 axes must have the same"
+#~ " size."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Controls which index is returned if "
+#~ "a value lands exactly on one of"
+#~ " sorted values. If False, the index"
+#~ " of the first suitable location found"
+#~ " is given. If true, return the "
+#~ "last such index. If there is no"
+#~ " suitable index, return either 0 or"
+#~ " N (where N is the size of "
+#~ "the innermost dimension)."
+#~ msgstr ""
+
+#~ msgid "The data type of the output indices."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**indices** -- Tensor with same shape"
+#~ " as values, representing the indices "
+#~ "of elements of `values` if they "
+#~ "are inserted in `sorted_sequence`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This function takes an n-dimensional "
+#~ "input array of the form [MAX_LENGTH, "
+#~ "batch_size, ...] or [batch_size, MAX_LENGTH,"
+#~ " ...] and returns an array of "
+#~ "the same shape."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`axis` means the axis of the "
+#~ "length dimension and can only be 0"
+#~ " or 1. If `axis` is 0, the "
+#~ "data must have shape [MAX_LENGTH, "
+#~ "batch_size, ...]. Otherwise (axis=1), the "
+#~ "data must have shape [batch_size, "
+#~ "MAX_LENGTH, ...]."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`valid_length` gives the length of each"
+#~ " sequence. `valid_length` should be a "
+#~ "1D int array with positive ints "
+#~ "and has dimension [batch_size,]."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "N-D with shape [MAX_LENGTH, batch_size, "
+#~ "...] or [batch_size, MAX_LENGTH, ...] "
+#~ "depending on the value of `axis`."
+#~ msgstr ""
+
+#~ msgid "1-D with shape [batch_size,]"
+#~ msgstr ""
+
+#~ msgid "The masking value, default 0"
+#~ msgstr ""
+
+#~ msgid "axis of the length dimension, must be 0 or 1, default 0"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- N-D with shape "
+#~ "[MAX_LENGTH, batch_size, ...] or [batch_size,"
+#~ " MAX_LENGTH, ...] depending on the "
+#~ "value of `axis`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 2-D tensor[N, n_dim] of integers "
+#~ "containing location of sparse values, "
+#~ "where N is the number of sparse"
+#~ " values and n_dim is the number "
+#~ "of dimensions of the dense_shape"
+#~ msgstr ""
+
+#~ msgid "A 1-D tensor containing the previous shape of the dense tensor"
+#~ msgstr ""
+
+#~ msgid "A 1-D tensor containing the new shape of the dense tensor"
+#~ msgstr ""
+
+#~ msgid "**result** -- Output tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Example:: -   sparse_to_dense([[0, 0], [1, "
+#~ "1]], [2, 2], [3, 3], 0) = "
+#~ "[[3, 0], [0, 3]]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 0-D, 1-D, or 2-D tensor of "
+#~ "integers containing location of sparse "
+#~ "values."
+#~ msgstr ""
+
+#~ msgid "Shape of the dense output tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 0-D or 1-D tensor containing the"
+#~ " sparse values for the sparse "
+#~ "indices."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 0-D tensor containing the default "
+#~ "value for the remaining locations. "
+#~ "Defaults to 0."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**result** -- Dense tensor of shape "
+#~ "output_shape. Has the same type as "
+#~ "sparse_values."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Selects a subset of the single-"
+#~ "dimensional entries in the shape. If "
+#~ "an axis is selected with shape "
+#~ "entry greater than one, an error "
+#~ "is raised."
+#~ msgstr ""
+
+#~ msgid "**squeezed**"
+#~ msgstr ""
+
+#~ msgid "The tensor to be stacked."
+#~ msgstr ""
+
+#~ msgid "The axis in the result array along which the input arrays are stacked."
+#~ msgstr ""
+
+#~ msgid "The tensor to be sliced."
+#~ msgstr ""
+
+#~ msgid "The values to set"
+#~ msgstr ""
+
+#~ msgid "The indices to begin with in the slicing."
+#~ msgstr ""
+
+#~ msgid "Indicies indicating end of the slice."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Specifies the stride values, it can "
+#~ "be negative in that case, the "
+#~ "input tensor will be reversed in "
+#~ "that particular axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axes along which slicing is applied. "
+#~ "When it is specified, begin, end "
+#~ "strides, and axes need to a list"
+#~ " of integers of the same length."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The slice mode [end, size]. end -"
+#~ " The ending indices for the slice "
+#~ "[default]. size - The input strides "
+#~ "will be ignored, input end in this"
+#~ " mode indicates the sizeof a slice"
+#~ " starting at the location specified "
+#~ "by begin. If end[i] is -1, all "
+#~ "remaining elements in that dimension are"
+#~ " included in the slice."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Axis or axes along which a sum "
+#~ "is performed. The default, axis=None, "
+#~ "will sum all of the elements of"
+#~ " the input array. If axis is "
+#~ "negative it counts from the last "
+#~ "to the first axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The axis over which to select "
+#~ "values. By default, the flattened input"
+#~ " array is used."
+#~ msgstr ""
+
+#~ msgid "The number of batch dimensions. By default is 0."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Specifies how out-of-bound indices "
+#~ "will behave. clip - clip to the"
+#~ " range (default) wrap - wrap around"
+#~ " the indices fast - no clip or"
+#~ " wrap around (user must make sure "
+#~ "indices are in-bound)"
+#~ msgstr ""
+
+#~ msgid "Attributes of current op"
+#~ msgstr ""
+
+#~ msgid "The args of the Relay expr to be legalized"
+#~ msgstr ""
+
+#~ msgid "List of input and output types"
+#~ msgstr ""
+
+#~ msgid "**result** -- The legalized expr"
+#~ msgstr ""
+
+#~ msgid "The tensor to be tiled."
+#~ msgstr ""
+
+#~ msgid "The number of times for repeating the tensor"
+#~ msgstr ""
+
+#~ msgid "Number of top elements to select. Return all elements if k < 1."
+#~ msgstr ""
+
+#~ msgid "Axis long which to sort the input tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The return type [both, values, indices]."
+#~ " \"both\": return both top k data "
+#~ "and indices. \"values\": return top k"
+#~ " data only. \"indices\": return top k"
+#~ " indices only."
+#~ msgstr ""
+
+#~ msgid "The data type of the indices output."
+#~ msgstr ""
+
+#~ msgid "**out** -- The computed result."
+#~ msgstr ""
+
+#~ msgid "By default, reverse the dimensions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Find the unique elements of a 1-D"
+#~ " tensor. Please note `output` and "
+#~ "`counts` are all padded to have "
+#~ "the same length of `data` and "
+#~ "element with index >= num_unique[0] has"
+#~ " undefined value."
+#~ msgstr ""
+
+#~ msgid "A 1-D tensor of integers."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Whether to sort the unique elements "
+#~ "in ascending order before returning as"
+#~ " output."
+#~ msgstr ""
+
+#~ msgid "Whether to return the count of each unique element."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **unique** (*tvm.te.Tensor*) -- A 1-D"
+#~ " tensor containing the unique elements "
+#~ "of the input data tensor. The same"
+#~ " size as   the input data. If "
+#~ "there are less unique elements than "
+#~ "input data, the end of the tensor"
+#~ "   is padded with zeros. * "
+#~ "**indices** (*tvm.te.Tensor*) -- A 1-D "
+#~ "tensor. The same size as output. "
+#~ "For each entry in output, it "
+#~ "contains   the index of its first "
+#~ "occurence in the input data. The "
+#~ "end of the tensor is padded   with"
+#~ " the length of the input data. "
+#~ "* **inverse_indices** (*tvm.te.Tensor*) -- A"
+#~ " 1-D tensor. For each entry in "
+#~ "data, it contains the index of "
+#~ "that data element in   the unique "
+#~ "array. (Note that inverse_indices is "
+#~ "very similar to indices if output "
+#~ "is not   sorted.) * **num_unique** "
+#~ "(*tvm.te.Tensor*) -- A 1-D tensor with"
+#~ " size=1 containing the number of "
+#~ "unique elements in the input data "
+#~ "tensor. * **counts (optional)** "
+#~ "(*tvm.te.Tensor*) -- A 1-D tensor "
+#~ "containing the count of each unique "
+#~ "element in the output."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**unique** (*tvm.te.Tensor*) -- A 1-D "
+#~ "tensor containing the unique elements of"
+#~ " the input data tensor. The same "
+#~ "size as the input data. If there"
+#~ " are less unique elements than input"
+#~ " data, the end of the tensor is"
+#~ " padded with zeros."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**indices** (*tvm.te.Tensor*) -- A 1-D "
+#~ "tensor. The same size as output. "
+#~ "For each entry in output, it "
+#~ "contains the index of its first "
+#~ "occurence in the input data. The "
+#~ "end of the tensor is padded with"
+#~ " the length of the input data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**inverse_indices** (*tvm.te.Tensor*) -- A 1-D"
+#~ " tensor. For each entry in data, "
+#~ "it contains the index of that data"
+#~ " element in the unique array. (Note"
+#~ " that inverse_indices is very similar "
+#~ "to indices if output is not "
+#~ "sorted.)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**num_unique** (*tvm.te.Tensor*) -- A 1-D "
+#~ "tensor with size=1 containing the number"
+#~ " of unique elements in the input "
+#~ "data tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**counts (optional)** (*tvm.te.Tensor*) -- A"
+#~ " 1-D tensor containing the count of"
+#~ " each unique element in the output."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Example:: -   unravel_index([22, 41, 37], "
+#~ "[7, 6]) = [[3, 6, 6], [4, 5,"
+#~ " 1]]"
+#~ msgstr ""
+
+#~ msgid "An integer array containing indices."
+#~ msgstr ""
+
+#~ msgid "The shape of the array."
+#~ msgstr ""
+
+#~ msgid "**result** -- The tuple of coordinate arrays."
+#~ msgstr ""
+
+#~ msgid "The condition array."
+#~ msgstr ""
+
+#~ msgid "First array to be selected."
+#~ msgstr ""
+
+#~ msgid "Second array to be selected."
+#~ msgstr ""
+
+#~ msgid "**result** -- A Tensor selected from x or y depending on condition."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**selected** -- bool expression that is"
+#~ " True is the array position would "
+#~ "be selected by the index and False"
+#~ " otherwise"
+#~ msgstr ""
+
+#~ msgid "Neural network operators"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Workload <tvm.topi.nn.tvm.topi.nn.Workload>`\\ "
+#~ "\\(in\\_dtype\\, out\\_dtype\\, height\\, width\\,"
+#~ " ...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`adaptive_pool "
+#~ "<tvm.topi.nn.tvm.topi.nn.adaptive_pool>`\\ \\(data\\, "
+#~ "output\\_size\\, pool\\_type\\)"
+#~ msgstr ""
+
+#~ msgid "Perform pooling on height and width dimension of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`adaptive_pool3d "
+#~ "<tvm.topi.nn.tvm.topi.nn.adaptive_pool3d>`\\ \\(data\\, "
+#~ "output\\_size\\, pool\\_type\\)"
+#~ msgstr ""
+
+#~ msgid "Perform pooling on three dimensional data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`batch_matmul <tvm.topi.nn.tvm.topi.nn.batch_matmul>`\\"
+#~ " \\(tensor\\_a\\, tensor\\_b\\[\\, oshape\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute batch matrix multiplication of `tensor_a` and `tensor_b`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`batch_matmul_legalize "
+#~ "<tvm.topi.nn.tvm.topi.nn.batch_matmul_legalize>`\\ \\(attrs\\,"
+#~ " inputs\\, types\\)"
+#~ msgstr ""
+
+#~ msgid "Legalizes batch_matmul op."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`batch_norm <tvm.topi.nn.tvm.topi.nn.batch_norm>`\\ "
+#~ "\\(data\\, gamma\\, beta\\, moving\\_mean\\, "
+#~ "...\\)"
+#~ msgstr ""
+
+#~ msgid "Batch normalization layer (Ioffe and Szegedy, 2014)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`batch_to_space_nd "
+#~ "<tvm.topi.nn.tvm.topi.nn.batch_to_space_nd>`\\ \\(data\\, "
+#~ "block\\_shape\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Perform space to batch transformation on the data"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`binarize_pack "
+#~ "<tvm.topi.nn.tvm.topi.nn.binarize_pack>`\\ \\(data\\[\\, "
+#~ "axis\\, name\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Binarization and bit-packing along a certain axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`binary_dense <tvm.topi.nn.tvm.topi.nn.binary_dense>`\\"
+#~ " \\(data\\, weight\\)"
+#~ msgstr ""
+
+#~ msgid "Binary matrix multiplication using xor and bit-count."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`bitpack <tvm.topi.nn.tvm.topi.nn.bitpack>`\\ "
+#~ "\\(data\\, bits\\, pack\\_axis\\, bit\\_axis\\, "
+#~ "...\\)"
+#~ msgstr ""
+
+#~ msgid "Packs data into format necessary for bitserial computation"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`bitserial_conv2d_legalize "
+#~ "<tvm.topi.nn.tvm.topi.nn.bitserial_conv2d_legalize>`\\ "
+#~ "\\(attrs\\, inputs\\, types\\)"
+#~ msgstr ""
+
+#~ msgid "Legalizes Bitserial Conv2D op."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`bitserial_conv2d_nchw "
+#~ "<tvm.topi.nn.tvm.topi.nn.bitserial_conv2d_nchw>`\\ \\(data\\,"
+#~ " kernel\\, stride\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Bitserial Conv2D operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`bitserial_conv2d_nhwc "
+#~ "<tvm.topi.nn.tvm.topi.nn.bitserial_conv2d_nhwc>`\\ \\(data\\,"
+#~ " kernel\\, stride\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`bitserial_dense "
+#~ "<tvm.topi.nn.tvm.topi.nn.bitserial_dense>`\\ \\(data\\, "
+#~ "weight\\, data\\_bits\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "The default implementation of bitserial dense in topi."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`concatenate <tvm.topi.nn.tvm.topi.nn.concatenate>`\\"
+#~ " \\(a\\_tuple\\[\\, axis\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv <tvm.topi.nn.tvm.topi.nn.conv>`\\ \\(inp\\,"
+#~ " filt\\, stride\\, padding\\, dilation\\, "
+#~ "...\\)"
+#~ msgstr ""
+
+#~ msgid "Convolution operator in NCHW or NHWC layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv1d <tvm.topi.nn.tvm.topi.nn.conv1d>`\\ "
+#~ "\\(data\\, kernel\\[\\, strides\\, padding\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "1D convolution forward operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv1d_ncw <tvm.topi.nn.tvm.topi.nn.conv1d_ncw>`\\ "
+#~ "\\(data\\, kernel\\[\\, strides\\, padding\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "1D convolution in NCW layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv1d_nwc <tvm.topi.nn.tvm.topi.nn.conv1d_nwc>`\\ "
+#~ "\\(data\\, kernel\\[\\, strides\\, padding\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "1D convolution in NWC layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv1d_transpose_ncw "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv1d_transpose_ncw>`\\ \\(data\\, "
+#~ "kernel\\, stride\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Transposed 1D convolution ncw forward operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv2d <tvm.topi.nn.tvm.topi.nn.conv2d>`\\ "
+#~ "\\(input\\, filter\\, strides\\, padding\\, "
+#~ "dilation\\)"
+#~ msgstr ""
+
+#~ msgid "Conv2D operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv2d_NCHWc <tvm.topi.nn.tvm.topi.nn.conv2d_NCHWc>`\\"
+#~ " \\(data\\, kernel\\, stride\\, padding\\, "
+#~ "...\\)"
+#~ msgstr ""
+
+#~ msgid "Conv2D operator for nChw[x]c layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv2d_NCHWc_int8 "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv2d_NCHWc_int8>`\\ \\(data\\, "
+#~ "kernel\\, stride\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv2d_alter_layout "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv2d_alter_layout>`\\ \\(attrs\\, "
+#~ "inputs\\, tinfos\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Change Conv2D layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv2d_gemm_weight_transform "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv2d_gemm_weight_transform>`\\ "
+#~ "\\(kernel\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Weight transformation for winograd"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv2d_hwcn <tvm.topi.nn.tvm.topi.nn.conv2d_hwcn>`\\"
+#~ " \\(Input\\, Filter\\, stride\\, padding\\, "
+#~ "...\\)"
+#~ msgstr ""
+
+#~ msgid "Convolution operator in HWCN layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv2d_infer_layout "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv2d_infer_layout>`\\ \\(workload\\,"
+#~ " cfg\\)"
+#~ msgstr ""
+
+#~ msgid "Infer input/output shapes and layouts from a workload and cfg."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv2d_legalize "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv2d_legalize>`\\ \\(attrs\\, "
+#~ "inputs\\, types\\)"
+#~ msgstr ""
+
+#~ msgid "Legalizes Conv2D op."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv2d_nchw <tvm.topi.nn.tvm.topi.nn.conv2d_nchw>`\\"
+#~ " \\(Input\\, Filter\\, stride\\, padding\\, "
+#~ "...\\)"
+#~ msgstr ""
+
+#~ msgid "Convolution operator in NCHW layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv2d_nhwc <tvm.topi.nn.tvm.topi.nn.conv2d_nhwc>`\\"
+#~ " \\(Input\\, Filter\\, stride\\, padding\\, "
+#~ "...\\)"
+#~ msgstr ""
+
+#~ msgid "Convolution operator in NHWC layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv2d_transpose_legalize "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv2d_transpose_legalize>`\\ "
+#~ "\\(attrs\\, inputs\\, types\\)"
+#~ msgstr ""
+
+#~ msgid "Legalizes Transposed 2D convolution op."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv2d_transpose_nchw "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv2d_transpose_nchw>`\\ \\(Input\\,"
+#~ " Filter\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Transposed 2D convolution nchw forward operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv2d_transpose_nchw_preprocess "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv2d_transpose_nchw_preprocess>`\\ "
+#~ "\\(data\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Preprocess data and kernel to make "
+#~ "the compute pattern of conv2d_transpose "
+#~ "the same as conv2d"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv2d_winograd_nhwc "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv2d_winograd_nhwc>`\\ \\(data\\, "
+#~ "weight\\, strides\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Conv2D Winograd in NHWC layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv2d_winograd_nhwc_without_weight_transform "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv2d_winograd_nhwc_without_weight_transform>`\\"
+#~ " \\(...\\)"
+#~ msgstr ""
+
+#~ msgid "Conv2D Winograd without layout transform in NHWC layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv2d_winograd_nnpack_weight_transform "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv2d_winograd_nnpack_weight_transform>`\\"
+#~ " \\(...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv2d_winograd_weight_transform "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv2d_winograd_weight_transform>`\\ "
+#~ "\\(kernel\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv3d_alter_layout "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv3d_alter_layout>`\\ \\(attrs\\, "
+#~ "inputs\\, tinfos\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Change Conv3D layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv3d_ncdhw <tvm.topi.nn.tvm.topi.nn.conv3d_ncdhw>`\\"
+#~ " \\(Input\\, Filter\\, stride\\, padding\\, "
+#~ "...\\)"
+#~ msgstr ""
+
+#~ msgid "Conv3D operator in NCDHW layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv3d_ndhwc <tvm.topi.nn.tvm.topi.nn.conv3d_ndhwc>`\\"
+#~ " \\(Input\\, Filter\\, stride\\, padding\\, "
+#~ "...\\)"
+#~ msgstr ""
+
+#~ msgid "Convolution operator in NDHWC layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv3d_transpose_legalize "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv3d_transpose_legalize>`\\ "
+#~ "\\(attrs\\, inputs\\, types\\)"
+#~ msgstr ""
+
+#~ msgid "Legalizes Transposed 3D convolution op."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv3d_transpose_ncdhw "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv3d_transpose_ncdhw>`\\ \\(Input\\,"
+#~ " Filter\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Transposed 3D convolution ncdhw forward operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv3d_transpose_ncdhw_preprocess "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv3d_transpose_ncdhw_preprocess>`\\ "
+#~ "\\(data\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Preprocess data and kernel to make "
+#~ "the compute pattern of conv3d_transpose "
+#~ "the same as conv3d"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`conv3d_winograd_weight_transform "
+#~ "<tvm.topi.nn.tvm.topi.nn.conv3d_winograd_weight_transform>`\\ "
+#~ "\\(kernel\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Weight transformation for 3D winograd"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`correlation_nchw "
+#~ "<tvm.topi.nn.tvm.topi.nn.correlation_nchw>`\\ \\(data1\\, "
+#~ "data2\\, kernel\\_size\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Correlation operator in NCHW layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`declaration_conv2d_transpose_impl "
+#~ "<tvm.topi.nn.tvm.topi.nn.declaration_conv2d_transpose_impl>`\\ "
+#~ "\\(data\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Implementation of conv2d transpose"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`declaration_conv3d_transpose_impl "
+#~ "<tvm.topi.nn.tvm.topi.nn.declaration_conv3d_transpose_impl>`\\ "
+#~ "\\(data\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Implementation of conv3d transpose"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`deformable_conv2d_nchw "
+#~ "<tvm.topi.nn.tvm.topi.nn.deformable_conv2d_nchw>`\\ \\(data\\,"
+#~ " offset\\, kernel\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Deformable conv2D operator in NCHW layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`deformable_conv2d_nhwc "
+#~ "<tvm.topi.nn.tvm.topi.nn.deformable_conv2d_nhwc>`\\ \\(data\\,"
+#~ " offset\\, kernel\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Deformable conv2D operator in NHWC layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`dense <tvm.topi.nn.tvm.topi.nn.dense>`\\ "
+#~ "\\(data\\, weight\\[\\, bias\\, out\\_dtype\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "The default implementation of dense in topi."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`dense_alter_layout "
+#~ "<tvm.topi.nn.tvm.topi.nn.dense_alter_layout>`\\ \\(attrs\\, "
+#~ "inputs\\, tinfos\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Change dense layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`dense_legalize "
+#~ "<tvm.topi.nn.tvm.topi.nn.dense_legalize>`\\ \\(attrs\\, "
+#~ "inputs\\, types\\)"
+#~ msgstr ""
+
+#~ msgid "Legalizes dense op."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`dense_pack <tvm.topi.nn.tvm.topi.nn.dense_pack>`\\ "
+#~ "\\(data\\, weight\\[\\, bias\\, out\\_dtype\\]\\)"
+#~ msgstr ""
+
+#~ msgid "The default implementation of dense_pack in topi."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`depth_to_space "
+#~ "<tvm.topi.nn.tvm.topi.nn.depth_to_space>`\\ \\(data\\, "
+#~ "block\\_size\\[\\, layout\\, mode\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Perform depth to space transformation on the data"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`depthwise_conv2d_NCHWc "
+#~ "<tvm.topi.nn.tvm.topi.nn.depthwise_conv2d_NCHWc>`\\ \\(Input\\,"
+#~ " Filter\\, ...\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Depthwise convolution NCHW[x]c forward operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`depthwise_conv2d_backward_input_nhwc "
+#~ "<tvm.topi.nn.tvm.topi.nn.depthwise_conv2d_backward_input_nhwc>`\\ "
+#~ "\\(Filter\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Depthwise convolution nhwc backward wrt input operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`depthwise_conv2d_backward_weight_nhwc "
+#~ "<tvm.topi.nn.tvm.topi.nn.depthwise_conv2d_backward_weight_nhwc>`\\ "
+#~ "\\(Input\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Depthwise convolution nhwc backward wrt weight operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`depthwise_conv2d_infer_layout "
+#~ "<tvm.topi.nn.tvm.topi.nn.depthwise_conv2d_infer_layout>`\\ "
+#~ "\\(workload\\, cfg\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`depthwise_conv2d_nchw "
+#~ "<tvm.topi.nn.tvm.topi.nn.depthwise_conv2d_nchw>`\\ \\(Input\\,"
+#~ " Filter\\, stride\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Depthwise convolution nchw forward operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`depthwise_conv2d_nhwc "
+#~ "<tvm.topi.nn.tvm.topi.nn.depthwise_conv2d_nhwc>`\\ \\(Input\\,"
+#~ " Filter\\, stride\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Depthwise convolution nhwc forward operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`dilate <tvm.topi.nn.tvm.topi.nn.dilate>`\\ "
+#~ "\\(data\\, strides\\[\\, dilation\\_value\\, "
+#~ "name\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Dilate data with given dilation value (0 by default)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`equal_const_int "
+#~ "<tvm.topi.nn.tvm.topi.nn.equal_const_int>`\\ \\(expr\\, "
+#~ "value\\)"
+#~ msgstr ""
+
+#~ msgid "Returns if expr equals value."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`fast_softmax <tvm.topi.nn.tvm.topi.nn.fast_softmax>`\\"
+#~ " \\(x\\[\\, axis\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Perform softmax activation on the data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`fifo_buffer <tvm.topi.nn.tvm.topi.nn.fifo_buffer>`\\"
+#~ " \\(data\\, buffer\\, axis\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "FIFO buffer to enable computation reuse"
+#~ " in CNNs with sliding indow input"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`flatten <tvm.topi.nn.tvm.topi.nn.flatten>`\\ \\(data\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Flattens the input array into a "
+#~ "2-D array by collapsing the higher "
+#~ "dimensions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_const_int "
+#~ "<tvm.topi.nn.tvm.topi.nn.get_const_int>`\\ \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid "Verifies expr is integer and get the constant value."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_const_tuple "
+#~ "<tvm.topi.nn.tvm.topi.nn.get_const_tuple>`\\ \\(in\\_tuple\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_pad_tuple "
+#~ "<tvm.topi.nn.tvm.topi.nn.get_pad_tuple>`\\ \\(padding\\, "
+#~ "kernel\\)"
+#~ msgstr ""
+
+#~ msgid "Common code to get the pad option"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_pad_tuple1d "
+#~ "<tvm.topi.nn.tvm.topi.nn.get_pad_tuple1d>`\\ \\(padding\\, "
+#~ "kernel\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_pad_tuple3d "
+#~ "<tvm.topi.nn.tvm.topi.nn.get_pad_tuple3d>`\\ \\(padding\\, "
+#~ "kernel\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_pad_tuple_generic "
+#~ "<tvm.topi.nn.tvm.topi.nn.get_pad_tuple_generic>`\\ \\(padding\\,"
+#~ " kernel\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`global_pool <tvm.topi.nn.tvm.topi.nn.global_pool>`\\"
+#~ " \\(data\\, pool\\_type\\[\\, layout\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Perform global pooling on height and width dimension of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`group_conv1d_ncw "
+#~ "<tvm.topi.nn.tvm.topi.nn.group_conv1d_ncw>`\\ \\(data\\, "
+#~ "kernel\\[\\, strides\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "1D convolution forward operator for NCW layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`group_conv1d_nwc "
+#~ "<tvm.topi.nn.tvm.topi.nn.group_conv1d_nwc>`\\ \\(data\\, "
+#~ "kernel\\[\\, strides\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "1D convolution forward operator for NWC layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`group_conv2d_nchw "
+#~ "<tvm.topi.nn.tvm.topi.nn.group_conv2d_nchw>`\\ \\(Input\\, "
+#~ "Filter\\, stride\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Group convolution operator in NCHW layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`group_conv2d_nhwc "
+#~ "<tvm.topi.nn.tvm.topi.nn.group_conv2d_nhwc>`\\ \\(Input\\, "
+#~ "Filter\\, stride\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Group convolution operator in NHWC layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`group_conv2d_transpose_nchw "
+#~ "<tvm.topi.nn.tvm.topi.nn.group_conv2d_transpose_nchw>`\\ "
+#~ "\\(data\\, kernel\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`layout_transform "
+#~ "<tvm.topi.nn.tvm.topi.nn.layout_transform>`\\ \\(tensor\\, "
+#~ "current\\_layout\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Transform a tensor with the current layout to the desired layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`leaky_relu <tvm.topi.nn.tvm.topi.nn.leaky_relu>`\\ "
+#~ "\\(x\\, alpha\\)"
+#~ msgstr ""
+
+#~ msgid "Take leaky relu of input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`log_softmax <tvm.topi.nn.tvm.topi.nn.log_softmax>`\\"
+#~ " \\(x\\[\\, axis\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Perform log softmax activation on the data"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`lrn <tvm.topi.nn.tvm.topi.nn.lrn>`\\ \\(data\\,"
+#~ " size\\[\\, axis\\, alpha\\, beta\\, "
+#~ "bias\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Perform the across channels local "
+#~ "response normalisation on the input "
+#~ "data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`matmul <tvm.topi.nn.tvm.topi.nn.matmul>`\\ "
+#~ "\\(tensor\\_a\\, tensor\\_b\\[\\, bias\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "The default implementation of matmul in topi."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`matmul_legalize "
+#~ "<tvm.topi.nn.tvm.topi.nn.matmul_legalize>`\\ \\(attrs\\, "
+#~ "inputs\\, types\\)"
+#~ msgstr ""
+
+#~ msgid "Legalizes matmul op."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`mirror_pad <tvm.topi.nn.tvm.topi.nn.mirror_pad>`\\ "
+#~ "\\(data\\, pad\\_before\\[\\, pad\\_after\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Pad Input with mirroring either symmetric or reflected."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`namedtuple <tvm.topi.nn.tvm.topi.nn.namedtuple>`\\ "
+#~ "\\(typename\\, field\\_names\\, \\*\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Returns a new subclass of tuple with named fields."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`nll_loss <tvm.topi.nn.tvm.topi.nn.nll_loss>`\\ "
+#~ "\\(predictions\\, targets\\, weights\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Negative log likelihood loss on the input data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`pad <tvm.topi.nn.tvm.topi.nn.pad>`\\ \\(data\\,"
+#~ " pad\\_before\\[\\, pad\\_after\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Pad Input with zeros."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`pool1d <tvm.topi.nn.tvm.topi.nn.pool1d>`\\ "
+#~ "\\(data\\, kernel\\, stride\\, dilation\\, "
+#~ "...\\)"
+#~ msgstr ""
+
+#~ msgid "Perform pooling on width dimension of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`pool2d <tvm.topi.nn.tvm.topi.nn.pool2d>`\\ "
+#~ "\\(data\\, kernel\\, stride\\, dilation\\, "
+#~ "...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`pool3d <tvm.topi.nn.tvm.topi.nn.pool3d>`\\ "
+#~ "\\(data\\, kernel\\, stride\\, dilation\\, "
+#~ "...\\)"
+#~ msgstr ""
+
+#~ msgid "Perform pooling on depth, height and width dimension of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`pool_grad <tvm.topi.nn.tvm.topi.nn.pool_grad>`\\ "
+#~ "\\(grads\\, data\\, kernel\\, stride\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Gradient of pooling on height and width dimension of data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`prelu <tvm.topi.nn.tvm.topi.nn.prelu>`\\ \\(x\\,"
+#~ " slope\\[\\, axis\\]\\)"
+#~ msgstr ""
+
+#~ msgid "PReLU."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`relu <tvm.topi.nn.tvm.topi.nn.relu>`\\ \\(x\\)"
+#~ msgstr ""
+
+#~ msgid "Take relu of input x."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`scale_shift_nchw "
+#~ "<tvm.topi.nn.tvm.topi.nn.scale_shift_nchw>`\\ \\(Input\\, "
+#~ "Scale\\, Shift\\)"
+#~ msgstr ""
+
+#~ msgid "Batch normalization operator in inference."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`scale_shift_nchwc "
+#~ "<tvm.topi.nn.tvm.topi.nn.scale_shift_nchwc>`\\ \\(Input\\, "
+#~ "Scale\\, Shift\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`scale_shift_nhwc "
+#~ "<tvm.topi.nn.tvm.topi.nn.scale_shift_nhwc>`\\ \\(Input\\, "
+#~ "Scale\\, Shift\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`simplify <tvm.topi.nn.tvm.topi.nn.simplify>`\\ \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid "Simplify the expression if it is Expr, directly return if it is int."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`simulated_dequantize "
+#~ "<tvm.topi.nn.tvm.topi.nn.simulated_dequantize>`\\ \\(data\\, "
+#~ "in\\_dtype\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Simulated QNN dequantize operator that "
+#~ "mimics QNN outputs without changing "
+#~ "datatype."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`simulated_quantize "
+#~ "<tvm.topi.nn.tvm.topi.nn.simulated_quantize>`\\ \\(data\\, "
+#~ "out\\_dtype\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Simulated QNN quantize operator that "
+#~ "mimics QNN outputs without changing "
+#~ "datatype."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`softmax <tvm.topi.nn.tvm.topi.nn.softmax>`\\ "
+#~ "\\(x\\[\\, axis\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`softmax_common "
+#~ "<tvm.topi.nn.tvm.topi.nn.softmax_common>`\\ \\(x\\, "
+#~ "axis\\, use\\_fast\\_exp\\)"
+#~ msgstr ""
+
+#~ msgid "The common part of softmax and fast_softmax"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`space_to_batch_nd "
+#~ "<tvm.topi.nn.tvm.topi.nn.space_to_batch_nd>`\\ \\(data\\, "
+#~ "block\\_shape\\, ...\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Perform batch to space transformation on the data"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`space_to_depth "
+#~ "<tvm.topi.nn.tvm.topi.nn.space_to_depth>`\\ \\(data\\, "
+#~ "block\\_size\\[\\, layout\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Perform space to depth transformation on the data"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sparse_add <tvm.topi.nn.tvm.topi.nn.sparse_add>`\\ "
+#~ "\\(dense\\_data\\, sparse\\_data\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Computes sparse-dense addition"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sparse_conv2d "
+#~ "<tvm.topi.nn.tvm.topi.nn.sparse_conv2d>`\\ \\(dense\\_data\\,"
+#~ " sparse\\_data\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Computes sparse-conv2d(1*1) of ``data`` "
+#~ "and ``(weight_data, weight_indices, weight_indptr)``"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sparse_dense <tvm.topi.nn.tvm.topi.nn.sparse_dense>`\\"
+#~ " \\(dense\\_data\\, sparse\\_data\\, ...\\[\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Computes sparse-dense matrix multiplication"
+#~ " of `data` and `(weight_data, "
+#~ "weight_indices, weight_indptr).T`, if "
+#~ "sparse_lhs=False or Computes sparse-dense "
+#~ "matrix multiplication of `(data_data, "
+#~ "data_indices, data_indptr)` and `weight.T`, if"
+#~ " sparse_lhs=True"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sparse_dense_alter_layout "
+#~ "<tvm.topi.nn.tvm.topi.nn.sparse_dense_alter_layout>`\\ "
+#~ "\\(\\_attrs\\, \\_inputs\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Change Sparse Dense layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sparse_dense_sp_lhs "
+#~ "<tvm.topi.nn.tvm.topi.nn.sparse_dense_sp_lhs>`\\ "
+#~ "\\(data\\_data\\, data\\_indices\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Computes sparse-dense matrix multiplication"
+#~ " of `(data_data, data_indices, data_indptr)` "
+#~ "and `weight.T`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sparse_dense_sp_rhs "
+#~ "<tvm.topi.nn.tvm.topi.nn.sparse_dense_sp_rhs>`\\ \\(data\\, "
+#~ "weight\\_data\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Computes sparse-dense matrix multiplication"
+#~ " of `data` and `(weight_data, "
+#~ "weight_indices, weight_indptr).T`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`sparse_transpose "
+#~ "<tvm.topi.nn.tvm.topi.nn.sparse_transpose>`\\ "
+#~ "\\(sparse\\_data\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Transpose a square sparse matrix, `A`"
+#~ " is an n-by-n sparse matrix in "
+#~ "the CSR format."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`strided_slice "
+#~ "<tvm.topi.nn.tvm.topi.nn.strided_slice>`\\ \\(a\\, "
+#~ "begin\\, end\\[\\, strides\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`try_get_conv2d_sparse_input "
+#~ "<tvm.topi.nn.tvm.topi.nn.try_get_conv2d_sparse_input>`\\ "
+#~ "\\(args\\)"
+#~ msgstr ""
+
+#~ msgid "Analyze the input data from the given args."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`try_get_sparse_input "
+#~ "<tvm.topi.nn.tvm.topi.nn.try_get_sparse_input>`\\ \\(args\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`unpack_NCHWc_to_nchw "
+#~ "<tvm.topi.nn.tvm.topi.nn.unpack_NCHWc_to_nchw>`\\ "
+#~ "\\(packed\\_out\\, out\\_dtype\\)"
+#~ msgstr ""
+
+#~ msgid "Unpack conv2d_NCHWc output from layout NCHWc to NCHW"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`upsampling <tvm.topi.nn.tvm.topi.nn.upsampling>`\\ "
+#~ "\\(data\\, scale\\_h\\, scale\\_w\\[\\, layout\\,"
+#~ " ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Perform upsampling on the data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`upsampling3d <tvm.topi.nn.tvm.topi.nn.upsampling3d>`\\"
+#~ " \\(data\\, scale\\_d\\, scale\\_h\\, "
+#~ "scale\\_w\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`winograd_transform_matrices "
+#~ "<tvm.topi.nn.tvm.topi.nn.winograd_transform_matrices>`\\ "
+#~ "\\(tile\\_size\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Compute the A, B, and G transform"
+#~ " matrices for `tile_size` as a "
+#~ "`tvm.Expr`."
+#~ msgstr ""
+
+#~ msgid "**Attributes:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`dilation_h <tvm.topi.nn.tvm.topi.nn.Workload.dilation_h>`\\"
+#~ msgstr ""
+
+#~ msgid "Alias for field number 12"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`dilation_w <tvm.topi.nn.tvm.topi.nn.Workload.dilation_w>`\\"
+#~ msgstr ""
+
+#~ msgid "Alias for field number 13"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`height <tvm.topi.nn.tvm.topi.nn.Workload.height>`\\"
+#~ msgstr ""
+
+#~ msgid "Alias for field number 2"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`in_dtype <tvm.topi.nn.tvm.topi.nn.Workload.in_dtype>`\\"
+#~ msgstr ""
+
+#~ msgid "Alias for field number 0"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`in_filter <tvm.topi.nn.tvm.topi.nn.Workload.in_filter>`\\"
+#~ msgstr ""
+
+#~ msgid "Alias for field number 4"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`kernel_h <tvm.topi.nn.tvm.topi.nn.Workload.kernel_h>`\\"
+#~ msgstr ""
+
+#~ msgid "Alias for field number 6"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`kernel_w <tvm.topi.nn.tvm.topi.nn.Workload.kernel_w>`\\"
+#~ msgstr ""
+
+#~ msgid "Alias for field number 7"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`out_dtype <tvm.topi.nn.tvm.topi.nn.Workload.out_dtype>`\\"
+#~ msgstr ""
+
+#~ msgid "Alias for field number 1"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`out_filter <tvm.topi.nn.tvm.topi.nn.Workload.out_filter>`\\"
+#~ msgstr ""
+
+#~ msgid "Alias for field number 5"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`padb <tvm.topi.nn.tvm.topi.nn.Workload.padb>`\\"
+#~ msgstr ""
+
+#~ msgid "Alias for field number 10"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`padl <tvm.topi.nn.tvm.topi.nn.Workload.padl>`\\"
+#~ msgstr ""
+
+#~ msgid "Alias for field number 9"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`padr <tvm.topi.nn.tvm.topi.nn.Workload.padr>`\\"
+#~ msgstr ""
+
+#~ msgid "Alias for field number 11"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`padt <tvm.topi.nn.tvm.topi.nn.Workload.padt>`\\"
+#~ msgstr ""
+
+#~ msgid "Alias for field number 8"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`stride_h <tvm.topi.nn.tvm.topi.nn.Workload.stride_h>`\\"
+#~ msgstr ""
+
+#~ msgid "Alias for field number 14"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`stride_w <tvm.topi.nn.tvm.topi.nn.Workload.stride_w>`\\"
+#~ msgstr ""
+
+#~ msgid "Alias for field number 15"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`width <tvm.topi.nn.tvm.topi.nn.Workload.width>`\\"
+#~ msgstr ""
+
+#~ msgid "Alias for field number 3"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The pooling kernel and stride sizes "
+#~ "are automatically chosen for desired "
+#~ "output sizes. It decides the height "
+#~ "and width dimension according to the "
+#~ "layout string, in which 'W' and "
+#~ "'H' means width and height respectively."
+#~ " Width and height dimension cannot be"
+#~ " split. For example, NCHW, NCHW16c, "
+#~ "etc. are valid for pool, while "
+#~ "NCHW16w, NCHW16h are not. See parameter"
+#~ " `layout` for more information of the"
+#~ " layout string convention."
+#~ msgstr ""
+
+#~ msgid "n-D with shape of layout"
+#~ msgstr ""
+
+#~ msgid "output height and width."
+#~ msgstr ""
+
+#~ msgid "Pool type, 'max' or 'avg'"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Layout of the input data. The "
+#~ "layout is supposed to be composed "
+#~ "of upper cases, lower cases and "
+#~ "numbers, where upper case indicates a"
+#~ " dimension and the corresponding lower "
+#~ "case with factor size indicates the "
+#~ "split dimension. For example, NCHW16c "
+#~ "can describe a 5-D tensor of "
+#~ "[batch_size, channel, height, width, "
+#~ "channel_block], in which channel_block=16 is"
+#~ " a split of dimension channel."
+#~ msgstr ""
+
+#~ msgid "**output** -- n-D in the same layout"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Perform pooling on three dimensional "
+#~ "data. See the two dimensional version"
+#~ " above for details."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Both `tensor_a` and `tensor_b` can be"
+#~ " transposed. For legacy reason, we "
+#~ "use NT format (transpose_a=False, "
+#~ "transpose_b=True) by default."
+#~ msgstr ""
+
+#~ msgid "3-D with shape [batch, M, K] or [batch, K, M]."
+#~ msgstr ""
+
+#~ msgid "3-D with shape [batch, K, N] or [batch, N, K]."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Explicit intended output shape of the"
+#~ " computation. Can be useful in cases"
+#~ " with dynamic input shapes."
+#~ msgstr ""
+
+#~ msgid "Specifies the output data type for mixed precision batch matmul."
+#~ msgstr ""
+
+#~ msgid "Whether the first tensor is in transposed format."
+#~ msgstr ""
+
+#~ msgid "Whether the second tensor is in transposed format."
+#~ msgstr ""
+
+#~ msgid "The layout after auto-scheduler's layout rewrite pass."
+#~ msgstr ""
+
+#~ msgid "**output** -- 3-D with shape [batch, M, N]"
+#~ msgstr ""
+
+#~ msgid "Attributes of current batch_matmul"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Normalizes the input at each batch, "
+#~ "i.e. applies a transformation that "
+#~ "maintains the mean activation close to"
+#~ " 0 and the activation standard "
+#~ "deviation close to 1."
+#~ msgstr ""
+
+#~ msgid "Input to be batch-normalized."
+#~ msgstr ""
+
+#~ msgid "Scale factor to be applied to the normalized tensor."
+#~ msgstr ""
+
+#~ msgid "Offset to be applied to the normalized tensor."
+#~ msgstr ""
+
+#~ msgid "Running mean of input."
+#~ msgstr ""
+
+#~ msgid "Running variance of input."
+#~ msgstr ""
+
+#~ msgid "Specify along which shape axis the normalization should occur."
+#~ msgstr ""
+
+#~ msgid "Small float added to variance to avoid dividing by zero."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If True, add offset of beta to "
+#~ "normalized tensor, If False, beta is "
+#~ "ignored."
+#~ msgstr ""
+
+#~ msgid "If True, scale normalized tensor by gamma. If False, gamma is ignored."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **output** (*list of tvm.te.Tensor*) "
+#~ "-- Normalized data with same shape "
+#~ "as input * **moving_mean** (*tvm.te.Tensor*)"
+#~ " -- Running mean of input. * "
+#~ "**moving_var** (*tvm.te.Tensor*) -- Running "
+#~ "variance of input."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** (*list of tvm.te.Tensor*) -- "
+#~ "Normalized data with same shape as "
+#~ "input"
+#~ msgstr ""
+
+#~ msgid "**moving_mean** (*tvm.te.Tensor*) -- Running mean of input."
+#~ msgstr ""
+
+#~ msgid "**moving_var** (*tvm.te.Tensor*) -- Running variance of input."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "N-D Tensor with shape [batch, "
+#~ "spatial_shape, remaining_shapes], where "
+#~ "spatial_shape has M dimensions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "list of size [M] where M is "
+#~ "number of spatial dims, specifies block"
+#~ " size for each spatial dimension."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "list of shape [M] where M is "
+#~ "number of spatial dims, specifies begin"
+#~ " crop size for each spatial "
+#~ "dimension."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "list of shape [M] where M is "
+#~ "number of spatial dims, specifies end"
+#~ " crop size for each spatial "
+#~ "dimension."
+#~ msgstr ""
+
+#~ msgid "**output**"
+#~ msgstr ""
+
+#~ msgid "n-D input, can be any layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The axis along which to do "
+#~ "binarization and bit-packing, default is"
+#~ " the last axis."
+#~ msgstr ""
+
+#~ msgid "The name prefix operators generate."
+#~ msgstr ""
+
+#~ msgid "**output** -- n-D, the same layout as input, dtype is uint32."
+#~ msgstr ""
+
+#~ msgid "2-D with shape [batch, in_dim], dtype is uint32."
+#~ msgstr ""
+
+#~ msgid "2-D with shape [out_dim, in_dim], dtype is uint32."
+#~ msgstr ""
+
+#~ msgid "**output** -- 2-D with shape [batch, out_dim], dtype is float32."
+#~ msgstr ""
+
+#~ msgid "index of the axis to pack in data"
+#~ msgstr ""
+
+#~ msgid "index of axis to place bit axis in resulting packed data"
+#~ msgstr ""
+
+#~ msgid "Attributes of current convolution"
+#~ msgstr ""
+
+#~ msgid "4-D with shape [batch, in_channel, in_height, in_width]"
+#~ msgstr ""
+
+#~ msgid "4-D with shape [num_filter, in_channel, filter_height, filter_width]"
+#~ msgstr ""
+
+#~ msgid "stride size, or [stride_height, stride_width]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "padding size, [pad_height, pad_width], "
+#~ "[pad_top, pad_left, pad_down, pad_right]"
+#~ msgstr ""
+
+#~ msgid "number of bits used for activations/input elements"
+#~ msgstr ""
+
+#~ msgid "number of bits used for weight elements"
+#~ msgstr ""
+
+#~ msgid "return type of convolution"
+#~ msgstr ""
+
+#~ msgid "bit packing type"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "if binarization style is in unipolar "
+#~ "1/0 format, instead of bipolar -1/+1 "
+#~ "format"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- 4-D with shape [batch, "
+#~ "out_channel, out_height, out_width]"
+#~ msgstr ""
+
+#~ msgid "4-D with shape [batch, in_height, in_width, in_channel]"
+#~ msgstr ""
+
+#~ msgid "4-D with shape [filter_height, filter_width, in_channel, num_filter]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- 4-D with shape [batch, "
+#~ "out_height, out_width, out_channel]"
+#~ msgstr ""
+
+#~ msgid "2-D with shape [batch, in_dim]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "2-D with shape [out_dim, in_dim] or "
+#~ "3-D with shape [out_dim, weight_bits, "
+#~ "in_dim]"
+#~ msgstr ""
+
+#~ msgid "**output** -- 2-D with shape [batch, out_dim]"
+#~ msgstr ""
+
+#~ msgid "Supports 1D, 2D, 3D, ... and grouping."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "N-D with shape [batch, in_channel, "
+#~ "in_height, in_width, ...] ordered by "
+#~ "`order`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "N-D with shape [num_filter, in_channel "
+#~ "// groups, filter_height, filter_width, ...]"
+#~ " for NCHW or [filter_height, filter_width,"
+#~ " ..., in_channel // groups, num_filter] "
+#~ "for NHWC"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "(where dim=2 for NCHW, dim=1 for "
+#~ "NCH, etc.) Stride size, or "
+#~ "[stride_height, stride_width, ...]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "(where dim=2 for NCHW, dim=1 for "
+#~ "NCH, etc.) padding size, or [pad_height,"
+#~ " pad_width, ...] for dim ints, or "
+#~ "[pad_top, pad_left, pad_bottom, pad_right] for"
+#~ " 2*dim ints"
+#~ msgstr ""
+
+#~ msgid "dilation size, or [dilation_height, dilation_width]"
+#~ msgstr ""
+
+#~ msgid "number of groups"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Ordering of dimensions. N indicates "
+#~ "batch dimension, C indicates channels, "
+#~ "any other character indicates HW (or "
+#~ "H or HWD for 1D and 3D)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Elements are converted to this type "
+#~ "before elementwise multiplication and "
+#~ "summation."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Output** -- N-D with shape [batch, "
+#~ "out_channel, out_height, out_width, ...] "
+#~ "ordered by `order`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "3-D input shape [batch, in_channel, "
+#~ "in_width] for layout == 'NCW' and "
+#~ "[batch, in_width, in_channel] for layout "
+#~ "== 'NWC'"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "3-D kernel with shape [num_filter, "
+#~ "in_channel, filter_size] for layout == "
+#~ "'NCW' and [filter_size, in_channel, "
+#~ "num_filter] for layout == 'NWC'"
+#~ msgstr ""
+
+#~ msgid "The spatial stride along width"
+#~ msgstr ""
+
+#~ msgid "Padding size, or ['VALID', 'SAME']"
+#~ msgstr ""
+
+#~ msgid "Dilation rate if convolution should be dilated."
+#~ msgstr ""
+
+#~ msgid "How input data is laid out, must be one of ['NCW', 'NWC']"
+#~ msgstr ""
+
+#~ msgid "The output data type. If None then output is same type as input."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "1D convolution in NCW layout. See "
+#~ ":py:func:`conv` for details on parameters"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "1D convolution in NWC layout. See "
+#~ ":py:func:`conv` for details on parameters"
+#~ msgstr ""
+
+#~ msgid "3-D with shape [batch, in_channel, in_width]"
+#~ msgstr ""
+
+#~ msgid "3-D with shape [in_channel, num_filter, filter_width]"
+#~ msgstr ""
+
+#~ msgid "The output data type. This is used for mixed precision."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Used to recover the actual output "
+#~ "shape in case there are more than"
+#~ " one possible shape.  Must be smaller"
+#~ " than stride."
+#~ msgstr ""
+
+#~ msgid "**output** -- 3-D with shape [batch, out_channel, out_width]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "padding size, or [pad_height, pad_width] "
+#~ "for 2 ints, or [pad_top, pad_left, "
+#~ "pad_bottom, pad_right] for 4 ints"
+#~ msgstr ""
+
+#~ msgid "layout of data"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "5-D with shape [batch, in_channel_chunk, "
+#~ "in_height, in_width, in_channel_block]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "6-D with shape [num_filter_chunk, "
+#~ "in_channel_chunk, filter_height, filter_width, "
+#~ "in_channel_block, num_filter_block]"
+#~ msgstr ""
+
+#~ msgid "Input data layout"
+#~ msgstr ""
+
+#~ msgid "Output data layout"
+#~ msgstr ""
+
+#~ msgid "output data type"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- 5-D with shape [batch, "
+#~ "out_channel_chunk, out_height, out_width, "
+#~ "out_channel_block]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "7-D with shape [num_filter_chunk, "
+#~ "in_channel_chunk, filter_height, filter_width, "
+#~ "in_channel_block/4, num_filter_block, 4]"
+#~ msgstr ""
+
+#~ msgid "numer of int8 elements accumulated"
+#~ msgstr ""
+
+#~ msgid "Grouped input symbols"
+#~ msgstr ""
+
+#~ msgid "Input shape and dtype"
+#~ msgstr ""
+
+#~ msgid "The output type"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Unlike other TOPI functions, this "
+#~ "function operates on both graph level"
+#~ " and operator level."
+#~ msgstr ""
+
+#~ msgid "The raw kernel tensor with layout \"NHWC\"."
+#~ msgstr ""
+
+#~ msgid "Tile rows of the weight transformation for ConvGemm."
+#~ msgstr ""
+
+#~ msgid "Tile columns of the weight transformation for ConvGemm."
+#~ msgstr ""
+
+#~ msgid "**output** -- 2-D with shape [CI*KH*KW,CO]"
+#~ msgstr ""
+
+#~ msgid "4-D with shape [in_height, in_width, in_channel, batch]"
+#~ msgstr ""
+
+#~ msgid "Stride size, or [stride_height, stride_width]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- 4-D with shape "
+#~ "[out_height, out_width, out_channel, batch]"
+#~ msgstr ""
+
+#~ msgid "conv2d workload"
+#~ msgstr ""
+
+#~ msgid "tvm.autotvm config"
+#~ msgstr ""
+
+#~ msgid "**Output** -- Input shapes and layouts, and output shapes and layouts"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Output** -- 4-D with shape [batch, "
+#~ "out_channel, out_height, out_width]"
+#~ msgstr ""
+
+#~ msgid "The type of output tensor"
+#~ msgstr ""
+
+#~ msgid "Attributes of current Transposed 2D convolution"
+#~ msgstr ""
+
+#~ msgid "4-D with shape [in_channel, num_filter, filter_height, filter_width]"
+#~ msgstr ""
+
+#~ msgid "The spatial stride along height and width"
+#~ msgstr ""
+
+#~ msgid "Used to get the right output shape for gradients"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Conv2D Winograd in NHWC layout. This "
+#~ "is a clean version to be used "
+#~ "by the auto-scheduler for both CPU"
+#~ " and GPU."
+#~ msgstr ""
+
+#~ msgid "padding size, or [pad_height, pad_width]"
+#~ msgstr ""
+
+#~ msgid "Specifies the output data type."
+#~ msgstr ""
+
+#~ msgid "Whether the kernel is precomputed"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Conv2D Winograd without layout transform "
+#~ "in NHWC layout. This is a clean"
+#~ " version to be used by the "
+#~ "auto-scheduler for both CPU and GPU."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The raw kernel tensor with layout "
+#~ "\"NCHW\". Only 3x3 kernel is supported"
+#~ " for now."
+#~ msgstr ""
+
+#~ msgid "The convolution algorithm for Winograd NNPACK."
+#~ msgstr ""
+
+#~ msgid "**output** -- 4-D with shape [alpha, alpha, CO, CI]"
+#~ msgstr ""
+
+#~ msgid "The raw kernel tensor with layout \"NCHW\"."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Tile size of winograd transform. e.g."
+#~ " 2 for F(2x2, 3x3) and 4 for"
+#~ " F(4x4, 3x3)"
+#~ msgstr ""
+
+#~ msgid "5-D with shape [batch, in_channel, in_depth, in_height, in_width]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "5-D with shape [num_filter, in_channel, "
+#~ "filter_depth, filter_height, filter_width]"
+#~ msgstr ""
+
+#~ msgid "Stride size, or [strid_depth, stride_height, stride_width]"
+#~ msgstr ""
+
+#~ msgid "dilation size, or [dilation_depth, dilation_height, dilation_width]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Output** -- 5-D with shape [batch, "
+#~ "out_channel, out_depth, out_height, out_width]"
+#~ msgstr ""
+
+#~ msgid "5-D with shape [batch, in_depth, in_height, in_width, in_channel]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "5-D with shape [filter_depth, filter_height,"
+#~ " filter_width, in_channel, num_filter]"
+#~ msgstr ""
+
+#~ msgid "Stride size, or [stride_depth, stride_height, stride_width]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Output** -- 5-D with shape [batch, "
+#~ "out_depth, out_height, out_width, out_channel]"
+#~ msgstr ""
+
+#~ msgid "Attributes of current Transposed 3D convolution"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "5-D with shape [in_channel, num_filter, "
+#~ "filter_depth, filter_height, filter_width]"
+#~ msgstr ""
+
+#~ msgid "The spatial stride along depth,height and width"
+#~ msgstr ""
+
+#~ msgid "The raw kernel tensor with layout \"NCDHW\"."
+#~ msgstr ""
+
+#~ msgid "**output** -- 5-D with shape [alpha, alpha, alpha, CO, CI]"
+#~ msgstr ""
+
+#~ msgid "4-D with shape [batch, channel, height, width]"
+#~ msgstr ""
+
+#~ msgid "Kernel size for correlation, must be an odd number"
+#~ msgstr ""
+
+#~ msgid "Max displacement of Correlation"
+#~ msgstr ""
+
+#~ msgid "Stride for data1"
+#~ msgstr ""
+
+#~ msgid "Stride for data2 within the neightborhood centered around data1"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Padding size, or [pad_height, pad_width] "
+#~ "for 2 ints, or [pad_top, pad_left, "
+#~ "pad_bottom, pad_right] for 4 ints"
+#~ msgstr ""
+
+#~ msgid "operation type is either multiplication or substraction"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The deformable convolution operation is "
+#~ "described in https://arxiv.org/abs/1703.06211"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "4-D with shape [batch, deformable_groups "
+#~ "* filter_height * filter_width * 2, "
+#~ "out_height, out_width]."
+#~ msgstr ""
+
+#~ msgid "number of deformable groups"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "4-D with shape [batch, out_height, "
+#~ "out_width,                 deformable_groups * "
+#~ "filter_height * filter_width * 2]."
+#~ msgstr ""
+
+#~ msgid "4-D with shape [batch, out_height, out_width,"
+#~ msgstr ""
+
+#~ msgid "deformable_groups * filter_height * filter_width * 2]."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The default implementation of dense in"
+#~ " topi. This is an alias of "
+#~ "matmul_nt operator for data tensor in"
+#~ " non-transposed format and weight "
+#~ "tensor in transposed format."
+#~ msgstr ""
+
+#~ msgid "2-D with shape [out_dim, in_dim]"
+#~ msgstr ""
+
+#~ msgid "1-D with shape [out_dim]"
+#~ msgstr ""
+
+#~ msgid "The output type. This is used for mixed precision."
+#~ msgstr ""
+
+#~ msgid "Attributes of current dense"
+#~ msgstr ""
+
+#~ msgid "4-D tensor in either NCHW or NHWC layout."
+#~ msgstr ""
+
+#~ msgid "Size of blocks to compose from channel dimension."
+#~ msgstr ""
+
+#~ msgid "Either NCHW or NHWC, indicating data layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Either DCR or CDR, indicates how "
+#~ "channels should be accessed. In DCR, "
+#~ "channels are interwoven in the "
+#~ "Tensorflow style while in CDR channels"
+#~ " are accessed sequentially as in "
+#~ "Pytorch."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- Output of shape [N, "
+#~ "C / block_size**2, H * block_size, "
+#~ "W * block_size]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "6-D with shape [out_channel_chunk, 1, "
+#~ "filter_height, filter_width, 1, out_channel_block]"
+#~ " In NCHWc depthwise convolution, we "
+#~ "group kernel's in_channel and "
+#~ "channel_multiplier together then do the "
+#~ "tiling."
+#~ msgstr ""
+
+#~ msgid "Output data type"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Output** -- 5-D with shape [batch, "
+#~ "out_channel_chunk, out_height, out_width, "
+#~ "out_channel_block]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "4-D with shape [filter_height, filter_width,"
+#~ " in_channel, channel_multiplier]"
+#~ msgstr ""
+
+#~ msgid "4-D with shape [batch, out_height, out_width, out_channel]"
+#~ msgstr ""
+
+#~ msgid "**Output** -- 4-D with shape [batch, in_height, in_width, in_channel]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Output** -- 4-D with shape "
+#~ "[filter_height, filter_width, in_channel, "
+#~ "channel_multiplier]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "4-D with shape [in_channel, "
+#~ "channel_multiplier, filter_height, filter_width]"
+#~ msgstr ""
+
+#~ msgid "The spatial stride, or (stride_height, stride_width)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Output** -- 4-D with shape [batch, "
+#~ "out_height, out_width, out_channel]"
+#~ msgstr ""
+
+#~ msgid "n-D, can be any layout."
+#~ msgstr ""
+
+#~ msgid "Dilation stride on each dimension, 1 means no dilation."
+#~ msgstr ""
+
+#~ msgid "Value used to dilate the input."
+#~ msgstr ""
+
+#~ msgid "The name prefix operators generated"
+#~ msgstr ""
+
+#~ msgid "**Output** -- n-D, the same layout as data."
+#~ msgstr ""
+
+#~ msgid "The input expression."
+#~ msgstr ""
+
+#~ msgid "**equal** -- Whether they equals."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Perform softmax activation on the data."
+#~ " Use approximation to compute exponent "
+#~ "for faster speed."
+#~ msgstr ""
+
+#~ msgid "can be any dimension"
+#~ msgstr ""
+
+#~ msgid "channel axis"
+#~ msgstr ""
+
+#~ msgid "**output** -- output shape is the same as input"
+#~ msgstr ""
+
+#~ msgid "Compute equivalent of"
+#~ msgstr ""
+
+#~ msgid "Useful for"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Encoding explicit re-use of computation"
+#~ " in convolution ops operated on a "
+#~ "sliding window input"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Implementing a FIFO queue to cache "
+#~ "intermediate results, e.g. as in Fast"
+#~ " WaveNet."
+#~ msgstr ""
+
+#~ msgid "Previous value of the FIFO buffer"
+#~ msgstr ""
+
+#~ msgid "Specify which axis should be used for buffering"
+#~ msgstr ""
+
+#~ msgid "**result** -- Updated value for the buffer"
+#~ msgstr ""
+
+#~ msgid "Input array."
+#~ msgstr ""
+
+#~ msgid "**output** -- 2-D array with collapsed higher dimensions."
+#~ msgstr ""
+
+#~ msgid "**out_value** -- The output."
+#~ msgstr ""
+
+#~ msgid "Conv kernel size"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **pad_top** (*int*) -- Padding size"
+#~ " on top * **pad_left** (*int*) -- "
+#~ "Padding size on left * **pad_down** "
+#~ "(*int*) -- Padding size on down. *"
+#~ " **pad_right** (*int*) -- Padding size "
+#~ "on right."
+#~ msgstr ""
+
+#~ msgid "**pad_top** (*int*) -- Padding size on top"
+#~ msgstr ""
+
+#~ msgid "**pad_left** (*int*) -- Padding size on left"
+#~ msgstr ""
+
+#~ msgid "**pad_down** (*int*) -- Padding size on down."
+#~ msgstr ""
+
+#~ msgid "**pad_right** (*int*) -- Padding size on right."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **pad_left** (*int*) -- Padding size"
+#~ " on left * **pad_right** (*int*) --"
+#~ " Padding size on right."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **pad_front** (*int*) -- Padding size"
+#~ " on front. * **pad_top** (*int*) --"
+#~ " Padding size on top * **pad_left**"
+#~ " (*int*) -- Padding size on left "
+#~ "* **pad_back** (*int*) -- Padding size"
+#~ " on back. * **pad_down** (*int*) --"
+#~ " Padding size on down. * "
+#~ "**pad_right** (*int*) -- Padding size on"
+#~ " right."
+#~ msgstr ""
+
+#~ msgid "**pad_front** (*int*) -- Padding size on front."
+#~ msgstr ""
+
+#~ msgid "**pad_back** (*int*) -- Padding size on back."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **pad_top** (*int*) -- Padding size"
+#~ " on top * **pad_down** (*int*) -- "
+#~ "Padding size on down. * **pad_left** "
+#~ "(*int*) -- Padding size on left *"
+#~ " **pad_right** (*int*) -- Padding size "
+#~ "on right."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "It decides the height and width "
+#~ "dimension according to the layout "
+#~ "string, in which 'W' and 'H' means"
+#~ " width and height respectively. Width "
+#~ "and height dimension cannot be split."
+#~ " For example, NCHW, NCHW16c, etc. are"
+#~ " valid for pool, while NCHW16w, "
+#~ "NCHW16h are not. See parameter `layout`"
+#~ " for more information of the layout"
+#~ " string convention."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- n-D in same layout "
+#~ "with height and width dimension size "
+#~ "of 1. e.g., for NCHW, the output"
+#~ " shape will be [batch, channel, 1,"
+#~ " 1]"
+#~ msgstr ""
+
+#~ msgid "3-D with shape [num_filter, in_channel, filter_size]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Padding size can be an integer for"
+#~ " equal padding, a tuple of (left, "
+#~ "right) or a string in ['VALID', "
+#~ "'SAME']."
+#~ msgstr ""
+
+#~ msgid "Number of groups"
+#~ msgstr ""
+
+#~ msgid "3-D with shape [batch, in_width, in_channel]"
+#~ msgstr ""
+
+#~ msgid "3-D with shape [filter_size, in_channel, num_filter]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "4-D with shape [num_filter, in_channel "
+#~ "// groups, filter_height, filter_width]"
+#~ msgstr ""
+
+#~ msgid "4-D with shape [batch, in_height, in_width, in_channel, ...]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "4-D with shape [filter_height, filter_width,"
+#~ " in_channel // groups, num_filter]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "4-D with shape [in_channel, out_channel "
+#~ "// groups, filter_height, filter_width]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "E.g. layout_transform(t, \"NCHW\", \"CNHW\") "
+#~ "--> relay.transpose(t, [1, 0, 2, 3])"
+#~ msgstr ""
+
+#~ msgid "The Tensor to transpose"
+#~ msgstr ""
+
+#~ msgid "The current layout e.g. NCHW or OIHW"
+#~ msgstr ""
+
+#~ msgid "The desired layout, must be compatible with current_layout"
+#~ msgstr ""
+
+#~ msgid "The slope for the small gradient when x < 0"
+#~ msgstr ""
+
+#~ msgid "2-D input data"
+#~ msgstr ""
+
+#~ msgid "**output** -- 2-D output with same shape"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "sum_sqr_up^i{x, y} = (bias+((alpha/size)*"
+#~ "                                 {sum_{j=max(0, "
+#~ "i-size/2)}^{min(N-1,i+size/2)}"
+#~ "                                      (data^j{x,y})^2}))^beta "
+#~ "output^i{x, y} = data^i{x, y}/sum_sqr_up^i{x,"
+#~ " y} N is the number for input"
+#~ " channels"
+#~ msgstr ""
+
+#~ msgid "normalisation window size"
+#~ msgstr ""
+
+#~ msgid "input data layout channel axis default value is 1 for NCHW format"
+#~ msgstr ""
+
+#~ msgid "offset to avoid dividing by 0"
+#~ msgstr ""
+
+#~ msgid "to be divided"
+#~ msgstr ""
+
+#~ msgid "exponent"
+#~ msgstr ""
+
+#~ msgid "**output** -- 4-D output with same shape"
+#~ msgstr ""
+
+#~ msgid "Whether the tensor_a is in transposed format."
+#~ msgstr ""
+
+#~ msgid "Whether the tensor_b is in transposed format."
+#~ msgstr ""
+
+#~ msgid "Attributes of current matmul"
+#~ msgstr ""
+
+#~ msgid "Pad width on each dimension to pad the before the axis begin."
+#~ msgstr ""
+
+#~ msgid "Pad width each dimension to pad the after the axis end."
+#~ msgstr ""
+
+#~ msgid "Type of mirror padding to apply. Must be SYMMETRIC or REFLECT"
+#~ msgstr ""
+
+#~ msgid "**Output** -- n-D, the same layout as Input."
+#~ msgstr ""
+
+#~ msgid "output{n, i_1, i_2, ..., i_k} = -p * w"
+#~ msgstr ""
+
+#~ msgid "where t = target{n, i_1, i_2, ..., i_k}"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "p = predictions{n, t, i_1, i_2, "
+#~ "i_k} w = weights{n, i_1, i_2, ...,"
+#~ " i_k} if t != ignore_index else "
+#~ "0"
+#~ msgstr ""
+
+#~ msgid "result = reduction(output)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "(k+2)-D with shape (N, C, d_1, "
+#~ "d_2, ..., d_k), where C is the "
+#~ "number of target classes"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "(k+1)-D with shape (N, d_1, d_2, "
+#~ "..., d_k) The target value of the"
+#~ " input."
+#~ msgstr ""
+
+#~ msgid "1-D with shape (C,) The weight of each target value."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The reduction method to apply to "
+#~ "output. Can be \"mean\", \"sum\" or "
+#~ "\"none\"."
+#~ msgstr ""
+
+#~ msgid "The target value to ignore."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- a scalar if the "
+#~ "reduction type is \"mean\" or \"sum\","
+#~ " otherwise the same shape as "
+#~ "`target`."
+#~ msgstr ""
+
+#~ msgid "The value to be padded."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Width axis is determined according to"
+#~ " the layout string. in which 'w' "
+#~ "means width. Width dimension cannot be"
+#~ " split. For example, NCW, NCW16c, "
+#~ "etc. are valid for pool, while "
+#~ "NCW16w is not. See parameter `layout`"
+#~ " for more information of the layout"
+#~ " string convention."
+#~ msgstr ""
+
+#~ msgid "Kernel size, [kernel_width]"
+#~ msgstr ""
+
+#~ msgid "Stride size, [stride_width]"
+#~ msgstr ""
+
+#~ msgid "Pad size, [pad_left, pad_right]"
+#~ msgstr ""
+
+#~ msgid "Whether to use ceil when calculating output size."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Layout of the input data. The "
+#~ "layout is supposed to be composed "
+#~ "of upper cases, lower cases and "
+#~ "numbers, where upper case indicates a"
+#~ " dimension and the corresponding lower "
+#~ "case with factor size indicates the "
+#~ "split dimension. For example, NCW16c can"
+#~ " describe a 4-D tensor of "
+#~ "[batch_size, channel, width, channel_block], "
+#~ "in which channel_block=16 is a split "
+#~ "of dimension channel."
+#~ msgstr ""
+
+#~ msgid "Whether include padding in the calculation when pool_type is 'avg'"
+#~ msgstr ""
+
+#~ msgid "Kernel size, [kernel_height, kernel_width]"
+#~ msgstr ""
+
+#~ msgid "Stride size, [stride_height, stride_width]"
+#~ msgstr ""
+
+#~ msgid "Pad size, [pad_top, pad_left, pad_bottom, pad_right]]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "It decides the depth, height and "
+#~ "width dimension according to the layout"
+#~ " string, in which 'D', 'W' and "
+#~ "'H' means depth, width and height "
+#~ "respectively. Depth, width and height "
+#~ "dimension cannot be split. For example,"
+#~ " NCDHW, NCDHW16c, etc. are valid for"
+#~ " pool, while NCDHW16d, NCDHW16w, NCDHW16h"
+#~ " are not. See parameter `layout` for"
+#~ " more information of the layout "
+#~ "string convention."
+#~ msgstr ""
+
+#~ msgid "Kernel size, [kernel_depth, kernel_height, kernel_width]"
+#~ msgstr ""
+
+#~ msgid "Stride size, [stride_depth, stride_height, stride_width]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Pad size, [pad_front, pad_top, pad_left, "
+#~ "pad_back, pad_bottom, pad_right]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Layout of the input data. The "
+#~ "layout is supposed to be composed "
+#~ "of upper cases, lower cases and "
+#~ "numbers, where upper case indicates a"
+#~ " dimension and the corresponding lower "
+#~ "case with factor size indicates the "
+#~ "split dimension. For example, NCDHW16c "
+#~ "can describe a 6-D tensor of "
+#~ "[batch_size, channel, depth, height, width,"
+#~ " channel_block], in which channel_block=16 "
+#~ "is a split of dimension channel."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "PReLU. It accepts two arguments: an "
+#~ "input ``x`` and a weight array "
+#~ "``W`` and computes the output as "
+#~ ":math:`PReLU(x) y = x > 0 ? "
+#~ "x : W * x`, where :math:`*` "
+#~ "is an elementwise multiplication for "
+#~ "each sample in the batch."
+#~ msgstr ""
+
+#~ msgid "Channelised slope tensor for prelu"
+#~ msgstr ""
+
+#~ msgid "The axis where the channel data needs to be applied"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **y** (*tvm.te.Tensor*) -- The result."
+#~ " * *Links* * *-----* * **[http** "
+#~ "(*//arxiv.org/pdf/1502.01852v1.pdf]*)"
+#~ msgstr ""
+
+#~ msgid "**y** (*tvm.te.Tensor*) -- The result."
+#~ msgstr ""
+
+#~ msgid "*Links*"
+#~ msgstr ""
+
+#~ msgid "*-----*"
+#~ msgstr ""
+
+#~ msgid "**[http** (*//arxiv.org/pdf/1502.01852v1.pdf]*)"
+#~ msgstr ""
+
+#~ msgid "4-D input tensor, NCHW layout [batch, channel, height, width]"
+#~ msgstr ""
+
+#~ msgid "Scale tensor, 1-D of size channel number"
+#~ msgstr ""
+
+#~ msgid "Shift tensor, 1-D of size channel number"
+#~ msgstr ""
+
+#~ msgid "**Output** -- Output tensor, layout is NCHW"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "5-D input tensor, NCHWc layout [batch,"
+#~ " channel_chunk, height, width, channel_block]"
+#~ msgstr ""
+
+#~ msgid "Scale tensor, 2-D of size [channel_chunk, channel_block]"
+#~ msgstr ""
+
+#~ msgid "Shift tensor, 2-D of size [channel_chunk, channel_block]"
+#~ msgstr ""
+
+#~ msgid "**Output** -- Output tensor, layout is NHWC"
+#~ msgstr ""
+
+#~ msgid "4-D input tensor, NHWC layout [batch, height, width, channel]"
+#~ msgstr ""
+
+#~ msgid "**out** -- The simplified output"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Simulated QNN dequantize operator that "
+#~ "mimics QNN outputs without changing "
+#~ "datatype. The benefit of this operator"
+#~ " over true QNN dequantize is that "
+#~ "this operator allows dynamic datatype "
+#~ "selection and can operate on both "
+#~ "per-channel and scalar scales and "
+#~ "zero points while QNN dequantize "
+#~ "requires both of these to be fixed"
+#~ " at compile time."
+#~ msgstr ""
+
+#~ msgid "An N-D input tensor to the operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A scalar variable that indicates which"
+#~ " datatype to simulate dequantization with."
+#~ " Use SQNN_DTYPE_TO_CODE to convert a "
+#~ "dtype string into the corresponding "
+#~ "variable value."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A scalar tensor representing the scale"
+#~ " to use when dequantizing from "
+#~ "integer datatypes. When it contains more"
+#~ " than a single value, N must "
+#~ "match the number of channels in "
+#~ "data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 1-D tensor representing the zero "
+#~ "point to use when dequantizing from "
+#~ "integer datatypes. When it contains more"
+#~ " than a single value, N must "
+#~ "match the number of channels in "
+#~ "data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The channel axis for quantization. "
+#~ "Default value is -1 which corresponds"
+#~ " to the last axis."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Simulated QNN quantize operator that "
+#~ "mimics QNN outputs without changing "
+#~ "datatype. The benefit of this operator"
+#~ " over true QNN quantize is that "
+#~ "this operator allows dynamic datatype "
+#~ "selection and can operate on both "
+#~ "per-channel and scalar scales and "
+#~ "zero points while QNN quantize requires"
+#~ " both of these to be fixed at"
+#~ " compile time."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A scalar variable that indicates which"
+#~ " datatype to simulate quantization with."
+#~ " Use SQNN_DTYPE_TO_CODE to convert a "
+#~ "dtype string into the corresponding "
+#~ "variable value."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A scalar tensor representing the scale"
+#~ " to use when quantizing to integer"
+#~ " datatypes. When it contains more "
+#~ "than a single value, N must match"
+#~ " the number of channels in data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 1-D tensor representing the zero "
+#~ "point to use when quantizing to "
+#~ "integer datatypes. When it contains more"
+#~ " than a single value, N must "
+#~ "match the number of channels in "
+#~ "data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "list of shape [M] where M is "
+#~ "number of spatial dims, specifies "
+#~ "zero-padding size before each spatial "
+#~ "dimension."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "list of shape [M] where M is "
+#~ "number of spatial dims, specifies "
+#~ "zero-padding size after each spatial "
+#~ "dimension."
+#~ msgstr ""
+
+#~ msgid "The value used for padding."
+#~ msgstr ""
+
+#~ msgid "Size of blocks to decompose into channel dimension."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- Output of shape [N, "
+#~ "C * block_size**2, H / block_size, "
+#~ "W / block_size]"
+#~ msgstr ""
+
+#~ msgid "2-D with shape [M, N]"
+#~ msgstr ""
+
+#~ msgid "1-D with shape [nnz] (CSR)"
+#~ msgstr ""
+
+#~ msgid "1-D with shape [M + 1] (CSR)"
+#~ msgstr ""
+
+#~ msgid "**output** -- 2-D with shape [M, N]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "4-D with shape ``[M, H, W, K]``"
+#~ " (layout=NHWC)  4-D with shape ``[M, "
+#~ "K, H, W]`` (layout=NCHW)"
+#~ msgstr ""
+
+#~ msgid "4-D with shape ``[M, H, W, K]`` (layout=NHWC)"
+#~ msgstr ""
+
+#~ msgid "4-D with shape ``[M, K, H, W]`` (layout=NCHW)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "2-D with shape ``[num_blocks, bs_r]`` "
+#~ "(BSR)  3-D with shape ``[num_blocks, "
+#~ "bs_r, bs_c]`` (BSR)"
+#~ msgstr ""
+
+#~ msgid "2-D with shape ``[num_blocks, bs_r]`` (BSR)"
+#~ msgstr ""
+
+#~ msgid "3-D with shape ``[num_blocks, bs_r, bs_c]`` (BSR)"
+#~ msgstr ""
+
+#~ msgid "1-D with shape ``[num_blocks]`` (BSR)"
+#~ msgstr ""
+
+#~ msgid "1-D with shape ``[(N + 1) // bs_r]`` (BSR)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- 4-D with shape [M, "
+#~ "H, W, N] (layout=NHWC) 4-D with "
+#~ "shape [M, N, H ,W] (layout=NCHW)"
+#~ msgstr ""
+
+#~ msgid "2-D with shape [M, K]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "1-D with shape [nnz] (CSR) or 3-D"
+#~ " with shape [num_blocks, bs_r, bs_c] "
+#~ "(BSR)"
+#~ msgstr ""
+
+#~ msgid "1-D with shape [nnz] (CSR) or 1-D with shape [num_blocks] (BSR)"
+#~ msgstr ""
+
+#~ msgid "1-D with shape [N + 1] (CSR) or 1-D with shape [(N + 1) // bs_r] (BSR)"
+#~ msgstr ""
+
+#~ msgid "Indicates whether lhs or rhs matrix is sparse. Default value is False."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This is used for modifying the "
+#~ "inputs weights so they are more "
+#~ "amenable for the target."
+#~ msgstr ""
+
+#~ msgid "1-D with shape [M + 1] (CSR) or 1-D with shape [(M + 1) // bs_r] (BSR)"
+#~ msgstr ""
+
+#~ msgid "2-D with shape [N, K]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Transpose a square sparse matrix, `A`"
+#~ " is an n-by-n sparse matrix in "
+#~ "the CSR format. ** Currently only "
+#~ "support Square Matrices **"
+#~ msgstr ""
+
+#~ msgid "1-D with shape [nonzeros]"
+#~ msgstr ""
+
+#~ msgid "1-D with shape [nonzeros], dtype of 'int32'"
+#~ msgstr ""
+
+#~ msgid "1-D with shape [n+1], dtype of 'int32'"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "* **out_data** (*tvm.te.Tensor*) -- 1-D "
+#~ "with shape [nonzeros] * **out_indices** "
+#~ "(*tvm.te.Tensor*) -- 1-D with shape "
+#~ "[nonzeros], dtype of 'int32' * "
+#~ "**out_indptr** (*tvm.te.Tensor*) -- 1-D with"
+#~ " shape [n+1], dtype of 'int32'"
+#~ msgstr ""
+
+#~ msgid "**out_data** (*tvm.te.Tensor*) -- 1-D with shape [nonzeros]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**out_indices** (*tvm.te.Tensor*) -- 1-D with"
+#~ " shape [nonzeros], dtype of 'int32'"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**out_indptr** (*tvm.te.Tensor*) -- 1-D with"
+#~ " shape [n+1], dtype of 'int32'"
+#~ msgstr ""
+
+#~ msgid "Input/output Tensor of a TVM subgraph."
+#~ msgstr ""
+
+#~ msgid "Map from the input Tensor to its buffer name."
+#~ msgstr ""
+
+#~ msgid "提示"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The buffer name is specially designed,"
+#~ " and these buffer should be provided"
+#~ " in `SearchTask(..., task_inputs={...})`."
+#~ msgstr ""
+
+#~ msgid "The output tensor of conv2d_NCHWc."
+#~ msgstr ""
+
+#~ msgid "The output dtype."
+#~ msgstr ""
+
+#~ msgid "**unpacked_out** -- The unpacked output tensor in NCHW layout."
+#~ msgstr ""
+
+#~ msgid "Nearest neighbor and bilinear upsampling are supported."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "inputs is a 4-D tensor with shape"
+#~ " [batch, channel, in_height, in_width] or"
+#~ "  [batch, in_height, in_width, channel]"
+#~ msgstr ""
+
+#~ msgid "Scaling factor for height"
+#~ msgstr ""
+
+#~ msgid "Scaling factor for width"
+#~ msgstr ""
+
+#~ msgid "either \"NCHW\" or \"NHWC\""
+#~ msgstr ""
+
+#~ msgid "Method to be used for upsampling."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Shape to return. If left None will"
+#~ " be inferred (If shape is determined"
+#~ " dynamically, pass out_dtype.shape as "
+#~ "output_shape)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- 4-D with shape [batch, "
+#~ "channel, in_height*scale_h, in_width*scale_w] or "
+#~ "[batch, in_height*scale, in_width*scale, channel]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "inputs is a 5-D tensor with shape"
+#~ " [batch, channel, in_depth, in_height, "
+#~ "in_width] or  [batch, in_depth, in_height, "
+#~ "in_width, channel]"
+#~ msgstr ""
+
+#~ msgid "Scaling factor for depth"
+#~ msgstr ""
+
+#~ msgid "either \"NCDHW\" or \"NDHWC\""
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Describes how to transform the "
+#~ "coordinate in the resized tensor to "
+#~ "the coordinate in the original tensor."
+#~ " Refer to the ONNX Resize operator"
+#~ " specification for details. Available "
+#~ "options are \"half_pixel\", \"align_corners\" "
+#~ "and \"asymmetric\"."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- 5-D with shape [batch, "
+#~ "channel, in_depth*scale, in_height*scale, "
+#~ "in_width*scale] or [batch, in_depth*scale, "
+#~ "in_height*scale, in_width*scale, channel]"
+#~ msgstr ""
+
+#~ msgid "IMAGE network operators"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`affine_grid "
+#~ "<tvm.topi.image.tvm.topi.image.affine_grid>`\\ \\(data\\, "
+#~ "target\\_shape\\)"
+#~ msgstr ""
+
+#~ msgid "affine_grid operator that generates 2D sampling grid."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`crop_and_resize "
+#~ "<tvm.topi.image.tvm.topi.image.crop_and_resize>`\\ \\(data\\,"
+#~ " boxes\\, box\\_indices\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Perform crop and resize operation on the data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`dilation2d_nchw "
+#~ "<tvm.topi.image.tvm.topi.image.dilation2d_nchw>`\\ \\(input\\,"
+#~ " filter\\, stride\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Morphological dilation operator in NCHW layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`dilation2d_nhwc "
+#~ "<tvm.topi.image.tvm.topi.image.dilation2d_nhwc>`\\ \\(input\\,"
+#~ " filter\\, stride\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Morphological 2d dilation NHWC layout."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_1d_indices "
+#~ "<tvm.topi.image.tvm.topi.image.get_1d_indices>`\\ "
+#~ "\\(indices\\[\\, layout\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get 1d indices"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_1d_pixel "
+#~ "<tvm.topi.image.tvm.topi.image.get_1d_pixel>`\\ \\(data\\, "
+#~ "layout\\, image\\_width\\, n\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Get 1d pixel"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_2d_indices "
+#~ "<tvm.topi.image.tvm.topi.image.get_2d_indices>`\\ "
+#~ "\\(indices\\[\\, layout\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get 2d indices"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_2d_pixel "
+#~ "<tvm.topi.image.tvm.topi.image.get_2d_pixel>`\\ \\(data\\, "
+#~ "layout\\, image\\_height\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Get 2d pixel"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_3d_indices "
+#~ "<tvm.topi.image.tvm.topi.image.get_3d_indices>`\\ "
+#~ "\\(indices\\[\\, layout\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get 3d indices"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_3d_pixel "
+#~ "<tvm.topi.image.tvm.topi.image.get_3d_pixel>`\\ \\(data\\, "
+#~ "layout\\, image\\_depth\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Get 3d pixel"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_closest_index "
+#~ "<tvm.topi.image.tvm.topi.image.get_closest_index>`\\ "
+#~ "\\(in\\_x\\, rounding\\_method\\, boxes\\)"
+#~ msgstr ""
+
+#~ msgid "get the closest index to a value based on a certain rounding method"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_inx <tvm.topi.image.tvm.topi.image.get_inx>`\\ "
+#~ "\\(x\\, image\\_width\\, target\\_width\\, ...\\[\\,"
+#~ " ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Infer input x from output x with"
+#~ " various coordinate transformation methods"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_pad_tuple "
+#~ "<tvm.topi.image.tvm.topi.image.get_pad_tuple>`\\ \\(padding\\,"
+#~ " kernel\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`grid_sample "
+#~ "<tvm.topi.image.tvm.topi.image.grid_sample>`\\ \\(data\\, "
+#~ "grid\\[\\, method\\, layout\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Applies bilinear sampling to input feature map."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`nchw_pack_layout "
+#~ "<tvm.topi.image.tvm.topi.image.nchw_pack_layout>`\\ "
+#~ "\\(layout\\_info\\)"
+#~ msgstr ""
+
+#~ msgid "Check whether the layout type is NCHWinic"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`nchw_xc_layout "
+#~ "<tvm.topi.image.tvm.topi.image.nchw_xc_layout>`\\ "
+#~ "\\(layout\\_info\\)"
+#~ msgstr ""
+
+#~ msgid "Check whether the layout type is NCHWxc"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`pad <tvm.topi.image.tvm.topi.image.pad>`\\ "
+#~ "\\(data\\, pad\\_before\\[\\, pad\\_after\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`resize1d <tvm.topi.image.tvm.topi.image.resize1d>`\\"
+#~ " \\(data\\, roi\\, size\\[\\, layout\\, "
+#~ "method\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Perform resize operation on the data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`resize2d <tvm.topi.image.tvm.topi.image.resize2d>`\\"
+#~ " \\(data\\, roi\\, size\\[\\, layout\\, "
+#~ "method\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`resize3d <tvm.topi.image.tvm.topi.image.resize3d>`\\"
+#~ " \\(data\\, roi\\, size\\[\\, layout\\, "
+#~ "method\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`simplify <tvm.topi.image.tvm.topi.image.simplify>`\\"
+#~ " \\(expr\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This operation is described in "
+#~ "https://arxiv.org/pdf/1506.02025.pdf. It generates a"
+#~ " uniform sampling grid within the "
+#~ "target shape and normalizes it to "
+#~ "[-1, 1]. The provided affine "
+#~ "transformation is then applied on the"
+#~ " sampling grid."
+#~ msgstr ""
+
+#~ msgid "3-D with shape [batch, 2, 3]. The affine matrix."
+#~ msgstr ""
+
+#~ msgid "Specifies the output shape (H, W)."
+#~ msgstr ""
+
+#~ msgid "**Output** -- 4-D with shape [batch, 2, target_height, target_width]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 2-D tensor of shape [num_boxes, "
+#~ "4]. Each row of the tensor "
+#~ "specifies the coordinates of a box."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A 1-D tensor of shape [num_boxes], "
+#~ "box_indices[i] specifies the data that "
+#~ "the i-th box refers to."
+#~ msgstr ""
+
+#~ msgid "The target size of each box."
+#~ msgstr ""
+
+#~ msgid "\"NCHW\", \"NHWC\""
+#~ msgstr ""
+
+#~ msgid "Method to be used for resizing."
+#~ msgstr ""
+
+#~ msgid "Value used for extrapolation, when applicable."
+#~ msgstr ""
+
+#~ msgid "Type to return. If left None will be same as input type."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- 4-D with shape [num_boxes,"
+#~ " channel, crop_height, crop_width] or "
+#~ "[num_boxes, crop_height, crop_width, channel]"
+#~ msgstr ""
+
+#~ msgid "3-D with shape [ in_channel, filter_height, filter_width]"
+#~ msgstr ""
+
+#~ msgid "Padding size"
+#~ msgstr ""
+
+#~ msgid "**Output** -- 4-D with shape [batch, in_channel, out_height, out_width]"
+#~ msgstr ""
+
+#~ msgid "3-D with shape [filter_height, filter_width, in_channel]"
+#~ msgstr ""
+
+#~ msgid "**Output** -- 4-D with shape [batch, out_height, out_width, in_channel]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Given :math:`data` and :math:`grid`, assuming"
+#~ " NCHW layout, then the output is "
+#~ "computed by"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "x_{src} = grid[batch, 0, y_{dst}, x_{dst}] \\\n"
+#~ "y_{src} = grid[batch, 1, y_{dst}, x_{dst}] \\\n"
+#~ "output[batch, channel, y_{dst}, x_{dst}] = "
+#~ "G(data[batch, channel, y_{src}, x_{src})"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":math:`x_{dst}`, :math:`y_{dst}` enumerate all "
+#~ "spatial locations in :math:`output`, and "
+#~ ":math:`G()` denotes the interpolation method."
+#~ " The out-boundary points will be "
+#~ "padded with zeros if the padding_mode"
+#~ " is \"zeros\". The shape of the "
+#~ "output will be (data.shape[0], data.shape[1],"
+#~ " grid.shape[2], grid.shape[3])."
+#~ msgstr ""
+
+#~ msgid "The operator assumes that :math:`grid` has been normalized to [-1, 1]."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "grid_sample often cooperates with affine_grid"
+#~ " which generates sampling grids for "
+#~ "grid_sample."
+#~ msgstr ""
+
+#~ msgid "4-D with shape [batch, 2, out_height, out_width]"
+#~ msgstr ""
+
+#~ msgid "The interpolation method. Only 'bilinear' is supported."
+#~ msgstr ""
+
+#~ msgid "The layout of input data and the output."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "inputs is a 3-D tensor with shape"
+#~ " [batch, channel in_width] or  [batch "
+#~ "in_width, channel]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The region of interest for cropping "
+#~ "the input image. Expected to be of"
+#~ " size 2, and format [start_w, end_w]."
+#~ " Only used if coordinate_transformation_mode "
+#~ "is tf_crop_and_resize."
+#~ msgstr ""
+
+#~ msgid "Output resolution scale to"
+#~ msgstr ""
+
+#~ msgid "\"NCW\", \"NWC\", or \"NCWc\"."
+#~ msgstr ""
+
+#~ msgid "method of interpolation (\"nearest\", \"linear\", \"bicubic\")"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Describes how to transform the "
+#~ "coordinate in the resized tensor to "
+#~ "the coordinate in the original tensor."
+#~ " [half_pixel, align_corners, asymmetric, "
+#~ "pytorch_half_pixel, tf_half_pixel_for_nn, and "
+#~ "tf_crop_and_resize]."
+#~ msgstr ""
+
+#~ msgid "Method for rounding coordinate locations"
+#~ msgstr ""
+
+#~ msgid "Bicubic spline coefficient"
+#~ msgstr ""
+
+#~ msgid "Exclude values outside the image fdor bicubic interpolation"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- 4-D with shape [batch, "
+#~ "chananel, in_width*scale] or [batch, "
+#~ "in_width*scale, channel] or 5-D with "
+#~ "shape [batch, channel-major, in_width*scale,"
+#~ " channel-minor]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The region of interest for cropping "
+#~ "the input image. Expected to be of"
+#~ " size 4, and format [start_h, "
+#~ "start_w, end_h, end_w]. Only used if "
+#~ "coordinate_transformation_mode is tf_crop_and_resize."
+#~ msgstr ""
+
+#~ msgid "\"NCHW\", \"NHWC\", or \"NCHWc\"."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- 4-D with shape [batch, "
+#~ "channel, in_height*scale, in_width*scale] or "
+#~ "[batch, in_height*scale, in_width*scale, channel]"
+#~ " or 5-D with shape [batch, "
+#~ "channel-major, in_height*scale, in_width*scale, "
+#~ "channel-minor]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The region of interest for cropping "
+#~ "the input image. Expected to be of"
+#~ " size 6, and format [start_d, "
+#~ "start_h, start_w, end_d, end_h, end_w]. "
+#~ "Only used if coordinate_transformation_mode is"
+#~ " tf_crop_and_resize."
+#~ msgstr ""
+
+#~ msgid "\"NCDHW\", \"NDHWC\", or \"NCDHWc\"."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**output** -- 4-D with shape [batch, "
+#~ "channel, in_depth*scale, in_height*scale, "
+#~ "in_width*scale] or [batch, in_depth*scale, "
+#~ "in_height*scale, in_width*scale, channel] or "
+#~ "5-D with shape [batch, channel-major,"
+#~ " in_depth*scale, in_height*scale, in_width*scale, "
+#~ "channel-minor]"
+#~ msgstr ""
+
+#~ msgid "Sparse operators"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`csrmm <tvm.topi.sparse.csrmm>`\\ \\(a\\, b\\[\\, c\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The `csrmm` routine performs a "
+#~ "matrix-matrix operation defined as :math:`C"
+#~ " := A*B + C`, where `B` and "
+#~ "`C` are dense matrices, `A` is an"
+#~ " m-by-k sparse matrix in the CSR "
+#~ "format."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`csrmv <tvm.topi.sparse.csrmv>`\\ \\(a\\, x\\[\\, y\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The `csrmv` routine performs a "
+#~ "matrix-vector operation defined as :math:`y"
+#~ " := A*x + y`, where `x` and "
+#~ "`y` are vectors, `A` is an m-by-k"
+#~ " sparse matrix in the CSR format."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`dense <tvm.topi.sparse.dense>`\\ \\(data\\, "
+#~ "weight\\[\\, bias\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Applies a linear transformation: :math:`Y = XW^T + b`."
+#~ msgstr ""
+
+#~ msgid "2-D sparse matrix with shape [m, k]"
+#~ msgstr ""
+
+#~ msgid "2-D dense matrix with shape [k, n]"
+#~ msgstr ""
+
+#~ msgid "1-D dense vector with shape [n]"
+#~ msgstr ""
+
+#~ msgid "**output** -- 2-D with shape [m, n]"
+#~ msgstr ""
+
+#~ msgid "2-D dense matrix with shape [k, 1]"
+#~ msgstr ""
+
+#~ msgid "1-D dense vector with shape [1]"
+#~ msgstr ""
+
+#~ msgid "**output** -- 2-D dense matrix with shape [m, 1]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Applies a linear transformation: :math:`Y "
+#~ "= XW^T + b`. Either data or "
+#~ "weight should be tvm.contrib.sparse.CSRNDArray."
+#~ msgstr ""
+

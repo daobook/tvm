@@ -1,0 +1,64 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-07 11:03+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/refs/_ffi/index.rst:3
+msgid "``_ffi``"
+msgstr ""
+
+#: of tvm._ffi:1
+msgid "C interfacing code."
+msgstr ""
+
+#: of tvm._ffi:3
+msgid ""
+"This namespace contains everything that interacts with C code. Most TVM C"
+" related object are ctypes compatible, which means they contains a handle"
+" field that is ctypes.c_void_p and can be used via ctypes function calls."
+msgstr ""
+
+#: of tvm._ffi:8
+msgid ""
+"Some performance critical functions are implemented by cython and have a "
+"ctypes fallback implementation."
+msgstr ""
+
+#~ msgid "`_ffi`"
+#~ msgstr ""
+
+#~ msgid "C interfacing code."
+#~ msgstr "C 语言接口代码"
+
+#~ msgid ""
+#~ "This namespace contains everything that "
+#~ "interacts with C code. Most TVM C"
+#~ " related object are ctypes compatible, "
+#~ "which means they contains a handle "
+#~ "field that is ctypes.c_void_p and can"
+#~ " be used via ctypes function calls."
+#~ msgstr ""
+#~ "这个命名空间包含所有与 C 代码交互的东西。大多数与 TVM C 相关的对象都与"
+#~ " ctypes 兼容，这意味着它们包含 ctypes.c_void_p 的句柄字段，并可以通过"
+#~ " ctypes 函数调用来使用。"
+
+#~ msgid ""
+#~ "Some performance critical functions are "
+#~ "implemented by cython and have a "
+#~ "ctypes fallback implementation."
+#~ msgstr "一些性能关键的函数是由 cython 实现的，并且有 ctypes 的回退实现。"
+

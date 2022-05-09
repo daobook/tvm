@@ -1,0 +1,145 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-31 18:33+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/reference/api/python/error.rst:19
+msgid "tvm.error"
+msgstr ""
+
+#~ msgid "Structured error classes in TVM."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Each error class takes an error "
+#~ "message as its input. See the "
+#~ "example sections for for suggested "
+#~ "message conventions. To make the code"
+#~ " more readable, we recommended developers"
+#~ " to copy the examples and raise "
+#~ "errors with the same message convention."
+#~ msgstr ""
+
+#~ msgid "Please also refer to :ref:`error-handling-guide`."
+#~ msgstr ""
+
+#~ msgid "**Exceptions:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`DiagnosticError <tvm.error.DiagnosticError>`\\"
+#~ msgstr ""
+
+#~ msgid "Error diagnostics were reported during the execution of a pass."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`InternalError <tvm.error.InternalError>`\\ \\(msg\\)"
+#~ msgstr ""
+
+#~ msgid "Internal error in the system."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`OpAttributeInvalid <tvm.error.OpAttributeInvalid>`\\"
+#~ msgstr ""
+
+#~ msgid "Attribute value is invalid when taking in a frontend operator."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`OpAttributeRequired <tvm.error.OpAttributeRequired>`\\"
+#~ msgstr ""
+
+#~ msgid "Required attribute is not found."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`OpAttributeUnImplemented "
+#~ "<tvm.error.OpAttributeUnImplemented>`\\"
+#~ msgstr ""
+
+#~ msgid "Attribute is not supported in a certain frontend."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`OpError <tvm.error.OpError>`\\"
+#~ msgstr ""
+
+#~ msgid "Base class of all operator errors in frontends."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`OpNotImplemented <tvm.error.OpNotImplemented>`\\"
+#~ msgstr ""
+
+#~ msgid "Operator is not implemented."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`RPCError <tvm.error.RPCError>`\\"
+#~ msgstr ""
+
+#~ msgid "Error thrown by the remote server handling the RPC call."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TVMError <tvm.error.TVMError>`\\"
+#~ msgstr ""
+
+#~ msgid "Default error thrown by TVM functions."
+#~ msgstr ""
+
+#~ msgid "**Functions:**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`register_error <tvm.error.register_error>`\\ "
+#~ "\\(\\[func\\_name\\, cls\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Register an error class so it can"
+#~ " be recognized by the ffi error "
+#~ "handler."
+#~ msgstr ""
+
+#~ msgid "See the configured diagnostic renderer for detailed error information."
+#~ msgstr ""
+
+#~ msgid "实际案例"
+#~ msgstr ""
+
+#~ msgid "示例"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "TVMError will be raised if you do"
+#~ " not give any error type "
+#~ "specification,"
+#~ msgstr ""
+
+#~ msgid "参数"
+#~ msgstr ""
+
+#~ msgid "The name of the error function."
+#~ msgstr ""
+
+#~ msgid "The function to create the class"
+#~ msgstr ""
+
+#~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid "**fregister** -- Register function if f is not specified."
+#~ msgstr ""
+
+#~ msgid "返回类型"
+#~ msgstr ""
+

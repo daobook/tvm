@@ -1,0 +1,1722 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-31 18:33+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/reference/api/python/ir.rst:19
+msgid "tvm.ir"
+msgstr ""
+
+#: ../../docs/reference/api/python/ir.rst:27
+msgid "tvm.instrument"
+msgstr ""
+
+#: ../../docs/reference/api/python/ir.rst:35
+msgid "tvm.transform"
+msgstr ""
+
+#~ msgid ":py:obj:`Array <tvm.ir.Array>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Attrs <tvm.ir.Attrs>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`BaseExpr <tvm.ir.BaseExpr>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`BaseFunc <tvm.ir.BaseFunc>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`DictAttrs <tvm.ir.DictAttrs>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`EnvFunc <tvm.ir.EnvFunc>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Map <tvm.ir.Map>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Node <tvm.ir.Node>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PrimExpr <tvm.ir.PrimExpr>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`RelayExpr <tvm.ir.RelayExpr>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Type <tvm.ir.Type>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TypeConstraint <tvm.ir.TypeConstraint>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ModulePass <tvm.transform.tvm.transform.ModulePass>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Pass <tvm.transform.tvm.transform.Pass>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Array <tvm.ir.Array>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Attrs <tvm.ir.Attrs>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`BaseExpr <tvm.ir.BaseExpr>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`BaseFunc <tvm.ir.BaseFunc>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`DictAttrs <tvm.ir.DictAttrs>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`EnvFunc <tvm.ir.EnvFunc>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Map <tvm.ir.Map>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Node <tvm.ir.Node>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PrimExpr <tvm.ir.PrimExpr>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`RelayExpr <tvm.ir.RelayExpr>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Type <tvm.ir.Type>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TypeConstraint <tvm.ir.TypeConstraint>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`ModulePass <tvm.transform.tvm.transform.ModulePass>`\\"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Pass <tvm.transform.tvm.transform.Pass>`\\"
+#~ msgstr ""
+
+#~ msgid "Common data structures across all IR variants."
+#~ msgstr ""
+
+#~ msgid "**Classes:**"
+#~ msgstr ""
+
+#~ msgid "Array container of TVM."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Attribute node, which is mainly use "
+#~ "for defining attributes of relay "
+#~ "operators."
+#~ msgstr ""
+
+#~ msgid "Base class of all the expressions."
+#~ msgstr ""
+
+#~ msgid "Base class of all functions."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`CallingConv <tvm.ir.CallingConv>`\\ \\(value\\)"
+#~ msgstr ""
+
+#~ msgid "Possible kinds of calling conventions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Constructor <tvm.ir.Constructor>`\\ "
+#~ "\\(name\\_hint\\, inputs\\, belong\\_to\\)"
+#~ msgstr ""
+
+#~ msgid "Relay ADT constructor."
+#~ msgstr ""
+
+#~ msgid "Dictionary attributes."
+#~ msgstr ""
+
+#~ msgid "Environment function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`FuncType <tvm.ir.FuncType>`\\ \\(arg\\_types\\,"
+#~ " ret\\_type\\[\\, type\\_params\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Function type."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`GlobalTypeVar <tvm.ir.GlobalTypeVar>`\\ "
+#~ "\\(name\\_hint\\[\\, kind\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A global type variable that is "
+#~ "used for defining new types or "
+#~ "type aliases."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`GlobalVar <tvm.ir.GlobalVar>`\\ "
+#~ "\\(name\\_hint\\[\\, type\\_annot\\]\\)"
+#~ msgstr ""
+
+#~ msgid "A global variable in the IR."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`IRModule <tvm.ir.IRModule>`\\ \\(\\[functions\\,"
+#~ " type\\_definitions\\]\\)"
+#~ msgstr ""
+
+#~ msgid "IRModule that holds functions and type definitions."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`IncompleteType <tvm.ir.IncompleteType>`\\ \\(\\[kind\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Incomplete type during type inference."
+#~ msgstr ""
+
+#~ msgid "Map container of TVM."
+#~ msgstr ""
+
+#~ msgid "Base class of all IR Nodes, implements astext function."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Op <tvm.ir.Op>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Primitive operator in the IR."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`PointerType <tvm.ir.PointerType>`\\ "
+#~ "\\(element\\_type\\[\\, storage\\_scope\\]\\)"
+#~ msgstr ""
+
+#~ msgid "PointerType used in the low-level TIR."
+#~ msgstr ""
+
+#~ msgid "Base class of all primitive expressions."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`PrimType <tvm.ir.PrimType>`\\ \\(dtype\\)"
+#~ msgstr ""
+
+#~ msgid "Primitive data type in the low level IR"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`Range <tvm.ir.Range>`\\ \\(begin\\[\\, end\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Represent a range in TVM."
+#~ msgstr ""
+
+#~ msgid "Base class of all non-primitive expressions."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`RelayRefType <tvm.ir.RelayRefType>`\\ \\(value\\)"
+#~ msgstr ""
+
+#~ msgid "Reference Type in relay."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`SourceName <tvm.ir.SourceName>`\\ \\(name\\)"
+#~ msgstr ""
+
+#~ msgid "A identifier for a source location."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Span <tvm.ir.Span>`\\ \\(source\\_name\\, "
+#~ "line\\, end\\_line\\, column\\, ...\\)"
+#~ msgstr ""
+
+#~ msgid "Specifies a location in a source program."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`TensorAffineType <tvm.ir.TensorAffineType>`\\ "
+#~ "\\(scale\\, zero\\_point\\, dtype\\[\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "The quantized type of a tensor, with scale, zero point, and datatype"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TensorType <tvm.ir.TensorType>`\\ \\(shape\\[\\, dtype\\]\\)"
+#~ msgstr ""
+
+#~ msgid "A concrete TensorType in Relay."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TupleAffineType <tvm.ir.TupleAffineType>`\\ \\(types\\)"
+#~ msgstr ""
+
+#~ msgid "Affine types of a node with multiple outputs"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TupleType <tvm.ir.TupleType>`\\ \\(fields\\)"
+#~ msgstr ""
+
+#~ msgid "The type of tuple values."
+#~ msgstr ""
+
+#~ msgid "The base class of all types."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TypeCall <tvm.ir.TypeCall>`\\ \\(func\\, args\\)"
+#~ msgstr ""
+
+#~ msgid "Type function application."
+#~ msgstr ""
+
+#~ msgid "Abstract class representing a type constraint."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`TypeData <tvm.ir.TypeData>`\\ \\(header\\, "
+#~ "type\\_vars\\, constructors\\)"
+#~ msgstr ""
+
+#~ msgid "Stores the definition for an Algebraic Data Type (ADT) in Relay."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TypeKind <tvm.ir.TypeKind>`\\ \\(value\\)"
+#~ msgstr ""
+
+#~ msgid "Possible kinds of TypeVars."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`TypeRelation <tvm.ir.TypeRelation>`\\ \\(func\\,"
+#~ " args\\, num\\_inputs\\, attrs\\)"
+#~ msgstr ""
+
+#~ msgid "User defined type relation, it is an input-output relation on types."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`TypeVar <tvm.ir.TypeVar>`\\ \\(name\\_hint\\[\\, kind\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Type parameter in functions."
+#~ msgstr ""
+
+#~ msgid "**Functions:**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`assert_structural_equal "
+#~ "<tvm.ir.assert_structural_equal>`\\ \\(lhs\\, rhs\\[\\,"
+#~ " ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Assert lhs and rhs are structurally equal to each other."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`load_json <tvm.ir.load_json>`\\ \\(json\\_str\\)"
+#~ msgstr ""
+
+#~ msgid "Load tvm object from json_str."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`make_node <tvm.ir.make_node>`\\ \\(type\\_key\\,"
+#~ " \\*\\*kwargs\\)"
+#~ msgstr ""
+
+#~ msgid "Make a new IR node by its type key and fields"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`register_intrin_lowering "
+#~ "<tvm.ir.register_intrin_lowering>`\\ \\(op\\_name\\, "
+#~ "target\\, \\*\\)"
+#~ msgstr ""
+
+#~ msgid "Register Op lowering function"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`register_op_attr <tvm.ir.register_op_attr>`\\ "
+#~ "\\(op\\_name\\, attr\\_key\\[\\, value\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Register an operator property of an operator by name."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`save_json <tvm.ir.save_json>`\\ \\(node\\)"
+#~ msgstr ""
+
+#~ msgid "Save tvm object as json string."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`structural_equal <tvm.ir.structural_equal>`\\ "
+#~ "\\(lhs\\, rhs\\[\\, map\\_free\\_vars\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Check structural equality of lhs and rhs."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`structural_hash <tvm.ir.structural_hash>`\\ "
+#~ "\\(node\\[\\, map\\_free\\_vars\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Compute structural hash of node"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You do not need to create Array"
+#~ " explicitly. Normally python list and "
+#~ "tuple will be converted automatically to"
+#~ " Array during tvm function call. You"
+#~ " may get Array in return values "
+#~ "of TVM function call."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Used by function registered in python"
+#~ " side, such as compute, schedule and"
+#~ " alter_layout. Attrs is passed as the"
+#~ " first argument to these functions."
+#~ msgstr ""
+
+#~ msgid "**Methods:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get_int <tvm.ir.Attrs.get_int>`\\ \\(key\\)"
+#~ msgstr ""
+
+#~ msgid "Get a python int value of a key"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get_int_tuple <tvm.ir.Attrs.get_int_tuple>`\\ \\(key\\)"
+#~ msgstr ""
+
+#~ msgid "Get a python int tuple of a key"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get_str <tvm.ir.Attrs.get_str>`\\ \\(key\\)"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`keys <tvm.ir.Attrs.keys>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Get list of names in the attribute."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`list_field_info <tvm.ir.Attrs.list_field_info>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Get fields information"
+#~ msgstr ""
+
+#~ msgid "参数"
+#~ msgstr ""
+
+#~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid "**value**"
+#~ msgstr ""
+
+#~ msgid "返回类型"
+#~ msgstr ""
+
+#~ msgid "**keys** -- List of keys"
+#~ msgstr ""
+
+#~ msgid "**infos** -- List of field information"
+#~ msgstr ""
+
+#~ msgid "**Attributes:**"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`attrs <tvm.ir.BaseFunc.attrs>`\\"
+#~ msgstr ""
+
+#~ msgid "Return the attrs member of the function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`with_attr <tvm.ir.BaseFunc.with_attr>`\\ "
+#~ "\\(attr\\_key\\_or\\_dict\\[\\, attr\\_value\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Create a new copy of the function and update the attribute."
+#~ msgstr ""
+
+#~ msgid "The attribute key to use or a dict containing multiple key value pairs."
+#~ msgstr ""
+
+#~ msgid "The new attribute value."
+#~ msgstr ""
+
+#~ msgid "**func** -- A new copy of the function"
+#~ msgstr ""
+
+#~ msgid "Name of constructor (only a hint)."
+#~ msgstr ""
+
+#~ msgid "Input types."
+#~ msgstr ""
+
+#~ msgid "Denotes which ADT the constructor belongs to."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`items <tvm.ir.DictAttrs.items>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Get items from the map."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`keys <tvm.ir.DictAttrs.keys>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "This is a global function object that can be serialized by its name."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get <tvm.ir.EnvFunc.get>`\\ \\(name\\)"
+#~ msgstr ""
+
+#~ msgid "Get a static env function"
+#~ msgstr ""
+
+#~ msgid "The name of the function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A function type consists of a list"
+#~ " of type parameters to enable the "
+#~ "definition of generic functions, a set"
+#~ " of type constraints which we omit"
+#~ " for the time being, a sequence "
+#~ "of argument types, and a return "
+#~ "type."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "We can informally write them as: "
+#~ "`forall (type_params), (arg_types) -> ret_type"
+#~ " where type_constraints`"
+#~ msgstr ""
+
+#~ msgid "The argument types"
+#~ msgstr ""
+
+#~ msgid "The return type."
+#~ msgstr ""
+
+#~ msgid "The type parameters"
+#~ msgstr ""
+
+#~ msgid "The type constraints."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The name of the type variable. "
+#~ "This name only acts as a hint, "
+#~ "and is not used for equality."
+#~ msgstr ""
+
+#~ msgid "The kind of the type parameter."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "GlobalVar is used to refer to the"
+#~ " global functions stored in the "
+#~ "IRModule."
+#~ msgstr ""
+
+#~ msgid "The name of the variable."
+#~ msgstr ""
+
+#~ msgid "IRModule is the basic unit for all IR transformations across the stack."
+#~ msgstr ""
+
+#~ msgid "Map of global var to BaseFunc"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`from_expr <tvm.ir.IRModule.from_expr>`\\ "
+#~ "\\(expr\\[\\, functions\\, type\\_defs\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Construct a module from a standalone expression."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get_attr <tvm.ir.IRModule.get_attr>`\\ \\(attr\\_key\\)"
+#~ msgstr ""
+
+#~ msgid "Get the IRModule attribute."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get_constructor <tvm.ir.IRModule.get_constructor>`\\ \\(tag\\)"
+#~ msgstr ""
+
+#~ msgid "Look up an ADT constructor by tag."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_global_type_var "
+#~ "<tvm.ir.IRModule.get_global_type_var>`\\ \\(name\\)"
+#~ msgstr ""
+
+#~ msgid "Get a global type variable in the function by name."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`get_global_type_vars "
+#~ "<tvm.ir.IRModule.get_global_type_vars>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Collect all global type vars defined in this module."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get_global_var <tvm.ir.IRModule.get_global_var>`\\ \\(name\\)"
+#~ msgstr ""
+
+#~ msgid "Get a global variable in the function by name."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get_global_vars <tvm.ir.IRModule.get_global_vars>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Collect all global vars defined in this module."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`script <tvm.ir.IRModule.script>`\\ "
+#~ "\\(\\[tir\\_prefix\\, show\\_meta\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Print IRModule into TVMScript"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`update <tvm.ir.IRModule.update>`\\ \\(other\\)"
+#~ msgstr ""
+
+#~ msgid "Insert functions in another Module to current one."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`update_func <tvm.ir.IRModule.update_func>`\\ \\(var\\, func\\)"
+#~ msgstr ""
+
+#~ msgid "Update the function corresponding to a global variable in the module."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`with_attr <tvm.ir.IRModule.with_attr>`\\ "
+#~ "\\(attr\\_key\\, attr\\_value\\)"
+#~ msgstr ""
+
+#~ msgid "Copy the IRModule and add an attribute to it."
+#~ msgstr ""
+
+#~ msgid "The starting expression"
+#~ msgstr ""
+
+#~ msgid "Map of global vars to function definitions"
+#~ msgstr ""
+
+#~ msgid "Map of global type vars to type definitions"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**mod** -- A module containing the "
+#~ "passed definitions, where expr is set"
+#~ " as the entry point (wrapped in "
+#~ "a function if necessary)"
+#~ msgstr ""
+
+#~ msgid "The attribute key."
+#~ msgstr ""
+
+#~ msgid "**attr_value** -- Attribute value"
+#~ msgstr ""
+
+#~ msgid "The tag for a constructor."
+#~ msgstr ""
+
+#~ msgid "**constructor** -- The constructor associated with the given tag,"
+#~ msgstr ""
+
+#~ msgid "引发"
+#~ msgstr ""
+
+#~ msgid "The name of the global type variable."
+#~ msgstr ""
+
+#~ msgid "**global_type_var** -- The global variable mapped to :code:`name`."
+#~ msgstr ""
+
+#~ msgid "**global_type_vars** -- An array of global type vars."
+#~ msgstr ""
+
+#~ msgid "The name of the global variable."
+#~ msgstr ""
+
+#~ msgid "**global_var** -- The global variable mapped to :code:`name`."
+#~ msgstr ""
+
+#~ msgid "**global_vars** -- An array of global vars."
+#~ msgstr ""
+
+#~ msgid "The tir namespace prefix"
+#~ msgstr ""
+
+#~ msgid "Whether to show meta information"
+#~ msgstr ""
+
+#~ msgid "**script** -- The TVM Script of the IRModule"
+#~ msgstr ""
+
+#~ msgid "The module to merge into the current Module."
+#~ msgstr ""
+
+#~ msgid "The global variable."
+#~ msgstr ""
+
+#~ msgid "The function to be inserted."
+#~ msgstr ""
+
+#~ msgid "**mod** -- A new copy of the IRModule with the attribute"
+#~ msgstr ""
+
+#~ msgid "kind"
+#~ msgstr ""
+
+#~ msgid "Optional[TypeKind]"
+#~ msgstr ""
+
+#~ msgid "The kind of the incomplete type."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You do not need to create Map "
+#~ "explicitly. Normally python dict will be"
+#~ " converted automatically to Map during "
+#~ "tvm function call. You can use "
+#~ "convert to create a dict[Object-> "
+#~ "Object] into a Map"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get <tvm.ir.Map.get>`\\ \\(key\\[\\, default\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get an element with a default value."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`items <tvm.ir.Map.items>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Get the items from the map"
+#~ msgstr ""
+
+#~ msgid "The default object."
+#~ msgstr ""
+
+#~ msgid "**value** -- The result value."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`astext <tvm.ir.Node.astext>`\\ "
+#~ "\\(\\[show\\_meta\\_data\\, annotate\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Get the text format of the expression."
+#~ msgstr ""
+
+#~ msgid "Whether to include meta data section in the text if there is meta data."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Optionally annotate function to provide "
+#~ "additional information in the comment "
+#~ "block."
+#~ msgstr ""
+
+#~ msgid "**text** -- The text format of the expression."
+#~ msgstr ""
+
+#~ msgid "提示"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The meta data section is necessary "
+#~ "to fully parse the text format. "
+#~ "However, it can contain dumps that "
+#~ "are big (e.g constant weights), so "
+#~ "it can be helpful to skip printing"
+#~ " the meta data section."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`add_argument <tvm.ir.Op.add_argument>`\\ "
+#~ "\\(name\\, type\\, description\\)"
+#~ msgstr ""
+
+#~ msgid "Add arguments information to the function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`add_type_rel <tvm.ir.Op.add_type_rel>`\\ "
+#~ "\\(rel\\_name\\[\\, type\\_rel\\_func\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Attach the type function corresponding to the return type."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get <tvm.ir.Op.get>`\\ \\(op\\_name\\)"
+#~ msgstr ""
+
+#~ msgid "Get the Op for a given name"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`get_attr <tvm.ir.Op.get_attr>`\\ \\(attr\\_name\\)"
+#~ msgstr ""
+
+#~ msgid "Get additional attribute about the operator."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`has_attr <tvm.ir.Op.has_attr>`\\ \\(attr\\_name\\)"
+#~ msgstr ""
+
+#~ msgid "Check whether the operator has additional attribute."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`list_op_names <tvm.ir.Op.list_op_names>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "List all the op names in the op registry."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`reset_attr <tvm.ir.Op.reset_attr>`\\ \\(attr\\_name\\)"
+#~ msgstr ""
+
+#~ msgid "Reset attribute about the operator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`set_attr <tvm.ir.Op.set_attr>`\\ "
+#~ "\\(attr\\_name\\, value\\[\\, plevel\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Set attribute about the operator."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`set_attrs_type_key <tvm.ir.Op.set_attrs_type_key>`\\ \\(key\\)"
+#~ msgstr ""
+
+#~ msgid "Set the attribute type key of op."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`set_num_inputs <tvm.ir.Op.set_num_inputs>`\\ \\(n\\)"
+#~ msgstr ""
+
+#~ msgid "Set the support level of op."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`set_support_level <tvm.ir.Op.set_support_level>`\\ \\(level\\)"
+#~ msgstr ""
+
+#~ msgid "The argument name."
+#~ msgstr ""
+
+#~ msgid "The argument type."
+#~ msgstr ""
+
+#~ msgid "The argument description."
+#~ msgstr ""
+
+#~ msgid "The type relation name to register."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The backing relation function which can"
+#~ " solve an arbitrary relation on "
+#~ "variables. Differences with type_rel_func in"
+#~ " C++:  1) When type_rel_func is not"
+#~ " None     a) OpAddTypeRel on C++ side"
+#~ " will adjust type_rel_func with "
+#~ "TypeReporter to       calling convention of"
+#~ " relay type system.     b) type_rel_func"
+#~ " returns output argument's type, return "
+#~ "None means can't       infer output's "
+#~ "type.     c) only support single output"
+#~ " operators for now, the last argument"
+#~ " is output tensor.  2) when "
+#~ "type_rel_func is None, will call "
+#~ "predefined type_rel_funcs in relay        "
+#~ "according to ``tvm.relay.type_relation.`` + "
+#~ "rel_name."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The backing relation function which can"
+#~ " solve an arbitrary relation on "
+#~ "variables. Differences with type_rel_func in"
+#~ " C++:"
+#~ msgstr ""
+
+#~ msgid "When type_rel_func is not None"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "OpAddTypeRel on C++ side will adjust "
+#~ "type_rel_func with TypeReporter to calling "
+#~ "convention of relay type system."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "type_rel_func returns output argument's type,"
+#~ " return None means can't infer "
+#~ "output's type."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "only support single output operators for"
+#~ " now, the last argument is output "
+#~ "tensor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "when type_rel_func is None, will call"
+#~ " predefined type_rel_funcs in relay"
+#~ msgstr ""
+
+#~ msgid "according to ``tvm.relay.type_relation.`` + rel_name."
+#~ msgstr ""
+
+#~ msgid "The operator name"
+#~ msgstr ""
+
+#~ msgid "**op** -- The op of the corresponding name"
+#~ msgstr ""
+
+#~ msgid "The attribute name."
+#~ msgstr ""
+
+#~ msgid "**value** -- The attribute value"
+#~ msgstr ""
+
+#~ msgid "**value** -- Whether the operator has additional attribute"
+#~ msgstr ""
+
+#~ msgid "**value** -- The registered op names"
+#~ msgstr ""
+
+#~ msgid "The attribute name"
+#~ msgstr ""
+
+#~ msgid "The attribute value"
+#~ msgstr ""
+
+#~ msgid "The priority level"
+#~ msgstr ""
+
+#~ msgid "The type key."
+#~ msgstr ""
+
+#~ msgid "The input number."
+#~ msgstr ""
+
+#~ msgid "The support level."
+#~ msgstr ""
+
+#~ msgid "The type of pointer's element."
+#~ msgstr ""
+
+#~ msgid "The storage scope into which the pointer addresses."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "PrimExpr is used in the low-level"
+#~ " code optimizations and integer analysis."
+#~ msgstr ""
+
+#~ msgid "The runtime data type relates to the primtype."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You do not need to create a "
+#~ "Range explicitly. Python lists and "
+#~ "tuples will be converted automatically "
+#~ "to a Range in API functions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The begin value of the range when"
+#~ " end is None. Otherwise it is "
+#~ "the length of the range."
+#~ msgstr ""
+
+#~ msgid "The end value of the range."
+#~ msgstr ""
+
+#~ msgid "The location of this itervar in the source code."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The constructor creates the range "
+#~ "`[begin, end)` if the end argument "
+#~ "is not None. Otherwise, it creates "
+#~ "`[0, begin)`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`from_min_extent <tvm.ir.Range.from_min_extent>`\\ "
+#~ "\\(min\\_value\\, extent\\[\\, span\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Construct a Range by min and extent."
+#~ msgstr ""
+
+#~ msgid "This constructs a range in [min_value, min_value + extent)"
+#~ msgstr ""
+
+#~ msgid "The minimum value of the range."
+#~ msgstr ""
+
+#~ msgid "The extent of the range."
+#~ msgstr ""
+
+#~ msgid "**rng** -- The constructed range."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`checked_type <tvm.ir.RelayExpr.checked_type>`\\"
+#~ msgstr ""
+
+#~ msgid "Get the checked type of tvm.relay.Expr."
+#~ msgstr ""
+
+#~ msgid "**checked_type** -- The checked type."
+#~ msgstr ""
+
+#~ msgid "The value type."
+#~ msgstr ""
+
+#~ msgid "The name of the source."
+#~ msgstr ""
+
+#~ msgid "The source name."
+#~ msgstr ""
+
+#~ msgid "The line number."
+#~ msgstr ""
+
+#~ msgid "The column offset of the location."
+#~ msgstr ""
+
+#~ msgid "The real space value is calculated as x = x_q * scale + zero_point"
+#~ msgstr ""
+
+#~ msgid "The scale"
+#~ msgstr ""
+
+#~ msgid "The zero_point"
+#~ msgstr ""
+
+#~ msgid "The content data type."
+#~ msgstr ""
+
+#~ msgid "The axis for per-channel quantization."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This is the type assigned to "
+#~ "tensors with a known dtype and "
+#~ "shape. For example, a tensor of "
+#~ "`float32` and `(5, 5)`."
+#~ msgstr ""
+
+#~ msgid "The shape of the Tensor"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`concrete_shape <tvm.ir.TensorType.concrete_shape>`\\"
+#~ msgstr ""
+
+#~ msgid "Get shape of the type as concrete tuple of int."
+#~ msgstr ""
+
+#~ msgid "**shape** -- The concrete shape of the Type."
+#~ msgstr ""
+
+#~ msgid ":raises TypeError : If the shape is symbolic:"
+#~ msgstr ""
+
+#~ msgid "The fields in the tuple"
+#~ msgstr ""
+
+#~ msgid ":py:obj:`same_as <tvm.ir.Type.same_as>`\\ \\(other\\)"
+#~ msgstr ""
+
+#~ msgid "Compares two Relay types by referential equality."
+#~ msgstr ""
+
+#~ msgid "The function."
+#~ msgstr ""
+
+#~ msgid "The arguments."
+#~ msgstr ""
+
+#~ msgid "**type_call** -- The type function application."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Note that ADT definitions are treated"
+#~ " as type-level functions because the"
+#~ " type parameters need to be given "
+#~ "for an instance of the ADT. Thus,"
+#~ " any global type var that is an"
+#~ " ADT header needs to be wrapped "
+#~ "in a type call that passes in "
+#~ "the type params."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The name of the ADT. ADTs with "
+#~ "the same constructors but different "
+#~ "names are treated as different types."
+#~ msgstr ""
+
+#~ msgid "Type variables that appear in constructors."
+#~ msgstr ""
+
+#~ msgid "The constructors for the ADT."
+#~ msgstr ""
+
+#~ msgid "TypeRelation is more generalized than TypeCall as it allows inference"
+#~ msgstr ""
+
+#~ msgid "of both inputs and outputs."
+#~ msgstr ""
+
+#~ msgid "User defined relation function."
+#~ msgstr ""
+
+#~ msgid "List of types to the func."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Number of input arguments in args, "
+#~ "this act as a hint for type "
+#~ "inference."
+#~ msgstr ""
+
+#~ msgid "The attribute attached to the relation information"
+#~ msgstr ""
+
+#~ msgid "**type_relation** -- The type relation."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A type variable represents a type "
+#~ "placeholder which will be filled in "
+#~ "later on. This allows the user to"
+#~ " write functions which are generic "
+#~ "over types."
+#~ msgstr ""
+
+#~ msgid "The left operand."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Whether or not shall we map free"
+#~ " vars that does not bound to "
+#~ "any definitions as equal to each "
+#~ "other."
+#~ msgstr ""
+
+#~ msgid ":raises ValueError : if assertion does not hold.:"
+#~ msgstr ""
+
+#~ msgid ":obj:`structural_equal`"
+#~ msgstr ""
+
+#~ msgid "The json string"
+#~ msgstr ""
+
+#~ msgid "**node** -- The loaded tvm node."
+#~ msgstr ""
+
+#~ msgid "The type key of the node."
+#~ msgstr ""
+
+#~ msgid "The fields of the node."
+#~ msgstr ""
+
+#~ msgid "**node** -- The corresponding IR Node"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If the created node is instance of"
+#~ " AttrsNode, then the creator function "
+#~ "will also run bound checks and "
+#~ "default value setup as supported by "
+#~ "Attrs."
+#~ msgstr ""
+
+#~ msgid "示例"
+#~ msgstr ""
+
+#~ msgid "The following code constructs a IntImm object"
+#~ msgstr ""
+
+#~ msgid "The op name"
+#~ msgstr ""
+
+#~ msgid "The target string for given intrinsic lowering function"
+#~ msgstr ""
+
+#~ msgid "The function to be registered."
+#~ msgstr ""
+
+#~ msgid "**fregister** -- Register op lowering function if f is not specified."
+#~ msgstr ""
+
+#~ msgid "The name of operator"
+#~ msgstr ""
+
+#~ msgid "The value to set"
+#~ msgstr ""
+
+#~ msgid "**fregister** -- Register function if value is not specified."
+#~ msgstr ""
+
+#~ msgid "A TVM object to be saved."
+#~ msgstr ""
+
+#~ msgid "**json_str** -- Saved json string."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The structural equality is recursively "
+#~ "defined in the DAG of IRNodes. "
+#~ "There are two kinds of nodes:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Graph node: a graph node in lhs"
+#~ " can only be mapped as equal to"
+#~ " one and only one graph node in"
+#~ " rhs."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Normal node: equality is recursively "
+#~ "defined without the restriction of graph"
+#~ " nodes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Vars(tir::Var, TypeVar) and non-constant "
+#~ "relay expression nodes are graph nodes."
+#~ " For example, it means that `%1 "
+#~ "= %x + %y; %1 + %1` is "
+#~ "not structurally equal to `%1 = %x"
+#~ " + %y; %2 = %x + %y; %1"
+#~ " + %2` in relay."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A var-type node(e.g. tir::Var, TypeVar)"
+#~ " can be mapped as equal to "
+#~ "another var with the same type if"
+#~ " one of the following condition "
+#~ "holds:"
+#~ msgstr ""
+
+#~ msgid "They appear in a same definition point(e.g. function argument)."
+#~ msgstr ""
+
+#~ msgid "They points to the same VarNode via the same_as relation."
+#~ msgstr ""
+
+#~ msgid "They appear in a same usage point, and map_free_vars is set to be True."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The rules for var are used to "
+#~ "remap variables occurs in function "
+#~ "arguments and let-bindings."
+#~ msgstr ""
+
+#~ msgid "**result** -- The comparison result."
+#~ msgstr ""
+
+#~ msgid ":obj:`structural_hash`, :obj:`assert_strucural_equal`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The structural hash value is recursively"
+#~ " defined in the DAG of IRNodes. "
+#~ "There are two kinds of nodes:"
+#~ msgstr ""
+
+#~ msgid "Normal node: the hash value is defined by its content and type only."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Graph node: each graph node will "
+#~ "be assigned a unique index ordered "
+#~ "by the first occurence during the "
+#~ "visit. The hash value of a graph"
+#~ " node is combined from the hash "
+#~ "values of its contents and the "
+#~ "index."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "structural_hash is made to be concistent"
+#~ " with structural_equal. If two nodes "
+#~ "are structurally equal to each other,"
+#~ " then their structural hash (with the"
+#~ " same map_free_vars option) should be "
+#~ "equal to each other as well."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If the structural hash of two "
+#~ "nodes equals to each other, then "
+#~ "it is highly likely(except for rare "
+#~ "hash value collison cases) that the "
+#~ "two nodes are structurally equal to "
+#~ "each other."
+#~ msgstr ""
+
+#~ msgid "The input to be hashed."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If map_free_vars is set to true, "
+#~ "we will hash free variables by the"
+#~ " order of their occurences. Otherwise, "
+#~ "we will hash by their in-memory"
+#~ " pointer address."
+#~ msgstr ""
+
+#~ msgid "**result** -- The hash result"
+#~ msgstr ""
+
+#~ msgid ":obj:`structrual_equal`"
+#~ msgstr ""
+
+#~ msgid "Common pass instrumentation across IR variants."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`PassInstrument "
+#~ "<tvm.instrument.tvm.instrument.PassInstrument>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "A pass instrument implementation."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`PassTimingInstrument "
+#~ "<tvm.instrument.tvm.instrument.PassTimingInstrument>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "A wrapper to create a passes time instrument that implemented in C++"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`pass_instrument "
+#~ "<tvm.instrument.tvm.instrument.pass_instrument>`\\ "
+#~ "\\(\\[pi\\_cls\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Decorate a pass instrument."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "To use, a user class can either"
+#~ " subclass from PassInstrument directly, or"
+#~ " can apply the :py:func:`pass_instrument` "
+#~ "wrapper.  In either case, the "
+#~ "`enter_pass_ctx`, `exit_pass_ctx`, `should_run`, "
+#~ "`run_before_pass`, and `run_after_pass` methods "
+#~ "can be defined to adjust the "
+#~ "instrument's behavior.  See the no-op"
+#~ " implementations in this class definition"
+#~ " for more information on each."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`enter_pass_ctx "
+#~ "<tvm.instrument.tvm.instrument.PassInstrument.enter_pass_ctx>`\\ "
+#~ "\\(\\)"
+#~ msgstr ""
+
+#~ msgid "Called when entering the instrumented context."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`exit_pass_ctx "
+#~ "<tvm.instrument.tvm.instrument.PassInstrument.exit_pass_ctx>`\\ "
+#~ "\\(\\)"
+#~ msgstr ""
+
+#~ msgid "Called when exiting the instrumented context."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`run_after_pass "
+#~ "<tvm.instrument.tvm.instrument.PassInstrument.run_after_pass>`\\ "
+#~ "\\(mod\\, info\\)"
+#~ msgstr ""
+
+#~ msgid "Instrument after the pass runs."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`run_before_pass "
+#~ "<tvm.instrument.tvm.instrument.PassInstrument.run_before_pass>`\\ "
+#~ "\\(mod\\, info\\)"
+#~ msgstr ""
+
+#~ msgid "Instrument before the pass runs."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`should_run "
+#~ "<tvm.instrument.tvm.instrument.PassInstrument.should_run>`\\ "
+#~ "\\(mod\\, info\\)"
+#~ msgstr ""
+
+#~ msgid "Determine whether to run the pass or not."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Called once for each pass that is"
+#~ " run while the instrumented context "
+#~ "is active."
+#~ msgstr ""
+
+#~ msgid "The module on which an optimization pass is being run."
+#~ msgstr ""
+
+#~ msgid "The pass information."
+#~ msgstr ""
+
+#~ msgid "**should_run** -- True to run the pass, or False to skip the pass."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`render "
+#~ "<tvm.instrument.tvm.instrument.PassTimingInstrument.render>`\\ "
+#~ "\\(\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Retrieve rendered time profile result "
+#~ ":returns: **string** -- The rendered "
+#~ "string result of time profiles :rtype:"
+#~ " string"
+#~ msgstr ""
+
+#~ msgid "实际案例"
+#~ msgstr ""
+
+#~ msgid "Instrument class. See example below."
+#~ msgstr ""
+
+#~ msgid "Common pass infrastructure across IR variants."
+#~ msgstr ""
+
+#~ msgid "A pass that works on tvm.IRModule."
+#~ msgstr ""
+
+#~ msgid "The base class of all passes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`PassContext "
+#~ "<tvm.transform.tvm.transform.PassContext>`\\ "
+#~ "\\(\\[opt\\_level\\, required\\_pass\\, ...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "The basis where a Relay optimization/analysis runs on."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`PassInfo <tvm.transform.tvm.transform.PassInfo>`\\ "
+#~ "\\(opt\\_level\\, name\\[\\, required\\]\\)"
+#~ msgstr ""
+
+#~ msgid "The class contains the meta data required by a pass."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`Sequential <tvm.transform.tvm.transform.Sequential>`\\"
+#~ " \\(\\[passes\\, opt\\_level\\, name\\, "
+#~ "required\\]\\)"
+#~ msgstr ""
+
+#~ msgid "A pass that works on a sequence of pass objects."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`PrintIR <tvm.transform.tvm.transform.PrintIR>`\\ "
+#~ "\\(\\[header\\, show\\_meta\\_data\\]\\)"
+#~ msgstr ""
+
+#~ msgid "A special trace pass that prints the header and IR."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`module_pass "
+#~ "<tvm.transform.tvm.transform.module_pass>`\\ "
+#~ "\\(\\[pass\\_func\\, opt\\_level\\, name\\, "
+#~ "...\\]\\)"
+#~ msgstr ""
+
+#~ msgid "Decorate a module pass."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A pass that works on tvm.IRModule. "
+#~ "Users don't need to interact with "
+#~ "this class directly. Instead, a module"
+#~ " pass should be created through "
+#~ "`module_pass`, because the design of the"
+#~ " `module_pass` API is flexible enough "
+#~ "to handle the creation of a module"
+#~ " pass in different manners. In "
+#~ "addition, all members of a module "
+#~ "pass can be accessed from the base"
+#~ " class. The same rule applies to "
+#~ "FunctionPass as well."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The base class of all passes. All"
+#~ " methods here are just simple "
+#~ "wrappers that are implemented in the "
+#~ "backend. They are defined for users "
+#~ "to conveniently interact with the base"
+#~ " class."
+#~ msgstr ""
+
+#~ msgid ":py:obj:`info <tvm.transform.tvm.transform.Pass.info>`\\"
+#~ msgstr ""
+
+#~ msgid "Get the pass meta."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The basis where a Relay "
+#~ "optimization/analysis runs on. Each pass "
+#~ "context contains a number of auxiliary"
+#~ " information that is used to help "
+#~ "an optimization pass. Such information "
+#~ "includes the error reporter to record"
+#~ " the errors of during the "
+#~ "optimization, etc."
+#~ msgstr ""
+
+#~ msgid "opt_level"
+#~ msgstr ""
+
+#~ msgid "Optional[int]"
+#~ msgstr ""
+
+#~ msgid "The optimization level of this pass."
+#~ msgstr ""
+
+#~ msgid "required_pass"
+#~ msgstr ""
+
+#~ msgid "Optional[Union[List[str], Set[str], Tuple[str]]]"
+#~ msgstr ""
+
+#~ msgid "The list of passes that are required by a certain pass."
+#~ msgstr ""
+
+#~ msgid "disabled_pass"
+#~ msgstr ""
+
+#~ msgid "The list of passes that are disabled."
+#~ msgstr ""
+
+#~ msgid "instruments"
+#~ msgstr ""
+
+#~ msgid "Optional[Sequence[PassInstrument]]"
+#~ msgstr ""
+
+#~ msgid "The list of pass instrument implementations."
+#~ msgstr ""
+
+#~ msgid "config"
+#~ msgstr ""
+
+#~ msgid "Optional[Dict[str, Object]]"
+#~ msgstr ""
+
+#~ msgid "Additional configurations for specific passes."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`current "
+#~ "<tvm.transform.tvm.transform.PassContext.current>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "Return the current pass context."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`list_configs "
+#~ "<tvm.transform.tvm.transform.PassContext.list_configs>`\\ \\(\\)"
+#~ msgstr ""
+
+#~ msgid "List all registered `PassContext` configuration names and metadata."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`override_instruments "
+#~ "<tvm.transform.tvm.transform.PassContext.override_instruments>`\\ "
+#~ "\\(instruments\\)"
+#~ msgstr ""
+
+#~ msgid "Override instruments within this PassContext."
+#~ msgstr ""
+
+#~ msgid "**configs**"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If there are existing instruments, their"
+#~ " ``exit_pass_ctx`` callbacks are called. "
+#~ "Then switching to new instruments and"
+#~ " calling new ``enter_pass_ctx`` callbacks."
+#~ msgstr ""
+
+#~ msgid "Sequence[PassInstrument]"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The class contains the meta data "
+#~ "required by a pass. It is the "
+#~ "container of information needed by "
+#~ "running an optimization or analysis. "
+#~ "This class can be extended by "
+#~ "adding new members when more meta "
+#~ "data is needed."
+#~ msgstr ""
+
+#~ msgid "The pass name."
+#~ msgstr ""
+
+#~ msgid "The header to be displayed along with the dump."
+#~ msgstr ""
+
+#~ msgid "A boolean flag to indicate if meta data should be printed."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A pass that works on a sequence"
+#~ " of pass objects. Multiple passes can"
+#~ " be executed sequentially using this "
+#~ "class."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Note that users can also provide a"
+#~ " series of passes that they don't "
+#~ "want to apply when running a "
+#~ "sequential pass. Pass dependency will be"
+#~ " resolved in the backend as well."
+#~ msgstr ""
+
+#~ msgid "A sequence of passes candidate for optimization."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The optimization level of this "
+#~ "sequential pass. The opt_level of a "
+#~ "default sequential pass is set to "
+#~ "0. Note that some of the passes"
+#~ " within the Sequantial may still not"
+#~ " be executed if their opt_level is"
+#~ " higher than the provided opt_level."
+#~ msgstr ""
+
+#~ msgid "The name of the sequential pass."
+#~ msgstr ""
+
+#~ msgid "The list of passes that the sequential pass is dependent on."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This function returns a callback when"
+#~ " pass_func is provided. Otherwise, it "
+#~ "serves a decorator function."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "pass_func can also be a class type"
+#~ " with a method transform_module. This "
+#~ "function will create a decorated "
+#~ "ModulePass using transform_module as the "
+#~ "pass function."
+#~ msgstr ""
+
+#~ msgid "The transformation function or class."
+#~ msgstr ""
+
+#~ msgid "The optimization level of this module pass."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The name of the module pass. The"
+#~ " name could be empty. In this "
+#~ "case, the name of the optimization "
+#~ "function will be used as the pass"
+#~ " name."
+#~ msgstr ""
+
+#~ msgid "The list of passes that the module pass is dependent on."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**create_module_pass** -- A decorator will "
+#~ "be returned if pass_func is not "
+#~ "provided, otherwise return the decorated "
+#~ "result. The returned decorator has two"
+#~ " behaviors depending on the input: A"
+#~ " new ModulePass will be returned when"
+#~ " we decorate a pass function. A "
+#~ "new ModulePass class will be returned"
+#~ " when we decorate a class type."
+#~ msgstr ""
+
+#~ msgid "The following code block decorates a module pass class."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The following code creates a module "
+#~ "pass by decorating a user defined "
+#~ "transform function."
+#~ msgstr ""
+

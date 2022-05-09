@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-10 21:32+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docs/contribute/index.rst:19
+msgid "Contributor Guide"
+msgstr "贡献者指南"
+
+#: ../../docs/contribute/index.rst:21
+msgid ""
+"TVM has been developed by community members. Everyone is welcomed to "
+"contribute. We value all forms of contributions, including, but not "
+"limited to:"
+msgstr ""
+"TVM 是由社区成员开发的。欢迎大家踊跃投稿。我们重视所有形式的贡献，包括但不限于："
+
+#: ../../docs/contribute/index.rst:25
+msgid "Code reviewing of the existing patches."
+msgstr "对现有补丁的代码审查。"
+
+#: ../../docs/contribute/index.rst:26
+msgid "Documentation and usage examples"
+msgstr "文档和使用示例"
+
+#: ../../docs/contribute/index.rst:27
+msgid "Community participation in forums and issues."
+msgstr "社区参与论坛和议题。"
+
+#: ../../docs/contribute/index.rst:28
+msgid "Code readability and developer guide"
+msgstr "代码可读性和开发者指南"
+
+#: ../../docs/contribute/index.rst:30
+msgid "We welcome contributions that add code comments to improve readability"
+msgstr "欢迎那些添加代码注释以提高可读性的贡献"
+
+#: ../../docs/contribute/index.rst:32
+msgid ""
+"We also welcome contributions to docs to explain the design choices of "
+"the internal."
+msgstr ""
+"也欢迎贡献文档来解释内部的设计选择。"
+
+#: ../../docs/contribute/index.rst:35
+msgid "Test cases to make the codebase more robust"
+msgstr "测试用例，使代码库更加健壮"
+
+#: ../../docs/contribute/index.rst:36
+msgid "Tutorials, blog posts, talks that promote the project."
+msgstr "推广项目的教程、博客文章、演讲。"
+
+#: ../../docs/contribute/index.rst:38
+msgid "Here are guidelines for contributing to various aspect of the project:"
+msgstr "以下是为项目的各个方面做出贡献的指导方针："
+

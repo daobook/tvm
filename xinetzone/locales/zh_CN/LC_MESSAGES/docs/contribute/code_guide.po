@@ -1,0 +1,169 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-07 11:03+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/docs/contribute/code_guide.rst:21
+msgid "Code Guide and Tips"
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:27
+msgid ""
+"This is a document used to record tips in TVM codebase for reviewers and "
+"contributors. Most of them are summarized through lessons during the "
+"contributing and process."
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:32
+msgid "C++ Code Styles"
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:33
+msgid "Use the Google C/C++ style."
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:34
+msgid "The public facing functions are documented in doxygen format."
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:35
+msgid "Favor concrete type declaration over ``auto`` as long as it is short."
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:36
+msgid ""
+"Favor passing by const reference (e.g. ``const Expr&``) over passing by "
+"value. Except when the function consumes the value by copy constructor or"
+" move, pass by value is better than pass by const reference in such "
+"cases."
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:39
+msgid "Favor ``const`` member function when possible."
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:41
+msgid ""
+"We use ``clang-format`` to enforce the code style. Because different "
+"version of clang-format might change by its version, it is recommended to"
+" use the same version of the clang-format as the main one. You can also "
+"use the following command via docker."
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:55
+msgid ""
+"clang-format is also not perfect, when necessary, you can use disble "
+"clang-format on certain code regions."
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:66
+msgid ""
+"Because clang-format may not recognize macros, it is recommended to use "
+"macro like normal function styles."
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:87
+msgid "Python Code Styles"
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:88
+msgid ""
+"The functions and classes are documented in `numpydoc "
+"<https://numpydoc.readthedocs.io/en/latest/>`_ format."
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:89
+msgid "Check your code style using ``python tests/scripts/ci.py lint``"
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:90
+msgid "Stick to language features in ``python 3.7``"
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:94
+msgid "Writing Python Tests"
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:95
+msgid ""
+"We use `pytest <https://docs.pytest.org/en/stable/>`_ for all python "
+"testing. ``tests/python`` contains all the tests."
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:97
+msgid ""
+"If you want your test to run over a variety of targets, use the "
+":py:func:`tvm.testing.parametrize_targets` decorator. For example:"
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:105
+msgid ""
+"will run ``test_mytest`` with ``target=\"llvm\"``, ``target=\"cuda\"``, "
+"and few others. This also ensures that your test is run on the correct "
+"hardware by the CI. If you only want to test against a couple targets use"
+" ``@tvm.testing.parametrize_targets(\"target_1\", \"target_2\")``. If you"
+" want to test on a single target, use the associated decorator from "
+":py:func:`tvm.testing`. For example, CUDA tests use the "
+"``@tvm.testing.requires_cuda`` decorator."
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:108
+msgid "Handle Integer Constant Expression"
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:109
+msgid ""
+"We often need to handle constant integer expressions in TVM. Before we do"
+" so, the first question we want to ask is that is it really necessary to "
+"get a constant integer. If symbolic expression also works and let the "
+"logic flow, we should use symbolic expression as much as possible. So the"
+" generated code works for shapes that are not known ahead of time."
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:111
+msgid ""
+"Note that in some cases we cannot know certain information, e.g. sign of "
+"symbolic variable, it is ok to make assumptions in certain cases. While "
+"adding precise support if the variable is constant."
+msgstr ""
+
+#: ../../../xin/docs/contribute/code_guide.rst:113
+msgid ""
+"If we do have to get constant integer expression, we should get the "
+"constant value using type ``int64_t`` instead of ``int``, to avoid "
+"potential integer overflow. We can always reconstruct an integer with the"
+" corresponding expression type via ``make_const``. The following code "
+"gives an example."
+msgstr ""
+
+#~ msgid ""
+#~ "We use `clang-format` to enforce "
+#~ "the code style. Because different "
+#~ "version of clang-format might change "
+#~ "by its version, it is recommended "
+#~ "to use the same version of the "
+#~ "clang-format as the main one. You"
+#~ " can also use the following command"
+#~ " via docker."
+#~ msgstr ""
+
+#~ msgid "Check your code style using ``make pylint``"
+#~ msgstr ""
+
+#~ msgid "Stick to language features as in ``python 3.6``"
+#~ msgstr ""
+
