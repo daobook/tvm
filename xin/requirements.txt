@@ -10,10 +10,11 @@ tlcpack-sphinx-addon
 babel
 synr
 pytest
-# cloudpickle
+cloudpickle
 jupyter-sphinx
 myst-nb
 sphinx_thebe
 sphinx_panels
 attrs
 sphinxext-rediraffe
+myst_nb
