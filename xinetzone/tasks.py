@@ -59,7 +59,7 @@ def make(ctx):
         ctx.run("make -j$(nproc)")
 
 @task
-def xin_init(ctx):
+def update(ctx):
     '''仅仅适用于 Linux'''
     with ctx.cd(ROOT):
         # ctx.run('ls')

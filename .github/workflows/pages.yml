@@ -52,7 +52,7 @@ jobs:
       - name: 🔧 Build HTML
         run: |
           cd xinetzone
-          invoke xin-init
+          invoke update
           invoke doc
 
       - name: 🚀 Deploy to GitHub pages
