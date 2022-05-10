@@ -1417,7 +1417,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gpu">
-     针对 GPU 的矢量添加（可选）
+     针对 GPU 的向量加法（可选）
     </a>
    </li>
   </ul>
@@ -1552,7 +1552,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gpu">
-     针对 GPU 的矢量添加（可选）
+     针对 GPU 的向量加法（可选）
     </a>
    </li>
   </ul>
@@ -1966,11 +1966,11 @@ naive: 0.000016
 <p>在主机端，TVM 会自动生成检查代码，检查参数中的约束。所以如果你把不同形状的数组传入 <code class="docutils literal notranslate"><span class="pre">fadd</span></code>，就会出现错误。</p>
 <p>我们可以做更多的特殊化。例如，我们可以在计算声明中写 <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">tvm.runtime.convert(1024)</span></code>，而不是 <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">te.var(&quot;n&quot;)</span></code> 。生成的函数将只接受长度为 1024 的向量。</p>
 </div>
-<p>我们已经定义、调度并编译了一个向量加法运算符，然后我们能够在 TVM 运行时上执行它。我们可以将运算符保存为一个库，然后我们可以在以后使用 TVM 运行时加载它。</p>
+<p>我们已经定义、调度并编译了向量加法运算符，然后我们能够在 TVM 运行时上执行它。我们可以将运算符保存为一个库，然后我们可以在以后使用 TVM 运行时加载它。</p>
 </section>
 <section id="gpu">
-<h3>针对 GPU 的矢量添加（可选）<a class="headerlink" href="#gpu" title="永久链接至标题">#</a></h3>
-<p>TVM 能够针对多种架构。在下一个例子中，我们将针对 GPU 的向量加法进行编译。</p>
+<h3>针对 GPU 的向量加法（可选）<a class="headerlink" href="#gpu" title="永久链接至标题">#</a></h3>
+<p>TVM 能够针对多种架构。在下一个例子中，将针对 GPU 的向量加法进行编译。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 如果你想运行这段代码，改变 ``run_cuda = True``。</span>
@@ -2406,7 +2406,7 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
 <section id="id15">
 <h3>优化4：数组打包<a class="headerlink" href="#id15" title="永久链接至标题">#</a></h3>
 <p>另一个重要的技巧是数组打包。这个技巧是对数组的存储维度进行重新排序，将某些维度上的连续访问模式转换为扁平化后的顺序模式。</p>
-<img alt="https://tvm.apache.org/tutorial/array-packing.png" class="align-center" src="https://tvm.apache.org/tutorial/array-packing.png" />
+<p><img alt="" src="../../_images/array-packing.png" /></p>
 <p>正如上图所示，在阻塞计算后，我们可以观察到 B 的数组访问模式（扁平化后），它是有规律的，但是不连续的。我们期望经过一些转换后，我们可以得到一个连续的访问模式。通过将 <code class="docutils literal notranslate"><span class="pre">[16][16]</span></code> 数组重新排序为 <code class="docutils literal notranslate"><span class="pre">[16/4][16][4]</span></code> 数组，当从打包的数组中抓取相应的值时，B 的访问模式将是连续的。</p>
 <p>为了实现这一目标，我们将不得不从一个新的默认调度开始，考虑到 B 的新包装，值得花点时间来评论一下。TE 是一种编写优化运算符的强大而富有表现力的语言，但它往往需要对你所编写的底层算法、数据结构和硬件目标有一些了解。在本教程的后面，我们将讨论一些让 TVM 承担这一负担的选项。无论如何，让我们继续编写新的优化调度。</p>
 <div class="cell docutils container">
@@ -2566,7 +2566,7 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-05-10, 03:48:33.<br/>
+    Last updated on 2022-05-10, 15:46:23.<br/>
 </p>
         </footer>
     </div>
