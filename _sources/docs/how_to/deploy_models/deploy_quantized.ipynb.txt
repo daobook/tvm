@@ -194,9 +194,9 @@
           "name": "stderr",
           "output_type": "stream",
           "text": [
-            "[12:27:10] ../src/io/iter_image_recordio_2.cc:177: ImageRecordIOParser2: /home/pc/.tvm_test_data/val_256_q90.rec, use 4 threads for decoding..\n",
+            "[13:18:36] ../src/io/iter_image_recordio_2.cc:177: ImageRecordIOParser2: /home/pc/.tvm_test_data/val_256_q90.rec, use 4 threads for decoding..\n",
             "WARNING:autotvm:One or more operators have not been tuned. Please tune your model for better performance. Use DEBUG logging level to see more details.\n",
-            "[12:27:36] ../src/io/iter_image_recordio_2.cc:177: ImageRecordIOParser2: /home/pc/.tvm_test_data/val_256_q90.rec, use 4 threads for decoding..\n"
+            "[13:19:12] ../src/io/iter_image_recordio_2.cc:177: ImageRecordIOParser2: /home/pc/.tvm_test_data/val_256_q90.rec, use 4 threads for decoding..\n"
           ]
         }
       ],
