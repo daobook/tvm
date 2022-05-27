@@ -16,12 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+#include "../../../arith/ir_mutator_with_analyzer.h"
 #include "../utils.h"
 
 namespace tvm {
 namespace tir {
 
-class TransformLayoutRewriter : private StmtExprMutator {
+class TransformLayoutRewriter : private arith::IRMutatorWithAnalyzer {
  public:
   /*!
    * \brief Rewrite the access to the buffer after the transformation
@@ -36,26 +37,32 @@ class TransformLayoutRewriter : private StmtExprMutator {
                                                     const Buffer& old_buffer,
                                                     const Buffer& new_buffer,
                                                     const IndexMap& index_map) {
-    TransformLayoutRewriter rewriter(old_buffer, new_buffer, index_map);
+    arith::Analyzer analyzer;
+    TransformLayoutRewriter rewriter(old_buffer, new_buffer, index_map, &analyzer);
     Stmt result = rewriter(scope_stmt);
     return {result, rewriter.block_sref_reuse_};
   }
 
  private:
   TransformLayoutRewriter(const Buffer& old_buffer, const Buffer& new_buffer,
-                          const IndexMap& index_map)
-      : old_buffer_(old_buffer),
+                          const IndexMap& index_map, arith::Analyzer* analyzer)
+      : IRMutatorWithAnalyzer(analyzer),
+        old_buffer_(old_buffer),
         new_buffer_(new_buffer),
         index_map_(index_map),
         buffer_data_to_buffer_{{new_buffer->data, new_buffer}} {}
 
   void RewriteBufferAccess(Buffer* buffer, Array<PrimExpr>* indices) {
     *buffer = new_buffer_;
-    *indices = index_map_->MapIndices(*indices);
+    *indices = index_map_->MapIndices(*indices, analyzer_);
   }
 
+  using Parent = arith::IRMutatorWithAnalyzer;
+  using Parent::VisitExpr_;
+  using Parent::VisitStmt_;
+
   PrimExpr VisitExpr_(const BufferLoadNode* op) final {
-    BufferLoad buffer_load = Downcast<BufferLoad>(StmtExprMutator::VisitExpr_(op));
+    BufferLoad buffer_load = Downcast<BufferLoad>(Parent::VisitExpr_(op));
     if (buffer_load->buffer.same_as(old_buffer_)) {
       auto* n = buffer_load.CopyOnWrite();
       RewriteBufferAccess(&n->buffer, &n->indices);
@@ -64,7 +71,7 @@ class TransformLayoutRewriter : private StmtExprMutator {
   }
 
   Stmt VisitStmt_(const BufferStoreNode* op) final {
-    BufferStore buffer_store = Downcast<BufferStore>(StmtExprMutator::VisitStmt_(op));
+    BufferStore buffer_store = Downcast<BufferStore>(Parent::VisitStmt_(op));
     if (buffer_store->buffer.same_as(old_buffer_)) {
       auto* n = buffer_store.CopyOnWrite();
       RewriteBufferAccess(&n->buffer, &n->indices);
@@ -85,7 +92,7 @@ class TransformLayoutRewriter : private StmtExprMutator {
   }
 
   Stmt VisitStmt_(const BlockNode* op) final {
-    Block block = Downcast<Block>(StmtExprMutator::VisitStmt_(op));
+    Block block = Downcast<Block>(Parent::VisitStmt_(op));
     auto infered_access_regions = GetBlockReadWriteRegion(block, buffer_data_to_buffer_);
     auto* n = block.CopyOnWrite();
     RewriteAccessRegion(&n->reads, infered_access_regions[0]);
@@ -284,11 +291,12 @@ struct TransformLayoutTraits : public UnpackedInstTraits<TransformLayoutTraits> 
                                  Integer buffer_index_type, IndexMap index_map) {
     PythonAPICall py("transform_layout");
     py.Input("block", block_rv);
-    py.Input("buffer_index", buffer_index);
-    py.Input("buffer_index_type", '"' +
-                                      std::string(BufferIndexType2Str(
-                                          static_cast<BufferIndexType>(buffer_index_type->value))) +
-                                      '"');
+
+    std::ostringstream os;
+    os << "(\"" << BufferIndexType2Str(static_cast<BufferIndexType>(buffer_index_type->value))
+       << "\", " << buffer_index << ")";
+    py.Input("buffer", os.str());
+
     py.Input("index_map", index_map->ToPythonString());
     return py.Str();
   }
@@ -336,11 +344,12 @@ struct SetAxisSeparatorTraits : public UnpackedInstTraits<SetAxisSeparatorTraits
                                  Integer buffer_index_type, Array<IntImm> axis_separators) {
     PythonAPICall py("set_axis_separator");
     py.Input("block", block_rv);
-    py.Input("buffer_index", buffer_index);
-    py.Input("buffer_index_type", '"' +
-                                      std::string(BufferIndexType2Str(
-                                          static_cast<BufferIndexType>(buffer_index_type->value))) +
-                                      '"');
+
+    std::ostringstream os;
+    os << "(\"" << BufferIndexType2Str(static_cast<BufferIndexType>(buffer_index_type->value))
+       << "\", " << buffer_index << ")";
+    py.Input("buffer", os.str());
+
     py.Input("axis_separators", axis_separators);
     return py.Str();
   }
