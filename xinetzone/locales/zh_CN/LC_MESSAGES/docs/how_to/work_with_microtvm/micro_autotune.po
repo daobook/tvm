@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-06 15:25+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,131 +17,234 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:13
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:10002
+msgid "使用 microTVM Autotuning"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:10004
+msgid "**原作者**:"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:10005
+msgid "[Andrew Reusch](https://github.com/areusch)"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:10006
+msgid "[Mehrdad Hessar](https://github.com/mehrdadh)"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:10008
+msgid "本教程解释如何使用 C 运行时自动调优模型。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:30002
+msgid "定义模型"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:30004
+msgid "首先，在 Relay 中定义要在设备上执行的模型。然后从 Relay 模型创建 IRModule，并用随机数填充参数。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:50002
+msgid "定义目标"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:50004
 msgid ""
-"Click :ref:`here "
-"<sphx_glr_download_how_to_work_with_microtvm_micro_autotune.py>` to "
-"download the full example code"
+"现在我们定义描述执行环境的 TVM 目标。这看起来与其他 microTVM 教程中的目标定义非常相似。与此同时，选择 C "
+"运行时来代码生成我们的模型。"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:24
-msgid "Autotuning with micro TVM"
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:25
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:50006
 msgid ""
-"**Authors**: `Andrew Reusch <https://github.com/areusch>`_, `Mehrdad "
-"Hessar <https://github.com/mehrdadh>`_"
+"在物理硬件上运行时，选择描述该硬件的 target 和 board。本教程中可以从 PLATFORM "
+"列表中选择多个硬件目标。在运行本教程时，您可以通过传递 --platform 参数来选择平台。"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:29
-msgid "This tutorial explains how to autotune a model using the C runtime."
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:70002
+msgid "提取优化任务"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:47
-msgid "Defining the model"
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:49
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:70004
 msgid ""
-"To begin with, define a model in Relay to be executed on-device. Then "
-"create an IRModule from relay model and fill parameters with random "
-"numbers."
+"不是所有的算子在上面打印的 Relay 程序可以调谐。有些非常简单，只定义了单个实现；其他任务作为调优任务没有意义。使用 "
+"`extract_from_program`，可以生成可调任务列表。"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:86
-msgid "Defining the target #"
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:70006
+msgid "因为任务提取涉及到运行编译器，所以首先需要配置编译器的 transformation passes；将在稍后的自动调优期间应用相同的配置。"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:87
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:90002
+msgid "配置 microTVM"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:90004
 msgid ""
-"Now we define the TVM target that describes the execution environment. "
-"This looks very similar to target definitions from other microTVM "
-"tutorials. Alongside this we pick the C Runtime to code generate our "
-"model against."
+"在进行自动调优之前，需要定义模块加载器，并将其传递给 `tvm.autotvm.LocalBuilder`。然后创建 "
+"`tvm.autotvm.LocalRunner`，并使用构建器和运行器为自动调谐器生成多个度量值。"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:91
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:90006
 msgid ""
-"When running on physical hardware, choose a target and a board that "
-"describe the hardware. There are multiple hardware targets that could be "
-"selected from PLATFORM list in this tutorial. You can chose the platform "
-"by passing --platform argument when running this tutorial."
+"在本教程中，可以选择使用 x86 主机作为示例，或者使用来自 Zephyr RTOS 的不同目标。如果您选择 pass "
+"`--platform=host` 到本教程，它将使用 x86。您可以从 `PLATFORM` 列表中选择其他选项。"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:116
-msgid "Extracting tuning tasks"
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:110002
+msgid "运行 Autotuning"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:117
-msgid ""
-"Not all operators in the Relay program printed above can be tuned. Some "
-"are so trivial that only a single implementation is defined; others don't"
-" make sense as tuning tasks. Using `extract_from_program`, you can "
-"produce a list of tunable tasks."
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:110004
+msgid "现在可以在 microTVM 设备上分别对每个提取任务进行自动调优。"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:121
-msgid ""
-"Because task extraction involves running the compiler, we first configure"
-" the compiler's transformation passes; we'll apply the same configuration"
-" later on during autotuning."
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:130002
+msgid "为未调优的程序计时"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:138
-msgid "Configuring microTVM"
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:130004
+msgid "为了进行比较，让我们在不施加任何自动调优调度的情况下编译和运行 graph。TVM 将为每个算子随机选择调优的实现，它的性能应该不如调优后的算子。"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:139
-msgid ""
-"Before autotuning, we need to define a module loader and then pass that "
-"to a `tvm.autotvm.LocalBuilder`. Then we create a "
-"`tvm.autotvm.LocalRunner` and use both builder and runner to generates "
-"multiple measurements for auto tunner."
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:150002
+msgid "为调优后的程序计时"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:143
-msgid ""
-"In this tutorial, we have the option to use x86 host as an example or use"
-" different targets from Zephyr RTOS. If you choose pass `--platform=host`"
-" to this tutorial it will uses x86. You can choose other options by "
-"choosing from `PLATFORM` list."
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_autotune.ipynb:150004
+msgid "一旦自动调优完成，您可以使用调试运行时对整个程序的执行进行计时："
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:212
-msgid "Timing the untuned program"
-msgstr ""
+#~ msgid ""
+#~ "Click :ref:`here "
+#~ "<sphx_glr_download_how_to_work_with_microtvm_micro_autotune.py>` "
+#~ "to download the full example code"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:213
-msgid ""
-"For comparison, let's compile and run the graph without imposing any "
-"autotuning schedules. TVM will select a randomly-tuned implementation for"
-" each operator, which should not perform as well as the tuned operator."
-msgstr ""
+#~ msgid "Autotuning with micro TVM"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:263
-msgid "Timing the tuned program"
-msgstr ""
+#~ msgid ""
+#~ "**Authors**: `Andrew Reusch "
+#~ "<https://github.com/areusch>`_, `Mehrdad Hessar "
+#~ "<https://github.com/mehrdadh>`_"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:264
-msgid ""
-"Once autotuning completes, you can time execution of the entire program "
-"using the Debug Runtime:"
-msgstr ""
+#~ msgid "This tutorial explains how to autotune a model using the C runtime."
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:322
-msgid ""
-":download:`Download Python source code: micro_autotune.py "
-"<micro_autotune.py>`"
-msgstr ""
+#~ msgid "Defining the model"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:328
-msgid ""
-":download:`Download Jupyter notebook: micro_autotune.ipynb "
-"<micro_autotune.ipynb>`"
-msgstr ""
+#~ msgid ""
+#~ "To begin with, define a model in"
+#~ " Relay to be executed on-device. "
+#~ "Then create an IRModule from relay "
+#~ "model and fill parameters with random"
+#~ " numbers."
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_autotune.rst:335
-msgid "`Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_"
-msgstr ""
+#~ msgid "Defining the target #"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Now we define the TVM target that"
+#~ " describes the execution environment. This"
+#~ " looks very similar to target "
+#~ "definitions from other microTVM tutorials. "
+#~ "Alongside this we pick the C "
+#~ "Runtime to code generate our model "
+#~ "against."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "When running on physical hardware, "
+#~ "choose a target and a board that"
+#~ " describe the hardware. There are "
+#~ "multiple hardware targets that could be"
+#~ " selected from PLATFORM list in this"
+#~ " tutorial. You can chose the platform"
+#~ " by passing --platform argument when "
+#~ "running this tutorial."
+#~ msgstr ""
+
+#~ msgid "Extracting tuning tasks"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Not all operators in the Relay "
+#~ "program printed above can be tuned. "
+#~ "Some are so trivial that only a"
+#~ " single implementation is defined; others"
+#~ " don't make sense as tuning tasks."
+#~ " Using `extract_from_program`, you can "
+#~ "produce a list of tunable tasks."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Because task extraction involves running "
+#~ "the compiler, we first configure the "
+#~ "compiler's transformation passes; we'll apply"
+#~ " the same configuration later on "
+#~ "during autotuning."
+#~ msgstr ""
+
+#~ msgid "Configuring microTVM"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Before autotuning, we need to define "
+#~ "a module loader and then pass that"
+#~ " to a `tvm.autotvm.LocalBuilder`. Then we"
+#~ " create a `tvm.autotvm.LocalRunner` and use"
+#~ " both builder and runner to generates"
+#~ " multiple measurements for auto tunner."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In this tutorial, we have the "
+#~ "option to use x86 host as an "
+#~ "example or use different targets from"
+#~ " Zephyr RTOS. If you choose pass "
+#~ "`--platform=host` to this tutorial it "
+#~ "will uses x86. You can choose "
+#~ "other options by choosing from "
+#~ "`PLATFORM` list."
+#~ msgstr ""
+
+#~ msgid "Timing the untuned program"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "For comparison, let's compile and run"
+#~ " the graph without imposing any "
+#~ "autotuning schedules. TVM will select a"
+#~ " randomly-tuned implementation for each "
+#~ "operator, which should not perform as"
+#~ " well as the tuned operator."
+#~ msgstr ""
+
+#~ msgid "Timing the tuned program"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Once autotuning completes, you can time"
+#~ " execution of the entire program "
+#~ "using the Debug Runtime:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":download:`Download Python source code: "
+#~ "micro_autotune.py <micro_autotune.py>`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":download:`Download Jupyter notebook: "
+#~ "micro_autotune.ipynb <micro_autotune.ipynb>`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`Gallery generated by Sphinx-Gallery "
+#~ "<https://sphinx-gallery.github.io>`_"
+#~ msgstr ""
 

@@ -1,0 +1,183 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:10002
+msgid "在 VTA 上调优卷积神经网络"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:10004
+msgid ""
+"**Author**: [Lianmin Zheng](https://github.com/merrymercy), [Thierry "
+"Moreau](https://homes.cs.washington.edu/~moreau/)"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:10006
+msgid "针对特定加速器设计的自动调优对于任何给定算子获得最佳性能至关重要。此教程，展示了如何在 VTA 上调优整个卷积神经网络。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:10008
+msgid ""
+"TVM 中 VTA 的算子实现是用模板（template）形式编写的。模板有许多可调旋钮（tunable knob）（平铺因子（tile "
+"factor）、虚拟线程（virtual "
+"threads）等）。下面将调优神经网络中的所有卷积算子。调优之后，生成日志文件，其中存储所有调优算子的最佳调度参数。当 TVM "
+"编译器编译这些算子时，它将查询这个日志文件以获得最佳的 knob 参数。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:10010
+msgid "安装依赖"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:10012
+msgid "要在 `tvm` 中使用 `autotvm` 包，我们需要安装一些额外的依赖项。（如果你使用 python2，将 \"3\" 改为 \"2\"）："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:10018
+msgid ""
+"为了使 TVM 在调优期间运行得更快，建议使用 cython 作为 TVM 的 FFI。在 TVM 的根目录下执行（如果使用 python2，则将"
+" \"3\" 改为 \"2\"）："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:10025
+msgid "现在返回 python 代码。导入包。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:30002
+msgid "编译神经网络"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:30004
+msgid "从 Gluon 模型使用 Relay 执行特定于 VTA 的编译："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:50002
+msgid "启动 RPC Tracker"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:50004
+msgid "TVM 使用 RPC 会话与 Pynq 板进行通信。在调优期间，调优器将把生成的代码发送到板上，并度量板上代码的速度。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:50006
+msgid ""
+"为了扩展调优，TVM 使用 RPC Tracker 来管理多个设备。RPC Tracker 是中心化控制节点。可以在 Tracker "
+"上注册所有设备。例如，如果有 10 块 Pynq 板，可以将它们全部注册到 Tracker 中，并并行运行 10 个度量，从而加速优化过程。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:50008
+msgid "要启动 RPC tracker 程序，请在主机上运行此命令。在整个调优过程中都需要此 tracker，所以需要为这个命令打开新的终端："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:50014
+msgid "预期输出为："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:60002
+msgid "注册设备到 RPC Tracker"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:60004
+msgid "现在可以在 Tracker 上注册设备了。第一步是为 Pynq 设备构建 TVM 运行时。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:60006
+msgid ""
+"遵循 [VTA：通用张量加速器](https://tvm.apache.org/docs/topic/vta/index.html#vta-"
+"index) 在设备上构建 TVM 运行时。然后将设备注册到 Tracker："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:60012
+msgid "（将 `[HOST_IP]` 替换为主机的 IP 地址）"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:60014
+msgid "注册设备后，可以通过查询 rpc_tracker 来确认："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:60020
+msgid "例如，如果我们有 6 块 Pynq 板和 11 块树莓派 3B，输出可以是"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:60032
+msgid "您可以向跟踪器注册多个设备以加速优化。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:70002
+msgid "设置调优选项"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:70004
+msgid "在调优之前，应该应用一些配置。这里以 Pynq-Z1 板为例。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:90002
+msgid "如何设置调优参数"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:90005
+msgid ""
+"通常，这里提供的默认值工作良好。如果有足够的时间预算，可以将 `n_trial`，`early_stopping` "
+"设置为更大的值，使调优运行时间更长。如果您的设备动力不足或 conv2d 算子过大，请考虑设置较长的超时时间。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:100002
+msgid "开始调优"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:100004
+msgid "现在可以从网络中提取调优任务并开始调优。这里，提供了简单的实用函数来调优任务列表。这个函数只是按顺序对它们进行调优的初始实现。我们将在将来引入更复杂的调优调度器。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:100006
+msgid ""
+"假设将在 Pynq FPGA 板上进行调优，请确保 ``vta_config.json`` 文件中的 ``TARGET`` 条目设置为 "
+"``pynq``。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:120002
+msgid "注册特定于 VTA 的调优任务："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:140002
+msgid "最后，启动调优作业并评估端到端性能。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:160002
+msgid "样例输出"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:160004
+msgid "调优需要编译许多程序并从中提取特性。建议配置高性能的 CPU。下面列出了示例输出。16T CPU 选配 6 块 Pynq 单板，大约需要 2 小时。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:170002
+msgid "实验困难？"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:170005
+msgid "自动调优模块容易出错。如果你总是看到 \" 0.00/ 0.00 GFLOPS\"，那么一定是哪里出了问题。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:170007
+msgid "首先，确保您设置了正确的设备配置。然后，您可以通过在脚本的开头添加这些行来打印调试信息。它将打印每个测量结果，您可以在其中找到有用的错误消息。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/autotvm/tune_relay_vta.ipynb:170014
+msgid "最后，请随时在 <https://discuss.tvm.apache.org> 社区寻求帮助。"
+msgstr ""
+

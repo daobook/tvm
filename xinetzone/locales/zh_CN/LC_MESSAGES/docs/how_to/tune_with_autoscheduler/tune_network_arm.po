@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-06 15:25+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,32 +17,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:13
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:13
 msgid ""
 "Click :ref:`here "
 "<sphx_glr_download_how_to_tune_with_autoscheduler_tune_network_arm.py>` "
 "to download the full example code"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:22
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:22
 msgid "Auto-scheduling a Neural Network for ARM CPU"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:23
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:23
 msgid ""
 "**Author**: `Thierry Moreau <https://github.com/tmoreau89>_`,"
 "             `Lianmin Zheng <https://github.com/merrymercy>_`,"
 "             `Chengfan Jia <https://github.com/jcf94/>`_"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:25
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:25
 msgid ""
 "Auto-tuning for specific devices and workloads is critical for getting "
 "the best performance. This is a tutorial on how to tune a whole neural "
 "network for ARM CPU with the auto-scheduler via RPC."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:29
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:29
 msgid ""
 "To auto-tune a neural network, we partition the network into small "
 "subgraphs and tune them independently. Each subgraph is treated as one "
@@ -52,7 +52,7 @@ msgid ""
 "can reduce the execution time the most."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:35
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:35
 msgid ""
 "For each subgraph, we use the compute declaration in "
 ":code:`tvm/python/topi` to get the computational DAG in the tensor "
@@ -61,7 +61,7 @@ msgid ""
 "optimizations)."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:40
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:40
 msgid ""
 "Different from the template-based :ref:`autotvm <tutorials-autotvm-sec>` "
 "which relies on manual templates to define the search space, the auto-"
@@ -70,18 +70,18 @@ msgid ""
 ":code:`tvm/python/topi` and does not use existing schedule templates."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:45
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:45
 msgid ""
 "Note that this tutorial will not run on Windows or recent versions of "
 "macOS. To get it to run, you will need to wrap the body of this tutorial "
 "in a :code:`if __name__ == \"__main__\":` block."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:68
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:68
 msgid "Define a Network"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:69
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:69
 msgid ""
 "First, we need to define the network with relay frontend API. We can load"
 " some pre-defined network from :code:`tvm.relay.testing`. We can also "
@@ -89,7 +89,7 @@ msgid ""
 "end tutorials<tutorial-frontend>`)."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:74
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:74
 msgid ""
 "For convolutional neural networks, although auto-scheduler can work "
 "correctly with any layout, we found the best performance is typically "
@@ -100,18 +100,18 @@ msgid ""
 "conversion in TVM."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:165
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:165
 msgid "Start RPC Tracker"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:166
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:166
 msgid ""
 "TVM uses RPC session to communicate with ARM boards. During tuning, the "
 "tuner will send the generated code to the board and measure the speed of "
 "code on the board."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:170
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:170
 msgid ""
 "To scale up the tuning, TVM uses RPC Tracker to manage distributed "
 "devices. The RPC Tracker is a centralized controller node. We can "
@@ -120,39 +120,39 @@ msgid ""
 "parallel, accelerating the tuning process."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:175
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:175
 msgid ""
 "To start an RPC tracker, run this command on the host machine. The "
 "tracker is required during the whole tuning process, so we need to open a"
 " new terminal for this command:"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:183
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:183
 msgid "The expected output is"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:192
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:192
 msgid "Register Devices to RPC Tracker"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:193
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:193
 msgid ""
 "Now we can register our devices to the tracker. The first step is to "
 "build the TVM runtime for the ARM devices."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:196
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:196
 msgid ""
 "For Linux: Follow this section :ref:`build-tvm-runtime-on-device` to "
 "build the TVM runtime on the device. Then register the device to tracker "
 "by"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:204
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:204
 msgid "(replace :code:`[HOST_IP]` with the IP address of your host machine)"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:206
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:206
 msgid ""
 "For Android: Follow this `readme page "
 "<https://github.com/apache/tvm/tree/main/apps/android_rpc>`_ to install "
@@ -162,27 +162,27 @@ msgid ""
 "changing\" and charge your phone to make it stable."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:212
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:212
 msgid "After registering devices, we can confirm it by querying rpc_tracker"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:218
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:218
 msgid ""
 "For example, if we have 2 Huawei mate10 pro, 11 Raspberry Pi 4B with "
 "64bit OS, and 2 rk3399, the output can be"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:232
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:232
 msgid ""
 "You can register multiple devices to the tracker to accelerate the "
 "measurement in tuning."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:237
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:237
 msgid "Set Tuning Options"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:238
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:238
 msgid ""
 "Before tuning, we should apply some configurations. Here I use a "
 "Raspberry Pi 4b 4GB board as example with a 64bit OS (Ubuntu 20.04). In "
@@ -190,11 +190,11 @@ msgid ""
 "set :code:`use_ndk` to True if you use android phone."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:278
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:278
 msgid "Extract Search Tasks"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:279
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:279
 msgid ""
 "Next, we extract the search tasks and their weights from a network. The "
 "weight of a task is the number of appearances of the task's subgraph in "
@@ -204,15 +204,15 @@ msgid ""
 "weight of the task. The task scheduler will just optimize this objective."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:309
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:309
 msgid "Tuning and Evaluation"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:310
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:310
 msgid "Now, we set some options for tuning and launch the search tasks"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:312
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:312
 msgid ""
 ":code:`num_measure_trials` is the number of measurement trials we can use"
 " during the tuning. You can set it to a small number (e.g., 200) for a "
@@ -222,38 +222,38 @@ msgid ""
 "as 20000. You can adjust this parameter according to your time budget."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:318
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:318
 msgid ""
 "In addition, we use :code:`RecordToFile` to dump measurement records into"
 " a log file, The measurement records can be used to query the history "
 "best, resume the search, and do more analyses later."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:321
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:321
 msgid ""
 "see :any:`auto_scheduler.TuningOptions`, "
 ":any:`auto_scheduler.LocalRunner` for more parameters."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:324
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:324
 msgid ""
 "After auto-tuning, we can compile the network with the best schedules we "
 "found. All measurement records are dumped into the log file during auto-"
 "tuning, so we can read the log file and load the best schedules."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:400
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:400
 msgid "Explaining the printed information during tuning"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:402
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:402
 msgid ""
 "During the tuning, a lot of information will be printed on the console. "
 "They are used for debugging purposes. The most important info is the "
 "output of the task scheduler. The following table is a sample output."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:438
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:438
 msgid ""
 "This table lists the latency and (estimated) speed of all tasks. It also "
 "lists the allocation of measurement trials for all tasks. The last line "
@@ -263,7 +263,7 @@ msgid ""
 "auto-tuning and the id of the next task to tune."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:446
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:446
 msgid ""
 "There will also be some \"dmlc::Error\"s errors, because the auto-"
 "scheduler will try some invalid schedules. You can safely ignore them if "
@@ -271,36 +271,36 @@ msgid ""
 "process."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:454
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:454
 msgid "Terminate the tuning earlier"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:456
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:456
 msgid ""
 "You can terminate the tuning earlier by forcibly killing this process. As"
 " long as you get at least one valid schedule for each task in the log "
 "file, you should be able to do the compilation (the secion below)."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:464
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:464
 msgid "Other Tips"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:465
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:465
 msgid ""
 "During the tuning, the auto-scheduler needs to compile many programs and "
 "extract feature from them. This part is CPU-intensive, so a high-"
 "performance CPU with many cores is recommended for faster search."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:468
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:468
 msgid ""
 "You can use :code:`python3 -m tvm.auto_scheduler.measure_record --mode "
 "distill -i log.json` to distill the large log file and only save the best"
 " useful records."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:470
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:470
 msgid ""
 "You can resume a search from the previous log file. You just need to add "
 "a new argument :code:`load_log_file` when creating the task scheduler in "
@@ -309,7 +309,7 @@ msgid ""
 "load_log_file=log_file)`"
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:474
+#: ../../../xin/docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:474
 msgid ""
 "If you have multiple target CPUs, you can use all of them for "
 "measurements to parallelize the measurements. Check this :ref:`section "
@@ -319,19 +319,18 @@ msgid ""
 ":any:`auto_scheduler.RPCRunner`."
 msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:493
-msgid ""
-":download:`Download Python source code: tune_network_arm.py "
-"<tune_network_arm.py>`"
-msgstr ""
+#~ msgid ""
+#~ ":download:`Download Python source code: "
+#~ "tune_network_arm.py <tune_network_arm.py>`"
+#~ msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:499
-msgid ""
-":download:`Download Jupyter notebook: tune_network_arm.ipynb "
-"<tune_network_arm.ipynb>`"
-msgstr ""
+#~ msgid ""
+#~ ":download:`Download Jupyter notebook: "
+#~ "tune_network_arm.ipynb <tune_network_arm.ipynb>`"
+#~ msgstr ""
 
-#: ../../docs/how_to/tune_with_autoscheduler/tune_network_arm.rst:506
-msgid "`Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_"
-msgstr ""
+#~ msgid ""
+#~ "`Gallery generated by Sphinx-Gallery "
+#~ "<https://sphinx-gallery.github.io>`_"
+#~ msgstr ""
 

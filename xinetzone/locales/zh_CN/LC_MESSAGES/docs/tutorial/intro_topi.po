@@ -1,0 +1,125 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:20003
+msgid "TOPI 简介"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:20004
+msgid "**作者**: [Ehsan M. Kermani](https://github.com/ehsanmok)"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:20006
+msgid ""
+"这是一个关于 TVM Operator Inventory（TOPI）的介绍性教程。TOPI 提供了 numpy 风格的通用算子和调度，比 TVM"
+" 的抽象程度更高。在本教程中，将看到 TOPI 如何将从 TVM 中编写模板代码中拯救出来。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:40002
+msgid "基本例子"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:40004
+msgid ""
+"让我们再来看看行之和的算子（相当于 `B = numpy.sum(A, axis=1)`）为了计算二维 TVM 张量 A "
+"的行之和，应该指定符号算子以及调度，如下所述："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:60002
+msgid "并以人类可读的格式来检查 IR 代码，我们可以做到"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:80002
+msgid ""
+"然而，对于这样普通的算子，我们不得不自己定义 `reduce` 轴，以及用 `te.compute` "
+"进行显式计算。想象一下，对于更复杂的操作，需要提供多少细节。幸运的是，可以用简单的 `topi.sum` 替换这两行，就像 `numpy.sum`"
+" 一样。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:100002
+msgid "Numpy 风格的运算符重载"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:100004
+msgid ""
+"我们可以用 `topi.broadcast_add` 来添加两个张量，它们有正确的（可广播的特定）形状。甚至更短，TOPI "
+"为这种常见的操作提供了运算符重载。比如说："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:120002
+msgid "用同样的语法重载，TOPI 处理将一个原语（`int`, `float`）广播到一个张量 `d - 3.14`。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:130002
+msgid "通用的调度和融合操作"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:130004
+msgid ""
+"到目前为止，我们已经看到了一个例子，说明 TOPI 如何使我们免于在低级别的 API "
+"中编写显式计算。但它并没有在这里停止。我们仍然像以前一样进行调度。TOPI 还提供了更高层次的调度方案，这取决于特定的环境。例如，对于 "
+"CUDA，我们可以只用 `topi.sum` 来调度以下一系列以 `topi.generic.schedule_reduce` 结束的操作"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:150002
+msgid "正如你所看到的，预定的计算阶段已经被积累起来，我们可以通过以下方式检查它们"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:170002
+msgid "可以通过与 `numpy` 的结果进行比较来测试正确性，如下所示"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:190002
+msgid "TOPI 还提供常见的神经网络操作，如带有优化调度的 _softmax_"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:210002
+msgid "融合卷积"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:210004
+msgid "我们可以将 `topi.nn.conv2d` 和 `topi.nn.relu` 融合在一起。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:210006
+msgid "注意"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:210009
+msgid ""
+"TOPI 函数都是通用函数。它们对不同的后端有不同的实现，以优化性能。对于每个后端，有必要在计算声明和时间表的目标范围内调用它们。TVM "
+"会根据目标信息选择正确的函数来调用。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:230002
+msgid "总结"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:230004
+msgid "在本教程中，我们已经看到"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:230006
+msgid "如何使用 TOPI API 进行 numpy 风格运算符的普通操作。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/intro_topi.ipynb:230007
+msgid "TOPI 如何为上下文的通用调度和运算符融合提供便利，以生成优化的内核代码。"
+msgstr ""
+

@@ -1,0 +1,141 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:10003
+msgid "分块矩阵乘法"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:10006
+msgid "**原作者**: [Thierry Moreau](https://homes.cs.washington.edu/~moreau/)"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:10008
+msgid "本教程概述了如何在 VTA 设计中使用 TVM 有效地映射矩阵乘法。建议先学习 {ref}`basic-mat-mult` 教程。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:10010
+msgid "在本教程中，将演示 TVM 调度优化，将大型神经网络算子分解为较小的块，以在有限的硬件加速器资源内实现计算。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:10012
+msgid "RPC 设置"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:10014
+msgid "首先编程 Pynq 的 FPGA 并构建它的 RPC 运行时。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:30002
+msgid "声明计算"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:30004
+msgid ""
+"作为第一步，需要描述矩阵乘法的计算。将矩阵乘法定义为全连接层中的计算，由其 batch size、输入通道和输出通道定义。它们必须是 VTA "
+"张量形状的整数倍：`BATCH`、`BLOCK_IN` 和 `BLOCK_OUT`。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:30006
+msgid ""
+"在矩阵乘法中添加额外的算子，这些算子对输出进行了移位（shifting）和剪切（clipping），以模拟定点矩阵乘法，然后是修正的线性激活。将全连通层的"
+" TVM 数据流图描述如下："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:30012
+msgid ""
+"此计算被故意设置得太大，以至于不能一次全部放入 VTA 的 on-chip "
+"buffer。因此，在调度阶段，将依靠计算阻塞策略将计算分解为可管理的块。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:50002
+msgid "调度计算"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:50004
+msgid "查看一组必要的调度变换，以有效的方式将矩阵乘法映射到 VTA。这些包括："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:50006
+msgid "分块计算（Computation blocking）"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:50007
+msgid "Lowering 到 VTA 硬件 intrinsics"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:70002
+msgid "分块计算"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:70004
+msgid ""
+"在默认情况下，矩阵乘法对于激活或权重来说太大了，无法一次性适应 VTA 的 on-chip buffer。将 (1, 1024)×(1024, "
+"1024) 矩阵乘法分成更小的 (1, 256) × (256, 256) 矩阵乘法，这样中间张量就可以装进加速器的 on-chip SRAM "
+"中。这种方法类似于将分块技术应用于 CPU 和 GPU，以提高缓存命中率（cache hit rate）。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:70006
+msgid ""
+"沿着每个轴执行分块（batch 轴不受影响，因为正在执行单 batch 推理）。也保持最内侧的 tensorization 轴不变，以便 TVM "
+"能够进行模式匹配的 tensorization。在下面的图表中展示了分块在计算调度上的结果："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:70013
+msgid ""
+"循环分割（splitting）和重新排序（reordering）后的代码等价于下面的伪代码。忽略 batch 轴，因为在这个例子中只执行单 "
+"batch 推断："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:90002
+msgid "lowering 复制到 DMA 传输"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:90004
+msgid ""
+"接下来，将 buffer 作用域设置为相应的 on-chip VTA SRAM buffer。将 load "
+"循环移动到矩阵乘法计算循环中，以使它们适合于 on-chip SRAM buffer。最后，用 DMA 复制实用程序对 load/store "
+"循环外轴进行注解，以在 VTA 上执行批量内存传输。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:110002
+msgid "Lowering 计算到 VTA Compute Intrinsics"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:110004
+msgid ""
+"最后阶段是通过将矩阵乘法映射到张量 intrinsics，将 shift 映射到矢量 ALU，从而将计算循环 lowering 到 VTA 硬件 "
+"intrinsics。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:130002
+msgid "TVM 计算和验证"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:130004
+msgid "在指定调度之后，可以将其编译为 TVM 函数。保存模块，这样就可以通过 RPC 发送它。运行该函数并对 numpy 实现进行验证，以确保其正确性。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:150002
+msgid "小结"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/optimize/matrix_multiply_opt.ipynb:150004
+msgid "本教程演示了 TVM 调度原语如何为矩阵乘法示例实现分块计算。这允许将任意大的计算映射到有限的硬件加速器资源上。"
+msgstr ""
+

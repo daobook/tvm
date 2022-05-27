@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-06 15:25+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,48 +17,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:13
+#: ../../../xin/docs/how_to/work_with_schedules/tuple_inputs.rst:13
 msgid ""
 "Click :ref:`here "
 "<sphx_glr_download_how_to_work_with_schedules_tuple_inputs.py>` to "
 "download the full example code"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:22
+#: ../../../xin/docs/how_to/work_with_schedules/tuple_inputs.rst:22
 msgid "Compute and Reduce with Tuple Inputs"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:23
+#: ../../../xin/docs/how_to/work_with_schedules/tuple_inputs.rst:23
 msgid "**Author**: `Ziheng Jiang <https://github.com/ZihengJiang>`_"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:25
+#: ../../../xin/docs/how_to/work_with_schedules/tuple_inputs.rst:25
 msgid ""
 "Often we want to compute multiple outputs with the same shape within a "
 "single loop or perform reduction that involves multiple values like "
 ":code:`argmax`. These problems can be addressed by tuple inputs."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:29
+#: ../../../xin/docs/how_to/work_with_schedules/tuple_inputs.rst:29
 msgid "In this tutorial, we will introduce the usage of tuple inputs in TVM."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:45
+#: ../../../xin/docs/how_to/work_with_schedules/tuple_inputs.rst:45
 msgid "Describe Batchwise Computation"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:46
+#: ../../../xin/docs/how_to/work_with_schedules/tuple_inputs.rst:46
 msgid ""
 "For operators which have the same shape, we can put them together as the "
 "inputs of :any:`te.compute`, if we want them to be scheduled together in "
 "the next schedule procedure."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:71
+#: ../../../xin/docs/how_to/work_with_schedules/tuple_inputs.rst:71
 msgid "Describe Reduction with Collaborative Inputs"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:72
+#: ../../../xin/docs/how_to/work_with_schedules/tuple_inputs.rst:72
 msgid ""
 "Sometimes, we require multiple inputs to express some reduction "
 "operators, and the inputs will collaborate together, e.g. :code:`argmax`."
@@ -67,56 +67,57 @@ msgid ""
 "with :py:func:`te.comm_reducer` as below:"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:116
+#: ../../../xin/docs/how_to/work_with_schedules/tuple_inputs.rst:116
 msgid ""
 "For ones who are not familiar with reduction, please refer to :ref"
 ":`general-reduction`."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:122
+#: ../../../xin/docs/how_to/work_with_schedules/tuple_inputs.rst:122
 msgid "Schedule Operation with Tuple Inputs"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:123
+#: ../../../xin/docs/how_to/work_with_schedules/tuple_inputs.rst:123
 msgid ""
 "It is worth mentioning that although you will get multiple outputs with "
 "one batch operation, but they can only be scheduled together in terms of "
 "operation."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:148
+#: ../../../xin/docs/how_to/work_with_schedules/tuple_inputs.rst:148
 msgid "Summary"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:149
+#: ../../../xin/docs/how_to/work_with_schedules/tuple_inputs.rst:149
 msgid "This tutorial introduces the usage of tuple inputs operation."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:151
+#: ../../../xin/docs/how_to/work_with_schedules/tuple_inputs.rst:151
 msgid "Describe normal batchwise computation."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:152
+#: ../../../xin/docs/how_to/work_with_schedules/tuple_inputs.rst:152
 msgid "Describe reduction operation with tuple inputs."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:153
+#: ../../../xin/docs/how_to/work_with_schedules/tuple_inputs.rst:153
 msgid ""
 "Notice that you can only schedule computation in terms of operation "
 "instead of tensor."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:168
-msgid ":download:`Download Python source code: tuple_inputs.py <tuple_inputs.py>`"
-msgstr ""
+#~ msgid ""
+#~ ":download:`Download Python source code: "
+#~ "tuple_inputs.py <tuple_inputs.py>`"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:174
-msgid ""
-":download:`Download Jupyter notebook: tuple_inputs.ipynb "
-"<tuple_inputs.ipynb>`"
-msgstr ""
+#~ msgid ""
+#~ ":download:`Download Jupyter notebook: "
+#~ "tuple_inputs.ipynb <tuple_inputs.ipynb>`"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tuple_inputs.rst:181
-msgid "`Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_"
-msgstr ""
+#~ msgid ""
+#~ "`Gallery generated by Sphinx-Gallery "
+#~ "<https://sphinx-gallery.github.io>`_"
+#~ msgstr ""
 

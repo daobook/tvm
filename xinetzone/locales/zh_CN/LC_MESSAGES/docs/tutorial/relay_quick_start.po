@@ -1,0 +1,109 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:10004
+msgid "编译深度学习模型的快速入门教程"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:10005
+msgid ""
+"**作者**: [Yao Wang](https://github.com/kevinthesun), [Truman "
+"Tian](https://github.com/SiNZeRo)"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:10007
+msgid ""
+"这个例子展示了如何用 Relay python 前端构建一个神经网络，并通过 TVM 为 Nvidia GPU 生成运行时库。注意，你需要在启用 "
+"cuda 和 llvm 的情况下构建 TVM。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:10009
+msgid "支持的 TVM 硬件后端概述"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:10011
+msgid "下图显示了 TVM 目前支持的硬件后端："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:10013
+msgid "![](images/tvm_support_list.png)"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:10015
+msgid "在本教程中，我们将选择 cuda 和 llvm 作为目标后端。首先，让我们导入 Relay 和 TVM。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:30002
+msgid "在 Relay 中定义神经网络"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:30004
+msgid ""
+"首先，用 relay 的 python 前端定义神经网络。为了简单起见，将使用 Relay 中预先定义的 resnet-18 网络。参数用 "
+"Xavier 初始化器进行初始化。Relay 也支持其他模型格式，如 MXNet、CoreML、ONNX 和 Tensorflow。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:30006
+msgid ""
+"在本教程中，假设将在我们的设备上进行推理，并且批量大小被设置为 1。输入图像是大小为 224*224 的 RGB 彩色图像。可以调用 "
+"{py:meth}`tvm.relay.expr.TupleWrapper.astext` 来显示网络结构。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:50002
+msgid "编译"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:50004
+msgid ""
+"下一步是使用 Relay/TVM 管道对模型进行编译。用户可以指定编译的优化级别。目前这个值可以是 0 到 3。优化 passes "
+"包括算子融合（operator fusion）、预计算（pre-computation）、布局变换（layout "
+"transformation）等。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:50006
+msgid ""
+"{py:func}`relay.build` 返回三个部分：json 格式的执行图，TVM "
+"模块库中专门为这个图在目标硬件上编译的函数，以及模型的参数 blobs。在编译过程中，Relay 做了图层面的优化，而 TVM "
+"做了张量层面的优化，从而产生了一个优化的运行模块为模型服务。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:50008
+msgid ""
+"我们将首先为 Nvidia GPU 进行编译。在幕后， {py:func}`relay.build` "
+"首先做了一些图层面的优化，例如修剪（pruning）、融合（fusing）等，然后将运算符（即优化后的图的节点）注册到 TVM 实现中，生成 "
+"`tvm.module`。为了生成模块库，TVM 将首先把高层 IR 转移到指定目标后端的低层内在 IR 中，在这个例子中是 "
+"CUDA。然后机器代码将被生成为模块库。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:70002
+msgid "运行生成库"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:70004
+msgid "现在我们可以创建图执行器并在 Nvidia GPU 上运行该模块。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:90002
+msgid "保存和加载已编译的模块"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/relay_quick_start.ipynb:90004
+msgid "也可以将 graph、lib 和参数保存到文件中，并在部署环境中加载它们。"
+msgstr ""
+

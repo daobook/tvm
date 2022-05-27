@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-07 11:03+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -282,6 +282,18 @@ msgstr ""
 
 #: of tvm._ffi.runtime_ctypes.Device.sync:6
 msgid "Jobs in this stream should be finished."
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.texture_spatial_limit:1
+msgid "Returns limits for textures by spatial dimensions"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.texture_spatial_limit:5
+msgid "limit"
+msgstr ""
+
+#: of tvm._ffi.runtime_ctypes.Device.texture_spatial_limit:6
+msgid "Maximum size of the texture by spatial dimensions"
 msgstr ""
 
 #: of tvm._ffi.runtime_ctypes.Device.warp_size:1

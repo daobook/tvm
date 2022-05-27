@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-06 15:25+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,118 +17,88 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:13
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:10002
+msgid "在 bare metal Arm(R) Cortex(R)-M55 CPU 和 Ethos(TM)-U55 NPU 上运行 TVM"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:10004
+msgid "**原作者**：[Grant Watson](https://github.com/grant-arm)"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:10006
 msgid ""
-"Click :ref:`here "
-"<sphx_glr_download_how_to_work_with_microtvm_micro_ethosu.py>` to "
-"download the full example code"
+"本节包含如何在 bare metal 使用 TVM 在 Arm(R) Cortex(R)-M55 CPU 和 Ethos(TM)-U55 NPU "
+"上运行模型的例子。Cortex(R)-M55 是小型、低功耗的 CPU，专为嵌入式设备设计。Ethos(TM)-U55 是 "
+"microNPU，专门用于加速资源有限的嵌入式设备中的 ML 推理。"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:22
-msgid "Running TVM on bare metal Arm(R) Cortex(R)-M55 CPU and Ethos(TM)-U55 NPU"
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:23
-msgid "**Author**: `Grant Watson <https://github.com/grant-arm>`_"
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:26
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:10008
 msgid ""
-"This section contains an example of how to use TVM to run a model on an "
-"Arm(R) Cortex(R)-M55 CPU and Ethos(TM)-U55 NPU, using bare metal. The "
-"Cortex(R)-M55 is a small, low-power CPU designed for use in embedded "
-"devices. The Ethos(TM)-U55 is a microNPU, specifically designed to "
-"accelerate ML inference in resource-constrained embedded devices."
+"为了运行演示应用程序，无需访问 Cortex(R)-M55 和 Ethos(TM)-U55 开发板，将在固定的虚拟平台（Fixed Virtual"
+" Platform，简称 FVP）上运行示例应用程序。FVP 基于 Arm(R) Corstone(TM)-300 软件，模型的硬件系统包含 "
+"Cortex(R)-M55 和 Ethos(TM)-U55。它提供了适合于软件开发的程序员的视图。"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:32
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:10010
+msgid "在本教程中，将编译 MobileNet v1 模型，并指示 TVM 在可能的情况下将算子卸载到 Ethos(TM)-U55。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:10012
+msgid "获取 TVM"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:10014
 msgid ""
-"In order to run the demo application without having access to a "
-"Cortex(R)-M55 and Ethos(TM)-U55 development board, we will be running our"
-" sample application on a Fixed Virtual Platform (FVP). The FVP based on "
-"Arm(R) Corstone(TM)-300 software, models a hardware system containing a "
-"Cortex(R)-M55 and Ethos(TM)-U55. It provides a programmer's view that is "
-"suitable for software development."
+"为您的平台获取 TVM，请访问 <https://tlcpack.ai/> 并遵循说明。一旦正确安装了 TVM，您应该可以从命令行访问 "
+"``tvmc``。"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:38
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:10016
+msgid "在命令行输入 ``tvmc`` 应该显示如下："
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:20002
+msgid "安装附加的 Python 依赖项"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:20004
+msgid "为了运行演示，您将需要一些额外的 Python 包。这些可以通过使用需求来安装。以下文件："
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:20026
+msgid "这些包可以通过在命令行运行以下命令来安装："
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:30002
+msgid "获得模型"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:30004
 msgid ""
-"In this tutorial, we will be compiling a MobileNet v1 model and "
-"instructing TVM to offload operators to the Ethos(TM)-U55 where possible."
+"在本教程中，将使用 MobileNet v1。MobileNet v1 "
+"是用于对图像进行分类的卷积神经网络，已经针对边缘设备进行了优化。将使用的模型已经经过了预训练，可以将图像分类为 1001 "
+"个不同的类别之一。该网络的输入图像大小为 224x224，所以任何输入的图像在使用前都需要调整到这些尺寸。"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:44
-msgid "Obtaining TVM"
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:30006
+msgid "在本教程中，将使用 Tflite 格式的模型。"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:46
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:40002
+msgid "为 Arm(R) Cortex(R)-M55 CPU 和 Ethos(TM)-U55 NPU 编译模型"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:40004
 msgid ""
-"To obtain TVM for you platform, please visit https://tlcpack.ai/ and "
-"follow the instructions. Once TVM has been installed correctly, you "
-"should have access to ``tvmc`` from the command line."
+"一旦下载了 MobileNet v1 模型，下一步就是编译它。为此，将使用 `tvmc` "
+"编译。从编译过程中得到的输出是编译为目标平台的模型库格式（MLF）的模型的 TAR 包。将能够使用 TVM 运行时在目标设备上运行该模型。"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:50
-msgid "Typing ``tvmc`` on the command line should display the following:"
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:40018
+msgid "tvmc 编译参数的解释"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:75
-msgid "Installing additional python dependencies"
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:77
-msgid ""
-"In order to run the demo, you will need some additional python packages. "
-"These can be installed by using the requirements.txt file below:"
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:80
-msgid "requirements.txt"
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:99
-msgid ""
-"These packages can be installed by running the following from the command"
-" line:"
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:109
-msgid "Obtaining the Model"
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:111
-msgid ""
-"For this tutorial, we will be working with MobileNet v1. MobileNet v1 is "
-"a convolutional neural network designed to classify images, that has been"
-" optimized for edge devices. The model we will be using has been pre-"
-"trained to classify images into one of 1001 different categories. The "
-"network has an input image size of 224x224 so any input images will need "
-"to be resized to those dimensions before being used."
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:118
-msgid "For this tutorial we will be using the model in Tflite format."
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:132
-msgid "Compiling the model for Arm(R) Cortex(R)-M55 CPU and Ethos(TM)-U55 NPU"
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:134
-msgid ""
-"Once we've downloaded the MobileNet v1 model, the next step is to compile"
-" it. To accomplish that, we are going to use ``tvmc compile``. The output"
-" we get from the compilation process is a TAR package of the model "
-"compiled to the Model Library Format (MLF) for our target platform. We "
-"will be able to run that model on our target device using the TVM "
-"runtime."
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:155
-msgid "Explanation of tvmc compile arguments:"
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:157
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:40021
 msgid ""
 "``--target=\"ethos-u -accelerator_config=ethos-u55-256, c\"`` : offload "
 "operators to the Ethos(TM)-U55 NPU where possible and fall back to using "
@@ -136,59 +106,59 @@ msgid ""
 " the NPU.."
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:159
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:40023
 msgid "``--target-c-mcpu=cortex-m55`` : Cross-compile for the Cortex(R)-M55."
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:161
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:40025
 msgid ""
 "``--runtime=crt`` : Generate glue code to allow operators to work with C "
 "runtime."
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:163
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:40027
 msgid ""
 "``--executor=aot`` : Use Ahead Of Time compiltaion instead of the Graph "
 "Executor."
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:165
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:40029
 msgid ""
 "``--executor-aot-interface-api=c`` : Generate a C-style interface with "
 "structures designed for integrating into C apps at the boundary."
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:167
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:40031
 msgid "``--executor-aot-unpacked-api=1`` : Use the unpacked API internally."
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:169
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:40033
 msgid ""
 "``--pass-config tir.disable_vectorize=1`` : Disable vectorize since there"
 " are no standard vectorized types in C."
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:171
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:40035
 msgid ""
 "``./mobilenet_v1_1.0_224_quant.tflite`` : The TFLite model that is being "
 "compiled."
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:173
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:40037
 msgid ""
 "``--output-format=mlf`` : Output should be generated in the Model Library"
 " Format."
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:179
-msgid "Extracting the generated code into the current directory"
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:50002
+msgid "将生成的代码提取到当前目录"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:189
-msgid "Getting ImageNet labels"
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:60002
+msgid "获得 ImageNet 标签"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:191
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:60004
 msgid ""
 "When running MobileNet v1 on an image, the result is an index in the "
 "range 0 to 1000. In order to make our application a little more user "
@@ -198,57 +168,53 @@ msgid ""
 "later."
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:206
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:70002
 msgid "Getting the input image"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:208
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:70004
 msgid ""
 "As input for this tutorial, we will use the image of a cat, but you can "
 "substitute an image of your choosing."
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:216
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:70013
 msgid ""
 "We download the image into the build directory and we will use a python "
 "script in the next step to convert the image into an array of bytes in a "
 "C header file."
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:227
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:70020
 msgid "Pre-processing the image"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:229
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:70022
 msgid "The following script will create 2 C header files in the src directory:"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:231
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:70024
 msgid ""
 "``inputs.h`` - The image supplied as an argument to the script will be "
 "converted to an array of integers for input to our MobileNet v1 model."
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:233
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:70026
 msgid ""
 "``outputs.h`` - An integer array of zeroes will reserve 1001 integer "
 "values for the output of inference."
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:236
-msgid "convert_image.py"
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:90002
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:110002
+msgid "从命令行运行脚本："
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:298
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:346
-msgid "Run the script from the command line:"
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:307
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:90008
 msgid "Pre-processing the labels"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:309
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:90010
 msgid ""
 "The following script will create a ``labels.h`` header file in the src "
 "directory. The labels.txt file that we downloaded previously will be "
@@ -256,15 +222,11 @@ msgid ""
 "label that our image has been classified as."
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:314
-msgid "convert_labels.py"
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:355
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:110008
 msgid "Writing the demo application"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:357
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:110010
 msgid ""
 "The following C application will run a single inference of the MobileNet "
 "v1 model on the image that we downloaded and converted to an array of "
@@ -276,27 +238,11 @@ msgid ""
 "``./src``"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:365
-msgid "demo.c"
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:423
-msgid ""
-"In addition, you will need these header files from github in your "
-"``./include`` directory:"
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:425
-msgid ""
-"`include files "
-"<https://github.com/apache/tvm/tree/main/apps/microtvm/ethosu/include>`_"
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:430
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:140002
 msgid "Creating the linker script"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:432
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:140005
 msgid ""
 "We need to create a linker script that will be used when we build our "
 "application in the following section. The linker script tells the linker "
@@ -304,83 +250,256 @@ msgid ""
 "script below should be placed in your working directory."
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:437
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:140010
 msgid ""
 "An example linker script for the FVP can be found here `corstone300.ld "
 "<https://github.com/apache/tvm/blob/main/apps/microtvm/ethosu/corstone300.ld>`_"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:444
-msgid ""
-"The code generated by TVM will place the model weights and the Arm(R) "
-"Ethos(TM)-U55 command stream in a section named ``ethosu_scratch``. For a"
-" model the size of MobileNet v1, the weights and command stream will not "
-"fit into the limited SRAM available. For this reason it's important that "
-"the linker script places the ``ethosu_scratch`` section into DRAM (DDR)."
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:454
-msgid ""
-"Before building and running the application, you will need to update your"
-" PATH environment variable to include the path to cmake 3.19.5 and the "
-"FVP. For example if you've installed these in ``/opt/arm`` , then you "
-"would do the following:"
-msgstr ""
-
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:459
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:160007
 msgid ""
 "``export PATH=/opt/arm/FVP_Corstone_SSE-"
-"300_Ethos-U55/models/Linux64_GCC-6.4:/opt/arm/cmake/bin:$PATH``"
+"300_Ethos-U55/models/Linux64_GCC-6.4:/opt/arm/cmake/bin:$PATH``</p></div>"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:465
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:170002
 msgid "Building the demo application using make"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:467
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:170005
 msgid ""
 "We can now build the demo application using make. The Makefile should be "
 "placed in your working directory before running ``make`` on the command "
 "line:"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:470
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:170008
 msgid ""
 "An example Makefile can be found here: `Makefile "
 "<https://github.com/apache/tvm/blob/main/apps/microtvm/ethosu/Makefile>`_"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:476
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:190002
 msgid "Running the demo application"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:478
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:190005
 msgid ""
 "Finally, we can run our demo appliction on the Fixed Virtual Platform "
 "(FVP), by using the following command:"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:490
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:190008
+msgid ".. code-block:: bash"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:190017
 msgid "You should see the following output displayed in your console window:"
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:553
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:190019
+msgid ".. code-block:: text"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_microtvm/micro_ethosu.ipynb:190080
 msgid ""
 "You should see near the end of the output that the image has been "
 "correctly classified as 'tabby'."
 msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:569
-msgid ":download:`Download Python source code: micro_ethosu.py <micro_ethosu.py>`"
-msgstr ""
+#~ msgid ""
+#~ "Click :ref:`here "
+#~ "<sphx_glr_download_how_to_work_with_microtvm_micro_ethosu.py>` "
+#~ "to download the full example code"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:575
-msgid ""
-":download:`Download Jupyter notebook: micro_ethosu.ipynb "
-"<micro_ethosu.ipynb>`"
-msgstr ""
+#~ msgid ""
+#~ "Running TVM on bare metal Arm(R) "
+#~ "Cortex(R)-M55 CPU and Ethos(TM)-U55 NPU"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_microtvm/micro_ethosu.rst:582
-msgid "`Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_"
-msgstr ""
+#~ msgid "**Author**: `Grant Watson <https://github.com/grant-arm>`_"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This section contains an example of "
+#~ "how to use TVM to run a "
+#~ "model on an Arm(R) Cortex(R)-M55 CPU "
+#~ "and Ethos(TM)-U55 NPU, using bare metal."
+#~ " The Cortex(R)-M55 is a small, "
+#~ "low-power CPU designed for use in "
+#~ "embedded devices. The Ethos(TM)-U55 is a"
+#~ " microNPU, specifically designed to "
+#~ "accelerate ML inference in resource-"
+#~ "constrained embedded devices."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In order to run the demo "
+#~ "application without having access to a"
+#~ " Cortex(R)-M55 and Ethos(TM)-U55 development "
+#~ "board, we will be running our "
+#~ "sample application on a Fixed Virtual"
+#~ " Platform (FVP). The FVP based on "
+#~ "Arm(R) Corstone(TM)-300 software, models a "
+#~ "hardware system containing a Cortex(R)-M55 "
+#~ "and Ethos(TM)-U55. It provides a "
+#~ "programmer's view that is suitable for"
+#~ " software development."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In this tutorial, we will be "
+#~ "compiling a MobileNet v1 model and "
+#~ "instructing TVM to offload operators to"
+#~ " the Ethos(TM)-U55 where possible."
+#~ msgstr ""
+
+#~ msgid "Obtaining TVM"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "To obtain TVM for you platform, "
+#~ "please visit https://tlcpack.ai/ and follow"
+#~ " the instructions. Once TVM has been"
+#~ " installed correctly, you should have "
+#~ "access to ``tvmc`` from the command "
+#~ "line."
+#~ msgstr ""
+
+#~ msgid "Typing ``tvmc`` on the command line should display the following:"
+#~ msgstr ""
+
+#~ msgid "Installing additional python dependencies"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In order to run the demo, you "
+#~ "will need some additional python "
+#~ "packages. These can be installed by "
+#~ "using the requirements.txt file below:"
+#~ msgstr ""
+
+#~ msgid "requirements.txt"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "These packages can be installed by "
+#~ "running the following from the command"
+#~ " line:"
+#~ msgstr ""
+
+#~ msgid "Obtaining the Model"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "For this tutorial, we will be "
+#~ "working with MobileNet v1. MobileNet v1"
+#~ " is a convolutional neural network "
+#~ "designed to classify images, that has"
+#~ " been optimized for edge devices. The"
+#~ " model we will be using has "
+#~ "been pre-trained to classify images "
+#~ "into one of 1001 different categories."
+#~ " The network has an input image "
+#~ "size of 224x224 so any input "
+#~ "images will need to be resized to"
+#~ " those dimensions before being used."
+#~ msgstr ""
+
+#~ msgid "For this tutorial we will be using the model in Tflite format."
+#~ msgstr ""
+
+#~ msgid "Compiling the model for Arm(R) Cortex(R)-M55 CPU and Ethos(TM)-U55 NPU"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Once we've downloaded the MobileNet v1"
+#~ " model, the next step is to "
+#~ "compile it. To accomplish that, we "
+#~ "are going to use ``tvmc compile``. "
+#~ "The output we get from the "
+#~ "compilation process is a TAR package "
+#~ "of the model compiled to the Model"
+#~ " Library Format (MLF) for our target"
+#~ " platform. We will be able to "
+#~ "run that model on our target "
+#~ "device using the TVM runtime."
+#~ msgstr ""
+
+#~ msgid "Explanation of tvmc compile arguments:"
+#~ msgstr ""
+
+#~ msgid "Extracting the generated code into the current directory"
+#~ msgstr ""
+
+#~ msgid "Getting ImageNet labels"
+#~ msgstr ""
+
+#~ msgid "convert_image.py"
+#~ msgstr ""
+
+#~ msgid "Run the script from the command line:"
+#~ msgstr ""
+
+#~ msgid "convert_labels.py"
+#~ msgstr ""
+
+#~ msgid "demo.c"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In addition, you will need these "
+#~ "header files from github in your "
+#~ "``./include`` directory:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`include files "
+#~ "<https://github.com/apache/tvm/tree/main/apps/microtvm/ethosu/include>`_"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The code generated by TVM will "
+#~ "place the model weights and the "
+#~ "Arm(R) Ethos(TM)-U55 command stream in a"
+#~ " section named ``ethosu_scratch``. For a"
+#~ " model the size of MobileNet v1, "
+#~ "the weights and command stream will "
+#~ "not fit into the limited SRAM "
+#~ "available. For this reason it's "
+#~ "important that the linker script places"
+#~ " the ``ethosu_scratch`` section into DRAM"
+#~ " (DDR)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Before building and running the "
+#~ "application, you will need to update "
+#~ "your PATH environment variable to "
+#~ "include the path to cmake 3.19.5 "
+#~ "and the FVP. For example if you've"
+#~ " installed these in ``/opt/arm`` , "
+#~ "then you would do the following:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "``export PATH=/opt/arm/FVP_Corstone_SSE-"
+#~ "300_Ethos-U55/models/Linux64_GCC-6.4:/opt/arm/cmake/bin:$PATH``"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":download:`Download Python source code: "
+#~ "micro_ethosu.py <micro_ethosu.py>`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":download:`Download Jupyter notebook: "
+#~ "micro_ethosu.ipynb <micro_ethosu.ipynb>`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`Gallery generated by Sphinx-Gallery "
+#~ "<https://sphinx-gallery.github.io>`_"
+#~ msgstr ""
 

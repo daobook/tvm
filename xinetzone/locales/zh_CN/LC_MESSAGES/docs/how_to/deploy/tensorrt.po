@@ -8,28 +8,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvm 0.9.dev282+gf54634c5d\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 13:20+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:19
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:19
 msgid "Relay TensorRT Integration"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:20
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:20
 msgid "**Author**: `Trevor Morris <https://github.com/trevor-m>`_"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:23
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:23
 msgid "Introduction"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:25
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:25
 msgid ""
 "NVIDIA TensorRT is a library for optimized deep learning inference. This "
 "integration will offload as many operators as possible from Relay to "
@@ -37,7 +37,7 @@ msgid ""
 "to tune schedules."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:29
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:29
 msgid ""
 "This guide will demonstrate how to install TensorRT and build TVM with "
 "TensorRT BYOC and runtime enabled. It will also provide example code to "
@@ -46,11 +46,11 @@ msgid ""
 "operators and how to extend the integration to support other operators."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:35
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:35
 msgid "Installing TensorRT"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:37
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:37
 msgid ""
 "In order to download TensorRT, you will need to create an NVIDIA "
 "Developer program account. Please see NVIDIA's documentation for more "
@@ -60,19 +60,19 @@ msgid ""
 "JetPack SDK."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:43
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:43
 msgid "There are two methods to install TensorRT:"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:45
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:45
 msgid "System install via deb or rpm package."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:46
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:46
 msgid "Tar file installation."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:48
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:48
 msgid ""
 "With the tar file installation method, you must provide the path of the "
 "extracted tar archive to USE_TENSORRT_RUNTIME=/path/to/TensorRT. With the"
@@ -80,11 +80,11 @@ msgid ""
 " your installation."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:53
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:53
 msgid "Building TVM with TensorRT support"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:55
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:55
 msgid ""
 "There are two separate build flags for TensorRT integration in TVM. These"
 " flags also enable cross-compilation: USE_TENSORRT_CODEGEN=ON will also "
@@ -94,32 +94,32 @@ msgid ""
 "compile and also execute models with the same TVM build."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:61
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:61
 msgid ""
 "USE_TENSORRT_CODEGEN=ON/OFF - This flag will enable compiling a TensorRT "
 "module, which does not require any TensorRT library."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:63
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:63
 msgid ""
 "USE_TENSORRT_RUNTIME=ON/OFF/path-to-TensorRT - This flag will enable the "
 "TensorRT runtime module. This will build TVM against the installed "
 "TensorRT library."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:66
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:66
 msgid "Example setting in config.cmake file:"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:75
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:75
 msgid "Build and Deploy ResNet-18 with TensorRT"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:77
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:77
 msgid "Create a Relay graph from a MXNet ResNet-18 model."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:92
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:92
 msgid ""
 "Annotate and partition the graph for TensorRT. All ops which are "
 "supported by the TensorRT integration will be marked and offloaded to "
@@ -127,7 +127,7 @@ msgid ""
 "compilation and code generation."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:102
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:102
 msgid ""
 "Build the Relay graph, using the new module and config returned by "
 "partition_for_tensorrt. The target must always be a cuda target. "
@@ -136,28 +136,28 @@ msgid ""
 "along to the PassContext so the values can be read during compilation."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:114
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:114
 msgid "Export the module."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:121
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:121
 msgid ""
 "Load module and run inference on the target machine, which must be built "
 "with ``USE_TENSORRT_RUNTIME`` enabled. The first run will take longer "
 "because the TensorRT engine will have to be built."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:135
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:135
 msgid "Partitioning and Compilation Settings"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:137
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:137
 msgid ""
 "There are some options which can be configured in "
 "``partition_for_tensorrt``."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:139
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:139
 msgid ""
 "``version`` - TensorRT version to target as tuple of (major, minor, "
 "patch). If TVM is compiled with USE_TENSORRT_RUNTIME=ON, the linked "
@@ -165,7 +165,7 @@ msgid ""
 "can be partitioned to TensorRT."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:142
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:142
 msgid ""
 "``use_implicit_batch`` - Use TensorRT implicit batch mode (default true)."
 " Setting to false will enable explicit batch mode which will widen "
@@ -173,7 +173,7 @@ msgid ""
 "but may reduce performance for some models."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:145
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:145
 msgid ""
 "``remove_no_mac_subgraphs`` - A heuristic to improve performance. Removes"
 " subgraphs which have been partitioned for TensorRT if they do not have "
@@ -181,24 +181,24 @@ msgid ""
 " TVM's standard compilation instead."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:148
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:148
 msgid ""
 "``max_workspace_size`` - How many bytes of workspace size to allow each "
 "subgraph to use for TensorRT engine creation. See TensorRT documentation "
 "for more info. Can be overriden at runtime."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:153
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:153
 msgid "Runtime Settings"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:155
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:155
 msgid ""
 "There are some additional options which can be configured at runtime "
 "using environment variables."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:157
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:157
 msgid ""
 "Automatic FP16 Conversion - Environment variable "
 "``TVM_TENSORRT_USE_FP16=1`` can be set to automatically convert the "
@@ -207,7 +207,7 @@ msgid ""
 "the model accuracy."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:160
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:160
 msgid ""
 "Caching TensorRT Engines - During the first inference, the runtime will "
 "invoke the TensorRT API to build an engine. This can be time consuming, "
@@ -218,7 +218,7 @@ msgid ""
 " each model."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:165
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:165
 msgid ""
 "TensorRT has a paramter to configure the maximum amount of scratch space "
 "that each layer in the model can use. It is generally best to use the "
@@ -227,7 +227,7 @@ msgid ""
 "workspace size in bytes you would like to use."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:169
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:169
 msgid ""
 "For models which contain a dynamic batch dimension, the varaible "
 "``TVM_TENSORRT_MULTI_ENGINE`` can be used to determine how TensorRT "
@@ -242,271 +242,280 @@ msgid ""
 "greater performance, but will consume more memory."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:180
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:180
 msgid "Operator support"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:182
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:182
 msgid "Relay Node"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:182
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:182
 msgid "Remarks"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:184
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:184
 msgid "nn.relu"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:186
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:186
 msgid "sigmoid"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:188
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:188
 msgid "tanh"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:190
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:190
 msgid "nn.batch_norm"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:192
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:192
 msgid "nn.layer_norm"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:194
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:194
 msgid "nn.softmax"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:196
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:196
+msgid "nn.conv1d"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:198
 msgid "nn.conv2d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:198
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:200
 msgid "nn.dense"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:200
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:202
 msgid "nn.bias_add"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:202
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:204
 msgid "add"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:204
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:206
 msgid "subtract"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:206
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:208
 msgid "multiply"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:208
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:210
 msgid "divide"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:210
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:212
 msgid "power"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:212
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:214
 msgid "maximum"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:214
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:216
 msgid "minimum"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:216
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:218
 msgid "nn.max_pool2d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:218
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:220
 msgid "nn.avg_pool2d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:220
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:222
 msgid "nn.global_max_pool2d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:222
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:224
 msgid "nn.global_avg_pool2d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:224
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:226
 msgid "exp"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:226
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:228
 msgid "log"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:228
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:230
 msgid "sqrt"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:230
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:232
 msgid "abs"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:232
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:234
 msgid "negative"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:234
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:236
 msgid "nn.batch_flatten"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:236
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:238
 msgid "expand_dims"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:238
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:240
 msgid "squeeze"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:240
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:242
 msgid "concatenate"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:242
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:244
 msgid "nn.conv2d_transpose"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:244
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:246
 msgid "transpose"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:246
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:248
 msgid "layout_transform"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:248
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:250
 msgid "reshape"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:250
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:252
 msgid "nn.pad"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:252
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:254
 msgid "sum"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:254
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:256
 msgid "prod"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:256
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:258
 msgid "max"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:258
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:260
 msgid "min"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:260
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:262
 msgid "mean"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:262
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:264
 msgid "nn.adaptive_max_pool2d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:264
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:266
 msgid "nn.adaptive_avg_pool2d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:266
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:268
 msgid "nn.batch_matmul"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:268
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:270
 msgid "clip"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:268
-#: ../../_staging/how_to/deploy/tensorrt.rst:270
-#: ../../_staging/how_to/deploy/tensorrt.rst:272
-#: ../../_staging/how_to/deploy/tensorrt.rst:274
-#: ../../_staging/how_to/deploy/tensorrt.rst:276
-#: ../../_staging/how_to/deploy/tensorrt.rst:278
-#: ../../_staging/how_to/deploy/tensorrt.rst:280
-#: ../../_staging/how_to/deploy/tensorrt.rst:282
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:270
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:272
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:274
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:276
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:278
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:280
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:282
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:284
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:286
 msgid "Requires TensorRT 5.1.5 or greater"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:270
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:272
 msgid "nn.leaky_relu"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:272
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:274
 msgid "sin"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:274
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:276
 msgid "cos"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:276
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:278
 msgid "atan"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:278
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:280
 msgid "ceil"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:280
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:282
 msgid "floor"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:282
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:284
+msgid "split"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:286
 msgid "strided_slice"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:284
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:288
 msgid "nn.conv3d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:284
-#: ../../_staging/how_to/deploy/tensorrt.rst:286
-#: ../../_staging/how_to/deploy/tensorrt.rst:288
-#: ../../_staging/how_to/deploy/tensorrt.rst:290
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:288
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:290
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:292
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:294
 msgid "Requires TensorRT 6.0.1 or greater"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:286
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:290
 msgid "nn.max_pool3d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:288
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:292
 msgid "nn.avg_pool3d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:290
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:294
 msgid "nn.conv3d_transpose"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:292
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:296
 msgid "erf"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:292
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:296
 msgid "Requires TensorRT 7.0.0 or greater"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:297
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:301
 msgid "Adding a new operator"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:298
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:302
 msgid ""
 "To add support for a new operator, there are a series of files we need to"
 " make changes to:"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:300
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:304
 msgid ""
 "`src/runtime/contrib/tensorrt/tensorrt_ops.cc` Create a new op converter "
 "class which implements the ``TensorRTOpConverter`` interface. You must "
@@ -519,7 +528,7 @@ msgid ""
 "``GetOpConverters()`` map."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:307
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:311
 msgid ""
 "`python/relay/op/contrib/tensorrt.py` This file contains the annotation "
 "rules for TensorRT. These determine which operators and their attributes "
@@ -528,7 +537,7 @@ msgid ""
 "converter, by checking the attributes are returning true or false."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/tensorrt.rst:311
+#: ../../../xin/docs/how_to/deploy/tensorrt.rst:315
 msgid ""
 "`tests/python/contrib/test_tensorrt.py` Add unit tests for the given "
 "operator."

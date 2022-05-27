@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 21:32+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,37 +17,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/topic/vta/dev/hardware.rst:19
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:19
 msgid "VTA Hardware Guide"
 msgstr "VTA 硬件指南"
 
-#: ../../docs/topic/vta/dev/hardware.rst:21
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:21
 msgid ""
 "We present a top-down overview of the VTA hardware design. This hardware "
 "design guide covers VTA hardware at two levels:"
-msgstr ""
-"提供了自顶向下的 VTA 硬件设计概述。"
-"本硬件设计指南涵盖了两个层次的 VTA 硬件："
+msgstr "提供了自顶向下的 VTA 硬件设计概述。本硬件设计指南涵盖了两个层次的 VTA 硬件："
 
-#: ../../docs/topic/vta/dev/hardware.rst:24
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:24
 msgid ""
 "An architectural overview of the VTA design and its ISA hardware-software"
 " interface."
-msgstr ""
-"VTA 设计及其 ISA 软硬件接口的架构概述。"
+msgstr "VTA 设计及其 ISA 软硬件接口的架构概述。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:26
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:26
 msgid ""
 "A micro-architectural overview of the VTA hardware modules, and the "
 "micro-code specification for the compute core."
-msgstr ""
-"VTA 硬件模块的微架构概述，以及计算核心的微代码规范。"
+msgstr "VTA 硬件模块的微架构概述，以及计算核心的微代码规范。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:30
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:30
 msgid "VTA Overview"
 msgstr "VTA 概述"
 
-#: ../../docs/topic/vta/dev/hardware.rst:32
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:32
 msgid ""
 "VTA is a generic deep learning accelerator built for fast and efficient "
 "dense linear algebra. VTA incorporates a simple RISC-like processor that "
@@ -55,87 +51,79 @@ msgid ""
 "registers. In addition the design adopts decoupled access-execute to hide"
 " memory access latency."
 msgstr ""
-"VTA 是通用的深度学习加速器，用于快速和高效的密集线性代数。"
-"VTA 集成了简单的类 RISC 处理器，可以在 1 级或 2 级张量寄存器上执行密集的线性代数操作。"
-"此外，该设计采用解耦的访问-执行来隐藏内存访问延迟。"
+"VTA 是通用的深度学习加速器，用于快速和高效的密集线性代数。VTA 集成了简单的类 RISC 处理器，可以在 1 级或 2 "
+"级张量寄存器上执行密集的线性代数操作。此外，该设计采用解耦的访问-执行来隐藏内存访问延迟。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:37
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:37
 msgid ""
 "To a broader extent, VTA can serve as a template deep learning "
 "accelerator design for full stack optimization, exposing a generic tensor"
 " computation interface to the compiler stack."
-msgstr ""
-"在更广泛的范围内，VTA 可以作为模板深度学习加速器设计，用于全堆栈优化，"
-"向编译器堆栈公开通用张量计算接口。"
+msgstr "在更广泛的范围内，VTA 可以作为模板深度学习加速器设计，用于全堆栈优化，向编译器堆栈公开通用张量计算接口。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:43
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:43
 msgid ""
 "The figure above gives a high-level overview of the VTA hardware "
 "organization. VTA is composed of four modules that communicate among each"
 " other via FIFO queues and local memory blocks (SRAM), to enable task-"
 "level pipeline parallelism:"
 msgstr ""
-"上图给出了 VTA 硬件组织的高级概述。"
-"VTA 由四个模块组成，通过 FIFO 队列和局部内存块（local memory blocks，简称 SRAM）相互通信，以实现任务级管道并行："
+"上图给出了 VTA 硬件组织的高级概述。VTA 由四个模块组成，通过 FIFO 队列和局部内存块（local memory blocks，简称 "
+"SRAM）相互通信，以实现任务级管道并行："
 
-#: ../../docs/topic/vta/dev/hardware.rst:46
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:46
 msgid ""
 "The fetch module takes care of loading an instruction stream from DRAM. "
 "It also decodes those instructions to route them into one of three "
 "command queues."
-msgstr ""
-"fetch 模块负责从 DRAM 中加载指令流。"
-"它还解码这些指令，将它们路由到三个命令队列中的一个。"
+msgstr "fetch 模块负责从 DRAM 中加载指令流。它还解码这些指令，将它们路由到三个命令队列中的一个。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:47
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:47
 msgid ""
 "The load module takes care of loading input and weight tensors from DRAM "
 "into data-specialized on-chip memories."
-msgstr ""
-"load 模块负责将 DRAM 的输入张量和权重张量加载到数据专用的 on-chip 内存中。"
+msgstr "load 模块负责将 DRAM 的输入张量和权重张量加载到数据专用的 on-chip 内存中。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:48
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:48
 msgid ""
 "The compute module performs both dense linear algebra computation with "
 "its GEMM core, and general computation with its tensor ALU. It also takes"
 " care of loading data from DRAM into the register file, and loading "
 "micro-op kernels into the micro-op cache."
 msgstr ""
-"compute 模块使用 GEMM 核心进行密集线性代数计算，使用张量 ALU 进行通用计算。"
-"它还负责将数据从 DRAM 加载到 register 文件，并将微操作内核加载到 micro-op cache。"
+"compute 模块使用 GEMM 核心进行密集线性代数计算，使用张量 ALU 进行通用计算。它还负责将数据从 DRAM 加载到 register"
+" 文件，并将微操作内核加载到 micro-op cache。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:49
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:49
 msgid "The store module stores results produced by the compute core back to DRAM."
 msgstr "store 模块将计算核心产生的结果存储回 DRAM。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:52
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:52
 msgid "HLS Hardware Source Organization"
 msgstr "HLS 硬件资源组织"
 
-#: ../../docs/topic/vta/dev/hardware.rst:54
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:54
 msgid ""
 "The VTA design is currently specified in Vivado HLS C++, which is only "
 "supported by Xilinx toolchains. The VTA hardware sources are contained "
 "under ``3rdparty/vta-hw/hardware/xilinx/sources``:"
 msgstr ""
-"VTA 设计目前是在 Vivado HLS C++ 中指定的，而这只被 Xilinx 工具链所支持。"
-"VTA 硬件资源包含在 ``3rdparty/vta-hw/hardware/xilinx/sources`` 下："
+"VTA 设计目前是在 Vivado HLS C++ 中指定的，而这只被 Xilinx 工具链所支持。VTA 硬件资源包含在 ``3rdparty"
+"/vta-hw/hardware/xilinx/sources`` 下："
 
-#: ../../docs/topic/vta/dev/hardware.rst:58
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:58
 msgid ""
 "``vta.cc`` contains the definitions for each VTA module, as well as a top"
 " level behavioral model for the top-level VTA design."
-msgstr ""
-"``vta.cc`` 包含了每个 VTA 模块的定义，以及用于顶层 VTA 设计的顶层行为模型。"
+msgstr "``vta.cc`` 包含了每个 VTA 模块的定义，以及用于顶层 VTA 设计的顶层行为模型。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:60
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:60
 msgid ""
 "``vta.h`` contains type definitions using Xilinx ``ap_int`` types, and "
 "function prototypes declarations."
-msgstr ""
-"``vta.h`` 包含使用 Xilinx ``ap_int`` 类型的类型定义和函数原型声明。"
+msgstr "``vta.h`` 包含使用 Xilinx ``ap_int`` 类型的类型定义和函数原型声明。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:63
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:63
 msgid ""
 "In addition preprocessor macros are defined under ``3rdparty/vta-"
 "hw/include/vta/hw_spec.h``. Much of these macro definitions are derived "
@@ -147,32 +135,31 @@ msgid ""
 "hardware synthesis compiler, and the C++ compiler that builds the VTA "
 "runtime."
 msgstr ""
-"此外，预处理器宏定义在 ``3rdparty/vta-hw/include/vta/hw_spec.h`` 下。"
-"这些宏的定义大多来自于 ``3rdparty/vta- hw/config/vta_config.json`` 文件中列出的参数。"
-"该 json 文件被 ``3rdparty/vta-hw/config/vta_config.py`` 处理，以产生定义预处理器宏的编译标志字符串。"
-"该字符串被 makefile 用于设置 HLS 硬件合成编译器和构建 VTA 运行时的 C++ 编译器中的高级参数。"
+"此外，预处理器宏定义在 ``3rdparty/vta-hw/include/vta/hw_spec.h`` 下。这些宏的定义大多来自于 "
+"``3rdparty/vta- hw/config/vta_config.json`` 文件中列出的参数。该 json 文件被 "
+"``3rdparty/vta-hw/config/vta_config.py`` 处理，以产生定义预处理器宏的编译标志字符串。该字符串被 "
+"makefile 用于设置 HLS 硬件合成编译器和构建 VTA 运行时的 C++ 编译器中的高级参数。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:73
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:73
 msgid "HLS Module Example"
 msgstr "HLS Module 示例"
 
-#: ../../docs/topic/vta/dev/hardware.rst:75
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:75
 msgid "We show a definition of one of the VTA modules defined in C++:"
 msgstr "我们展示了 C++ 中定义的 VTA 模块之一的定义："
 
-#: ../../docs/topic/vta/dev/hardware.rst:155
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:155
 msgid "A few observations on HLS coding:"
 msgstr "关于HLS编码的几点观察："
 
-#: ../../docs/topic/vta/dev/hardware.rst:112
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:112
 msgid ""
 "*Parameters:* The parameter list of each function, combined with the "
 "interface pragmas define the hardware interface exposed by the generated "
 "hardware module."
-msgstr ""
-"*Parameters:* 每个函数的参数列表，结合 interface pragmas 定义由生成的硬件模块公开的硬件接口。"
+msgstr "*Parameters:* 每个函数的参数列表，结合 interface pragmas 定义由生成的硬件模块公开的硬件接口。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:116
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:116
 msgid ""
 "Parameters passed by value indicate a read-only hardware memory-mapped "
 "register that the host can write to. This fetch function for instance has"
@@ -180,66 +167,65 @@ msgid ""
 " register for the host to write to, in order to set the length of a given"
 " VTA instruction sequence."
 msgstr ""
-"通过 value 传递的参数表示主机可以写入的只读硬件内存映射寄存器。"
-"例如，这个 fetch 函数有 ``insn_count`` 参数，它将被合成为主机写入的内存映射寄存器，以便设置给定 VTA 指令序列的长度。"
+"通过 value 传递的参数表示主机可以写入的只读硬件内存映射寄存器。例如，这个 fetch 函数有 ``insn_count`` "
+"参数，它将被合成为主机写入的内存映射寄存器，以便设置给定 VTA 指令序列的长度。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:122
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:122
 msgid ""
 "Pointer parameters can mean one of two things depending on the interface "
 "pragma being used."
-msgstr ""
-"指针参数可能意味着两种情况之一，这取决于所使用的 interface pragma。"
+msgstr "指针参数可能意味着两种情况之一，这取决于所使用的 interface pragma。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:125
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:125
+#, fuzzy
 msgid ""
-"When used with a ``m_axi`` interface pragma, an AXI master interface gets"
-" generated to provide DMA access to DRAM."
-msgstr ""
-"当与 ``m_axi`` interface pragma 一起使用时，将生成 AXI 主接口来提供对 DRAM 的 DMA 访问。"
+"When used with a ``m_axi`` interface pragma, an AXI requestor interface "
+"gets generated to provide DMA access to DRAM."
+msgstr "当与 ``m_axi`` interface pragma 一起使用时，将生成 AXI 主接口来提供对 DRAM 的 DMA 访问。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:127
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:127
 msgid ""
 "When used with a ``bram`` interface pragma, a BRAM interface gets "
 "generated to expose read and/or write ports to an FPGA block-RAM."
 msgstr ""
-"当与 ``bram`` interface pragma 一起使用时，将生成 bram 接口来公开到 FPGA block-RAM 的读和/或写端口。"
+"当与 ``bram`` interface pragma 一起使用时，将生成 bram 接口来公开到 FPGA block-RAM "
+"的读和/或写端口。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:129
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:129
 msgid ""
 "HLS streams being passed by reference combined with the ``axis`` "
 "interface pragma produce FIFO interfaces to the module. Hardware FIFOs "
 "provide a useful synchronization mechanism between modules."
 msgstr ""
-"HLS 流通过引用与 ``axis`` interface pragma 结合来传递，产生模块的 FIFO 接口。"
-"硬件 FIFO 提供了有用的模块间同步机制。"
+"HLS 流通过引用与 ``axis`` interface pragma 结合来传递，产生模块的 FIFO 接口。硬件 FIFO "
+"提供了有用的模块间同步机制。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:132
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:132
 msgid ""
 "*Pragmas*: Compiler pragmas are essential to define hardware "
 "implementation of each module. We list several pragmas used in the VTA "
 "design to communicate implementation requirements to the compiler."
 msgstr ""
-"*Pragmas*: 编译器 pragmas 对于定义每个模块的硬件实现至关重要。"
-"下面列出了 VTA 设计中用于与编译器沟通实现需求的几个 pragmas。"
+"*Pragmas*: 编译器 pragmas 对于定义每个模块的硬件实现至关重要。下面列出了 VTA 设计中用于与编译器沟通实现需求的几个 "
+"pragmas。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:136
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:136
 msgid ""
 "``HLS INTERFACE``: specifies the interface of the synthesized hardware "
 "module."
-msgstr ""
-"``HLS INTERFACE``: 指定 synthesized 硬件模块的接口。"
+msgstr "``HLS INTERFACE``: 指定 synthesized 硬件模块的接口。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:138
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:138
 msgid ""
 "``HLS PIPELINE``: defines hardware pipeline performance target by setting"
 " an initiation interval goal. When the ``II == 1`` target is set, it "
 "tells the compiler that the synthesized hardware pipeline should be able "
 "to execute one loop iteration per cycle."
 msgstr ""
-"``HLS PIPELINE``: 通过设置启动间隔目标定义硬件管道性能目标。"
-"当设置了 ``II == 1`` 目标时，它告诉编译器，合成硬件管道应该能够每个周期执行一个循环迭代。”"
+"``HLS PIPELINE``: 通过设置启动间隔目标定义硬件管道性能目标。当设置了 ``II == 1`` "
+"目标时，它告诉编译器，合成硬件管道应该能够每个周期执行一个循环迭代。”"
 
-#: ../../docs/topic/vta/dev/hardware.rst:142
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:142
 msgid ""
 "``HLS DEPENDENCE``: instructs the compiler to ignore certain types of "
 "dependence checks in a given loop. Consider a loop body that writes and "
@@ -252,74 +238,72 @@ msgid ""
 "optimization on, it falls onto the software stack to prevent writes "
 "followed by reads to the same address."
 msgstr ""
-"``HLS DEPENDENCE``：指示编译器在给定循环中忽略某些类型的依赖检查。"
-"考虑循环体，它对相同的 BRAM 结构进行读写，并且需要实现 II 为 1。"
-"HLS 编译器必须假设最坏的情况，即一个读被发送到一个地址，而过去的写更新了之前的周期："
-"这是无法实现的 BRAM 计时特征（它需要至少 2 个周期才能看到更新的值）。"
-"因此，为了实现 II 为 1，必须放松依赖检查。"
-"请注意，当这个优化开启时，它会落到软件堆栈上，以防止写后再读到同一个地址。"
+"``HLS DEPENDENCE``：指示编译器在给定循环中忽略某些类型的依赖检查。考虑循环体，它对相同的 BRAM 结构进行读写，并且需要实现 "
+"II 为 1。HLS 编译器必须假设最坏的情况，即一个读被发送到一个地址，而过去的写更新了之前的周期：这是无法实现的 BRAM "
+"计时特征（它需要至少 2 个周期才能看到更新的值）。因此，为了实现 II 为 "
+"1，必须放松依赖检查。请注意，当这个优化开启时，它会落到软件堆栈上，以防止写后再读到同一个地址。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:154
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:154
 msgid ""
 "This `reference guide "
 "<https://www.xilinx.com/support/documentation/sw_manuals/xilinx2018_2/ug902"
 "-vivado-high-level-synthesis.pdf>`_ provides a much more in-depth, and "
 "complete specification of HLS for the Xilinx 2018.2 toolchains."
 msgstr ""
-"这个 `参考指南 <https://www.xilinx.com/support/documentation/sw_manuals/xilinx2018_2/ug902"
-"-vivado-high-level-synthesis.pdf>`_ 提供了更深入、更完整的 Xilinx 2018.2 工具链的 HLS 规范。"
+"这个 `参考指南 "
+"<https://www.xilinx.com/support/documentation/sw_manuals/xilinx2018_2/ug902"
+"-vivado-high-level-synthesis.pdf>`_ 提供了更深入、更完整的 Xilinx 2018.2 工具链的 HLS "
+"规范。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:158
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:158
 msgid "Architectural Overview"
 msgstr "架构总览"
 
-#: ../../docs/topic/vta/dev/hardware.rst:161
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:161
 msgid "Instruction Set Architecture"
 msgstr "指令集架构"
 
-#: ../../docs/topic/vta/dev/hardware.rst:163
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:163
 msgid ""
 "VTA's instruction set architecture (ISA) is composed of 4 CISC "
 "instructions that have a variable execution latency, two of which execute"
 " a micro-coded instruction sequence to perform computation."
 msgstr ""
-"VTA 的指令集架构（instruction set architecture，简称 ISA）由 4 条执行延迟可变的 CISC 指令组成，"
-"其中两条执行微编码（micro-coded）指令序列来执行计算。"
+"VTA 的指令集架构（instruction set architecture，简称 ISA）由 4 条执行延迟可变的 CISC "
+"指令组成，其中两条执行微编码（micro-coded）指令序列来执行计算。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:165
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:165
 msgid "The VTA instructions are listed below:"
 msgstr "VTA 的说明如下："
 
-#: ../../docs/topic/vta/dev/hardware.rst:167
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:167
 msgid ""
 "``LOAD`` instruction: loads a 2D tensor from DRAM into the input buffer, "
 "weight buffer, or register file. It can also load a micro-kernel into the"
 " micro-op cache. Supports dynamic padding when loading input and weight "
 "tiles."
 msgstr ""
-"``LOAD`` 指令：将 2D 张量从 DRAM 加载到输入缓冲区、权重缓冲区或寄存器文件中。"
-"它还可以将微内核加载到 micro-op 缓存中。当加载输入和重量 tile 时，支持动态填充。"
+"``LOAD`` 指令：将 2D 张量从 DRAM 加载到输入缓冲区、权重缓冲区或寄存器文件中。它还可以将微内核加载到 micro-op "
+"缓存中。当加载输入和重量 tile 时，支持动态填充。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:168
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:168
 msgid ""
 "``GEMM`` instruction: performs a micro-op sequence of matrix-matrix "
 "multiplications over an input tensor and a weight tensors, and adds the "
 "result to a register-file tensor."
-msgstr ""
-"``GEMM`` 指令：对输入张量和权值张量执行矩阵-矩阵乘法的微运算序列，并将结果添加到寄存器文件张量中。"
+msgstr "``GEMM`` 指令：对输入张量和权值张量执行矩阵-矩阵乘法的微运算序列，并将结果添加到寄存器文件张量中。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:169
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:169
 msgid ""
 "``ALU`` instruction: performs a micro-op sequence of matrix-matrix ALU "
 "operations over register-file tensor data."
-msgstr ""
-"``ALU`` 指令：对寄存器文件张量数据执行矩阵-矩阵 ALU 运算的微运算序列。"
+msgstr "``ALU`` 指令：对寄存器文件张量数据执行矩阵-矩阵 ALU 运算的微运算序列。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:170
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:170
 msgid "``STORE`` instruction: stores a 2D tensor from the output buffer to DRAM."
 msgstr "``STORE`` 指令：将 2D 张量从输出缓冲区存储到 DRAM。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:172
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:172
 msgid ""
 "The ``LOAD`` instructions are executed by the load and compute modules "
 "depending on the store memory buffer location target. The ``GEMM`` and "
@@ -329,12 +313,11 @@ msgid ""
 "figure below. The meaning of each field will be further explained in the "
 ":ref:`vta-uarch` section."
 msgstr ""
-"``LOAD`` 指令由 load 和 compute 模块执行，具体取决于存储内存缓冲区的位置目标。"
-"``GEMM`` 和 ``ALU`` 指令由计算模块的 GEMM 核心和张量 ALU 执行。"
-"最后，``STORE`` 指令由 store 模块独个执行。"
-"每条指令的字段如下图所示。每个字段的含义将在 :ref:`vta-uarch` 部分进一步解释。"
+"``LOAD`` 指令由 load 和 compute 模块执行，具体取决于存储内存缓冲区的位置目标。``GEMM`` 和 ``ALU`` "
+"指令由计算模块的 GEMM 核心和张量 ALU 执行。最后，``STORE`` 指令由 store "
+"模块独个执行。每条指令的字段如下图所示。每个字段的含义将在 :ref:`vta-uarch` 部分进一步解释。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:183
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:183
 msgid ""
 "Note that the VTA ISA changes as VTA's architectural parameters are "
 "modified (i.e. GEMM core shape, data type, memory size etc.), and as a "
@@ -345,17 +328,15 @@ msgid ""
 "philosophy adopted by the VTA stack which embraces fluidity of the "
 "hardware-software interface."
 msgstr ""
-"请注意，随着 VTA 的架构参数（即 GEMM 核心 shape、数据类型、内存大小等）的修改，"
-"VTA ISA 也会发生变化，因此 ISA 不能保证 VTA 的所有变体之间的兼容性。"
-"然而，这是可以接受的，因为 VTA 运行时会适应参数的变化，"
-"并生成为生成的加速器版本量身定制的二进制代码。"
-"这体现了 VTA 堆栈采用的联合设计理念，它包含了软硬件接口的流动性。"
+"请注意，随着 VTA 的架构参数（即 GEMM 核心 shape、数据类型、内存大小等）的修改，VTA ISA 也会发生变化，因此 ISA "
+"不能保证 VTA 的所有变体之间的兼容性。然而，这是可以接受的，因为 VTA "
+"运行时会适应参数的变化，并生成为生成的加速器版本量身定制的二进制代码。这体现了 VTA 堆栈采用的联合设计理念，它包含了软硬件接口的流动性。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:188
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:188
 msgid "Dataflow Execution"
 msgstr "数据流执行"
 
-#: ../../docs/topic/vta/dev/hardware.rst:190
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:190
 msgid ""
 "VTA relies on dependence FIFO queues between hardware modules to "
 "synchronize the execution of concurrent tasks. The figure below shows how"
@@ -365,12 +346,11 @@ msgid ""
 "connected to its consumer and producer via read-after-write (RAW) and "
 "write-after-read (WAR) dependence queues."
 msgstr ""
-"VTA 依赖于硬件模块之间的 FIFO 队列来同步并发任务的执行。"
-"下图显示了给定的硬件模块如何通过使用依赖 FIFO 队列和 single-reader/single-writer SRAM 缓冲区，"
-"以数据流的方式从其 consumer 和 producer 模块并发执行。"
-"每个模块通过 read-after-write（RAW）和 write-after-read（WAR）依赖队列连接到它的消费者和生产者。"
+"VTA 依赖于硬件模块之间的 FIFO 队列来同步并发任务的执行。下图显示了给定的硬件模块如何通过使用依赖 FIFO 队列和 single-"
+"reader/single-writer SRAM 缓冲区，以数据流的方式从其 consumer 和 producer 模块并发执行。每个模块通过"
+" read-after-write（RAW）和 write-after-read（WAR）依赖队列连接到它的消费者和生产者。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:198
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:198
 msgid ""
 "The pseudo-code above describes how a module executes a given instruction"
 " predicated on dependences with other instructions. First, the dependence"
@@ -382,26 +362,22 @@ msgid ""
 "the task is done, we check for outgoing RAW and WAR dependences, and "
 "notify the consumer and producer modules respectively."
 msgstr ""
-"上面的伪代码描述了模块如何执行基于其他指令依赖关系的给定指令。"
-"首先，每个指令中的依赖标志在硬件中解码。"
-"如果指令有传入的 RAW 依赖项，则在从 producer 模块接收到 RAW 依赖令牌后执行。"
-"类似地，如果任务传入 WAR 依赖项，则执行是在从 consumer 模块接收到 WAR 依赖令牌之后进行的。"
-"最后，当任务完成时，检查输出的 RAW 和 WAR 依赖，并分别通知 consumer 和 producer 模块。"
+"上面的伪代码描述了模块如何执行基于其他指令依赖关系的给定指令。首先，每个指令中的依赖标志在硬件中解码。如果指令有传入的 RAW 依赖项，则在从 "
+"producer 模块接收到 RAW 依赖令牌后执行。类似地，如果任务传入 WAR 依赖项，则执行是在从 consumer 模块接收到 WAR "
+"依赖令牌之后进行的。最后，当任务完成时，检查输出的 RAW 和 WAR 依赖，并分别通知 consumer 和 producer 模块。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:205
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:205
 msgid ""
 "Note that the dependence tokens in this scenario are information-less. "
 "This is because the instructions executed by each module cannot be "
 "reordered by design, as they arrive in FIFO order."
-msgstr ""
-"请注意，此场景中的依赖令牌是无信息的。"
-"这是因为每个模块执行的指令不能按照设计重新排序，因为它们以 FIFO 顺序到达。"
+msgstr "请注意，此场景中的依赖令牌是无信息的。这是因为每个模块执行的指令不能按照设计重新排序，因为它们以 FIFO 顺序到达。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:209
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:209
 msgid "Pipeline Expandability"
 msgstr "管道可扩展性"
 
-#: ../../docs/topic/vta/dev/hardware.rst:211
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:211
 msgid ""
 "The default VTA design is composed of four modules that describe a "
 "3-stage ``load-compute-store`` task pipeline. Following the dataflow "
@@ -413,59 +389,54 @@ msgid ""
 "however: it can add storage and extra logic overhead, which is why we "
 "opted for a default 3-stage pipeline."
 msgstr ""
-"VTA 默认的设计由四个模块组成，描述了 3 阶段的 ``load-compute-store`` 任务管道。"
-"根据数据流硬件组织原则，可以将 VTA 的管道扩展为包含更多阶段。"
-"例如，可以设想将张量 ALU 从 GEMM 核中分离出来，以便最大限度地利用 GEMM 核。"
-"这将导致 ``load-gemm-activate-store`` 任务管道，这与 TPU 设计密切相关。"
-"然而，添加更多阶段是有成本的：它会增加存储和额外的逻辑开销，这也是我们选择默认的 3 阶段管道的原因。"
+"VTA 默认的设计由四个模块组成，描述了 3 阶段的 ``load-compute-store`` 任务管道。根据数据流硬件组织原则，可以将 "
+"VTA 的管道扩展为包含更多阶段。例如，可以设想将张量 ALU 从 GEMM 核中分离出来，以便最大限度地利用 GEMM 核。这将导致 "
+"``load-gemm-activate-store`` 任务管道，这与 TPU "
+"设计密切相关。然而，添加更多阶段是有成本的：它会增加存储和额外的逻辑开销，这也是我们选择默认的 3 阶段管道的原因。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:220
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:220
 msgid "Microarchitectural Overview"
 msgstr "Microarchitectural 概述"
 
-#: ../../docs/topic/vta/dev/hardware.rst:222
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:222
 msgid ""
 "We describe the modules that compose the VTA design. The module "
 "definitions are contained in ``3rdparty/vta-"
 "hw/hardware/xilinx/sources/vta.cc``."
 msgstr ""
-"我们描述了构成 VTA 设计的模块。"
-"模块定义被包含在 ``3rdparty/vta-hw/hardware/xilinx/sources/vta.cc`` 中。""
+"我们描述了构成 VTA 设计的模块。模块定义被包含在 ``3rdparty/vta-"
+"hw/hardware/xilinx/sources/vta.cc`` 中。\""
 
-#: ../../docs/topic/vta/dev/hardware.rst:226
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:226
 msgid "Fetch Module"
 msgstr "Fetch 模块"
 
-#: ../../docs/topic/vta/dev/hardware.rst:228
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:228
 msgid ""
 "VTA is programmed by a linear instruction stream. The fetch module is the"
 " entry point of VTA to the CPU and is programmed via three memory mapped "
 "registers:"
-msgstr ""
-"VTA 是由线性指令流编写的。"
-"fetch 模块是 VTA 到 CPU 的入口点，通过三个内存映射寄存器进行编程："
+msgstr "VTA 是由线性指令流编写的。fetch 模块是 VTA 到 CPU 的入口点，通过三个内存映射寄存器进行编程："
 
-#: ../../docs/topic/vta/dev/hardware.rst:231
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:231
 msgid ""
 "The read-write ``control`` register starts the fetch module, and is read "
 "to check for its completion."
-msgstr ""
-"read-write ``control`` 寄存器启动 fetch 模块，并被读取以检查其是否完成。
+msgstr "read-write ``control`` 寄存器启动 fetch 模块，并被读取以检查其是否完成"
 
-#: ../../docs/topic/vta/dev/hardware.rst:232
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:232
 msgid ""
 "The write-only ``insn_count`` register sets the number of instructions to"
 " execute."
 msgstr "write-only ``insn_count`` 寄存器设置要执行的指令数。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:233
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:233
 msgid ""
 "The write-only ``insns`` register sets the start address of the "
 "instruction stream in DRAM."
-msgstr ""
-"write-only ``insns`` 寄存器设置 DRAM 中指令流的起始地址。"
+msgstr "write-only ``insns`` 寄存器设置 DRAM 中指令流的起始地址。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:235
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:235
 msgid ""
 "The CPU prepares the instruction stream in DRAM in a physically-"
 "contiguous buffer prepared by the VTA runtime. When the instruction "
@@ -475,50 +446,44 @@ msgid ""
 "register. This procedure starts VTA, which reads in the instruction "
 "stream from DRAM via DMA."
 msgstr ""
-"CPU 在由 VTA 运行时准备的物理连续缓冲区中准备 DRAM 中的指令流。"
-"当指令流准备好后，CPU 将开始的物理地址写入 ``insns`` 寄存器，"
-"将指令流的长度写入 ``insn_count`` 寄存器，并将开始信号写入 ``control`` 寄存器。"
-"这个过程启动 VTA，通过 DMA 从 DRAM 读取指令流。"
+"CPU 在由 VTA 运行时准备的物理连续缓冲区中准备 DRAM 中的指令流。当指令流准备好后，CPU 将开始的物理地址写入 ``insns`` "
+"寄存器，将指令流的长度写入 ``insn_count`` 寄存器，并将开始信号写入 ``control`` 寄存器。这个过程启动 VTA，通过 "
+"DMA 从 DRAM 读取指令流。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:239
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:239
 msgid ""
 "Upon accessing the instruction stream, the fetch module partially decodes"
 " instructions, and pushes those instructions into command queues that "
 "feed into the load, compute, and store modules:"
-msgstr ""
-"在访问指令流时，fetch 模块会对指令进行部分解码，并将这些指令推送到命令队列中，再由这些命令队列向加载、计算和存储模块提供信息。"
+msgstr "在访问指令流时，fetch 模块会对指令进行部分解码，并将这些指令推送到命令队列中，再由这些命令队列向加载、计算和存储模块提供信息。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:241
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:241
 msgid ""
 "``STORE`` instructions are pushed to the store command queue to be "
 "processed by the store module."
-msgstr ""
-"``STORE`` 指令被推送到 store 命令队列，由 store 模块处理。"
+msgstr "``STORE`` 指令被推送到 store 命令队列，由 store 模块处理。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:242
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:242
 msgid ""
 "``GEMM`` and ``ALU`` instructions are pushed to the compute command queue"
 " to be processed by the compute module."
-msgstr ""
-"``GEMM`` 和 ``ALU`` 指令被推送到 compute 命令队列，由 compute 模块处理。"
+msgstr "``GEMM`` 和 ``ALU`` 指令被推送到 compute 命令队列，由 compute 模块处理。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:243
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:243
 msgid ""
 "``LOAD`` instructions that describe a load operation of micro-op kernels "
 "or register file data are pushed to the compute command queue to be "
 "processed by the compute module."
-msgstr ""
-"描述微操作内核的 load 运算或寄存器文件数据的 ``LOAD`` 指令被推到 compute 命令队列，由 compute 模块处理。"
+msgstr "描述微操作内核的 load 运算或寄存器文件数据的 ``LOAD`` 指令被推到 compute 命令队列，由 compute 模块处理。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:244
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:244
 msgid ""
 "``LOAD`` instructions that describe a load operation of input or weight "
 "data are pushed to the load command queue to be processed by the load "
 "module."
-msgstr ""
-"描述输入或权重数据的 load 运算的 ``LOAD`` 指令被推到 load 命令队列，由 load 模块处理。"
+msgstr "描述输入或权重数据的 load 运算的 ``LOAD`` 指令被推到 load 命令队列，由 load 模块处理。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:246
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:246
 msgid ""
 "When one of the command queues becomes full, the fetch module stalls "
 "until the queue is not full. Consequently, the command queues are sized "
@@ -526,23 +491,23 @@ msgid ""
 "multiple tasks to be in flight concurrently across the ``load-compute-"
 "store`` pipeline."
 msgstr ""
-"当其中一个命令队列已满时，fetch 模块会一直等待，直到该队列未满。"
-"因此，命令队列的大小足够深，以允许宽的执行窗口，并允许多个任务在 ``load-compute-store`` 管道上并发运行。"
+"当其中一个命令队列已满时，fetch 模块会一直等待，直到该队列未满。因此，命令队列的大小足够深，以允许宽的执行窗口，并允许多个任务在 "
+"``load-compute-store`` 管道上并发运行。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:251
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:251
 msgid "Compute Module"
 msgstr "Compute 模块"
 
-#: ../../docs/topic/vta/dev/hardware.rst:253
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:253
 msgid ""
 "VTA's compute module acts as a RISC processor that performs computation "
 "on tensor registers rather than scalar registers. Two functional units "
 "mutate the register file: the tensor ALU, and the GEMM core."
 msgstr ""
-"VTA 的 compute 模块充当 RISC 处理器，在张量寄存器而不是标量寄存器上执行计算。"
-"两个功能单元改变了寄存器文件：张量 ALU 和 GEMM 核心。"
+"VTA 的 compute 模块充当 RISC 处理器，在张量寄存器而不是标量寄存器上执行计算。两个功能单元改变了寄存器文件：张量 ALU 和 "
+"GEMM 核心。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:256
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:256
 msgid ""
 "The compute module executes RISC micro-ops from the micro-op cache. There"
 " are two types of compute micro-ops: ALU and GEMM operations. To minimize"
@@ -554,13 +519,11 @@ msgid ""
 " and applies to both matrix multiplication and 2D convolution, commonly "
 "found in neural network operators."
 msgstr ""
-"compute 模块从微操作缓存执行 RISC 微操作。"
-"有两种类型的 compute 微操作：ALU 和 GEMM 操作。"
-"为了最小化微操作内核的占用，同时避免对控制流指令（如条件跳转）的需要，compute 模块在两级嵌套循环中执行微操作序列，"
-"该循环通过仿射函数计算每个张量寄存器的位置。"
-"这种压缩方法有助于减少微核指令的占用，并适用于矩阵乘法和二维卷积，这在神经网络算子中很常见。"
+"compute 模块从微操作缓存执行 RISC 微操作。有两种类型的 compute 微操作：ALU 和 GEMM "
+"操作。为了最小化微操作内核的占用，同时避免对控制流指令（如条件跳转）的需要，compute "
+"模块在两级嵌套循环中执行微操作序列，该循环通过仿射函数计算每个张量寄存器的位置。这种压缩方法有助于减少微核指令的占用，并适用于矩阵乘法和二维卷积，这在神经网络算子中很常见。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:265
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:265
 msgid ""
 "The **GEMM core** evaluates GEMM instructions, by executing a micro-code "
 "sequence in a 2-level nested loop described in the Figure above. The GEMM"
@@ -575,14 +538,13 @@ msgid ""
 "GEMM core busy, each of the input buffer, weight buffer, and register "
 "file have to expose sufficient read/write bandwidth."
 msgstr ""
-"**GEMM 核心** 通过在上图中描述的 2 级嵌套循环中执行微代码序列来评估 GEMM 指令。"
-"GEMM 核心每个周期可以执行一次输入权重矩阵乘法。"
-"单周期矩阵乘法的维数定义了硬件 *tensorization intrinsic*，TVM 编译器必须降低计算调度。"
-"这种内在的张量化是由 input、weight 和 accumulator 张量的 dimension 定义的。"
-"每种数据类型都可以具有不同的整数精度：通常权值和输入类型都是低精度的（8 位或更少），而累加器张量具有更宽的类型以防止溢出（32 位）。"
-"为了保持 GEMM 核心的繁忙，每个输入缓冲区、权重缓冲区和寄存器文件都必须暴露足够的 read/write bandwidth。"
+"**GEMM 核心** 通过在上图中描述的 2 级嵌套循环中执行微代码序列来评估 GEMM 指令。GEMM "
+"核心每个周期可以执行一次输入权重矩阵乘法。单周期矩阵乘法的维数定义了硬件 *tensorization intrinsic*，TVM "
+"编译器必须降低计算调度。这种内在的张量化是由 input、weight 和 accumulator 张量的 dimension "
+"定义的。每种数据类型都可以具有不同的整数精度：通常权值和输入类型都是低精度的（8 位或更少），而累加器张量具有更宽的类型以防止溢出（32 "
+"位）。为了保持 GEMM 核心的繁忙，每个输入缓冲区、权重缓冲区和寄存器文件都必须暴露足够的 read/write bandwidth。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:276
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:276
 msgid ""
 "The **Tensor ALU** supports a set of standard operations to implement "
 "common activation, normalization, and pooling operators. VTA being a "
@@ -594,13 +556,12 @@ msgid ""
 "the high-level CISC instruction. The micro-code in the context of tensor "
 "ALU computation only takes care of specifying data access patterns."
 msgstr ""
-"张量 ALU 支持一组标准运算来实现通用的激活、归一化和池化算子。"
-"VTA 是一种模块化设计，张量 ALU 支持的运算范围可以扩展到更高的运算覆盖范围，但代价是更高的资源利用率。"
-"张量 ALU 可以进行张量-张量运算，也可以对一个即时值进行张量-标量运算。"
-"张量 ALU 的操作码和直接值由高级 CISC 指令指定。"
-"在张量 ALU 计算上下文中的微代码只负责指定数据访问模式。"
+"张量 ALU 支持一组标准运算来实现通用的激活、归一化和池化算子。VTA 是一种模块化设计，张量 ALU "
+"支持的运算范围可以扩展到更高的运算覆盖范围，但代价是更高的资源利用率。张量 ALU "
+"可以进行张量-张量运算，也可以对一个即时值进行张量-标量运算。张量 ALU 的操作码和直接值由高级 CISC 指令指定。在张量 ALU "
+"计算上下文中的微代码只负责指定数据访问模式。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:283
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:283
 msgid ""
 "In terms of computational throughput, the Tensor ALU does not execute at "
 "a rate of one operation per cycle. The limitation comes from the lack of "
@@ -613,16 +574,16 @@ msgid ""
 "with the GEMM core, a tensor-tensor operation is by default performed via"
 " vector-vector operations over multiple cycles."
 msgstr ""
-"在计算吞吐量方面，张量 ALU 并不以每个周期一个操作的速度执行。"
-"限制来自读取端口的缺乏：由于每个周期可以读取一个寄存器文件张量，张量 ALU 的启动间隔至少为 2（即每 2 个周期最多执行 1 次操作）。"
-"此外，一次执行一个张量-张量操作的代价可能很高，特别是考虑到寄存器文件类型很宽，通常是 32 位整数。"
-"因此，为了平衡张量 ALU 和 GEMM 核心的资源利用足迹，张量-张量操作在默认情况下是通过多个循环的向量-向量操作来执行的。"
+"在计算吞吐量方面，张量 ALU 并不以每个周期一个操作的速度执行。限制来自读取端口的缺乏：由于每个周期可以读取一个寄存器文件张量，张量 ALU "
+"的启动间隔至少为 2（即每 2 个周期最多执行 1 "
+"次操作）。此外，一次执行一个张量-张量操作的代价可能很高，特别是考虑到寄存器文件类型很宽，通常是 32 位整数。因此，为了平衡张量 ALU 和 "
+"GEMM 核心的资源利用足迹，张量-张量操作在默认情况下是通过多个循环的向量-向量操作来执行的。"
 
-#: ../../docs/topic/vta/dev/hardware.rst:290
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:290
 msgid "Load and Store Modules"
 msgstr "Load 和 Store 模块"
 
-#: ../../docs/topic/vta/dev/hardware.rst:296
+#: ../../../xin/docs/topic/vta/dev/hardware.rst:296
 msgid ""
 "The load and store modules perform 2D DMA loads with a strided access "
 "pattern from DRAM to SRAM. In addition, the load module can insert 2D "
@@ -631,6 +592,7 @@ msgid ""
 " of re-laying data out in DRAM to insert spatial padding around input and"
 " weight tiles."
 msgstr ""
-"load 和 store 模块执行 2D DMA loads，采用从 DRAM 到 SRAM 的跨步访问模式。"
-"此外，load 模块可以动态插入 2D padding，这在阻塞 2D 卷积时非常有用。"
-"这意味着 VTA 可以平铺 2D 卷积输入，而不需要在 DRAM 中重新布局数据，在输入和权重块周围插入空间填充。"
+"load 和 store 模块执行 2D DMA loads，采用从 DRAM 到 SRAM 的跨步访问模式。此外，load 模块可以动态插入 "
+"2D padding，这在阻塞 2D 卷积时非常有用。这意味着 VTA 可以平铺 2D 卷积输入，而不需要在 DRAM "
+"中重新布局数据，在输入和权重块周围插入空间填充。"
+

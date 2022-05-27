@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-27 19:13+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,17 +33,14 @@ msgstr "轻量的 TVM 运行时 NDArray 类"
 msgid ""
 "Strictly this is only an Array Container (a buffer object) No arthimetic "
 "operations are defined. All operations are performed by TVM functions."
-msgstr ""
-"严格地说，这只是数组容器（buffer 对象），没有定义算术运算。所有运算都由 TVM 函数来完成。"
+msgstr "严格地说，这只是数组容器（buffer 对象），没有定义算术运算。所有运算都由 TVM 函数来完成。"
 
 #: of tvm.runtime.ndarray.NDArray:7
 msgid ""
 "The goal is not to re-build yet another array library. Instead, this is a"
 " minimal data structure to demonstrate how can we use TVM in existing "
 "project which might have their own array containers."
-msgstr ""
-"目标不是重新构建另一个数组库。"
-"相反，这是最小的数据结构，展示如何在现有的项目中使用 TVM，这些项目可能有自己的数组容器。"
+msgstr "目标不是重新构建另一个数组库。相反，这是最小的数据结构，展示如何在现有的项目中使用 TVM，这些项目可能有自己的数组容器。"
 
 #: of tvm.runtime.ndarray.NDArray.__dlpack__:1
 msgid "Export the array for consumption by from_dlpack() as a DLPack capsule."
@@ -63,8 +60,8 @@ msgid ""
 "by the consumer to the producer to instruct the producer to ensure that "
 "operations can safely be performed on the array."
 msgstr ""
-"Python 整数，表示指向 stream 的指针。"
-"stream 是由 consumer 提供给 producer，以指导 producer 确保对数组的运算能够安全执行。"
+"Python 整数，表示指向 stream 的指针。stream 是由 consumer 提供给 producer，以指导 producer "
+"确保对数组的运算能够安全执行。"
 
 #: of tvm.runtime.ndarray.NDArray.__dlpack__:12
 msgid "capsule"
@@ -82,9 +79,29 @@ msgstr "数组的 DLPack 容器，包含 DLPackManagedTensor。"
 msgid "Return a tuple of device_type, device_id in DLPack convention"
 msgstr "根据 DLPack convention 返回 device_type 和 device_id 的元组"
 
+#: of tvm._ffi._ctypes.ndarray.NDArrayBase.__init__:1
+msgid "Initialize the function with handle"
+msgstr ""
+
+#: of tvm._ffi._ctypes.ndarray.NDArrayBase.__init__:5
+msgid "handle"
+msgstr ""
+
+#: of
+msgid "TVMArrayHandle"
+msgstr ""
+
+#: of tvm._ffi._ctypes.ndarray.NDArrayBase.__init__:6
+msgid "the handle to the underlying C++ TVMArray"
+msgstr ""
+
 #: of tvm.runtime.ndarray.NDArray.__setitem__:1
 msgid "Set ndarray value"
 msgstr "设置 ndarray 的值"
+
+#: of tvm._ffi._ctypes.ndarray.NDArrayBase._copyto:1
+msgid "Internal function that implements copy to target ndarray."
+msgstr ""
 
 #: of tvm.runtime.ndarray.NDArray._create_view:1
 msgid "Create a view into an existing array."
@@ -98,8 +115,8 @@ msgid ""
 "and the logical shape of the tensor it represents may need to be "
 "independently specified."
 msgstr ""
-"视图与现有数组共享相同的 allocation 和数据类型，但可以有不同的数组形状。"
-"这对于支持 non-flat 内存的运行时非常有用，在这种情况下，allocation 的物理形状和它所表示的张量的逻辑形状可能需要独立指定。"
+"视图与现有数组共享相同的 allocation 和数据类型，但可以有不同的数组形状。这对于支持 non-flat "
+"内存的运行时非常有用，在这种情况下，allocation 的物理形状和它所表示的张量的逻辑形状可能需要独立指定。"
 
 #: of tvm.runtime.ndarray.NDArray._create_view:10
 msgid ""
@@ -107,8 +124,8 @@ msgid ""
 "manipulations, as it breaks non-aliasing assumptions made by TVM.  This "
 "function may also be removed/replaced in the future."
 msgstr ""
-"警告：这个函数不应该在低级 manipulations 之外使用，因为它打破了 TVM 做出的 non-aliasing 假设。"
-"这个函数也可能在未来被删除/替换。"
+"警告：这个函数不应该在低级 manipulations 之外使用，因为它打破了 TVM 做出的 non-aliasing "
+"假设。这个函数也可能在未来被删除/替换。"
 
 #: of tvm.runtime.ndarray.NDArray._create_view:17
 msgid "shape: Union[tvm.runtime.ShapeTuple, Sequence[typing.SupportsInt]]"
@@ -122,8 +139,7 @@ msgstr "视图的形状。"
 msgid ""
 "Convert this array to numpy array. This API will be deprecated in TVM "
 "v0.8 release. Please use `numpy` instead."
-msgstr ""
-"将数组转换为 numpy 数组。这个 API 将在 TVM v0.8 版本中弃用。请改用 ``numpy``。"
+msgstr "将数组转换为 numpy 数组。这个 API 将在 TVM v0.8 版本中弃用。请改用 ``numpy``。"
 
 #: of tvm.runtime.ndarray.NDArray.copyfrom:1
 msgid "Perform an synchronize copy from the array."
@@ -218,15 +234,15 @@ msgstr ""
 msgid "Whether other is same as self."
 msgstr ""
 
-#: ../../docstring of tvm.nd.NDArray.shape:1
+#: of tvm.nd.NDArray.shape:1
 msgid "Shape of this array"
 msgstr ""
 
-#: of tvm.nd.NDArray.to_dlpack:1
+#: of tvm._ffi._ctypes.ndarray.NDArrayBase.to_dlpack:1
 msgid "Produce an array from a DLPack Tensor without copying memory"
 msgstr ""
 
-#: of tvm.nd.NDArray.to_dlpack:5
+#: of tvm._ffi._ctypes.ndarray.NDArrayBase.to_dlpack:5
 msgid "dlpack : DLPack tensor view of the array data"
 msgstr ""
 

@@ -1,0 +1,209 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:10002
+msgid "开始使用 TVMC Python：TVM 的高级 API"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:10004
+msgid "**原作者**: [Jocelyn Shiue](https://github.com/CircleSpin)"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:10006
+msgid "Step 0: 导入"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:10008
+msgid "导入本地 TVM 环境："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:30002
+msgid "Step 1: 加载模型"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:30004
+msgid ""
+"将模型导入到 tvmc 中。这一步将机器学习模型从受支持的框架转换为 TVM 的高级图表示语言 Relay。这将为 TVM "
+"中的所有模型提供一个统一的起点。目前支持的框架有：Keras、ONNX、Tensorflow、TFLite 和 PyTorch。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:50002
+msgid ""
+"所有框架都支持使用 `shape_dict` 参数覆盖输入 shape。对于大多数框架来说，这是可选的，但对于 Pytorch "
+"来说，这是必要的，因为 TVM 不能自动搜索它。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:50009
+msgid ""
+"查看模型的 input/shape_dict 的推荐方法是通过 "
+"[netron](https://netron.app/)。打开模型后，单击第一个节点，在 inputs 部分查看名称和形状。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:50012
+msgid "如果你想看 Relay，你可以运行："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:70002
+msgid "Step 2: 编译"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:70004
+msgid ""
+"既然我们的模型已经在 Relay 中，下一步就是将它编译到需要运行的硬件上。我们把这个硬件称为目标（target）。此编译过程将模型从 Relay"
+" 转换为目标机器可以理解的较低级语言。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:70006
+msgid ""
+"为了编译模型 ``tvm.target`` "
+"字符串是必需的。查看[文档](https://tvm.apache.org/docs/api/python/target.html)，了解更多关于"
+" `tvm.target` 的信息及其选项。一些例子包括："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:70008
+msgid "cuda (Nvidia GPU)"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:70009
+msgid "llvm (CPU)"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:70010
+msgid "llvm -mcpu=cascadelake (Intel CPU)"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:90002
+msgid "编译步骤返回 `package`。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:90004
+msgid "Step 3: 运行"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:90006
+msgid "编译后的包现在可以在硬件目标上运行。设备输入选项有：CPU、Cuda、CL、Metal 和 Vulkan。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:90009
+msgid "使用 CUDA，需要："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:110002
+msgid "也可以打印结果："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:130002
+msgid "Tune [可选 && 推荐]"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:130004
+msgid "通过调优可以进一步提高运行速度。这个可选步骤使用机器学习来查看模型（函数）中的每个运算，并试图找到更快的方法来运行它。通过成本模型来做到这一点，并对可能的调度进行基准测试。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:130006
+msgid "此处 `target` 与编译相同。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:150002
+msgid "可能存在可以忽略的用户警告。这将使最终结果更快，但可能需要数小时来调优。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:150004
+msgid "请参阅下面的 [保存调优结果](保存调优结果)。如果希望应用调优结果，请确保将调优结果传递到 `compile` 中。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:170002
+msgid "额外的 TVMC 功能"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:170004
+msgid "保存模型"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:170006
+msgid "为了以后更快，加载模型（Step 1）后保存 Relay 版本。然后，模型将出现在您为稍后转换语法保存它的地方。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:190002
+msgid "保存包"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:190004
+msgid "在模型被编译（Step 2）之后，包也可以被保存。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:210002
+msgid "使用 Autoscheduler"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:210004
+msgid "使用下一代 tvm 来启用可能更快的运行速度结果。调度的搜索空间是自动生成的，不像之前需要手写。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:210007
+msgid ""
+"博文：[引入 Auto-scheduler TVM](https://tvm.apache.org/2021/03/03/intro-auto-"
+"scheduler)"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:210008
+msgid ""
+"论文：[Ansor : Generating High-Performance Tensor Programs for Deep "
+"Learning](https://arxiv.org/abs/2006.06762)"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:230002
+msgid "保存调优结果"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:230004
+msgid "调优结果可以保存在文件中，以便以后重用。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb
+msgid "方式1"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb
+msgid "方式2"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:240002
+msgid "调优更多复杂模型"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:240004
+msgid "你可能注意到 T 的打印像 ``.........T.T..T..T..T.T.T.T.T.T.`` 增加了搜索时间范围："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:260002
+msgid "为远程设备编译模型"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:260004
+msgid ""
+"当您希望为不在本地机器上的硬件进行编译时，远程过程调用（remote procedural call，简称 RPC）非常有用。`tvmc` "
+"方法支持这一点。要设置 RPC 服务器，请查看[交叉编译和 RPC 文档](cross_compilation_and_rpc)中的“在设备上设置"
+" RPC 服务器”一节。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_python.ipynb:260006
+msgid "在 TVMC 脚本中包括以下内容并进行相应调整："
+msgstr ""
+

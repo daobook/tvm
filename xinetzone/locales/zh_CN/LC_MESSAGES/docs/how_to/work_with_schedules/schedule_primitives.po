@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-06 15:25+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,32 +17,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:13
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:13
 msgid ""
 "Click :ref:`here "
 "<sphx_glr_download_how_to_work_with_schedules_schedule_primitives.py>` to"
 " download the full example code"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:24
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:24
 msgid "Schedule Primitives in TVM"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:25
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:25
 msgid "**Author**: `Ziheng Jiang <https://github.com/ZihengJiang>`_"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:27
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:27
 msgid "TVM is a domain specific language for efficient kernel construction."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:29
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:29
 msgid ""
 "In this tutorial, we will show you how to schedule the computation by "
 "various primitives provided by TVM."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:45
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:45
 msgid ""
 "There often exist several methods to compute the same result, however, "
 "different methods will result in different locality and performance. So "
@@ -50,153 +50,152 @@ msgid ""
 "**Schedule**."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:50
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:50
 msgid ""
 "A **Schedule** is a set of transformation of computation that transforms "
 "the loop of computations in the program."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:66
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:66
 msgid ""
 "A schedule can be created from a list of ops, by default the schedule "
 "computes tensor in a serial manner in a row-major order."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:89
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:89
 msgid ""
 "One schedule is composed by multiple stages, and one **Stage** represents"
 " schedule for one operation. We provide various methods to schedule every"
 " stage."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:96
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:96
 msgid "split"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:97
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:97
 msgid ":code:`split` can split a specified axis into two axes by :code:`factor`."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:114
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:114
 msgid ""
 "You can also split a axis by :code:`nparts`, which splits the axis "
 "contrary with :code:`factor`."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:132
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:132
 msgid "tile"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:133
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:133
 msgid ":code:`tile` help you execute the computation tile by tile over two axes."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:151
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:151
 msgid "fuse"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:152
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:152
 msgid ":code:`fuse` can fuse two consecutive axes of one computation."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:172
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:172
 msgid "reorder"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:173
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:173
 msgid ":code:`reorder` can reorder the axes in the specified order."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:193
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:193
 msgid "bind"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:194
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:194
 msgid ""
 ":code:`bind` can bind a specified axis with a thread axis, often used in "
 "gpu programming."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:214
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:214
 msgid "compute_at"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:215
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:215
 msgid ""
 "For a schedule that consists of multiple operators, TVM will compute "
 "tensors at the root separately by default."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:232
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:232
 msgid ""
 ":code:`compute_at` can move computation of `B` into the first axis of "
 "computation of `C`."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:251
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:251
 msgid "compute_inline"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:252
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:252
 msgid ""
 ":code:`compute_inline` can mark one stage as inline, then the body of "
 "computation will be expanded and inserted at the address where the tensor"
 " is required."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:272
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:272
 msgid "compute_root"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:273
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:273
 msgid ":code:`compute_root` can move computation of one stage to the root."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:292
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:292
 msgid "Summary"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:293
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:293
 msgid ""
 "This tutorial provides an introduction to schedule primitives in tvm, "
 "which permits users schedule the computation easily and flexibly."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:297
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:297
 msgid ""
 "In order to get a good performance kernel implementation, the general "
 "workflow often is:"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:300
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:300
 msgid "Describe your computation via series of operations."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:301
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:301
 msgid "Try to schedule the computation with primitives."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:302
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:302
 msgid "Compile and run to see the performance difference."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:303
+#: ../../../xin/docs/how_to/work_with_schedules/schedule_primitives.rst:303
 msgid "Adjust your schedule according the running result."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:318
-msgid ""
-":download:`Download Python source code: schedule_primitives.py "
-"<schedule_primitives.py>`"
-msgstr ""
+#~ msgid ""
+#~ ":download:`Download Python source code: "
+#~ "schedule_primitives.py <schedule_primitives.py>`"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:324
-msgid ""
-":download:`Download Jupyter notebook: schedule_primitives.ipynb "
-"<schedule_primitives.ipynb>`"
-msgstr ""
+#~ msgid ""
+#~ ":download:`Download Jupyter notebook: "
+#~ "schedule_primitives.ipynb <schedule_primitives.ipynb>`"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/schedule_primitives.rst:331
-msgid "`Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_"
-msgstr ""
+#~ msgid ""
+#~ "`Gallery generated by Sphinx-Gallery "
+#~ "<https://sphinx-gallery.github.io>`_"
+#~ msgstr ""
 

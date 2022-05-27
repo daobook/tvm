@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-06 15:25+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,21 +17,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:13
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:13
 msgid ""
 "Click :ref:`here <sphx_glr_download_how_to_extend_tvm_use_pass_infra.py>`"
 " to download the full example code"
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:24
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:24
 msgid "How to Use TVM Pass Infra"
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:25
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:25
 msgid "**Author**: `Zhi Chen <https://github.com/zhiics>`_"
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:27
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:27
 msgid ""
 "As the number of optimization passes increases in Relay/tir, it becomes "
 "intractable to execute them and maintain their dependencies manually. "
@@ -40,7 +40,7 @@ msgid ""
 "in the TVM stack."
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:32
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:32
 msgid ""
 "The optimizations of a Relay/tir program could be applied at various "
 "granularity, namely function-level and module-level using "
@@ -53,18 +53,18 @@ msgid ""
 "please refer to the :ref:`pass-infra`"
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:40
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:40
 msgid ""
 "This tutorial mainly demostrates how developers can use the pass infra to"
 " perform a certain optimization and create an optimization pipeline for a"
 " Relay program. The same approach can be used for tir as well."
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:58
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:58
 msgid "Create An Example Relay Program"
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:59
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:59
 msgid ""
 "First of all, we create a simple Relay program for the tutorial. This "
 "program will be used by various optimizations of the examples in this "
@@ -72,45 +72,45 @@ msgid ""
 "the tir passes."
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:89
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:89
 msgid "Optimize the Program"
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:90
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:90
 msgid ""
 "Now we would like to optimize the program. Relay features a host of "
 "optimizations. We will select some of them to apply on this example "
 "program."
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:93
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:93
 msgid ""
 "There are multiple ways to optimize a Relay program. Below we will "
 "provide examples for each of them."
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:97
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:97
 msgid "Manually Apply Optimization Passes"
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:123
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:123
 msgid ""
 "More optimizations can be applied in the similar manner. For instance, we"
 " can eliminate the common expressions that used by `z` and `z1`."
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:136
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:136
 msgid ""
 "Some optimizations, such as fusion, are parameteric as well. For example,"
 " opt level 0 will not allow operators to be fused together. Users can "
 "pass the `fuse_opt_level` to enable this."
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:154
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:154
 msgid "Use Sequential to Apply a Sequence of Passes"
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:155
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:155
 msgid ""
 "Applying passes as above is actually tedious and it may require users to "
 "have better understanding about the dependencies between them. For "
@@ -121,7 +121,7 @@ msgid ""
 "Relay program."
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:162
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:162
 msgid ""
 "Relay, hence, provides :py:class:`tvm.transform.Sequential` to alleviate "
 "developers from handling these issues explicitly by specifying the "
@@ -138,7 +138,7 @@ msgid ""
 "our pass infra works on the optimizing pass."
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:195
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:195
 msgid ""
 "From the transformed Relay program, we can see that there are still two "
 "identical addition operations. This is because ``EliminateCommonSubexpr``"
@@ -149,11 +149,11 @@ msgid ""
 "optimization level that they want to execute."
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:215
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:215
 msgid "Now we can see that only one of the two identical additions is kept."
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:217
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:217
 msgid ""
 "In addition, users can selectively disable some passes using the "
 "`disabled_pass` config, which is similar to the `-fno-xxx` option used "
@@ -162,11 +162,11 @@ msgid ""
 "again show two identical addition operations."
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:236
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:236
 msgid "Implement a Pass Using Python Decorator"
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:237
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:237
 msgid ""
 "The next example illustrates how we can orchestrate a customized "
 "optimization pipeline through the pass infra using Python decorators. "
@@ -178,11 +178,11 @@ msgid ""
 "function will be replaced when we invoke the customized pass."
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:281
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:281
 msgid "Debug a Pass"
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:282
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:282
 msgid ""
 "TVM provides users a plug-and-play style debugging pass that print the IR"
 " after a certain pass is done through a special pass (``PrintIR``) to "
@@ -191,7 +191,7 @@ msgid ""
 "for ``FoldConstant`` optimization."
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:306
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:306
 msgid ""
 "By inserting the ``PrintIR`` pass after ``FoldConstant``, the pass infra "
 "will dump out the module IR when ``FoldConstant`` is done. Users can plug"
@@ -199,7 +199,7 @@ msgid ""
 "optimization effect."
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:310
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:310
 msgid ""
 "There is a more flexible debugging mechanism. One can implement a "
 "``PassInstrument`` class to execute arbitrary code not only before and/or"
@@ -207,18 +207,18 @@ msgid ""
 ":ref:`pass_instrument_cpp_backend` for more details."
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:315
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:315
 msgid ""
 "Here we use :py::func`tvm.instrument.pass_instrument` decorator to "
 "implement a PassInsturment class printing IR before execution of each "
 "passes:"
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:345
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:345
 msgid "Summary"
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:346
+#: ../../../xin/docs/how_to/extend_tvm/use_pass_infra.rst:346
 msgid ""
 "This tutorial has covered how we can write and invoke passes in TVM more "
 "conveniently using the pass infra. Different ways of invoking a pass are "
@@ -228,19 +228,18 @@ msgid ""
 " we can debug a pass using the ``PrintIR`` and tracing."
 msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:366
-msgid ""
-":download:`Download Python source code: use_pass_infra.py "
-"<use_pass_infra.py>`"
-msgstr ""
+#~ msgid ""
+#~ ":download:`Download Python source code: "
+#~ "use_pass_infra.py <use_pass_infra.py>`"
+#~ msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:372
-msgid ""
-":download:`Download Jupyter notebook: use_pass_infra.ipynb "
-"<use_pass_infra.ipynb>`"
-msgstr ""
+#~ msgid ""
+#~ ":download:`Download Jupyter notebook: "
+#~ "use_pass_infra.ipynb <use_pass_infra.ipynb>`"
+#~ msgstr ""
 
-#: ../../docs/how_to/extend_tvm/use_pass_infra.rst:379
-msgid "`Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_"
-msgstr ""
+#~ msgid ""
+#~ "`Gallery generated by Sphinx-Gallery "
+#~ "<https://sphinx-gallery.github.io>`_"
+#~ msgstr ""
 

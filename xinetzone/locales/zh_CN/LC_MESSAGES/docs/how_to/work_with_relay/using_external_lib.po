@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-06 15:25+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,30 +17,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:13
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:13
 msgid ""
 "Click :ref:`here "
 "<sphx_glr_download_how_to_work_with_relay_using_external_lib.py>` to "
 "download the full example code"
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:22
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:22
 msgid "Using External Libraries in Relay"
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:23
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:23
 msgid ""
 "**Author**: `Masahiro Masuda <https://github.com/masahi>`_, `Truman Tian "
 "<https://github.com/SiNZeRo>`_"
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:25
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:25
 msgid ""
 "This is a short tutorial on how to use external libraries such as cuDNN, "
 "or cuBLAS with Relay."
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:27
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:27
 msgid ""
 "Relay uses TVM internally to generate target specific code. For example, "
 "with cuda backend TVM generates cuda kernels for all layers in the user "
@@ -50,7 +50,7 @@ msgid ""
 "users, all we need to do is just to set a target string appropriately."
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:32
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:32
 msgid ""
 "Before we can use external libraries from Relay, your TVM needs to be "
 "built with libraries you want to use. For example, to use cuDNN, "
@@ -58,32 +58,32 @@ msgid ""
 "include and library directories need to be specified if necessary."
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:35
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:35
 msgid "To begin with, we import Relay and TVM."
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:53
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:53
 msgid "Create a simple network"
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:54
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:54
 msgid ""
 "Let's create a very simple network for demonstration. It consists of "
 "convolution, batch normalization, and ReLU activation."
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:86
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:86
 msgid "Build and run with cuda backend"
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:87
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:87
 msgid ""
 "We build and run this network with cuda backend, as usual. By setting the"
 " logging level to DEBUG, the result of Relay graph compilation will be "
 "dumped as pseudo code."
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:112
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:112
 msgid ""
 "The generated pseudo code should look something like below. Note how bias"
 " add, batch normalization, and ReLU activation are fused into the "
@@ -91,18 +91,18 @@ msgid ""
 "representation."
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:518
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:518
 msgid "Use cuDNN for a convolutional layer"
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:519
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:519
 msgid ""
 "We can use cuDNN to replace convolution kernels with cuDNN ones. To do "
 "that, all we need to do is to append the option \" -libs=cudnn\" to the "
 "target string."
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:542
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:542
 msgid ""
 "Note that if you use cuDNN, Relay cannot fuse convolution with layers "
 "following it. This is because layer fusion happens at the level of TVM "
@@ -110,26 +110,26 @@ msgid ""
 "box, so there is no way to fuse them with TVM IR."
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:546
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:546
 msgid ""
 "The pseudo code below shows that cuDNN convolution + bias add + batch "
 "norm + ReLU turned into two stages of computation, one for cuDNN call and"
 " the other for the rest of operations."
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:569
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:569
 msgid "Verify the result"
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:570
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:570
 msgid "We can check that the results of two runs match."
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:583
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:583
 msgid "Conclusion"
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:584
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:584
 msgid ""
 "This tutorial covered the usage of cuDNN with Relay. We also have support"
 " for cuBLAS. If cuBLAS is enabled, it will be used inside a fully "
@@ -138,26 +138,26 @@ msgid ""
 "-libs=cudnn,cublas\"."
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:589
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:589
 msgid ""
 "For ROCm backend, we have support for MIOpen and rocBLAS. They can be "
 "enabled with target \"rocm -libs=miopen,rocblas\"."
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:592
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:592
 msgid ""
 "Being able to use external libraries is great, but we need to keep in "
 "mind some cautions."
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:594
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:594
 msgid ""
 "First, the use of external libraries may restrict your usage of TVM and "
 "Relay. For example, MIOpen only supports NCHW layout and fp32 data type "
 "at the moment, so you cannot use other layouts or data type in TVM."
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:597
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:597
 msgid ""
 "Second, and more importantly, external libraries restrict the possibility"
 " of operator fusion during graph compilation, as shown above. TVM and "
@@ -168,19 +168,18 @@ msgid ""
 "implementation when necessary."
 msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:614
-msgid ""
-":download:`Download Python source code: using_external_lib.py "
-"<using_external_lib.py>`"
-msgstr ""
+#~ msgid ""
+#~ ":download:`Download Python source code: "
+#~ "using_external_lib.py <using_external_lib.py>`"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:620
-msgid ""
-":download:`Download Jupyter notebook: using_external_lib.ipynb "
-"<using_external_lib.ipynb>`"
-msgstr ""
+#~ msgid ""
+#~ ":download:`Download Jupyter notebook: "
+#~ "using_external_lib.ipynb <using_external_lib.ipynb>`"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_relay/using_external_lib.rst:627
-msgid "`Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_"
-msgstr ""
+#~ msgid ""
+#~ "`Gallery generated by Sphinx-Gallery "
+#~ "<https://sphinx-gallery.github.io>`_"
+#~ msgstr ""
 

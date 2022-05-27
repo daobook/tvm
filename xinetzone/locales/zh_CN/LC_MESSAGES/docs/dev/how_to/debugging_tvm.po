@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/docs/dev/how_to/debugging_tvm.rst:21
+msgid "Debuggging TVM"
+msgstr ""
+
+#: ../../../xin/docs/dev/how_to/debugging_tvm.rst:23
+msgid ""
+"**NOTE**: This page is a work in-progress. Everyone is welcomed to add "
+"suggestions and tips via sending a PR to modify this page. The goal with "
+"this page is to centralize the commonly-used techniques being used to "
+"debug TVM and to spread awareness to the community. To that end, we may "
+"seek to promote more broadly-used techniques to the top of this doc."
+msgstr ""
+
+#: ../../../xin/docs/dev/how_to/debugging_tvm.rst:29
+msgid "VLOGging"
+msgstr ""
+
+#: ../../../xin/docs/dev/how_to/debugging_tvm.rst:31
+msgid ""
+"TVM provides a verbose-logging facility that allows you to commit trace-"
+"level debugging messages without impacting the binary size or runtime of "
+"TVM in production. You can use VLOG in your code as follows:"
+msgstr ""
+
+#: ../../../xin/docs/dev/how_to/debugging_tvm.rst:42
+msgid ""
+"In this example, the integer ``2`` passed to ``VLOG()`` indicates a "
+"verbosity level. The higher the level, the more logs printed. In general,"
+" TVM levels range from 0 to 2, with 3 being used only for extremely low-"
+"level core runtime properties. The VLOG system is configured at startup "
+"time to print VLOG statements between ``0`` and some integer ``N``. ``N``"
+" can be set per-file or globally."
+msgstr ""
+
+#: ../../../xin/docs/dev/how_to/debugging_tvm.rst:47
+msgid ""
+"VLOGs don't print or impact binary size or runtime by default (when "
+"compiled with proper optimization). To enable VLOGging, do the following:"
+msgstr ""
+
+#: ../../../xin/docs/dev/how_to/debugging_tvm.rst:50
+msgid ""
+"In ``config/cmake``, ensure you ``set(USE_RELAY_DEBUG ON)``. This flag is"
+" used to enable VLOGging."
+msgstr ""
+
+#: ../../../xin/docs/dev/how_to/debugging_tvm.rst:52
+msgid ""
+"Launch Python passing ``TVM_LOG_DEBUG=<spec>``, where ``<spec>>`` is a "
+"comma-separated list of level assignments of the form "
+"``<file_name>=<level>``. Here are some specializations:"
+msgstr ""
+
+#: ../../../xin/docs/dev/how_to/debugging_tvm.rst:55
+msgid ""
+"The special filename ``DEFAULT`` sets the VLOG level setting for all "
+"files."
+msgstr ""
+
+#: ../../../xin/docs/dev/how_to/debugging_tvm.rst:56
+msgid "``<level>>`` can be set to ``-1`` to disable VLOG in that file."
+msgstr ""
+
+#: ../../../xin/docs/dev/how_to/debugging_tvm.rst:57
+msgid ""
+"``<file_name>`` is the name of the c++ source file (e.g. ``.cc``, not "
+"``.h``) relative to the ``src/`` directory in the TVM repo. You do not "
+"need to supply ``src/`` when specifying the file path, but if you do, "
+"VLOG will still interpret the path correctly."
+msgstr ""
+
+#: ../../../xin/docs/dev/how_to/debugging_tvm.rst:61
+msgid "Examples:"
+msgstr ""
+

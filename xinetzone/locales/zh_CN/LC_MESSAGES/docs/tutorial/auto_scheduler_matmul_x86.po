@@ -1,0 +1,167 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:20003
+msgid "使用自动调度优化运算"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:20005
+msgid ""
+"**作者**: [Lianmin Zheng](https://github.com/merrymercy)，[Chengfan "
+"Jia](https://github.com/jcf94/)"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:20007
+msgid "在本教程中，我们将展示 TVM 的自动调度功能如何在不需要编写自定义模板的情况下找到最佳调度。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:20009
+msgid "与基于模板的 [AutoTVM](autotvm_matmul_x86) 不同，后者依赖于手动模板来定义搜索空间，而自动调度器不需要任何模板。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:20011
+msgid "用户只需要编写计算声明，而不需要任何调度命令或模板。自动调度器可以自动生成一个大的搜索空间，并在空间中找到一个好的调度。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:20013
+msgid "本教程中我们以矩阵乘法为例。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:20018
+msgid ""
+"请注意，本教程不能在 Windows 或最近版本的 MacOS 上运行。为了让它运行，你需要将本教程的主体包裹在一个 `if __name__ "
+"== \"__main__\":` 块中。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:40002
+msgid "定义矩阵乘法"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:40004
+msgid ""
+"首先，我们定义一个带有偏置加法的矩阵乘法。注意，这使用了 TVM 张量表达式语言中的标准操作。主要的区别是在函数定义的顶部使用了 "
+"{any}`register_workload` 装饰器。该函数应该返回一个输入/输出张量的列表。从这些张量中，自动调度器可以得到整个计算图。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:60002
+msgid "创建搜索任务"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:60004
+msgid ""
+"在定义了函数之后，我们现在可以为 `auto_scheduler` 创建一个任务来进行搜索。我们指定这个矩阵乘法的特殊参数，在这个例子中，是对 "
+"$1024 \\times 1024$ 大小的正方形矩阵的乘法。然后我们使用 ` N=L=M=1024 and "
+"dtype=\"float32\"` 创建一个搜索任务。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:60006
+msgid "用自定义目标提高性能"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:60007
+msgid "为了使 TVM 能够充分利用特定的硬件平台，你需要手动指定你的 CPU 能力。例如："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:60009
+msgid "用 ``llvm -mcpu=core-avx2`` 替换下面的 ``llvm``，以启用 AVX2"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:60010
+msgid "用 ``llvm -mcpu=skylake-avx512`` 替换下面的 ``llvm``，以启用 AVX-512"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:80002
+msgid "为自动调度设置参数"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:80004
+msgid "下一步，我们为自动调度设置参数。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:80006
+msgid ""
+"`num_measure_trials` 是我们在搜索过程中可以使用的测量试验的数量。为了快速演示，我们在本教程中只做了 10 "
+"次试验。在实践中，1000 是一个很好的搜索收敛值。你可以根据你的时间预算做更多的试验。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:80007
+msgid ""
+"此外，我们使用 {any}`RecordToFile <auto_scheduler.RecordToFile>` 来 log 测量记录到 "
+"`matmul.json` 文件中。这些测量记录可以用来查询历史最好的，恢复搜索，并在以后做更多的分析。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:80008
+msgid "查阅 {any}`TuningOptions <auto_scheduler.TuningOptions>` 了解参数的更多信息。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:100002
+msgid "运行搜索"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:100004
+msgid "现在我们把所有的输入准备好。很简单，不是吗？我们可以启动搜索，让自动调度发挥它的魔力。经过一些测量试验后，我们可以从日志文件中加载最佳调度并加以应用。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:120002
+msgid "检查优化后的调度"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:120004
+msgid ""
+"我们可以 lower 调度，看看自动调度后的 IR。自动调度器正确地进行了优化，包括多级平铺（tiling）、布局转换（layout "
+"transformation）、并行化（parallelization）、矢量化（vectorization）、解卷（unrolling）和运算符融合（operator"
+" fusion）。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:140002
+msgid "检查正确性并评估性能"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:140004
+msgid "我们建立二进制文件，并检查其正确性（correctness）和性能（performance）。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:160002
+msgid "使用纪录文件"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:160004
+msgid "在搜索过程中，所有的测量记录都被 log 到记录文件 `matmul.json`。这些测量记录可以用来重新应用搜索结果，恢复搜索，并进行其他分析。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:160006
+msgid "这里有一个例子，我们从一个文件中加载最佳调度，并打印出等效的 python 调度 API。这可以用于调试和学习自动调度的行为。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:180002
+msgid ""
+"一个更复杂的例子是恢复搜索。在这种情况下，我们需要自己创建搜索策略和成本模型，并通过日志文件恢复搜索策略和成本模型（cost "
+"model）的状态。在下面的例子中，我们恢复了状态并做了更多的 5 次试验。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:200002
+msgid "最后说明和总结"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/auto_scheduler_matmul_x86.ipynb:200004
+msgid ""
+"在本教程中，我们已经展示了如何使用 TVM 自动调度器来自动优化矩阵乘法，而不需要指定搜索模板。它结束了一系列从张量表达式（Tensor "
+"Expression，简称 TE）语言开始的例子，展示了 TVM 如何优化计算操作。"
+msgstr ""
+

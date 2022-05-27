@@ -1,0 +1,420 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:10003
+msgid "用 TVMC 编译和优化模型"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:10005
+msgid ""
+"原作者：[Leandro Nunes](https://github.com/leandron), [Matthew "
+"Barrett](https://github.com/mbaret), [Chris "
+"Hoge](https://github.com/hogepodge)"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:10007
+msgid ""
+"在本节中，将使用 TVMC，即 TVM 命令行驱动程序。TVMC 工具，它暴露了 TVM 的功能，如 auto-"
+"tuning、编译、profiling 和通过命令行界面执行模型。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:10009
+msgid "在完成本节内容后，将使用 TVMC 来完成以下任务："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:10011
+msgid "为 TVM 运行时编译预训练 ResNet-50 v2 模型。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:10012
+msgid "通过编译后的模型运行真实图像，并解释输出和模型的性能。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:10013
+msgid "使用 TVM 在 CPU 上调优模型。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:10014
+msgid "使用 TVM 收集的调优数据重新编译优化模型。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:10015
+msgid "通过优化后的模型运行图像，并比较输出和模型的性能。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:10017
+msgid "本节的目的是让你了解 TVM 和 TVMC 的能力，并为理解 TVM 的工作原理奠定基础。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:10019
+msgid "使用 TVMC"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:10021
+msgid ""
+"TVMC 是 Python 应用程序，是 TVM Python 软件包的一部分。当你使用 Python 包安装 TVM 时，你将得到 TVMC "
+"作为命令行应用程序，名为 ``tvmc``。这个命令的位置将取决于你的平台和安装方法。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:10023
+msgid ""
+"另外，如果你在 ``$PYTHONPATH`` 上将 TVM 作为 Python 模块，你可以通过可执行的 python 模块 ``python "
+"-m tvm.driver.tvmc`` 访问命令行驱动功能。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:10025
+msgid ""
+"为简单起见，本教程将提到 TVMC 命令行使用 ``tvmc <options>``，但同样的结果可以用 ``python -m "
+"tvm.driver.tvmc <options>``。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:10027
+msgid "你可以使用帮助页面查看："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:30002
+msgid ""
+"``tvmc`` 可用的 TVM 的主要功能来自子命令 ``compile`` 和 ``run``，以及 "
+"``tune``。要了解某个子命令下的具体选项，请使用 ``tvmc <subcommand> "
+"--help``。将在本教程中逐一介绍这些命令，但首先需要下载预训练模型来使用。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:30004
+msgid "获得模型"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:30006
+msgid ""
+"在本教程中，将使用 ResNet-50 v2。ResNet-50 是卷积神经网络，有 50 "
+"层深度，设计用于图像分类。将使用的模型已经在超过一百万张图片上进行了预训练，有 1000 种不同的分类。该网络输入图像大小为 "
+"224x224。如果你有兴趣探究更多关于 ResNet-50 模型的结构，建议下载 "
+"`[Netron](https://netron.app)，它免费提供的 ML 模型查看器。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:30008
+msgid "在本教程中，将使用 ONNX 格式的模型。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:50002
+msgid "为了让该模型可以被其他教程使用，需要："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:70002
+msgid "支持的模型格式"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:70003
+msgid ""
+"TVMC 支持用 Keras、ONNX、TensorFlow、TFLite 和 Torch "
+"创建的模型。如果你需要明确地提供你所使用的模型格式，请使用选项 ``--model-format``。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:70006
+msgid "更多信息见："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:90002
+msgid "为 TVM 添加 ONNX 支持"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:90003
+msgid ""
+"TVM 依赖于你系统中的 ONNX python 库。你可以使用 ``pip3 install --user onnx "
+"onnxoptimizer`` 命令来安装 ONNX。如果你有 root 权限并且想全局安装 ONNX，你可以去掉 ``--user`` 选项。对"
+" ``onnxoptimizer`` 的依赖是可选的，仅用于 ``onnx>=1.9``。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:90006
+msgid "将 ONNX 模型编译到 TVM 运行时中"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:90008
+msgid ""
+"一旦下载了 ResNet-50 模型，下一步就是对其进行编译。为了达到这个目的，将使用 ``tvmc "
+"compile``。从编译过程中得到的输出是模型的 TAR 包，它被编译成目标平台的动态库。可以使用 TVM 运行时在目标设备上运行该模型。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:110002
+msgid "查看 ``tvmc compile`` 在 module 中创建的文件："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130002
+msgid "列出了三个文件："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130004
+msgid "``mod.so`` 是模型，表示为 C++ 库，可以被 TVM 运行时加载。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130005
+msgid "``mod.json`` 是 TVM Relay 计算图的文本表示。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130006
+msgid "``mod.params`` 是包含预训练模型参数的文件。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130008
+msgid "该 module 可以被你的应用程序直接加载，而 model 可以通过 TVM 运行时 API 运行。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130010
+msgid "定义正确的 target"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130011
+msgid "指定正确的目标（选项 ``--target``）可以对编译后的模块的性能产生巨大的影响，因为它可以利用目标上可用的硬件特性。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130013
+msgid ""
+"欲了解更多信息，请参考 [为 x86 CPU 自动调优卷积网络](tune_relay_x86)。建议确定你运行的是哪种 "
+"CPU，以及可选的功能，并适当地设置目标。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130016
+msgid "用 TVMC 从编译的模块中运行模型"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130018
+msgid "已经将模型编译到模块，可以使用 TVM 运行时来进行预测。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130021
+msgid "TVMC 内置了 TVM 运行时，允许你运行编译的 TVM 模型。为了使用 TVMC 来运行模型并进行预测，需要两样东西："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130023
+msgid "编译后的模块，我们刚刚生成出来。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130024
+msgid "对模型的有效输入，以进行预测。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130026
+msgid ""
+"当涉及到预期的张量形状、格式和数据类型时，每个模型都很特别。出于这个原因，大多数模型需要一些预处理和后处理，以确保输入是有效的，并解释输出结果。TVMC"
+" 对输入和输出数据都采用了 NumPy 的 ``.npz`` 格式。这是得到良好支持的 NumPy 格式，可以将多个数组序列化为文件。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130028
+msgid "作为本教程的输入，将使用一只猫的图像，但你可以自由地用你选择的任何图像来代替这个图像。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130030
+msgid "输入预处理"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130032
+msgid "对于 ResNet-50 v2 模型，预期输入是 ImageNet 格式的。下面是为 ResNet-50 v2 预处理图像的脚本例子。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:130034
+msgid "你将需要安装支持的 Python 图像库的版本。你可以使用 ``pip3 install --user pillow`` 来满足脚本的这个要求。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:150002
+msgid "运行已编译的模块"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:150004
+msgid "有了模型和输入数据，现在可以运行 TVMC 来做预测："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:170002
+msgid ""
+"回顾一下， ``.tar`` 模型文件包括 C++ 库，对 Relay 模型的描述，以及模型的参数。TVMC 包括 TVM "
+"运行时，它可以加载模型并根据输入进行预测。当运行上述命令时，TVMC 会输出新文件，``predictions.npz``，其中包含 NumPy "
+"格式的模型输出张量。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:170004
+msgid ""
+"在这个例子中，在用于编译的同一台机器上运行该模型。在某些情况下，可能想通过 RPC Tracker "
+"远程运行它。要阅读更多关于这些选项的信息，请查看："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:190002
+msgid "输出后处理"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:190004
+msgid "如前所述，每个模型都会有自己的特定方式来提供输出张量。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:190006
+msgid "需要运行一些后处理，利用为模型提供的查找表，将 ResNet-50 v2 的输出渲染成人类可读的形式。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:190008
+msgid "下面的脚本显示了后处理的例子，从编译的模块的输出中提取标签。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:190010
+msgid "运行这个脚本应该产生以下输出："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:210002
+msgid "试着用其他图像替换猫的图像，看看 ResNet 模型会做出什么样的预测。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:210004
+msgid "自动调优 ResNet 模型"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:210006
+msgid "之前的模型是为了在 TVM 运行时工作而编译的，但不包括任何特定平台的优化。在本节中，将展示如何使用 TVMC 建立针对你工作平台的优化模型。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:210008
+msgid ""
+"在某些情况下，当使用编译模块运行推理时，可能无法获得预期的性能。在这种情况下，可以利用自动调优器，为模型找到更好的配置，获得性能的提升。TVM "
+"中的调优是指对模型进行优化以在给定目标上更快地运行的过程。这与训练或微调不同，因为它不影响模型的准确性，而只影响运行时的性能。作为调优过程的一部分，TVM"
+" 将尝试运行许多不同的运算器实现变体，以观察哪些算子表现最佳。这些运行的结果被存储在调优记录文件中，这最终是 ``tune`` 子命令的输出。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:210010
+msgid "在最简单的形式下，调优要求你提供三样东西："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:210012
+msgid "你打算在这个模型上运行的设备的目标规格"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:210013
+msgid "输出文件的路径，调优记录将被保存在该文件中"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:210014
+msgid "最后是要调优的模型的路径。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:210016
+msgid "默认搜索算法需要 `xgboost`，请参阅下面关于优化搜索算法的详细信息："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:210022
+msgid "下面的例子展示了这一做法的实际效果："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:230002
+msgid "在这个例子中，如果你为 ``--target`` 标志指出更具体的目标，你会看到更好的结果。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:230004
+msgid ""
+"TVMC 将对模型的参数空间进行搜索，尝试不同的运算符配置，并选择在你的平台上运行最快的一个。尽管这是基于 CPU "
+"和模型操作的指导性搜索，但仍可能需要几个小时来完成搜索。这个搜索的输出将被保存到 "
+"``resnet50-v2-7-autotuner_records.json`` 文件中，以后将被用来编译优化的模型。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:230006
+msgid "定义调优搜索算法"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:230007
+msgid ""
+"默认情况下，这种搜索是使用 ``XGBoost Grid`` "
+"算法引导的。根据你的模型的复杂性和可利用的时间，你可能想选择不同的算法。完整的列表可以通过查阅："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:250002
+msgid "对于消费级 Skylake CPU 来说，输出结果将是这样的："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:270002
+msgid ""
+"调谐会话可能需要很长的时间，所以 ``tvmc tune`` 提供了许多选项来定制你的调谐过程，在重复次数方面（例如 ``--repeat`` 和"
+" ``--number``），要使用的调谐算法等等。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:270004
+msgid "用调优数据编译优化后的模型"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:270006
+msgid ""
+"作为上述调谐过程的输出，获得了存储在 ``resnet50-v2-7-autotuner_records.json`` "
+"的调谐记录。这个文件可以有两种使用方式："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:270008
+msgid "作为进一步调谐的输入（通过 ``tvmc tune --tuning-records``）。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:270009
+msgid "作为对编译器的输入"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:270011
+msgid ""
+"编译器将使用这些结果来为你指定的目标上的模型生成高性能代码。要做到这一点，可以使用 ``tvmc compile --tuning-"
+"records``。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:270013
+msgid "获得更多信息："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:290002
+msgid "现在，模型的调谐数据已经收集完毕，可以使用优化的算子重新编译模型，以加快计算速度。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:310002
+msgid "验证优化后的模型是否运行并产生相同的结果："
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:330002
+msgid "比较已调谐和未调谐的模型"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:330004
+msgid ""
+"TVMC 提供了在模型之间进行基本性能基准测试的工具。你可以指定重复次数，并且 TVMC "
+"报告模型的运行时间（与运行时间的启动无关）。可以粗略了解调谐对模型性能的改善程度。例如，在测试的英特尔 i7 "
+"系统上，看到调谐后的模型比未调谐的模型运行快  $47\\%$。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:360002
+msgid "小结"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:360004
+msgid ""
+"在本教程中，介绍了 TVMC，用于 TVM "
+"的命令行驱动。演示了如何编译、运行和调优模型。还讨论了对输入和输出进行预处理和后处理的必要性。在调优过程之后，演示了如何比较未优化和优化后的模型的性能。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:360006
+msgid ""
+"这里介绍了使用 ResNet-50 v2 本地的简单例子。然而，TVMC "
+"支持更多的功能，包括交叉编译、远程执行和剖析/基准测试（profiling/benchmarking）。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:360008
+msgid "要想知道还有哪些可用的选项，请看 ``tvmc --help``。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/tvmc_command_line_driver.ipynb:360010
+msgid ""
+"在 [用 Python 接口编译和优化模型](auto_tuning_with_pyton) 教程中，将使用 Python "
+"接口介绍同样的编译和优化步骤。"
+msgstr ""
+

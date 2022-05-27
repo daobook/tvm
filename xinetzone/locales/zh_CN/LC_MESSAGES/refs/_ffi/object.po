@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-27 19:13+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,6 +106,10 @@ msgstr ""
 msgid ""
 "We have a special calling convention to call constructor functions. So "
 "the return object is directly set into the object"
+msgstr ""
+
+#: of tvm._ffi._ctypes.packed_func.__init_handle_by_constructor__:1
+msgid "Maps object type to its constructor"
 msgstr ""
 
 #: of tvm._ffi._ctypes.object._register_object:1

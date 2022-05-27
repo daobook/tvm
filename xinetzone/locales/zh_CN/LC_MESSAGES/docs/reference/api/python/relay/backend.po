@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-07 11:03+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -153,7 +153,7 @@ msgstr ""
 #: of tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen.codegen:14
 #: tvm.relay.backend.interpreter.Interpreter:6
 #: tvm.relay.backend.vm.VMCompiler.lower:6
-#: tvm.relay.backend.vm.VMCompiler.optimize:22 tvm.relay.backend.vm.compile:6
+#: tvm.relay.backend.vm.VMCompiler.optimize:21 tvm.relay.backend.vm.compile:6
 msgid "mod"
 msgstr ""
 
@@ -185,6 +185,8 @@ msgstr ""
 #: tvm.relay.backend.te_compiler.TECompiler.lower:9
 #: tvm.relay.backend.te_compiler.get_valid_implementations:20
 #: tvm.relay.backend.te_compiler.select_implementation:27
+#: tvm.relay.backend.vm.VMCompiler.lower:10
+#: tvm.relay.backend.vm.VMCompiler.optimize:9 tvm.relay.backend.vm.compile:10
 msgid "target"
 msgstr ""
 
@@ -533,9 +535,9 @@ msgid "The lowered functions."
 msgstr ""
 
 #: of tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen.codegen:16
-#: tvm.relay.backend.vm.VMCompiler.optimize:17
-#: tvm.relay.backend.vm.VMCompiler.optimize:24
-#: tvm.relay.backend.vm.VMCompiler.set_params:6 tvm.relay.backend.vm.compile:24
+#: tvm.relay.backend.vm.VMCompiler.optimize:16
+#: tvm.relay.backend.vm.VMCompiler.optimize:23
+#: tvm.relay.backend.vm.VMCompiler.set_params:6 tvm.relay.backend.vm.compile:23
 msgid "params"
 msgstr ""
 
@@ -563,14 +565,6 @@ msgstr ""
 msgid "Get the autotvm context."
 msgstr ""
 
-#: of tvm.relay.backend.vm.VMCompiler._update_target:1
-msgid "Update target."
-msgstr ""
-
-#: of tvm.relay.backend.vm.VMCompiler._update_target_host:1
-msgid "Update target host."
-msgstr ""
-
 #: of tvm.relay.backend.vm.VMCompiler.codegen:1
 msgid "Generate the kernel library."
 msgstr ""
@@ -580,7 +574,7 @@ msgid "Get the VM executable."
 msgstr ""
 
 #: of tvm.relay.backend.vm.VMCompiler.get_exec:5
-#: tvm.relay.backend.vm.compile:28
+#: tvm.relay.backend.vm.compile:27
 msgid "exec"
 msgstr ""
 
@@ -589,7 +583,7 @@ msgid "tvm.runtime.vm.Executable"
 msgstr ""
 
 #: of tvm.relay.backend.vm.VMCompiler.get_exec:6
-#: tvm.relay.backend.vm.compile:29
+#: tvm.relay.backend.vm.compile:28
 msgid "The VM executable that contains both library code and bytecode."
 msgstr ""
 
@@ -605,38 +599,29 @@ msgstr ""
 msgid "The Relay module to build."
 msgstr ""
 
-#: of tvm.relay.backend.vm.VMCompiler.lower:11 tvm.relay.backend.vm.compile:11
-msgid "target : str, :any:`tvm.target.Target`, or dict of str(i.e."
+#: of
+msgid "any multi-target like object, see Target.canon_multi_target"
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.lower:9
+#: tvm.relay.backend.vm.VMCompiler.optimize:8 tvm.relay.backend.vm.compile:9
+msgid ""
+"For homogeneous compilation, the unique build target. For heterogeneous "
+"compilation, a dictionary or list of possible build targets."
+msgstr ""
+
+#: of tvm.relay.backend.vm.VMCompiler.lower:12
+#: tvm.relay.backend.vm.VMCompiler.optimize:12 tvm.relay.backend.vm.compile:19
+msgid "target_host"
 msgstr ""
 
 #: of
-msgid "str,"
+msgid "any target-like object, see Target.canon_target"
 msgstr ""
 
-#: of tvm.relay.backend.vm.VMCompiler.lower:9 tvm.relay.backend.vm.compile:9
-msgid ""
-"device/context name) to str/tvm.target.Target, optional For heterogeneous"
-" compilation, it is a dictionary indicating context to target mapping. "
-"For homogeneous compilation, it is a build target."
-msgstr ""
-
-#: of tvm.relay.backend.vm.VMCompiler.lower:19
-#: tvm.relay.backend.vm.VMCompiler.optimize:13 tvm.relay.backend.vm.compile:20
-msgid "target_host : str or :any:`tvm.target.Target`, optional"
-msgstr ""
-
-#: of
-msgid "str or"
-msgstr ""
-
-#: of tvm.relay.backend.vm.VMCompiler.lower:14 tvm.relay.backend.vm.compile:14
-msgid ""
-"Host compilation target, if target is device. When TVM compiles device "
-"specific program such as CUDA, we also need host(CPU) side code to "
-"interact with the driver to setup the dimensions and parameters "
-"correctly. target_host is used to specify the host side codegen target. "
-"By default, llvm is used if it is enabled, otherwise a stackvm intepreter"
-" is used."
+#: of tvm.relay.backend.vm.VMCompiler.lower:13
+#: tvm.relay.backend.vm.VMCompiler.optimize:12
+msgid "Host compilation target, if target is device."
 msgstr ""
 
 #: of tvm.relay.backend.vm.VMCompiler.optimize:1
@@ -647,32 +632,18 @@ msgstr ""
 msgid "mod : tvm.IRModule"
 msgstr ""
 
-#: of tvm.relay.backend.vm.VMCompiler.optimize:8
-msgid "target : str, :any:`tvm.target.Target`, or dict of str (i.e."
-msgstr ""
-
-#: of tvm.relay.backend.vm.VMCompiler.optimize:8
-msgid "device/context name) to str/tvm.target.Target, optional"
-msgstr ""
-
-#: of tvm.relay.backend.vm.VMCompiler.optimize:11
-msgid ""
-"The compilation target for host. By default, llvm is used if it is "
-"enabled, otherwise a stackvm intepreter is used."
-msgstr ""
-
 #: of
 msgid "dict of str to NDArray"
 msgstr ""
 
-#: of tvm.relay.backend.vm.VMCompiler.optimize:16
-#: tvm.relay.backend.vm.VMCompiler.set_params:6 tvm.relay.backend.vm.compile:23
+#: of tvm.relay.backend.vm.VMCompiler.optimize:15
+#: tvm.relay.backend.vm.VMCompiler.set_params:6 tvm.relay.backend.vm.compile:22
 msgid ""
 "Input parameters to the graph that do not change during inference time. "
 "Used for constant folding."
 msgstr ""
 
-#: of tvm.relay.backend.vm.VMCompiler.optimize:22
+#: of tvm.relay.backend.vm.VMCompiler.optimize:21
 msgid "The optimized relay module."
 msgstr ""
 
@@ -680,7 +651,7 @@ msgstr ""
 msgid "dict"
 msgstr ""
 
-#: of tvm.relay.backend.vm.VMCompiler.optimize:25
+#: of tvm.relay.backend.vm.VMCompiler.optimize:24
 msgid "The parameters of the final module."
 msgstr ""
 
@@ -720,6 +691,20 @@ msgstr ""
 
 #: of tvm.relay.backend.vm.compile:1
 msgid "Compile the module to VM executable. A helper function for VMCompiler."
+msgstr ""
+
+#: of
+msgid "None, or any target-like object, see Target.canon_target"
+msgstr ""
+
+#: of tvm.relay.backend.vm.compile:13
+msgid ""
+"Host compilation target, if target is device. When TVM compiles device "
+"specific program such as CUDA, we also need host(CPU) side code to "
+"interact with the driver to setup the dimensions and parameters "
+"correctly. target_host is used to specify the host side codegen target. "
+"By default, llvm is used if it is enabled, otherwise a stackvm intepreter"
+" is used."
 msgstr ""
 
 #~ msgid "Backend codegen modules for relay."
@@ -1056,5 +1041,26 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Compile the module to VM executable. A helper function for VMCompiler."
+#~ msgstr ""
+
+#~ msgid "Update target."
+#~ msgstr ""
+
+#~ msgid "Update target host."
+#~ msgstr ""
+
+#~ msgid "target : str, :any:`tvm.target.Target`, or dict of str(i.e."
+#~ msgstr ""
+
+#~ msgid "str,"
+#~ msgstr ""
+
+#~ msgid "target_host : str or :any:`tvm.target.Target`, optional"
+#~ msgstr ""
+
+#~ msgid "str or"
+#~ msgstr ""
+
+#~ msgid "target : str, :any:`tvm.target.Target`, or dict of str (i.e."
 #~ msgstr ""
 

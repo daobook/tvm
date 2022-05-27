@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-06 15:25+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,25 +17,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:13
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:13
 msgid ""
 "Click :ref:`here <sphx_glr_download_how_to_work_with_schedules_tedd.py>` "
 "to download the full example code"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:22
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:22
 msgid "Use Tensor Expression Debug Display (TEDD) for Visualization"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:23
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:23
 msgid "**Author**: `Yongfeng Gu <https://github.com/yongfeng-nv>`_"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:25
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:25
 msgid "This is an introduction about using TEDD to visualize tensor expressions."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:27
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:27
 msgid ""
 "Tensor Expressions are scheduled with primitives.  Although individual "
 "primitives are usually easy to understand, they become complicated "
@@ -43,57 +43,57 @@ msgid ""
 "model of schedule primitives in Tensor Expression."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:32
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:32
 msgid "the interactions between different schedule primitives,"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:33
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:33
 msgid "the impact of the schedule primitives on the final code generation."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:35
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:35
 msgid ""
 "The operational model is based on a Dataflow Graph, a Schedule Tree and "
 "an IterVar Relationship Graph. Schedule primitives perform operations on "
 "these graphs."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:39
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:39
 msgid ""
 "TEDD renders these three graphs from a given schedule.  This tutorial "
 "demonstrates how to use TEDD and how to interpret the rendered graphs."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:55
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:55
 msgid "Define and Schedule Convolution with Bias and ReLU"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:56
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:56
 msgid ""
 "Let's build an example Tensor Expression for a convolution followed by "
 "Bias and ReLU. We first connect conv2d, add, and relu TOPIs.  Then, we "
 "create a TOPI generic schedule."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:88
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:88
 msgid "Render Graphs with TEDD"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:89
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:89
 msgid ""
 "We render graphs to see the computation and how it is scheduled. If you "
 "run the tutorial in a Jupyter notebook, you can use the following "
 "commented lines to render SVG figures showing in notebook directly."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:109
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:109
 msgid ""
 "The first one is a dataflow graph.  Every node represents a stage with "
 "name and memory scope shown in the middle and inputs/outputs information "
 "on the sides. Edges show nodes' dependency."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:125
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:125
 msgid ""
 "We just rendered the schedule tree graph.  You may notice an warning "
 "about ranges not available. The message also suggests to call normalize()"
@@ -102,7 +102,7 @@ msgid ""
 " for its impact."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:147
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:147
 msgid ""
 "Now, let us take a close look at the second schedule tree.  Every block "
 "under ROOT represents a stage.  Stage name shows in the top row and "
@@ -117,7 +117,7 @@ msgid ""
 " the legend."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:160
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:160
 msgid ""
 "If a stage doesn't compute_at any other stage, it has an edge directly to"
 " the ROOT node.  Otherwise, it has an edge pointing to the IterVar it "
@@ -125,14 +125,14 @@ msgid ""
 "stage."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:169
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:169
 msgid ""
 "By definition, IterVars are internal nodes and computes are leaf nodes in"
 " a schedule tree.   The edges among IterVars and compute within one stage"
 " are omitted, making every stage a block, for better readability."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:188
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:188
 msgid ""
 "The last one is an IterVar Relationship Graph.  Every subgraph represents"
 " a stage and contains IterVar nodes and transformation nodes.  For "
@@ -144,26 +144,25 @@ msgid ""
 "with index of 0."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:200
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:200
 msgid "Summary"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:201
+#: ../../../xin/docs/how_to/work_with_schedules/tedd.rst:201
 msgid ""
 "This tutorial demonstrates the usage of TEDD.  We use an example built "
 "with TOPI to show the schedules under the hood.  You can also use it "
 "before and after any schedule primitive to inspect its effect."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:219
-msgid ":download:`Download Python source code: tedd.py <tedd.py>`"
-msgstr ""
+#~ msgid ":download:`Download Python source code: tedd.py <tedd.py>`"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:225
-msgid ":download:`Download Jupyter notebook: tedd.ipynb <tedd.ipynb>`"
-msgstr ""
+#~ msgid ":download:`Download Jupyter notebook: tedd.ipynb <tedd.ipynb>`"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tedd.rst:232
-msgid "`Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_"
-msgstr ""
+#~ msgid ""
+#~ "`Gallery generated by Sphinx-Gallery "
+#~ "<https://sphinx-gallery.github.io>`_"
+#~ msgstr ""
 

@@ -1,0 +1,405 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, xinetzone
+# This file is distributed under the same license as the TVM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TVM \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:10003
+msgid "VTA 入门"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:10005
+msgid "**原作者**: [Thierry Moreau](https://homes.cs.washington.edu/~moreau/)"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:10007
+msgid "这是关于如何使用 TVM 编程 VTA 设计的入门教程。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:10009
+msgid ""
+"在本教程中，将演示在 VTA 设计的向量 ALU 上实现向量加法的基本 TVM 工作流。此过程包括将计算 lower "
+"到低级加速器运算所需的特定调度变换。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:10011
+msgid ""
+"首先，需要导入 TVM，这是深度学习优化编译器。还需要导入 VTA python 包，其中包含针对 TVM 的 VTA 特定扩展，以实现 VTA "
+"设计。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:30002
+msgid "加载 VTA 参数"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:30004
+msgid ""
+"VTA 是模块化和可定制的设计。因此，用户可以自由地修改影响硬件设计布局的高级硬件参数。这些参数在 `tvm/3rdparty/vta-"
+"hw/config/vta_config.json` 中通过它们的 `log2` 值指定。 这些 VTA 参数可以通过 `vta.get_env`"
+" 函数加载。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:30007
+msgid ""
+"最后，TVM 目标也在 `vta_config.json` 文件中指定。当设置为 *sim* 时，执行将发生在 VTA 仿真器行为内。如果您想在 "
+"Pynq FPGA 开发平台上运行本教程，请遵循 *VTA 基于 Pynq 的测试设置* 指南。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:50002
+msgid "FPGA 编程"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:50004
+msgid "当针对 Pynq FPGA 开发板时，需要使用 VTA bitstream 配置该板。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:50006
+msgid "需要 TVM RPC 模块和 VTA 仿真器模块："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:70003
+msgid "若 vta 是 `sim` 模式，一定要载入 `simulator` 模块，否则会触发异常。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:70006
+msgid "从操作系统环境中读取 Pynq RPC 主机 IP 地址和端口号："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:90002
+msgid "在 Pynq 上配置 bitstream 和运行时系统，以匹配 `vta_config.json` 文件指定的 VTA 配置。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:110002
+msgid "计算声明"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:110004
+msgid "第一步，需要描述计算。TVM 采用张量语义，每个中间结果表示为多维数组。用户需要描述生成输出张量的计算规则。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:110006
+msgid "在这个例子中，描述了向量加法，它需要多个计算阶段，如下面的数据流程图所示。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:110008
+msgid "首先，描述存在于 main memory 中的输入张量 `A` 和 `B`。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:110009
+msgid ""
+"其次，需要声明中间张量 `A_buf` 和 `B_buf`，它们将位于 VTA 的 on-chip buffers "
+"中。有了这个额外的计算阶段，就可以显式地分阶段进行 cached 的读写操作。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:110010
+msgid "第三，描述向量加法运算，它将 `A_buf` 添加到 `B_buf` 以生成 `C_buf`。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:110011
+msgid "最后的运算是强制转换并复制回 DRAM，到结果张量 `C` 中。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:120002
+msgid "Input 占位符"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:120004
+msgid "以平铺（tiled）数据格式描述占位符张量 `A` 和 `B`，以匹配 VTA 向量 ALU 施加的数据布局要求。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:120006
+msgid ""
+"对于 VTA 的一般用途的运算，如向量加法，tile 大小为 `(env.BATCH, env.BLOCK_OUT)`。维度在 "
+"`vta_config.json` 配置文件中指定，默认设置为 (1, 16) 向量。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:140002
+msgid "此外，A 和 B 的数据类型也需要匹配 `env.acc_dtype`，由 `vta_config.json` 文件设置为 32 位整型。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:160002
+msgid "Copy Buffers"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:160004
+msgid ""
+"硬件加速器的特点之一是，必须对 on-chip memory 进行显式管理。这意味着需要描述中间张量 `A_buf` 和 "
+"`B_buf`，它们可以具有与原始占位符张量 `A` 和 `B` 不同的内存作用域。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:160006
+msgid ""
+"稍后在调度阶段，可以告诉编译器 `A_buf` 和 `B_buf` 将存在于 VTA 的 on-chip buffer（SRAM）中，而 `A` "
+"和 `B` 将存在于 main memory（DRAM）中。将 A_buf 和 B_buf 描述为恒等函数计算的运算结果。这可以被编译器解释为 "
+"cached 的读运算。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:180002
+msgid "向量加法"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:180004
+msgid ""
+"现在可以用另一个 `compute` 运算来描述向量加法结果张量 `C`。`compute` 函数采用张量的形状，以及描述张量每个位置的计算规则的"
+" lambda 函数。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:180006
+msgid "此阶段没有计算发生，因为只是声明了计算应该如何完成。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:200002
+msgid "Casting 结果"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:200004
+msgid "计算完成后，需要将 VTA 计算的结果发送回主存储器（main memory）"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:200006
+msgid "内存存储限制"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:200009
+msgid ""
+"VTA 的特点之一是，它只支持窄化（narrow） `env.inp_dtype` 数据类型格式的 DRAM 存储。这让我们能够减少内存传输的数据"
+" footprint（详见基本矩阵乘法的例子）。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:200012
+msgid "对窄化的输入激活数据格式执行最后一个 typecast 运算。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:220002
+msgid "这就结束了本教程的计算声明部分。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:230002
+msgid "调度计算"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:230004
+msgid "虽然上面的几行描述了计算规则，但我们可以通过许多方式得到 `C`。TVM 要求用户提供一种名为 **调度** （*schedule*） 的计算实现。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:230006
+msgid ""
+"调度是对原始计算的一组变换，它在不影响正确性的情况下变换计算的实现。这个简单的 VTA 编程教程旨在演示基本的调度变换，将原始调度映射到 VTA "
+"硬件原语（primitives）。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:230008
+msgid "默认调度"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:230010
+msgid "在构造了调度之后，默认情况下，调度会以如下方式计算 `C`："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:250002
+msgid ""
+"虽然此调度是合理的，但它不会编译到 VTA。为了获得正确的代码生成（code generation），需要应用调度原语（scheduling "
+"primitives）和代码注解（code annotation），将调度变换为可以直接 lower 到 VTA 硬件 "
+"intrinsics。其中包括："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:250004
+msgid "DMA copy 运算将把全局作用域的张量复制到局部作用域的张量。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:250005
+msgid "执行向量加法的向量 ALU 运算。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:250007
+msgid "Buffer 作用域"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:250009
+msgid ""
+"首先，设置复制 buffer 的作用域，以指示 TVM 这些中间张量将存储在 VTA 的 on-chip SRAM buffer 中。下面，告诉 "
+"TVM `A_buf`、`B_buf`、`C_buf` 将存在于 VTA 的 on-chip *accumulator buffer* 中，该 "
+"buffer 作为 VTA 的通用寄存器（register）文件。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:250011
+msgid "将中间张量的作用域设置为 VTA 的 on-chip accumulator buffer"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:270002
+msgid "DMA 传输"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:270004
+msgid ""
+"需要调度 DMA 传输，以便将存储在 DRAM 中的数据在 VTA 片上 buffer 之间来回移动。插入 `dma_copy` pragmas "
+"来告诉编译器，复制运算将通过 DMA 批量执行，这在硬件加速器中很常见。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:270006
+msgid "使用 DMA pragma 标记 buffer 副本，将复制循环映射到 DMA transfer 运算："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:290002
+msgid "ALU 运算"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:290004
+msgid ""
+"VTA 有向量 ALU，可以在累加器 buffer 中对张量执行向量运算。为了告诉 TVM 给定的运算需要映射到 VTA 的 vector "
+"ALU，需要显式地用 `env.alu` pragma 标记 vector 加法循环。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:290006
+msgid "告诉 TVM 计算需要在 VTA 的向量 ALU 上执行："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:310002
+msgid "这就结束了本教程的调度部分。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:310004
+msgid "TVM 计算"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:310006
+msgid "在完成指定调度之后，可以将它编译成 TVM 函数。默认情况下，TVM 编译成可以直接从 python 调用的类型消除（type-erased）函数。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:310008
+msgid ""
+"在下面一行中，使用 {func}`tvm.build` 来创建函数。`build` "
+"函数接受调度、函数的期望签名（包括输入和输出）以及想要编译的目标语言。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:330002
+msgid "保存 Module"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:330004
+msgid "TVM 把模块保存到文件中，这样以后就可以加载回来了。这被称为提前编译（ahead-of-time compilation），可以节省一些编译时间。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:330006
+msgid "更重要的是，这允许在开发机器上交叉编译可执行文件，并通过 RPC 将其发送到 Pynq FPGA 板上执行。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:330008
+msgid "将编译后的模块写入 object 文件。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:350002
+msgid "通过 RPC 发送可执行文件："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:370002
+msgid "载入 Module"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:370004
+msgid "可以从文件系统加载编译后的模块来运行代码。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:390002
+msgid "运行函数"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:390004
+msgid "编译后的 TVM 函数使用简洁的 C API，可以被任何语言调用。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:390006
+msgid ""
+"TVM 用 python 提供了数组 API 来帮助快速测试和原型化。数组 API 是基于 "
+"[DLPack](https://github.com/dmlc/dlpack) 标准的。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:390008
+msgid "首先创建远程上下文（用于 Pynq 上的远程执行）。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:390009
+msgid "然后 `tvm.nd.array` 对数据进行相应的格式化。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:390010
+msgid "`f()` 运行实际的计算。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:390011
+msgid "`numpy()` 将结果数组以可解释的格式复制回来。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:390013
+msgid "随机初始化 A 和 B 数组，int 范围为 $(-128, 128]$："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:410002
+msgid "应用 packing 到 A 和 B 数组从 2D 到 4D packed layout："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:430002
+msgid "获取远程设备的上下文："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:450002
+msgid "使用 {func}`tvm.nd.array` 将输入/输出数组格式化为 DLPack 标准："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:470002
+msgid "调用模块来执行计算："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:490002
+msgid "验证 Correctness"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:490004
+msgid "使用 `numpy` 计算引用的结果，并断言矩阵乘法的输出确实是正确的："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:510002
+msgid "小结"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:510004
+msgid "本教程通过简单的向量加法示例，为深度学习加速器 VTA 编程提供了 TVM 演练。一般工作流程包括："
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:510006
+msgid "用 VTA bitstream 在 RPC 上编程 FPGA。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:510007
+msgid "通过一系列的计算来描述向量加法的计算。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:510008
+msgid "描述如何使用调度原语执行计算。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:510009
+msgid "将函数编译到 VTA 目标。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:510010
+msgid "运行编译后的模块，并根据 `numpy` 实现来验证它。"
+msgstr ""
+
+#: ../../../xin/docs/topic/vta/tutorials/vta_get_started.ipynb:510012
+msgid "可以查看其他示例和教程，以了解更多有关 TVM 支持的运算、调度原语和其他功能，以编程 VTA。"
+msgstr ""
+

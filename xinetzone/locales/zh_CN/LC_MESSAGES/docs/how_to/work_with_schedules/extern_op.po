@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-06 15:25+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:13
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:13
 msgid ""
 "Click :ref:`here "
 "<sphx_glr_download_how_to_work_with_schedules_extern_op.py>` to download "
 "the full example code"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:22
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:22
 msgid "External Tensor Functions"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:23
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:23
 msgid "**Author**: `Tianqi Chen <https://tqchen.github.io>`_"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:25
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:25
 msgid ""
 "While TVM supports transparent code generation, sometimes it is also "
 "helpful to incorporate manual written code into the pipeline. For "
@@ -40,7 +40,7 @@ msgid ""
 "and define the rest of the stages."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:30
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:30
 msgid ""
 "TVM supports these black box function calls natively. Specfically, TVM "
 "support all the tensor functions that are DLPack compatible. Which means "
@@ -48,18 +48,18 @@ msgid ""
 "to DLTensor as argument."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:54
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:54
 msgid "Use Extern Tensor Function"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:55
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:55
 msgid ""
 "In the example below, we use :any:`te.extern` to add an extern array "
 "function call. In the extern call, we declare the shape of output "
 "tensors. In the second argument we provide the list of inputs."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:59
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:59
 msgid ""
 "User will need to provide a function describing how to compute the "
 "result. The compute function takes list of symbolic placeholder for the "
@@ -67,7 +67,7 @@ msgid ""
 "executing statement."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:63
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:63
 msgid ""
 "In this case we simply call a registered TVM function, which invokes a "
 "CBLAS call. TVM does not control internal of the extern array function "
@@ -75,35 +75,35 @@ msgid ""
 "add a bias term to the result."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:93
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:93
 msgid "Verify the Result"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:94
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:94
 msgid "We can verify that the result matches what we expected."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:114
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:114
 msgid "Extern Contrib Wrappers"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:115
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:115
 msgid ""
 "TVM also provide extern contrib wrappers to useful extern calls, the "
 "following line is equivalent to the previous example."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:133
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:133
 msgid "Hook Python Function as Extern"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:134
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:134
 msgid ""
 "Since we can call into any PackedFunc in TVM. We can use the extern "
 "function to callback into python."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:137
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:137
 msgid ""
 "The following example registers a python function into TVM runtime system"
 " and use it to complete one stage of the computation. This makes TVM much"
@@ -111,31 +111,32 @@ msgid ""
 " the intermediate results or mix customized code with TVM."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:172
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:172
 msgid "Summary"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:173
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:173
 msgid "TVM calls extern tensor function via :any:`te.extern`"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:174
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:174
 msgid "Use contrib wrappers for short sugars of extern tensor calls."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:175
+#: ../../../xin/docs/how_to/work_with_schedules/extern_op.rst:175
 msgid "We can hook front-end function as extern tensor callbacks."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:191
-msgid ":download:`Download Python source code: extern_op.py <extern_op.py>`"
-msgstr ""
+#~ msgid ":download:`Download Python source code: extern_op.py <extern_op.py>`"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:197
-msgid ":download:`Download Jupyter notebook: extern_op.ipynb <extern_op.ipynb>`"
-msgstr ""
+#~ msgid ""
+#~ ":download:`Download Jupyter notebook: "
+#~ "extern_op.ipynb <extern_op.ipynb>`"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/extern_op.rst:204
-msgid "`Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_"
-msgstr ""
+#~ msgid ""
+#~ "`Gallery generated by Sphinx-Gallery "
+#~ "<https://sphinx-gallery.github.io>`_"
+#~ msgstr ""
 

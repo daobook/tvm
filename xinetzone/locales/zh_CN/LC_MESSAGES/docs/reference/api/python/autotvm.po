@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-07 11:03+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,24 +50,25 @@ msgid "Apply the history best config"
 msgstr ""
 
 #: of tvm.autotvm.task.dispatcher.ApplyGraphBest.__init__:6
-#: tvm.autotvm.task.dispatcher.ApplyHistoryBest:7
-#: tvm.autotvm.task.dispatcher.ApplyHistoryBest:9
-#: tvm.autotvm.task.dispatcher.ApplyHistoryBest.load:7
+#: tvm.autotvm.task.dispatcher.ApplyHistoryBest:8
+#: tvm.autotvm.task.dispatcher.ApplyHistoryBest:10
+#: tvm.autotvm.task.dispatcher.ApplyHistoryBest.load:9
 msgid "records"
 msgstr ""
 
 #: of
 msgid ""
-"str or iterator of (autotvm.measure.MeasureInput, "
+"str, list of str, or iterator of (autotvm.measure.MeasureInput,"
+"                                                "
 "autotvm.measure.MeasureResult)"
 msgstr ""
 
 #: of tvm.autotvm.task.dispatcher.ApplyHistoryBest:6
-#: tvm.autotvm.task.dispatcher.ApplyHistoryBest.load:6
 msgid ""
 "Collection of tuning records. If is str, then it should be the filename "
 "of a records log file. Each row of this file is an encoded record pair. "
-"Otherwise, it is an iterator."
+"If it is a list, it can either be a list of paths to log files that will "
+"be loaded jointly or an iterator or records."
 msgstr ""
 
 #: ../../../xin/docs/reference/api/python/autotvm.rst:24
@@ -1945,11 +1946,44 @@ msgid "The specific configuration we care about."
 msgstr ""
 
 #: of tvm.autotvm.task.dispatcher.ApplyConfig._query_inside:1
+#: tvm.autotvm.task.dispatcher.ApplyFixedConfig._query_inside:1
 msgid "Override query"
 msgstr ""
 
 #: of tvm.autotvm.task.dispatcher.ApplyConfig.update:1
+#: tvm.autotvm.task.dispatcher.ApplyFixedConfig.update:1
 msgid "Override update"
+msgstr ""
+
+#: of tvm.autotvm.task.dispatcher.ApplyFixedConfig:1
+msgid ""
+"Apply a config of a deterministic schedule. This is used for building a "
+"single Relay operator with deterministic schedule for testing schedules "
+"at Relay level."
+msgstr ""
+
+#: of tvm.autotvm.task.dispatcher.ApplyFixedConfig:7
+msgid "tasks"
+msgstr ""
+
+#: of
+msgid "list[tvm.autotvm.task.task.Task]"
+msgstr ""
+
+#: of tvm.autotvm.task.dispatcher.ApplyFixedConfig:8
+msgid "List of autoTVM tasks."
+msgstr ""
+
+#: of tvm.autotvm.task.dispatcher.ApplyFixedConfig:11
+msgid "schedule_names"
+msgstr ""
+
+#: of
+msgid "str, List[str]"
+msgstr ""
+
+#: of tvm.autotvm.task.dispatcher.ApplyFixedConfig:10
+msgid "Name of schedules to use."
 msgstr ""
 
 #: of tvm.autotvm.task.dispatcher.ApplyGraphBest:1
@@ -1966,6 +2000,12 @@ msgstr ""
 msgid ""
 "This context maintains an internal counter to indicate the current node "
 "index."
+msgstr ""
+
+#: of
+msgid ""
+"str or iterator of (autotvm.measure.MeasureInput, "
+"autotvm.measure.MeasureResult)"
 msgstr ""
 
 #: of tvm.autotvm.task.dispatcher.ApplyGraphBest.__init__:4
@@ -2094,6 +2134,21 @@ msgstr ""
 
 #: of tvm.autotvm.task.dispatcher.ApplyHistoryBest.load:1
 msgid "Load records to this dispatch context"
+msgstr ""
+
+#: of
+msgid ""
+"str, list of str, or iterator of (autotvm.measure.MeasureInput,"
+"                                                    "
+"autotvm.measure.MeasureResult)"
+msgstr ""
+
+#: of tvm.autotvm.task.dispatcher.ApplyHistoryBest.load:6
+msgid ""
+"Collection of tuning records. If is str, then it should be the filename "
+"of a records log file. Each row of this file is an encoded record pair. "
+"If it is a list it can either be a list of paths to logs that will be "
+"loaded jointly or an iterator of measurement results."
 msgstr ""
 
 #: of tvm.autotvm.task.dispatcher.DispatchContext:1

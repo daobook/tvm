@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-07 11:03+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -585,11 +585,11 @@ msgid ""
 msgstr ""
 
 #: of tvm.relay.testing.inception_v3:9
-msgid "Adopted from https://github.com/apache/incubator-mxnet/blob/"
+msgid "Adopted from https://github.com/apache/incubator-mxnet/blob/master/"
 msgstr ""
 
 #: of tvm.relay.testing.inception_v3:8
-msgid "master/example/image-classification/symbols/inception-v3.py"
+msgid "example/image-classification/symbols/inception-v3.py"
 msgstr ""
 
 #: of tvm.relay.testing.inception_v3.get_net:1

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-06 15:25+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,26 +17,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:13
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:13
 msgid ""
 "Click :ref:`here "
 "<sphx_glr_download_how_to_work_with_schedules_tensorize.py>` to download "
 "the full example code"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:24
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:24
 msgid "Use Tensorize to Leverage Hardware Intrinsics"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:25
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:25
 msgid "**Author**: `Yizhi Liu <https://github.com/yzhliu>`_"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:27
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:27
 msgid "This is an introduction material on how to perform tensorization in TVM."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:29
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:29
 msgid ""
 "By using schedule primitive :code:`tensorize`, people can replace a unit "
 "of computation with the corresponding intrinsics, making it easy to "
@@ -44,17 +44,17 @@ msgid ""
 "hardware architectures."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:34
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:34
 msgid ""
 "The purpose of this tutorial is to show the functionality and usage of "
 "tensorize instead of providing an efficient solution."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:52
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:52
 msgid "Define Matrix Multiplication"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:53
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:53
 msgid ""
 "Take matrix multiplication as our example. Matmul first multiply the "
 "corresponding elements between two matrix, then accumulate across a "
@@ -62,11 +62,11 @@ msgid ""
 "B^T` in TVM."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:75
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:75
 msgid "Schedule the Matmul"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:76
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:76
 msgid ""
 "Now, suppose we have an accelerator that supports matrix-vector "
 "multiplication (GEMV) as a hardware primitive, which can take arbitrary "
@@ -75,7 +75,7 @@ msgid ""
 "GEMV."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:97
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:97
 msgid ""
 "As showed in the IR printed above, the inner loops :code:`j.inner` along "
 "with :code:`k` together form a computation of GEMV - within the inner "
@@ -85,11 +85,11 @@ msgid ""
 "GEMV instruction, we can tensorize over :code:`j.inner`."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:106
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:106
 msgid "Define GEMV Tensorization Intrinsic"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:107
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:107
 msgid ""
 "Before scheduling the tensorization, we need to first define the "
 "intrinsic function for GEMV. It includes two parts, the first is a "
@@ -98,7 +98,7 @@ msgid ""
 "GEMV on the device, which is done in :code:`intrin_func` below."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:151
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:151
 msgid ""
 "Here :code:`te.decl_tensor_intrin` declares how to execute the "
 "computation :code:`c.op`. Our implementation simply takes the inputs and "
@@ -110,7 +110,7 @@ msgid ""
 "vectorized loading. We set the factor to 1 for simplification."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:161
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:161
 msgid ""
 "Buffers are also declared for inputs and outputs, though this is not "
 "required, we benefit from the extra information provided by buffers. For "
@@ -119,7 +119,7 @@ msgid ""
 "later we will see how they can differ with more complicated schedules."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:167
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:167
 msgid ""
 "Note that we use :code:`te.var(\"s1\")` as the first stride dimension for"
 " :code:`B`. If the strides can be inferred - in this case, TVM knows "
@@ -128,7 +128,7 @@ msgid ""
 "for us."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:184
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:184
 msgid ""
 "By tensorizing over :code:`yi`, the inner most two loops are now replaced"
 " by the intrinsic function we defined before. In order to build and run "
@@ -136,37 +136,37 @@ msgid ""
 " a naive implementation of GEMV, just for demonstration."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:217
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:217
 msgid ""
 "Now we leverage the pragma attribute :code:`import_llvm` to import llvm "
 "asm inline. The importing needs to happen before the tensorized GEMV "
 "being executed."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:231
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:231
 msgid ""
 "Finally we compare the tensorize version with that :code:`numpy.dot` "
 "produces, ensure our implementation is correct."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:255
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:255
 msgid "Reduce-update for Tensorize"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:256
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:256
 msgid ""
 "So far you have learned the basic idea of tensorize, now let's move one "
 "step forward to a more complicated case."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:259
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:259
 msgid ""
 "Assume our accelerator could only multiply a vector by a square matrix, "
 "in which the vector size needs to be no larger than 16. Given such "
 "hardware constrain, now we need to split the reduce axis as following,"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:274
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:274
 msgid ""
 "However, since the tensorize intrinsic now only covers a part of the "
 "reduce axis, instead of using one \"body\" function, TVM requires a "
@@ -175,7 +175,7 @@ msgid ""
 "\"update\" computing strategy."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:355
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:355
 msgid ""
 "Note that :code:`intrin_func` now returns a triplet: :code:`(body, "
 "reduce_reset, reduce_update)`. If tensorization includes all the reduce "
@@ -187,15 +187,15 @@ msgid ""
 ":code:`bb.strides[0]` is different from :code:`l` due to the tiling."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:365
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:365
 msgid "Tensorize for squared GEMV, build and check the results,"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:387
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:387
 msgid "Summary"
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:388
+#: ../../../xin/docs/how_to/work_with_schedules/tensorize.rst:388
 msgid ""
 "This tutorial demonstrates the usage of tensorize intrinsic in TVM. "
 "Tensorize provides a way for users to get fully optimized schedule via "
@@ -206,15 +206,16 @@ msgid ""
 "inject asm easily into the schedule."
 msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:411
-msgid ":download:`Download Python source code: tensorize.py <tensorize.py>`"
-msgstr ""
+#~ msgid ":download:`Download Python source code: tensorize.py <tensorize.py>`"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:417
-msgid ":download:`Download Jupyter notebook: tensorize.ipynb <tensorize.ipynb>`"
-msgstr ""
+#~ msgid ""
+#~ ":download:`Download Jupyter notebook: "
+#~ "tensorize.ipynb <tensorize.ipynb>`"
+#~ msgstr ""
 
-#: ../../docs/how_to/work_with_schedules/tensorize.rst:424
-msgid "`Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_"
-msgstr ""
+#~ msgid ""
+#~ "`Gallery generated by Sphinx-Gallery "
+#~ "<https://sphinx-gallery.github.io>`_"
+#~ msgstr ""
 

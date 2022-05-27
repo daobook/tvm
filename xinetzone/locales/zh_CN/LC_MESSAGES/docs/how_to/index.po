@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-22 15:08+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: xinetzone <735613050@qq.com>, 2022\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../../xin/docs/how_to/index.rst:19
-msgid "How To Guides"
+#: ../../../xin/docs/how_to/index.rst:2
+msgid "How To 指南"
 msgstr ""
 
-#: ../../../xin/docs/how_to/index.rst:21
-msgid ""
-"These user-focused \"how to\" guides are designed to help you find "
-"answers to specific questions, like \"How do I compile a model?\" or "
-"\"How to I optimize a schedule with tesor expressions?\""
+#: ../../../xin/docs/how_to/index.rst:4
+msgid "这些以用户为中心的“如何”指南旨在帮助您找到特定问题的答案，比如“如何编译模型？”或“如何用 tesor 表达式优化调度？”"
 msgstr ""
 
 #~ msgid "How To Guides"
-#~ msgstr "指南：怎么做"
+#~ msgstr ""
 
 #~ msgid ""
 #~ "These user-focused \"how to\" guides "
@@ -39,9 +36,6 @@ msgstr ""
 #~ " \"How to I optimize a schedule "
 #~ "with tesor expressions?\""
 #~ msgstr ""
-#~ "这些以用户为中心的 \"how to\" 指南旨在帮助你找到特定问题的答案，如 "
-#~ "\"我如何编译一个模型？\" 或 \"我如何用 tesor 表达式优化 "
-#~ "schedule？\""
 
 #~ msgid "How To 指南"
 #~ msgstr ""

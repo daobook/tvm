@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-06 15:25+0800\n"
+"POT-Creation-Date: 2022-05-27 12:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,134 +17,214 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:13
+#: ../../../xin/docs/how_to/deploy_models/deploy_quantized.ipynb:10002
+msgid "在 CUDA 上部署已量化模型"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_quantized.ipynb:10004
+msgid "**原作者**: [Wuwei Lin](https://github.com/vinx13)"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_quantized.ipynb:10006
 msgid ""
-"Click :ref:`here "
-"<sphx_glr_download_how_to_deploy_models_deploy_quantized.py>` to download"
-" the full example code"
+"本文是使用 TVM 进行自动量化的入门教程。自动量化是 TVM 中的量化方式之一。TVM 中量化的更多细节可以在 [Quantization "
+"Story](https://discuss.tvm.apache.org/t/quantization-story/3920) "
+"找到。在本教程中，将在 ImageNet 上导入 GluonCV 预训练模型到 Relay，接着量化 Relay 模型，然后执行推理。"
 msgstr ""
 
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:22
-msgid "Deploy a Quantized Model on Cuda"
-msgstr "在 Cuda 上部署量化模型"
-
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:23
-msgid "**Author**: `Wuwei Lin <https://github.com/vinx13>`_"
+#: ../../../xin/docs/how_to/deploy_models/deploy_quantized.ipynb:20002
+msgid "加载 TVM 库："
 msgstr ""
 
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:25
+#: ../../../xin/docs/how_to/deploy_models/deploy_quantized.ipynb:40002
+msgid "准备数据集"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_quantized.ipynb:40004
+msgid "演示如何准备用于量化的校准数据集。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_quantized.ipynb:40006
+msgid "首先下载 ImageNet 的验证集并对数据集进行预处理。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_quantized.ipynb:60002
+msgid "校准数据集应该是可迭代对象。在 Python 中，将校准数据集定义为生成器对象。在本教程中，只使用一些样本进行校准。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_quantized.ipynb:80002
+msgid "导入模型"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_quantized.ipynb:80004
+msgid "使用 Relay MxNet 前端从 Gluon 模型动物园导入模型。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_quantized.ipynb:100002
+msgid "量化模型"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_quantized.ipynb:100004
+msgid "在量化时，需要找到每一层的每个权重和中间 feature map 张量的 scale。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_quantized.ipynb:100006
 msgid ""
-"This article is an introductory tutorial of automatic quantization with "
-"TVM. Automatic quantization is one of the quantization modes in TVM. More"
-" details on the quantization story in TVM can be found `here "
-"<https://discuss.tvm.apache.org/t/quantization-story/3920>`_. In this "
-"tutorial, we will import a GluonCV pre-trained model on ImageNet to "
-"Relay, quantize the Relay model and then perform the inference."
+"对于权重，scale 是直接根据权重值计算的。支持 ``power2`` 和 ``max`` 两种模式。两种模式都首先在权重张量内找到最大值。在 "
+"``power2`` 模式中，最大值被四舍五入到 2 的幂。如果权重和中间特征映射的比例都是 2 的幂，可以利用 bit shifting "
+"进行乘法。这使得它的计算效率更高。在 ``max`` 模式下，以最大值作为 scale。在不 rounding 的情况下，``max`` "
+"模式在某些情况下可能有更好的精度。当 scale 不是二的幂时，将使用不动点（fixed point）乘法。"
 msgstr ""
-"本文是使用 TVM 进行自动量化的入门教程。"
-"自动量化是 TVM 的一种量化模式。"
-"关于 TVM 中量化的更多细节可以在 `此处 <https://discuss.tvm.apache.org/t/quantization-story/3920>`_ 找到。"
-"在本教程中，我们将把 ImageNet 上的 GluonCV 预训练模型导入 Relay，量化 Relay 模型，然后执行推理。"
 
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:55
-msgid "Prepare the Dataset"
-msgstr "准备数据集"
-
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:56
+#: ../../../xin/docs/how_to/deploy_models/deploy_quantized.ipynb:100008
 msgid ""
-"We will demonstrate how to prepare the calibration dataset for "
-"quantization. We first download the validation set of ImageNet and pre-"
-"process the dataset."
-msgstr ""
-"我们将演示如何为量化准备校准数据集。我们首先下载 ImageNet 和预处理数据集的验证集。"
-
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:97
-msgid ""
-"The calibration dataset should be an iterable object. We define the "
-"calibration dataset as a generator object in Python. In this tutorial, we"
-" only use a few samples for calibration."
-msgstr ""
-"校准数据集应该是可迭代对象。"
-"在 Python 中，将校准数据集定义为生成器对象。在本教程中，我们只使用少量的样本进行校准。"
-
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:123
-msgid "Import the model"
-msgstr "导入模型"
-
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:124
-msgid ""
-"We use the Relay MxNet frontend to import a model from the Gluon model "
-"zoo."
-msgstr ""
-"使用 Relay MxNet 前端从 Gluon 模型动物园导入模型。"
-
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:142
-msgid "Quantize the Model"
-msgstr "量化模型"
-
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:143
-msgid ""
-"In quantization, we need to find the scale for each weight and "
-"intermediate feature map tensor of each layer."
-msgstr ""
-"在量化中，我们需要找到每个权值的 scale，以及每一层的中间特征映射张量。"
-
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:146
-msgid ""
-"For weights, the scales are directly calculated based on the value of the"
-" weights. Two modes are supported: `power2` and `max`. Both modes find "
-"the maximum value within the weight tensor first. In `power2` mode, the "
-"maximum is rounded down to power of two. If the scales of both weights "
-"and intermediate feature maps are power of two, we can leverage bit "
-"shifting for multiplications. This make it computationally more "
-"efficient. In `max` mode, the maximum is used as the scale. Without "
-"rounding, `max` mode might have better accuracy in some cases. When the "
-"scales are not powers of two, fixed point multiplications will be used."
-msgstr ""
-"对于权重，根据权重值直接计算 scale。"
-"支持 ``power2`` 和 ``max`` 两种模式。两个模式都首先在权值张量内找到最大值。"
-"在 ``power2`` 模式下，最大值向下舍入为 2 的幂。"
-"如果权值和中间特征映射的 scale 都是 2 的幂，我们可以利用 bit shifting 来进行乘法。"
-"这使得它的计算效率更高。在 ``max`` 模式下，使用最大值作为 scale。"
-"如果不舍入，``max`` 模式在某些情况下可能有更好的精度。"
-"当 scale 不是 2 的幂时，将使用定点乘法（fixed point multiplication）。"
-
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:156
-msgid ""
-"For intermediate feature maps, we can find the scales with data-aware "
-"quantization. Data-aware quantization takes a calibration dataset as the "
-"input argument. Scales are calculated by minimizing the KL divergence "
-"between distribution of activation before and after quantization. "
-"Alternatively, we can also use pre-defined global scales. This saves the "
-"time for calibration. But the accuracy might be impacted."
-msgstr ""
-"对于中间特征映射，我们可以通过数据感知量化来找到 scale。"
-"数据感知量化以校准数据集作为输入参数。"
-"通过最小化量化前后激活分布之间的 KL 散度来计算 scale。"
-"或者，我们也可以使用预定义的全局 scale。"
-"这节省了校准的时间。但准确性可能会受到影响。"
-
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:183
-msgid "Run Inference"
-msgstr "运行推理"
-
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:184
-msgid "We create a Relay VM to build and execute the model."
-msgstr "创建 Relay VM 来构建和执行模型。"
-
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:222
-msgid ""
-":download:`Download Python source code: deploy_quantized.py "
-"<deploy_quantized.py>`"
+"对于中间 feature map，可以通过数据感知（data-aware）量化来找到 "
+"scale。数据感知量化将校准数据集作为输入参数。通过最小化量化前后激活分布之间的 KL 散度来计算 scale。或者，也可以使用预定义的 "
+"global scale。这节省了校准的时间。但准确性可能会受到影响。"
 msgstr ""
 
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:228
-msgid ""
-":download:`Download Jupyter notebook: deploy_quantized.ipynb "
-"<deploy_quantized.ipynb>`"
+#: ../../../xin/docs/how_to/deploy_models/deploy_quantized.ipynb:120002
+msgid "运行推理"
 msgstr ""
 
-#: ../../docs/how_to/deploy_models/deploy_quantized.rst:235
-msgid "`Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_"
+#: ../../../xin/docs/how_to/deploy_models/deploy_quantized.ipynb:120004
+msgid "创建 Relay VM 来构建和执行模型。"
 msgstr ""
+
+#~ msgid ""
+#~ "Click :ref:`here "
+#~ "<sphx_glr_download_how_to_deploy_models_deploy_quantized.py>` to"
+#~ " download the full example code"
+#~ msgstr ""
+
+#~ msgid "Deploy a Quantized Model on Cuda"
+#~ msgstr "在 Cuda 上部署量化模型"
+
+#~ msgid "**Author**: `Wuwei Lin <https://github.com/vinx13>`_"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This article is an introductory tutorial"
+#~ " of automatic quantization with TVM. "
+#~ "Automatic quantization is one of the "
+#~ "quantization modes in TVM. More details"
+#~ " on the quantization story in TVM "
+#~ "can be found `here "
+#~ "<https://discuss.tvm.apache.org/t/quantization-story/3920>`_."
+#~ " In this tutorial, we will import "
+#~ "a GluonCV pre-trained model on "
+#~ "ImageNet to Relay, quantize the Relay"
+#~ " model and then perform the "
+#~ "inference."
+#~ msgstr ""
+#~ "本文是使用 TVM 进行自动量化的入门教程。自动量化是 TVM 的一种量化模式。关于 "
+#~ "TVM 中量化的更多细节可以在 `此处 "
+#~ "<https://discuss.tvm.apache.org/t/quantization-story/3920>`_ "
+#~ "找到。在本教程中，我们将把 ImageNet 上的 GluonCV 预训练模型导入 "
+#~ "Relay，量化 Relay 模型，然后执行推理。"
+
+#~ msgid "Prepare the Dataset"
+#~ msgstr "准备数据集"
+
+#~ msgid ""
+#~ "We will demonstrate how to prepare "
+#~ "the calibration dataset for quantization. "
+#~ "We first download the validation set "
+#~ "of ImageNet and pre-process the "
+#~ "dataset."
+#~ msgstr "我们将演示如何为量化准备校准数据集。我们首先下载 ImageNet 和预处理数据集的验证集。"
+
+#~ msgid ""
+#~ "The calibration dataset should be an "
+#~ "iterable object. We define the "
+#~ "calibration dataset as a generator "
+#~ "object in Python. In this tutorial, "
+#~ "we only use a few samples for "
+#~ "calibration."
+#~ msgstr "校准数据集应该是可迭代对象。在 Python 中，将校准数据集定义为生成器对象。在本教程中，我们只使用少量的样本进行校准。"
+
+#~ msgid "Import the model"
+#~ msgstr "导入模型"
+
+#~ msgid ""
+#~ "We use the Relay MxNet frontend to"
+#~ " import a model from the Gluon "
+#~ "model zoo."
+#~ msgstr "使用 Relay MxNet 前端从 Gluon 模型动物园导入模型。"
+
+#~ msgid "Quantize the Model"
+#~ msgstr "量化模型"
+
+#~ msgid ""
+#~ "In quantization, we need to find "
+#~ "the scale for each weight and "
+#~ "intermediate feature map tensor of each"
+#~ " layer."
+#~ msgstr "在量化中，我们需要找到每个权值的 scale，以及每一层的中间特征映射张量。"
+
+#~ msgid ""
+#~ "For weights, the scales are directly "
+#~ "calculated based on the value of "
+#~ "the weights. Two modes are supported:"
+#~ " `power2` and `max`. Both modes find"
+#~ " the maximum value within the weight"
+#~ " tensor first. In `power2` mode, the"
+#~ " maximum is rounded down to power "
+#~ "of two. If the scales of both "
+#~ "weights and intermediate feature maps "
+#~ "are power of two, we can leverage"
+#~ " bit shifting for multiplications. This "
+#~ "make it computationally more efficient. "
+#~ "In `max` mode, the maximum is used"
+#~ " as the scale. Without rounding, "
+#~ "`max` mode might have better accuracy"
+#~ " in some cases. When the scales "
+#~ "are not powers of two, fixed point"
+#~ " multiplications will be used."
+#~ msgstr ""
+#~ "对于权重，根据权重值直接计算 scale。支持 ``power2`` 和 ``max``"
+#~ " 两种模式。两个模式都首先在权值张量内找到最大值。在 ``power2`` 模式下，最大值向下舍入为 "
+#~ "2 的幂。如果权值和中间特征映射的 scale 都是 2 的幂，我们可以利用"
+#~ " bit shifting 来进行乘法。这使得它的计算效率更高。在 ``max`` "
+#~ "模式下，使用最大值作为 scale。如果不舍入，``max`` 模式在某些情况下可能有更好的精度。当 "
+#~ "scale 不是 2 的幂时，将使用定点乘法（fixed point "
+#~ "multiplication）。"
+
+#~ msgid ""
+#~ "For intermediate feature maps, we can"
+#~ " find the scales with data-aware "
+#~ "quantization. Data-aware quantization takes"
+#~ " a calibration dataset as the input"
+#~ " argument. Scales are calculated by "
+#~ "minimizing the KL divergence between "
+#~ "distribution of activation before and "
+#~ "after quantization. Alternatively, we can "
+#~ "also use pre-defined global scales. "
+#~ "This saves the time for calibration. "
+#~ "But the accuracy might be impacted."
+#~ msgstr ""
+#~ "对于中间特征映射，我们可以通过数据感知量化来找到 "
+#~ "scale。数据感知量化以校准数据集作为输入参数。通过最小化量化前后激活分布之间的 KL 散度来计算 "
+#~ "scale。或者，我们也可以使用预定义的全局 scale。这节省了校准的时间。但准确性可能会受到影响。"
+
+#~ msgid "Run Inference"
+#~ msgstr "运行推理"
+
+#~ msgid "We create a Relay VM to build and execute the model."
+#~ msgstr "创建 Relay VM 来构建和执行模型。"
+
+#~ msgid ""
+#~ ":download:`Download Python source code: "
+#~ "deploy_quantized.py <deploy_quantized.py>`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":download:`Download Jupyter notebook: "
+#~ "deploy_quantized.ipynb <deploy_quantized.ipynb>`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`Gallery generated by Sphinx-Gallery "
+#~ "<https://sphinx-gallery.github.io>`_"
+#~ msgstr ""
 
