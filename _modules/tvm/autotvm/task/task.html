@@ -748,6 +748,11 @@
     </label>
     <ul>
      <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/dev/how_to/debugging_tvm.html">
+       Debuggging TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="../../../../docs/dev/how_to/relay_add_op.html">
        Adding an Operator to Relay
       </a>
@@ -1513,9 +1518,7 @@ title="Fullscreen mode"
         <span class="c1"># and restore the function by name when unpickling it.</span>
         <span class="kn">import</span> <span class="nn">cloudpickle</span>  <span class="c1"># pylint: disable=import-outside-toplevel</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_host</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">check_and_update_host_consist</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_host</span>
-        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_host</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">canon_target_and_host</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_host</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">{</span>
             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
             <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span>
@@ -1536,7 +1539,7 @@ title="Fullscreen mode"
         <span class="bp">self</span><span class="o">.</span><span class="n">config_space</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;config_space&quot;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">cloudpickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">&quot;func&quot;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">flop</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;flop&quot;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_host</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">check_and_update_host_consist</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_host</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">canon_target_and_host</span><span class="p">(</span>
             <span class="n">state</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">],</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;target_host&quot;</span><span class="p">]</span>
         <span class="p">)</span>
 
@@ -1807,10 +1810,7 @@ title="Fullscreen mode"
     <span class="n">args</span> <span class="o">=</span> <span class="n">serialize_args</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="n">Task</span><span class="p">(</span><span class="n">task_name</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="n">target</span> <span class="o">=</span> <span class="n">Target</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-
-    <span class="n">target</span><span class="p">,</span> <span class="n">target_host</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">check_and_update_host_consist</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">target_host</span><span class="p">)</span>
+    <span class="n">target</span><span class="p">,</span> <span class="n">target_host</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">canon_target_and_host</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">target_host</span><span class="p">)</span>
 
     <span class="c1"># init config space</span>
     <span class="n">ret</span><span class="o">.</span><span class="n">config_space</span> <span class="o">=</span> <span class="n">ConfigSpace</span><span class="p">()</span>
@@ -1986,7 +1986,7 @@ title="Fullscreen mode"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-05-10, 16:59:25.<br/>
+    Last updated on 2022-06-02, 09:54:30.<br/>
 </p>
         </footer>
     </div>

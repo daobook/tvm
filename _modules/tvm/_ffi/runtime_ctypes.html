@@ -748,6 +748,11 @@
     </label>
     <ul>
      <li class="toctree-l3">
+      <a class="reference internal" href="../../../docs/dev/how_to/debugging_tvm.html">
+       Debuggging TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="../../../docs/dev/how_to/relay_add_op.html">
        Adding an Operator to Relay
       </a>
@@ -1768,6 +1773,17 @@ title="Fullscreen mode"
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetDeviceAttr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_id</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
 
+<div class="viewcode-block" id="Device.texture_spatial_limit"><a class="viewcode-back" href="../../../refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device.texture_spatial_limit">[文档]</a>    <span class="k">def</span> <span class="nf">texture_spatial_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns limits for textures by spatial dimensions</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        limit : int or None</span>
+<span class="sd">            Maximum size of the texture by spatial dimensions</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetDeviceAttr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_id</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Device.create_raw_stream"><a class="viewcode-back" href="../../../refs/_ffi/runtime_ctypes.html#tvm._ffi.runtime_ctypes.Device.create_raw_stream">[文档]</a>    <span class="k">def</span> <span class="nf">create_raw_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a new runtime stream at the context.</span>
 
@@ -1882,7 +1898,7 @@ title="Fullscreen mode"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-05-10, 16:59:25.<br/>
+    Last updated on 2022-06-02, 09:54:30.<br/>
 </p>
         </footer>
     </div>

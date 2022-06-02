@@ -753,6 +753,11 @@
     </label>
     <ul>
      <li class="toctree-l3">
+      <a class="reference internal" href="../../../dev/how_to/debugging_tvm.html">
+       Debuggging TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="../../../dev/how_to/relay_add_op.html">
        Adding an Operator to Relay
       </a>
@@ -1624,7 +1629,7 @@ title="Print to PDF"
 <h2>加载 VTA 参数<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
 <p>VTA 是模块化和可定制的设计。因此，用户可以自由地修改影响硬件设计布局的高级硬件参数。这些参数在 <code class="docutils literal notranslate"><span class="pre">tvm/3rdparty/vta-hw/config/vta_config.json</span></code> 中通过它们的 <code class="docutils literal notranslate"><span class="pre">log2</span></code> 值指定。
 这些 VTA 参数可以通过 <code class="docutils literal notranslate"><span class="pre">vta.get_env</span></code> 函数加载。</p>
-<p>最后，TVM 目标也在 <code class="docutils literal notranslate"><span class="pre">vta_config.json</span></code> 文件中指定。当设置为 <em>sim</em> 时，执行将发生在 VTA 仿真器行为内。如果您想在 Pynq FPGA 开发平台上运行本教程，请遵循 <em>VTA 基于 Pynq 的测试设置</em> 指南。</p>
+<p>最后，TVM 目标也在 <code class="docutils literal notranslate"><span class="pre">vta_config.json</span></code> 文件中指定。当设置为 <code class="docutils literal notranslate"><span class="pre">sim</span></code> 时，执行将发生在 VTA 仿真器行为内。如果您想在 Pynq FPGA 开发平台上运行本教程，请遵循 <em>VTA 基于 Pynq 的测试设置</em> 指南。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">vta</span><span class="o">.</span><span class="n">get_env</span><span class="p">()</span>
@@ -1877,7 +1882,6 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">[</span><span class="n">C_buf</span><span class="p">]</span><span class="o">.</span><span class="n">pragma</span><span class="p">(</span><span class="n">C_buf</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">axis</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">env</span><span class="o">.</span><span class="n">alu</span><span class="p">)</span>
-
 <span class="c1"># 查看最终的 schedule</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">vta</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
@@ -1920,9 +1924,27 @@ title="Print to PDF"
 <p>在下面一行中，使用 <a class="reference internal" href="../../../reference/api/python/driver.html#tvm.build" title="tvm.build"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.build()</span></code></a> 来创建函数。<code class="docutils literal notranslate"><span class="pre">build</span></code> 函数接受调度、函数的期望签名（包括输入和输出）以及想要编译的目标语言。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_vadd</span> <span class="o">=</span> <span class="n">vta</span><span class="o">.</span><span class="n">build</span><span class="p">(</span>
-    <span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">tvm</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">Target</span><span class="p">(</span><span class="s2">&quot;ext_dev&quot;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">target_host</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my_vadd&quot;</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">env</span><span class="o">.</span><span class="n">target_host</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;llvm&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ctx = tvm.target.Target(&quot;ext_dev&quot;, host=env.target_host)</span>
+<span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;ext_dev&quot;</span>
+<span class="n">my_vadd</span> <span class="o">=</span> <span class="n">vta</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my_vadd&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/pc/data/4tb/lxw/anaconda3/envs/tvm-mxnet/lib/python3.10/site-packages/tvm/target/target.py:316: UserWarning: target_host parameter is going to be deprecated. Please pass in tvm.target.Target(target, host=target_host) instead.
+  warnings.warn(
 </pre></div>
 </div>
 </div>
@@ -2082,7 +2104,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-05-10, 16:59:25.<br/>
+    Last updated on 2022-06-02, 09:54:30.<br/>
 </p>
         </footer>
     </div>

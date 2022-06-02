@@ -748,6 +748,11 @@
     </label>
     <ul>
      <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/dev/how_to/debugging_tvm.html">
+       Debuggging TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="../../../../docs/dev/how_to/relay_add_op.html">
        Adding an Operator to Relay
       </a>
@@ -1389,7 +1394,7 @@ title="Fullscreen mode"
         <span class="bp">self</span><span class="o">.</span><span class="n">_setup</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mod</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
-        <span class="n">raw_targets</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">canonicalize_target_and_host</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+        <span class="n">raw_targets</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">canon_multi_target_and_host</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_init</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">raw_targets</span><span class="p">)</span>
 
 <div class="viewcode-block" id="GraphExecutorCodegen.codegen"><a class="viewcode-back" href="../../../../docs/reference/api/python/relay/backend.html#tvm.relay.backend.graph_executor_codegen.GraphExecutorCodegen.codegen">[文档]</a>    <span class="k">def</span> <span class="nf">codegen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ir_module</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
@@ -1442,7 +1447,7 @@ title="Fullscreen mode"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-05-10, 16:59:25.<br/>
+    Last updated on 2022-06-02, 09:54:30.<br/>
 </p>
         </footer>
     </div>

@@ -751,6 +751,11 @@
     </label>
     <ul>
      <li class="toctree-l3">
+      <a class="reference internal" href="../dev/how_to/debugging_tvm.html">
+       Debuggging TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/relay_add_op.html">
        Adding an Operator to Relay
       </a>
@@ -1526,19 +1531,27 @@ title="Print to PDF"
 <p>首先要导入一些依赖关系，包括用于加载和转换模型的 <code class="docutils literal notranslate"><span class="pre">mxnet</span></code>，用于下载测试数据的辅助工具，用于处理图像数据的 Python 图像库，用于图像数据预处理和后处理的 <code class="docutils literal notranslate"><span class="pre">numpy</span></code>，TVM Relay 框架，以及 TVM Graph Executor。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tvm.contrib.download</span> <span class="kn">import</span> <span class="n">download_testdata</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">env</span> <span class="c1"># 加载 TVM</span>
+<span class="kn">from</span> <span class="nn">tvm.contrib.download</span> <span class="kn">import</span> <span class="n">download_testdata</span>
 <span class="kn">import</span> <span class="nn">tvm</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">relay</span>
 <span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">graph_executor</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <section id="id1">
 <h2>下载和加载前端模型<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
-<p>在本教程中，我们将使用 ResNet-50 v2。ResNet-50 是卷积神经网络，有 50 层深度，旨在对图像进行分类。该模型已经在超过一百万张图片上进行了预训练，有 1000 种不同的分类。该网络的输入图像大小为 224x224。如果你有兴趣探索更多关于 ResNet-50 模型的结构，我们建议下载免费的 ML 模型查看器 <a class="reference external" href="https://netron.app">Netron</a>。</p>
+<p>在本教程中，使用 ResNet-50 v2。ResNet-50 是卷积神经网络，有 50 层深度，旨在对图像进行分类。该模型已经在超过一百万张图片上进行了预训练，有 1000 种不同的分类。该网络的输入图像大小为 224x224。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>如果你有兴趣探索更多关于 ResNet-50 模型的结构，建议下载免费的 ML 模型查看器 <a class="reference external" href="https://netron.app">Netron</a>。</p>
+</div>
 <p>TVM 提供了辅助库来下载预训练的模型。通过该模块提供模型的 URL、文件名和模型类型，TVM 将下载模型并保存到磁盘。</p>
 <div class="admonition- admonition">
 <p class="admonition-title">与其他模型格式一起工作</p>
@@ -1562,10 +1575,10 @@ title="Print to PDF"
 <p>MXNet 可直接载入模型：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mxnet</span> <span class="k">as</span> <span class="nn">mx</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mxnet.gluon.model_zoo</span> <span class="kn">import</span> <span class="n">vision</span>
 
 <span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;resnet50_v2&#39;</span>
-<span class="n">gluon_model</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">gluon</span><span class="o">.</span><span class="n">model_zoo</span><span class="o">.</span><span class="n">vision</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">gluon_model</span> <span class="o">=</span> <span class="n">vision</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1657,12 +1670,13 @@ title="Print to PDF"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dtype</span> <span class="o">=</span> <span class="s2">&quot;float32&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dtype = &quot;float32&quot;</span>
 <span class="n">module</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="n">input_name</span><span class="p">,</span> <span class="n">img_data</span><span class="p">)</span>
 <span class="n">module</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 <span class="n">output_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-<span class="n">tvm_output</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>
-                               <span class="n">tvm</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">output_shape</span><span class="p">))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="c1"># tvm_output = module.get_output(0,</span>
+<span class="c1">#                                tvm.nd.empty(output_shape)).numpy()</span>
+<span class="n">tvm_output</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1693,7 +1707,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean&#39;: 33.839258244261146, &#39;median&#39;: 32.91657278314233, &#39;std&#39;: 2.2038196319125745}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean&#39;: 56.41244653845206, &#39;median&#39;: 55.057341896463186, &#39;std&#39;: 4.664292276979083}
 </pre></div>
 </div>
 </div>
@@ -1722,11 +1736,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>class=&#39;tiger cat&#39; with probability=0.526644
-class=&#39;tabby, tabby cat&#39; with probability=0.403282
-class=&#39;Egyptian cat&#39; with probability=0.036493
-class=&#39;tiger, Panthera tigris&#39; with probability=0.004262
-class=&#39;plastic bag&#39; with probability=0.002360
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>class=&#39;tiger cat&#39; with probability=0.523403
+class=&#39;tabby, tabby cat&#39; with probability=0.406607
+class=&#39;Egyptian cat&#39; with probability=0.036959
+class=&#39;tiger, Panthera tigris&#39; with probability=0.004273
+class=&#39;plastic bag&#39; with probability=0.002398
 </pre></div>
 </div>
 </div>
@@ -1771,7 +1785,7 @@ class=&#39;plastic bag&#39; with probability=0.002360
 </div>
 </div>
 </div>
-<p>创建一个简单的结构来保存调谐选项。我们使用一个 XGBoost 算法来指导搜索。对于一个生产作业来说，你会想把试验的数量设置得比这里使用的 10 的值大。对于 CPU，我们推荐 1500，对于 GPU，推荐 3000-4000。所需的试验次数可能取决于特定的模型和处理器，因此值得花一些时间来评估各种数值的性能，以找到调整时间和模型优化之间的最佳平衡。因为运行调谐是需要时间的，我们将试验次数设置为 10 次，但不建议使用这么小的值。<code class="docutils literal notranslate"><span class="pre">early_stopping</span></code> 参数是在应用提前停止搜索的条件之前，要运行的最小轨数。<code class="docutils literal notranslate"><span class="pre">measure</span></code> 选项表示将在哪里建立试验代码，以及将在哪里运行。在这种情况下，我们使用刚刚创建的 <code class="docutils literal notranslate"><span class="pre">LocalRunner</span></code> 和一个 <code class="docutils literal notranslate"><span class="pre">LocalBuilder</span></code>。<code class="docutils literal notranslate"><span class="pre">tuning_records</span></code> 选项指定了一个文件来写入调整数据。</p>
+<p>创建简单的结构来保存调谐选项。使用 XGBoost 算法来指导搜索。对于生产作业来说，你会想把试验的数量设置得比这里使用的 10 的值大。对于 CPU，推荐 1500，对于 GPU，推荐 3000-4000。所需的试验次数可能取决于特定的模型和处理器，因此值得花一些时间来评估各种数值的性能，以找到调整时间和模型优化之间的最佳平衡。因为运行调谐是需要时间的，我们将试验次数设置为 10 次，但不建议使用这么小的值。<code class="docutils literal notranslate"><span class="pre">early_stopping</span></code> 参数是在应用提前停止搜索的条件之前，要运行的最小轨数。<code class="docutils literal notranslate"><span class="pre">measure</span></code> 选项表示将在哪里建立试验代码，以及将在哪里运行。在这种情况下，使用刚刚创建的 <code class="docutils literal notranslate"><span class="pre">LocalRunner</span></code> 和 <code class="docutils literal notranslate"><span class="pre">LocalBuilder</span></code>。<code class="docutils literal notranslate"><span class="pre">tuning_records</span></code> 选项指定了文件来写入调整数据。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tuning_option</span> <span class="o">=</span> <span class="p">{</span>
@@ -1816,38 +1830,6 @@ class=&#39;plastic bag&#39; with probability=0.002360
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Task  1/25]  Current/Best:    0.00/   0.00 GFLOPS | Progress: (0/10) | 0.00 s[Task  1/25]  Current/Best:  177.77/ 199.05 GFLOPS | Progress: (10/10) | 4.51 s Done.
-[Task  2/25]  Current/Best:  126.34/ 126.34 GFLOPS | Progress: (10/10) | 3.78 s Done.
-[Task  3/25]  Current/Best:  143.37/ 151.65 GFLOPS | Progress: (10/10) | 3.52 s Done.
-[Task  4/25]  Current/Best:   50.36/ 140.31 GFLOPS | Progress: (10/10) | 8.44 s Done.
-[Task  5/25]  Current/Best:  197.46/ 197.46 GFLOPS | Progress: (10/10) | 3.75 s Done.
-[Task  6/25]  Current/Best:  102.33/ 274.47 GFLOPS | Progress: (10/10) | 3.71 s Done.
-[Task  7/25]  Current/Best:  121.23/ 212.21 GFLOPS | Progress: (10/10) | 3.19 s Done.
-[Task  8/25]  Current/Best:  256.87/ 300.88 GFLOPS | Progress: (10/10) | 5.40 s Done.
-[Task  9/25]  Current/Best:   87.31/ 154.16 GFLOPS | Progress: (10/10) | 5.16 s Done.
-[Task 10/25]  Current/Best:  165.09/ 165.09 GFLOPS | Progress: (10/10) | 3.03 s Done.
-[Task 11/25]  Current/Best:   78.56/ 255.95 GFLOPS | Progress: (10/10) | 3.02 s Done.
-[Task 12/25]  Current/Best:  113.57/ 213.63 GFLOPS | Progress: (10/10) | 3.92 s Done.
-[Task 13/25]  Current/Best:   72.96/ 182.89 GFLOPS | Progress: (10/10) | 4.24 s Done.
-[Task 15/25]  Current/Best:    0.00/   0.00 GFLOPS | Progress: (0/10) | 0.00 s s Done.
-[Task 16/25]  Current/Best:   90.12/ 166.68 GFLOPS | Progress: (10/10) | 4.02 ss Done.
-[Task 17/25]  Current/Best:   81.15/ 204.05 GFLOPS | Progress: (10/10) | 3.64 s Done.
-[Task 18/25]  Current/Best:   32.93/ 101.79 GFLOPS | Progress: (10/10) | 13.54 s Done.
-[Task 19/25]  Current/Best:  100.82/ 103.35 GFLOPS | Progress: (10/10) | 5.88 s Done.
-[Task 20/25]  Current/Best:   50.29/ 213.17 GFLOPS | Progress: (10/10) | 12.39 s Done.
-[Task 21/25]  Current/Best:   92.27/ 187.80 GFLOPS | Progress: (10/10) | 7.00 s Done.
-[Task 22/25]  Current/Best:   46.94/ 170.27 GFLOPS | Progress: (10/10) | 3.72 s Done.
-[Task 23/25]  Current/Best:  355.18/ 387.55 GFLOPS | Progress: (10/10) | 5.29 s Done.
-[Task 25/25]  Current/Best:    0.00/   0.00 GFLOPS | Progress: (0/10) | 0.00 s s Done.
-[Task 25/25]  Current/Best:    9.98/  41.21 GFLOPS | Progress: (10/10) | 12.91 s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/pc/data/4tb/lxw/anaconda3/envs/tvm-mxnet/lib/python3.10/site-packages/xgboost/compat.py:36: FutureWarning: pandas.Int64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.
-  from pandas import MultiIndex, Int64Index
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="id6">
@@ -1867,7 +1849,6 @@ class=&#39;plastic bag&#39; with probability=0.002360
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Done.
- Done.
 </pre></div>
 </div>
 </div>
@@ -1890,11 +1871,11 @@ class=&#39;plastic bag&#39; with probability=0.002360
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>class=&#39;tiger cat&#39; with probability=0.526640
-class=&#39;tabby, tabby cat&#39; with probability=0.403286
-class=&#39;Egyptian cat&#39; with probability=0.036493
-class=&#39;tiger, Panthera tigris&#39; with probability=0.004262
-class=&#39;plastic bag&#39; with probability=0.002361
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>class=&#39;tiger cat&#39; with probability=0.523401
+class=&#39;tabby, tabby cat&#39; with probability=0.406608
+class=&#39;Egyptian cat&#39; with probability=0.036959
+class=&#39;tiger, Panthera tigris&#39; with probability=0.004273
+class=&#39;plastic bag&#39; with probability=0.002398
 </pre></div>
 </div>
 </div>
@@ -1923,8 +1904,8 @@ class=&#39;plastic bag&#39; with probability=0.002361
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>optimized: {&#39;mean&#39;: 30.120539935305715, &#39;median&#39;: 29.088086308911443, &#39;std&#39;: 2.3462227941326783}
-unoptimized: {&#39;mean&#39;: 33.839258244261146, &#39;median&#39;: 32.91657278314233, &#39;std&#39;: 2.2038196319125745}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>optimized: {&#39;mean&#39;: 59.14512207498774, &#39;median&#39;: 56.0865213512443, &#39;std&#39;: 6.336781476178801}
+unoptimized: {&#39;mean&#39;: 56.41244653845206, &#39;median&#39;: 55.057341896463186, &#39;std&#39;: 4.664292276979083}
 </pre></div>
 </div>
 </div>
@@ -1933,7 +1914,7 @@ unoptimized: {&#39;mean&#39;: 33.839258244261146, &#39;median&#39;: 32.916572783
 <section id="id8">
 <h2>小结<a class="headerlink" href="#id8" title="永久链接至标题">#</a></h2>
 <p>在本教程中，我们举了一个简短的例子，说明如何使用 TVM Python API 来编译、运行和调整一个模型。我们还讨论了对输入和输出进行预处理和后处理的必要性。在调优过程之后，我们演示了如何比较未优化和优化后的模型的性能。</p>
-<p>这里我们介绍了一个使用 ResNet-50 v2 本地的简单例子。然而，TVM 支持更多的功能，包括交叉编译、远程执行和剖析/基准测试。</p>
+<p>这里我们介绍了使用 ResNet-50 v2 本地的简单例子。然而，TVM 支持更多的功能，包括交叉编译、远程执行和剖析/基准测试。</p>
 </section>
 </section>
 
@@ -1969,7 +1950,7 @@ unoptimized: {&#39;mean&#39;: 33.839258244261146, &#39;median&#39;: 32.916572783
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-05-10, 16:59:25.<br/>
+    Last updated on 2022-06-02, 09:54:30.<br/>
 </p>
         </footer>
     </div>

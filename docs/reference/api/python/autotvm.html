@@ -751,6 +751,11 @@
     </label>
     <ul>
      <li class="toctree-l3">
+      <a class="reference internal" href="../../../dev/how_to/debugging_tvm.html">
+       Debuggging TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="../../../dev/how_to/relay_add_op.html">
        Adding an Operator to Relay
       </a>
@@ -3094,6 +3099,32 @@ of the DispatchContext base class.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="tvm.autotvm.task.dispatcher.ApplyFixedConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tvm.autotvm.task.dispatcher.</span></span><span class="sig-name descname"><span class="pre">ApplyFixedConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tasks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schedule_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(在 Python v3.10)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(在 Python v3.10)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/autotvm/task/dispatcher.html#ApplyFixedConfig"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.autotvm.task.dispatcher.ApplyFixedConfig" title="永久链接至目标">#</a></dt>
+<dd><p>Apply a config of a deterministic schedule.
+This is used for building a single Relay operator with deterministic schedule
+for testing schedules at Relay level.</p>
+<dl class="simple">
+<dt>tasks<span class="classifier">list[tvm.autotvm.task.task.Task]</span></dt><dd><p>List of autoTVM tasks.</p>
+</dd>
+<dt>schedule_names<span class="classifier">str, List[str]</span></dt><dd><p>Name of schedules to use.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.autotvm.task.dispatcher.ApplyFixedConfig._query_inside">
+<span class="sig-name descname"><span class="pre">_query_inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workload</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/autotvm/task/dispatcher.html#ApplyFixedConfig._query_inside"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.autotvm.task.dispatcher.ApplyFixedConfig._query_inside" title="永久链接至目标">#</a></dt>
+<dd><p>Override query</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.autotvm.task.dispatcher.ApplyFixedConfig.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workload</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cfg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/autotvm/task/dispatcher.html#ApplyFixedConfig.update"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.autotvm.task.dispatcher.ApplyFixedConfig.update" title="永久链接至目标">#</a></dt>
+<dd><p>Override update</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="tvm.autotvm.task.dispatcher.ApplyGraphBest">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tvm.autotvm.task.dispatcher.</span></span><span class="sig-name descname"><span class="pre">ApplyGraphBest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">records</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/autotvm/task/dispatcher.html#ApplyGraphBest"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.autotvm.task.dispatcher.ApplyGraphBest" title="永久链接至目标">#</a></dt>
 <dd><p>Load the graph level tuning optimal schedules.</p>
@@ -3194,7 +3225,7 @@ a list of paths to log files that will be loaded jointly or an iterator or recor
 <dt>records<span class="classifier">str, list of str, or iterator of (autotvm.measure.MeasureInput,                                                    autotvm.measure.MeasureResult)</span></dt><dd><p>Collection of tuning records.
 If is str, then it should be the filename of a records log file.
 Each row of this file is an encoded record pair. If it is a list
-it can either be a list of paths to logs that will loaded jointly or
+it can either be a list of paths to logs that will be loaded jointly or
 an iterator of measurement results.</p>
 </dd>
 </dl>
@@ -3643,7 +3674,7 @@ This function can also delete duplicated records in log file</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-05-10, 16:59:25.<br/>
+    Last updated on 2022-06-02, 09:54:30.<br/>
 </p>
         </footer>
     </div>

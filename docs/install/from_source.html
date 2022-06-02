@@ -751,6 +751,11 @@
     </label>
     <ul>
      <li class="toctree-l3">
+      <a class="reference internal" href="../dev/how_to/debugging_tvm.html">
+       Debuggging TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/relay_add_op.html">
        Adding an Operator to Relay
       </a>
@@ -1593,7 +1598,7 @@ cp cmake/config.cmake build
 </li>
 </ul>
 </li>
-<li><p>TVM 需要 LLVM 用于 CPU 编码。我们强烈建议你使用 LLVM 支持来构建。</p>
+<li><p>TVM requires LLVM for CPU codegen. We highly recommend you to build with the LLVM support on.</p>
 <ul class="simple">
 <li><p>使用 LLVM 构建时需要 LLVM 4.0 或更高版本。注意，默认的 apt 中的 LLVM 版本可能低于 4.0。</p></li>
 <li><p>由于 LLVM 从源代码构建需要很长时间，你可以从 <a class="reference external" href="http://releases.llvm.org/download.html">LLVM 下载页面</a> 下载预构建的 LLVM 版本。</p>
@@ -1608,6 +1613,18 @@ cp cmake/config.cmake build
 </ul>
 </li>
 <li><p>如果你是 PyTorch 的用户，建议设置 <code class="docutils literal notranslate"><span class="pre">(USE_LLVM</span> <span class="pre">&quot;/path/to/llvm-config</span> <span class="pre">--link-static&quot;)</span></code> 和 <code class="docutils literal notranslate"><span class="pre">set(HIDE_PRIVATE_SYMBOLS</span> <span class="pre">ON)</span></code>，以避免 TVM 和 PyTorch 使用的不同版本 LLVM 之间的潜在 symbol 冲突。</p></li>
+<li><p>On supported platforms, the <a class="reference external" href="https://ccache.dev/">Ccache compiler wrapper</a> may be helpful for
+reducing TVM’s build time.  There are several ways to enable CCache in TVM builds:</p>
+<ul>
+<li><p>Ccache’s Masquerade mode. This is typically enabled during the Ccache installation process.
+To have TVM use Ccache in masquerade, simply specify the appropriate C/C++ compiler
+paths when configuring TVM’s build system.  For example:
+<code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_CXX_COMPILER=/usr/lib/ccache/c++</span> <span class="pre">...</span></code>.</p></li>
+<li><p>Ccache as CMake’s C++ compiler prefix.  When configuring TVM’s build system,
+set the CMake variable <code class="docutils literal notranslate"><span class="pre">CMAKE_CXX_COMPILER_LAUNCHER</span></code> to an appropriate value.
+E.g. <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_CXX_COMPILER_LAUNCHER=ccache</span> <span class="pre">...</span></code>.</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>然后我们可以建立 tvm 和相关的库。</p>
@@ -1812,7 +1829,7 @@ sudo make install
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-05-10, 16:59:25.<br/>
+    Last updated on 2022-06-02, 09:54:30.<br/>
 </p>
         </footer>
     </div>

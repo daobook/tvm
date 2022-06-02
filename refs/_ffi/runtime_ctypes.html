@@ -750,6 +750,11 @@
     </label>
     <ul>
      <li class="toctree-l3">
+      <a class="reference internal" href="../../docs/dev/how_to/debugging_tvm.html">
+       Debuggging TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="../../docs/dev/how_to/relay_add_op.html">
        Adding an Operator to Relay
       </a>
@@ -1594,6 +1599,16 @@ other devices.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm._ffi.runtime_ctypes.Device.texture_spatial_limit">
+<span class="sig-name descname"><span class="pre">texture_spatial_limit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tvm/_ffi/runtime_ctypes.html#Device.texture_spatial_limit"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm._ffi.runtime_ctypes.Device.texture_spatial_limit" title="永久链接至目标">#</a></dt>
+<dd><p>Returns limits for textures by spatial dimensions</p>
+<dl class="simple">
+<dt>limit<span class="classifier">int or None</span></dt><dd><p>Maximum size of the texture by spatial dimensions</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="tvm._ffi.runtime_ctypes.Device.warp_size">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">warp_size</span></span><a class="headerlink" href="#tvm._ffi.runtime_ctypes.Device.warp_size" title="永久链接至目标">#</a></dt>
@@ -1665,7 +1680,7 @@ None for all other devices.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-05-10, 16:59:25.<br/>
+    Last updated on 2022-06-02, 09:54:30.<br/>
 </p>
         </footer>
     </div>

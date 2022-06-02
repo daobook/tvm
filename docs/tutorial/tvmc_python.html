@@ -751,6 +751,11 @@
     </label>
     <ul>
      <li class="toctree-l3">
+      <a class="reference internal" href="../dev/how_to/debugging_tvm.html">
+       Debuggging TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/relay_add_op.html">
        Adding an Operator to Relay
       </a>
@@ -1545,8 +1550,10 @@ title="Print to PDF"
 <p>导入本地 TVM 环境：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">env</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">tvm.driver</span> <span class="kn">import</span> <span class="n">tvmc</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1555,12 +1562,14 @@ title="Print to PDF"
 <section id="step-1">
 <h2>Step 1: 加载模型<a class="headerlink" href="#step-1" title="永久链接至标题">#</a></h2>
 <p>将模型导入到 tvmc 中。这一步将机器学习模型从受支持的框架转换为 TVM 的高级图表示语言 Relay。这将为 TVM 中的所有模型提供一个统一的起点。目前支持的框架有：Keras、ONNX、Tensorflow、TFLite 和 PyTorch。</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>!wget https://github.com/onnx/models/raw/main/vision/classification/resnet/model/resnet50-v2-7.onnx
+</pre></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">onnx</span>
-<span class="kn">import</span> <span class="nn">cudnn</span>
 
-<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;../../_models/resnet50-v2-7.onnx&#39;</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;resnet50-v2-7.onnx&#39;</span>
 <span class="n">onnx_model</span> <span class="o">=</span> <span class="n">onnx</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span> <span class="c1"># Step 1: Load</span>
@@ -1569,7 +1578,10 @@ title="Print to PDF"
 </div>
 </div>
 <p>所有框架都支持使用 <code class="docutils literal notranslate"><span class="pre">shape_dict</span></code> 参数覆盖输入 shape。对于大多数框架来说，这是可选的，但对于 Pytorch 来说，这是必要的，因为 TVM 不能自动搜索它。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">my_model</span><span class="p">,</span> <span class="n">shape_dict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;input1&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;input2&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]})</span> <span class="c1">#Step 1: Load + shape_dict</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Step 1: Load + shape_dict</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">my_model</span><span class="p">,</span>
+                  <span class="n">shape_dict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;input1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+                              <span class="s1">&#39;input2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]})</span>
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -1587,7 +1599,7 @@ title="Print to PDF"
 </section>
 <section id="step-2">
 <h2>Step 2: 编译<a class="headerlink" href="#step-2" title="永久链接至标题">#</a></h2>
-<p>既然我们的模型已经在 Relay 中，下一步就是将它编译到需要运行的硬件上。我们把这个硬件称为目标（target）。此编译过程将模型从 Relay 转换为目标机器可以理解的较低级语言。</p>
+<p>既然模型已经在 Relay 中，下一步就是将它编译到需要运行的硬件上。这个硬件称为目标（target）。此编译过程将模型从 Relay 转换为目标机器可以理解的较低级语言。</p>
 <p>为了编译模型 <code class="docutils literal notranslate"><span class="pre">tvm.target</span></code> 字符串是必需的。查看<a class="reference external" href="https://tvm.apache.org/docs/api/python/target.html">文档</a>，了解更多关于 <code class="docutils literal notranslate"><span class="pre">tvm.target</span></code> 的信息及其选项。一些例子包括：</p>
 <ol class="arabic simple">
 <li><p>cuda (Nvidia GPU)</p></li>
@@ -1596,7 +1608,8 @@ title="Print to PDF"
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span> <span class="c1">#Step 2: Compile</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 2: Compile</span>
+<span class="n">package</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;llvm&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1611,17 +1624,15 @@ title="Print to PDF"
 <section id="step-3">
 <h2>Step 3: 运行<a class="headerlink" href="#step-3" title="永久链接至标题">#</a></h2>
 <p>编译后的包现在可以在硬件目标上运行。设备输入选项有：CPU、Cuda、CL、Metal 和 Vulkan。</p>
-<div class="admonition note">
-<p class="admonition-title">备注</p>
 <p>使用 CUDA，需要：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install -c conda-forge py-xgboost-gpu
 pip install cloudpickle
 </pre></div>
 </div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">package</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span> <span class="c1">#Step 3: Run</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Step 3: Run</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">package</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1636,7 +1647,7 @@ pip install cloudpickle
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution time summary:
  mean (ms)   median (ms)    max (ms)     min (ms)     std (ms)  
-   7.6833       7.5673       9.0150       7.3076       0.4640   
+  49.3520      48.6953      51.4826      48.5731       1.0808   
                
 Output Names:
  [&#39;output_0&#39;]
@@ -1648,35 +1659,18 @@ Output Names:
 <h3>Tune [可选 &amp;&amp; 推荐]<a class="headerlink" href="#tune" title="永久链接至标题">#</a></h3>
 <p>通过调优可以进一步提高运行速度。这个可选步骤使用机器学习来查看模型（函数）中的每个运算，并试图找到更快的方法来运行它。通过成本模型来做到这一点，并对可能的调度进行基准测试。</p>
 <p>此处 <code class="docutils literal notranslate"><span class="pre">target</span></code> 与编译相同。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 可以是 &quot;llvm&quot;</span>
-<span class="n">tvmc</span><span class="o">.</span><span class="n">tune</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span> <span class="c1">#Step 1.5: Optional Tune</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 1.5: Optional Tune</span>
+<span class="c1"># 可以是 &quot;cuda&quot;</span>
+<span class="n">tvmc</span><span class="o">.</span><span class="n">tune</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;llvm&quot;</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Task  1/28]  Current/Best:  186.04/1823.54 GFLOPS | Progress: (48/357) | 56.40 s[Task  1/28]  Current/Best: 3054.94/3338.36 GFLOPS | Progress: (357/357) | 2056.27 s Done.
-[Task  2/28]  Current/Best: 1210.61/1374.25 GFLOPS | Progress: (240/357) | 1088.08 s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/workspace/anaconda3/envs/tvm39/lib/python3.9/site-packages/xgboost/training.py:17: UserWarning: Old style callback is deprecated.  See: https://xgboost.readthedocs.io/en/latest/python/callbacks.html
-  warnings.warn(f&#39;Old style callback is deprecated.  See: {link}&#39;, UserWarning)
-</pre></div>
-</div>
-</div>
 </div>
 <p>可能存在可以忽略的用户警告。这将使最终结果更快，但可能需要数小时来调优。</p>
 <p>请参阅下面的 <a class="reference internal" href="#id3"><span class="std std-ref">保存调优结果</span></a>。如果希望应用调优结果，请确保将调优结果传递到 <code class="docutils literal notranslate"><span class="pre">compile</span></code> 中。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 2: Compile</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 2: Compile</span>
 <span class="n">tvmc</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">model</span><span class="p">,</span>
              <span class="n">target</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span>
              <span class="n">tuning_records</span><span class="o">=</span><span class="s2">&quot;records.log&quot;</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -1703,7 +1697,8 @@ Output Names:
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tvmc</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;llvm&quot;</span><span class="p">,</span> <span class="n">package_path</span><span class="o">=</span><span class="s2">&quot;whatever&quot;</span><span class="p">)</span>
 
 <span class="n">new_package</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">TVMCPackage</span><span class="p">(</span><span class="n">package_path</span><span class="o">=</span><span class="s2">&quot;whatever&quot;</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">new_package</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span> <span class="c1">#Step 3: Run</span>
+<span class="c1">#Step 3: Run</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">new_package</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -1719,20 +1714,18 @@ Output Names:
 <li><p>论文：<a class="reference external" href="https://arxiv.org/abs/2006.06762">Ansor : Generating High-Performance Tensor Programs for Deep Learning</a></p></li>
 </ol>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tvmc</span><span class="o">.</span><span class="n">tune</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;llvm&quot;</span><span class="p">,</span> <span class="n">enable_autoscheduler</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tvmc</span><span class="o">.</span><span class="n">tune</span><span class="p">(</span><span class="n">model</span><span class="p">,</span>
+          <span class="n">target</span><span class="o">=</span><span class="s2">&quot;llvm&quot;</span><span class="p">,</span>
+          <span class="n">enable_autoscheduler</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="id3">
 <h3>保存调优结果<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h3>
 <p>调优结果可以保存在文件中，以便以后重用。</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="a4aa4c8e-abbb-4657-b356-3ea85ce78d0b" name="573a3b3a-ef16-44a9-b568-0ffc4d1a89fa" type="radio">
-</input><label class="tabbed-label" for="a4aa4c8e-abbb-4657-b356-3ea85ce78d0b">
+<input checked="checked" id="5b355b1d-5488-43b7-b4d1-71b14400d116" name="9008d9ef-409c-4df7-bbbf-b97b42e791c1" type="radio">
+</input><label class="tabbed-label" for="5b355b1d-5488-43b7-b4d1-71b14400d116">
 方式1</label><div class="tabbed-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log_file</span> <span class="o">=</span> <span class="s2">&quot;hello.json&quot;</span>
 
@@ -1742,12 +1735,12 @@ Output Names:
 <span class="o">...</span>
 
 <span class="c1"># Later run tuning and reuse tuning results</span>
-<span class="n">tvmc</span><span class="o">.</span><span class="n">tune</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;llvm&quot;</span><span class="p">,</span><span class="n">tuning_records</span><span class="o">=</span><span class="n">log_file</span><span class="p">)</span>
+<span class="n">tvmc</span><span class="o">.</span><span class="n">tune</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;llvm&quot;</span><span class="p">,</span> <span class="n">tuning_records</span><span class="o">=</span><span class="n">log_file</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<input id="11c41956-446c-4141-b2ed-1c94eef80af8" name="573a3b3a-ef16-44a9-b568-0ffc4d1a89fa" type="radio">
-</input><label class="tabbed-label" for="11c41956-446c-4141-b2ed-1c94eef80af8">
+<input id="d96e8f83-0340-47f8-bd24-8c9c438b5392" name="9008d9ef-409c-4df7-bbbf-b97b42e791c1" type="radio">
+</input><label class="tabbed-label" for="d96e8f83-0340-47f8-bd24-8c9c438b5392">
 方式2</label><div class="tabbed-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run tuning</span>
 <span class="n">tuning_records</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">tune</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;llvm&quot;</span><span class="p">)</span>
@@ -1755,7 +1748,7 @@ Output Names:
 <span class="o">...</span>
 
 <span class="c1"># Later run tuning and reuse tuning results</span>
-<span class="n">tvmc</span><span class="o">.</span><span class="n">tune</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;llvm&quot;</span><span class="p">,</span><span class="n">tuning_records</span><span class="o">=</span><span class="n">tuning_records</span><span class="p">)</span>
+<span class="n">tvmc</span><span class="o">.</span><span class="n">tune</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;llvm&quot;</span><span class="p">,</span> <span class="n">tuning_records</span><span class="o">=</span><span class="n">tuning_records</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1764,12 +1757,11 @@ Output Names:
 <section id="id4">
 <h3>调优更多复杂模型<a class="headerlink" href="#id4" title="永久链接至标题">#</a></h3>
 <p>你可能注意到 T 的打印像 <code class="docutils literal notranslate"><span class="pre">.........T.T..T..T..T.T.T.T.T.T.</span></code> 增加了搜索时间范围：</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tvmc</span><span class="o">.</span><span class="n">tune</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tvmc</span><span class="o">.</span><span class="n">tune</span><span class="p">(</span><span class="n">model</span><span class="p">,</span>
+          <span class="n">target</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">,</span>
+          <span class="n">trials</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+          <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="id5">
@@ -1822,7 +1814,7 @@ Output Names:
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-05-10, 16:59:25.<br/>
+    Last updated on 2022-06-02, 09:54:30.<br/>
 </p>
         </footer>
     </div>

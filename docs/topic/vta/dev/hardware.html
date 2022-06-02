@@ -751,6 +751,11 @@
     </label>
     <ul>
      <li class="toctree-l3">
+      <a class="reference internal" href="../../../dev/how_to/debugging_tvm.html">
+       Debuggging TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="../../../dev/how_to/relay_add_op.html">
        Adding an Operator to Relay
       </a>
@@ -1643,10 +1648,10 @@ gets generated to provide DMA access to DRAM.</p></li>
 <p>VTA 的指令集架构（instruction set architecture，简称 ISA）由 4 条执行延迟可变的 CISC 指令组成，其中两条执行微编码（micro-coded）指令序列来执行计算。</p>
 <p>VTA 的说明如下：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">LOAD</span></code> 指令：将 2D 张量从 DRAM 加载到输入缓冲区、权重缓冲区或寄存器文件中。它还可以将微内核加载到 micro-op 缓存中。当加载输入和重量 tile 时，支持动态填充。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GEMM</span></code> 指令：对输入张量和权值张量执行矩阵-矩阵乘法的微运算序列，并将结果添加到寄存器文件张量中。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOAD</span></code> 指令：将 2D 张量从 DRAM 加载到输入缓冲区、权重缓冲区或寄存器文件中。它还可以将微内核加载到 micro-op 缓存中。当加载 input 和 weight tile 时，支持动态 padding。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GEMM</span></code> 指令：对 input 张量和 weight 张量执行矩阵-矩阵乘法的微运算序列，并将结果添加到寄存器文件张量中。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ALU</span></code> 指令：对寄存器文件张量数据执行矩阵-矩阵 ALU 运算的微运算序列。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">STORE</span></code> 指令：将 2D 张量从输出缓冲区存储到 DRAM。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">STORE</span></code> 指令：将 2D 张量从 output buffer 存储到 DRAM。</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">LOAD</span></code> 指令由 load 和 compute 模块执行，具体取决于存储内存缓冲区的位置目标。<code class="docutils literal notranslate"><span class="pre">GEMM</span></code> 和 <code class="docutils literal notranslate"><span class="pre">ALU</span></code> 指令由计算模块的 GEMM 核心和张量 ALU 执行。最后，<code class="docutils literal notranslate"><span class="pre">STORE</span></code> 指令由 store 模块独个执行。每条指令的字段如下图所示。每个字段的含义将在 <a class="reference internal" href="#vta-uarch"><span class="std std-ref">Microarchitectural 概述</span></a> 部分进一步解释。</p>
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/uwsampl/web-data/main/vta/developer/vta_instructions.png"><img alt="https://raw.githubusercontent.com/uwsampl/web-data/main/vta/developer/vta_instructions.png" class="align-center" src="https://raw.githubusercontent.com/uwsampl/web-data/main/vta/developer/vta_instructions.png" style="width: 100%;" /></a>
@@ -1672,7 +1677,7 @@ gets generated to provide DMA access to DRAM.</p></li>
 </section>
 <section id="microarchitectural-overview">
 <span id="vta-uarch"></span><h2>Microarchitectural 概述<a class="headerlink" href="#microarchitectural-overview" title="永久链接至标题">#</a></h2>
-<p>我们描述了构成 VTA 设计的模块。模块定义被包含在 <code class="docutils literal notranslate"><span class="pre">3rdparty/vta-hw/hardware/xilinx/sources/vta.cc</span></code> 中。”</p>
+<p>我们描述了构成 VTA 设计的模块。模块定义被包含在 <code class="docutils literal notranslate"><span class="pre">3rdparty/vta-hw/hardware/xilinx/sources/vta.cc</span></code> 中。</p>
 <section id="fetch-module">
 <h3>Fetch 模块<a class="headerlink" href="#fetch-module" title="永久链接至标题">#</a></h3>
 <p>VTA 是由线性指令流编写的。fetch 模块是 VTA 到 CPU 的入口点，通过三个内存映射寄存器进行编程：</p>
@@ -1744,7 +1749,7 @@ gets generated to provide DMA access to DRAM.</p></li>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-05-10, 16:59:25.<br/>
+    Last updated on 2022-06-02, 09:54:30.<br/>
 </p>
         </footer>
     </div>

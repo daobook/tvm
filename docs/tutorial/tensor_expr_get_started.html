@@ -751,6 +751,11 @@
     </label>
     <ul>
      <li class="toctree-l3">
+      <a class="reference internal" href="../dev/how_to/debugging_tvm.html">
+       Debuggging TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/relay_add_op.html">
        Adding an Operator to Relay
       </a>
@@ -1644,19 +1649,23 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-tensor-expr-get-started">
 <span id="id1"></span><h1>使用张量表达式处理算子<a class="headerlink" href="#tutorial-tensor-expr-get-started" title="永久链接至标题">#</a></h1>
 <p><strong>Author</strong>: <a class="reference external" href="https://tqchen.github.io">Tianqi Chen</a></p>
-<p>在本教程中，我们将把注意力转向 TVM 如何使用张量表达式（Tensor Expression，简称 TE）定义张量计算并应用循环优化。TE 以纯函数式语言描述张量计算（即每个表达式都没有副作用）。从 TVM 的整体来看，Relay 将计算描述为一组算子，这些算子都可以表示为 TE 表达式，每个 TE 表达式都接受输入张量并生成输出张量。</p>
+<p>在本教程中，把注意力转向 TVM 如何使用张量表达式（Tensor Expression，简称 TE）定义张量计算并应用循环优化。TE 以纯函数式语言描述张量计算（即每个表达式都没有副作用）。从 TVM 的整体来看，Relay 将计算描述为一组算子，这些算子都可以表示为 TE 表达式，每个 TE 表达式都接受输入张量并生成输出张量。</p>
 <p>这是关于 TVM 中张量表达式语言的介绍性教程。TVM 使用领域专用张量表达式来进行有效的内核构建。通过两个使用张量表达式语言的例子，演示基本工作流程。第一个例子介绍了 TE 和用向量加法进行调度。第二个例子扩展了这些概念，用 TE 逐步优化矩阵乘法。这个矩阵乘法的例子将作为未来涵盖 TVM 更高级功能的教程的基础。</p>
 <section id="cpu-te">
 <h2>例 1：为 CPU 编写和调度 TE 中的向量加法<a class="headerlink" href="#cpu-te" title="永久链接至标题">#</a></h2>
 <p>让我们看看 Python 中的例子，将实现向量加法的 TE，然后是针对 CPU 的调度。首先初始化 TVM 环境。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">env</span> <span class="kn">import</span> <span class="n">tvm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">env</span>
 
 <span class="kn">import</span> <span class="nn">tvm</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">testing</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">te</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">tvm.target</span> <span class="kn">import</span> <span class="n">Target</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1664,64 +1673,7 @@ title="Print to PDF"
 <p>如果你能确定你所针对的 CPU 并指定它，你将获得更好的性能。如果你使用 LLVM，你可以从命令 <code class="docutils literal notranslate"><span class="pre">llc</span> <span class="pre">--version</span></code> 中得到这个信息，以获得 CPU 类型，你可以检查 <code class="docutils literal notranslate"><span class="pre">/proc/cpuinfo</span></code>，了解你的处理器可能支持的额外扩展。例如，你可以使用 <code class="docutils literal notranslate"><span class="pre">llvm</span> <span class="pre">-mcpu=skylake-avx512</span></code> 来获取带有 AVX-512 指令的 CPU。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>llc --version
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LLVM (http://llvm.org/):
-  LLVM version 10.0.0
-  
-  Optimized build.
-  Default target: x86_64-pc-linux-gnu
-  Host CPU: haswell
-
-  Registered Targets:
-    aarch64    - AArch64 (little endian)
-    aarch64_32 - AArch64 (little endian ILP32)
-    aarch64_be - AArch64 (big endian)
-    amdgcn     - AMD GCN GPUs
-    arm        - ARM
-    arm64      - ARM64 (little endian)
-    arm64_32   - ARM64 (little endian ILP32)
-    armeb      - ARM (big endian)
-    avr        - Atmel AVR Microcontroller
-    bpf        - BPF (host endian)
-    bpfeb      - BPF (big endian)
-    bpfel      - BPF (little endian)
-    hexagon    - Hexagon
-    lanai      - Lanai
-    mips       - MIPS (32-bit big endian)
-    mips64     - MIPS (64-bit big endian)
-    mips64el   - MIPS (64-bit little endian)
-    mipsel     - MIPS (32-bit little endian)
-    msp430     - MSP430 [experimental]
-    nvptx      - NVIDIA PTX 32-bit
-    nvptx64    - NVIDIA PTX 64-bit
-    ppc32      - PowerPC 32
-    ppc64      - PowerPC 64
-    ppc64le    - PowerPC 64 LE
-    r600       - AMD GPUs HD2XXX-HD6XXX
-    riscv32    - 32-bit RISC-V
-    riscv64    - 64-bit RISC-V
-    sparc      - Sparc
-    sparcel    - Sparc LE
-    sparcv9    - Sparc V9
-    systemz    - SystemZ
-    thumb      - Thumb
-    thumbeb    - Thumb (big endian)
-    wasm32     - WebAssembly 32-bit
-    wasm64     - WebAssembly 64-bit
-    x86        - 32-bit X86: Pentium-Pro and above
-    x86-64     - 64-bit X86: EM64T and AMD64
-    xcore      - XCore
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tgt</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">Target</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="s2">&quot;llvm&quot;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;llvm&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tgt</span> <span class="o">=</span> <span class="n">Target</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="s2">&quot;llvm&quot;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;llvm&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1825,8 +1777,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numpy running time: 0.000017
-naive: 0.000016
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numpy running time: 0.000016
+naive: 0.000015
 </pre></div>
 </div>
 </div>
@@ -1855,7 +1807,8 @@ naive: 0.000016
   buffers = {A: Buffer(A_2: Pointer(float32), float32, [(stride: int32*n: int32)], [], type=&quot;auto&quot;),
              B: Buffer(B_2: Pointer(float32), float32, [(stride_1: int32*n)], [], type=&quot;auto&quot;),
              C: Buffer(C_2: Pointer(float32), float32, [(stride_2: int32*n)], [], type=&quot;auto&quot;)}
-  buffer_map = {A_1: A, B_1: B, C_1: C} {
+  buffer_map = {A_1: A, B_1: B, C_1: C}
+  preflattened_buffer_map = {A_1: A_3: Buffer(A_2, float32, [n], [stride], type=&quot;auto&quot;), B_1: B_3: Buffer(B_2, float32, [n], [stride_1], type=&quot;auto&quot;), C_1: C_3: Buffer(C_2, float32, [n], [stride_2], type=&quot;auto&quot;)} {
   for (i: int32, 0, n) &quot;parallel&quot; {
     C[(i*stride_2)] = (A[(i*stride)] + B[(i*stride_1)])
   }
@@ -1877,7 +1830,7 @@ naive: 0.000016
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>parallel: 0.000404
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>parallel: 0.000013
 </pre></div>
 </div>
 </div>
@@ -1914,13 +1867,14 @@ naive: 0.000016
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vector: 0.000012
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vector: 0.000014
 @main = primfn(A_1: handle, B_1: handle, C_1: handle) -&gt; ()
   attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
   buffers = {A: Buffer(A_2: Pointer(float32), float32, [(stride: int32*n: int32)], [], type=&quot;auto&quot;),
              B: Buffer(B_2: Pointer(float32), float32, [(stride_1: int32*n)], [], type=&quot;auto&quot;),
              C: Buffer(C_2: Pointer(float32), float32, [(stride_2: int32*n)], [], type=&quot;auto&quot;)}
-  buffer_map = {A_1: A, B_1: B, C_1: C} {
+  buffer_map = {A_1: A, B_1: B, C_1: C}
+  preflattened_buffer_map = {A_1: A_3: Buffer(A_2, float32, [n], [stride], type=&quot;auto&quot;), B_1: B_3: Buffer(B_2, float32, [n], [stride_1], type=&quot;auto&quot;), C_1: C_3: Buffer(C_2, float32, [n], [stride_2], type=&quot;auto&quot;)} {
   for (i.outer: int32, 0, floordiv((n + 3), 4)) &quot;parallel&quot; {
     for (i.inner.s: int32, 0, 4) {
       if @tir.likely((((i.outer*4) + i.inner.s) &lt; n), dtype=bool) {
@@ -1952,10 +1906,10 @@ naive: 0.000016
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            Operator	              Timing	         Performance
-               numpy	1.685864757746458e-05	                 1.0
-               naive	         1.58021e-05	  0.9373290429964918
-            parallel	0.00040369789999999994	  23.946043011162654
-              vector	1.2195599999999999e-05	   0.723403223417648
+               numpy	1.6419119201600552e-05	                 1.0
+               naive	         1.54819e-05	  0.9429190329826469
+            parallel	         1.27897e-05	  0.7789516503877533
+              vector	1.4490100000000002e-05	  0.8825138438965406
 </pre></div>
 </div>
 </div>
@@ -2566,7 +2520,7 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-05-10, 16:59:25.<br/>
+    Last updated on 2022-06-02, 09:54:30.<br/>
 </p>
         </footer>
     </div>

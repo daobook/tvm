@@ -748,6 +748,11 @@
     </label>
     <ul>
      <li class="toctree-l3">
+      <a class="reference internal" href="../../../../docs/dev/how_to/debugging_tvm.html">
+       Debuggging TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="../../../../docs/dev/how_to/relay_add_op.html">
        Adding an Operator to Relay
       </a>
@@ -1367,6 +1372,9 @@ title="Fullscreen mode"
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span> <span class="k">as</span> <span class="n">_abs</span>
 
 <span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">typing</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterable</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -1514,6 +1522,57 @@ title="Fullscreen mode"
         <span class="bp">self</span><span class="o">.</span><span class="n">_config</span> <span class="o">=</span> <span class="n">cfg</span></div></div>
 
 
+<div class="viewcode-block" id="ApplyFixedConfig"><a class="viewcode-back" href="../../../../docs/reference/api/python/autotvm.html#tvm.autotvm.ApplyFixedConfig">[文档]</a><span class="k">class</span> <span class="nc">ApplyFixedConfig</span><span class="p">(</span><span class="n">DispatchContext</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Apply a config of a deterministic schedule.</span>
+<span class="sd">    This is used for building a single Relay operator with deterministic schedule</span>
+<span class="sd">    for testing schedules at Relay level.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tasks : list[tvm.autotvm.task.task.Task]</span>
+<span class="sd">        List of autoTVM tasks.</span>
+<span class="sd">    schedule_names : str, List[str]</span>
+<span class="sd">        Name of schedules to use.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="p">,</span> <span class="n">schedule_names</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ApplyFixedConfig</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">schedule_names</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_schedule_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">schedule_names</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">schedule_names</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_schedule_names</span> <span class="o">=</span> <span class="n">schedule_names</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Incorrect type: &quot;</span> <span class="o">+</span> <span class="n">schedule_names</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span> <span class="o">=</span> <span class="n">tasks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">workload</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="ApplyFixedConfig._query_inside"><a class="viewcode-back" href="../../../../docs/reference/api/python/autotvm.html#tvm.autotvm.ApplyFixedConfig._query_inside">[文档]</a>    <span class="k">def</span> <span class="nf">_query_inside</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">workload</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Override query&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">workload</span> <span class="o">=</span> <span class="n">workload</span>
+
+        <span class="c1"># Create a config from correct task</span>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">workload</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">config</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">config_space</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="k">break</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="s2">&quot;workload: </span><span class="si">%s</span><span class="s2"> does not exist in </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">workload</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">))</span>
+            <span class="p">)</span>
+        <span class="c1"># Add low cost to the target schedule and high cost to others.</span>
+        <span class="k">if</span> <span class="n">workload</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schedule_names</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">cost</span> <span class="o">=</span> <span class="mf">1e-6</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">cost</span> <span class="o">=</span> <span class="mi">100000</span>
+        <span class="k">return</span> <span class="n">config</span></div>
+
+<div class="viewcode-block" id="ApplyFixedConfig.update"><a class="viewcode-back" href="../../../../docs/reference/api/python/autotvm.html#tvm.autotvm.ApplyFixedConfig.update">[文档]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">workload</span><span class="p">,</span> <span class="n">cfg</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Override update&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">workload</span> <span class="o">=</span> <span class="n">workload</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_config</span> <span class="o">=</span> <span class="n">cfg</span></div></div>
+
+
 <div class="viewcode-block" id="ApplyHistoryBest"><a class="viewcode-back" href="../../../../docs/reference/api/python/autotvm.html#tvm.autotvm.ApplyHistoryBest">[文档]</a><span class="k">class</span> <span class="nc">ApplyHistoryBest</span><span class="p">(</span><span class="n">DispatchContext</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Apply the history best config</span>
@@ -1548,7 +1607,7 @@ title="Fullscreen mode"
 <span class="sd">            Collection of tuning records.</span>
 <span class="sd">            If is str, then it should be the filename of a records log file.</span>
 <span class="sd">            Each row of this file is an encoded record pair. If it is a list</span>
-<span class="sd">            it can either be a list of paths to logs that will loaded jointly or</span>
+<span class="sd">            it can either be a list of paths to logs that will be loaded jointly or</span>
 <span class="sd">            an iterator of measurement results.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># pylint: disable=import-outside-toplevel</span>
@@ -1556,7 +1615,7 @@ title="Fullscreen mode"
         <span class="kn">from</span> <span class="nn">..record</span> <span class="kn">import</span> <span class="n">load_from_file</span>
 
         <span class="n">joint_records</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="n">records</span> <span class="o">=</span> <span class="p">[</span><span class="n">records</span><span class="p">]</span>
 
         <span class="k">for</span> <span class="n">rec</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
@@ -1810,7 +1869,7 @@ title="Fullscreen mode"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-05-10, 16:59:25.<br/>
+    Last updated on 2022-06-02, 09:54:30.<br/>
 </p>
         </footer>
     </div>

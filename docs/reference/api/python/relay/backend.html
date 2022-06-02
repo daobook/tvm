@@ -751,6 +751,11 @@
     </label>
     <ul>
      <li class="toctree-l3">
+      <a class="reference internal" href="../../../../dev/how_to/debugging_tvm.html">
+       Debuggging TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="../../../../dev/how_to/relay_add_op.html">
        Adding an Operator to Relay
       </a>
@@ -1724,20 +1729,13 @@ contrib.graph_executor or any other TVM runtime compatible systems.</p>
 <dt class="sig sig-object py" id="tvm.relay.backend.vm.VMCompiler.lower">
 <span class="sig-name descname"><span class="pre">lower</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mod</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/vm.html#VMCompiler.lower"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.vm.VMCompiler.lower" title="永久链接至目标">#</a></dt>
 <dd><p>Lower the module to VM bytecode.</p>
-<dl>
+<dl class="simple">
 <dt>mod<span class="classifier">tvm.IRModule</span></dt><dd><p>The Relay module to build.</p>
 </dd>
-<dt>target<span class="classifier">str, <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/target.html#tvm.target.Target" title="(在 tvm v0.9.dev0)"><code class="xref any docutils literal notranslate"><span class="pre">tvm.target.Target</span></code></a>, or dict of str(i.e.</span></dt><dd><p>device/context name) to str/tvm.target.Target, optional
-For heterogeneous compilation, it is a dictionary indicating context
-to target mapping. For homogeneous compilation, it is a build target.</p>
+<dt>target<span class="classifier">any multi-target like object, see Target.canon_multi_target</span></dt><dd><p>For homogeneous compilation, the unique build target.
+For heterogeneous compilation, a dictionary or list of possible build targets.</p>
 </dd>
-<dt>target_host<span class="classifier">str or <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/target.html#tvm.target.Target" title="(在 tvm v0.9.dev0)"><code class="xref any docutils literal notranslate"><span class="pre">tvm.target.Target</span></code></a>, optional</span></dt><dd><p>Host compilation target, if target is device.
-When TVM compiles device specific program such as CUDA,
-we also need host(CPU) side code to interact with the driver
-to setup the dimensions and parameters correctly.
-target_host is used to specify the host side codegen target.
-By default, llvm is used if it is enabled,
-otherwise a stackvm intepreter is used.</p>
+<dt>target_host<span class="classifier">any target-like object, see Target.canon_target</span></dt><dd><p>Host compilation target, if target is device.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1747,12 +1745,11 @@ otherwise a stackvm intepreter is used.</p>
 <span class="sig-name descname"><span class="pre">optimize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mod</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/vm.html#VMCompiler.optimize"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.vm.VMCompiler.optimize" title="永久链接至目标">#</a></dt>
 <dd><p>Helper method that optimizes a Relay module via VM.</p>
 <p>mod : tvm.IRModule</p>
-<dl>
-<dt>target<span class="classifier">str, <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/target.html#tvm.target.Target" title="(在 tvm v0.9.dev0)"><code class="xref any docutils literal notranslate"><span class="pre">tvm.target.Target</span></code></a>, or dict of str (i.e.</span></dt><dd><p>device/context name) to str/tvm.target.Target, optional</p>
+<dl class="simple">
+<dt>target<span class="classifier">any multi-target like object, see Target.canon_multi_target</span></dt><dd><p>For homogeneous compilation, the unique build target.
+For heterogeneous compilation, a dictionary or list of possible build targets.</p>
 </dd>
-<dt>target_host<span class="classifier">str or <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/target.html#tvm.target.Target" title="(在 tvm v0.9.dev0)"><code class="xref any docutils literal notranslate"><span class="pre">tvm.target.Target</span></code></a>, optional</span></dt><dd><p>The compilation target for host.
-By default, llvm is used if it is enabled,
-otherwise a stackvm intepreter is used.</p>
+<dt>target_host<span class="classifier">any target-like object, see Target.canon_target</span></dt><dd><p>Host compilation target, if target is device.</p>
 </dd>
 <dt>params<span class="classifier">dict of str to NDArray</span></dt><dd><p>Input parameters to the graph that do not change
 during inference time. Used for constant folding.</p>
@@ -1801,14 +1798,13 @@ supported by <cite>tvm.runtime.vm</cite>.</p>
 <dt class="sig sig-object py" id="tvm.relay.backend.vm.compile">
 <span class="sig-prename descclassname"><span class="pre">tvm.relay.backend.vm.</span></span><span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mod</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/tvm/relay/backend/vm.html#compile"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.relay.backend.vm.compile" title="永久链接至目标">#</a></dt>
 <dd><p>Compile the module to VM executable. A helper function for VMCompiler.</p>
-<dl>
+<dl class="simple">
 <dt>mod<span class="classifier">tvm.IRModule</span></dt><dd><p>The Relay module to build.</p>
 </dd>
-<dt>target<span class="classifier">str, <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/target.html#tvm.target.Target" title="(在 tvm v0.9.dev0)"><code class="xref any docutils literal notranslate"><span class="pre">tvm.target.Target</span></code></a>, or dict of str(i.e.</span></dt><dd><p>device/context name) to str/tvm.target.Target, optional
-For heterogeneous compilation, it is a dictionary indicating context
-to target mapping. For homogeneous compilation, it is a build target.</p>
+<dt>target<span class="classifier">any multi-target like object, see Target.canon_multi_target</span></dt><dd><p>For homogeneous compilation, the unique build target.
+For heterogeneous compilation, a dictionary or list of possible build targets.</p>
 </dd>
-<dt>target_host<span class="classifier">str or <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/target.html#tvm.target.Target" title="(在 tvm v0.9.dev0)"><code class="xref any docutils literal notranslate"><span class="pre">tvm.target.Target</span></code></a>, optional</span></dt><dd><p>Host compilation target, if target is device.
+<dt>target_host<span class="classifier">None, or any target-like object, see Target.canon_target</span></dt><dd><p>Host compilation target, if target is device.
 When TVM compiles device specific program such as CUDA,
 we also need host(CPU) side code to interact with the driver
 to setup the dimensions and parameters correctly.
@@ -1860,7 +1856,7 @@ during inference time. Used for constant folding.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-05-10, 16:59:25.<br/>
+    Last updated on 2022-06-02, 09:54:30.<br/>
 </p>
         </footer>
     </div>

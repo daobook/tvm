@@ -748,6 +748,11 @@
     </label>
     <ul>
      <li class="toctree-l3">
+      <a class="reference internal" href="../../../docs/dev/how_to/debugging_tvm.html">
+       Debuggging TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="../../../docs/dev/how_to/relay_add_op.html">
        Adding an Operator to Relay
       </a>
@@ -1353,8 +1358,6 @@ title="Fullscreen mode"
 
 <span class="c1"># pylint: disable=invalid-name</span>
 <span class="sd">&quot;&quot;&quot;The build utils in python.&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Mapping</span>
 
 <span class="kn">import</span> <span class="nn">tvm.tir</span>
@@ -1574,12 +1577,6 @@ title="Fullscreen mode"
             <span class="sa">f</span><span class="s2">&quot;but got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">target_host</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s2">&quot;target_host parameter is going to be deprecated. &quot;</span>
-            <span class="s2">&quot;Please pass in tvm.target.Target(target, host=target_host) instead.&quot;</span>
-        <span class="p">)</span>
-
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="n">container</span><span class="o">.</span><span class="n">Map</span><span class="p">)):</span>
         <span class="n">target</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">current</span><span class="p">()</span> <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">target</span>
         <span class="n">target</span> <span class="o">=</span> <span class="n">target</span> <span class="k">if</span> <span class="n">target</span> <span class="k">else</span> <span class="s2">&quot;llvm&quot;</span>
@@ -1597,11 +1594,12 @@ title="Fullscreen mode"
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;inputs must be Schedule, IRModule,&quot;</span> <span class="s2">&quot;or dict of str to IRModule.&quot;</span><span class="p">)</span>
         <span class="n">annotated_mods</span><span class="p">[</span><span class="n">tar</span><span class="p">]</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">with_attr</span><span class="p">(</span><span class="s2">&quot;runtime&quot;</span><span class="p">,</span> <span class="n">runtime</span><span class="p">)</span>
 
-    <span class="n">annotated_mods</span><span class="p">,</span> <span class="n">target_host</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">check_and_update_host_consist</span><span class="p">(</span><span class="n">annotated_mods</span><span class="p">,</span> <span class="n">target_host</span><span class="p">)</span>
+    <span class="n">annotated_mods</span><span class="p">,</span> <span class="n">target_host</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">canon_target_map_and_host</span><span class="p">(</span><span class="n">annotated_mods</span><span class="p">,</span> <span class="n">target_host</span><span class="p">)</span>
 
+    <span class="c1"># TODO(mbs): CompilationConfig implements the same host target defaulting logic, but</span>
+    <span class="c1"># tir_to_runtime currently bypasses that.</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">target_host</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">tar</span><span class="p">,</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">annotated_mods</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">tar</span> <span class="o">=</span> <span class="n">Target</span><span class="p">(</span><span class="n">tar</span><span class="p">)</span>
             <span class="n">device_type</span> <span class="o">=</span> <span class="n">ndarray</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="n">tar</span><span class="o">.</span><span class="n">kind</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">device_type</span>
             <span class="k">if</span> <span class="n">device_type</span> <span class="o">==</span> <span class="n">ndarray</span><span class="o">.</span><span class="n">cpu</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">device_type</span><span class="p">:</span>
                 <span class="n">target_host</span> <span class="o">=</span> <span class="n">tar</span>
@@ -1609,11 +1607,11 @@ title="Fullscreen mode"
     <span class="k">if</span> <span class="ow">not</span> <span class="n">target_host</span><span class="p">:</span>
         <span class="n">target_host</span> <span class="o">=</span> <span class="s2">&quot;llvm&quot;</span> <span class="k">if</span> <span class="n">tvm</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">enabled</span><span class="p">(</span><span class="s2">&quot;llvm&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;stackvm&quot;</span>
 
-    <span class="n">annotated_mods</span><span class="p">,</span> <span class="n">target_host</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">check_and_update_host_consist</span><span class="p">(</span><span class="n">annotated_mods</span><span class="p">,</span> <span class="n">target_host</span><span class="p">)</span>
+    <span class="n">annotated_mods</span><span class="p">,</span> <span class="n">target_host</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">canon_target_map_and_host</span><span class="p">(</span><span class="n">annotated_mods</span><span class="p">,</span> <span class="n">target_host</span><span class="p">)</span>
 
     <span class="n">rt_mod_host</span> <span class="o">=</span> <span class="n">_driver_ffi</span><span class="o">.</span><span class="n">tir_to_runtime</span><span class="p">(</span><span class="n">annotated_mods</span><span class="p">,</span> <span class="n">target_host</span><span class="p">)</span>
 
-    <span class="n">annotated_mods</span><span class="p">,</span> <span class="n">target_host</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">check_and_update_host_consist</span><span class="p">(</span><span class="n">annotated_mods</span><span class="p">,</span> <span class="n">target_host</span><span class="p">)</span>
+    <span class="n">annotated_mods</span><span class="p">,</span> <span class="n">target_host</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">canon_target_map_and_host</span><span class="p">(</span><span class="n">annotated_mods</span><span class="p">,</span> <span class="n">target_host</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">target_host</span><span class="p">,</span> <span class="n">Target</span><span class="p">):</span>
         <span class="n">target_host</span> <span class="o">=</span> <span class="n">Target</span><span class="p">(</span><span class="n">target_host</span><span class="p">)</span>
@@ -1670,7 +1668,7 @@ title="Fullscreen mode"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-05-10, 16:59:25.<br/>
+    Last updated on 2022-06-02, 09:54:30.<br/>
 </p>
         </footer>
     </div>
