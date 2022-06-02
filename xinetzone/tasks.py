@@ -75,8 +75,8 @@ def update(ctx):
 
 @task
 def ln_env(ctx,
-           root="/home/xinet/study/tvm",
-           target="/home/xinet/anaconda3/envs/py310",
+           root="/media/pc/data/4tb/lxw/books/tvm",
+           target="/media/workspace/anaconda3/envs/mx",
            python_version="3.10"):
     '''将 TVM 库添加到 Python 环境
     '''

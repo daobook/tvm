@@ -89,7 +89,7 @@ intersphinx_mapping = {
     "tvm": ("https://tvm.apache.org/docs", None),
     "numpy": ("https://numpy.org/doc/stable", None),
     "scipy": ("https://docs.scipy.org/doc/scipy/", None),
-    "matplotlib": ("https://matplotlib.org/", None),
+    # "matplotlib": ("https://matplotlib.org/", None),
 }
 
 

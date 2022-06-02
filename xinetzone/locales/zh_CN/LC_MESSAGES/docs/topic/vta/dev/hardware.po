@@ -283,15 +283,17 @@ msgid ""
 " micro-op cache. Supports dynamic padding when loading input and weight "
 "tiles."
 msgstr ""
-"``LOAD`` 指令：将 2D 张量从 DRAM 加载到输入缓冲区、权重缓冲区或寄存器文件中。它还可以将微内核加载到 micro-op "
-"缓存中。当加载输入和重量 tile 时，支持动态填充。"
+"``LOAD`` 指令：将 2D 张量从 DRAM 加载到输入缓冲区、权重缓冲区或寄存器文件中。"
+"它还可以将微内核加载到 micro-op 缓存中。"
+"当加载 input 和 weight tile 时，支持动态 padding。"
 
 #: ../../../xin/docs/topic/vta/dev/hardware.rst:168
 msgid ""
 "``GEMM`` instruction: performs a micro-op sequence of matrix-matrix "
 "multiplications over an input tensor and a weight tensors, and adds the "
 "result to a register-file tensor."
-msgstr "``GEMM`` 指令：对输入张量和权值张量执行矩阵-矩阵乘法的微运算序列，并将结果添加到寄存器文件张量中。"
+msgstr ""
+"``GEMM`` 指令：对 input 张量和 weight 张量执行矩阵-矩阵乘法的微运算序列，并将结果添加到寄存器文件张量中。"
 
 #: ../../../xin/docs/topic/vta/dev/hardware.rst:169
 msgid ""
@@ -301,7 +303,7 @@ msgstr "``ALU`` 指令：对寄存器文件张量数据执行矩阵-矩阵 ALU �
 
 #: ../../../xin/docs/topic/vta/dev/hardware.rst:170
 msgid "``STORE`` instruction: stores a 2D tensor from the output buffer to DRAM."
-msgstr "``STORE`` 指令：将 2D 张量从输出缓冲区存储到 DRAM。"
+msgstr "``STORE`` 指令：将 2D 张量从 output buffer 存储到 DRAM。"
 
 #: ../../../xin/docs/topic/vta/dev/hardware.rst:172
 msgid ""
@@ -405,7 +407,7 @@ msgid ""
 "hw/hardware/xilinx/sources/vta.cc``."
 msgstr ""
 "我们描述了构成 VTA 设计的模块。模块定义被包含在 ``3rdparty/vta-"
-"hw/hardware/xilinx/sources/vta.cc`` 中。\""
+"hw/hardware/xilinx/sources/vta.cc`` 中。"
 
 #: ../../../xin/docs/topic/vta/dev/hardware.rst:226
 msgid "Fetch Module"
