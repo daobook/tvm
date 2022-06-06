@@ -30,24 +30,24 @@
 获取 TVM 运行时库
 -----------------------
 
-The only thing we need is to link to a TVM runtime in your target platform.
-TVM provides a minimum runtime, which costs around 300K to 600K depending on how much modules we use.
-In most cases, we can use ``libtvm_runtime.so`` that comes with the build.
+只需要链接到目标平台中的 TVM 运行时。TVM 提供了最小运行时，根据使用的模块数量，运行时的消耗大约在 300K 到 600K 之间。
+在大多数情况下，可以使用随 ``build`` 而来的 ``libtvm_runtime.so``。
 
-If somehow you find it is hard to build ``libtvm_runtime``, checkout
-`tvm_runtime_pack.cc <https://github.com/apache/tvm/tree/main/apps/howto_deploy/tvm_runtime_pack.cc>`_.
-It is an example all in one file that gives you TVM runtime.
-You can compile this file using your build system and include this into your project.
+如果您发现构建 ``libtvm_runtime`` 很困难，
+请检出 `tvm_runtime_pack.cc <https://github.com/apache/tvm/tree/main/apps/howto_deploy/tvm_runtime_pack.cc>`_。
+这是在一个文件中提供 TVM 运行时的示例。
+您可以使用构建系统编译此文件，并将其包含到项目中。
 
-You can also checkout `apps <https://github.com/apache/tvm/tree/main/apps/>`_ for example applications build with TVM on iOS, Android and others.
+你也可以签出 `apps <https://github.com/apache/tvm/tree/main/apps/>`_，例如在 iOS, Android 和其他平台上用 TVM 构建的应用程序。
 
-Dynamic Library vs. System Module
+动态库 vs. 系统模块
 ---------------------------------
-TVM provides two ways to use the compiled library.
-You can checkout `prepare_test_libs.py <https://github.com/apache/tvm/tree/main/apps/howto_deploy/prepare_test_libs.py>`_
-on how to generate the library and `cpp_deploy.cc <https://github.com/apache/tvm/tree/main/apps/howto_deploy/cpp_deploy.cc>`_ on how to use them.
 
-- Store library as a shared library and dynamically load the library into your project.
-- Bundle the compiled library into your project in system module mode.
+TVM 提供了两种使用编译库的方法。
+您可以签出 `prepare_test_libs.py <https://github.com/apache/tvm/tree/main/apps/howto_deploy/prepare_test_libs.py>`_ 关于如何生成库
+和 `cpp_deploy.cc <https://github.com/apache/tvm/tree/main/apps/howto_deploy/cpp_deploy.cc>`_ 关于如何使用它们。
 
-Dynamic loading is more flexible and can load new modules on the fly. System module is a more ``static`` approach.  We can use system module in places where dynamic library loading is banned.
+- 将库存储为共享库，并将库动态加载到项目中。
+- 以系统模块（module）模式将编译后的库捆绑到项目中。
+
+动态加载更加灵活，可以动态加载新模块。系统模块是更 ``static`` 的方法。可以在禁止动态库加载的地方使用系统模块。
