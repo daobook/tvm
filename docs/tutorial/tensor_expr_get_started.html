@@ -1439,7 +1439,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     把所有东西都装进一个库
+     把所有东西都装进库
     </a>
    </li>
   </ul>
@@ -1574,7 +1574,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     把所有东西都装进一个库
+     把所有东西都装进库
     </a>
    </li>
   </ul>
@@ -2114,8 +2114,8 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
 </div>
 </section>
 <section id="id10">
-<h3>把所有东西都装进一个库<a class="headerlink" href="#id10" title="永久链接至标题">#</a></h3>
-<p>在上面的例子中，我们分别存储了设备和主机代码。TVM 也支持将所有东西作为一个共享库导出。在引擎盖下，我们将设备模块打包成二进制的 blob，并将它们与主机代码连接在一起。目前我们支持打包 Metal、OpenCL 和 CUDA 模块。</p>
+<h3>把所有东西都装进库<a class="headerlink" href="#id10" title="永久链接至标题">#</a></h3>
+<p>在上面的例子中，分别存储了设备和主机代码。TVM 也支持将所有东西作为共享库导出。在底层，将设备模块打包成二进制的 blob，并将它们与主机代码连接在一起。目前支持打包 Metal、OpenCL 和 CUDA 模块。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fadd</span><span class="o">.</span><span class="n">export_library</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="s2">&quot;myadd_pack.so&quot;</span><span class="p">))</span>
@@ -2520,7 +2520,7 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-02, 09:54:30.<br/>
+    Last updated on 2022-06-06, 01:32:04.<br/>
 </p>
         </footer>
     </div>
