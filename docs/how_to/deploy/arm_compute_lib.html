@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Relay Arm® Compute Library Integration &#8212; TVM  文档</title>
+    <title>集成 Relay Arm® 计算库 &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -48,6 +48,8 @@
     <link rel="shortcut icon" href="../../../_static/tvm-logo-square.png"/>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="Relay TensorRT Integration" href="tensorrt.html" />
+    <link rel="prev" title="HLS Backend Example" href="hls.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -99,7 +101,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../README.html">
    TVM 文档
@@ -240,16 +242,16 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../../../user-guide.html">
    用户手册
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../../tutorial/index.html">
      用户指南
@@ -317,16 +319,16 @@
      </li>
     </ul>
    </li>
-   <li class="toctree-l2 has-children">
+   <li class="toctree-l2 current active has-children">
     <a class="reference internal" href="../index.html">
      How To 指南
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
     <label for="toctree-checkbox-8">
      <i class="fas fa-chevron-down">
      </i>
     </label>
-    <ul>
+    <ul class="current">
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../compile_models/index.html">
        编译深度学习模型
@@ -389,12 +391,68 @@
        </li>
       </ul>
      </li>
+     <li class="toctree-l3 current active has-children">
+      <a class="reference internal" href="index.html">
+       部署模型并集成到 TVM
+      </a>
+      <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="current">
+       <li class="toctree-l4">
+        <a class="reference internal" href="cpp_deploy.html">
+         使用 C++ API 部署 TVM Module
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="android.html">
+         Deploy to Android
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="integrate.html">
+         集成 TVM 到你的项目
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="hls.html">
+         HLS Backend Example
+        </a>
+       </li>
+       <li class="toctree-l4 current active">
+        <a class="current reference internal" href="#">
+         集成 Relay Arm
+         <sup>
+          ®
+         </sup>
+         计算库
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="tensorrt.html">
+         Relay TensorRT Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="vitis_ai.html">
+         Vitis AI Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="bnns.html">
+         Relay BNNS Integration
+        </a>
+       </li>
+      </ul>
+     </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../deploy_models/index.html">
        部署深度学习模型
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-      <label for="toctree-checkbox-10">
+      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+      <label for="toctree-checkbox-11">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -411,7 +469,7 @@
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../deploy_models/deploy_object_detection_pytorch.html">
-         Compile PyTorch Object Detection Models
+         编译 PyTorch 目标检测模型
         </a>
        </li>
        <li class="toctree-l4">
@@ -436,7 +494,7 @@
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../deploy_models/deploy_ssd_gluoncv.html">
-         Deploy Single Shot Multibox Detector(SSD) model
+         部署 Single Shot Multibox Detector(SSD) 模型
         </a>
        </li>
       </ul>
@@ -445,8 +503,8 @@
       <a class="reference internal" href="../work_with_relay/index.html">
        Work With Relay
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-      <label for="toctree-checkbox-11">
+      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+      <label for="toctree-checkbox-12">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -467,8 +525,8 @@
       <a class="reference internal" href="../work_with_schedules/index.html">
        使用 Tensor Expression 和 Schedules
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-      <label for="toctree-checkbox-12">
+      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+      <label for="toctree-checkbox-13">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -519,8 +577,8 @@
       <a class="reference internal" href="../optimize_operators/index.html">
        Optimize Tensor Operators
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-      <label for="toctree-checkbox-13">
+      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+      <label for="toctree-checkbox-14">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -546,8 +604,8 @@
       <a class="reference internal" href="../tune_with_autotvm/index.html">
        Auto-Tune with Templates and AutoTVM
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-      <label for="toctree-checkbox-14">
+      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+      <label for="toctree-checkbox-15">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -583,8 +641,8 @@
       <a class="reference internal" href="../tune_with_autoscheduler/index.html">
        Use AutoScheduler for Template-Free Scheduling
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-      <label for="toctree-checkbox-15">
+      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+      <label for="toctree-checkbox-16">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -625,8 +683,8 @@
       <a class="reference internal" href="../work_with_microtvm/index.html">
        使用 microTVM
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
-      <label for="toctree-checkbox-16">
+      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+      <label for="toctree-checkbox-17">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -662,8 +720,8 @@
       <a class="reference internal" href="../extend_tvm/index.html">
        Extend TVM
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
-      <label for="toctree-checkbox-17">
+      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+      <label for="toctree-checkbox-18">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -694,8 +752,8 @@
       <a class="reference internal" href="../profile/index.html">
        Profile Models
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
-      <label for="toctree-checkbox-18">
+      <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+      <label for="toctree-checkbox-19">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -715,8 +773,8 @@
   <a class="reference internal" href="../../../developer-guide.html">
    开发手册
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -725,8 +783,8 @@
     <a class="reference internal" href="../../dev/tutorial/index.html">
      开发者教程
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
-    <label for="toctree-checkbox-20">
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -742,8 +800,8 @@
     <a class="reference internal" href="../../dev/how_to/how_to.html">
      Developer How-To Guide
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
-    <label for="toctree-checkbox-21">
+    <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+    <label for="toctree-checkbox-22">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -781,8 +839,8 @@
   <a class="reference internal" href="../../arch/index.html">
    设计与架构
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
-  <label for="toctree-checkbox-22">
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -883,8 +941,8 @@
   <a class="reference internal" href="../../../topic-guides.html">
    主题指南
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
-  <label for="toctree-checkbox-23">
+  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+  <label for="toctree-checkbox-24">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -898,8 +956,8 @@
     <a class="reference internal" href="../../topic/vta/index.html">
      VTA：通用张量加速器
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
-    <label for="toctree-checkbox-24">
+    <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+    <label for="toctree-checkbox-25">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -913,8 +971,8 @@
       <a class="reference internal" href="../../topic/vta/dev/index.html">
        VTA 设计和开发指南
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
-      <label for="toctree-checkbox-25">
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -935,8 +993,8 @@
       <a class="reference internal" href="../../topic/vta/tutorials/index.html">
        VTA 教程
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
-      <label for="toctree-checkbox-26">
+      <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+      <label for="toctree-checkbox-27">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -976,8 +1034,8 @@
   <a class="reference internal" href="../../../reference-guide.html">
    参考指南
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
-  <label for="toctree-checkbox-27">
+  <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+  <label for="toctree-checkbox-28">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -986,8 +1044,8 @@
     <a class="reference internal" href="../../reference/langref/index.html">
      语言参考
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
-    <label for="toctree-checkbox-28">
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -1028,8 +1086,8 @@
     <a class="reference internal" href="../../reference/api/python/index.html">
      Python API
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
-    <label for="toctree-checkbox-29">
+    <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+    <label for="toctree-checkbox-30">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -1182,8 +1240,8 @@
   <a class="reference internal" href="../../../refs/index.html">
    参考
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
-  <label for="toctree-checkbox-30">
+  <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+  <label for="toctree-checkbox-31">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -1196,8 +1254,8 @@
       </span>
      </code>
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
-    <label for="toctree-checkbox-31">
+    <input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/>
+    <label for="toctree-checkbox-32">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -1384,23 +1442,23 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   Introduction
+  <a class="reference internal nav-link" href="#id1">
+   简介
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installing-arm-compute-library">
-   Installing Arm Compute Library
+  <a class="reference internal nav-link" href="#acl">
+   安装 ACL
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#building-with-acl-support">
-   Building with ACL support
+  <a class="reference internal nav-link" href="#id2">
+   使用 ACL 支持进行构建
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#usage">
-   Usage
+  <a class="reference internal nav-link" href="#id3">
+   用法
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1427,7 +1485,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Relay Arm® Compute Library Integration</h1>
+                <h1>集成 Relay Arm® 计算库</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1438,23 +1496,23 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   Introduction
+  <a class="reference internal nav-link" href="#id1">
+   简介
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installing-arm-compute-library">
-   Installing Arm Compute Library
+  <a class="reference internal nav-link" href="#acl">
+   安装 ACL
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#building-with-acl-support">
-   Building with ACL support
+  <a class="reference internal nav-link" href="#id2">
+   使用 ACL 支持进行构建
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#usage">
-   Usage
+  <a class="reference internal nav-link" href="#id3">
+   用法
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1482,31 +1540,21 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="relay-arm-compute-library-integration">
-<h1>Relay Arm<sup>®</sup> Compute Library Integration<a class="headerlink" href="#relay-arm-compute-library-integration" title="永久链接至标题">#</a></h1>
+  <section id="relay-arm">
+<h1>集成 Relay Arm<sup>®</sup> 计算库<a class="headerlink" href="#relay-arm" title="永久链接至标题">#</a></h1>
 <p><strong>Author</strong>: <a class="reference external" href="https://github.com/lhutton1">Luke Hutton</a></p>
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="永久链接至标题">#</a></h2>
-<p>Arm Compute Library (ACL) is an open source project that provides accelerated kernels for Arm CPU’s
-and GPU’s. Currently the integration offloads operators to ACL to use hand-crafted assembler
-routines in the library. By offloading select operators from a relay graph to ACL we can achieve
-a performance boost on such devices.</p>
+<section id="id1">
+<h2>简介<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
+<p>Arm 计算库（Arm Compute Library，简称 ACL）是为 Arm CPU 和 GPU 提供加速内核的开源项目。</p>
+<p>目前，集成将算子 offload 到 ACL，以便在库中使用手工编写的汇编程序例程。通过将 select 算子从 relay graph offload 到 ACL，可以在这些设备上实现性能的提升。</p>
 </section>
-<section id="installing-arm-compute-library">
-<h2>Installing Arm Compute Library<a class="headerlink" href="#installing-arm-compute-library" title="永久链接至标题">#</a></h2>
-<p>Before installing Arm Compute Library, it is important to know what architecture to build for. One way
-to determine this is to use <cite>lscpu</cite> and look for the “Model name” of the CPU. You can then use this to
-determine the architecture by looking online.</p>
-<p>TVM only supports a single version of ACL, currently this is v21.08, there are two recommended ways to build and install
-the required libraries:</p>
+<section id="acl">
+<h2>安装 ACL<a class="headerlink" href="#acl" title="永久链接至标题">#</a></h2>
+<p>在安装 ACL 之前，重要的是要知道构建什么架构。确定这一点的一种方法是使用 <code class="docutils literal notranslate"><span class="pre">lscpu</span></code> 并查找 CPU 的 “Model name”。然后，您可以通过在线查找来确定架构。</p>
+<p>TVM 只支持单个版本的 ACL，目前是 v21.08，有两种推荐的方式来构建和安装所需的库：</p>
 <ul>
-<li><p>Use the script located at <cite>docker/install/ubuntu_download_arm_compute_lib_binaries.sh</cite>. You can use this
-script for downloading ACL binaries for the architecture and extensions specified in <cite>target_lib</cite>, these
-will be installed to the location denoted by <cite>install_path</cite>.</p></li>
-<li><p>Alternatively, you can download the pre-built binaries from:
-<a class="reference external" href="https://github.com/ARM-software/ComputeLibrary/releases">https://github.com/ARM-software/ComputeLibrary/releases</a>. When using this package, you will need to
-select the binaries for the architecture and extensions you require, then make sure they are visible
-to CMake:</p>
+<li><p>使用位于 <code class="docutils literal notranslate"><span class="pre">docker/install/ubuntu_download_arm_compute_lib_binaries.sh</span></code> 中的脚本。您可以使用此脚本下载 <code class="docutils literal notranslate"><span class="pre">target_lib</span></code> 中指定的架构和扩展的 ACL 二进制文件，这些文件将被安装到 <code class="docutils literal notranslate"><span class="pre">install_path</span></code> 所表示的位置。</p></li>
+<li><p>另外，您也可以从 &lt;<a class="reference external" href="https://github.com/ARM-software/ComputeLibrary/releases">https://github.com/ARM-software/ComputeLibrary/releases</a>&gt; 下载预构建的二进制文件。当使用此包时，您将需要选择所需的架构和扩展的二进制文件，然后确保它们对 CMake 可见：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;acl-prebuilt-package&gt;/lib
 mv ./&lt;architecture-and-extensions-required&gt;/* .
 </pre></div>
@@ -1517,8 +1565,8 @@ mv ./&lt;architecture-and-extensions-required&gt;/* .
 is located. CMake will look in /path-to-acl/ along with /path-to-acl/lib and /path-to-acl/build for the
 required binaries. See the section below for more information on how to use these configuration options.</p>
 </section>
-<section id="building-with-acl-support">
-<h2>Building with ACL support<a class="headerlink" href="#building-with-acl-support" title="永久链接至标题">#</a></h2>
+<section id="id2">
+<h2>使用 ACL 支持进行构建<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
 <p>The current implementation has two separate build options in CMake. The reason for this split is
 because ACL cannot be used on an x86 machine. However, we still want to be able compile an ACL
 runtime module on an x86 machine.</p>
@@ -1542,8 +1590,8 @@ locate ACL. This can be done by specifying a path in the place of ON.</p>
 </pre></div>
 </div>
 </section>
-<section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="永久链接至标题">#</a></h2>
+<section id="id3">
+<h2>用法<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>This section may not stay up-to-date with changes to the API.</p>
@@ -1754,6 +1802,20 @@ translate from the JSON representation to ACL API.</p></li>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="hls.html" title="上一页 页">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一页</p>
+            <p class="prev-next-title">HLS Backend Example</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="tensorrt.html" title="下一页 页">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">Relay TensorRT Integration</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
@@ -1764,7 +1826,7 @@ translate from the JSON representation to ACL API.</p></li>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-06, 01:32:04.<br/>
+    Last updated on 2022-06-06, 09:08:20.<br/>
 </p>
         </footer>
     </div>

@@ -15,42 +15,33 @@
     specific language governing permissions and limitations
     under the License.
 
-Integrate TVM into Your Project
+集成 TVM 到你的项目
 ===============================
 
-TVM's runtime is designed to be lightweight and portable.
-There are several ways you can integrate TVM into your project.
+TVM 的运行时被设计为轻量级和可移植的。有几种方法可以将 TVM 集成到项目中。
 
-This article introduces possible ways to integrate TVM
-as a JIT compiler to generate functions on your system.
+本文介绍了将 TVM 集成为 JIT 编译器以在系统上生成函数的可能方法。
 
-
-DLPack Support
+支持 DLPack
 --------------
 
-TVM's generated function follows the PackedFunc convention.
-It is a function that can take positional arguments including
-standard types such as float, integer, string.
-The PackedFunc takes DLTensor pointer in `DLPack <https://github.com/dmlc/dlpack>`_ convention.
-So the only thing you need to solve is to create a corresponding DLTensor object.
+TVM 生成的函数遵循 PackedFunc 协议。它是可以接受位置参数的函数，包括标准类型，如浮点数、整数、字符串。
 
+PackedFunc 接受 `DLPack <https://github.com/dmlc/dlpack>`_  协议的 DLTensor 指针。所以你唯一需要解决的事情就是创建对应的 DLTensor 对象。
 
-
-Integrate User Defined C++ Array
+集成用户定义的 C++ Array
 --------------------------------
 
-The only thing we have to do in C++ is to convert your array to DLTensor and pass in its address as
-``DLTensor*`` to the generated function.
+在 C++ 中唯一要做的事情就是将数组转换为 DLTensor，并将其地址作为 ``DLTensor*`` 传递给生成的函数。
 
-
-Integrate User Defined Python Array
+集成用户定义的 Python Array
 -----------------------------------
 
-Assume you have a python object ``MyArray``. There are three things that you need to do
+假设你有 python 对象 ``MyArray``。你需要做三件事
 
-- Add ``_tvm_tcode`` field to your array which returns ``tvm.TypeCode.ARRAY_HANDLE``
-- Support ``_tvm_handle`` property in your object, which returns the address of DLTensor in python integer
-- Register this class by ``tvm.register_extension``
+- 添加 ``_tvm_tcode`` 字段到返回 ``tvm.TypeCode.ARRAY_HANDLE`` 的数组中
+- 支持在对象中使用 ``_tvm_handle`` 属性，该属性以 python 整数形式返回 DLTensor 的地址
+- 通过 ``tvm.register_extension`` 注册这个类
 
 .. code:: python
 

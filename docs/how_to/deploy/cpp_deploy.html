@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Deploy TVM Module using C++ API &#8212; TVM  文档</title>
+    <title>使用 C++ API 部署 TVM Module &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -48,6 +48,8 @@
     <link rel="shortcut icon" href="../../../_static/tvm-logo-square.png"/>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="Deploy to Android" href="android.html" />
+    <link rel="prev" title="部署模型并集成到 TVM" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -99,7 +101,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../README.html">
    TVM 文档
@@ -240,16 +242,16 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../../../user-guide.html">
    用户手册
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../../tutorial/index.html">
      用户指南
@@ -317,16 +319,16 @@
      </li>
     </ul>
    </li>
-   <li class="toctree-l2 has-children">
+   <li class="toctree-l2 current active has-children">
     <a class="reference internal" href="../index.html">
      How To 指南
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
     <label for="toctree-checkbox-8">
      <i class="fas fa-chevron-down">
      </i>
     </label>
-    <ul>
+    <ul class="current">
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../compile_models/index.html">
        编译深度学习模型
@@ -389,12 +391,68 @@
        </li>
       </ul>
      </li>
+     <li class="toctree-l3 current active has-children">
+      <a class="reference internal" href="index.html">
+       部署模型并集成到 TVM
+      </a>
+      <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="current">
+       <li class="toctree-l4 current active">
+        <a class="current reference internal" href="#">
+         使用 C++ API 部署 TVM Module
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="android.html">
+         Deploy to Android
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="integrate.html">
+         集成 TVM 到你的项目
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="hls.html">
+         HLS Backend Example
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="arm_compute_lib.html">
+         集成 Relay Arm
+         <sup>
+          ®
+         </sup>
+         计算库
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="tensorrt.html">
+         Relay TensorRT Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="vitis_ai.html">
+         Vitis AI Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="bnns.html">
+         Relay BNNS Integration
+        </a>
+       </li>
+      </ul>
+     </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../deploy_models/index.html">
        部署深度学习模型
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-      <label for="toctree-checkbox-10">
+      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+      <label for="toctree-checkbox-11">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -411,7 +469,7 @@
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../deploy_models/deploy_object_detection_pytorch.html">
-         Compile PyTorch Object Detection Models
+         编译 PyTorch 目标检测模型
         </a>
        </li>
        <li class="toctree-l4">
@@ -436,7 +494,7 @@
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../deploy_models/deploy_ssd_gluoncv.html">
-         Deploy Single Shot Multibox Detector(SSD) model
+         部署 Single Shot Multibox Detector(SSD) 模型
         </a>
        </li>
       </ul>
@@ -445,8 +503,8 @@
       <a class="reference internal" href="../work_with_relay/index.html">
        Work With Relay
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-      <label for="toctree-checkbox-11">
+      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+      <label for="toctree-checkbox-12">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -467,8 +525,8 @@
       <a class="reference internal" href="../work_with_schedules/index.html">
        使用 Tensor Expression 和 Schedules
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-      <label for="toctree-checkbox-12">
+      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+      <label for="toctree-checkbox-13">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -519,8 +577,8 @@
       <a class="reference internal" href="../optimize_operators/index.html">
        Optimize Tensor Operators
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-      <label for="toctree-checkbox-13">
+      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+      <label for="toctree-checkbox-14">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -546,8 +604,8 @@
       <a class="reference internal" href="../tune_with_autotvm/index.html">
        Auto-Tune with Templates and AutoTVM
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-      <label for="toctree-checkbox-14">
+      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+      <label for="toctree-checkbox-15">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -583,8 +641,8 @@
       <a class="reference internal" href="../tune_with_autoscheduler/index.html">
        Use AutoScheduler for Template-Free Scheduling
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-      <label for="toctree-checkbox-15">
+      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+      <label for="toctree-checkbox-16">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -625,8 +683,8 @@
       <a class="reference internal" href="../work_with_microtvm/index.html">
        使用 microTVM
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
-      <label for="toctree-checkbox-16">
+      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+      <label for="toctree-checkbox-17">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -662,8 +720,8 @@
       <a class="reference internal" href="../extend_tvm/index.html">
        Extend TVM
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
-      <label for="toctree-checkbox-17">
+      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+      <label for="toctree-checkbox-18">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -694,8 +752,8 @@
       <a class="reference internal" href="../profile/index.html">
        Profile Models
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
-      <label for="toctree-checkbox-18">
+      <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+      <label for="toctree-checkbox-19">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -715,8 +773,8 @@
   <a class="reference internal" href="../../../developer-guide.html">
    开发手册
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -725,8 +783,8 @@
     <a class="reference internal" href="../../dev/tutorial/index.html">
      开发者教程
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
-    <label for="toctree-checkbox-20">
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -742,8 +800,8 @@
     <a class="reference internal" href="../../dev/how_to/how_to.html">
      Developer How-To Guide
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
-    <label for="toctree-checkbox-21">
+    <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+    <label for="toctree-checkbox-22">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -781,8 +839,8 @@
   <a class="reference internal" href="../../arch/index.html">
    设计与架构
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
-  <label for="toctree-checkbox-22">
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -883,8 +941,8 @@
   <a class="reference internal" href="../../../topic-guides.html">
    主题指南
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
-  <label for="toctree-checkbox-23">
+  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+  <label for="toctree-checkbox-24">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -898,8 +956,8 @@
     <a class="reference internal" href="../../topic/vta/index.html">
      VTA：通用张量加速器
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
-    <label for="toctree-checkbox-24">
+    <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+    <label for="toctree-checkbox-25">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -913,8 +971,8 @@
       <a class="reference internal" href="../../topic/vta/dev/index.html">
        VTA 设计和开发指南
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
-      <label for="toctree-checkbox-25">
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -935,8 +993,8 @@
       <a class="reference internal" href="../../topic/vta/tutorials/index.html">
        VTA 教程
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
-      <label for="toctree-checkbox-26">
+      <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+      <label for="toctree-checkbox-27">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -976,8 +1034,8 @@
   <a class="reference internal" href="../../../reference-guide.html">
    参考指南
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
-  <label for="toctree-checkbox-27">
+  <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+  <label for="toctree-checkbox-28">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -986,8 +1044,8 @@
     <a class="reference internal" href="../../reference/langref/index.html">
      语言参考
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
-    <label for="toctree-checkbox-28">
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -1028,8 +1086,8 @@
     <a class="reference internal" href="../../reference/api/python/index.html">
      Python API
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
-    <label for="toctree-checkbox-29">
+    <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+    <label for="toctree-checkbox-30">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -1182,8 +1240,8 @@
   <a class="reference internal" href="../../../refs/index.html">
    参考
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
-  <label for="toctree-checkbox-30">
+  <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+  <label for="toctree-checkbox-31">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -1196,8 +1254,8 @@
       </span>
      </code>
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
-    <label for="toctree-checkbox-31">
+    <input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/>
+    <label for="toctree-checkbox-32">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -1384,13 +1442,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#get-tvm-runtime-library">
-   Get TVM Runtime Library
+  <a class="reference internal nav-link" href="#tvm">
+   获取 TVM 运行时库
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dynamic-library-vs-system-module">
-   Dynamic Library vs. System Module
+  <a class="reference internal nav-link" href="#vs">
+   动态库 vs. 系统模块
   </a>
  </li>
 </ul>
@@ -1402,7 +1460,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Deploy TVM Module using C++ API</h1>
+                <h1>使用 C++ API 部署 TVM Module</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1413,13 +1471,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#get-tvm-runtime-library">
-   Get TVM Runtime Library
+  <a class="reference internal nav-link" href="#tvm">
+   获取 TVM 运行时库
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dynamic-library-vs-system-module">
-   Dynamic Library vs. System Module
+  <a class="reference internal nav-link" href="#vs">
+   动态库 vs. 系统模块
   </a>
  </li>
 </ul>
@@ -1432,35 +1490,33 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="deploy-tvm-module-using-c-api">
-<h1>Deploy TVM Module using C++ API<a class="headerlink" href="#deploy-tvm-module-using-c-api" title="永久链接至标题">#</a></h1>
-<p>We provide an example on how to deploy TVM modules in <a class="reference external" href="https://github.com/apache/tvm/tree/main/apps/howto_deploy">apps/howto_deploy</a></p>
-<p>To run the example, you can use the following command</p>
+  <section id="c-api-tvm-module">
+<h1>使用 C++ API 部署 TVM Module<a class="headerlink" href="#c-api-tvm-module" title="永久链接至标题">#</a></h1>
+<p><a class="reference external" href="https://github.com/apache/tvm/tree/main/apps/howto_deploy">apps/howto_deploy</a> 中提供了如何部署 TVM 模块的示例，可以使用以下命令运行该示例：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> apps/howto_deploy
 ./run_example.sh
 </pre></div>
 </div>
-<section id="get-tvm-runtime-library">
-<h2>Get TVM Runtime Library<a class="headerlink" href="#get-tvm-runtime-library" title="永久链接至标题">#</a></h2>
-<p>The only thing we need is to link to a TVM runtime in your target platform.
-TVM provides a minimum runtime, which costs around 300K to 600K depending on how much modules we use.
-In most cases, we can use <code class="docutils literal notranslate"><span class="pre">libtvm_runtime.so</span></code> that comes with the build.</p>
-<p>If somehow you find it is hard to build <code class="docutils literal notranslate"><span class="pre">libtvm_runtime</span></code>, checkout
-<a class="reference external" href="https://github.com/apache/tvm/tree/main/apps/howto_deploy/tvm_runtime_pack.cc">tvm_runtime_pack.cc</a>.
-It is an example all in one file that gives you TVM runtime.
-You can compile this file using your build system and include this into your project.</p>
-<p>You can also checkout <a class="reference external" href="https://github.com/apache/tvm/tree/main/apps/">apps</a> for example applications build with TVM on iOS, Android and others.</p>
+<section id="tvm">
+<h2>获取 TVM 运行时库<a class="headerlink" href="#tvm" title="永久链接至标题">#</a></h2>
+<p>只需要链接到目标平台中的 TVM 运行时。TVM 提供了最小运行时，根据使用的模块数量，运行时的消耗大约在 300K 到 600K 之间。
+在大多数情况下，可以使用随 <code class="docutils literal notranslate"><span class="pre">build</span></code> 而来的 <code class="docutils literal notranslate"><span class="pre">libtvm_runtime.so</span></code>。</p>
+<p>如果您发现构建 <code class="docutils literal notranslate"><span class="pre">libtvm_runtime</span></code> 很困难，
+请检出 <a class="reference external" href="https://github.com/apache/tvm/tree/main/apps/howto_deploy/tvm_runtime_pack.cc">tvm_runtime_pack.cc</a>。
+这是在一个文件中提供 TVM 运行时的示例。
+您可以使用构建系统编译此文件，并将其包含到项目中。</p>
+<p>你也可以签出 <a class="reference external" href="https://github.com/apache/tvm/tree/main/apps/">apps</a>，例如在 iOS, Android 和其他平台上用 TVM 构建的应用程序。</p>
 </section>
-<section id="dynamic-library-vs-system-module">
-<h2>Dynamic Library vs. System Module<a class="headerlink" href="#dynamic-library-vs-system-module" title="永久链接至标题">#</a></h2>
-<p>TVM provides two ways to use the compiled library.
-You can checkout <a class="reference external" href="https://github.com/apache/tvm/tree/main/apps/howto_deploy/prepare_test_libs.py">prepare_test_libs.py</a>
-on how to generate the library and <a class="reference external" href="https://github.com/apache/tvm/tree/main/apps/howto_deploy/cpp_deploy.cc">cpp_deploy.cc</a> on how to use them.</p>
+<section id="vs">
+<h2>动态库 vs. 系统模块<a class="headerlink" href="#vs" title="永久链接至标题">#</a></h2>
+<p>TVM 提供了两种使用编译库的方法。
+您可以签出 <a class="reference external" href="https://github.com/apache/tvm/tree/main/apps/howto_deploy/prepare_test_libs.py">prepare_test_libs.py</a> 关于如何生成库
+和 <a class="reference external" href="https://github.com/apache/tvm/tree/main/apps/howto_deploy/cpp_deploy.cc">cpp_deploy.cc</a> 关于如何使用它们。</p>
 <ul class="simple">
-<li><p>Store library as a shared library and dynamically load the library into your project.</p></li>
-<li><p>Bundle the compiled library into your project in system module mode.</p></li>
+<li><p>将库存储为共享库，并将库动态加载到项目中。</p></li>
+<li><p>以系统模块（module）模式将编译后的库捆绑到项目中。</p></li>
 </ul>
-<p>Dynamic loading is more flexible and can load new modules on the fly. System module is a more <code class="docutils literal notranslate"><span class="pre">static</span></code> approach.  We can use system module in places where dynamic library loading is banned.</p>
+<p>动态加载更加灵活，可以动态加载新模块。系统模块是更 <code class="docutils literal notranslate"><span class="pre">static</span></code> 的方法。可以在禁止动态库加载的地方使用系统模块。</p>
 </section>
 </section>
 
@@ -1472,6 +1528,20 @@ on how to generate the library and <a class="reference external" href="https://g
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="index.html" title="上一页 页">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一页</p>
+            <p class="prev-next-title">部署模型并集成到 TVM</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="android.html" title="下一页 页">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">Deploy to Android</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
@@ -1482,7 +1552,7 @@ on how to generate the library and <a class="reference external" href="https://g
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-06, 01:32:04.<br/>
+    Last updated on 2022-06-06, 09:08:20.<br/>
 </p>
         </footer>
     </div>

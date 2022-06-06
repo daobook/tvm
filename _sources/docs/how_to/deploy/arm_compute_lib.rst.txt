@@ -15,35 +15,26 @@
     specific language governing permissions and limitations
     under the License.
 
-Relay Arm\ :sup:`®` Compute Library Integration
+集成 Relay Arm\ :sup:`®` 计算库
 ===============================================
 **Author**: `Luke Hutton <https://github.com/lhutton1>`_
 
-Introduction
+简介
 ------------
 
-Arm Compute Library (ACL) is an open source project that provides accelerated kernels for Arm CPU's
-and GPU's. Currently the integration offloads operators to ACL to use hand-crafted assembler
-routines in the library. By offloading select operators from a relay graph to ACL we can achieve
-a performance boost on such devices.
+Arm 计算库（Arm Compute Library，简称 ACL）是为 Arm CPU 和 GPU 提供加速内核的开源项目。
 
-Installing Arm Compute Library
+目前，集成将算子 offload 到 ACL，以便在库中使用手工编写的汇编程序例程。通过将 select 算子从 relay graph offload 到 ACL，可以在这些设备上实现性能的提升。
+
+安装 ACL
 ------------------------------
 
-Before installing Arm Compute Library, it is important to know what architecture to build for. One way
-to determine this is to use `lscpu` and look for the "Model name" of the CPU. You can then use this to
-determine the architecture by looking online.
+在安装 ACL 之前，重要的是要知道构建什么架构。确定这一点的一种方法是使用 ``lscpu`` 并查找 CPU 的 "Model name"。然后，您可以通过在线查找来确定架构。
 
-TVM only supports a single version of ACL, currently this is v21.08, there are two recommended ways to build and install 
-the required libraries:
+TVM 只支持单个版本的 ACL，目前是 v21.08，有两种推荐的方式来构建和安装所需的库：
 
-* Use the script located at `docker/install/ubuntu_download_arm_compute_lib_binaries.sh`. You can use this
-  script for downloading ACL binaries for the architecture and extensions specified in `target_lib`, these
-  will be installed to the location denoted by `install_path`.
-* Alternatively, you can download the pre-built binaries from:
-  https://github.com/ARM-software/ComputeLibrary/releases. When using this package, you will need to
-  select the binaries for the architecture and extensions you require, then make sure they are visible
-  to CMake:
+* 使用位于 ``docker/install/ubuntu_download_arm_compute_lib_binaries.sh`` 中的脚本。您可以使用此脚本下载 ``target_lib`` 中指定的架构和扩展的 ACL 二进制文件，这些文件将被安装到 ``install_path`` 所表示的位置。
+* 另外，您也可以从 <https://github.com/ARM-software/ComputeLibrary/releases> 下载预构建的二进制文件。当使用此包时，您将需要选择所需的架构和扩展的二进制文件，然后确保它们对 CMake 可见：
 
   .. code:: bash
 
@@ -55,7 +46,7 @@ In both cases you will need to set USE_ARM_COMPUTE_LIB_GRAPH_EXECUTOR to the pat
 is located. CMake will look in /path-to-acl/ along with /path-to-acl/lib and /path-to-acl/build for the
 required binaries. See the section below for more information on how to use these configuration options.
 
-Building with ACL support
+使用 ACL 支持进行构建
 -------------------------
 
 The current implementation has two separate build options in CMake. The reason for this split is
@@ -85,7 +76,7 @@ These flags should be set in your config.cmake file. For example:
     set(USE_ARM_COMPUTE_LIB_GRAPH_EXECUTOR /path/to/acl)
 
 
-Usage
+用法
 -----
 
 .. note::

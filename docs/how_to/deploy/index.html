@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>部署模型，集成 TVM &#8212; TVM  文档</title>
+    <title>部署模型并集成到 TVM &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -48,6 +48,8 @@
     <link rel="shortcut icon" href="../../../_static/tvm-logo-square.png"/>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="使用 C++ API 部署 TVM Module" href="cpp_deploy.html" />
+    <link rel="prev" title="Compile PaddlePaddle Models" href="../compile_models/from_paddle.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -99,7 +101,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../README.html">
    TVM 文档
@@ -240,16 +242,16 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../../../user-guide.html">
    用户手册
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../../tutorial/index.html">
      用户指南
@@ -317,16 +319,16 @@
      </li>
     </ul>
    </li>
-   <li class="toctree-l2 has-children">
+   <li class="toctree-l2 current active has-children">
     <a class="reference internal" href="../index.html">
      How To 指南
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
     <label for="toctree-checkbox-8">
      <i class="fas fa-chevron-down">
      </i>
     </label>
-    <ul>
+    <ul class="current">
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../compile_models/index.html">
        编译深度学习模型
@@ -389,12 +391,68 @@
        </li>
       </ul>
      </li>
+     <li class="toctree-l3 current active has-children">
+      <a class="current reference internal" href="#">
+       部署模型并集成到 TVM
+      </a>
+      <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="cpp_deploy.html">
+         使用 C++ API 部署 TVM Module
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="android.html">
+         Deploy to Android
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="integrate.html">
+         集成 TVM 到你的项目
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="hls.html">
+         HLS Backend Example
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="arm_compute_lib.html">
+         集成 Relay Arm
+         <sup>
+          ®
+         </sup>
+         计算库
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="tensorrt.html">
+         Relay TensorRT Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="vitis_ai.html">
+         Vitis AI Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="bnns.html">
+         Relay BNNS Integration
+        </a>
+       </li>
+      </ul>
+     </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../deploy_models/index.html">
        部署深度学习模型
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-      <label for="toctree-checkbox-10">
+      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+      <label for="toctree-checkbox-11">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -411,7 +469,7 @@
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../deploy_models/deploy_object_detection_pytorch.html">
-         Compile PyTorch Object Detection Models
+         编译 PyTorch 目标检测模型
         </a>
        </li>
        <li class="toctree-l4">
@@ -436,7 +494,7 @@
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../deploy_models/deploy_ssd_gluoncv.html">
-         Deploy Single Shot Multibox Detector(SSD) model
+         部署 Single Shot Multibox Detector(SSD) 模型
         </a>
        </li>
       </ul>
@@ -445,8 +503,8 @@
       <a class="reference internal" href="../work_with_relay/index.html">
        Work With Relay
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-      <label for="toctree-checkbox-11">
+      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+      <label for="toctree-checkbox-12">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -467,8 +525,8 @@
       <a class="reference internal" href="../work_with_schedules/index.html">
        使用 Tensor Expression 和 Schedules
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-      <label for="toctree-checkbox-12">
+      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+      <label for="toctree-checkbox-13">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -519,8 +577,8 @@
       <a class="reference internal" href="../optimize_operators/index.html">
        Optimize Tensor Operators
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-      <label for="toctree-checkbox-13">
+      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+      <label for="toctree-checkbox-14">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -546,8 +604,8 @@
       <a class="reference internal" href="../tune_with_autotvm/index.html">
        Auto-Tune with Templates and AutoTVM
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-      <label for="toctree-checkbox-14">
+      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+      <label for="toctree-checkbox-15">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -583,8 +641,8 @@
       <a class="reference internal" href="../tune_with_autoscheduler/index.html">
        Use AutoScheduler for Template-Free Scheduling
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-      <label for="toctree-checkbox-15">
+      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+      <label for="toctree-checkbox-16">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -625,8 +683,8 @@
       <a class="reference internal" href="../work_with_microtvm/index.html">
        使用 microTVM
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
-      <label for="toctree-checkbox-16">
+      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+      <label for="toctree-checkbox-17">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -662,8 +720,8 @@
       <a class="reference internal" href="../extend_tvm/index.html">
        Extend TVM
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
-      <label for="toctree-checkbox-17">
+      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+      <label for="toctree-checkbox-18">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -694,8 +752,8 @@
       <a class="reference internal" href="../profile/index.html">
        Profile Models
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
-      <label for="toctree-checkbox-18">
+      <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+      <label for="toctree-checkbox-19">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -715,8 +773,8 @@
   <a class="reference internal" href="../../../developer-guide.html">
    开发手册
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -725,8 +783,8 @@
     <a class="reference internal" href="../../dev/tutorial/index.html">
      开发者教程
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
-    <label for="toctree-checkbox-20">
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -742,8 +800,8 @@
     <a class="reference internal" href="../../dev/how_to/how_to.html">
      Developer How-To Guide
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
-    <label for="toctree-checkbox-21">
+    <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+    <label for="toctree-checkbox-22">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -781,8 +839,8 @@
   <a class="reference internal" href="../../arch/index.html">
    设计与架构
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
-  <label for="toctree-checkbox-22">
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -883,8 +941,8 @@
   <a class="reference internal" href="../../../topic-guides.html">
    主题指南
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
-  <label for="toctree-checkbox-23">
+  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+  <label for="toctree-checkbox-24">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -898,8 +956,8 @@
     <a class="reference internal" href="../../topic/vta/index.html">
      VTA：通用张量加速器
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
-    <label for="toctree-checkbox-24">
+    <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+    <label for="toctree-checkbox-25">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -913,8 +971,8 @@
       <a class="reference internal" href="../../topic/vta/dev/index.html">
        VTA 设计和开发指南
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
-      <label for="toctree-checkbox-25">
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -935,8 +993,8 @@
       <a class="reference internal" href="../../topic/vta/tutorials/index.html">
        VTA 教程
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
-      <label for="toctree-checkbox-26">
+      <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+      <label for="toctree-checkbox-27">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -976,8 +1034,8 @@
   <a class="reference internal" href="../../../reference-guide.html">
    参考指南
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
-  <label for="toctree-checkbox-27">
+  <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+  <label for="toctree-checkbox-28">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -986,8 +1044,8 @@
     <a class="reference internal" href="../../reference/langref/index.html">
      语言参考
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
-    <label for="toctree-checkbox-28">
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -1028,8 +1086,8 @@
     <a class="reference internal" href="../../reference/api/python/index.html">
      Python API
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
-    <label for="toctree-checkbox-29">
+    <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+    <label for="toctree-checkbox-30">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -1182,8 +1240,8 @@
   <a class="reference internal" href="../../../refs/index.html">
    参考
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
-  <label for="toctree-checkbox-30">
+  <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+  <label for="toctree-checkbox-31">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -1196,8 +1254,8 @@
       </span>
      </code>
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
-    <label for="toctree-checkbox-31">
+    <input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/>
+    <label for="toctree-checkbox-32">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -1384,39 +1442,39 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#build-the-tvm-runtime-library">
-   Build the TVM runtime library
+  <a class="reference internal nav-link" href="#id1">
+   构建 TVM 运行时库
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cross-compile-the-tvm-runtime-for-other-architectures">
-   Cross compile the TVM runtime for other architectures
+  <a class="reference internal nav-link" href="#id2">
+   交叉编译其他架构的 TVM 运行时
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cross-compile-for-aarch64">
-     cross-compile for aarch64
+    <a class="reference internal nav-link" href="#aarch64">
+     aarch64 的交叉编译
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cross-compile-for-risc-v">
-     cross-compile for RISC-V
+    <a class="reference internal nav-link" href="#risc-v">
+     RISC-V 的交叉编译
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#optimize-and-tune-models-for-target-devices">
-   Optimize and tune models for target devices
+  <a class="reference internal nav-link" href="#id3">
+   针对目标设备优化和调优模型
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deploy-optimized-model-on-target-devices">
-   Deploy optimized model on target devices
+  <a class="reference internal nav-link" href="#id4">
+   在目标设备上部署已优化的模型
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#additional-deployment-how-tos">
+  <a class="reference internal nav-link" href="#id5">
    额外的部署指南
   </a>
  </li>
@@ -1429,7 +1487,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>部署模型，集成 TVM</h1>
+                <h1>部署模型并集成到 TVM</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1440,39 +1498,39 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#build-the-tvm-runtime-library">
-   Build the TVM runtime library
+  <a class="reference internal nav-link" href="#id1">
+   构建 TVM 运行时库
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cross-compile-the-tvm-runtime-for-other-architectures">
-   Cross compile the TVM runtime for other architectures
+  <a class="reference internal nav-link" href="#id2">
+   交叉编译其他架构的 TVM 运行时
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cross-compile-for-aarch64">
-     cross-compile for aarch64
+    <a class="reference internal nav-link" href="#aarch64">
+     aarch64 的交叉编译
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cross-compile-for-risc-v">
-     cross-compile for RISC-V
+    <a class="reference internal nav-link" href="#risc-v">
+     RISC-V 的交叉编译
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#optimize-and-tune-models-for-target-devices">
-   Optimize and tune models for target devices
+  <a class="reference internal nav-link" href="#id3">
+   针对目标设备优化和调优模型
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deploy-optimized-model-on-target-devices">
-   Deploy optimized model on target devices
+  <a class="reference internal nav-link" href="#id4">
+   在目标设备上部署已优化的模型
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#additional-deployment-how-tos">
+  <a class="reference internal nav-link" href="#id5">
    额外的部署指南
   </a>
  </li>
@@ -1486,24 +1544,21 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="deploy-models-and-integrate-tvm">
-<span id="deploy-and-integration"></span><h1>部署模型，集成 TVM<a class="headerlink" href="#deploy-models-and-integrate-tvm" title="永久链接至标题">#</a></h1>
-<p>This page contains guidelines on how to deploy TVM to various platforms
-as well as how to integrate it with your project.</p>
+  <section id="tvm">
+<span id="deploy-and-integration"></span><h1>部署模型并集成到 TVM<a class="headerlink" href="#tvm" title="永久链接至标题">#</a></h1>
+<p>本页面是如何将 TVM 部署到各种平台以及如何将其与您的项目集成的指南。</p>
 <img alt="https://tvm.apache.org/images/release/tvm_flexible.png" src="https://tvm.apache.org/images/release/tvm_flexible.png" />
-<section id="build-the-tvm-runtime-library">
-<h2>Build the TVM runtime library<a class="headerlink" href="#build-the-tvm-runtime-library" title="永久链接至标题">#</a></h2>
-<p id="build-tvm-runtime-on-target-device">Unlike traditional deep learning frameworks. TVM stack is divided into two major components:</p>
+<section id="id1">
+<h2>构建 TVM 运行时库<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
+<p id="build-tvm-runtime-on-target-device">与传统的深度学习框架不同。TVM 堆栈分为两个主要组件：</p>
 <ul class="simple">
-<li><p>TVM compiler, which does all the compilation and optimizations of the model</p></li>
-<li><p>TVM runtime, which runs on the target devices.</p></li>
+<li><p>TVM 编译器（compiler）：完成模型的所有编译和优化</p></li>
+<li><p>TVM 运行时（runtime）：在目标设备上运行</p></li>
 </ul>
-<p>In order to integrate the compiled module, we <strong>do not</strong> need to build entire
-TVM on the target device. You only need to build the TVM compiler stack on your
-desktop and use that to cross-compile modules that are deployed on the target device.</p>
-<p>We only need to use a light-weight runtime API that can be integrated into various platforms.</p>
-<p>For example, you can run the following commands to build the runtime API
-on a Linux based embedded system such as Raspberry Pi:</p>
+<p>为了集成已编译的模块，<strong>不需要</strong> 在目标设备上构建整个 TVM。
+您只需要在 desktop 上构建 TVM 编译器堆栈，并使用它来交叉编译部署在目标设备上的模块。</p>
+<p>只需要使用轻量级的 runtime API，它可以集成到各种平台中。</p>
+<p>例如，在基于 Linux 的嵌入式系统（如 Raspberry Pi）上，可以通过以下命令构建运行时 API：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone --recursive https://github.com/apache/tvm tvm
 <span class="nb">cd</span> tvm
 mkdir build
@@ -1513,34 +1568,25 @@ cmake ..
 make runtime
 </pre></div>
 </div>
-<p>Note that we type <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">runtime</span></code> to only build the runtime library.</p>
-<p>It is also possible to cross compile the runtime. Cross compiling
-the runtime library should not be confused with cross compiling models
-for embedded devices.</p>
-<p>If you want to include additional runtime such as OpenCL,
-you can modify <code class="docutils literal notranslate"><span class="pre">config.cmake</span></code> to enable these options.
-After you get the TVM runtime library, you can link the compiled library</p>
+<p>注意，输入 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">runtime</span></code> 来只构建运行时库。</p>
+<p>还可以交叉编译运行时。运行时库的交叉编译不应与嵌入式设备的交叉编译模型混淆。</p>
+<p>如果你想包含额外的运行时，如 OpenCL，你可以修改 <code class="docutils literal notranslate"><span class="pre">config.cmake</span></code> 来启用这些选项。
+在获得 TVM 运行时库之后，您可以链接已编译的库</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/tlc-pack/web-data/main/images/dev/tvm_deploy_crosscompile.svg"><img alt="https://raw.githubusercontent.com/tlc-pack/web-data/main/images/dev/tvm_deploy_crosscompile.svg" src="https://raw.githubusercontent.com/tlc-pack/web-data/main/images/dev/tvm_deploy_crosscompile.svg" width="85%" /></a>
 </figure>
-<p>A model (optimized or not by TVM) can be cross compiled by TVM for
-different architectures such as <code class="docutils literal notranslate"><span class="pre">aarch64</span></code> on a <code class="docutils literal notranslate"><span class="pre">x64_64</span></code> host. Once the model
-is cross compiled it is neccessary to have a runtime compatible with the target
-architecture to be able to run the cross compiled model.</p>
+<p>模型（TVM 优化或未优化）可以由 TVM 针对不同的架构进行交叉编译，例如在 <code class="docutils literal notranslate"><span class="pre">x64_64</span></code> host 上的 <code class="docutils literal notranslate"><span class="pre">aarch64</span></code>。
+一旦模型被交叉编译，为了能够运行交叉编译的模型，就必须有与目标架构兼容的运行时。</p>
 </section>
-<section id="cross-compile-the-tvm-runtime-for-other-architectures">
-<h2>Cross compile the TVM runtime for other architectures<a class="headerlink" href="#cross-compile-the-tvm-runtime-for-other-architectures" title="永久链接至标题">#</a></h2>
-<p>In the example <a class="reference internal" href="#build-tvm-runtime-on-target-device"><span class="std std-ref">above</span></a> the runtime library was
-compiled on a Raspberry Pi. Producing the runtime library can be done much faster on
-hosts that have high performace processors with ample resources (such as laptops, workstation)
-compared to a target devices such as a Raspberry Pi. In-order to cross compile the runtime the toolchain
-for the target device must be installed. After installing the correct toolchain,
-the main difference compared to compiling natively is to pass some additional command
-line argument to cmake that specify a toolchain to be used. For reference
-building the TVM runtime library on a modern laptop (using 8 threads) for <code class="docutils literal notranslate"><span class="pre">aarch64</span></code>
-takes around 20 seconds vs ~10 min to build the runtime on a Raspberry Pi 4.</p>
-<section id="cross-compile-for-aarch64">
-<h3>cross-compile for aarch64<a class="headerlink" href="#cross-compile-for-aarch64" title="永久链接至标题">#</a></h3>
+<section id="id2">
+<h2>交叉编译其他架构的 TVM 运行时<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
+<p>在 <a class="reference internal" href="#build-tvm-runtime-on-target-device"><span class="std std-ref">上面的</span></a> 例子中，运行时库是在树莓派上编译的。
+与树莓派（Raspberry Pi）等目标设备相比，在拥有高性能处理器和充足资源的主机（即 host，如笔记本电脑、工作站）上生成运行时库的速度要快得多。
+为了交叉编译运行时，必须安装目标设备的工具链（toolchain）。
+在安装了正确的工具链之后，与原生编译的主要区别是向 cmake 传递一些额外的命令行参数，以指定要使用的工具链。
+作为参照，在现代笔记本电脑（使用 8 个线程）上为 <code class="docutils literal notranslate"><span class="pre">aarch64</span></code> 构建 TVM 运行时库大约需要 20 秒，而在树莓派4 上构建运行时需要 10 分钟。</p>
+<section id="aarch64">
+<h3>aarch64 的交叉编译<a class="headerlink" href="#aarch64" title="永久链接至标题">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get update
 sudo apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
 </pre></div>
@@ -1558,13 +1604,13 @@ sudo apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
 make -j<span class="k">$(</span>nproc<span class="k">)</span> runtime
 </pre></div>
 </div>
-<p>For bare metal ARM devices the following toolchain is quite handy to install instead of gcc-aarch64-linux-*</p>
+<p>对于 bare metal ARM 设备，可以使用以下工具链代替 gcc-aarch64-linux-* 进行安装</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install gcc-multilib-arm-linux-gnueabihf g++-multilib-arm-linux-gnueabihf
 </pre></div>
 </div>
 </section>
-<section id="cross-compile-for-risc-v">
-<h3>cross-compile for RISC-V<a class="headerlink" href="#cross-compile-for-risc-v" title="永久链接至标题">#</a></h3>
+<section id="risc-v">
+<h3>RISC-V 的交叉编译<a class="headerlink" href="#risc-v" title="永久链接至标题">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get update
 sudo apt-get install gcc-riscv64-linux-gnu g++-riscv64-linux-gnu
 </pre></div>
@@ -1582,32 +1628,29 @@ sudo apt-get install gcc-riscv64-linux-gnu g++-riscv64-linux-gnu
 make -j<span class="k">$(</span>nproc<span class="k">)</span> runtime
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">file</span></code> command can be used to query the architecture of the produced runtime.</p>
+<p><code class="docutils literal notranslate"><span class="pre">file</span></code> 命令可用于查询生成的运行时的体系结构。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>file libtvm_runtime.so
 libtvm_runtime.so: ELF <span class="m">64</span>-bit LSB shared object, UCB RISC-V, version <span class="m">1</span> <span class="o">(</span>GNU/Linux<span class="o">)</span>, dynamically linked, BuildID<span class="o">[</span>sha1<span class="o">]=</span>e9ak845b3d7f2c126dab53632aea8e012d89477e, not stripped
 </pre></div>
 </div>
 </section>
 </section>
-<section id="optimize-and-tune-models-for-target-devices">
-<h2>Optimize and tune models for target devices<a class="headerlink" href="#optimize-and-tune-models-for-target-devices" title="永久链接至标题">#</a></h2>
-<p>The easiest and recommended way to test, tune and benchmark TVM kernels on
-embedded devices is through TVM’s RPC API.
-Here are the links to the related tutorials.</p>
+<section id="id3">
+<h2>针对目标设备优化和调优模型<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h2>
+<p>在嵌入式设备上测试、调优和 benchmark TVM kernel 的最简单和推荐的方法是通过 TVM 的 RPC API。相关教程的链接如下：</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../../tutorial/cross_compilation_and_rpc.html#tutorial-cross-compilation-and-rpc"><span class="std std-ref">交叉编译和RPC</span></a></p></li>
 <li><p><a class="reference internal" href="../deploy_models/deploy_model_on_rasp.html#tutorial-deploy-model-on-rasp"><span class="std std-ref">Deploy the Pretrained Model on Raspberry Pi</span></a></p></li>
 </ul>
 </section>
-<section id="deploy-optimized-model-on-target-devices">
-<h2>Deploy optimized model on target devices<a class="headerlink" href="#deploy-optimized-model-on-target-devices" title="永久链接至标题">#</a></h2>
-<p>After you finished tuning and benchmarking, you might need to deploy the model on the
-target device without relying on RPC. See the following resources on how to do so.</p>
+<section id="id4">
+<h2>在目标设备上部署已优化的模型<a class="headerlink" href="#id4" title="永久链接至标题">#</a></h2>
+<p>在完成调优和基准测试之后，可能需要在目标设备上部署模型，而不需要依赖 RPC。关于如何这样做，请参阅以下参考资料。</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="cpp_deploy.html">Deploy TVM Module using C++ API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cpp_deploy.html#get-tvm-runtime-library">Get TVM Runtime Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpp_deploy.html#dynamic-library-vs-system-module">Dynamic Library vs. System Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cpp_deploy.html">使用 C++ API 部署 TVM Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cpp_deploy.html#tvm">获取 TVM 运行时库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_deploy.html#vs">动态库 vs. 系统模块</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="android.html">Deploy to Android</a><ul>
@@ -1615,10 +1658,10 @@ target device without relying on RPC. See the following resources on how to do s
 <li class="toctree-l2"><a class="reference internal" href="android.html#tvm-runtime-for-android-target">TVM Runtime for Android Target</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="integrate.html">Integrate TVM into Your Project</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="integrate.html#dlpack-support">DLPack Support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="integrate.html#integrate-user-defined-c-array">Integrate User Defined C++ Array</a></li>
-<li class="toctree-l2"><a class="reference internal" href="integrate.html#integrate-user-defined-python-array">Integrate User Defined Python Array</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrate.html">集成 TVM 到你的项目</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrate.html#dlpack">支持 DLPack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrate.html#c-array">集成用户定义的 C++ Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrate.html#python-array">集成用户定义的 Python Array</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="hls.html">HLS Backend Example</a><ul>
@@ -1628,11 +1671,11 @@ target device without relying on RPC. See the following resources on how to do s
 <li class="toctree-l2"><a class="reference internal" href="hls.html#run">Run</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="arm_compute_lib.html">Relay Arm<sup>®</sup> Compute Library Integration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="arm_compute_lib.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="arm_compute_lib.html#installing-arm-compute-library">Installing Arm Compute Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="arm_compute_lib.html#building-with-acl-support">Building with ACL support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="arm_compute_lib.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arm_compute_lib.html">集成 Relay Arm<sup>®</sup> 计算库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arm_compute_lib.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arm_compute_lib.html#acl">安装 ACL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arm_compute_lib.html#id2">使用 ACL 支持进行构建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arm_compute_lib.html#id3">用法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arm_compute_lib.html#more-examples">More examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arm_compute_lib.html#operator-support">Operator support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arm_compute_lib.html#adding-a-new-operator">Adding a new operator</a></li>
@@ -1668,14 +1711,12 @@ target device without relying on RPC. See the following resources on how to do s
 </ul>
 </div>
 </section>
-<section id="additional-deployment-how-tos">
-<h2>额外的部署指南<a class="headerlink" href="#additional-deployment-how-tos" title="永久链接至标题">#</a></h2>
-<p>我们还开发了一些针对特定设备的操作指南，使用可在 Jupyter 笔记本上查看的工作 Python 代码。这些指南描述了如何准备模型并将其部署到许多受支持的后端。</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../deploy_models/index.html">部署深度学习模型</a></li>
+<section id="id5">
+<h2>额外的部署指南<a class="headerlink" href="#id5" title="永久链接至标题">#</a></h2>
+<p>还开发了一些针对特定设备的操作指南，可以在 Jupyter 笔记本中查看可用的 Python 代码。这些“如何操作”描述了如何准备模型并将其部署到许多受支持的后端。</p>
+<ul class="simple">
+<li><p>{ref}`../deploy_models/index`</p></li>
 </ul>
-</div>
 </section>
 </section>
 
@@ -1687,6 +1728,20 @@ target device without relying on RPC. See the following resources on how to do s
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../compile_models/from_paddle.html" title="上一页 页">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一页</p>
+            <p class="prev-next-title">Compile PaddlePaddle Models</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="cpp_deploy.html" title="下一页 页">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">使用 C++ API 部署 TVM Module</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
@@ -1697,7 +1752,7 @@ target device without relying on RPC. See the following resources on how to do s
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-06, 01:32:04.<br/>
+    Last updated on 2022-06-06, 09:08:20.<br/>
 </p>
         </footer>
     </div>
