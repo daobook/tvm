@@ -46,7 +46,6 @@
         "# We configure both the bitstream and the runtime system on the Pynq\n",
         "# to match the VTA configuration specified by the vta_config.json file.\n",
         "if env.TARGET == \"pynq\":\n",
-        "\n",
         "    # Make sure that TVM was compiled with RPC=1\n",
         "    assert tvm.runtime.enabled(\"rpc\")\n",
         "    remote = rpc.connect(host, port)\n",
@@ -738,7 +737,7 @@
           "name": "stderr",
           "output_type": "stream",
           "text": [
-            "[22:04:01] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128\n"
+            "[16:02:31] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128\n"
           ]
         }
       ],
@@ -777,7 +776,9 @@
           "name": "stderr",
           "output_type": "stream",
           "text": [
-            "[22:04:02] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128\n"
+            "[16:02:32] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128\n",
+            "/media/workspace/anaconda3/envs/mx/lib/python3.10/site-packages/tvm/driver/build_module.py:263: UserWarning: target_host parameter is going to be deprecated. Please pass in tvm.target.Target(target, host=target_host) instead.\n",
+            "  warnings.warn(\n"
           ]
         },
         {
@@ -892,8 +893,11 @@
     }
   ],
   "metadata": {
+    "interpreter": {
+      "hash": "ee40e4cbda3c4716866f133b45765e0887afdbc9aa3bd872ab229f889d521355"
+    },
     "kernelspec": {
-      "display_name": "Python 3",
+      "display_name": "Python 3.10.4 ('mx')",
       "language": "python",
       "name": "python3"
     },

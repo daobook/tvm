@@ -1723,7 +1723,7 @@ title="Print to PDF"
 <p>在 Pynq 上配置 bitstream 和运行时系统，以匹配 <code class="docutils literal notranslate"><span class="pre">vta_config.json</span></code> 文件指定的 VTA 配置。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">TARGET</span> <span class="o">==</span> <span class="s2">&quot;pynq&quot;</span> <span class="ow">or</span> <span class="n">env</span><span class="o">.</span><span class="n">TARGET</span> <span class="o">==</span> <span class="s2">&quot;de10nano&quot;</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">TARGET</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;pynq&quot;</span><span class="p">,</span> <span class="s2">&quot;de10nano&quot;</span><span class="p">]:</span>
     <span class="c1"># 确保使用 RPC=1 编译 TVM</span>
     <span class="k">assert</span> <span class="n">tvm</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">enabled</span><span class="p">(</span><span class="s2">&quot;rpc&quot;</span><span class="p">)</span>
     <span class="n">remote</span> <span class="o">=</span> <span class="n">rpc</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
@@ -1776,6 +1776,32 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>查看 <code class="docutils literal notranslate"><span class="pre">shape</span></code>：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 64, 1, 16)
+</pre></div>
+</div>
+</div>
+</div>
+<p>查看 <code class="xref py py-data docutils literal notranslate"><span class="pre">env.acc_dtype</span></code> 和 <code class="xref py py-data docutils literal notranslate"><span class="pre">env.inp_dtype</span></code>：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">env</span><span class="o">.</span><span class="n">acc_dtype</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">inp_dtype</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;int32&#39;, &#39;int8&#39;)
+</pre></div>
+</div>
+</div>
+</div>
 <p>此外，A 和 B 的数据类型也需要匹配 <code class="docutils literal notranslate"><span class="pre">env.acc_dtype</span></code>，由 <code class="docutils literal notranslate"><span class="pre">vta_config.json</span></code> 文件设置为 32 位整型。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1783,6 +1809,19 @@ title="Print to PDF"
 <span class="n">A</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">acc_dtype</span><span class="p">)</span>
 <span class="c1"># 平铺数据格式的 B 占位符张量</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">acc_dtype</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>查看张量 <code class="docutils literal notranslate"><span class="pre">A</span></code>：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tensor(shape=[1, 64, 1, 16], op.name=A)
 </pre></div>
 </div>
 </div>
@@ -1798,6 +1837,18 @@ title="Print to PDF"
 <span class="n">A_buf</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">i</span><span class="p">:</span> <span class="n">A</span><span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">),</span> <span class="s2">&quot;A_buf&quot;</span><span class="p">)</span>
 <span class="c1"># B copy buffer</span>
 <span class="n">B_buf</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">i</span><span class="p">:</span> <span class="n">B</span><span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">),</span> <span class="s2">&quot;B_buf&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A_buf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tensor(shape=[1, 64, 1, 16], op.name=A_buf)
 </pre></div>
 </div>
 </div>
@@ -1998,12 +2049,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/pc/data/4tb/lxw/anaconda3/envs/tvm-mxnet/lib/python3.10/site-packages/tvm/target/target.py:316: UserWarning: target_host parameter is going to be deprecated. Please pass in tvm.target.Target(target, host=target_host) instead.
-  warnings.warn(
-</pre></div>
-</div>
-</div>
 </div>
 <section id="module">
 <h3>保存 Module<a class="headerlink" href="#module" title="永久链接至标题">#</a></h3>
@@ -2160,7 +2205,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-06, 09:08:20.<br/>
+    Last updated on 2022-06-08, 08:47:06.<br/>
 </p>
         </footer>
     </div>

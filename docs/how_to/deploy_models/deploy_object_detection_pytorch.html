@@ -1452,23 +1452,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-the-graph-to-relay">
-   Import the graph to Relay
+  <a class="reference internal nav-link" href="#graph-relay">
+   导入 graph 到 Relay
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#compile-with-relay-vm">
-   Compile with Relay VM
+  <a class="reference internal nav-link" href="#relay-vm">
+   使用 Relay VM 编译
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inference-with-relay-vm">
-   Inference with Relay VM
+  <a class="reference internal nav-link" href="#id2">
+   使用 Relay VM 推理
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#get-boxes-with-score-larger-than-0-9">
-   Get boxes with score larger than 0.9
+  <a class="reference internal nav-link" href="#boxes">
+   获得得分大于 0.9 的 boxes
   </a>
  </li>
 </ul>
@@ -1501,23 +1501,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-the-graph-to-relay">
-   Import the graph to Relay
+  <a class="reference internal nav-link" href="#graph-relay">
+   导入 graph 到 Relay
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#compile-with-relay-vm">
-   Compile with Relay VM
+  <a class="reference internal nav-link" href="#relay-vm">
+   使用 Relay VM 编译
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inference-with-relay-vm">
-   Inference with Relay VM
+  <a class="reference internal nav-link" href="#id2">
+   使用 Relay VM 推理
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#get-boxes-with-score-larger-than-0-9">
-   Get boxes with score larger than 0.9
+  <a class="reference internal nav-link" href="#boxes">
+   获得得分大于 0.9 的 boxes
   </a>
  </li>
 </ul>
@@ -1635,8 +1635,8 @@ pip install <span class="nv">torchvision</span><span class="o">==</span><span cl
 </div>
 </div>
 </section>
-<section id="import-the-graph-to-relay">
-<h2>Import the graph to Relay<a class="headerlink" href="#import-the-graph-to-relay" title="永久链接至标题">#</a></h2>
+<section id="graph-relay">
+<h2>导入 graph 到 Relay<a class="headerlink" href="#graph-relay" title="永久链接至标题">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_name</span> <span class="o">=</span> <span class="s2">&quot;input0&quot;</span>
@@ -1647,12 +1647,12 @@ pip install <span class="nv">torchvision</span><span class="o">==</span><span cl
 </div>
 </div>
 </section>
-<section id="compile-with-relay-vm">
-<h2>Compile with Relay VM<a class="headerlink" href="#compile-with-relay-vm" title="永久链接至标题">#</a></h2>
-<p>Note: Currently only CPU target is supported. For x86 target, it is
-highly recommended to build TVM with Intel MKL and Intel OpenMP to get
-best performance, due to the existence of large dense operator in
-torchvision rcnn models.</p>
+<section id="relay-vm">
+<h2>使用 Relay VM 编译<a class="headerlink" href="#relay-vm" title="永久链接至标题">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>目前只支持 CPU target。对于 x86 target，由于在 torchvision rcnn 模型中存在较大的 dense 算子，因此强烈推荐使用 Intel MKL 和 Intel OpenMP 构建 TVM 以获得最佳性能。</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add &quot;-libs=mkl&quot; to get best performance on x86 target.</span>
@@ -1660,15 +1660,16 @@ torchvision rcnn models.</p>
 <span class="c1"># &quot;llvm -mcpu=skylake-avx512 -libs=mkl&quot;</span>
 <span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;llvm&quot;</span>
 
-<span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">disabled_pass</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;FoldScaleAxis&quot;</span><span class="p">]):</span>
+<span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                               <span class="n">disabled_pass</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;FoldScaleAxis&quot;</span><span class="p">]):</span>
     <span class="n">vm_exec</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="inference-with-relay-vm">
-<h2>Inference with Relay VM<a class="headerlink" href="#inference-with-relay-vm" title="永久链接至标题">#</a></h2>
+<section id="id2">
+<h2>使用 Relay VM 推理<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dev</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
@@ -1680,8 +1681,8 @@ torchvision rcnn models.</p>
 </div>
 </div>
 </section>
-<section id="get-boxes-with-score-larger-than-0-9">
-<h2>Get boxes with score larger than 0.9<a class="headerlink" href="#get-boxes-with-score-larger-than-0-9" title="永久链接至标题">#</a></h2>
+<section id="boxes">
+<h2>获得得分大于 0.9 的 boxes<a class="headerlink" href="#boxes" title="永久链接至标题">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">score_threshold</span> <span class="o">=</span> <span class="mf">0.9</span>
@@ -1694,6 +1695,11 @@ torchvision rcnn models.</p>
         <span class="k">break</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Get </span><span class="si">{}</span><span class="s2"> valid boxes&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">valid_boxes</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Get 9 valid boxes
 </pre></div>
 </div>
 </div>
@@ -1733,7 +1739,7 @@ torchvision rcnn models.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-06, 09:08:20.<br/>
+    Last updated on 2022-06-08, 08:47:06.<br/>
 </p>
         </footer>
     </div>

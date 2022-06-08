@@ -26,7 +26,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 1,
       "metadata": {},
       "outputs": [],
       "source": [
@@ -35,7 +35,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 2,
       "metadata": {
         "collapsed": false
       },
@@ -64,7 +64,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 3,
       "metadata": {},
       "outputs": [],
       "source": [
@@ -92,7 +92,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 4,
       "metadata": {},
       "outputs": [],
       "source": [
@@ -111,13 +111,6 @@
       ]
     },
     {
-      "cell_type": "code",
-      "execution_count": null,
-      "metadata": {},
-      "outputs": [],
-      "source": []
-    },
-    {
       "cell_type": "markdown",
       "metadata": {},
       "source": [
@@ -126,7 +119,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 5,
       "metadata": {
         "collapsed": false
       },
@@ -150,14 +143,12 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "Import the graph to Relay\n",
-        "-------------------------\n",
-        "\n"
+        "## 导入 graph 到 Relay"
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 6,
       "metadata": {
         "collapsed": false
       },
@@ -172,13 +163,11 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "Compile with Relay VM\n",
-        "---------------------\n",
-        "Note: Currently only CPU target is supported. For x86 target, it is\n",
-        "highly recommended to build TVM with Intel MKL and Intel OpenMP to get\n",
-        "best performance, due to the existence of large dense operator in\n",
-        "torchvision rcnn models.\n",
-        "\n"
+        "## 使用 Relay VM 编译\n",
+        "\n",
+        "```{note}\n",
+        "目前只支持 CPU target。对于 x86 target，由于在 torchvision rcnn 模型中存在较大的 dense 算子，因此强烈推荐使用 Intel MKL 和 Intel OpenMP 构建 TVM 以获得最佳性能。\n",
+        "```"
       ]
     },
     {
@@ -194,7 +183,8 @@
         "# \"llvm -mcpu=skylake-avx512 -libs=mkl\"\n",
         "target = \"llvm\"\n",
         "\n",
-        "with tvm.transform.PassContext(opt_level=3, disabled_pass=[\"FoldScaleAxis\"]):\n",
+        "with tvm.transform.PassContext(opt_level=3,\n",
+        "                               disabled_pass=[\"FoldScaleAxis\"]):\n",
         "    vm_exec = relay.vm.compile(mod, target=target, params=params)"
       ]
     },
@@ -202,14 +192,12 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "Inference with Relay VM\n",
-        "-----------------------\n",
-        "\n"
+        "## 使用 Relay VM 推理"
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 10,
       "metadata": {
         "collapsed": false
       },
@@ -225,18 +213,24 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "Get boxes with score larger than 0.9\n",
-        "------------------------------------\n",
-        "\n"
+        "## 获得得分大于 0.9 的 boxes"
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 11,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Get 9 valid boxes\n"
+          ]
+        }
+      ],
       "source": [
         "score_threshold = 0.9\n",
         "boxes = tvm_res[0].numpy().tolist()\n",
@@ -249,14 +243,21 @@
         "\n",
         "print(\"Get {} valid boxes\".format(len(valid_boxes)))"
       ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {},
+      "outputs": [],
+      "source": []
     }
   ],
   "metadata": {
     "interpreter": {
-      "hash": "7a45eadec1f9f49b0fdfd1bc7d360ac982412448ce738fa321afc640e3212175"
+      "hash": "31f2aee4e71d21fbe5cf8b01ff0e069b9275f58929596ceb00d14d90e3e16cd6"
     },
     "kernelspec": {
-      "display_name": "Python 3.10.4 ('torchx')",
+      "display_name": "Python 3.8.10 64-bit",
       "language": "python",
       "name": "python3"
     },
@@ -270,7 +271,7 @@
       "name": "python",
       "nbconvert_exporter": "python",
       "pygments_lexer": "ipython3",
-      "version": "3.10.4"
+      "version": "3.8.10"
     }
   },
   "nbformat": 4,

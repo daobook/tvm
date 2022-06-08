@@ -1595,7 +1595,6 @@ title="Print to PDF"
 <span class="c1"># We configure both the bitstream and the runtime system on the Pynq</span>
 <span class="c1"># to match the VTA configuration specified by the vta_config.json file.</span>
 <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">TARGET</span> <span class="o">==</span> <span class="s2">&quot;pynq&quot;</span><span class="p">:</span>
-
     <span class="c1"># Make sure that TVM was compiled with RPC=1</span>
     <span class="k">assert</span> <span class="n">tvm</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">enabled</span><span class="p">(</span><span class="s2">&quot;rpc&quot;</span><span class="p">)</span>
     <span class="n">remote</span> <span class="o">=</span> <span class="n">rpc</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
@@ -2211,7 +2210,7 @@ title="Print to PDF"
 }
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[22:04:01] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[16:02:31] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
 </pre></div>
 </div>
 </div>
@@ -2320,7 +2319,9 @@ title="Print to PDF"
 Successful 2D convolution test!
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[22:04:02] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[16:02:32] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+/media/workspace/anaconda3/envs/mx/lib/python3.10/site-packages/tvm/driver/build_module.py:263: UserWarning: target_host parameter is going to be deprecated. Please pass in tvm.target.Target(target, host=target_host) instead.
+  warnings.warn(
 </pre></div>
 </div>
 </div>
@@ -2364,7 +2365,7 @@ Successful 2D convolution test!
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-06, 09:08:20.<br/>
+    Last updated on 2022-06-08, 08:47:06.<br/>
 </p>
         </footer>
     </div>

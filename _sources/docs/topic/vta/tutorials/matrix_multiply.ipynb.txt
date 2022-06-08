@@ -42,7 +42,7 @@
         "\n",
         "# 在 Pynq 上配置 bitstream 和运行时系统，\n",
         "# 以匹配 vta_config.json 文件指定的 VTA 配置。\n",
-        "if env.TARGET == \"pynq\" or env.TARGET == \"de10nano\":\n",
+        "if env.TARGET in [\"pynq\", \"de10nano\"]:\n",
         "    # 确保使用 RPC=1 编译 TVM\n",
         "    assert tvm.runtime.enabled(\"rpc\")\n",
         "    remote = rpc.connect(host, port)\n",
@@ -57,7 +57,10 @@
         "\n",
         "# 在仿真模式下，在本地托管 RPC 服务器。\n",
         "elif env.TARGET in [\"sim\", \"tsim\"]:\n",
-        "    remote = rpc.LocalSession()"
+        "    remote = rpc.LocalSession()\n",
+        "    if env.TARGET in [\"intelfocl\"]:\n",
+        "        # program intelfocl aocx\n",
+        "        vta.program_fpga(remote, bitstream=\"vta.bitstream\")"
       ]
     },
     {
@@ -503,7 +506,7 @@
           "name": "stderr",
           "output_type": "stream",
           "text": [
-            "[21:02:17] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128\n"
+            "[16:27:30] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128\n"
           ]
         }
       ],
@@ -539,15 +542,15 @@
           "name": "stderr",
           "output_type": "stream",
           "text": [
-            "[21:02:17] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128\n"
+            "[16:27:31] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128\n"
           ]
         }
       ],
       "source": [
         "# Build GEMM VTA kernel\n",
-        "my_gemm = vta.build(\n",
-        "    s, [A, B, C], tvm.target.Target(\"ext_dev\", host=env.target_host), name=\"my_gemm\"\n",
-        ")\n",
+        "my_gemm = vta.build(s, [A, B, C],\n",
+        "                    target=\"ext_dev\",\n",
+        "                    name=\"my_gemm\")\n",
         "\n",
         "# Write the compiled module into an object file.\n",
         "temp = utils.tempdir()\n",
@@ -557,7 +560,7 @@
         "remote.upload(temp.relpath(\"gemm.o\"))\n",
         "\n",
         "# Load the compiled module\n",
-        "f = remote.load_module(\"gemm.o\")"
+        "f = remote.load_module(\"gemm.o\")\n"
       ]
     },
     {
@@ -642,8 +645,12 @@
       ],
       "source": [
         "# Compute reference result with numpy\n",
-        "C_ref = np.dot(A_orig.astype(env.acc_dtype), B_orig.T.astype(env.acc_dtype)).astype(C.dtype)\n",
-        "C_ref = C_ref.reshape(o, env.BATCH, m, env.BLOCK_OUT).transpose((0, 2, 1, 3))\n",
+        "C_ref = np.dot(A_orig.astype(env.acc_dtype),\n",
+        "               B_orig.T.astype(env.acc_dtype)).astype(C.dtype)\n",
+        "C_ref = C_ref.reshape(o,\n",
+        "                      env.BATCH,\n",
+        "                      m,\n",
+        "                      env.BLOCK_OUT).transpose((0, 2, 1, 3))\n",
         "np.testing.assert_equal(C_ref, C_nd.numpy())\n",
         "\n",
         "# Print stats\n",
@@ -651,7 +658,7 @@
         "    sim_stats = simulator.stats()\n",
         "    print(\"Execution statistics:\")\n",
         "    for k, v in sim_stats.items():\n",
-        "        print(\"\\t{:<16}: {:>16}\".format(k, v))\n",
+        "        print(f\"\\t{k:<16}: {v:>16}\")\n",
         "\n",
         "print(\"Successful matrix multiply test!\")"
       ]
@@ -675,8 +682,11 @@
     }
   ],
   "metadata": {
+    "interpreter": {
+      "hash": "ee40e4cbda3c4716866f133b45765e0887afdbc9aa3bd872ab229f889d521355"
+    },
     "kernelspec": {
-      "display_name": "Python 3",
+      "display_name": "Python 3.10.4 ('mx')",
       "language": "python",
       "name": "python3"
     },

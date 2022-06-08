@@ -1465,6 +1465,13 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#id3">
    进行图像分类推理
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     执行推理并收集执行统计信息
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -1509,6 +1516,13 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#id3">
    进行图像分类推理
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     执行推理并收集执行统计信息
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -1537,7 +1551,7 @@ title="Print to PDF"
 <span class="c1"># import argparse, json, requests, sys</span>
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span>
 <span class="c1"># from io import BytesIO</span>
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
+<span class="c1"># from os.path import join</span>
 <span class="c1"># from os.path import isfile</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
@@ -1622,32 +1636,33 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">TARGET</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;sim&quot;</span><span class="p">,</span> <span class="s2">&quot;tsim&quot;</span><span class="p">,</span> <span class="s2">&quot;intelfocl&quot;</span><span class="p">]:</span>
-    <span class="c1"># Get remote from tracker node if environment variable is set.</span>
-    <span class="c1"># To set up the tracker, you&#39;ll need to follow the &quot;Auto-tuning</span>
-    <span class="c1"># a convolutional network for VTA&quot; tutorial.</span>
+    <span class="c1"># 如果设置环境变量，从 tracker 节点获取 remote。</span>
+    <span class="c1"># 要设置 tracker，您需要遵循“自动调优卷积网络用于 VTA ”教程。</span>
     <span class="n">tracker_host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;TVM_TRACKER_HOST&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">tracker_port</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;TVM_TRACKER_PORT&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="c1"># Otherwise if you have a device you want to program directly from</span>
-    <span class="c1"># the host, make sure you&#39;ve set the variables below to the IP of</span>
-    <span class="c1"># your board.</span>
+    <span class="c1"># 否则，如果你有设备，你想直接从 host 编程，</span>
+    <span class="c1"># 确保你已经设置了下面的变量为你的板的 IP。</span>
     <span class="n">device_host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;VTA_RPC_HOST&quot;</span><span class="p">,</span> <span class="s2">&quot;192.168.2.99&quot;</span><span class="p">)</span>
     <span class="n">device_port</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;VTA_RPC_PORT&quot;</span><span class="p">,</span> <span class="s2">&quot;9091&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">tracker_host</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">tracker_port</span><span class="p">:</span>
         <span class="n">remote</span> <span class="o">=</span> <span class="n">rpc</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">device_host</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">device_port</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">remote</span> <span class="o">=</span> <span class="n">autotvm</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">request_remote</span><span class="p">(</span>
-            <span class="n">env</span><span class="o">.</span><span class="n">TARGET</span><span class="p">,</span> <span class="n">tracker_host</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">tracker_port</span><span class="p">),</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10000</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">TARGET</span><span class="p">,</span> 
+            <span class="n">tracker_host</span><span class="p">,</span> 
+            <span class="nb">int</span><span class="p">(</span><span class="n">tracker_port</span><span class="p">),</span> 
+            <span class="n">timeout</span><span class="o">=</span><span class="mi">10000</span>
         <span class="p">)</span>
 
-    <span class="c1"># Reconfigure the JIT runtime and FPGA.</span>
-    <span class="c1"># You can program the FPGA with your own custom bitstream</span>
-    <span class="c1"># by passing the path to the bitstream file instead of None.</span>
+    <span class="c1"># 重新配置 JIT 运行时和 FPGA。</span>
+    <span class="c1"># 通过将路径传递给 bitstream 文件而不是 None，</span>
+    <span class="c1"># 您可以使用自己的自定义 bitstream 编程 FPGA。</span>
     <span class="n">reconfig_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="n">vta</span><span class="o">.</span><span class="n">reconfig_runtime</span><span class="p">(</span><span class="n">remote</span><span class="p">)</span>
     <span class="n">vta</span><span class="o">.</span><span class="n">program_fpga</span><span class="p">(</span><span class="n">remote</span><span class="p">,</span> <span class="n">bitstream</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
     <span class="n">reconfig_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">reconfig_start</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reconfigured FPGA and RPC runtime in </span><span class="si">{0:.2f}</span><span class="s2">s!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reconfig_time</span><span class="p">))</span>
-<span class="c1"># In simulation mode, host the RPC server locally.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reconfigured FPGA and RPC runtime in </span><span class="si">{</span><span class="n">reconfig_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s!&quot;</span><span class="p">)</span>
+<span class="c1"># 在仿真模式中，在本地托管 RPC 服务器。</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">remote</span> <span class="o">=</span> <span class="n">rpc</span><span class="o">.</span><span class="n">LocalSession</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">TARGET</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;intelfocl&quot;</span><span class="p">]:</span>
@@ -1691,7 +1706,7 @@ title="Print to PDF"
 <span class="n">dtype_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;float32&quot;</span><span class="p">}</span>
 <span class="n">shape_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">BATCH</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">)}</span>
 
-<span class="c1"># Get off the shelf gluon model, and convert to relay</span>
+<span class="c1"># 取下 gluon 模型，转换成 relay</span>
 <span class="n">gluon_model</span> <span class="o">=</span> <span class="n">vision</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">with</span> <span class="n">autotvm</span><span class="o">.</span><span class="n">tophub</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="n">target</span><span class="p">):</span>
     <span class="c1"># 度量构建的开始时间</span>
@@ -1705,7 +1720,8 @@ title="Print to PDF"
         <span class="c1"># 在 Relay 中执行量化</span>
         <span class="c1"># 注意：为了 fold batch norm，将 `opt_level` 设置为 `3`</span>
         <span class="k">with</span> <span class="n">PassContext</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
-            <span class="k">with</span> <span class="n">relay</span><span class="o">.</span><span class="n">quantize</span><span class="o">.</span><span class="n">qconfig</span><span class="p">(</span><span class="n">global_scale</span><span class="o">=</span><span class="mf">8.0</span><span class="p">,</span> <span class="n">skip_conv_layers</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="k">with</span> <span class="n">relay</span><span class="o">.</span><span class="n">quantize</span><span class="o">.</span><span class="n">qconfig</span><span class="p">(</span><span class="n">global_scale</span><span class="o">=</span><span class="mf">8.0</span><span class="p">,</span>
+                                        <span class="n">skip_conv_layers</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
                 <span class="n">mod</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">quantize</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
             <span class="c1"># 对 VTA target 进行 graph packing 和 constant folding</span>
             <span class="k">assert</span> <span class="n">env</span><span class="o">.</span><span class="n">BLOCK_IN</span> <span class="o">==</span> <span class="n">env</span><span class="o">.</span><span class="n">BLOCK_OUT</span>
@@ -1724,19 +1740,26 @@ title="Print to PDF"
 
     <span class="c1"># 禁用 AlterOpLayout，编译 Relay 程序</span>
     <span class="k">if</span> <span class="n">target</span><span class="o">.</span><span class="n">device_name</span> <span class="o">!=</span> <span class="s2">&quot;vta&quot;</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">PassContext</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">disabled_pass</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;AlterOpLayout&quot;</span><span class="p">}):</span>
+        <span class="k">with</span> <span class="n">PassContext</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                         <span class="n">disabled_pass</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;AlterOpLayout&quot;</span><span class="p">}):</span>
             <span class="n">lib</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">build</span><span class="p">(</span>
-                <span class="n">relay_prog</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span>
+                <span class="n">relay_prog</span><span class="p">,</span>
+                <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+                <span class="n">params</span><span class="o">=</span><span class="n">params</span>
             <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">TARGET</span> <span class="o">==</span> <span class="s2">&quot;intelfocl&quot;</span><span class="p">:</span>
             <span class="c1"># 在 CPU 和 VTA 上运行多个目标</span>
-            <span class="n">target</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;cpu&quot;</span><span class="p">:</span> <span class="n">env</span><span class="o">.</span><span class="n">target_vta_cpu</span><span class="p">,</span> <span class="s2">&quot;ext_dev&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">}</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;cpu&quot;</span><span class="p">:</span> <span class="n">env</span><span class="o">.</span><span class="n">target_vta_cpu</span><span class="p">,</span>
+                      <span class="s2">&quot;ext_dev&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">}</span>
         <span class="k">with</span> <span class="n">vta</span><span class="o">.</span><span class="n">build_config</span><span class="p">(</span>
-            <span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">disabled_pass</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;AlterOpLayout&quot;</span><span class="p">,</span> <span class="s2">&quot;tir.CommonSubexprElimTIR&quot;</span><span class="p">}</span>
+            <span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+            <span class="n">disabled_pass</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;AlterOpLayout&quot;</span><span class="p">,</span>
+                           <span class="s2">&quot;tir.CommonSubexprElimTIR&quot;</span><span class="p">}</span>
         <span class="p">):</span>
-            <span class="n">lib</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">relay_prog</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
-
+            <span class="n">lib</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">relay_prog</span><span class="p">,</span>
+                              <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+                              <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
     <span class="c1"># 度量 Relay 构建时间</span>
     <span class="n">build_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">build_start</span>
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2"> inference graph built in </span><span class="si">{</span><span class="n">build_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s!&quot;</span><span class="p">)</span>
@@ -1749,13 +1772,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/pc/data/4tb/lxw/anaconda3/envs/tvm-mxnet/lib/python3.10/site-packages/tvm/target/target.py:316: UserWarning: target_host parameter is going to be deprecated. Please pass in tvm.target.Target(target, host=target_host) instead.
-  warnings.warn(
-One or more operators have not been tuned. Please tune your model for better performance. Use DEBUG logging level to see more details.
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="id3">
@@ -1764,15 +1780,15 @@ One or more operators have not been tuned. Please tune your model for better per
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 下载 ImageNet categories</span>
-<span class="n">categ_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/uwsampl/web-data/raw/main/vta/models/&quot;</span>
+<span class="n">categ_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/uwsampl/web-data/raw/main/vta/models&quot;</span>
 <span class="n">categ_fn</span> <span class="o">=</span> <span class="s2">&quot;synset.txt&quot;</span>
-<span class="n">download</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">categ_url</span><span class="p">,</span> <span class="n">categ_fn</span><span class="p">),</span> <span class="n">categ_fn</span><span class="p">)</span>
+<span class="n">download</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">categ_url</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">categ_fn</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">categ_fn</span><span class="p">)</span>
 <span class="n">synset</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">categ_fn</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-<span class="c1"># Download test image</span>
+<span class="c1"># 下载测试图片</span>
 <span class="n">image_url</span> <span class="o">=</span> <span class="s2">&quot;https://homes.cs.washington.edu/~moreau/media/vta/cat.jpg&quot;</span>
 <span class="n">image_fn</span> <span class="o">=</span> <span class="s2">&quot;cat.png&quot;</span>
 <span class="n">download</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">image_url</span><span class="p">,</span> <span class="n">image_fn</span><span class="p">)</span>
-<span class="c1"># Prepare test image for inference</span>
+<span class="c1"># 准备用于推理的测试图像</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">image_fn</span><span class="p">)</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1784,15 +1800,30 @@ One or more operators have not been tuned. Please tune your model for better per
 
 <span class="c1"># 生成图执行器（graph executor） `m`。</span>
 <span class="n">m</span> <span class="o">=</span> <span class="n">graph_executor</span><span class="o">.</span><span class="n">GraphModule</span><span class="p">(</span><span class="n">lib</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">](</span><span class="n">ctxes</span><span class="p">))</span>
-<span class="c1"># Set the network parameters and inputs</span>
+<span class="c1"># 设置网络参数和输入</span>
 <span class="n">m</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
-
-<span class="c1"># Perform inference and gather execution statistics</span>
-<span class="c1"># More on: :py:method:`tvm.runtime.Module.time_evaluator`</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># number of times we run module for a single measurement</span>
-<span class="n">rep</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># number of measurements (we derive std dev from this)</span>
-<span class="n">timer</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">time_evaluator</span><span class="p">(</span><span class="s2">&quot;run&quot;</span><span class="p">,</span> <span class="n">ctxes</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">rep</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/d096e10ab369820cb37fc09afecb0acbd4e6911df02e2f28972b11f00f69e3fe.png" src="../../../../../_images/d096e10ab369820cb37fc09afecb0acbd4e6911df02e2f28972b11f00f69e3fe.png" />
+</div>
+</div>
+<section id="id4">
+<h3>执行推理并收集执行统计信息<a class="headerlink" href="#id4" title="永久链接至标题">#</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">小技巧</p>
+<p>更多内容参考 <a href="#id5"><span class="problematic" id="id6">tvm.runtime.Module.time_evaluator</span></a>。</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># 为单个度量运行模块的次数</span>
+<span class="n">rep</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># 测量的数量（由此得出 std dev）</span>
+<span class="n">timer</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">time_evaluator</span><span class="p">(</span><span class="s2">&quot;run&quot;</span><span class="p">,</span>
+                                <span class="n">ctxes</span><span class="p">,</span>
+                                <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">,</span>
+                                <span class="n">repeat</span><span class="o">=</span><span class="n">rep</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">TARGET</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;sim&quot;</span><span class="p">,</span> <span class="s2">&quot;tsim&quot;</span><span class="p">]:</span>
     <span class="n">simulator</span><span class="o">.</span><span class="n">clear_stats</span><span class="p">()</span>
@@ -1800,33 +1831,32 @@ One or more operators have not been tuned. Please tune your model for better per
     <span class="n">sim_stats</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">stats</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Execution statistics:&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">sim_stats</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="c1"># Since we execute the workload many times, we need to normalize stats</span>
-        <span class="c1"># Note that there is always one warm up run</span>
-        <span class="c1"># Therefore we divide the overall stats by (num * rep + 1)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">{:&lt;16}</span><span class="s2">: </span><span class="si">{:&gt;16}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="o">//</span> <span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="n">rep</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="c1"># 由于多次执行 workload，需要 normalize 统计数据。</span>
+        <span class="c1"># 注意，总是有一次 warm up 运行</span>
+        <span class="c1"># 因此，将整体统计数据除以 (num * rep + 1)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s2">&lt;16</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span> <span class="o">//</span> <span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="n">rep</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="si">:</span><span class="s2">&gt;16</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">tcost</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
     <span class="n">std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">tcost</span><span class="o">.</span><span class="n">results</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span>
     <span class="n">mean</span> <span class="o">=</span> <span class="n">tcost</span><span class="o">.</span><span class="n">mean</span> <span class="o">*</span> <span class="mi">1000</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Performed inference in </span><span class="si">%.2f</span><span class="s2">ms (std = </span><span class="si">%.2f</span><span class="s2">) for </span><span class="si">%d</span><span class="s2"> samples&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">BATCH</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average per sample inference time: </span><span class="si">%.2f</span><span class="s2">ms&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mean</span> <span class="o">/</span> <span class="n">env</span><span class="o">.</span><span class="n">BATCH</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Performed inference in </span><span class="si">{</span><span class="n">mean</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">ms (std = </span><span class="si">{</span><span class="n">std</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">) for </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">BATCH</span><span class="si">}</span><span class="s2"> samples&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average per sample inference time: </span><span class="si">{</span><span class="n">mean</span> <span class="o">/</span> <span class="n">env</span><span class="o">.</span><span class="n">BATCH</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">ms&quot;</span><span class="p">)</span>
 
-<span class="c1"># Get classification results</span>
-<span class="n">tvm_output</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tvm</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">env</span><span class="o">.</span><span class="n">BATCH</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;float32&quot;</span><span class="p">,</span> <span class="n">remote</span><span class="o">.</span><span class="n">cpu</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+<span class="c1"># 得到的分类结果</span>
+<span class="n">tvm_output</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tvm</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">BATCH</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;float32&quot;</span><span class="p">,</span> <span class="n">remote</span><span class="o">.</span><span class="n">cpu</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
 <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">BATCH</span><span class="p">):</span>
     <span class="n">top_categories</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">tvm_output</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="n">b</span><span class="p">])</span>
-    <span class="c1"># Report top-5 classification results</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{}</span><span class="s2"> prediction for sample </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+    <span class="c1"># 报告 top-5 分类结果</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2"> prediction for sample </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">#1:&quot;</span><span class="p">,</span> <span class="n">synset</span><span class="p">[</span><span class="n">top_categories</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">#2:&quot;</span><span class="p">,</span> <span class="n">synset</span><span class="p">[</span><span class="n">top_categories</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">#3:&quot;</span><span class="p">,</span> <span class="n">synset</span><span class="p">[</span><span class="n">top_categories</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]])</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">#4:&quot;</span><span class="p">,</span> <span class="n">synset</span><span class="p">[</span><span class="n">top_categories</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">]])</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">#5:&quot;</span><span class="p">,</span> <span class="n">synset</span><span class="p">[</span><span class="n">top_categories</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">]])</span>
-    <span class="c1"># This just checks that one of the 5 top categories</span>
-    <span class="c1"># is one variety of cat; this is by no means an accurate</span>
-    <span class="c1"># assessment of how quantization affects classification</span>
-    <span class="c1"># accuracy but is meant to catch changes to the</span>
-    <span class="c1"># quantization pass that would accuracy in the CI.</span>
+    <span class="c1"># 这只是检查 5 个顶级类别之一是一种猫；</span>
+    <span class="c1"># 这绝不是对量化如何影响分类 accuracy 的准确评估，</span>
+    <span class="c1"># 而是旨在捕捉在 CI 中会影响 accuracy 的量化传递的变化。</span>
     <span class="n">cat_detected</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">top_categories</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]:</span>
         <span class="k">if</span> <span class="s2">&quot;cat&quot;</span> <span class="ow">in</span> <span class="n">synset</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
@@ -1836,7 +1866,6 @@ One or more operators have not been tuned. Please tune your model for better per
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../../../_images/455e6dd2cf7b94c087c843a64433225a15f86cde9cee0e09e807c4c5bd96b76d.png" src="../../../../../_images/455e6dd2cf7b94c087c843a64433225a15f86cde9cee0e09e807c4c5bd96b76d.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution statistics:
 	inp_load_nbytes :          5549568
 	wgt_load_nbytes :         12763136
@@ -1856,6 +1885,7 @@ resnet18_v1 prediction for sample 0
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -1891,7 +1921,7 @@ resnet18_v1 prediction for sample 0
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-06, 09:08:20.<br/>
+    Last updated on 2022-06-08, 08:47:06.<br/>
 </p>
         </footer>
     </div>
