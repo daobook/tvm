@@ -25,7 +25,7 @@ import numpy as np
 
 def verify(mod, fname):
     # Get the function from the module
-    f = mod.get_function(fname)
+    f = mod[fname]
     # Use tvm.nd.array to convert numpy ndarray to tvm
     # NDArray type, so that function can be invoked normally
     N = 10
