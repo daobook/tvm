@@ -351,7 +351,7 @@
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../compile_models/from_mxnet.html">
-         Compile MXNet Models
+         编译 MXNet 模型
         </a>
        </li>
        <li class="toctree-l4">
@@ -1518,22 +1518,22 @@ title="Print to PDF"
 <p>假设你有 python 对象 <code class="docutils literal notranslate"><span class="pre">MyArray</span></code>。你需要做三件事</p>
 <ul class="simple">
 <li><p>添加 <code class="docutils literal notranslate"><span class="pre">_tvm_tcode</span></code> 字段到返回 <code class="docutils literal notranslate"><span class="pre">tvm.TypeCode.ARRAY_HANDLE</span></code> 的数组中</p></li>
-<li><p>支持在对象中使用 <code class="docutils literal notranslate"><span class="pre">_tvm_handle</span></code> 属性，该属性以 python 整数形式返回 DLTensor 的地址</p></li>
+<li><p>支持在对象中使用 <code class="docutils literal notranslate"><span class="pre">_tvm_handle</span></code> 属性，该属性以 Python 整数形式返回 <cite>DLTensor</cite> 的地址</p></li>
 <li><p>通过 <code class="docutils literal notranslate"><span class="pre">tvm.register_extension</span></code> 注册这个类</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example code</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 示例代码</span>
 <span class="kn">import</span> <span class="nn">tvm</span>
 
-<span class="k">class</span> <span class="nc">MyArray</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">MyArray</span><span class="p">:</span>
     <span class="n">_tvm_tcode</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">TypeCode</span><span class="o">.</span><span class="n">ARRAY_HANDLE</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_tvm_handle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">dltensor_addr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dltensor_addr</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">dltensor_addr</span>
+        <span class="c1"># 返回 dltensor 地址</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dltensor_addr</span><span class="p">()</span>
 
-<span class="c1"># You can put registration step in a separate file mypkg.tvm.py</span>
-<span class="c1"># and only optionally import that if you only want optional dependency.</span>
+<span class="c1"># 可以将注册步骤放在单独的文件 mypkg.tvm.py 中，</span>
+<span class="c1"># 如果只想要可选的依赖项，则只能导入该文件</span>
 <span class="n">tvm</span><span class="o">.</span><span class="n">register_extension</span><span class="p">(</span><span class="n">MyArray</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1572,7 +1572,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-08, 08:47:06.<br/>
+    Last updated on 2022-06-09, 15:46:33.<br/>
 </p>
         </footer>
     </div>

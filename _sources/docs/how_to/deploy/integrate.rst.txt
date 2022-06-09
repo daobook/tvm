@@ -40,22 +40,22 @@ PackedFunc 接受 `DLPack <https://github.com/dmlc/dlpack>`_  协议的 DLTensor
 假设你有 python 对象 ``MyArray``。你需要做三件事
 
 - 添加 ``_tvm_tcode`` 字段到返回 ``tvm.TypeCode.ARRAY_HANDLE`` 的数组中
-- 支持在对象中使用 ``_tvm_handle`` 属性，该属性以 python 整数形式返回 DLTensor 的地址
+- 支持在对象中使用 ``_tvm_handle`` 属性，该属性以 Python 整数形式返回 `DLTensor` 的地址
 - 通过 ``tvm.register_extension`` 注册这个类
 
 .. code:: python
 
-   # Example code
+   # 示例代码
    import tvm
 
-   class MyArray(object):
+   class MyArray:
        _tvm_tcode = tvm.TypeCode.ARRAY_HANDLE
 
        @property
        def _tvm_handle(self):
-           dltensor_addr = self.get_dltensor_addr()
-           return dltensor_addr
+           # 返回 dltensor 地址
+           return self.get_dltensor_addr()
 
-   # You can put registration step in a separate file mypkg.tvm.py
-   # and only optionally import that if you only want optional dependency.
+   # 可以将注册步骤放在单独的文件 mypkg.tvm.py 中，
+   # 如果只想要可选的依赖项，则只能导入该文件
    tvm.register_extension(MyArray)

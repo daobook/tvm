@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Compile MXNet Models &#8212; TVM  文档</title>
+    <title>编译 MXNet 模型 &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -351,7 +351,7 @@
        </li>
        <li class="toctree-l4 current active">
         <a class="current reference internal" href="#">
-         Compile MXNet Models
+         编译 MXNet 模型
         </a>
        </li>
        <li class="toctree-l4">
@@ -1382,7 +1382,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/docs/how_to/compile_models/from_mxnet.rst.txt"
+        <a href="../../../_sources/docs/how_to/compile_models/from_mxnet.ipynb.txt"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -1393,7 +1393,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.rst</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -1442,23 +1442,23 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#download-resnet18-model-from-gluon-model-zoo">
-   Download Resnet18 model from Gluon Model Zoo
+  <a class="reference internal nav-link" href="#gluon-resnet18">
+   从 gluon 模型动物园下载 Resnet18 模型
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#compile-the-graph">
-   Compile the Graph
+  <a class="reference internal nav-link" href="#graph">
+   编译 Graph
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#execute-the-portable-graph-on-tvm">
-   Execute the portable graph on TVM
+  <a class="reference internal nav-link" href="#tvm-graph">
+   在 TVM 上执行可移植 graph
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#use-mxnet-symbol-with-pretrained-weights">
-   Use MXNet symbol with pretrained weights
+  <a class="reference internal nav-link" href="#mxnet-symbol">
+   使用带有预训练权重的 MXNet symbol
   </a>
  </li>
 </ul>
@@ -1470,7 +1470,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Compile MXNet Models</h1>
+                <h1>编译 MXNet 模型</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1481,23 +1481,23 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#download-resnet18-model-from-gluon-model-zoo">
-   Download Resnet18 model from Gluon Model Zoo
+  <a class="reference internal nav-link" href="#gluon-resnet18">
+   从 gluon 模型动物园下载 Resnet18 模型
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#compile-the-graph">
-   Compile the Graph
+  <a class="reference internal nav-link" href="#graph">
+   编译 Graph
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#execute-the-portable-graph-on-tvm">
-   Execute the portable graph on TVM
+  <a class="reference internal nav-link" href="#tvm-graph">
+   在 TVM 上执行可移植 graph
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#use-mxnet-symbol-with-pretrained-weights">
-   Use MXNet symbol with pretrained weights
+  <a class="reference internal nav-link" href="#mxnet-symbol">
+   使用带有预训练权重的 MXNet symbol
   </a>
  </li>
 </ul>
@@ -1510,33 +1510,33 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="sphx-glr-download-link-note admonition note">
-<p class="admonition-title">备注</p>
-<p>Click <a class="reference external" href="https://tvm.apache.org/docs/how_to/compile_models/from_mxnet.html#sphx-glr-download-how-to-compile-models-from-mxnet-py" title="(在 tvm v0.9.dev0)"><span class="xref std std-ref">here</span></a>
-to download the full example code</p>
-</div>
-<section class="sphx-glr-example-title" id="compile-mxnet-models">
-<span id="tutorial-from-mxnet"></span><span id="sphx-glr-how-to-compile-models-from-mxnet-py"></span><h1>Compile MXNet Models<a class="headerlink" href="#compile-mxnet-models" title="永久链接至标题">#</a></h1>
-<p><strong>Author</strong>: <a class="reference external" href="https://zhreshold.github.io/">Joshua Z. Zhang</a>,             <a class="reference external" href="https://github.com/kazum">Kazutaka Morita</a></p>
-<p>This article is an introductory tutorial to deploy mxnet models with Relay.</p>
-<p>For us to begin with, mxnet module is required to be installed.</p>
-<p>A quick solution is</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="mxnet">
+<h1>编译 MXNet 模型<a class="headerlink" href="#mxnet" title="永久链接至标题">#</a></h1>
+<p><strong>原作者</strong>: <a class="reference external" href="https://zhreshold.github.io/">Joshua Z. Zhang</a>, <a class="reference external" href="https://github.com/kazum">Kazutaka Morita</a></p>
+<p>本文是使用 Relay 部署 mxnet 模型的介绍性教程。</p>
+<p>首先需要安装 <code class="docutils literal notranslate"><span class="pre">mxnet</span></code> 模块。</p>
+<p>快速的解决方案：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install mxnet --user
 </pre></div>
 </div>
-<p>or please refer to official installation guide.
-<a class="reference external" href="https://mxnet.apache.org/versions/master/install/index.html">https://mxnet.apache.org/versions/master/install/index.html</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># some standard imports</span>
+<p>或者请参考官方的<a class="reference external" href="https://mxnet.apache.org/versions/master/install/index.html">安装指南</a>。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 一些标准导入</span>
 <span class="kn">import</span> <span class="nn">mxnet</span> <span class="k">as</span> <span class="nn">mx</span>
 <span class="kn">import</span> <span class="nn">tvm</span>
-<span class="kn">import</span> <span class="nn">tvm.relay</span> <span class="k">as</span> <span class="nn">relay</span>
+<span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">relay</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
-<section id="download-resnet18-model-from-gluon-model-zoo">
-<h2>Download Resnet18 model from Gluon Model Zoo<a class="headerlink" href="#download-resnet18-model-from-gluon-model-zoo" title="永久链接至标题">#</a></h2>
-<p>In this section, we download a pretrained imagenet model and classify an image.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tvm.contrib.download</span> <span class="kn">import</span> <span class="n">download_testdata</span>
+</div>
+</div>
+<section id="gluon-resnet18">
+<h2>从 gluon 模型动物园下载 Resnet18 模型<a class="headerlink" href="#gluon-resnet18" title="永久链接至标题">#</a></h2>
+<p>在本节中，下载预训练好的 imagenet 模型并对图像进行分类。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tvm.contrib.download</span> <span class="kn">import</span> <span class="n">download_testdata</span>
 <span class="kn">from</span> <span class="nn">mxnet.gluon.model_zoo.vision</span> <span class="kn">import</span> <span class="n">get_model</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -1574,32 +1574,61 @@ to download the full example code</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="compile-the-graph">
-<h2>Compile the Graph<a class="headerlink" href="#compile-the-graph" title="永久链接至标题">#</a></h2>
-<p>Now we would like to port the Gluon model to a portable computational graph.
-It’s as easy as several lines.
-We support MXNet static graph(symbol) and HybridBlock in mxnet.gluon</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shape_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">}</span>
-<span class="n">mod</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">frontend</span><span class="o">.</span><span class="n">from_mxnet</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="n">shape_dict</span><span class="p">)</span>
-<span class="c1">## we want a probability so add a softmax operator</span>
-<span class="n">func</span> <span class="o">=</span> <span class="n">mod</span><span class="p">[</span><span class="s2">&quot;main&quot;</span><span class="p">]</span>
-<span class="n">func</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">relay</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">body</span><span class="p">),</span> <span class="kc">None</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="n">type_params</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/e05ed0dc9dd5afda5ac2adda6972701110e317b5c83d327a2e5a36be7f8683fa.png" src="../../../_images/e05ed0dc9dd5afda5ac2adda6972701110e317b5c83d327a2e5a36be7f8683fa.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x (1, 3, 224, 224)
 </pre></div>
 </div>
-<p>now compile the graph</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span>
+</div>
+</div>
+</section>
+<section id="graph">
+<h2>编译 Graph<a class="headerlink" href="#graph" title="永久链接至标题">#</a></h2>
+<p>想要将 Gluon 模型移植到便携式计算图上，仅仅需要几行代码。</p>
+<p>支持 MXNet static graph(symbol) 和 mxnet.gluon 中的 HybridBlock：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shape_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">}</span>
+<span class="n">mod</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">frontend</span><span class="o">.</span><span class="n">from_mxnet</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="n">shape_dict</span><span class="p">)</span>
+<span class="c1">## 需要获取概率，所以添加 softmax 算子</span>
+<span class="n">func</span> <span class="o">=</span> <span class="n">mod</span><span class="p">[</span><span class="s2">&quot;main&quot;</span><span class="p">]</span>
+<span class="n">func</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">params</span><span class="p">,</span>
+                      <span class="n">relay</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">body</span><span class="p">),</span>
+                      <span class="kc">None</span><span class="p">,</span>
+                      <span class="n">func</span><span class="o">.</span><span class="n">type_params</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>编译 graph：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span>
 <span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
     <span class="n">lib</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/workspace/anaconda3/envs/mx/lib/python3.10/site-packages/tvm/driver/build_module.py:263: UserWarning: target_host parameter is going to be deprecated. Please pass in tvm.target.Target(target, host=target_host) instead.
+  warnings.warn(
+One or more operators have not been tuned. Please tune your model for better performance. Use DEBUG logging level to see more details.
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="execute-the-portable-graph-on-tvm">
-<h2>Execute the portable graph on TVM<a class="headerlink" href="#execute-the-portable-graph-on-tvm" title="永久链接至标题">#</a></h2>
-<p>Now, we would like to reproduce the same forward computation using TVM.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">graph_executor</span>
+<section id="tvm-graph">
+<h2>在 TVM 上执行可移植 graph<a class="headerlink" href="#tvm-graph" title="永久链接至标题">#</a></h2>
+<p>现在，想使用 TVM 重新进行相同的 forward 计算。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">graph_executor</span>
 
-<span class="n">dev</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">cuda</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># tvm.cuda(0)</span>
+<span class="n">dev</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="n">dev_type</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+                 <span class="n">dev_id</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">dtype</span> <span class="o">=</span> <span class="s2">&quot;float32&quot;</span>
 <span class="n">m</span> <span class="o">=</span> <span class="n">graph_executor</span><span class="o">.</span><span class="n">GraphModule</span><span class="p">(</span><span class="n">lib</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">](</span><span class="n">dev</span><span class="p">))</span>
 <span class="c1"># set inputs</span>
@@ -1612,12 +1641,23 @@ We support MXNet static graph(symbol) and HybridBlock in mxnet.gluon</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TVM prediction top-1:&quot;</span><span class="p">,</span> <span class="n">top1</span><span class="p">,</span> <span class="n">synset</span><span class="p">[</span><span class="n">top1</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TVM prediction top-1: 282 tiger cat
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">Kernel</span> <span class="n">crashed</span> <span class="k">while</span> <span class="n">executing</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">the</span> <span class="n">current</span> <span class="n">cell</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">previous</span> <span class="n">cell</span><span class="o">.</span> <span class="n">Please</span> <span class="n">review</span> <span class="n">the</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">cell</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">to</span> <span class="n">identify</span> <span class="n">a</span> <span class="n">possible</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">failure</span><span class="o">.</span> <span class="n">Click</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;https://aka.ms/vscodeJupyterKernelCrash&#39;</span><span class="o">&gt;</span><span class="n">here</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">info</span><span class="o">.</span> <span class="n">View</span> <span class="n">Jupyter</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;command:jupyter.viewOutput&#39;</span><span class="o">&gt;</span><span class="n">log</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">further</span> <span class="n">details</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="use-mxnet-symbol-with-pretrained-weights">
-<h2>Use MXNet symbol with pretrained weights<a class="headerlink" href="#use-mxnet-symbol-with-pretrained-weights" title="永久链接至标题">#</a></h2>
-<p>MXNet often use <cite>arg_params</cite> and <cite>aux_params</cite> to store network parameters
-separately, here we show how to use these weights with existing API</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">block2symbol</span><span class="p">(</span><span class="n">block</span><span class="p">):</span>
+<section id="mxnet-symbol">
+<h2>使用带有预训练权重的 MXNet symbol<a class="headerlink" href="#mxnet-symbol" title="永久链接至标题">#</a></h2>
+<p>MXNet 经常使用 <code class="docutils literal notranslate"><span class="pre">arg_params</span></code> 和 <code class="docutils literal notranslate"><span class="pre">aux_params</span></code> 来分别存储网络参数，这里将展示如何在现有的 API 中使用这些权重。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">block2symbol</span><span class="p">(</span><span class="n">block</span><span class="p">):</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">sym</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
     <span class="n">sym</span> <span class="o">=</span> <span class="n">block</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="n">args</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1628,17 +1668,27 @@ separately, here we show how to use these weights with existing API</p>
 
 
 <span class="n">mx_sym</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">auxs</span> <span class="o">=</span> <span class="n">block2symbol</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
-<span class="c1"># usually we would save/load it as checkpoint</span>
+<span class="c1"># 通常我们会保存/加载它作为检查点</span>
 <span class="n">mx</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">save_checkpoint</span><span class="p">(</span><span class="s2">&quot;resnet18_v1&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mx_sym</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">auxs</span><span class="p">)</span>
 <span class="c1"># there are &#39;resnet18_v1-0000.params&#39; and &#39;resnet18_v1-symbol.json&#39; on disk</span>
 </pre></div>
 </div>
-<p>for a normal mxnet model, we start from here</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mx_sym</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">auxs</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">load_checkpoint</span><span class="p">(</span><span class="s2">&quot;resnet18_v1&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="c1"># now we use the same API to get Relay computation graph</span>
-<span class="n">mod</span><span class="p">,</span> <span class="n">relay_params</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">frontend</span><span class="o">.</span><span class="n">from_mxnet</span><span class="p">(</span><span class="n">mx_sym</span><span class="p">,</span> <span class="n">shape_dict</span><span class="p">,</span> <span class="n">arg_params</span><span class="o">=</span><span class="n">args</span><span class="p">,</span> <span class="n">aux_params</span><span class="o">=</span><span class="n">auxs</span><span class="p">)</span>
-<span class="c1"># repeat the same steps to run this model using TVM</span>
+</div>
+</div>
+<p>在磁盘上生成 <code class="docutils literal notranslate"><span class="pre">'resnet18_v1-0000.params'</span></code> 和 <code class="docutils literal notranslate"><span class="pre">'resnet18_v1-symbol.json'</span></code>。</p>
+<p>对于普通的 mxnet 模型，从这里开始：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mx_sym</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">auxs</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">load_checkpoint</span><span class="p">(</span><span class="s2">&quot;resnet18_v1&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># 现在我们使用相同的 API 来获得 Relay 计算图</span>
+<span class="n">mod</span><span class="p">,</span> <span class="n">relay_params</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">frontend</span><span class="o">.</span><span class="n">from_mxnet</span><span class="p">(</span><span class="n">mx_sym</span><span class="p">,</span>
+                                              <span class="n">shape_dict</span><span class="p">,</span>
+                                              <span class="n">arg_params</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+                                              <span class="n">aux_params</span><span class="o">=</span><span class="n">auxs</span><span class="p">)</span>
+<span class="c1"># 重复相同的步骤来使用 TVM 运行这个模型</span>
 </pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1675,7 +1725,7 @@ separately, here we show how to use these weights with existing API</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-08, 08:47:06.<br/>
+    Last updated on 2022-06-09, 15:46:33.<br/>
 </p>
         </footer>
     </div>

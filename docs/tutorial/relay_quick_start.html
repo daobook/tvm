@@ -351,7 +351,7 @@
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/compile_models/from_mxnet.html">
-         Compile MXNet Models
+         编译 MXNet 模型
         </a>
        </li>
        <li class="toctree-l4">
@@ -1537,9 +1537,8 @@ title="Print to PDF"
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">relay</span>
 <span class="kn">from</span> <span class="nn">tvm.relay</span> <span class="kn">import</span> <span class="n">testing</span>
 <span class="kn">import</span> <span class="nn">tvm</span>
-<span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">te</span>
+<span class="c1"># from tvm import te</span>
 <span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">graph_executor</span>
-<span class="kn">import</span> <span class="nn">tvm.testing</span>
 </pre></div>
 </div>
 </div>
@@ -1557,9 +1556,10 @@ title="Print to PDF"
 <span class="n">data_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,)</span> <span class="o">+</span> <span class="n">image_shape</span>
 <span class="n">out_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_class</span><span class="p">)</span>
 
-<span class="n">mod</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">resnet</span><span class="o">.</span><span class="n">get_workload</span><span class="p">(</span>
-    <span class="n">num_layers</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">image_shape</span><span class="o">=</span><span class="n">image_shape</span>
-<span class="p">)</span>
+<span class="n">mod</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">testing</span><span class="o">.</span><span class="n">resnet</span><span class="o">.</span><span class="n">get_workload</span><span class="p">(</span><span class="n">num_layers</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>
+                                          <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+                                          <span class="n">image_shape</span><span class="o">=</span><span class="n">image_shape</span>
+                                          <span class="p">)</span>
 
 <span class="c1"># # set show_meta_data=True if you want to show meta data</span>
 <span class="c1"># print(mod.astext(show_meta_data=False))</span>
@@ -1568,99 +1568,99 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fn (%data: Tensor[(1, 3, 224, 224), float32], %bn_data_gamma: Tensor[(3), float32], %bn_data_beta: Tensor[(3), float32], %bn_data_moving_mean: Tensor[(3), float32], %bn_data_moving_var: Tensor[(3), float32], %conv0_weight: Tensor[(64, 3, 7, 7), float32], %bn0_gamma: Tensor[(64), float32], %bn0_beta: Tensor[(64), float32], %bn0_moving_mean: Tensor[(64), float32], %bn0_moving_var: Tensor[(64), float32], %stage1_unit1_bn1_gamma: Tensor[(64), float32], %stage1_unit1_bn1_beta: Tensor[(64), float32], %stage1_unit1_bn1_moving_mean: Tensor[(64), float32], %stage1_unit1_bn1_moving_var: Tensor[(64), float32], %stage1_unit1_conv1_weight: Tensor[(64, 64, 3, 3), float32], %stage1_unit1_bn2_gamma: Tensor[(64), float32], %stage1_unit1_bn2_beta: Tensor[(64), float32], %stage1_unit1_bn2_moving_mean: Tensor[(64), float32], %stage1_unit1_bn2_moving_var: Tensor[(64), float32], %stage1_unit1_conv2_weight: Tensor[(64, 64, 3, 3), float32], %stage1_unit1_sc_weight: Tensor[(64, 64, 1, 1), float32], %stage1_unit2_bn1_gamma: Tensor[(64), float32], %stage1_unit2_bn1_beta: Tensor[(64), float32], %stage1_unit2_bn1_moving_mean: Tensor[(64), float32], %stage1_unit2_bn1_moving_var: Tensor[(64), float32], %stage1_unit2_conv1_weight: Tensor[(64, 64, 3, 3), float32], %stage1_unit2_bn2_gamma: Tensor[(64), float32], %stage1_unit2_bn2_beta: Tensor[(64), float32], %stage1_unit2_bn2_moving_mean: Tensor[(64), float32], %stage1_unit2_bn2_moving_var: Tensor[(64), float32], %stage1_unit2_conv2_weight: Tensor[(64, 64, 3, 3), float32], %stage2_unit1_bn1_gamma: Tensor[(64), float32], %stage2_unit1_bn1_beta: Tensor[(64), float32], %stage2_unit1_bn1_moving_mean: Tensor[(64), float32], %stage2_unit1_bn1_moving_var: Tensor[(64), float32], %stage2_unit1_conv1_weight: Tensor[(128, 64, 3, 3), float32], %stage2_unit1_bn2_gamma: Tensor[(128), float32], %stage2_unit1_bn2_beta: Tensor[(128), float32], %stage2_unit1_bn2_moving_mean: Tensor[(128), float32], %stage2_unit1_bn2_moving_var: Tensor[(128), float32], %stage2_unit1_conv2_weight: Tensor[(128, 128, 3, 3), float32], %stage2_unit1_sc_weight: Tensor[(128, 64, 1, 1), float32], %stage2_unit2_bn1_gamma: Tensor[(128), float32], %stage2_unit2_bn1_beta: Tensor[(128), float32], %stage2_unit2_bn1_moving_mean: Tensor[(128), float32], %stage2_unit2_bn1_moving_var: Tensor[(128), float32], %stage2_unit2_conv1_weight: Tensor[(128, 128, 3, 3), float32], %stage2_unit2_bn2_gamma: Tensor[(128), float32], %stage2_unit2_bn2_beta: Tensor[(128), float32], %stage2_unit2_bn2_moving_mean: Tensor[(128), float32], %stage2_unit2_bn2_moving_var: Tensor[(128), float32], %stage2_unit2_conv2_weight: Tensor[(128, 128, 3, 3), float32], %stage3_unit1_bn1_gamma: Tensor[(128), float32], %stage3_unit1_bn1_beta: Tensor[(128), float32], %stage3_unit1_bn1_moving_mean: Tensor[(128), float32], %stage3_unit1_bn1_moving_var: Tensor[(128), float32], %stage3_unit1_conv1_weight: Tensor[(256, 128, 3, 3), float32], %stage3_unit1_bn2_gamma: Tensor[(256), float32], %stage3_unit1_bn2_beta: Tensor[(256), float32], %stage3_unit1_bn2_moving_mean: Tensor[(256), float32], %stage3_unit1_bn2_moving_var: Tensor[(256), float32], %stage3_unit1_conv2_weight: Tensor[(256, 256, 3, 3), float32], %stage3_unit1_sc_weight: Tensor[(256, 128, 1, 1), float32], %stage3_unit2_bn1_gamma: Tensor[(256), float32], %stage3_unit2_bn1_beta: Tensor[(256), float32], %stage3_unit2_bn1_moving_mean: Tensor[(256), float32], %stage3_unit2_bn1_moving_var: Tensor[(256), float32], %stage3_unit2_conv1_weight: Tensor[(256, 256, 3, 3), float32], %stage3_unit2_bn2_gamma: Tensor[(256), float32], %stage3_unit2_bn2_beta: Tensor[(256), float32], %stage3_unit2_bn2_moving_mean: Tensor[(256), float32], %stage3_unit2_bn2_moving_var: Tensor[(256), float32], %stage3_unit2_conv2_weight: Tensor[(256, 256, 3, 3), float32], %stage4_unit1_bn1_gamma: Tensor[(256), float32], %stage4_unit1_bn1_beta: Tensor[(256), float32], %stage4_unit1_bn1_moving_mean: Tensor[(256), float32], %stage4_unit1_bn1_moving_var: Tensor[(256), float32], %stage4_unit1_conv1_weight: Tensor[(512, 256, 3, 3), float32], %stage4_unit1_bn2_gamma: Tensor[(512), float32], %stage4_unit1_bn2_beta: Tensor[(512), float32], %stage4_unit1_bn2_moving_mean: Tensor[(512), float32], %stage4_unit1_bn2_moving_var: Tensor[(512), float32], %stage4_unit1_conv2_weight: Tensor[(512, 512, 3, 3), float32], %stage4_unit1_sc_weight: Tensor[(512, 256, 1, 1), float32], %stage4_unit2_bn1_gamma: Tensor[(512), float32], %stage4_unit2_bn1_beta: Tensor[(512), float32], %stage4_unit2_bn1_moving_mean: Tensor[(512), float32], %stage4_unit2_bn1_moving_var: Tensor[(512), float32], %stage4_unit2_conv1_weight: Tensor[(512, 512, 3, 3), float32], %stage4_unit2_bn2_gamma: Tensor[(512), float32], %stage4_unit2_bn2_beta: Tensor[(512), float32], %stage4_unit2_bn2_moving_mean: Tensor[(512), float32], %stage4_unit2_bn2_moving_var: Tensor[(512), float32], %stage4_unit2_conv2_weight: Tensor[(512, 512, 3, 3), float32], %bn1_gamma: Tensor[(512), float32], %bn1_beta: Tensor[(512), float32], %bn1_moving_mean: Tensor[(512), float32], %bn1_moving_var: Tensor[(512), float32], %fc1_weight: Tensor[(1000, 512), float32], %fc1_bias: Tensor[(1000), float32]) -&gt; Tensor[(1, 1000), float32] {
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fn (%data: Tensor[(1, 3, 224, 224), float32] /* ty=Tensor[(1, 3, 224, 224), float32] */, %bn_data_gamma: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %bn_data_beta: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %bn_data_moving_mean: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %bn_data_moving_var: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %conv0_weight: Tensor[(64, 3, 7, 7), float32] /* ty=Tensor[(64, 3, 7, 7), float32] */, %bn0_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %bn0_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %bn0_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %bn0_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_conv1_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage1_unit1_bn2_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn2_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn2_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn2_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_conv2_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage1_unit1_sc_weight: Tensor[(64, 64, 1, 1), float32] /* ty=Tensor[(64, 64, 1, 1), float32] */, %stage1_unit2_bn1_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn1_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn1_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn1_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_conv1_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage1_unit2_bn2_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn2_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn2_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn2_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_conv2_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage2_unit1_bn1_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_bn1_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_bn1_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_bn1_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_conv1_weight: Tensor[(128, 64, 3, 3), float32] /* ty=Tensor[(128, 64, 3, 3), float32] */, %stage2_unit1_bn2_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_bn2_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_bn2_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_bn2_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_conv2_weight: Tensor[(128, 128, 3, 3), float32] /* ty=Tensor[(128, 128, 3, 3), float32] */, %stage2_unit1_sc_weight: Tensor[(128, 64, 1, 1), float32] /* ty=Tensor[(128, 64, 1, 1), float32] */, %stage2_unit2_bn1_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn1_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn1_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn1_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_conv1_weight: Tensor[(128, 128, 3, 3), float32] /* ty=Tensor[(128, 128, 3, 3), float32] */, %stage2_unit2_bn2_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn2_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn2_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn2_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_conv2_weight: Tensor[(128, 128, 3, 3), float32] /* ty=Tensor[(128, 128, 3, 3), float32] */, %stage3_unit1_bn1_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_bn1_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_bn1_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_bn1_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_conv1_weight: Tensor[(256, 128, 3, 3), float32] /* ty=Tensor[(256, 128, 3, 3), float32] */, %stage3_unit1_bn2_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_bn2_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_bn2_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_bn2_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_conv2_weight: Tensor[(256, 256, 3, 3), float32] /* ty=Tensor[(256, 256, 3, 3), float32] */, %stage3_unit1_sc_weight: Tensor[(256, 128, 1, 1), float32] /* ty=Tensor[(256, 128, 1, 1), float32] */, %stage3_unit2_bn1_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn1_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn1_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn1_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_conv1_weight: Tensor[(256, 256, 3, 3), float32] /* ty=Tensor[(256, 256, 3, 3), float32] */, %stage3_unit2_bn2_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn2_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn2_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn2_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_conv2_weight: Tensor[(256, 256, 3, 3), float32] /* ty=Tensor[(256, 256, 3, 3), float32] */, %stage4_unit1_bn1_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_bn1_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_bn1_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_bn1_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_conv1_weight: Tensor[(512, 256, 3, 3), float32] /* ty=Tensor[(512, 256, 3, 3), float32] */, %stage4_unit1_bn2_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_bn2_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_bn2_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_bn2_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_conv2_weight: Tensor[(512, 512, 3, 3), float32] /* ty=Tensor[(512, 512, 3, 3), float32] */, %stage4_unit1_sc_weight: Tensor[(512, 256, 1, 1), float32] /* ty=Tensor[(512, 256, 1, 1), float32] */, %stage4_unit2_bn1_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn1_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn1_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn1_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_conv1_weight: Tensor[(512, 512, 3, 3), float32] /* ty=Tensor[(512, 512, 3, 3), float32] */, %stage4_unit2_bn2_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn2_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn2_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn2_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_conv2_weight: Tensor[(512, 512, 3, 3), float32] /* ty=Tensor[(512, 512, 3, 3), float32] */, %bn1_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %bn1_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %bn1_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %bn1_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %fc1_weight: Tensor[(1000, 512), float32] /* ty=Tensor[(1000, 512), float32] */, %fc1_bias: Tensor[(1000), float32] /* ty=Tensor[(1000), float32] */) -&gt; Tensor[(1, 1000), float32] {
   %0 = nn.batch_norm(%data, %bn_data_gamma, %bn_data_beta, %bn_data_moving_mean, %bn_data_moving_var, epsilon=2e-05f, scale=False) /* ty=(Tensor[(1, 3, 224, 224), float32], Tensor[(3), float32], Tensor[(3), float32]) */;
-  %1 = %0.0;
+  %1 = %0.0 /* ty=Tensor[(1, 3, 224, 224), float32] */;
   %2 = nn.conv2d(%1, %conv0_weight, strides=[2, 2], padding=[3, 3, 3, 3], channels=64, kernel_size=[7, 7]) /* ty=Tensor[(1, 64, 112, 112), float32] */;
   %3 = nn.batch_norm(%2, %bn0_gamma, %bn0_beta, %bn0_moving_mean, %bn0_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 64, 112, 112), float32], Tensor[(64), float32], Tensor[(64), float32]) */;
-  %4 = %3.0;
+  %4 = %3.0 /* ty=Tensor[(1, 64, 112, 112), float32] */;
   %5 = nn.relu(%4) /* ty=Tensor[(1, 64, 112, 112), float32] */;
   %6 = nn.max_pool2d(%5, pool_size=[3, 3], strides=[2, 2], padding=[1, 1, 1, 1]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %7 = nn.batch_norm(%6, %stage1_unit1_bn1_gamma, %stage1_unit1_bn1_beta, %stage1_unit1_bn1_moving_mean, %stage1_unit1_bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 64, 56, 56), float32], Tensor[(64), float32], Tensor[(64), float32]) */;
-  %8 = %7.0;
+  %8 = %7.0 /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %9 = nn.relu(%8) /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %10 = nn.conv2d(%9, %stage1_unit1_conv1_weight, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %11 = nn.batch_norm(%10, %stage1_unit1_bn2_gamma, %stage1_unit1_bn2_beta, %stage1_unit1_bn2_moving_mean, %stage1_unit1_bn2_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 64, 56, 56), float32], Tensor[(64), float32], Tensor[(64), float32]) */;
-  %12 = %11.0;
+  %12 = %11.0 /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %13 = nn.relu(%12) /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %14 = nn.conv2d(%13, %stage1_unit1_conv2_weight, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %15 = nn.conv2d(%9, %stage1_unit1_sc_weight, padding=[0, 0, 0, 0], channels=64, kernel_size=[1, 1]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %16 = add(%14, %15) /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %17 = nn.batch_norm(%16, %stage1_unit2_bn1_gamma, %stage1_unit2_bn1_beta, %stage1_unit2_bn1_moving_mean, %stage1_unit2_bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 64, 56, 56), float32], Tensor[(64), float32], Tensor[(64), float32]) */;
-  %18 = %17.0;
+  %18 = %17.0 /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %19 = nn.relu(%18) /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %20 = nn.conv2d(%19, %stage1_unit2_conv1_weight, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %21 = nn.batch_norm(%20, %stage1_unit2_bn2_gamma, %stage1_unit2_bn2_beta, %stage1_unit2_bn2_moving_mean, %stage1_unit2_bn2_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 64, 56, 56), float32], Tensor[(64), float32], Tensor[(64), float32]) */;
-  %22 = %21.0;
+  %22 = %21.0 /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %23 = nn.relu(%22) /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %24 = nn.conv2d(%23, %stage1_unit2_conv2_weight, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %25 = add(%24, %16) /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %26 = nn.batch_norm(%25, %stage2_unit1_bn1_gamma, %stage2_unit1_bn1_beta, %stage2_unit1_bn1_moving_mean, %stage2_unit1_bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 64, 56, 56), float32], Tensor[(64), float32], Tensor[(64), float32]) */;
-  %27 = %26.0;
+  %27 = %26.0 /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %28 = nn.relu(%27) /* ty=Tensor[(1, 64, 56, 56), float32] */;
   %29 = nn.conv2d(%28, %stage2_unit1_conv1_weight, strides=[2, 2], padding=[1, 1, 1, 1], channels=128, kernel_size=[3, 3]) /* ty=Tensor[(1, 128, 28, 28), float32] */;
   %30 = nn.batch_norm(%29, %stage2_unit1_bn2_gamma, %stage2_unit1_bn2_beta, %stage2_unit1_bn2_moving_mean, %stage2_unit1_bn2_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 128, 28, 28), float32], Tensor[(128), float32], Tensor[(128), float32]) */;
-  %31 = %30.0;
+  %31 = %30.0 /* ty=Tensor[(1, 128, 28, 28), float32] */;
   %32 = nn.relu(%31) /* ty=Tensor[(1, 128, 28, 28), float32] */;
   %33 = nn.conv2d(%32, %stage2_unit1_conv2_weight, padding=[1, 1, 1, 1], channels=128, kernel_size=[3, 3]) /* ty=Tensor[(1, 128, 28, 28), float32] */;
   %34 = nn.conv2d(%28, %stage2_unit1_sc_weight, strides=[2, 2], padding=[0, 0, 0, 0], channels=128, kernel_size=[1, 1]) /* ty=Tensor[(1, 128, 28, 28), float32] */;
   %35 = add(%33, %34) /* ty=Tensor[(1, 128, 28, 28), float32] */;
   %36 = nn.batch_norm(%35, %stage2_unit2_bn1_gamma, %stage2_unit2_bn1_beta, %stage2_unit2_bn1_moving_mean, %stage2_unit2_bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 128, 28, 28), float32], Tensor[(128), float32], Tensor[(128), float32]) */;
-  %37 = %36.0;
+  %37 = %36.0 /* ty=Tensor[(1, 128, 28, 28), float32] */;
   %38 = nn.relu(%37) /* ty=Tensor[(1, 128, 28, 28), float32] */;
   %39 = nn.conv2d(%38, %stage2_unit2_conv1_weight, padding=[1, 1, 1, 1], channels=128, kernel_size=[3, 3]) /* ty=Tensor[(1, 128, 28, 28), float32] */;
   %40 = nn.batch_norm(%39, %stage2_unit2_bn2_gamma, %stage2_unit2_bn2_beta, %stage2_unit2_bn2_moving_mean, %stage2_unit2_bn2_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 128, 28, 28), float32], Tensor[(128), float32], Tensor[(128), float32]) */;
-  %41 = %40.0;
+  %41 = %40.0 /* ty=Tensor[(1, 128, 28, 28), float32] */;
   %42 = nn.relu(%41) /* ty=Tensor[(1, 128, 28, 28), float32] */;
   %43 = nn.conv2d(%42, %stage2_unit2_conv2_weight, padding=[1, 1, 1, 1], channels=128, kernel_size=[3, 3]) /* ty=Tensor[(1, 128, 28, 28), float32] */;
   %44 = add(%43, %35) /* ty=Tensor[(1, 128, 28, 28), float32] */;
   %45 = nn.batch_norm(%44, %stage3_unit1_bn1_gamma, %stage3_unit1_bn1_beta, %stage3_unit1_bn1_moving_mean, %stage3_unit1_bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 128, 28, 28), float32], Tensor[(128), float32], Tensor[(128), float32]) */;
-  %46 = %45.0;
+  %46 = %45.0 /* ty=Tensor[(1, 128, 28, 28), float32] */;
   %47 = nn.relu(%46) /* ty=Tensor[(1, 128, 28, 28), float32] */;
   %48 = nn.conv2d(%47, %stage3_unit1_conv1_weight, strides=[2, 2], padding=[1, 1, 1, 1], channels=256, kernel_size=[3, 3]) /* ty=Tensor[(1, 256, 14, 14), float32] */;
   %49 = nn.batch_norm(%48, %stage3_unit1_bn2_gamma, %stage3_unit1_bn2_beta, %stage3_unit1_bn2_moving_mean, %stage3_unit1_bn2_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 256, 14, 14), float32], Tensor[(256), float32], Tensor[(256), float32]) */;
-  %50 = %49.0;
+  %50 = %49.0 /* ty=Tensor[(1, 256, 14, 14), float32] */;
   %51 = nn.relu(%50) /* ty=Tensor[(1, 256, 14, 14), float32] */;
   %52 = nn.conv2d(%51, %stage3_unit1_conv2_weight, padding=[1, 1, 1, 1], channels=256, kernel_size=[3, 3]) /* ty=Tensor[(1, 256, 14, 14), float32] */;
   %53 = nn.conv2d(%47, %stage3_unit1_sc_weight, strides=[2, 2], padding=[0, 0, 0, 0], channels=256, kernel_size=[1, 1]) /* ty=Tensor[(1, 256, 14, 14), float32] */;
   %54 = add(%52, %53) /* ty=Tensor[(1, 256, 14, 14), float32] */;
   %55 = nn.batch_norm(%54, %stage3_unit2_bn1_gamma, %stage3_unit2_bn1_beta, %stage3_unit2_bn1_moving_mean, %stage3_unit2_bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 256, 14, 14), float32], Tensor[(256), float32], Tensor[(256), float32]) */;
-  %56 = %55.0;
+  %56 = %55.0 /* ty=Tensor[(1, 256, 14, 14), float32] */;
   %57 = nn.relu(%56) /* ty=Tensor[(1, 256, 14, 14), float32] */;
   %58 = nn.conv2d(%57, %stage3_unit2_conv1_weight, padding=[1, 1, 1, 1], channels=256, kernel_size=[3, 3]) /* ty=Tensor[(1, 256, 14, 14), float32] */;
   %59 = nn.batch_norm(%58, %stage3_unit2_bn2_gamma, %stage3_unit2_bn2_beta, %stage3_unit2_bn2_moving_mean, %stage3_unit2_bn2_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 256, 14, 14), float32], Tensor[(256), float32], Tensor[(256), float32]) */;
-  %60 = %59.0;
+  %60 = %59.0 /* ty=Tensor[(1, 256, 14, 14), float32] */;
   %61 = nn.relu(%60) /* ty=Tensor[(1, 256, 14, 14), float32] */;
   %62 = nn.conv2d(%61, %stage3_unit2_conv2_weight, padding=[1, 1, 1, 1], channels=256, kernel_size=[3, 3]) /* ty=Tensor[(1, 256, 14, 14), float32] */;
   %63 = add(%62, %54) /* ty=Tensor[(1, 256, 14, 14), float32] */;
   %64 = nn.batch_norm(%63, %stage4_unit1_bn1_gamma, %stage4_unit1_bn1_beta, %stage4_unit1_bn1_moving_mean, %stage4_unit1_bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 256, 14, 14), float32], Tensor[(256), float32], Tensor[(256), float32]) */;
-  %65 = %64.0;
+  %65 = %64.0 /* ty=Tensor[(1, 256, 14, 14), float32] */;
   %66 = nn.relu(%65) /* ty=Tensor[(1, 256, 14, 14), float32] */;
   %67 = nn.conv2d(%66, %stage4_unit1_conv1_weight, strides=[2, 2], padding=[1, 1, 1, 1], channels=512, kernel_size=[3, 3]) /* ty=Tensor[(1, 512, 7, 7), float32] */;
   %68 = nn.batch_norm(%67, %stage4_unit1_bn2_gamma, %stage4_unit1_bn2_beta, %stage4_unit1_bn2_moving_mean, %stage4_unit1_bn2_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 512, 7, 7), float32], Tensor[(512), float32], Tensor[(512), float32]) */;
-  %69 = %68.0;
+  %69 = %68.0 /* ty=Tensor[(1, 512, 7, 7), float32] */;
   %70 = nn.relu(%69) /* ty=Tensor[(1, 512, 7, 7), float32] */;
   %71 = nn.conv2d(%70, %stage4_unit1_conv2_weight, padding=[1, 1, 1, 1], channels=512, kernel_size=[3, 3]) /* ty=Tensor[(1, 512, 7, 7), float32] */;
   %72 = nn.conv2d(%66, %stage4_unit1_sc_weight, strides=[2, 2], padding=[0, 0, 0, 0], channels=512, kernel_size=[1, 1]) /* ty=Tensor[(1, 512, 7, 7), float32] */;
   %73 = add(%71, %72) /* ty=Tensor[(1, 512, 7, 7), float32] */;
   %74 = nn.batch_norm(%73, %stage4_unit2_bn1_gamma, %stage4_unit2_bn1_beta, %stage4_unit2_bn1_moving_mean, %stage4_unit2_bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 512, 7, 7), float32], Tensor[(512), float32], Tensor[(512), float32]) */;
-  %75 = %74.0;
+  %75 = %74.0 /* ty=Tensor[(1, 512, 7, 7), float32] */;
   %76 = nn.relu(%75) /* ty=Tensor[(1, 512, 7, 7), float32] */;
   %77 = nn.conv2d(%76, %stage4_unit2_conv1_weight, padding=[1, 1, 1, 1], channels=512, kernel_size=[3, 3]) /* ty=Tensor[(1, 512, 7, 7), float32] */;
   %78 = nn.batch_norm(%77, %stage4_unit2_bn2_gamma, %stage4_unit2_bn2_beta, %stage4_unit2_bn2_moving_mean, %stage4_unit2_bn2_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 512, 7, 7), float32], Tensor[(512), float32], Tensor[(512), float32]) */;
-  %79 = %78.0;
+  %79 = %78.0 /* ty=Tensor[(1, 512, 7, 7), float32] */;
   %80 = nn.relu(%79) /* ty=Tensor[(1, 512, 7, 7), float32] */;
   %81 = nn.conv2d(%80, %stage4_unit2_conv2_weight, padding=[1, 1, 1, 1], channels=512, kernel_size=[3, 3]) /* ty=Tensor[(1, 512, 7, 7), float32] */;
   %82 = add(%81, %73) /* ty=Tensor[(1, 512, 7, 7), float32] */;
   %83 = nn.batch_norm(%82, %bn1_gamma, %bn1_beta, %bn1_moving_mean, %bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 512, 7, 7), float32], Tensor[(512), float32], Tensor[(512), float32]) */;
-  %84 = %83.0;
+  %84 = %83.0 /* ty=Tensor[(1, 512, 7, 7), float32] */;
   %85 = nn.relu(%84) /* ty=Tensor[(1, 512, 7, 7), float32] */;
   %86 = nn.global_avg_pool2d(%85) /* ty=Tensor[(1, 512, 1, 1), float32] */;
   %87 = nn.batch_flatten(%86) /* ty=Tensor[(1, 512), float32] */;
   %88 = nn.dense(%87, %fc1_weight, units=1000) /* ty=Tensor[(1, 1000), float32] */;
   %89 = nn.bias_add(%88, %fc1_bias, axis=-1) /* ty=Tensor[(1, 1000), float32] */;
   nn.softmax(%89) /* ty=Tensor[(1, 1000), float32] */
-}
+} /* ty=fn (Tensor[(1, 3, 224, 224), float32], Tensor[(3), float32], Tensor[(3), float32], Tensor[(3), float32], Tensor[(3), float32], Tensor[(64, 3, 7, 7), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64, 64, 3, 3), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64, 64, 3, 3), float32], Tensor[(64, 64, 1, 1), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64, 64, 3, 3), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64, 64, 3, 3), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(128, 64, 3, 3), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128, 128, 3, 3), float32], Tensor[(128, 64, 1, 1), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128, 128, 3, 3), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128, 128, 3, 3), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(256, 128, 3, 3), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256, 256, 3, 3), float32], Tensor[(256, 128, 1, 1), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256, 256, 3, 3), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256, 256, 3, 3), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(512, 256, 3, 3), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512, 512, 3, 3), float32], Tensor[(512, 256, 1, 1), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512, 512, 3, 3), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512, 512, 3, 3), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(1000, 512), float32], Tensor[(1000), float32]) -&gt; Tensor[(1, 1000), float32] */
 </pre></div>
 </div>
 </div>
@@ -1668,9 +1668,9 @@ title="Print to PDF"
 </section>
 <section id="id2">
 <h2>编译<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
-<p>下一步是使用 Relay/TVM 管道对模型进行编译。用户可以指定编译的优化级别。目前这个值可以是 0 到 3。优化 passes 包括算子融合（operator fusion）、预计算（pre-computation）、布局变换（layout transformation）等。</p>
-<p><code class="xref py py-func docutils literal notranslate"><span class="pre">relay.build()</span></code> 返回三个部分：json 格式的执行图，TVM 模块库中专门为这个图在目标硬件上编译的函数，以及模型的参数 blobs。在编译过程中，Relay 做了图层面的优化，而 TVM 做了张量层面的优化，从而产生了一个优化的运行模块为模型服务。</p>
-<p>我们将首先为 Nvidia GPU 进行编译。在幕后， <code class="xref py py-func docutils literal notranslate"><span class="pre">relay.build()</span></code> 首先做了一些图层面的优化，例如修剪（pruning）、融合（fusing）等，然后将运算符（即优化后的图的节点）注册到 TVM 实现中，生成 <code class="docutils literal notranslate"><span class="pre">tvm.module</span></code>。为了生成模块库，TVM 将首先把高层 IR 转移到指定目标后端的低层内在 IR 中，在这个例子中是 CUDA。然后机器代码将被生成为模块库。</p>
+<p>下一步是使用 Relay/TVM 管道对模型进行编译。用户可以指定编译的优化级别（<code class="docutils literal notranslate"><span class="pre">opt_level</span></code>）。目前这个值可以是 0 到 3。优化 passes 包括算子融合（operator fusion）、预计算（pre-computation）、布局变换（layout transformation）等。</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">relay.build()</span></code> 返回三个部分：json 格式的执行图，TVM 模块库中专门为这个图在目标硬件上编译的函数，以及模型的参数 blobs。在编译过程中，Relay 做了图层面的优化，而 TVM 做了张量层面的优化，从而产生了优化的运行模块为模型服务。</p>
+<p>首先为 Nvidia GPU 进行编译。在幕后， <code class="xref py py-func docutils literal notranslate"><span class="pre">relay.build()</span></code> 首先做了一些图层面的优化，例如修剪（pruning）、融合（fusing）等，然后将算子（即优化后的图的节点）注册到 TVM 实现中，生成 <code class="docutils literal notranslate"><span class="pre">tvm.module</span></code>。为了生成模块库，TVM 将首先把高层 IR 转移到指定目标后端的低层内在 IR 中，在这个例子中是 CUDA。然后机器代码将被生成为模块库。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">opt_level</span> <span class="o">=</span> <span class="mi">3</span>
@@ -1681,8 +1681,10 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/pc/data/4tb/lxw/anaconda3/envs/tvm-mxnet/lib/python3.10/site-packages/tvm/target/target.py:347: UserWarning: Try specifying cuda arch by adding &#39;arch=sm_xx&#39; to your target.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/workspace/anaconda3/envs/mx/lib/python3.10/site-packages/tvm/target/target.py:371: UserWarning: Try specifying cuda arch by adding &#39;arch=sm_xx&#39; to your target.
   warnings.warn(&quot;Try specifying cuda arch by adding &#39;arch=sm_xx&#39; to your target.&quot;)
+/media/workspace/anaconda3/envs/mx/lib/python3.10/site-packages/tvm/driver/build_module.py:263: UserWarning: target_host parameter is going to be deprecated. Please pass in tvm.target.Target(target, host=target_host) instead.
+  warnings.warn(
 One or more operators have not been tuned. Please tune your model for better performance. Use DEBUG logging level to see more details.
 </pre></div>
 </div>
@@ -1691,7 +1693,7 @@ One or more operators have not been tuned. Please tune your model for better per
 </section>
 <section id="id3">
 <h2>运行生成库<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h2>
-<p>现在我们可以创建图执行器并在 Nvidia GPU 上运行该模块。</p>
+<p>可以创建图执行器并在 Nvidia GPU 上运行该模块。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create random input</span>
@@ -1704,7 +1706,7 @@ One or more operators have not been tuned. Please tune your model for better per
 <span class="c1"># run</span>
 <span class="n">module</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 <span class="c1"># get output</span>
-<span class="n">out</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tvm</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">out_shape</span><span class="p">))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 
 <span class="c1"># Print first 10 elements of output</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
@@ -1754,7 +1756,7 @@ One or more operators have not been tuned. Please tune your model for better per
 <span class="nb">print</span><span class="p">(</span><span class="n">out_deploy</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
 
 <span class="c1"># check whether the output from deployed module is consistent with original one</span>
-<span class="n">tvm</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">out_deploy</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">out_deploy</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1800,7 +1802,7 @@ One or more operators have not been tuned. Please tune your model for better per
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-08, 08:47:06.<br/>
+    Last updated on 2022-06-09, 15:46:33.<br/>
 </p>
         </footer>
     </div>
