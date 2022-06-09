@@ -24,7 +24,7 @@ def init(ctx,
                    'python3-setuptools gcc libtinfo-dev zlib1g-dev '
                    'build-essential cmake libedit-dev libxml2-dev')
     ctx.run(package_cmd)
-    ctx.run('sudo apt install clang-14 clangd-14 llvm-14 liblldb-14-dev')
+    ctx.run('sudo apt install clang-12 clangd-12 llvm-12 liblldb-12-dev')
     ctx.run(f'pip install -r {ROOT}/xin/requirements.txt')
 
 @task
