@@ -149,4 +149,4 @@ RISC-V 的交叉编译
 
 还开发了一些针对特定设备的操作指南，可以在 Jupyter 笔记本中查看可用的 Python 代码。这些“如何操作”描述了如何准备模型并将其部署到许多受支持的后端。
 
-- {ref}`../deploy_models/index`
+- :ref:`../deploy_models/index`
