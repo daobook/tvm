@@ -1,3 +1,4 @@
+#!/bin/bash
 export TVM_HOME=/media/pc/data/4tb/lxw/books/tvm
 export PYTHONPATH=$TVM_HOME/python:${PYTHONPATH}
 export PYTHONPATH=$TVM_HOME/vta/python:${PYTHONPATH}
