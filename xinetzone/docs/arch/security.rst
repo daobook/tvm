@@ -17,18 +17,17 @@
 
 .. _dev-security:
 
-Security Guide
+安全指南
 ==============
 
-Reporting Security Issues
+报告安全问题
 -------------------------
 
-The Apache Software Foundation takes a very active stance in eliminating security problems and denial of service attacks against its products.
-We strongly encourage folks to report such problems to our private security mailing list first, before disclosing them in a public forum.
+Apache 软件基金会在消除对其产品的安全问题和拒绝服务攻击方面采取了非常积极的立场。强烈鼓励人们首先向私人安全邮件列表报告这些问题，然后再在公共论坛上披露它们。
 
-Please note that the security mailing list should only be used for reporting undisclosed security vulnerabilities and managing the process of fixing such vulnerabilities. We cannot accept regular bug reports or other queries at this address. All mail sent to this address that does not relate to an undisclosed security problem in our source code will be ignored.
-Questions about: if a vulnerability applies to your particular application obtaining further information on a published vulnerability availability of patches
-and/or new releases should be addressed to to the user discuss forum.
+请注意，安全邮件列表只能用于报告未披露的安全漏洞和管理修复这些漏洞的过程。我们无法在此地址接受定期的错误报告或其他查询。所有发送到此地址的邮件，不涉及我们的源代码中未披露的安全问题，将被忽略。
+有关以下问题:如果漏洞应用于特定应用程序，获取关于已发布漏洞可用性补丁的进一步信息
+和/或新版本应该发送到用户讨论论坛。
 
 The private security mailing address is: `security@apache.org <security@apache.org>`_.
 Feel free to consult the `Apache Security guide <https://www.apache.org/security/>`_.

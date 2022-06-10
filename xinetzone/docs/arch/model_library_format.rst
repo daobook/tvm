@@ -17,33 +17,27 @@
 
 .. _model_library_format:
 
-Model Library Format
+Model 库格式
 ====================
 
-About Model Library Format
+关于 Model 库格式
 --------------------------
 
-TVM traditionally exports generated libraries as Dynamic Shared Objects (e.g. DLLs (Windows) or .so
-(linux)). Inferences can be performed using those libraries by loading them into an executable using
-``libtvm_runtime.so``. This process is very dependent on services provided by traditional OS.
+传统上，TVM 将生成的库导出为动态共享对象（Dynamic Shared Objects，如 dll （Windows）或 .so （linux））。
+通过使用 ``libtvm_runtime.so`` 将这些库加载到可执行文件中，可以使用这些库执行推断。这个过程对传统操作系统提供的服务有很大的依赖。
 
-For deployment to unconventional platforms (e.g. those lacking traditional OS), TVM provides another
-output format, Model Library Format. Initially, the microTVM project is the primary use case for this
-format. Should it become useful in other use cases (and in particular, should it become possible to
-export BYOC artifacts in Model Library Format), it could be used as a general-purpose TVM export
-format.  Model Library Format is a tarball containing a file for each piece of the TVM compiler
-output.
+对于部署到非传统平台（例如那些缺乏传统操作系统），TVM 提供了另一种输出格式，模型库格式（Model Library Format）。最初，microTVM 项目是这种格式的主要用例。
+如果它在其他用例中变得有用（特别是，如果可以模型库格式导出 BYOC 工件），它可以用作通用的 TVM 导出格式。模型库格式是 tarball，包含 TVM 编译器输出的每个部分的文件。
 
-What can be Exported?
+可以输出什么？
 ---------------------
 
-At the time of writing, export is limited to full models built with ``tvm.relay.build``.
+在撰写本文时，导出仅限于使用  ``tvm.relay.build`` 构建的完整模型。
 
-Directory Layout
+直接布局
 ----------------
 
-Model Library Format is contained within a tarball. All paths are relative to the root of the
-tarball:
+Model Library Format 包含在 tarball 中。所有路径都相对于 tarball 的根目录：
 
 - ``/`` - Root of the tarball
 
@@ -67,7 +61,7 @@ tarball:
 
     - ``relay.txt`` - Relay source code for the generated model
 
-Description of Sub-directories
+子目录的描述
 ------------------------------
 
 .. _subdir_codegen:
