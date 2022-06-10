@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-07 11:03+0800\n"
+"POT-Creation-Date: 2022-06-10 19:41+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2069,7 +2069,15 @@ msgstr ""
 msgid "Manually specify the exact temp dir path"
 msgstr ""
 
-#: of tvm.contrib.utils.tempdir:10
+#: of tvm.contrib.utils.tempdir:8
+msgid "keep_for_debug"
+msgstr ""
+
+#: of tvm.contrib.utils.tempdir:9
+msgid "Keep temp directory for debugging purposes"
+msgstr ""
+
+#: of tvm.contrib.utils.tempdir:12
 msgid "temp"
 msgstr ""
 
@@ -2077,7 +2085,7 @@ msgstr ""
 msgid "TempDirectory"
 msgstr ""
 
-#: of tvm.contrib.utils.tempdir:11
+#: of tvm.contrib.utils.tempdir:13
 msgid "The temp directory object"
 msgstr ""
 

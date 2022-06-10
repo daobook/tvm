@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-27 12:49+0800\n"
+"POT-Creation-Date: 2022-06-10 19:41+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,79 +17,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.rst:13
+#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.ipynb:10002
+msgid "编译 PyTorch 目标检测模型"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.ipynb:10004
+msgid "本文是使用 Relay VM 部署 PyTorch 目标检测模型的介绍性教程。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.ipynb:10006
+msgid "首先应该安装 PyTorch。TorchVision 也是必需的，因为将使用它作为模型动物园。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.ipynb:10008
+msgid "快速的解决方案是通过 pip 安装："
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.ipynb:10015
+msgid "或者请参考 [官方网站](https://pytorch.org/get-started/locally/)。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.ipynb:10017
+msgid "PyTorch 版本应该向后兼容，但应该与正确的 TorchVision 版本一起使用。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.ipynb:10019
+msgid "目前，TVM 支持 PyTorch 1.7 和 1.4。其他版本可能不稳定。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.ipynb:40002
+msgid "从 torchvision 加载预训练的 maskrcnn 并进行跟踪"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.ipynb:70002
+msgid "下载测试图像并进行预处理"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.ipynb:90002
+msgid "导入 graph 到 Relay"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.ipynb:110002
+msgid "使用 Relay VM 编译"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.ipynb:110005
 msgid ""
-"Click :ref:`here "
-"<sphx_glr_download_how_to_deploy_models_deploy_object_detection_pytorch.py>`"
-" to download the full example code"
+"目前只支持 CPU target。对于 x86 target，由于在 torchvision rcnn 模型中存在较大的 dense "
+"算子，因此强烈推荐使用 Intel MKL 和 Intel OpenMP 构建 TVM 以获得最佳性能。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.rst:22
-msgid "Compile PyTorch Object Detection Models"
+#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.ipynb:130002
+msgid "使用 Relay VM 推理"
 msgstr ""
 
-#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.rst:23
-msgid ""
-"This article is an introductory tutorial to deploy PyTorch object "
-"detection models with Relay VM."
-msgstr ""
-
-#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.rst:26
-msgid ""
-"For us to begin with, PyTorch should be installed. TorchVision is also "
-"required since we will be using it as our model zoo."
-msgstr ""
-
-#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.rst:29
-msgid "A quick solution is to install via pip"
-msgstr ""
-
-#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.rst:36
-msgid "or please refer to official site https://pytorch.org/get-started/locally/"
-msgstr ""
-
-#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.rst:39
-msgid ""
-"PyTorch versions should be backwards compatible but should be used with "
-"the proper TorchVision version."
-msgstr ""
-
-#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.rst:42
-msgid ""
-"Currently, TVM supports PyTorch 1.7 and 1.4. Other versions may be "
-"unstable."
-msgstr ""
-
-#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.rst:67
-msgid "Load pre-trained maskrcnn from torchvision and do tracing"
-msgstr ""
-
-#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.rst:114
-msgid "Download a test image and pre-process"
-msgstr ""
-
-#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.rst:135
-msgid "Import the graph to Relay"
-msgstr ""
-
-#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.rst:149
-msgid "Compile with Relay VM"
-msgstr ""
-
-#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.rst:150
-msgid ""
-"Note: Currently only CPU target is supported. For x86 target, it is "
-"highly recommended to build TVM with Intel MKL and Intel OpenMP to get "
-"best performance, due to the existence of large dense operator in "
-"torchvision rcnn models."
-msgstr ""
-
-#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.rst:172
-msgid "Inference with Relay VM"
-msgstr ""
-
-#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.rst:187
-msgid "Get boxes with score larger than 0.9"
+#: ../../../xin/docs/how_to/deploy_models/deploy_object_detection_pytorch.ipynb:150002
+msgid "获得得分大于 0.9 的 boxes"
 msgstr ""
 
 #~ msgid ""
@@ -107,5 +90,74 @@ msgstr ""
 #~ msgid ""
 #~ "`Gallery generated by Sphinx-Gallery "
 #~ "<https://sphinx-gallery.github.io>`_"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Click :ref:`here "
+#~ "<sphx_glr_download_how_to_deploy_models_deploy_object_detection_pytorch.py>`"
+#~ " to download the full example code"
+#~ msgstr ""
+
+#~ msgid "Compile PyTorch Object Detection Models"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This article is an introductory tutorial"
+#~ " to deploy PyTorch object detection "
+#~ "models with Relay VM."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "For us to begin with, PyTorch "
+#~ "should be installed. TorchVision is also"
+#~ " required since we will be using "
+#~ "it as our model zoo."
+#~ msgstr ""
+
+#~ msgid "A quick solution is to install via pip"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "or please refer to official site "
+#~ "https://pytorch.org/get-started/locally/"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "PyTorch versions should be backwards "
+#~ "compatible but should be used with "
+#~ "the proper TorchVision version."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Currently, TVM supports PyTorch 1.7 and"
+#~ " 1.4. Other versions may be unstable."
+#~ msgstr ""
+
+#~ msgid "Load pre-trained maskrcnn from torchvision and do tracing"
+#~ msgstr ""
+
+#~ msgid "Download a test image and pre-process"
+#~ msgstr ""
+
+#~ msgid "Import the graph to Relay"
+#~ msgstr ""
+
+#~ msgid "Compile with Relay VM"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Note: Currently only CPU target is "
+#~ "supported. For x86 target, it is "
+#~ "highly recommended to build TVM with "
+#~ "Intel MKL and Intel OpenMP to get"
+#~ " best performance, due to the "
+#~ "existence of large dense operator in "
+#~ "torchvision rcnn models."
+#~ msgstr ""
+
+#~ msgid "Inference with Relay VM"
+#~ msgstr ""
+
+#~ msgid "Get boxes with score larger than 0.9"
 #~ msgstr ""
 

@@ -4,7 +4,7 @@
 
 .. _sphx_glr_how_to_work_with_relay:
 
-Work With Relay
+使用 Relay
 ---------------
 
 
@@ -13,3 +13,4 @@ Work With Relay
 
    build_gcn
    using_external_lib
+   using_relay_viz

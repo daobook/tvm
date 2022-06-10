@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-27 12:49+0800\n"
+"POT-Creation-Date: 2022-06-10 19:41+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,87 +17,78 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../../xin/docs/how_to/compile_models/from_mxnet.rst:13
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:10002
+msgid "编译 MXNet 模型"
+msgstr ""
+
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:10004
 msgid ""
-"Click :ref:`here <sphx_glr_download_how_to_compile_models_from_mxnet.py>`"
-" to download the full example code"
+"**原作者**: [Joshua Z. Zhang](https://zhreshold.github.io/), [Kazutaka "
+"Morita](https://github.com/kazum)"
 msgstr ""
 
-#: ../../../xin/docs/how_to/compile_models/from_mxnet.rst:24
-msgid "Compile MXNet Models"
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:10006
+msgid "本文是使用 Relay 部署 mxnet 模型的介绍性教程。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/compile_models/from_mxnet.rst:25
-msgid ""
-"**Author**: `Joshua Z. Zhang <https://zhreshold.github.io/>`_,"
-"             `Kazutaka Morita <https://github.com/kazum>`_"
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:10008
+msgid "首先需要安装 `mxnet` 模块。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/compile_models/from_mxnet.rst:27
-msgid ""
-"This article is an introductory tutorial to deploy mxnet models with "
-"Relay."
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:10010
+msgid "快速的解决方案："
 msgstr ""
 
-#: ../../../xin/docs/how_to/compile_models/from_mxnet.rst:29
-msgid "For us to begin with, mxnet module is required to be installed."
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:10016
+msgid "或者请参考官方的[安装指南](https://mxnet.apache.org/versions/master/install/index.html)。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/compile_models/from_mxnet.rst:31
-msgid "A quick solution is"
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:30002
+msgid "从 gluon 模型动物园下载 Resnet18 模型"
 msgstr ""
 
-#: ../../../xin/docs/how_to/compile_models/from_mxnet.rst:37
-msgid ""
-"or please refer to official installation guide. "
-"https://mxnet.apache.org/versions/master/install/index.html"
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:30004
+msgid "在本节中，下载预训练好的 imagenet 模型并对图像进行分类。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/compile_models/from_mxnet.rst:54
-msgid "Download Resnet18 model from Gluon Model Zoo"
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:50002
+msgid "编译 Graph"
 msgstr ""
 
-#: ../../../xin/docs/how_to/compile_models/from_mxnet.rst:55
-msgid ""
-"In this section, we download a pretrained imagenet model and classify an "
-"image."
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:50004
+msgid "想要将 Gluon 模型移植到便携式计算图上，仅仅需要几行代码。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/compile_models/from_mxnet.rst:102
-msgid "Compile the Graph"
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:50006
+msgid "支持 MXNet static graph(symbol) 和 mxnet.gluon 中的 HybridBlock："
 msgstr ""
 
-#: ../../../xin/docs/how_to/compile_models/from_mxnet.rst:103
-msgid ""
-"Now we would like to port the Gluon model to a portable computational "
-"graph. It's as easy as several lines. We support MXNet static "
-"graph(symbol) and HybridBlock in mxnet.gluon"
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:70002
+msgid "编译 graph："
 msgstr ""
 
-#: ../../../xin/docs/how_to/compile_models/from_mxnet.rst:120
-msgid "now compile the graph"
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:90002
+msgid "在 TVM 上执行可移植 graph"
 msgstr ""
 
-#: ../../../xin/docs/how_to/compile_models/from_mxnet.rst:134
-msgid "Execute the portable graph on TVM"
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:90004
+msgid "现在，想使用 TVM 重新进行相同的 forward 计算。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/compile_models/from_mxnet.rst:135
-msgid "Now, we would like to reproduce the same forward computation using TVM."
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:110002
+msgid "使用带有预训练权重的 MXNet symbol"
 msgstr ""
 
-#: ../../../xin/docs/how_to/compile_models/from_mxnet.rst:159
-msgid "Use MXNet symbol with pretrained weights"
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:110004
+msgid "MXNet 经常使用 `arg_params` 和 `aux_params` 来分别存储网络参数，这里将展示如何在现有的 API 中使用这些权重。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/compile_models/from_mxnet.rst:160
-msgid ""
-"MXNet often use `arg_params` and `aux_params` to store network parameters"
-" separately, here we show how to use these weights with existing API"
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:130002
+msgid "在磁盘上生成 `'resnet18_v1-0000.params'` 和 `'resnet18_v1-symbol.json'`。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/compile_models/from_mxnet.rst:185
-msgid "for a normal mxnet model, we start from here"
+#: ../../../xin/docs/how_to/compile_models/from_mxnet.ipynb:140002
+msgid "对于普通的 mxnet 模型，从这里开始："
 msgstr ""
 
 #~ msgid ":download:`Download Python source code: from_mxnet.py <from_mxnet.py>`"
@@ -111,5 +102,79 @@ msgstr ""
 #~ msgid ""
 #~ "`Gallery generated by Sphinx-Gallery "
 #~ "<https://sphinx-gallery.github.io>`_"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Click :ref:`here "
+#~ "<sphx_glr_download_how_to_compile_models_from_mxnet.py>` to "
+#~ "download the full example code"
+#~ msgstr ""
+
+#~ msgid "Compile MXNet Models"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Author**: `Joshua Z. Zhang "
+#~ "<https://zhreshold.github.io/>`_,             `Kazutaka "
+#~ "Morita <https://github.com/kazum>`_"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This article is an introductory tutorial"
+#~ " to deploy mxnet models with Relay."
+#~ msgstr ""
+
+#~ msgid "For us to begin with, mxnet module is required to be installed."
+#~ msgstr ""
+
+#~ msgid "A quick solution is"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "or please refer to official installation"
+#~ " guide. "
+#~ "https://mxnet.apache.org/versions/master/install/index.html"
+#~ msgstr ""
+
+#~ msgid "Download Resnet18 model from Gluon Model Zoo"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In this section, we download a "
+#~ "pretrained imagenet model and classify "
+#~ "an image."
+#~ msgstr ""
+
+#~ msgid "Compile the Graph"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Now we would like to port the "
+#~ "Gluon model to a portable computational"
+#~ " graph. It's as easy as several "
+#~ "lines. We support MXNet static "
+#~ "graph(symbol) and HybridBlock in mxnet.gluon"
+#~ msgstr ""
+
+#~ msgid "now compile the graph"
+#~ msgstr ""
+
+#~ msgid "Execute the portable graph on TVM"
+#~ msgstr ""
+
+#~ msgid "Now, we would like to reproduce the same forward computation using TVM."
+#~ msgstr ""
+
+#~ msgid "Use MXNet symbol with pretrained weights"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "MXNet often use `arg_params` and "
+#~ "`aux_params` to store network parameters "
+#~ "separately, here we show how to "
+#~ "use these weights with existing API"
+#~ msgstr ""
+
+#~ msgid "for a normal mxnet model, we start from here"
 #~ msgstr ""
 

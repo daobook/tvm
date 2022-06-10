@@ -8,76 +8,140 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvm 0.9.dev282+gf54634c5d\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 13:20+0800\n"
+"POT-Creation-Date: 2022-06-10 19:41+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
-#: ../../_staging/how_to/profile/papi.rst:20
-msgid "Getting Started With PAPI"
+#: ../../../xin/docs/how_to/profile/papi.ipynb:10002
+msgid "PAPI 快速上手"
 msgstr ""
 
-#: ../../_staging/how_to/profile/papi.rst:22
+#: ../../../xin/docs/how_to/profile/papi.ipynb:10004
 msgid ""
-"The Performance Application Programming Interface (PAPI) is a library "
-"that provides performance counters on a variety of platforms. Performance"
-" counters provide accurate low-level information about processors "
-"behavior during a given execution run. This information can contain "
-"simple metrics like total cycle count, cache misses, and instructions "
-"executed as well as more high level information like total FLOPS and warp"
-" occupancy. PAPI makes these metrics available while profiling."
+"PAPI（Performance Application Programming "
+"Interface）是在各种平台上提供性能计数器的库。性能计数器提供关于给定执行运行期间处理器行为的准确底层信息。该信息可以包含简单的指标，如总周期计数（total"
+" cycle count）、缓存未命中（cache misses）和执行指令（instructions executed），以及更高级的信息，如总"
+" FLOPS 和 warp 占用率（occupancy）。PAPI 使这些指标在分析时可用。"
 msgstr ""
 
-#: ../../_staging/how_to/profile/papi.rst:31
-msgid "Installing PAPI"
+#: ../../../xin/docs/how_to/profile/papi.ipynb:10006
+msgid "安装 PAPI"
 msgstr ""
 
-#: ../../_staging/how_to/profile/papi.rst:33
+#: ../../../xin/docs/how_to/profile/papi.ipynb:10008
 msgid ""
-"PAPI can either be installed using your package manager (``apt-get "
-"install libpapi-dev`` on Ubuntu), or from source here: "
-"https://bitbucket.org/icl/papi/src/master/."
+"PAPI 可以使用你的包管理器来安装（``apt-get install libpapi-"
+"dev``）或者从[这里](https://bitbucket.org/icl/papi/src/master/)获取源码"
 msgstr ""
 
-#: ../../_staging/how_to/profile/papi.rst:39
-msgid "Building TVM With PAPI"
+#: ../../../xin/docs/how_to/profile/papi.ipynb:10011
+msgid "用 PAPI 构建 TVM"
 msgstr ""
 
-#: ../../_staging/how_to/profile/papi.rst:41
+#: ../../../xin/docs/how_to/profile/papi.ipynb:10013
+msgid "要在 TVM 构建中包含 PAPI，需要在 ``config.cmake`` 中设置如下："
+msgstr ""
+
+#: ../../../xin/docs/how_to/profile/papi.ipynb:10019
+msgid "如果 PAPI 被安装在非标准的地方，你可以像这样指定它的位置："
+msgstr ""
+
+#: ../../../xin/docs/how_to/profile/papi.ipynb:10025
+msgid "在剖析时使用 PAPI"
+msgstr ""
+
+#: ../../../xin/docs/how_to/profile/papi.ipynb:10027
 msgid ""
-"To include PAPI in your build of TVM, set the following line in you "
-"``config.cmake``:"
+"如果 TVM 是用 PAPI 构建的(见上文)，那么你可以将 "
+"{py:class}`tvm.runtime.profiling.PAPIMetricCollector` 传递给 "
+"{py:meth}`tvm.runtime.GraphModule.profile` 来收集性能指标。下面是例子："
 msgstr ""
 
-#: ../../_staging/how_to/profile/papi.rst:47
-msgid ""
-"If PAPI is installed in a non-standard place, you can specify where it is"
-" like so:"
+#: ../../../xin/docs/how_to/profile/papi.ipynb:30002
+msgid "为了保证正常运行，需要设定 `/proc/sys/kernel/perf_event_paranoid` 为 2 或者更小或者作为 root："
 msgstr ""
 
-#: ../../_staging/how_to/profile/papi.rst:55
-msgid "Using PAPI While Profiling"
+#: ../../../xin/docs/how_to/profile/papi.ipynb:50002
+#: ../../../xin/docs/how_to/profile/papi.ipynb:90002
+msgid "结果："
 msgstr ""
 
-#: ../../_staging/how_to/profile/papi.rst:57
-msgid ""
-"If TVM has been built with PAPI (see above), then you can pass a "
-":py:class:`tvm.runtime.profiling.PAPIMetricCollector` to "
-":py:meth:`tvm.runtime.GraphModule.profile` to collect performance "
-"metrics. Here is an example:"
+#: ../../../xin/docs/how_to/profile/papi.ipynb:70002
+msgid "还可以更改收集的指标："
 msgstr ""
 
-#: ../../_staging/how_to/profile/papi.rst:91
-msgid "You can also change which metrics are collected:"
+#: ../../../xin/docs/how_to/profile/papi.ipynb:110002
+msgid "您可以通过运行 ``papi_avail`` 和 ``papi_native_avail`` 命令找到可用指标列表。"
 msgstr ""
 
-#: ../../_staging/how_to/profile/papi.rst:113
-msgid ""
-"You can find a list of available metrics by running the ``papi_avail`` "
-"and ``papi_native_avail`` commands."
-msgstr ""
+#~ msgid "Getting Started With PAPI"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The Performance Application Programming "
+#~ "Interface (PAPI) is a library that "
+#~ "provides performance counters on a "
+#~ "variety of platforms. Performance counters "
+#~ "provide accurate low-level information "
+#~ "about processors behavior during a given"
+#~ " execution run. This information can "
+#~ "contain simple metrics like total cycle"
+#~ " count, cache misses, and instructions "
+#~ "executed as well as more high "
+#~ "level information like total FLOPS and"
+#~ " warp occupancy. PAPI makes these "
+#~ "metrics available while profiling."
+#~ msgstr ""
+
+#~ msgid "Installing PAPI"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "PAPI can either be installed using "
+#~ "your package manager (``apt-get install"
+#~ " libpapi-dev`` on Ubuntu), or from"
+#~ " source here: "
+#~ "https://bitbucket.org/icl/papi/src/master/."
+#~ msgstr ""
+
+#~ msgid "Building TVM With PAPI"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "To include PAPI in your build of"
+#~ " TVM, set the following line in "
+#~ "you ``config.cmake``:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If PAPI is installed in a non-"
+#~ "standard place, you can specify where"
+#~ " it is like so:"
+#~ msgstr ""
+
+#~ msgid "Using PAPI While Profiling"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If TVM has been built with PAPI"
+#~ " (see above), then you can pass "
+#~ "a :py:class:`tvm.runtime.profiling.PAPIMetricCollector` to"
+#~ " :py:meth:`tvm.runtime.GraphModule.profile` to collect"
+#~ " performance metrics. Here is an "
+#~ "example:"
+#~ msgstr ""
+
+#~ msgid "You can also change which metrics are collected:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can find a list of available"
+#~ " metrics by running the ``papi_avail`` "
+#~ "and ``papi_native_avail`` commands."
+#~ msgstr ""
 

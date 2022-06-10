@@ -13,3 +13,4 @@ _models/
 *.pth
 *.npz
 *.log
+*.pdf

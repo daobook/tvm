@@ -19,25 +19,26 @@ msgstr ""
 
 #: ../../docs/reference/langref/hybrid_script.rst:21
 msgid "Hybrid Frontend Language Reference"
-msgstr ""
+msgstr "Hybrid 前端语言参考"
 
 #: ../../docs/reference/langref/hybrid_script.rst:24
 msgid "Overview"
-msgstr ""
+msgstr "概述"
 
 #: ../../docs/reference/langref/hybrid_script.rst:26
 msgid ""
 "This hybrid frontend allows users to write preliminary versions of some "
 "idioms that yet have been supported by TVM officially."
 msgstr ""
+"这种混合前端允许用户编写一些 TVM 官方支持的习语的初步版本。"
 
 #: ../../docs/reference/langref/hybrid_script.rst:30
 msgid "Features"
-msgstr ""
+msgstr "特性"
 
 #: ../../docs/reference/langref/hybrid_script.rst:33
 msgid "Software Emulation"
-msgstr ""
+msgstr "软件仿真"
 
 #: ../../docs/reference/langref/hybrid_script.rst:35
 msgid ""
@@ -45,6 +46,8 @@ msgid ""
 "function, you need to use ``tvm.te.hybrid.script`` decorator to indicate "
 "this is a hybrid function:"
 msgstr ""
+"同时支持软件仿真和编译。"
+"要定义函数，你需要使用 ``tvm.te.hybrid.script`` 装饰器来表明这是 hybrid 函数："
 
 #: ../../docs/reference/langref/hybrid_script.rst:52
 msgid ""
@@ -53,22 +56,26 @@ msgid ""
 "keywords will be cleaned up. Users do not need worry about keyword "
 "conflict and pollution."
 msgstr ""
+"此装饰器将导入软件仿真时自发需要的 `Keywords`_。"
+"软件仿真完成后，导入的关键字将被清除。用户不需要担心关键字冲突和污染。"
 
 #: ../../docs/reference/langref/hybrid_script.rst:56
 msgid ""
 "Every element passed for software emulation in the argument list is "
 "either a python variable or ``numpy`` numeric type."
 msgstr ""
+"参数列表中传递给软件仿真的每个元素要么是 python 变量，要么是 ``numpy`` 数值类型。"
 
 #: ../../docs/reference/langref/hybrid_script.rst:60
 msgid "Backend Compilation"
-msgstr ""
+msgstr "后端编译"
 
 #: ../../docs/reference/langref/hybrid_script.rst:62
 msgid ""
 "This function is not encouraged to use, users are encouraged to use the "
 "second interface. The current parse interface looks like:"
 msgstr ""
+"这个函数不鼓励使用，鼓励用户使用第二个 interface。当前的 parse 接口如下："
 
 #: ../../docs/reference/langref/hybrid_script.rst:72
 msgid ""
@@ -76,6 +83,7 @@ msgid ""
 "``Expr.*Imm``, or ``tvm.container.Array``, to this function, it returns a"
 " op node:"
 msgstr ""
+"如果传递这些 tvm 数据结构，比如 ``Tensor``、 ``Var``、 ``Expr.*Imm`` 或 ``tvm.container.Array``，此函数返回 op 节点："
 
 #: ../../docs/reference/langref/hybrid_script.rst:81
 msgid ""
@@ -83,16 +91,20 @@ msgid ""
 "create_schedule, although so far, the functionality of schedule is as "
 "limited as ``ExternOpNode``. At least, it can be built to LLVM module."
 msgstr ""
+"你可以使用任何可以应用在 TVM ``OpNode`` 上的方法，比如 ``create_schedule``，"
+"尽管到目前为止，schedule 的功能和 ``ExternOpNode`` 一样有限。"
+"至少，它可以构建到 LLVM 模块。"
 
 #: ../../docs/reference/langref/hybrid_script.rst:86
 msgid "Tuning"
-msgstr ""
+msgstr "调优"
 
 #: ../../docs/reference/langref/hybrid_script.rst:88
 msgid ""
 "Follow up the example above, you can use some tvm like interfaces to tune"
 " the code:"
 msgstr ""
+"按照上面的例子，你可以使用一些类似 tvm 的接口来调优代码："
 
 #: ../../docs/reference/langref/hybrid_script.rst:97
 msgid ""
@@ -100,6 +112,7 @@ msgid ""
 "``vectorize``, and ``bind``), loop manipulation (``split`` and ``fuse``),"
 " and ``reorder``."
 msgstr ""
+"现在，您可以使用 loop annotations(``unroll``、``parallel``、``vectorize`` 和 ``bind``)、loop manipulation(``split`` 和 ``fuse``) 和 ``reorder``。"
 
 #: ../../docs/reference/langref/hybrid_script.rst:102
 msgid ""
@@ -107,16 +120,19 @@ msgid ""
 "correctness of the functionality after tuning. Specifically, users should"
 " be careful when fusing and reorderding imperfect loops."
 msgstr ""
+"这是初步的功能，所以调优后功能的正确性应该由用户负责。"
+"具体来说，用户在融合和重新排序不完美的循环时应该小心。"
 
 #: ../../docs/reference/langref/hybrid_script.rst:107
 msgid "Loops"
-msgstr ""
+msgstr "循环"
 
 #: ../../docs/reference/langref/hybrid_script.rst:109
 msgid ""
 "In HalideIR, loops have in total 4 types: ``serial``, ``unrolled``, "
 "``parallel``, and ``vectorized``."
 msgstr ""
+"在 HalideIR 中，循环总共有 4 种类型：``serial``、``unrolled``、``parallel`` 和 ``vectorized``。"
 
 #: ../../docs/reference/langref/hybrid_script.rst:111
 msgid ""
@@ -125,6 +141,8 @@ msgid ""
 "of for loops. The the usage is roughly the same as Python standard "
 "``range``."
 msgstr ""
+"这里使用 ``range`` aka ``serial``， ``unroll``， ``parallel`` 和 ``vectorize``，这 **4** 个关键字来注释对应类型的 for 循环。"
+"其用法与 Python 标准的 ``range`` 大致相同。"
 
 #: ../../docs/reference/langref/hybrid_script.rst:115
 msgid ""
@@ -135,32 +153,39 @@ msgid ""
 "to an ``Expr``. Thus, a limited feature is supported. Users can access "
 "containers by either constants or constants loops annotated."
 msgstr ""
+"除了 Halide 中支持的所有循环类型，``const_range`` 在某些特定条件下也被支持。"
+"有时候，``tvm.container.Array`` 希望作为参数传递，但在 TVM-HalideIR 中，"
+"没有转换 ``tvm.container.Array`` 到 ``Expr`` 这样的支持。"
+"因此，只支持有限的特性。用户可以通过 constants 或 constants loops annotated 来访问容器。"
 
 #: ../../docs/reference/langref/hybrid_script.rst:131
 msgid "Variables"
-msgstr ""
+msgstr "变量"
 
 #: ../../docs/reference/langref/hybrid_script.rst:133
 msgid ""
 "All the mutable variables will be lowered to an array with size 1. It "
 "regards the first store of a variable as its declaration."
 msgstr ""
+"所有可变变量将 lower 为大小为 1 的数组。它将变量的第一个存储区视为它的声明。"
 
 #: ../../docs/reference/langref/hybrid_script.rst:138
 msgid ""
 "Unlike conventional Python, in hybrid script, the declared variable can "
 "only be used in the scope level it is declared."
 msgstr ""
+"与传统的 Python 不同，在 hybrid script 中，声明的变量只能在它声明的作用域级别中使用。"
 
 #: ../../docs/reference/langref/hybrid_script.rst:144
 msgid ""
 "Currently, you can ONLY use basic-typed variables, i.e. the type of the "
 "variable should be either ``float32``, or ``int32``."
 msgstr ""
+"目前，只能使用基本类型的变量，即变量的类型应该是 ``float32`` 或 ``int32``。"
 
 #: ../../docs/reference/langref/hybrid_script.rst:158
 msgid "Attributes"
-msgstr ""
+msgstr "属性"
 
 #: ../../docs/reference/langref/hybrid_script.rst:160
 msgid ""
@@ -168,18 +193,20 @@ msgid ""
 "The ``shape`` attribute is essentially a tuple, so you MUST access it as "
 "an array. Currently, only constant-indexed access is supported."
 msgstr ""
+"到目前为止，只支持张量 ``shape`` 和 ``dtype`` 属性！"
+"``shape`` 属性本质上是元组，所以你必须以数组的形式访问它。目前，只支持常量索引访问。"
 
 #: ../../docs/reference/langref/hybrid_script.rst:173
 msgid "Conditional Statement and Expression"
-msgstr ""
+msgstr "条件语句和表达式"
 
 #: ../../docs/reference/langref/hybrid_script.rst:184
 msgid "However, NO ``True`` and ``False`` keyword supported yet."
-msgstr ""
+msgstr "但是，至今还不支持 ``True`` 和 ``False`` 关键字。"
 
 #: ../../docs/reference/langref/hybrid_script.rst:188
 msgid "Math Intrinsics"
-msgstr ""
+msgstr "数学指令"
 
 #: ../../docs/reference/langref/hybrid_script.rst:190
 msgid ""
@@ -187,14 +214,16 @@ msgid ""
 "``power``, and ``popcount``, are supported. No import is required, just "
 "as it is mentioned in `Software Emulation`_, just use it!"
 msgstr ""
+"到目前为止，这些数学指令(``log``、``exp``、``sigmoid``、``tanh``、``power`` 和 ``popcount``) 都得到了支持。"
+"不需要导入，就像在 `Software Emulation`_ 中提到的那样，只需使用它！"
 
 #: ../../docs/reference/langref/hybrid_script.rst:195
 msgid "Array Allocation"
-msgstr ""
+msgstr "数组分配"
 
 #: ../../docs/reference/langref/hybrid_script.rst:197
 msgid "**Under construction, this function will be supported later!**"
-msgstr ""
+msgstr "**正在建设中，后续将支持此功能！**"
 
 #: ../../docs/reference/langref/hybrid_script.rst:199
 msgid ""
@@ -204,24 +233,28 @@ msgid ""
 "fashion instead of ``a[i][j][k]``, even for ``tvm.container.Array`` for "
 "compilation."
 msgstr ""
+"使用函数调用 ``allocation(shape, type, share/local)`` 来声明 array buffer。"
+"基本用法与普通的 ``numpy.array`` 大致相同，"
+"你应该以 ``a[i, j, k]`` 方式而不是 ``a[i][j][k]`` 方式访问高维数组，即使是用于 ``tvm.container.Array`` 编译。"
 
 #: ../../docs/reference/langref/hybrid_script.rst:206
 msgid "Thread Bind"
-msgstr ""
+msgstr "线程绑定"
 
 #: ../../docs/reference/langref/hybrid_script.rst:209
 msgid "You can also do loop-thread bind by writing code like this:"
-msgstr ""
+msgstr "你也可以写这样的代码来做 loop-thread 绑定："
 
 #: ../../docs/reference/langref/hybrid_script.rst:218
 msgid "Assert Statement"
-msgstr ""
+msgstr "断言声明"
 
 #: ../../docs/reference/langref/hybrid_script.rst:220
 msgid ""
 "Assert statement is supported, you can simply use it as it is in standard"
 " Python."
 msgstr ""
+"支持断言声明，你可以像在标准 Python 中那样简单地使用它。"
 
 #: ../../docs/reference/langref/hybrid_script.rst:228
 msgid ""
@@ -229,10 +262,11 @@ msgid ""
 "the way presented above --- condition followed by message. It fits both "
 "Python AST and HalideIR."
 msgstr ""
+"``Assert`` 不是函数调用。鼓励用户以上述方式使用 assert ——条件后跟消息。它适合 Python AST 和 HalideIR。"
 
 #: ../../docs/reference/langref/hybrid_script.rst:232
 msgid "Keywords"
-msgstr ""
+msgstr "关键字"
 
 #: ../../docs/reference/langref/hybrid_script.rst:233
 msgid ""

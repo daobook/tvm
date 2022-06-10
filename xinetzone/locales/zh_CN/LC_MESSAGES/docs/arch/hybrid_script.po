@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../docs/arch/hybrid_script.rst:19
 msgid "Hybrid Frontend Developer Guide"
-msgstr ""
+msgstr "Hybrid 前端开发指南"
 
 #: ../../docs/arch/hybrid_script.rst:21
 msgid "If you are a developer:"
-msgstr ""
+msgstr "如果你是开发者："
 
 #: ../../docs/arch/hybrid_script.rst:23
 msgid ""
@@ -31,34 +31,37 @@ msgid ""
 "supported by TVM yet, maybe :ref:`hybrid-langref-label` is a better place"
 " for you."
 msgstr ""
+"1. 正在尝试编写一些 TVM 还不支持的初步模式，也许 :ref:`hybrid-langref-label` 对你来说是更好的地方。"
 
 #: ../../docs/arch/hybrid_script.rst:26
 msgid ""
 "who wants to know the implementation details of this module, you are "
 "right here!"
 msgstr ""
+"想知道这个模块的实现细节，就在这里！"
 
 #: ../../docs/arch/hybrid_script.rst:29
 msgid "Features"
-msgstr ""
+msgstr "特性"
 
 #: ../../docs/arch/hybrid_script.rst:32
 msgid "Software Emulation"
-msgstr ""
+msgstr "软件仿真"
 
 #: ../../docs/arch/hybrid_script.rst:34
 msgid ""
 "In software emulation, the most interesting thing is the decorator "
 "``tvm.te.hybrid.script``. This decorator helps 2 things:"
 msgstr ""
+"在软件仿真中，最有趣的是装饰器 ``tvm.te.hybrid.script``。此装饰师帮助了两件事："
 
 #: ../../docs/arch/hybrid_script.rst:37
 msgid "Importing runtime variables"
-msgstr ""
+msgstr "导入运行时变量"
 
 #: ../../docs/arch/hybrid_script.rst:39
 msgid "Overloading the function according to the arguments passed"
-msgstr ""
+msgstr "根据传递的参数重载函数"
 
 #: ../../docs/arch/hybrid_script.rst:41
 msgid ""
@@ -67,16 +70,19 @@ msgid ""
 "python dict ``func.__global__`` and after the call to ``func`` is done, "
 "those names will be cleaned up."
 msgstr ""
+"如果我错了请纠正我：我相信：1. 执行是危险的，但我别无选择。"
+"我所做的就是将这些名字添加到 Python 字典 ``func.__global__`` 中，并在调用 ``func`` 完成后，这些名称将被清除。"
 
 #: ../../docs/arch/hybrid_script.rst:45
 msgid ""
 "Overload is simple: the decorator checks the arguments' types and "
 "determines which function should be actually called."
 msgstr ""
+"重载很简单：装饰器检查参数的类型，并确定应该实际调用哪个函数。"
 
 #: ../../docs/arch/hybrid_script.rst:50
 msgid "Backend Compilation"
-msgstr ""
+msgstr "后端编译"
 
 #: ../../docs/arch/hybrid_script.rst:52
 msgid ""
@@ -85,10 +91,12 @@ msgid ""
 "the declaration of each variable and the second stage does the actual IR "
 "generation."
 msgstr ""
+"编译是很大的模块，你可以查看 ``python/tvm/te/hybrid/`` 了解更多细节。"
+"第一阶段决定使用，或者更准确地说，每个变量的声明，第二阶段实际生成 IR。"
 
 #: ../../docs/arch/hybrid_script.rst:58
 msgid "Attributes"
-msgstr ""
+msgstr "属性"
 
 #: ../../docs/arch/hybrid_script.rst:60
 msgid ""
@@ -97,16 +105,20 @@ msgid ""
 "details. This is a hacky solution, I just check the attributes when "
 "subscript."
 msgstr ""
+"到目前为止，只支持张量的 `shape` 属性。"
+"你可以在 ``python/tvm/te/hybrid/parser.py`` 中查看 ``visit_Subscript`` 了解更多细节。"
+"这是很糟糕的解决方案，我只检查下标时的属性。"
 
 #: ../../docs/arch/hybrid_script.rst:65
 msgid "Loops"
-msgstr ""
+msgstr "循环"
 
 #: ../../docs/arch/hybrid_script.rst:67
 msgid ""
 "In HalideIR, loops have in total 4 types: ``serial``, ``unrolled``, "
 "``parallel``, and ``vectorized``."
 msgstr ""
+"在 HalideIR 中，循环总共有 4 种类型：``serial``、 ``unrolled``、 ``parallel`` 和 ``vectorized``。"
 
 #: ../../docs/arch/hybrid_script.rst:72
 msgid ""
@@ -115,16 +127,21 @@ msgid ""
 "``loop_type(a, b)`` indicates ``[a, b)``. Thus, when lowering it to "
 "HalideIR, we need to do ``start, extent = a, b - a``"
 msgstr ""
+"不像在 HalideIR 中那样，在 ``loop_type(a, b)`` 中，``a`` 是起点，``b`` 是迭代次数。"
+"这里 ``loop_type(a, b)`` 表示 ``[a, b)``。"
+"因此，当 lower 到 HalideIR 时，则为 ``start, extent = a, b - a``"
 
 #: ../../docs/arch/hybrid_script.rst:79
 msgid ""
 "In HalideIR those are enums, they are in passive form. Here we use active"
 " form to annotate loops, because they are ready to run."
 msgstr ""
+"在 HalideIR，这些是枚举，它们是 passive 形式。"
+"这里我们使用 active 形式来注释循环，因为它们已经准备好运行了。"
 
 #: ../../docs/arch/hybrid_script.rst:84
 msgid "Variables"
-msgstr ""
+msgstr "变量"
 
 #: ../../docs/arch/hybrid_script.rst:86
 msgid ""
@@ -132,10 +149,12 @@ msgid ""
 "will be lowered to an array with size 1. It takes the first store of a "
 "variable as its declaration."
 msgstr ""
+"因为 ``HalideIR`` 中没有变量，所有的可变变量都将 lower 大小为 1 的数组。"
+"它将变量的第一个存储区作为它的声明。"
 
 #: ../../docs/arch/hybrid_script.rst:90
 msgid "Math Intrinsics"
-msgstr ""
+msgstr "数学指令"
 
 #: ../../docs/arch/hybrid_script.rst:91
 msgid ""
@@ -145,6 +164,8 @@ msgid ""
 " implementation except ``popcount`` and ``sigmoid``. I implemented them "
 "manually."
 msgstr ""
+"到目前为止，这些数学指令，``log``，  ``exp``， ``sigmoid``， ``tanh``， ``power`` 和 ``popcount`` 是支持的。"
+"装饰器将导入数学指令。除了 ``popcount`` 和 ``sigmoid`` 外，大多数指令都被库的实现所借用。我手动执行它们。"
 
 #: ../../docs/arch/hybrid_script.rst:97
 msgid "Casting"
@@ -156,4 +177,6 @@ msgid ""
 "``uint32``, ``uint64``, ``int8``, ``int16``, ``int32``, ``int64``, "
 "``float16``, ``float32``, ``float64``."
 msgstr ""
-
+"可以把值通过使用关键字 ``uint8``, ``uint16`` "
+"``uint32``, ``uint64``, ``int8``, ``int16``, ``int32``, ``int64``, "
+"``float16``, ``float32``, ``float64`` cast。"

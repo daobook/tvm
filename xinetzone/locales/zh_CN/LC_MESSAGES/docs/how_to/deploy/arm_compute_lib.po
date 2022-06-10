@@ -8,73 +8,65 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvm 0.9.dev282+gf54634c5d\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 13:20+0800\n"
+"POT-Creation-Date: 2022-06-10 19:41+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:19
-msgid "Relay Arm\\ :sup:`®` Compute Library Integration"
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:19
+msgid "集成 Relay Arm\\ :sup:`®` 计算库"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:20
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:20
 msgid "**Author**: `Luke Hutton <https://github.com/lhutton1>`_"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:23
-msgid "Introduction"
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:23
+msgid "简介"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:25
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:25
+msgid "Arm 计算库（Arm Compute Library，简称 ACL）是为 Arm CPU 和 GPU 提供加速内核的开源项目。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:27
 msgid ""
-"Arm Compute Library (ACL) is an open source project that provides "
-"accelerated kernels for Arm CPU's and GPU's. Currently the integration "
-"offloads operators to ACL to use hand-crafted assembler routines in the "
-"library. By offloading select operators from a relay graph to ACL we can "
-"achieve a performance boost on such devices."
+"目前，集成将算子 offload 到 ACL，以便在库中使用手工编写的汇编程序例程。通过将 select 算子从 relay graph "
+"offload 到 ACL，可以在这些设备上实现性能的提升。"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:31
-msgid "Installing Arm Compute Library"
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:30
+msgid "安装 ACL"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:33
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:32
 msgid ""
-"Before installing Arm Compute Library, it is important to know what "
-"architecture to build for. One way to determine this is to use `lscpu` "
-"and look for the \"Model name\" of the CPU. You can then use this to "
-"determine the architecture by looking online."
+"在安装 ACL 之前，重要的是要知道构建什么架构。确定这一点的一种方法是使用 ``lscpu`` 并查找 CPU 的 \"Model "
+"name\"。然后，您可以通过在线查找来确定架构。"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:37
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:34
+msgid "TVM 只支持单个版本的 ACL，目前是 v21.08，有两种推荐的方式来构建和安装所需的库："
+msgstr ""
+
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:36
 msgid ""
-"TVM only supports a single version of ACL, currently this is v21.08, "
-"there are two recommended ways to build and install the required "
-"libraries:"
+"使用位于 ``docker/install/ubuntu_download_arm_compute_lib_binaries.sh`` "
+"中的脚本。您可以使用此脚本下载 ``target_lib`` 中指定的架构和扩展的 ACL 二进制文件，这些文件将被安装到 "
+"``install_path`` 所表示的位置。"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:40
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:37
 msgid ""
-"Use the script located at "
-"`docker/install/ubuntu_download_arm_compute_lib_binaries.sh`. You can use"
-" this script for downloading ACL binaries for the architecture and "
-"extensions specified in `target_lib`, these will be installed to the "
-"location denoted by `install_path`."
+"另外，您也可以从 <https://github.com/ARM-software/ComputeLibrary/releases> "
+"下载预构建的二进制文件。当使用此包时，您将需要选择所需的架构和扩展的二进制文件，然后确保它们对 CMake 可见："
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:43
-msgid ""
-"Alternatively, you can download the pre-built binaries from: "
-"https://github.com/ARM-software/ComputeLibrary/releases. When using this "
-"package, you will need to select the binaries for the architecture and "
-"extensions you require, then make sure they are visible to CMake:"
-msgstr ""
-
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:54
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:45
 msgid ""
 "In both cases you will need to set USE_ARM_COMPUTE_LIB_GRAPH_EXECUTOR to "
 "the path where the ACL package is located. CMake will look in /path-to-"
@@ -83,11 +75,11 @@ msgid ""
 "configuration options."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:59
-msgid "Building with ACL support"
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:50
+msgid "使用 ACL 支持进行构建"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:61
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:52
 msgid ""
 "The current implementation has two separate build options in CMake. The "
 "reason for this split is because ACL cannot be used on an x86 machine. "
@@ -95,20 +87,20 @@ msgid ""
 " machine."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:65
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:56
 msgid ""
 "USE_ARM_COMPUTE_LIB=ON/OFF - Enabling this flag will add support for "
 "compiling an ACL runtime module."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:66
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:57
 msgid ""
 "USE_ARM_COMPUTE_LIB_GRAPH_EXECUTOR=ON/OFF/path-to-acl - Enabling this "
 "flag will allow the graph executor to compute the ACL offloaded "
 "functions."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:69
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:60
 msgid ""
 "These flags can be used in different scenarios depending on your setup. "
 "For example, if you want to compile an ACL module on an x86 machine and "
@@ -117,7 +109,7 @@ msgid ""
 "USE_ARM_COMPUTE_LIB_GRAPH_EXECUTOR=ON on the remote AArch64 device."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:74
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:65
 msgid ""
 "By default both options are set to OFF. Using "
 "USE_ARM_COMPUTE_LIB_GRAPH_EXECUTOR=ON will mean that ACL binaries are "
@@ -128,19 +120,19 @@ msgid ""
 "by specifying a path in the place of ON."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:80
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:71
 msgid "These flags should be set in your config.cmake file. For example:"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:89
-msgid "Usage"
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:80
+msgid "用法"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:93
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:84
 msgid "This section may not stay up-to-date with changes to the API."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:95
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:86
 msgid ""
 "Create a relay graph. This may be a single operator or a whole graph. The"
 " intention is that any relay graph can be input. The ACL integration will"
@@ -149,30 +141,30 @@ msgid ""
 "operator)."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:118
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:109
 msgid "Annotate and partition the graph for ACL."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:126
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:117
 msgid "Build the Relay graph."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:135
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:126
 msgid "Export the module."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:144
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:135
 msgid ""
 "Run Inference. This must be on an Arm device. If compiling on x86 device "
 "and running on AArch64, consider using the RPC mechanism. :ref:`Tutorials"
 " for using the RPC mechanism <tutorial-cross-compilation-and-rpc>`"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:160
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:151
 msgid "More examples"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:161
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:152
 msgid ""
 "The example above only shows a basic example of how ACL can be used for "
 "offloading a single Maxpool2D. If you would like to see more examples for"
@@ -182,177 +174,177 @@ msgid ""
 "`infrastructure.py` and, as a result, how runtime tests will be run."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:167
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:158
 msgid "An example configuration for `test_config.json`:"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:169
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:160
 msgid ""
 "connection_type - The type of RPC connection. Options: local, tracker, "
 "remote."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:170
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:161
 msgid "host - The host device to connect to."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:171
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:162
 msgid "port - The port to use when connecting."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:172
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:163
 msgid "target - The target to use for compilation."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:173
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:164
 msgid "device_key - The device key when connecting via a tracker."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:174
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:165
 msgid ""
 "cross_compile - Path to cross compiler when connecting from a non-arm "
 "platform e.g. aarch64-linux-gnu-g++."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:189
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:180
 msgid "Operator support"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:191
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:182
 msgid "Relay Node"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:191
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:182
 msgid "Remarks"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:193
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:184
 msgid "nn.conv2d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:195
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:207
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:218
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:224
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:231
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:186
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:198
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:209
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:215
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:222
 msgid "fp32:"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:194
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:185
 msgid "Simple: nn.conv2d Composite: nn.pad?, nn.conv2d, nn.bias_add?, nn.relu?"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:197
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:203
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:188
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:194
 msgid ""
 "Normal and depth-wise (when kernel is 3x3 or 5x5 and strides are 1x1 or "
 "2x2) convolution supported. Grouped convolution is not supported."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:200
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:191
 msgid "qnn.conv2d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:201
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:210
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:220
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:226
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:192
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:201
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:211
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:217
 msgid "uint8:"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:201
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:192
 msgid "Composite: nn.pad?, nn.conv2d, nn.bias_add?, nn.relu?, qnn.requantize"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:206
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:197
 msgid "nn.dense"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:207
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:198
 msgid "Simple: nn.dense Composite: nn.dense, nn.bias_add?"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:210
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:201
 msgid "qnn.dense"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:211
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:202
 msgid "Composite: qnn.dense, nn.bias_add?, qnn.requantize"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:213
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:204
 msgid "nn.max_pool2d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:213
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:215
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:234
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:204
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:206
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:225
 msgid "fp32, uint8"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:215
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:206
 msgid "nn.global_max_pool2d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:217
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:208
 msgid "nn.avg_pool2d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:218
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:209
 msgid "Simple: nn.avg_pool2d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:221
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:227
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:212
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:218
 msgid "Composite: cast(int32), nn.avg_pool2d, cast(uint8)"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:223
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:214
 msgid "nn.global_avg_pool2d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:224
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:215
 msgid "Simple: nn.global_avg_pool2d"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:229
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:220
 msgid "power(of 2) + nn.avg_pool2d + sqrt"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:229
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:220
 msgid "A special case for L2 pooling."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:232
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:223
 msgid "Composite: power(of 2), nn.avg_pool2d, sqrt"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:234
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:225
 msgid "reshape"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:236
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:227
 msgid "maximum"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:236
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:238
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:227
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:229
 msgid "fp32"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:238
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:229
 msgid "add"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:240
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:231
 msgid "qnn.add"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:240
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:231
 msgid "uint8"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:244
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:235
 msgid ""
 "A composite operator is a series of operators that map to a single Arm "
 "Compute Library operator. You can view this as being a single fused "
@@ -361,11 +353,11 @@ msgid ""
 "operator."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:250
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:241
 msgid "Adding a new operator"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:251
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:242
 msgid ""
 "Adding a new operator requires changes to a series of places. This "
 "section will give a hint on what needs to be changed and where, it will "
@@ -373,18 +365,18 @@ msgid ""
 "is left to the developer."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:255
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:246
 msgid "There are a series of files we need to make changes to:"
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:257
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:248
 msgid ""
 "`python/relay/op/contrib/arm_compute_lib.py` In this file we define the "
 "operators we wish to offload using the `op.register` decorator. This will"
 " mean the annotation pass recognizes this operator as ACL offloadable."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:259
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:250
 msgid ""
 "`src/relay/backend/contrib/arm_compute_lib/codegen.cc` Implement "
 "`Create[OpName]JSONNode` method. This is where we declare how the "
@@ -392,7 +384,7 @@ msgid ""
 "ACL module."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:261
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:252
 msgid ""
 "`src/runtime/contrib/arm_compute_lib/acl_runtime.cc` Implement "
 "`Create[OpName]Layer` method. This is where we define how the JSON "
@@ -400,9 +392,77 @@ msgid ""
 "how to translate from the JSON representation to ACL API."
 msgstr ""
 
-#: ../../_staging/how_to/deploy/arm_compute_lib.rst:264
+#: ../../../xin/docs/how_to/deploy/arm_compute_lib.rst:255
 msgid ""
 "`tests/python/contrib/test_arm_compute_lib` Add unit tests for the given "
 "operator."
 msgstr ""
+
+#~ msgid "Relay Arm\\ :sup:`®` Compute Library Integration"
+#~ msgstr ""
+
+#~ msgid "Introduction"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Arm Compute Library (ACL) is an "
+#~ "open source project that provides "
+#~ "accelerated kernels for Arm CPU's and"
+#~ " GPU's. Currently the integration offloads"
+#~ " operators to ACL to use hand-"
+#~ "crafted assembler routines in the "
+#~ "library. By offloading select operators "
+#~ "from a relay graph to ACL we "
+#~ "can achieve a performance boost on "
+#~ "such devices."
+#~ msgstr ""
+
+#~ msgid "Installing Arm Compute Library"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Before installing Arm Compute Library, "
+#~ "it is important to know what "
+#~ "architecture to build for. One way "
+#~ "to determine this is to use "
+#~ "`lscpu` and look for the \"Model "
+#~ "name\" of the CPU. You can then"
+#~ " use this to determine the "
+#~ "architecture by looking online."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "TVM only supports a single version "
+#~ "of ACL, currently this is v21.08, "
+#~ "there are two recommended ways to "
+#~ "build and install the required "
+#~ "libraries:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Use the script located at "
+#~ "`docker/install/ubuntu_download_arm_compute_lib_binaries.sh`. "
+#~ "You can use this script for "
+#~ "downloading ACL binaries for the "
+#~ "architecture and extensions specified in "
+#~ "`target_lib`, these will be installed to"
+#~ " the location denoted by `install_path`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Alternatively, you can download the "
+#~ "pre-built binaries from: https://github.com"
+#~ "/ARM-software/ComputeLibrary/releases. When using "
+#~ "this package, you will need to "
+#~ "select the binaries for the architecture"
+#~ " and extensions you require, then "
+#~ "make sure they are visible to "
+#~ "CMake:"
+#~ msgstr ""
+
+#~ msgid "Building with ACL support"
+#~ msgstr ""
+
+#~ msgid "Usage"
+#~ msgstr ""
 

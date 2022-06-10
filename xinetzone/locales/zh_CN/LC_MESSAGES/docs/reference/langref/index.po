@@ -42,7 +42,7 @@ msgid ""
 "typing using *type relations* in order to handle shape analysis for "
 "operators with complex requirements on argument shapes."
 msgstr ""
-"Relay 是函数式的、可区分的编程语言，旨在成为机器学习系统的表达式中间表示。"
+"Relay 是函数式的、可微分的编程语言，旨在成为机器学习系统表达式的中间表示。"
 "Relay 支持代数数据类型、闭包、控制流和递归，使其能够直接表示比基于计算图的 IR 更复杂的模型。"
 "Relay 还包括使用 *类型关系* 的依赖类型，以处理对参数形状有复杂要求的算子的形状分析。"
 
@@ -52,7 +52,7 @@ msgid ""
 "researchers and practitioners to develop new large-scale program "
 "transformations and optimizations."
 msgstr ""
-"Relay 在设计上是可扩展的，使机器学习研究人员和从业人员很容易开发新的大规模程序转换和优化。"
+"Relay 在设计上是可扩展的，使机器学习研究人员和从业人员很容易开发新的大规模程序变换和优化。"
 
 #: ../../docs/reference/langref/index.rst:39
 msgid ""

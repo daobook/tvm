@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-27 12:49+0800\n"
+"POT-Creation-Date: 2022-06-10 19:41+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: xinetzone <735613050@qq.com>, 2022\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgid "How To 指南"
 msgstr ""
 
 #: ../../../xin/docs/how_to/index.rst:4
-msgid "这些以用户为中心的“如何”指南旨在帮助您找到特定问题的答案，比如“如何编译模型？”或“如何用 tesor 表达式优化调度？”"
+msgid "这些以用户为中心的“如何”指南旨在帮助您找到特定问题的答案，比如“如何编译模型？”或“如何用 tensor 表达式优化调度？”"
 msgstr ""
 
 #~ msgid "How To Guides"
@@ -41,5 +41,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "这些以用户为中心的“如何”指南旨在帮助您找到特定问题的答案，比如“我如何编译模型？”或“我如何用 tensor 表达式优化调度？”"
+#~ msgstr ""
+
+#~ msgid "这些以用户为中心的“如何”指南旨在帮助您找到特定问题的答案，比如“如何编译模型？”或“如何用 tesor 表达式优化调度？”"
 #~ msgstr ""
 

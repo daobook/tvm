@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-27 12:49+0800\n"
+"POT-Creation-Date: 2022-06-10 19:41+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,29 +80,33 @@ msgstr ""
 
 #: ../../../xin/docs/tutorial/autotvm_relay_x86.ipynb:30004
 msgid ""
-"在本教程中，我们将使用 ResNet-50 v2。ResNet-50 是卷积神经网络，有 50 "
-"层深度，旨在对图像进行分类。该模型已经在超过一百万张图片上进行了预训练，有 1000 种不同的分类。该网络的输入图像大小为 "
-"224x224。如果你有兴趣探索更多关于 ResNet-50 模型的结构，我们建议下载免费的 ML 模型查看器 "
+"在本教程中，使用 ResNet-50 v2。ResNet-50 是卷积神经网络，有 50 "
+"层深度，旨在对图像进行分类。该模型已经在超过一百万张图片上进行了预训练，有 1000 种不同的分类。该网络的输入图像大小为 224x224。"
+msgstr ""
+
+#: ../../../xin/docs/tutorial/autotvm_relay_x86.ipynb:30007
+msgid ""
+"如果你有兴趣探索更多关于 ResNet-50 模型的结构，建议下载免费的 ML 模型查看器 "
 "[Netron](https://netron.app)。"
 msgstr ""
 
-#: ../../../xin/docs/tutorial/autotvm_relay_x86.ipynb:30006
+#: ../../../xin/docs/tutorial/autotvm_relay_x86.ipynb:30010
 msgid "TVM 提供了辅助库来下载预训练的模型。通过该模块提供模型的 URL、文件名和模型类型，TVM 将下载模型并保存到磁盘。"
 msgstr ""
 
-#: ../../../xin/docs/tutorial/autotvm_relay_x86.ipynb:30008
+#: ../../../xin/docs/tutorial/autotvm_relay_x86.ipynb:30012
 msgid "与其他模型格式一起工作"
 msgstr ""
 
-#: ../../../xin/docs/tutorial/autotvm_relay_x86.ipynb:30009
+#: ../../../xin/docs/tutorial/autotvm_relay_x86.ipynb:30013
 msgid "TVM 支持许多流行的模型格式。清单可以在 TVM 文档的 [编译深度学习模型](tutorial-frontend) 部分找到。"
 msgstr ""
 
-#: ../../../xin/docs/tutorial/autotvm_relay_x86.ipynb:30013
+#: ../../../xin/docs/tutorial/autotvm_relay_x86.ipynb:30017
 msgid "可以直接使用如下方式下载预训练的模型（以 ONNX 为例）："
 msgstr ""
 
-#: ../../../xin/docs/tutorial/autotvm_relay_x86.ipynb:30028
+#: ../../../xin/docs/tutorial/autotvm_relay_x86.ipynb:30032
 msgid "MXNet 可直接载入模型："
 msgstr ""
 
@@ -240,13 +244,13 @@ msgstr ""
 
 #: ../../../xin/docs/tutorial/autotvm_relay_x86.ipynb:230002
 msgid ""
-"创建一个简单的结构来保存调谐选项。我们使用一个 XGBoost 算法来指导搜索。对于一个生产作业来说，你会想把试验的数量设置得比这里使用的 10 "
-"的值大。对于 CPU，我们推荐 1500，对于 GPU，推荐 "
+"创建简单的结构来保存调谐选项。使用 XGBoost 算法来指导搜索。对于生产作业来说，你会想把试验的数量设置得比这里使用的 10 的值大。对于 "
+"CPU，推荐 1500，对于 GPU，推荐 "
 "3000-4000。所需的试验次数可能取决于特定的模型和处理器，因此值得花一些时间来评估各种数值的性能，以找到调整时间和模型优化之间的最佳平衡。因为运行调谐是需要时间的，我们将试验次数设置为"
 " 10 次，但不建议使用这么小的值。``early_stopping`` "
 "参数是在应用提前停止搜索的条件之前，要运行的最小轨数。``measure`` "
-"选项表示将在哪里建立试验代码，以及将在哪里运行。在这种情况下，我们使用刚刚创建的 ``LocalRunner`` 和一个 "
-"``LocalBuilder``。``tuning_records`` 选项指定了一个文件来写入调整数据。"
+"选项表示将在哪里建立试验代码，以及将在哪里运行。在这种情况下，使用刚刚创建的 ``LocalRunner`` 和 "
+"``LocalBuilder``。``tuning_records`` 选项指定了文件来写入调整数据。"
 msgstr ""
 
 #: ../../../xin/docs/tutorial/autotvm_relay_x86.ipynb:250002
@@ -304,6 +308,28 @@ msgid ""
 msgstr ""
 
 #: ../../../xin/docs/tutorial/autotvm_relay_x86.ipynb:330006
-msgid "这里我们介绍了一个使用 ResNet-50 v2 本地的简单例子。然而，TVM 支持更多的功能，包括交叉编译、远程执行和剖析/基准测试。"
+msgid "这里我们介绍了使用 ResNet-50 v2 本地的简单例子。然而，TVM 支持更多的功能，包括交叉编译、远程执行和剖析/基准测试。"
 msgstr ""
+
+#~ msgid ""
+#~ "在本教程中，我们将使用 ResNet-50 v2。ResNet-50 是卷积神经网络，有 "
+#~ "50 层深度，旨在对图像进行分类。该模型已经在超过一百万张图片上进行了预训练，有 1000 "
+#~ "种不同的分类。该网络的输入图像大小为 224x224。如果你有兴趣探索更多关于 ResNet-50 "
+#~ "模型的结构，我们建议下载免费的 ML 模型查看器 "
+#~ "[Netron](https://netron.app)。"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "创建一个简单的结构来保存调谐选项。我们使用一个 XGBoost "
+#~ "算法来指导搜索。对于一个生产作业来说，你会想把试验的数量设置得比这里使用的 10 的值大。对于 "
+#~ "CPU，我们推荐 1500，对于 GPU，推荐 "
+#~ "3000-4000。所需的试验次数可能取决于特定的模型和处理器，因此值得花一些时间来评估各种数值的性能，以找到调整时间和模型优化之间的最佳平衡。因为运行调谐是需要时间的，我们将试验次数设置为"
+#~ " 10 次，但不建议使用这么小的值。``early_stopping`` "
+#~ "参数是在应用提前停止搜索的条件之前，要运行的最小轨数。``measure`` "
+#~ "选项表示将在哪里建立试验代码，以及将在哪里运行。在这种情况下，我们使用刚刚创建的 ``LocalRunner`` "
+#~ "和一个 ``LocalBuilder``。``tuning_records`` 选项指定了一个文件来写入调整数据。"
+#~ msgstr ""
+
+#~ msgid "这里我们介绍了一个使用 ResNet-50 v2 本地的简单例子。然而，TVM 支持更多的功能，包括交叉编译、远程执行和剖析/基准测试。"
+#~ msgstr ""
 

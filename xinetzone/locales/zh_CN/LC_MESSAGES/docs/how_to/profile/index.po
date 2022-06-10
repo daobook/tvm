@@ -8,16 +8,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvm 0.9.dev282+gf54634c5d\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 13:20+0800\n"
+"POT-Creation-Date: 2022-06-10 19:41+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
-#: ../../_staging/how_to/profile/index.rst:19
-msgid "Profile Models"
+#: ../../../xin/docs/how_to/profile/index.rst:19
+msgid "模型剖析"
 msgstr ""
+
+#~ msgid "Profile Models"
+#~ msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-27 12:49+0800\n"
+"POT-Creation-Date: 2022-06-10 19:41+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,8 +71,8 @@ msgstr ""
 
 #: ../../../xin/docs/tutorial/relay_quick_start.ipynb:50004
 msgid ""
-"下一步是使用 Relay/TVM 管道对模型进行编译。用户可以指定编译的优化级别。目前这个值可以是 0 到 3。优化 passes "
-"包括算子融合（operator fusion）、预计算（pre-computation）、布局变换（layout "
+"下一步是使用 Relay/TVM 管道对模型进行编译。用户可以指定编译的优化级别（`opt_level`）。目前这个值可以是 0 到 3。优化 "
+"passes 包括算子融合（operator fusion）、预计算（pre-computation）、布局变换（layout "
 "transformation）等。"
 msgstr ""
 
@@ -80,13 +80,13 @@ msgstr ""
 msgid ""
 "{py:func}`relay.build` 返回三个部分：json 格式的执行图，TVM "
 "模块库中专门为这个图在目标硬件上编译的函数，以及模型的参数 blobs。在编译过程中，Relay 做了图层面的优化，而 TVM "
-"做了张量层面的优化，从而产生了一个优化的运行模块为模型服务。"
+"做了张量层面的优化，从而产生了优化的运行模块为模型服务。"
 msgstr ""
 
 #: ../../../xin/docs/tutorial/relay_quick_start.ipynb:50008
 msgid ""
-"我们将首先为 Nvidia GPU 进行编译。在幕后， {py:func}`relay.build` "
-"首先做了一些图层面的优化，例如修剪（pruning）、融合（fusing）等，然后将运算符（即优化后的图的节点）注册到 TVM 实现中，生成 "
+"首先为 Nvidia GPU 进行编译。在幕后， {py:func}`relay.build` "
+"首先做了一些图层面的优化，例如修剪（pruning）、融合（fusing）等，然后将算子（即优化后的图的节点）注册到 TVM 实现中，生成 "
 "`tvm.module`。为了生成模块库，TVM 将首先把高层 IR 转移到指定目标后端的低层内在 IR 中，在这个例子中是 "
 "CUDA。然后机器代码将被生成为模块库。"
 msgstr ""
@@ -96,7 +96,7 @@ msgid "运行生成库"
 msgstr ""
 
 #: ../../../xin/docs/tutorial/relay_quick_start.ipynb:70004
-msgid "现在我们可以创建图执行器并在 Nvidia GPU 上运行该模块。"
+msgid "可以创建图执行器并在 Nvidia GPU 上运行该模块。"
 msgstr ""
 
 #: ../../../xin/docs/tutorial/relay_quick_start.ipynb:90002
@@ -106,4 +106,27 @@ msgstr ""
 #: ../../../xin/docs/tutorial/relay_quick_start.ipynb:90004
 msgid "也可以将 graph、lib 和参数保存到文件中，并在部署环境中加载它们。"
 msgstr ""
+
+#~ msgid ""
+#~ "下一步是使用 Relay/TVM 管道对模型进行编译。用户可以指定编译的优化级别。目前这个值可以是 0"
+#~ " 到 3。优化 passes 包括算子融合（operator fusion）、预计算"
+#~ "（pre-computation）、布局变换（layout transformation）等。"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "{py:func}`relay.build` 返回三个部分：json 格式的执行图，TVM "
+#~ "模块库中专门为这个图在目标硬件上编译的函数，以及模型的参数 blobs。在编译过程中，Relay "
+#~ "做了图层面的优化，而 TVM 做了张量层面的优化，从而产生了一个优化的运行模块为模型服务。"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "我们将首先为 Nvidia GPU 进行编译。在幕后， "
+#~ "{py:func}`relay.build` "
+#~ "首先做了一些图层面的优化，例如修剪（pruning）、融合（fusing）等，然后将运算符（即优化后的图的节点）注册到 TVM"
+#~ " 实现中，生成 `tvm.module`。为了生成模块库，TVM 将首先把高层 IR "
+#~ "转移到指定目标后端的低层内在 IR 中，在这个例子中是 CUDA。然后机器代码将被生成为模块库。"
+#~ msgstr ""
+
+#~ msgid "现在我们可以创建图执行器并在 Nvidia GPU 上运行该模块。"
+#~ msgstr ""
 

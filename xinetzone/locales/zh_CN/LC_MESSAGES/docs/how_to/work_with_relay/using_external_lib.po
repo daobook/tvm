@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVM \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-27 12:49+0800\n"
+"POT-Creation-Date: 2022-06-10 19:41+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,155 +17,134 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:13
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:10002
+msgid "在 Relay 中使用外部库"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:10004
 msgid ""
-"Click :ref:`here "
-"<sphx_glr_download_how_to_work_with_relay_using_external_lib.py>` to "
-"download the full example code"
+"**原作者**: [Masahiro Masuda](https://github.com/masahi), [Truman "
+"Tian](https://github.com/SiNZeRo)"
 msgstr ""
 
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:22
-msgid "Using External Libraries in Relay"
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:10006
+msgid "这是简短的教程，介绍关于如何使用在 Relay 中使用外部库，如 cuDNN，或 cuBLAS。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:23
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:10008
 msgid ""
-"**Author**: `Masahiro Masuda <https://github.com/masahi>`_, `Truman Tian "
-"<https://github.com/SiNZeRo>`_"
+"Relay 在内部使用 TVM 来生成目标特定的代码。例如，使用 cuda 后端，TVM 为用户提供的网络中的所有层生成 cuda "
+"kernel。但有时，将不同供应商开发的外部库合并到 Relay 中也是有帮助的。幸运的是，TVM 有一种透明地调用这些库的机制。对于 Relay"
+" 用户，需要做的只是适当地设置目标字符串。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:25
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:10010
 msgid ""
-"This is a short tutorial on how to use external libraries such as cuDNN, "
-"or cuBLAS with Relay."
+"使用来自 Relay 的外部库之前， TVM 需要构建您想要使用的库。例如，要使用 cuDNN，在 `cmake/config.cmake` "
+"中启用 `USE_CUDNN` 选项，必要时需要指定 cuDNN include 和库目录。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:27
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:10012
+msgid "首先，导入 Relay 和 TVM。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:30002
+msgid "创建简单网络"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:30004
+msgid "创建非常简单的网络进行演示。它由卷积、batch normalization 和 ReLU 激活组成。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:50002
+msgid "使用 cuda 后端构建和运行"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:50004
+msgid "像往常一样，用 cuda 后端构建和运行这个网络。通过将日志级别设置为 `DEBUG`，将 Relay graph 编译的结果转储为伪代码。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:70002
+msgid "生成的伪代码应该如下所示。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:70005
+msgid "注意 bias add、batch normalization 和 ReLU 激活是如何融合到卷积核中的。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:70008
+msgid "TVM 从这个表示生成单一的融合 kernel。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:100002
+msgid "为卷积层使用 cuDNN"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:100004
+msgid "可以用 cuDNN 来代替 cuDNN 的卷积核。为此，需要做的就是将选项 `\" -libs=cudnn\"` 附加到目标字符串中。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:120003
 msgid ""
-"Relay uses TVM internally to generate target specific code. For example, "
-"with cuda backend TVM generates cuda kernels for all layers in the user "
-"provided network. But sometimes it is also helpful to incorporate "
-"external libraries developed by various vendors into Relay. Luckily, TVM "
-"has a mechanism to transparently call into these libraries. For Relay "
-"users, all we need to do is just to set a target string appropriately."
+"如果你使用 cuDNN, Relay 不能融合后面的层的卷积。这是因为层融合发生在 TVM 内部表示 (IR) 级别。Relay "
+"将外部库视为黑盒，因此没有办法将它们与 TVM IR 融合。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:32
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:120006
 msgid ""
-"Before we can use external libraries from Relay, your TVM needs to be "
-"built with libraries you want to use. For example, to use cuDNN, "
-"USE_CUDNN option in `cmake/config.cmake` needs to be enabled, and cuDNN "
-"include and library directories need to be specified if necessary."
+"下面的伪代码显示，cuDNN 卷积 + bias add + batch norm + ReLU 分为两个计算阶段，一个用于 cuDNN "
+"调用，另一个用于其余的运算。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:35
-msgid "To begin with, we import Relay and TVM."
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:140002
+msgid "验证结果"
 msgstr ""
 
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:53
-msgid "Create a simple network"
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:140004
+msgid "可以检查两次运行的结果是否匹配。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:54
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:160002
+msgid "结论"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:160004
 msgid ""
-"Let's create a very simple network for demonstration. It consists of "
-"convolution, batch normalization, and ReLU activation."
+"本教程涵盖了 cuDNN 与 Relay 的使用。TVM 也支持 cuBLAS。如果 cuBLAS "
+"被启用，它将在全连接的层(`relay.dense`)内使用。要使用 cuBLAS，设置目标字符串为 `\"cuda "
+"-libs=cublas\"`。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:86
-msgid "Build and run with cuda backend"
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:160006
+msgid "也可以同时使用 cuDNN 和 cuBLAS：`\"cuda -libs=cudnn,cublas\"`。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:87
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:160008
 msgid ""
-"We build and run this network with cuda backend, as usual. By setting the"
-" logging level to DEBUG, the result of Relay graph compilation will be "
-"dumped as pseudo code."
+"对于 ROCm 后端，支持 MIOpen 和 rocBLAS。它们可以通过 target `\"rocm "
+"-libs=miopen,rocblas\"` 来启用。"
 msgstr ""
 
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:112
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:160010
+msgid "能够使用外部库是很好的，但是需要记住一些注意事项。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:160012
+msgid "首先，使用外部库可能会限制 TVM 和 Relay 的使用。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:160014
+msgid "例如，MIOpen 目前只支持 NCHW 布局和 fp32 数据类型，所以在 TVM 中不能使用其他布局或数据类型。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:160016
+msgid "其次，更重要的是，外部库限制了 graph 编译过程中算子融合的可能性，如上所示。"
+msgstr ""
+
+#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.ipynb:160018
 msgid ""
-"The generated pseudo code should look something like below. Note how bias"
-" add, batch normalization, and ReLU activation are fused into the "
-"convolution kernel. TVM generates a single, fused kernel from this "
-"representation."
-msgstr ""
-
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:518
-msgid "Use cuDNN for a convolutional layer"
-msgstr ""
-
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:519
-msgid ""
-"We can use cuDNN to replace convolution kernels with cuDNN ones. To do "
-"that, all we need to do is to append the option \" -libs=cudnn\" to the "
-"target string."
-msgstr ""
-
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:542
-msgid ""
-"Note that if you use cuDNN, Relay cannot fuse convolution with layers "
-"following it. This is because layer fusion happens at the level of TVM "
-"internal representation(IR). Relay treats external libraries as black "
-"box, so there is no way to fuse them with TVM IR."
-msgstr ""
-
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:546
-msgid ""
-"The pseudo code below shows that cuDNN convolution + bias add + batch "
-"norm + ReLU turned into two stages of computation, one for cuDNN call and"
-" the other for the rest of operations."
-msgstr ""
-
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:569
-msgid "Verify the result"
-msgstr ""
-
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:570
-msgid "We can check that the results of two runs match."
-msgstr ""
-
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:583
-msgid "Conclusion"
-msgstr ""
-
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:584
-msgid ""
-"This tutorial covered the usage of cuDNN with Relay. We also have support"
-" for cuBLAS. If cuBLAS is enabled, it will be used inside a fully "
-"connected layer (relay.dense). To use cuBLAS, set a target string as "
-"\"cuda -libs=cublas\". You can use both cuDNN and cuBLAS with \"cuda "
-"-libs=cudnn,cublas\"."
-msgstr ""
-
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:589
-msgid ""
-"For ROCm backend, we have support for MIOpen and rocBLAS. They can be "
-"enabled with target \"rocm -libs=miopen,rocblas\"."
-msgstr ""
-
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:592
-msgid ""
-"Being able to use external libraries is great, but we need to keep in "
-"mind some cautions."
-msgstr ""
-
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:594
-msgid ""
-"First, the use of external libraries may restrict your usage of TVM and "
-"Relay. For example, MIOpen only supports NCHW layout and fp32 data type "
-"at the moment, so you cannot use other layouts or data type in TVM."
-msgstr ""
-
-#: ../../../xin/docs/how_to/work_with_relay/using_external_lib.rst:597
-msgid ""
-"Second, and more importantly, external libraries restrict the possibility"
-" of operator fusion during graph compilation, as shown above. TVM and "
-"Relay aim to achieve the best performance on a variety of hardwares, with"
-" joint operator level and graph level optimization. To achieve this goal,"
-" we should continue developing better optimizations for TVM and Relay, "
-"while using external libraries as a nice way to fall back to existing "
-"implementation when necessary."
+"TVM 和 Relay 的目标是实现在各种硬件上的最佳性能，通过联合算子级和图优化。   为了实现这一目标，应该继续为 TVM 和 Relay "
+"开发更好的优化，同时在必要时使用外部库作为返回现有实现的好方法。"
 msgstr ""
 
 #~ msgid ""
@@ -181,5 +160,177 @@ msgstr ""
 #~ msgid ""
 #~ "`Gallery generated by Sphinx-Gallery "
 #~ "<https://sphinx-gallery.github.io>`_"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Click :ref:`here "
+#~ "<sphx_glr_download_how_to_work_with_relay_using_external_lib.py>` "
+#~ "to download the full example code"
+#~ msgstr ""
+
+#~ msgid "Using External Libraries in Relay"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Author**: `Masahiro Masuda "
+#~ "<https://github.com/masahi>`_, `Truman Tian "
+#~ "<https://github.com/SiNZeRo>`_"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This is a short tutorial on how"
+#~ " to use external libraries such as"
+#~ " cuDNN, or cuBLAS with Relay."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Relay uses TVM internally to generate"
+#~ " target specific code. For example, "
+#~ "with cuda backend TVM generates cuda "
+#~ "kernels for all layers in the user"
+#~ " provided network. But sometimes it "
+#~ "is also helpful to incorporate external"
+#~ " libraries developed by various vendors "
+#~ "into Relay. Luckily, TVM has a "
+#~ "mechanism to transparently call into "
+#~ "these libraries. For Relay users, all"
+#~ " we need to do is just to "
+#~ "set a target string appropriately."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Before we can use external libraries "
+#~ "from Relay, your TVM needs to be"
+#~ " built with libraries you want to "
+#~ "use. For example, to use cuDNN, "
+#~ "USE_CUDNN option in `cmake/config.cmake` needs"
+#~ " to be enabled, and cuDNN include "
+#~ "and library directories need to be "
+#~ "specified if necessary."
+#~ msgstr ""
+
+#~ msgid "To begin with, we import Relay and TVM."
+#~ msgstr ""
+
+#~ msgid "Create a simple network"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Let's create a very simple network "
+#~ "for demonstration. It consists of "
+#~ "convolution, batch normalization, and ReLU "
+#~ "activation."
+#~ msgstr ""
+
+#~ msgid "Build and run with cuda backend"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "We build and run this network with"
+#~ " cuda backend, as usual. By setting"
+#~ " the logging level to DEBUG, the "
+#~ "result of Relay graph compilation will"
+#~ " be dumped as pseudo code."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The generated pseudo code should look"
+#~ " something like below. Note how bias"
+#~ " add, batch normalization, and ReLU "
+#~ "activation are fused into the "
+#~ "convolution kernel. TVM generates a "
+#~ "single, fused kernel from this "
+#~ "representation."
+#~ msgstr ""
+
+#~ msgid "Use cuDNN for a convolutional layer"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "We can use cuDNN to replace "
+#~ "convolution kernels with cuDNN ones. To"
+#~ " do that, all we need to do "
+#~ "is to append the option \" "
+#~ "-libs=cudnn\" to the target string."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Note that if you use cuDNN, Relay"
+#~ " cannot fuse convolution with layers "
+#~ "following it. This is because layer "
+#~ "fusion happens at the level of TVM"
+#~ " internal representation(IR). Relay treats "
+#~ "external libraries as black box, so "
+#~ "there is no way to fuse them "
+#~ "with TVM IR."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The pseudo code below shows that "
+#~ "cuDNN convolution + bias add + "
+#~ "batch norm + ReLU turned into two"
+#~ " stages of computation, one for cuDNN"
+#~ " call and the other for the "
+#~ "rest of operations."
+#~ msgstr ""
+
+#~ msgid "Verify the result"
+#~ msgstr ""
+
+#~ msgid "We can check that the results of two runs match."
+#~ msgstr ""
+
+#~ msgid "Conclusion"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This tutorial covered the usage of "
+#~ "cuDNN with Relay. We also have "
+#~ "support for cuBLAS. If cuBLAS is "
+#~ "enabled, it will be used inside a"
+#~ " fully connected layer (relay.dense). To"
+#~ " use cuBLAS, set a target string "
+#~ "as \"cuda -libs=cublas\". You can use"
+#~ " both cuDNN and cuBLAS with \"cuda"
+#~ " -libs=cudnn,cublas\"."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "For ROCm backend, we have support "
+#~ "for MIOpen and rocBLAS. They can "
+#~ "be enabled with target \"rocm "
+#~ "-libs=miopen,rocblas\"."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Being able to use external libraries "
+#~ "is great, but we need to keep "
+#~ "in mind some cautions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "First, the use of external libraries "
+#~ "may restrict your usage of TVM and"
+#~ " Relay. For example, MIOpen only "
+#~ "supports NCHW layout and fp32 data "
+#~ "type at the moment, so you cannot"
+#~ " use other layouts or data type "
+#~ "in TVM."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Second, and more importantly, external "
+#~ "libraries restrict the possibility of "
+#~ "operator fusion during graph compilation, "
+#~ "as shown above. TVM and Relay aim"
+#~ " to achieve the best performance on"
+#~ " a variety of hardwares, with joint"
+#~ " operator level and graph level "
+#~ "optimization. To achieve this goal, we"
+#~ " should continue developing better "
+#~ "optimizations for TVM and Relay, while"
+#~ " using external libraries as a nice"
+#~ " way to fall back to existing "
+#~ "implementation when necessary."
 #~ msgstr ""
 
