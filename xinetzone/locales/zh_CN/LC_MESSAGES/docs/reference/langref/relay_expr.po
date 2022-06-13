@@ -106,7 +106,7 @@ msgid ""
 "control flow, a call to that function is not part of the dataflow "
 "fragment."
 msgstr ""
-"从计算图的角度来看，函数是子图，函数调用在子图中，将其参数替换为带有相应名称的子图中的自由变量。"
+"从计算图的角度来看，函数是子图，函数 call 在子图中，将其参数替换为带有相应名称的子图中的自由变量。"
 "因此，如果函数体只使用 dataflow 构造器，那么调用该函数就在 dataflow 片段中；"
 "相反，如果函数体包含控制流，那么调用该函数就不属于 dataflow 片段。"
 
@@ -183,6 +183,9 @@ msgid ""
 "definition, while references to :code:`%a` in the outer scope continue to"
 " refer to the first one."
 msgstr ""
+"在下面的代码段中，请注意 :code:`%a` 被定义了两次。"
+"这是允许的，就像在大多数函数语言中一样；在第二个 let 表达式的作用域中，名称 :code:`%a` 是 \"shadowed\"，"
+"这意味着在内部作用域中对 :code:`%a` 的所有引用后面的定义，而在外部作用域中对 :code:`%a` 的引用继续引用第一个定义。"
 
 #: ../../docs/reference/langref/relay_expr.rst:102
 msgid ""
@@ -193,16 +196,20 @@ msgid ""
 "identity with the knowledge that the same local variable object "
 "corresponds to a different binding site.)"
 msgstr ""
+"（请注意，在 Relay 的实现中，局部变量的每个定义都会创建新的 :py:class:`~tvm.relay.expr.Var`，"
+"因此，被隐藏的局部变量尽管与外部作用域中的变量具有相同的名称，但将是不同的对象。"
+"这允许通过指针标识比较局部变量，同时知道相同的局部变量对象对应于不同的绑定站点。）"
 
 #: ../../docs/reference/langref/relay_expr.rst:108
 msgid ""
 "See :py:class:`~tvm.relay.expr.Var` for its implementation and "
 "documentation."
 msgstr ""
+"阅读 :py:class:`~tvm.relay.expr.Var` 的实现和文档。"
 
 #: ../../docs/reference/langref/relay_expr.rst:112
 msgid "Functions"
-msgstr ""
+msgstr "函数"
 
 #: ../../docs/reference/langref/relay_expr.rst:114
 msgid ""
@@ -210,6 +217,7 @@ msgid ""
 "programming languages and serve to generalize the concept of a named "
 "subgraph."
 msgstr ""
+"Relay 中的函数的作用类似于其他编程语言中的过程或函数，并用于推广命名子图的概念。"
 
 #: ../../docs/reference/langref/relay_expr.rst:118
 msgid ""
@@ -220,16 +228,20 @@ msgid ""
 " evaluate to closures (see the `Closures`_ subsection), which are values "
 "like tensors and tuples."
 msgstr ""
+"函数是 Relay 中的 first class，这意味着它们是表达式，就像变量、常量和元组一样。"
+"此外，Relay 中的函数是高阶的，这意味着函数可以作为参数传递给函数，也可以由函数返回，"
+"因为函数表达式计算为闭包（参见 `Closures`_ 小节），这是张量和元组等的值。"
 
 #: ../../docs/reference/langref/relay_expr.rst:123
 msgid ""
 "See :py:class:`~tvm.relay.function.Function` for the definition and "
 "documentation of function nodes."
 msgstr ""
+"阅读 :py:class:`~tvm.relay.function.Function` 了解函数节点的定义和文档。"
 
 #: ../../docs/reference/langref/relay_expr.rst:126
 msgid "Syntax"
-msgstr ""
+msgstr "语法"
 
 #: ../../docs/reference/langref/relay_expr.rst:128
 msgid ""
@@ -237,24 +249,28 @@ msgid ""
 "of parameters, and a body expression (:py:class:`~tvm.relay.expr.Expr`) "
 "contained by curly braces."
 msgstr ""
+"定义至少包括关键字 :code:`fn`，一个空的参数集，以及由花括号包含的 body 表达式（:py:class:`~tvm.relay.expr.Expr`）。"
 
 #: ../../docs/reference/langref/relay_expr.rst:136
 msgid ""
 "A definition may contain any number of parameters. For example, a simple "
 "function that invokes the :code:`add` operator:"
 msgstr ""
+"定义可以包含任意数量的参数。例如，调用 :code:`add` 算子的简单函数："
 
 #: ../../docs/reference/langref/relay_expr.rst:143
 msgid ""
 "Notice that within the function's body, the parameters are local "
 "variables, just like those bound in a :code:`let` expression."
 msgstr ""
+"注意，在函数体中，参数是局部变量，就像 :code:`let` 表达式中绑定的那些参数一样。"
 
 #: ../../docs/reference/langref/relay_expr.rst:146
 msgid ""
 "One may also annotate explicit types on functions. For example, we can "
 "restrict the above function to only work on certain types:"
 msgstr ""
+"还可以在函数上注解显式类型。例如，可以将上面的函数限制为只能处理特定类型："
 
 #: ../../docs/reference/langref/relay_expr.rst:157
 #, python-format
@@ -265,6 +281,8 @@ msgid ""
 "(:py:class:`~tvm.relay.expr.LocalVar`) optionally annotated with a type, "
 "written as :code:`%x : T`."
 msgstr ""
+"上面的函数只接受 :code:`Tensor[(10, 10), float32]` 类型的参数，并返回 :code:`Tensor[(10, 10), float32]` 类型的值。"
+"函数参数只是局部变量(:py:class:`~tvm.relay.expr.LocalVar`)，可选地使用类型进行注解，写为 :code:`%x : T`。"
 
 #: ../../docs/reference/langref/relay_expr.rst:161
 msgid ""
@@ -274,16 +292,19 @@ msgid ""
 "most general type to the parameters and return type based on the function"
 " body and call sites."
 msgstr ""
+"当类型信息被省略时，Relay 尝试为用户推断出最一般的类型。"
+"这个属性被称为泛化（generalization）：对于没有显式注解的定义，Relay 试图根据函数体和调用站点（sites）为参数和返回类型分配最通用的类型。"
 
 #: ../../docs/reference/langref/relay_expr.rst:166
 msgid ""
 "A recursive function expression can be defined using a :code:`let` "
 "binding, as here:"
 msgstr ""
+"递归函数表达式可以使用 :code:`let` 绑定定义，如下所示："
 
 #: ../../docs/reference/langref/relay_expr.rst:181
 msgid "Closures"
-msgstr ""
+msgstr "闭包"
 
 #: ../../docs/reference/langref/relay_expr.rst:183
 msgid ""
@@ -292,6 +313,8 @@ msgid ""
 "all variables defined outside the scope of the function's body) and the "
 "function itself."
 msgstr ""
+"函数表达式的计算结果为闭包。"
+"闭包是表示为一对局部环境（存储在函数体范围之外定义的所有变量的值）和函数本身的值。"
 
 #: ../../docs/reference/langref/relay_expr.rst:188
 #, python-format
@@ -300,14 +323,16 @@ msgid ""
 "zero values because the closure for :code:`%f` stores the value of "
 ":code:`%x` at the pointer where :code:`%f` was defined."
 msgstr ""
+"例如，在下面的例子中，最终的结果将是值为 0 的张量，"
+"因为 :code:`%f` 的闭包将 :code:`%x` 的值存储在 :code:`%f` 定义的指针上。"
 
 #: ../../docs/reference/langref/relay_expr.rst:206
 msgid "Polymorphism and Type Relations"
-msgstr ""
+msgstr "多态性与类型关系"
 
 #: ../../docs/reference/langref/relay_expr.rst:208
 msgid "*Note: type parameter syntax is not yet supported in the text format.*"
-msgstr ""
+msgstr "*注意：文本格式中还不支持类型参数语法。*"
 
 #: ../../docs/reference/langref/relay_expr.rst:210
 msgid ""
@@ -317,6 +342,9 @@ msgid ""
 "arguments they will accept can vary based on the type arguments given at "
 "call sites."
 msgstr ""
+"函数也可以给定一组类型参数，这些参数可以在 call sites 替换特定类型。"
+"带类型参数的函数是 *类型多态的* （type polymorphic）；"
+"它们的返回类型或它们将接受的参数类型可以根据调用点给出的类型参数而变化。"
 
 #: ../../docs/reference/langref/relay_expr.rst:216
 msgid ""
@@ -326,32 +354,38 @@ msgid ""
 " a tensor type); for a full discussion, see :ref:`the documentation on "
 "type parameters <type-parameter>`."
 msgstr ""
+"类型参数是按 *kind* 分类的，并且只能出现在类型签名中适合其种类的部分"
+"（例如，类型参数 :code:`Shape` 的种类只能出现在张量类型中需要 shape 的地方）；"
+"要获得完整的讨论，请参阅关于 :ref:`类型参数 <type-parameter>` 的文档。"
 
 #: ../../docs/reference/langref/relay_expr.rst:222
 msgid ""
 "For example, one can define a polymorphic identity function for any Relay"
 " type as follows:"
 msgstr ""
+"例如，可以为任何 Relay 类型定义多态标识函数如下："
 
 #: ../../docs/reference/langref/relay_expr.rst:231
 msgid ""
 "The below definition is also polymorphic, but restricts its arguments to "
 "tensor types:"
 msgstr ""
+"下面的定义也是多态的，但将其参数限制为张量类型："
 
 #: ../../docs/reference/langref/relay_expr.rst:240
 msgid "Notice that the return type is omitted and will be inferred."
-msgstr ""
+msgstr "注意，返回类型被省略，并且将被推断。"
 
 #: ../../docs/reference/langref/relay_expr.rst:242
 msgid "*Note: \"where\" syntax is not yet supported in the text format.*"
-msgstr ""
+msgstr "*注意：在文本格式中还不支持 \"where\" 语法。*"
 
 #: ../../docs/reference/langref/relay_expr.rst:244
 msgid ""
 "A function may also be subject to one or more type relations, such as in "
 "the following:"
 msgstr ""
+"函数也可以受一种或多种类型关系的支配，例如如下所示："
 
 #: ../../docs/reference/langref/relay_expr.rst:251
 #, python-format
@@ -363,6 +397,9 @@ msgid ""
 "transparent to Relay and they are instead implemented externally in "
 "either C++ or Python."
 msgstr ""
+"在上面的定义中，:code:`%x` 和 :code:`%y` 的类型以及返回类型都服从 :code:`Broadcast` 关系，"
+"这意味着这三个都必须是张量，它们的形状遵循 elementwise Broadcast 关系。"
+"与算子一样，关系的定义对 Relay 不是透明的，而是在外部用 C++ 或 Python 实现的。"
 
 #: ../../docs/reference/langref/relay_expr.rst:257
 msgid ""
@@ -373,10 +410,14 @@ msgid ""
 " implementations, please see :ref:`their section in the documentation on "
 "Relay's type system <type-relation>`."
 msgstr ""
+"在 :code:`Broadcast` 的例子中，关系被用来表达对类型（尤其是张量形状）的复杂约束。"
+"所有函数关系必须在所有 call sites 保持不变；"
+"因此，类型检查被视为 constraint-solving 问题。"
+"要了解更多关于类型关系及其实现的细节，请参见 :ref:`Relay 的类型系统 <type-relation>` 文档中的相关章节。"
 
 #: ../../docs/reference/langref/relay_expr.rst:265
 msgid "Operators"
-msgstr ""
+msgstr "算子"
 
 #: ../../docs/reference/langref/relay_expr.rst:267
 msgid ""
@@ -385,6 +426,8 @@ msgid ""
 " in the global operator registry in C++. Many common operators are backed"
 " by TVM's Tensor Operator Inventory."
 msgstr ""
+"算子是原子运算（primitive operation），如 :code:`add` 或 :code:`conv2d`，在 Relay 语言中没有定义。"
+"在 C++ 中，算子在全局算子注册表（registry）中声明。TVM 的 Tensor Operator Inventory 支持许多常见的算子。"
 
 #: ../../docs/reference/langref/relay_expr.rst:272
 msgid ""
@@ -394,6 +437,8 @@ msgid ""
 " might be referenced by optimization passes) may be registered as a new "
 "column."
 msgstr ""
+"要注册算子，用户必须提供算子的实现、类型和任何其他所需的元数据。"
+"算子注册是基于列的存储，其中算子是键，因此任何元数据（可能通过优化 passes 引用）都可以注册为新列（column）。"
 
 #: ../../docs/reference/langref/relay_expr.rst:278
 msgid ""
@@ -407,6 +452,9 @@ msgid ""
 "must be tensors and that the return type is a tensor whose shape depends "
 "on those of its arguments."
 msgstr ""
+"从 Relay 类型系统的角度来看，算子是函数，所以算子可以像任何其他函数一样调用，并且具有函数类型。"
+"特别地，算子类型是使用单个类型关系注册的（请参阅 :ref:`关于类型关系 <type-relation>` 的文档），通常是特定到该算子的关系。"
+"例如，:code:`add` 算子被注册为 :code:`Broadcast` 关系，表明 :code:`add` 的参数必须是张量，返回类型是张量，其形状取决于其参数的形状。"
 
 #: ../../docs/reference/langref/relay_expr.rst:287
 msgid ""
@@ -415,6 +463,8 @@ msgid ""
 "explicitly contained in the program and are uniquely identifiable by "
 "pointer."
 msgstr ""
+"当精细打印 Relay 程序时，算子不需要 sigil（例如 :code:`conv2d`, :code:`flatten`）。"
+"算子显式地包含在程序中，并且可以通过指针唯一地识别。"
 
 #: ../../docs/reference/langref/relay_expr.rst:292
 msgid ""
@@ -423,6 +473,7 @@ msgid ""
 "operators in the text format (e.g., :code:`+` or :code:`*`) as syntactic "
 "sugar."
 msgstr ""
+"注意，常见的算术算子（如 :code:`add` 和 :code:`multiply`）可以使用文本格式中相应的算术运算符（如 :code:`+` 或 :code:`*`）作为语法糖来编写。"
 
 #: ../../docs/reference/langref/relay_expr.rst:296
 msgid ""
@@ -433,10 +484,13 @@ msgid ""
 " on adding operators to Relay <relay-add-op>` shows how to add further "
 "operators into the language."
 msgstr ""
+"请参阅 :py:class:`~tvm.relay.op.Op` 获取算子节点的定义和文档，演示了注册算子元数据的基础设施。"
+":py:class:`~tvm.relay.op` 中的其他文件提供了句柄，用于生成对各种预注册算子的回调。"
+":ref:`向 Relay 添加算子的教程 <relay-add-op>` 展示了如何向语言中添加更多的算子。"
 
 #: ../../docs/reference/langref/relay_expr.rst:304
 msgid "ADT Constructors"
-msgstr ""
+msgstr "ADT 结构"
 
 #: ../../docs/reference/langref/relay_expr.rst:306
 msgid ""
@@ -444,6 +498,8 @@ msgid ""
 ":ref:`separate overview<adt-overview>` and their integration into the "
 "type system is described :ref:`here<adt-typing>`."
 msgstr ""
+"Relay 中的代数数据类型（Algebraic data types，简称 ADTs）将在 :ref:`单独的概述 <adt-overview>` 中详细描述，"
+"并在 :ref:`这里 <adt-typing>` 描述它们与类型系统的集成。"
 
 #: ../../docs/reference/langref/relay_expr.rst:310
 msgid ""
@@ -453,6 +509,8 @@ msgid ""
 "constructs (a global type variable) and the types of the expected "
 "arguments for the constructor."
 msgstr ""
+"在本节中，将简单地注意到 ADT 构造函数被赋予了函数类型，应该像函数或算子一样在 call 节点内部使用。"
+"ADT 构造函数是通过给出它构造的 ADT 的名称（全局类型变量）和构造函数所需参数的类型来定义的。"
 
 #: ../../docs/reference/langref/relay_expr.rst:316
 msgid ""
@@ -460,6 +518,7 @@ msgid ""
 "appear in the constructor. Constructors cannot include any other type "
 "variables."
 msgstr ""
+"如果 ADT 定义包含类型变量，那么这些类型变量可能出现在构造函数中。构造函数不能包含任何其他类型变量。"
 
 #: ../../docs/reference/langref/relay_expr.rst:320
 msgid ""
@@ -473,6 +532,12 @@ msgid ""
 "the following type signature: :code:`fun<a, b>() -> D[a, b]`; the type "
 "parameters will always appear in the return type."
 msgstr ""
+"假设 :code:`D` 是接受类型参数 :code:`a` 和 :code:`b` 的 ADT。"
+"如果 :code:`C1` 是 :code:`D` 的构造函数，需要两个参数，一个类型 :code:`a`，一个类型 :code:`b`，"
+"那么 :code:`C1` 有以下类型签名 :code:`fun<a, b>(a, b) -> D[a, b]`。"
+"（关于返回类型中类型调用的解释，请参阅 ADT 概述或 ADT 类型的讨论。）"
+"如果 :code:`D` 的另一个构造函数 :code:`C2` 不接受参数，那么它有以下类型签名：:code:`fun<a, b>() -> D[a, b]`；"
+"类型参数将始终出现在 return 类型中。"
 
 #: ../../docs/reference/langref/relay_expr.rst:331
 msgid ""
@@ -482,12 +547,15 @@ msgid ""
 "deconstructing the instances and retrieving the values when `ADT "
 "Matching`_."
 msgstr ""
+"一旦被回调，构造函数将生成 ADT 实例，它是容器，将参数的值以及构造函数的名称（\"tag\"）存储到构造函数中。"
+"当 `ADT 匹配`_ 时，该 tag 将用于分解实例和检索值。"
 
 #: ../../docs/reference/langref/relay_expr.rst:337
 msgid ""
 "See :py:class:`~tvm.relay.adt.Constructor` for the definition and "
 "documentation."
 msgstr ""
+"参阅 :py:class:`~tvm.relay.adt.Constructor` 了解定义和文档。"
 
 #: ../../docs/reference/langref/relay_expr.rst:340
 msgid "Call"
@@ -500,12 +568,15 @@ msgid ""
 "that evaluates to a closure (i.e., function expressions or global "
 "functions) and Relay operators."
 msgstr ""
+"在 Relay 中具有函数类型的表达式是 \"callable\"，这意味着它们可以通过函数调用来回调。"
+"它们由任何求值为闭包的表达式（即函数表达式或全局函数）和 Relay 算子组成。"
 
 #: ../../docs/reference/langref/relay_expr.rst:347
 msgid ""
 "The syntax of calls follows that used in C-like languages, demonstrated "
 "in the example below:"
 msgstr ""
+"调用的语法遵循类 C 语言的语法，如下例所示："
 
 #: ../../docs/reference/langref/relay_expr.rst:356
 msgid ""
@@ -517,10 +588,13 @@ msgid ""
 "operators, the implementation is opaque to Relay, so the result is left "
 "up to the registered TVM implementation."
 msgstr ""
+"当调用闭包（参见 `Closures`_ ）时，闭包的主体将在存储环境中求值（即使用存储的值作为自由变量），并为每个参数添加局部变量绑定；"
+"通过求值 body 获得的最后的值是回调的返回值。"
+"因此，在上面的例子中，调用的计算结果为 22。在算子的情况下，实现对 Relay 是不透明的，因此结果由注册的 TVM 实现决定。"
 
 #: ../../docs/reference/langref/relay_expr.rst:365
 msgid "*Note: type parameters are not yet supported in the text format.*"
-msgstr ""
+msgstr "*注意：文本格式中还不支持类型参数。*"
 
 #: ../../docs/reference/langref/relay_expr.rst:367
 msgid ""
@@ -531,6 +605,9 @@ msgid ""
 "The following code gives examples of explicit and inferred type "
 "arguments:"
 msgstr ""
+"类型多态函数还可以在 call site 包含类型参数。类型参数在类型检查时被替换为类型参数。"
+"如果函数是类型多态的，并且没有给出类型参数，则如果可能，类型推断将尝试推断类型参数。"
+"下面的代码给出了显式和隐式类型参数的示例："
 
 #: ../../docs/reference/langref/relay_expr.rst:381
 msgid ""
@@ -540,6 +617,9 @@ msgid ""
 "form of polymorphism, since there may be multiple valid assignments of "
 "argument types and a return type so long as the relation is satisfied."
 msgstr ""
+"注意，函数类型中的所有类型关系必须在每个 call site 保持。"
+"具体来说，这意味着将根据给定 call site 上特定类型的参数检查关系。"
+"这也是多态的一种形式，因为只要满足关系，参数类型和返回类型可以有多个有效赋值。"
 
 #: ../../docs/reference/langref/relay_expr.rst:388
 #, python-format
@@ -549,14 +629,16 @@ msgid ""
 "shapes that the arguments in the below call could have that would satisfy"
 " the type annotation:"
 msgstr ""
+"例如，如果有函数 :code:`%f`，它接受张量参数，并且具有 :code:`Broadcast` 关系，"
+"那么下面调用中的参数可以有许多不同的形状来满足类型注解："
 
 #: ../../docs/reference/langref/relay_expr.rst:398
 msgid "See :py:class:`~tvm.relay.expr.Call` for its definition and documentation."
-msgstr ""
+msgstr "参阅 :py:class:`~tvm.relay.expr.Call` 了解定义及其文档。"
 
 #: ../../docs/reference/langref/relay_expr.rst:403
 msgid "Module and Global Functions"
-msgstr ""
+msgstr "Module 和全局函数"
 
 #: ../../docs/reference/langref/relay_expr.rst:405
 msgid ""
@@ -568,12 +650,16 @@ msgid ""
 "global functions to recursively refer to themselves or any other global "
 "function (e.g., as in mutual recursion)."
 msgstr ""
+"Relay 保留称为 \"module\" 的全局数据结构（在其他函数式编程语言中通常称为 \"environment\"），以跟踪全局函数的定义。"
+"特别地，该模块保持全局变量到它们所表示的函数表达式的全局可访问映射。"
+"模块的实用之处在于，它允许全局函数递归地引用它们自己或任何其他全局函数（例如，在 mutual 递归中）。"
 
 #: ../../docs/reference/langref/relay_expr.rst:411
 msgid ""
 "Note Relay's module is analogous to data structures for keeping track of "
 "subgraphs in computation graph-based IRs."
 msgstr ""
+"注意：Relay 的模块类似于用于跟踪基于计算图的 IRs 中的子图的数据结构。"
 
 #: ../../docs/reference/langref/relay_expr.rst:414
 msgid ""
@@ -583,6 +669,8 @@ msgid ""
 "definition includes a global identifier and is allowed to recursively "
 "refer to that identifier in the body, as in the following example:"
 msgstr ""
+"Relay 中的全局函数的行为与 `Functions`_ 中定义的函数表达式相同，但是在文本格式中有语法糖来将它们的定义输入到模块中。"
+"也就是说，全局函数定义包含全局标识符，并且允许在函数体中递归地引用该标识符，如下面的例子所示："
 
 #: ../../docs/reference/langref/relay_expr.rst:431
 msgid ""
@@ -592,12 +680,15 @@ msgid ""
 "elsewhere in the code could then look up the identifier in the module and"
 " replace the function definition as needed."
 msgstr ""
+"这个定义将产生模块（module）条目，将标识符 :code:`@ackermann` 映射到带有上述参数、返回类型和 body 的函数表达式。"
+"代码中其他地方对标识符 :code:`@ackermann` 的任何引用都可以在模块中查找标识符，并根据需要替换函数定义。"
 
 #: ../../docs/reference/langref/relay_expr.rst:435
 msgid ""
 "See :py:class:`~tvm.IRModule` for the definition and documentation of a "
 "module."
 msgstr ""
+"参阅 :py:class:`~tvm.ir.IRModule` 定义和文档了解 module 更多细节。"
 
 #: ../../docs/reference/langref/relay_expr.rst:438
 msgid "Constant"
@@ -610,6 +701,8 @@ msgid ""
 "as a :py:class:`~tvm.NDArray`, allowing Relay to utilize TVM operators "
 "for constant evaluation."
 msgstr ""
+"该节点表示常量张量值（详见 :py:mod:`~tvm.relay.Value`）。"
+"常量被表示为 :py:class:`~tvm.NDArray`，允许 Relay 使用 TVM 算子来计算常量。"
 
 #: ../../docs/reference/langref/relay_expr.rst:445
 msgid ""
@@ -618,20 +711,23 @@ msgid ""
 "literals are thus syntactic sugar for constants encoding a tensor type "
 "with a rank-zero shape."
 msgstr ""
+"这个节点还可以表示标量常数，因为标量是形状为 :code:`()` 的张量。"
+"因此，在文本格式中，数值和布尔字面值是将张量类型编码为零阶形状的常量的语法糖。"
 
 #: ../../docs/reference/langref/relay_expr.rst:450
 msgid ""
 "See :py:class:`~tvm.relay.expr.Constant` for its definition and "
 "documentation."
 msgstr ""
+"阅读 :py:class:`~tvm.relay.expr.Constant` 定义和文档了解细节。"
 
 #: ../../docs/reference/langref/relay_expr.rst:453
 msgid "Tuples"
-msgstr ""
+msgstr "元组"
 
 #: ../../docs/reference/langref/relay_expr.rst:456
 msgid "Construction"
-msgstr ""
+msgstr "构造"
 
 #: ../../docs/reference/langref/relay_expr.rst:458
 msgid ""
@@ -639,42 +735,48 @@ msgid ""
 "sequence of heterogeneous data. These tuples match Python's closely, and "
 "their fixed length allows for efficient projection of their members."
 msgstr ""
+"元组节点构建有限（即静态已知大小）的异构数据序列。"
+"这些元组与 Python 非常匹配，它们的固定长度允许有效地投影其成员。"
 
 #: ../../docs/reference/langref/relay_expr.rst:469
 msgid ""
 "See :py:class:`~tvm.relay.expr.Tuple` for its definition and "
 "documentation."
 msgstr ""
+"阅读 :py:class:`~tvm.relay.expr.Tuple` 了解细节。"
 
 #: ../../docs/reference/langref/relay_expr.rst:472
 msgid "Projection"
-msgstr ""
+msgstr "投影"
 
 #: ../../docs/reference/langref/relay_expr.rst:474
 msgid ""
 "A tuple must be indexed by an integer constant in order to extract a "
 "particular member of the tuple. Projections are 0-indexed."
 msgstr ""
+"元组必须用整数常量进行索引，以便提取元组中的特定成员。投影是 0-indexed。"
 
 #: ../../docs/reference/langref/relay_expr.rst:477
 msgid "For example, the below projection evaluates to :code:`%b`:"
-msgstr ""
+msgstr "例如，下面的投影计算结果为 :code:`%b`："
 
 #: ../../docs/reference/langref/relay_expr.rst:483
 msgid ""
 "See :py:class:`~tvm.relay.expr.TupleGetItem` for its definition and "
 "documentation."
 msgstr ""
+"阅读 :py:class:`~tvm.relay.expr.TupleGetItem` 了解更多细节。"
 
 #: ../../docs/reference/langref/relay_expr.rst:486
 msgid "Let Bindings"
-msgstr ""
+msgstr "let 绑定"
 
 #: ../../docs/reference/langref/relay_expr.rst:488
 msgid ""
 "A :code:`let` binding is an immutable local variable binding, allowing "
 "the user to bind an expression to a name."
 msgstr ""
+":code:`let` 绑定是不可变的局部变量绑定，允许用户将表达式绑定到名称。"
 
 #: ../../docs/reference/langref/relay_expr.rst:491
 msgid ""
@@ -683,6 +785,8 @@ msgid ""
 "identifier. If a type annotation on the bound variable is omitted, Relay "
 "attempts to infer the most general type permitted for the variable."
 msgstr ""
+":code:`let` 绑定包含局部变量、可选类型注解、值和可以引用绑定标识符的 body 表达式。"
+"如果省略了绑定变量上的类型注释，Relay 将尝试推断该变量允许的最通用类型。"
 
 #: ../../docs/reference/langref/relay_expr.rst:497
 msgid ""
@@ -692,6 +796,8 @@ msgid ""
 "in its value to allow for recursively defined functions (see the previous"
 " subsection)."
 msgstr ""
+":code:`let` 表达式中的绑定变量只作用在其 body 作用域内，除非该变量定义了函数表达式。"
+"当 :code:`let` 表达式创建函数时，该变量的值也在范围内，以允许递归定义函数（请参阅前一小节）。"
 
 #: ../../docs/reference/langref/relay_expr.rst:503
 msgid ""
@@ -700,6 +806,8 @@ msgid ""
 "following example the entire expression evaluates to a tensor of shape "
 ":code:`(10, 10)` where all elements are 2:"
 msgstr ""
+":code:`let` 绑定的值是计算它所依赖的绑定后的最后一个表达式的值。"
+"例如，在下面的例子中，整个表达式计算为形状为 :code:`(10, 10)` 的张量，其中所有元素为 2："
 
 #: ../../docs/reference/langref/relay_expr.rst:513
 msgid ""
@@ -710,14 +818,17 @@ msgid ""
 "the first and second :code:`let` bindings below may be evaluated in "
 "either order because neither has a dataflow dependency on the other:"
 msgstr ""
+"一系列 :code:`let` 绑定可以看作是数据流图，其中绑定是由绑定变量连接的一系列子图。"
+"由于这些绑定序列是纯的，因此可以安全地重新排序两个都不依赖于另一个的绑定。"
+"例如，下面的第一个和第二个 :code:`let` 绑定可以按任意顺序进行计算，因为它们之间都没有数据流依赖关系："
 
 #: ../../docs/reference/langref/relay_expr.rst:527
 msgid "See :py:class:`~tvm.relay.expr.Let` for its definition and documentation."
-msgstr ""
+msgstr "阅读 :py:class:`~tvm.relay.expr.Let` 了解更多信息。"
 
 #: ../../docs/reference/langref/relay_expr.rst:530
 msgid "Graph Bindings"
-msgstr ""
+msgstr "Graph 绑定"
 
 #: ../../docs/reference/langref/relay_expr.rst:532
 msgid ""
@@ -730,6 +841,10 @@ msgid ""
 " the expression wherever the variable appears, even though the graph node"
 " will only be evaluated once by the compiled program."
 msgstr ""
+":code:`let` 绑定创建了命名变量（named variable），该变量绑定到给定值并作用域为后续表达式。"
+"相比之下，图绑定允许在 Relay 程序中显式地构造数据流图，方法是将表达式（图节点）直接绑定到没有作用域的临时变量。"
+"每个对变量的引用对应数据流图中的一条边。"
+"它的语义是在变量出现的地方替换表达式，即使图节点只会被编译后的程序计算一次。"
 
 #: ../../docs/reference/langref/relay_expr.rst:540
 msgid ""
@@ -741,16 +856,20 @@ msgid ""
 " the Relay IR<relay-dev-intro>` includes more detailed discussion of this"
 " nuance)."
 msgstr ""
+"这些绑定允许一种与 NNVM 和其他基于数据流图的输入格式所采用的编程风格相对应的编程风格。"
+"与 :code:`let` 绑定相比，变量没有限定作用域的事实在计算顺序上提供了一些灵活性，"
+"尽管这也会在程序中引入一些模糊性（:ref:`开发人员对 Relay IR 的介绍 <relay-dev-intro>` 包含了关于这种细微差别的更详细的讨论）。"
 
 #: ../../docs/reference/langref/relay_expr.rst:547
 msgid "*Note: Graph bindings are not currently parsed by the text format.*"
-msgstr ""
+msgstr "*注意：Graph 当前未被文本格式解析。*"
 
 #: ../../docs/reference/langref/relay_expr.rst:549
 msgid ""
 "In Relay's text format, a graph binding can be written as below (note the"
 " lack of a :code:`let` keyword and a semicolon):"
 msgstr ""
+"在 Relay 的文本格式中，graph 绑定可以这样写（注意缺少 :code:`let` 关键字和分号）："
 
 #: ../../docs/reference/langref/relay_expr.rst:558
 msgid ""
@@ -762,6 +881,9 @@ msgid ""
 "program using the corresponding API bindings could accomplish the same "
 "thing):"
 msgstr ""
+"与 let 绑定不同，图绑定在 Relay 中不表示为 AST 节点，而是表示为引用其 AST 节点值的元变量（meta-variable）。"
+"例如，可以在 Relay 的 Python 前端通过设置 *Python 变量* 等于相应的 Relay AST 节点并重复使用变量来构造类似于上面的程序，"
+"如下所示（使用相应的 API 绑定的 C++ 程序可以完成相同的事情）："
 
 #: ../../docs/reference/langref/relay_expr.rst:570
 msgid ""
@@ -773,6 +895,9 @@ msgid ""
 "<http://matt.might.net/articles/a-normalization/>`__ for an introduction "
 "to A-normal form)."
 msgstr ""
+"为了开发目的和实现某些优化，Relay 包括了在使用图绑定定义的数据流图和使用 :code:`let` 绑定定义的 A-范式程序之间进行变换的 passes，"
+"它被来自函数式编程社区的许多编译器优化所采用"
+"（参见 Matt Might 的 `\"A-Normalization: Why and How\" <http://matt.might.net/articles/a-normalization/>`__ 了解 A-范式形式）。"
 
 #: ../../docs/reference/langref/relay_expr.rst:578
 msgid "If-Then-Else"
@@ -784,6 +909,7 @@ msgid ""
 " on a single value of type :code:`bool`, i.e., a zero-rank tensor of "
 "booleans (:code:`Tensor[(), bool]`)."
 msgstr ""
+"Relay 有简单的 if-then-else 表达式，允许程序在 :code:`bool` 类型的单个值上进行分支，即布尔值的零阶张量（:code:`Tensor[(), bool]`）。"
 
 #: ../../docs/reference/langref/relay_expr.rst:592
 msgid ""
@@ -794,14 +920,16 @@ msgid ""
 "evaluates to :code:`True` and evaluates to the value of the \"else\" "
 "branch if the condition value evaluates to :code:`False`."
 msgstr ""
+"由于 if-then-else 分支是表达式，因此它们可以内联出现在任何需要其他表达式的地方，就像在类 C 语言中调用三元算子一样。"
+"if-then-else 表达式在条件值为 :code:`True` 时计算为 \"then\" 分支的值，在条件值为 :code:`False` 时计算为 \"else\" 分支的值。"
 
 #: ../../docs/reference/langref/relay_expr.rst:599
 msgid "See :py:class:`~tvm.relay.expr.If` for its definition and documentation."
-msgstr ""
+msgstr "阅读 :py:class:`~tvm.relay.expr.If` 了解细节。"
 
 #: ../../docs/reference/langref/relay_expr.rst:602
 msgid "ADT Matching"
-msgstr ""
+msgstr "ADT 匹配"
 
 #: ../../docs/reference/langref/relay_expr.rst:604
 msgid ""
@@ -809,6 +937,7 @@ msgid ""
 "overview<adt-overview>`, are containers that store the arguments passed "
 "to the constructor used to create them, tagged by the constructor name."
 msgstr ""
+"如 :ref:`ADT 概述 <adt-overview>` 中所讨论的，代数数据类型（ADT）的实例是存储传递给用于创建它们的构造函数的参数的容器，由构造函数名称标记（tagged）。"
 
 #: ../../docs/reference/langref/relay_expr.rst:609
 msgid ""
@@ -824,6 +953,11 @@ msgid ""
 "(See :ref:`this section<adt-pattern>` for a detailed description of ADT "
 "pattern-matching.)"
 msgstr ""
+"Relay 中的 match 表达式允许根据它们的构造函数 tag 检索存储在 ADT 实例中的值（解构（\"deconstructing\"）它）。"
+"match 表达式的行为类似于 C 风格的 :code:`switch` 语句，对于被解构的值的类型在不同的可能构造函数上进行分支。"
+"正如 ADT 概述的细节所示，match 表达式能够进行更通用的模式匹配，"
+"而不仅仅是简单地由构造函数 splitting：任何嵌套在实例内的 ADT 实例（例如，list 的列表）可以与外部实例同时分解，而实例的不同字段可以绑定到变量。"
+"(请参阅 :ref:`ADT 模式匹配 <adt-pattern>` 的详细描述。）"
 
 #: ../../docs/reference/langref/relay_expr.rst:621
 msgid ""
@@ -833,14 +967,16 @@ msgid ""
 "the queried value is executed; the clause expression is evaluated and "
 "returned."
 msgstr ""
+"match 表达式使用 input 值（表达式）和一列子句定义，每个子句由模式（pattern）和表达式（expression）组成。"
+"当执行时，执行第一个模式匹配查询值结构的子句；子句表达式被求值并返回。"
 
 #: ../../docs/reference/langref/relay_expr.rst:627
 msgid "For example, suppose we have an ADT for natural numbers:"
-msgstr ""
+msgstr "例如，假设有用于自然数的 ADT："
 
 #: ../../docs/reference/langref/relay_expr.rst:636
 msgid "Then the following function subtracts one from a passed nat:"
-msgstr ""
+msgstr "然后下面的函数从传递（passes）的 nat 中减去 1："
 
 #: ../../docs/reference/langref/relay_expr.rst:647
 msgid ""
@@ -848,6 +984,7 @@ msgid ""
 "two and returns the argument otherwise, using a nested constructor "
 "pattern:"
 msgstr ""
+"下面的函数如果参数至少为 2，则从参数中减去 2，否则使用嵌套构造函数模式返回参数："
 
 #: ../../docs/reference/langref/relay_expr.rst:660
 msgid ""
@@ -855,10 +992,11 @@ msgid ""
 "below example, the first clause will always match so those below it can "
 "never run:"
 msgstr ""
+"如上所述，match 子句的排序是相关的。在下面的例子中，第一个子句将始终匹配，因此它下面的子句永远不能运行："
 
 #: ../../docs/reference/langref/relay_expr.rst:675
 msgid "See :py:class:`~tvm.relay.adt.Match` for its definition and documentation."
-msgstr ""
+msgstr "阅读 :py:class:`~tvm.relay.adt.Match` 了解更多细节。"
 
 #: ../../docs/reference/langref/relay_expr.rst:678
 msgid "TempExprs"
@@ -875,6 +1013,9 @@ msgid ""
 "complete, as a :code:`TempExpr` only stores internal state and has no "
 "semantics of its own."
 msgstr ""
+"Relay 中的程序变换（passes）可能需要在程序 AST 中插入临时状态来指导进一步的变换。"
+"为此，将 :code:`TempExpr` 节点作为实用工具提供给开发人员；继承自 :code:`TempExpr` 的节点不能直接出现在用户提供的代码中，但可以插入到 pass 中。"
+"在 pass 中创建的任何 :code:`TempExpr` 都应该在 pass 完成之前被删除，因为 :code:`TempExpr` 只存储内部状态，并且没有自己的语义。"
 
 #: ../../docs/reference/langref/relay_expr.rst:688
 msgid ""
@@ -883,10 +1024,12 @@ msgid ""
 ":code:`TempExpr` nodes to store information about scaling parameters as "
 "the pass tries to fold these into the weights of a convolution."
 msgstr ""
+"关于在 pass 中使用 :code:`TempExpr` 的例子，请参见 :code:`src/relay/transforms/fold_scale_axis.cc`，"
+"它使用 :code:`TempExpr` 节点存储关于 scaling 参数的信息，因为 pass 试图将这些参数折叠到卷积的 weights 中。"
 
 #: ../../docs/reference/langref/relay_expr.rst:693
 msgid ""
 "See :py:class:`~tvm.relay.expr.TempExpr` for its definition and "
 "documentation."
 msgstr ""
-
+"参阅 :py:class:`~tvm.relay.expr.TempExpr` 了解更多细节。"

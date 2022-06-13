@@ -44,7 +44,7 @@ def config(ctx, cuda=False):
         content = content.replace('set(USE_VTA_FSIM OFF)', 'set(USE_VTA_FSIM ON)')
         content = content.replace('set(USE_RELAY_DEBUG OFF)', 'set(USE_RELAY_DEBUG ON)')
         content = content.replace("set(USE_PAPI OFF)", "set(USE_PAPI ON)")
-        content = content.replace("set(USE_PROFILER OFF)", "set(USE_PROFILER ON)")
+        # content = content.replace("set(USE_PROFILER OFF)", "set(USE_PROFILER ON)")
         if cuda:
             content = content.replace('set(USE_CUDA OFF)', 'set(USE_CUDA ON)')
             content = content.replace('set(USE_MICRO OFF)', 'set(USE_MICRO ON)')
@@ -73,6 +73,7 @@ def update(ctx):
         ctx.run('rm -rf xin/docs/locales/')
         ctx.run('rm -rf xin/docs/index.rst xin/docs/genindex.rst')
         ctx.run("rm -rf xin/docs/how_to/profile")
+        ctx.run("rm -rf xin/docs/reference/api/python")
         ctx.run('cp -r xinetzone/docs/** xin/docs/')
         ctx.run('cp -r xinetzone/docs/tutorial xin/docs/')
         ctx.run('cp -r xinetzone/docs/how_to xin/docs/')

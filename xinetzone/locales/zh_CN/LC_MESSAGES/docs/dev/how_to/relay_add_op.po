@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:21
 msgid "Adding an Operator to Relay"
-msgstr ""
+msgstr "添加算子到 Relay"
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:23
 msgid ""
@@ -28,22 +28,27 @@ msgid ""
 "product`_ operation as an example. The PR itself builds upon another PR "
 "which adds a `cumulative sum`_ operation."
 msgstr ""
+"在本文档中，将介绍在 Relay 中注册新的 TVM 算子所需的步骤。"
+"我们将遵循这个 PR，它增加了 `cumulative product`_ 作为例子。"
+"PR 本身建立在另一个 PR 的基础上，后者添加了 `cumulative sum`_ 算子。"
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:30
 msgid "Registering a new operator requires a few steps:"
-msgstr ""
+msgstr "注册新的算子需要几个步骤："
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:32
 msgid ""
 "Add an attribute node declaring fixed arguments which are known at "
 "compile time"
 msgstr ""
+""添加属性节点，声明在编译时已知的固定参数"
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:33
 msgid ""
 "Write a type relation for your operation to integrate into Relay's type "
 "system."
 msgstr ""
+"为集成到 Relay 类型系统中的运算编写类型关系。"
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:34
 msgid ""

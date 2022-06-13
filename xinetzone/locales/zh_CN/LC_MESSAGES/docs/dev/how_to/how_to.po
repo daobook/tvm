@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../../xin/docs/dev/how_to/how_to.rst:21
 msgid "Developer How-To Guide"
-msgstr ""
+msgstr "开发者指南"
 
 #: ../../../xin/docs/dev/how_to/how_to.rst:22
 msgid ""
 "This section contains a collection of tips about how to work on various "
 "areas of the TVM stack."
 msgstr ""
-
+"本节包含了关于如何使用 TVM 堆栈的各个领域的技巧集合。"

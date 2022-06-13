@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../docs/reference/langref/relay_type.rst:20
 msgid "Relay's Type System"
-msgstr ""
+msgstr "Relay 类型系统"
 
 #: ../../docs/reference/langref/relay_type.rst:22
 msgid ""
@@ -28,6 +28,8 @@ msgid ""
 "and type-inferred language, allowing programs to be fully typed while "
 "requiring just a few explicit type annotations."
 msgstr ""
+"在详细介绍 Relay 的表达式语言时简要介绍了类型，但还没有描述它的类型系统。"
+"Relay 是一种静态类型和推断类型的语言，允许程序在只需要一些显式类型注解的情况下进行完全类型化。"
 
 #: ../../docs/reference/langref/relay_type.rst:27
 msgid ""
@@ -38,6 +40,8 @@ msgid ""
 "composing types in order to build data structures that can be reasoned "
 "about inductively and used to write recursive functions."
 msgstr ""
+"静态类型在执行编译器优化时很有用，因为它们可以传递有关程序操作的数据的属性，例如运行时形状、数据布局和存储，而不需要运行程序。"
+"Relay `Algebraic Data Types`_ 允许轻松和灵活地组合类型，以构建可以归纳推理的数据结构，并用于编写递归函数。"
 
 #: ../../docs/reference/langref/relay_type.rst:34
 msgid ""
@@ -50,6 +54,9 @@ msgid ""
 "problem allows Relay to infer the shapes of all tensors at compile time, "
 "including in programs that use branching and function calls."
 msgstr ""
+"Relay 类型系统具有一种 *dependent typing* 形式的形状。也就是说，它的类型系统在 Relay 程序中跟踪张量的形状。"
+"将张量形状作为类型允许 Relay 在编译时执行更强大的推理；特别是对于输出形状根据输入形状变化而变化的运算，Relay 可以以复杂的方式进行静态推理。"
+"将形状推断作为类型推断问题允许 Relay 在编译时推断所有张量的形状，包括在使用分支和函数调用的程序中。"
 
 #: ../../docs/reference/langref/relay_type.rst:41
 msgid ""

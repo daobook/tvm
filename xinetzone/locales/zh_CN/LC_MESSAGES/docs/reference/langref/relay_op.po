@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:19
 msgid "Relay Core Tensor Operators"
-msgstr ""
+msgstr "Relay 核心张量算子"
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:21
 msgid ""
@@ -30,24 +30,29 @@ msgid ""
 " learning is a fast evolving field, it is possible to have operators that"
 " are not in here."
 msgstr ""
+"这个页面包含了在 tvm.relay 中预定义的核心张量算子原语的列表。"
+"核心张量算子原语覆盖了深度学习中的典型工作负载（workload）。"
+"它们可以在前端框架中表示工作负载，并为优化提供基本的构建块。"
+"由于深度学习是快速发展的领域，所以存在可能不支持的算子。"
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:29
 msgid ""
 "This document will directly list the function signature of these "
 "operators in the python frontend."
 msgstr ""
+"本文档将在 python 前端直接列出这些算子的函数签名。"
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:34
 msgid "Overview of Operators"
-msgstr ""
+msgstr "算子概述"
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:35
 msgid "**Level 1: Basic Operators**"
-msgstr ""
+msgstr "**Level 1：基础算子**"
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:37
 msgid "This level enables fully connected multi-layer perceptron."
-msgstr ""
+msgstr "这一 level 实现了全连接的多层感知器。"
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:62:<autosummary>:1
 msgid ":py:obj:`tvm.relay.log <tvm.relay.log>`"
@@ -203,11 +208,11 @@ msgstr ""
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:63
 msgid "**Level 2: Convolutions**"
-msgstr ""
+msgstr "**Level 2：卷积**"
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:65
 msgid "This level enables typical convnet models."
-msgstr ""
+msgstr "这一层启用了典型的 convnet 模型。"
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:95:<autosummary>:1
 msgid ":py:obj:`tvm.relay.nn.conv2d <tvm.relay.nn.conv2d>`"
@@ -411,11 +416,11 @@ msgstr ""
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:96
 msgid "**Level 3: Additional Math And Transform Operators**"
-msgstr ""
+msgstr "**Level 3：额外的数学和变换算子**"
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:98
 msgid "This level enables additional math and transform operators."
-msgstr ""
+msgstr "这一 level 支持额外的数学和变换算子。"
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:140:<autosummary>:1
 msgid ":py:obj:`tvm.relay.nn.leaky_relu <tvm.relay.nn.leaky_relu>`"
@@ -710,7 +715,7 @@ msgstr ""
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:141
 msgid "**Level 4: Broadcast and Reductions**"
-msgstr ""
+msgstr "**Level 4：广播和约简**"
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:178:<autosummary>:1
 msgid ":py:obj:`tvm.relay.right_shift <tvm.relay.right_shift>`"
@@ -966,7 +971,7 @@ msgstr ""
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:179
 msgid "**Level 5: Vision/Image Operators**"
-msgstr ""
+msgstr "**Level 5：Vision/Image 算子**"
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:194:<autosummary>:1
 msgid ":py:obj:`tvm.relay.image.resize1d <tvm.relay.image.resize1d>`"
@@ -1048,7 +1053,7 @@ msgstr ""
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:195
 msgid "**Level 6: Algorithm Operators**"
-msgstr ""
+msgstr "**Level 6：算法算子**"
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:203:<autosummary>:1
 msgid ":py:obj:`tvm.relay.argsort <tvm.relay.argsort>`"
@@ -1070,13 +1075,14 @@ msgstr ""
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:204
 msgid "**Level 10: Temporary Operators**"
-msgstr ""
+msgstr "**Level 10：临时算子**"
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:206
 msgid ""
 "This level support backpropagation of broadcast operators. It is "
 "temporary."
 msgstr ""
+"这个层次支持广播算子的反向传播。这是暂时的。"
 
 #: ../../../xin/docs/reference/langref/relay_op.rst:226:<autosummary>:1
 msgid ":py:obj:`tvm.relay.broadcast_to_like <tvm.relay.broadcast_to_like>`"
