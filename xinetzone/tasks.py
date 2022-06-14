@@ -43,7 +43,7 @@ def config(ctx, cuda=False):
         content = content.replace('set(USE_LLVM OFF)', 'set(USE_LLVM ON)')
         content = content.replace('set(USE_VTA_FSIM OFF)', 'set(USE_VTA_FSIM ON)')
         content = content.replace('set(USE_RELAY_DEBUG OFF)', 'set(USE_RELAY_DEBUG ON)')
-        content = content.replace("set(USE_PAPI OFF)", "set(USE_PAPI ON)")
+        # content = content.replace("set(USE_PAPI OFF)", "set(USE_PAPI ON)")
         # content = content.replace("set(USE_PROFILER OFF)", "set(USE_PROFILER ON)")
         if cuda:
             content = content.replace('set(USE_CUDA OFF)', 'set(USE_CUDA ON)')
