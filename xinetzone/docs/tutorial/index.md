@@ -1,10 +1,9 @@
 (sphx_glr_tutorial)=
 # 用户指南
 
-本教程提供了关于 TVM 的介绍，从一些关于 TVM 如何工作的基本信息开始，然后通过安装 TVM、编译和优化模型，然后深入挖掘 Tensor Expression 语言和建立在它之上的调度和优化工具。在完成本教程后，新用户应该对 TVM 有足够的熟悉，可以对模型进行优化，并准备更深入地挖掘 TVM。
+本教程提供了 TVM 的介绍，旨在服务于 TVM 项目的新用户。首先介绍 TVM 如何工作的一些基本信息，接着安装 TVM，编译和优化模型，然后深入研究张量表达式语言以及构建在它之上的调优和优化工具。在完成本教程后，新用户应该足够熟悉 TVM 来优化模型，并准备更深入地研究 TVM。
 
 ```{toctree}
-
 introduction
 tvmc_command_line_driver
 tvmc_python
