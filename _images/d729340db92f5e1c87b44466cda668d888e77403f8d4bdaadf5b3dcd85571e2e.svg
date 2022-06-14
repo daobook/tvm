@@ -1,0 +1,238 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1682pt" height="142pt" viewBox="0.00 0.00 1681.82 142.21">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 138.21)">
+<title>Dataflow Graph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-138.21 1677.82,-138.21 1677.82,4 -4,4"/>
+<!-- Stage_0 -->
+<g id="node1" class="node">
+<title>Stage_0</title>
+<polygon fill="white" stroke="transparent" points="0,-93 0,-133 10,-133 10,-93 0,-93"/>
+<polygon fill="none" stroke="black" points="0,-93 0,-133 10,-133 10,-93 0,-93"/>
+<polygon fill="white" stroke="transparent" points="10,-93 10,-133 72,-133 72,-93 10,-93"/>
+<polygon fill="none" stroke="black" points="10,-93 10,-133 72,-133 72,-93 10,-93"/>
+<text text-anchor="start" x="36" y="-116.8" font-family="Times,serif" font-size="14.00">A</text>
+<text text-anchor="start" x="15" y="-101.8" font-family="Times,serif" font-size="14.00">Scope: </text>
+<polygon fill="lightgrey" stroke="transparent" points="72,-93 72,-133 92,-133 92,-93 72,-93"/>
+<polygon fill="none" stroke="black" points="72,-93 72,-133 92,-133 92,-93 72,-93"/>
+<text text-anchor="start" x="77" y="-109.3" font-family="Times,serif" font-size="14.00">0</text>
+</g>
+<!-- Tensor_0_0 -->
+<g id="node2" class="node">
+<title>Tensor_0_0</title>
+<ellipse fill="none" stroke="black" cx="205.78" cy="-113" rx="77.56" ry="21.43"/>
+<text text-anchor="middle" x="205.78" y="-116.8" font-family="Times,serif" font-size="14.00">[32, 32, 256, 1]</text>
+<text text-anchor="middle" x="205.78" y="-101.8" font-family="Times,serif" font-size="14.00">float32</text>
+</g>
+<!-- Stage_0&#45;&gt;Tensor_0_0 -->
+<g id="edge1" class="edge">
+<title>Stage_0:O_0-&gt;Tensor_0_0</title>
+<path fill="none" stroke="black" d="M92,-113C100.3,-113 108.95,-113 117.6,-113"/>
+<polygon fill="black" stroke="black" points="117.73,-116.5 127.73,-113 117.73,-109.5 117.73,-116.5"/>
+</g>
+<!-- Stage_1 -->
+<g id="node3" class="node">
+<title>Stage_1</title>
+<polygon fill="lightgrey" stroke="transparent" points="319.56,-93 319.56,-133 339.56,-133 339.56,-93 319.56,-93"/>
+<polygon fill="none" stroke="black" points="319.56,-93 319.56,-133 339.56,-133 339.56,-93 319.56,-93"/>
+<text text-anchor="start" x="324.56" y="-109.3" font-family="Times,serif" font-size="14.00">0</text>
+<polygon fill="white" stroke="transparent" points="339.56,-93 339.56,-133 419.56,-133 419.56,-93 339.56,-93"/>
+<polygon fill="none" stroke="black" points="339.56,-93 339.56,-133 419.56,-133 419.56,-93 339.56,-93"/>
+<text text-anchor="start" x="344.56" y="-116.8" font-family="Times,serif" font-size="14.00">pad_temp</text>
+<text text-anchor="start" x="353.56" y="-101.8" font-family="Times,serif" font-size="14.00">Scope: </text>
+<polygon fill="lightgrey" stroke="transparent" points="419.56,-93 419.56,-133 439.56,-133 439.56,-93 419.56,-93"/>
+<polygon fill="none" stroke="black" points="419.56,-93 419.56,-133 439.56,-133 439.56,-93 419.56,-93"/>
+<text text-anchor="start" x="424.56" y="-109.3" font-family="Times,serif" font-size="14.00">0</text>
+</g>
+<!-- Tensor_0_0&#45;&gt;Stage_1 -->
+<g id="edge2" class="edge">
+<title>Tensor_0_0-&gt;Stage_1:I_0</title>
+<path fill="none" stroke="black" d="M283.83,-113C292.34,-113 300.97,-113 309.4,-113"/>
+<polygon fill="black" stroke="black" points="309.56,-116.5 319.56,-113 309.56,-109.5 309.56,-116.5"/>
+</g>
+<!-- Tensor_1_0 -->
+<g id="node4" class="node">
+<title>Tensor_1_0</title>
+<ellipse fill="none" stroke="black" cx="553.35" cy="-113" rx="77.56" ry="21.43"/>
+<text text-anchor="middle" x="553.35" y="-116.8" font-family="Times,serif" font-size="14.00">[34, 34, 256, 1]</text>
+<text text-anchor="middle" x="553.35" y="-101.8" font-family="Times,serif" font-size="14.00">float32</text>
+</g>
+<!-- Stage_1&#45;&gt;Tensor_1_0 -->
+<g id="edge3" class="edge">
+<title>Stage_1:O_0-&gt;Tensor_1_0</title>
+<path fill="none" stroke="black" d="M439.56,-113C447.87,-113 456.51,-113 465.16,-113"/>
+<polygon fill="black" stroke="black" points="465.3,-116.5 475.3,-113 465.3,-109.5 465.3,-116.5"/>
+</g>
+<!-- Stage_3 -->
+<g id="node7" class="node">
+<title>Stage_3</title>
+<polygon fill="lightgrey" stroke="transparent" points="667.13,-83 667.13,-108 687.13,-108 687.13,-83 667.13,-83"/>
+<polygon fill="none" stroke="black" points="667.13,-83 667.13,-108 687.13,-108 687.13,-83 667.13,-83"/>
+<text text-anchor="start" x="672.13" y="-91.8" font-family="Times,serif" font-size="14.00">0</text>
+<polygon fill="white" stroke="transparent" points="687.13,-58 687.13,-108 793.13,-108 793.13,-58 687.13,-58"/>
+<polygon fill="none" stroke="black" points="687.13,-58 687.13,-108 793.13,-108 793.13,-58 687.13,-58"/>
+<text text-anchor="start" x="692.13" y="-86.8" font-family="Times,serif" font-size="14.00">conv2d_hwcn</text>
+<text text-anchor="start" x="714.13" y="-71.8" font-family="Times,serif" font-size="14.00">Scope: </text>
+<polygon fill="lightgrey" stroke="transparent" points="793.13,-83 793.13,-108 813.13,-108 813.13,-83 793.13,-83"/>
+<polygon fill="none" stroke="black" points="793.13,-83 793.13,-108 813.13,-108 813.13,-83 793.13,-83"/>
+<text text-anchor="start" x="798.13" y="-91.8" font-family="Times,serif" font-size="14.00">0</text>
+<polygon fill="lightgrey" stroke="transparent" points="667.13,-58 667.13,-83 687.13,-83 687.13,-58 667.13,-58"/>
+<polygon fill="none" stroke="black" points="667.13,-58 667.13,-83 687.13,-83 687.13,-58 667.13,-58"/>
+<text text-anchor="start" x="672.13" y="-66.8" font-family="Times,serif" font-size="14.00">1</text>
+<polygon fill="white" stroke="transparent" points="793.13,-58 793.13,-83 813.13,-83 813.13,-58 793.13,-58"/>
+<polygon fill="none" stroke="black" points="793.13,-58 793.13,-83 813.13,-83 813.13,-58 793.13,-58"/>
+</g>
+<!-- Tensor_1_0&#45;&gt;Stage_3 -->
+<g id="edge5" class="edge">
+<title>Tensor_1_0-&gt;Stage_3:I_0</title>
+<path fill="none" stroke="black" d="M615.85,-100.33C629.05,-98.36 643.15,-96.78 656.8,-96.22"/>
+<polygon fill="black" stroke="black" points="657.2,-99.71 667.13,-96 657.05,-92.71 657.2,-99.71"/>
+</g>
+<!-- Stage_2 -->
+<g id="node5" class="node">
+<title>Stage_2</title>
+<polygon fill="white" stroke="transparent" points="333.56,-33 333.56,-73 343.56,-73 343.56,-33 333.56,-33"/>
+<polygon fill="none" stroke="black" points="333.56,-33 333.56,-73 343.56,-73 343.56,-33 333.56,-33"/>
+<polygon fill="white" stroke="transparent" points="343.56,-33 343.56,-73 405.56,-73 405.56,-33 343.56,-33"/>
+<polygon fill="none" stroke="black" points="343.56,-33 343.56,-73 405.56,-73 405.56,-33 343.56,-33"/>
+<text text-anchor="start" x="367.06" y="-56.8" font-family="Times,serif" font-size="14.00">W</text>
+<text text-anchor="start" x="348.56" y="-41.8" font-family="Times,serif" font-size="14.00">Scope: </text>
+<polygon fill="lightgrey" stroke="transparent" points="405.56,-33 405.56,-73 425.56,-73 425.56,-33 405.56,-33"/>
+<polygon fill="none" stroke="black" points="405.56,-33 405.56,-73 425.56,-73 425.56,-33 405.56,-33"/>
+<text text-anchor="start" x="410.56" y="-49.3" font-family="Times,serif" font-size="14.00">0</text>
+</g>
+<!-- Tensor_2_0 -->
+<g id="node6" class="node">
+<title>Tensor_2_0</title>
+<ellipse fill="none" stroke="black" cx="553.35" cy="-53" rx="77.56" ry="21.43"/>
+<text text-anchor="middle" x="553.35" y="-56.8" font-family="Times,serif" font-size="14.00">[3, 3, 256, 256]</text>
+<text text-anchor="middle" x="553.35" y="-41.8" font-family="Times,serif" font-size="14.00">float32</text>
+</g>
+<!-- Stage_2&#45;&gt;Tensor_2_0 -->
+<g id="edge4" class="edge">
+<title>Stage_2:O_0-&gt;Tensor_2_0</title>
+<path fill="none" stroke="black" d="M426.56,-53C439.06,-53 452.25,-53 465.2,-53"/>
+<polygon fill="black" stroke="black" points="465.52,-56.5 475.52,-53 465.52,-49.5 465.52,-56.5"/>
+</g>
+<!-- Tensor_2_0&#45;&gt;Stage_3 -->
+<g id="edge6" class="edge">
+<title>Tensor_2_0-&gt;Stage_3:I_1</title>
+<path fill="none" stroke="black" d="M615.85,-65.67C629.05,-67.64 643.15,-69.22 656.8,-69.78"/>
+<polygon fill="black" stroke="black" points="657.05,-73.29 667.13,-70 657.2,-66.29 657.05,-73.29"/>
+</g>
+<!-- Tensor_3_0 -->
+<g id="node8" class="node">
+<title>Tensor_3_0</title>
+<ellipse fill="none" stroke="black" cx="926.91" cy="-92" rx="77.56" ry="21.43"/>
+<text text-anchor="middle" x="926.91" y="-95.8" font-family="Times,serif" font-size="14.00">[32, 32, 256, 1]</text>
+<text text-anchor="middle" x="926.91" y="-80.8" font-family="Times,serif" font-size="14.00">float32</text>
+</g>
+<!-- Stage_3&#45;&gt;Tensor_3_0 -->
+<g id="edge7" class="edge">
+<title>Stage_3:O_0-&gt;Tensor_3_0</title>
+<path fill="none" stroke="black" d="M813.13,-96C821.81,-96 830.87,-95.88 839.91,-95.68"/>
+<polygon fill="black" stroke="black" points="840.18,-99.18 850.09,-95.43 840,-92.18 840.18,-99.18"/>
+</g>
+<!-- Stage_5 -->
+<g id="node11" class="node">
+<title>Stage_5</title>
+<polygon fill="lightgrey" stroke="transparent" points="1040.69,-60 1040.69,-85 1060.69,-85 1060.69,-60 1040.69,-60"/>
+<polygon fill="none" stroke="black" points="1040.69,-60 1040.69,-85 1060.69,-85 1060.69,-60 1040.69,-60"/>
+<text text-anchor="start" x="1045.69" y="-68.8" font-family="Times,serif" font-size="14.00">0</text>
+<polygon fill="white" stroke="transparent" points="1060.69,-35 1060.69,-85 1122.69,-85 1122.69,-35 1060.69,-35"/>
+<polygon fill="none" stroke="black" points="1060.69,-35 1060.69,-85 1122.69,-85 1122.69,-35 1060.69,-35"/>
+<text text-anchor="start" x="1070.19" y="-63.8" font-family="Times,serif" font-size="14.00">T_add</text>
+<text text-anchor="start" x="1065.69" y="-48.8" font-family="Times,serif" font-size="14.00">Scope: </text>
+<polygon fill="lightgrey" stroke="transparent" points="1122.69,-60 1122.69,-85 1142.69,-85 1142.69,-60 1122.69,-60"/>
+<polygon fill="none" stroke="black" points="1122.69,-60 1122.69,-85 1142.69,-85 1142.69,-60 1122.69,-60"/>
+<text text-anchor="start" x="1127.69" y="-68.8" font-family="Times,serif" font-size="14.00">0</text>
+<polygon fill="lightgrey" stroke="transparent" points="1040.69,-35 1040.69,-60 1060.69,-60 1060.69,-35 1040.69,-35"/>
+<polygon fill="none" stroke="black" points="1040.69,-35 1040.69,-60 1060.69,-60 1060.69,-35 1040.69,-35"/>
+<text text-anchor="start" x="1045.69" y="-43.8" font-family="Times,serif" font-size="14.00">1</text>
+<polygon fill="white" stroke="transparent" points="1122.69,-35 1122.69,-60 1142.69,-60 1142.69,-35 1122.69,-35"/>
+<polygon fill="none" stroke="black" points="1122.69,-35 1122.69,-60 1142.69,-60 1142.69,-35 1122.69,-35"/>
+</g>
+<!-- Tensor_3_0&#45;&gt;Stage_5 -->
+<g id="edge9" class="edge">
+<title>Tensor_3_0-&gt;Stage_5:I_0</title>
+<path fill="none" stroke="black" d="M986.71,-78.29C1000.76,-75.86 1015.95,-73.89 1030.63,-73.23"/>
+<polygon fill="black" stroke="black" points="1030.77,-76.73 1040.69,-73 1030.61,-69.73 1030.77,-76.73"/>
+</g>
+<!-- Stage_4 -->
+<g id="node9" class="node">
+<title>Stage_4</title>
+<polygon fill="white" stroke="transparent" points="694.13,0 694.13,-40 704.13,-40 704.13,0 694.13,0"/>
+<polygon fill="none" stroke="black" points="694.13,0 694.13,-40 704.13,-40 704.13,0 694.13,0"/>
+<polygon fill="white" stroke="transparent" points="704.13,0 704.13,-40 766.13,-40 766.13,0 704.13,0"/>
+<polygon fill="none" stroke="black" points="704.13,0 704.13,-40 766.13,-40 766.13,0 704.13,0"/>
+<text text-anchor="start" x="720.13" y="-23.8" font-family="Times,serif" font-size="14.00">bias</text>
+<text text-anchor="start" x="709.13" y="-8.8" font-family="Times,serif" font-size="14.00">Scope: </text>
+<polygon fill="lightgrey" stroke="transparent" points="766.13,0 766.13,-40 786.13,-40 786.13,0 766.13,0"/>
+<polygon fill="none" stroke="black" points="766.13,0 766.13,-40 786.13,-40 786.13,0 766.13,0"/>
+<text text-anchor="start" x="771.13" y="-16.3" font-family="Times,serif" font-size="14.00">0</text>
+</g>
+<!-- Tensor_4_0 -->
+<g id="node10" class="node">
+<title>Tensor_4_0</title>
+<ellipse fill="none" stroke="black" cx="926.91" cy="-28" rx="52.15" ry="21.43"/>
+<text text-anchor="middle" x="926.91" y="-31.8" font-family="Times,serif" font-size="14.00">[1, 256, 1]</text>
+<text text-anchor="middle" x="926.91" y="-16.8" font-family="Times,serif" font-size="14.00">float32</text>
+</g>
+<!-- Stage_4&#45;&gt;Tensor_4_0 -->
+<g id="edge8" class="edge">
+<title>Stage_4:O_0-&gt;Tensor_4_0</title>
+<path fill="none" stroke="black" d="M787.13,-20C812.78,-20 841.07,-21.38 865.37,-22.99"/>
+<polygon fill="black" stroke="black" points="865.3,-26.5 875.52,-23.7 865.78,-19.51 865.3,-26.5"/>
+</g>
+<!-- Tensor_4_0&#45;&gt;Stage_5 -->
+<g id="edge10" class="edge">
+<title>Tensor_4_0-&gt;Stage_5:I_1</title>
+<path fill="none" stroke="black" d="M972.08,-38.94C989.79,-42.56 1010.7,-45.88 1030.67,-46.77"/>
+<polygon fill="black" stroke="black" points="1030.61,-50.27 1040.69,-47 1030.77,-43.27 1030.61,-50.27"/>
+</g>
+<!-- Tensor_5_0 -->
+<g id="node12" class="node">
+<title>Tensor_5_0</title>
+<ellipse fill="none" stroke="black" cx="1256.47" cy="-73" rx="77.56" ry="21.43"/>
+<text text-anchor="middle" x="1256.47" y="-76.8" font-family="Times,serif" font-size="14.00">[32, 32, 256, 1]</text>
+<text text-anchor="middle" x="1256.47" y="-61.8" font-family="Times,serif" font-size="14.00">float32</text>
+</g>
+<!-- Stage_5&#45;&gt;Tensor_5_0 -->
+<g id="edge11" class="edge">
+<title>Stage_5:O_0-&gt;Tensor_5_0</title>
+<path fill="none" stroke="black" d="M1142.69,-73C1150.99,-73 1159.64,-73 1168.29,-73"/>
+<polygon fill="black" stroke="black" points="1168.42,-76.5 1178.42,-73 1168.42,-69.5 1168.42,-76.5"/>
+</g>
+<!-- Stage_6 -->
+<g id="node13" class="node">
+<title>Stage_6</title>
+<polygon fill="lightgrey" stroke="transparent" points="1370.25,-53 1370.25,-93 1390.25,-93 1390.25,-53 1370.25,-53"/>
+<polygon fill="none" stroke="black" points="1370.25,-53 1370.25,-93 1390.25,-93 1390.25,-53 1370.25,-53"/>
+<text text-anchor="start" x="1375.25" y="-69.3" font-family="Times,serif" font-size="14.00">0</text>
+<polygon fill="white" stroke="transparent" points="1390.25,-53 1390.25,-93 1462.25,-93 1462.25,-53 1390.25,-53"/>
+<polygon fill="none" stroke="black" points="1390.25,-53 1390.25,-93 1462.25,-93 1462.25,-53 1390.25,-53"/>
+<text text-anchor="start" x="1395.25" y="-76.8" font-family="Times,serif" font-size="14.00">compute</text>
+<text text-anchor="start" x="1400.25" y="-61.8" font-family="Times,serif" font-size="14.00">Scope: </text>
+<polygon fill="lightgrey" stroke="transparent" points="1462.25,-53 1462.25,-93 1482.25,-93 1482.25,-53 1462.25,-53"/>
+<polygon fill="none" stroke="black" points="1462.25,-53 1462.25,-93 1482.25,-93 1482.25,-53 1462.25,-53"/>
+<text text-anchor="start" x="1467.25" y="-69.3" font-family="Times,serif" font-size="14.00">0</text>
+</g>
+<!-- Tensor_5_0&#45;&gt;Stage_6 -->
+<g id="edge12" class="edge">
+<title>Tensor_5_0-&gt;Stage_6:I_0</title>
+<path fill="none" stroke="black" d="M1334.52,-73C1343.03,-73 1351.66,-73 1360.09,-73"/>
+<polygon fill="black" stroke="black" points="1360.25,-76.5 1370.25,-73 1360.25,-69.5 1360.25,-76.5"/>
+</g>
+<!-- Tensor_6_0 -->
+<g id="node14" class="node">
+<title>Tensor_6_0</title>
+<ellipse fill="none" stroke="black" cx="1596.04" cy="-73" rx="77.56" ry="21.43"/>
+<text text-anchor="middle" x="1596.04" y="-76.8" font-family="Times,serif" font-size="14.00">[32, 32, 256, 1]</text>
+<text text-anchor="middle" x="1596.04" y="-61.8" font-family="Times,serif" font-size="14.00">float32</text>
+</g>
+<!-- Stage_6&#45;&gt;Tensor_6_0 -->
+<g id="edge13" class="edge">
+<title>Stage_6:O_0-&gt;Tensor_6_0</title>
+<path fill="none" stroke="black" d="M1482.25,-73C1490.56,-73 1499.2,-73 1507.85,-73"/>
+<polygon fill="black" stroke="black" points="1507.99,-76.5 1517.99,-73 1507.99,-69.5 1507.99,-76.5"/>
+</g>
+</g>
+</svg>

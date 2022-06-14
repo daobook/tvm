@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Use Tensor Expression Debug Display (TEDD) for Visualization &#8212; TVM  文档</title>
+    <title>使用 TEDD 进行可视化 &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -573,7 +573,7 @@
        </li>
        <li class="toctree-l4 current active">
         <a class="current reference internal" href="#">
-         Use Tensor Expression Debug Display (TEDD) for Visualization
+         使用 TEDD 进行可视化
         </a>
        </li>
       </ul>
@@ -1392,7 +1392,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/docs/how_to/work_with_schedules/tedd.rst.txt"
+        <a href="../../../_sources/docs/how_to/work_with_schedules/tedd.ipynb.txt"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -1403,7 +1403,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.rst</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -1452,18 +1452,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-and-schedule-convolution-with-bias-and-relu">
-   Define and Schedule Convolution with Bias and ReLU
+  <a class="reference internal nav-link" href="#bias-relu">
+   定义和调度带有 bias 和 ReLU 的卷积
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#render-graphs-with-tedd">
-   Render Graphs with TEDD
+  <a class="reference internal nav-link" href="#tedd-graph">
+   使用 TEDD 渲染 Graph
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
+  <a class="reference internal nav-link" href="#id1">
+   小结
   </a>
  </li>
 </ul>
@@ -1475,7 +1475,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Use Tensor Expression Debug Display (TEDD) for Visualization</h1>
+                <h1>使用 TEDD 进行可视化</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1486,18 +1486,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-and-schedule-convolution-with-bias-and-relu">
-   Define and Schedule Convolution with Bias and ReLU
+  <a class="reference internal nav-link" href="#bias-relu">
+   定义和调度带有 bias 和 ReLU 的卷积
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#render-graphs-with-tedd">
-   Render Graphs with TEDD
+  <a class="reference internal nav-link" href="#tedd-graph">
+   使用 TEDD 渲染 Graph
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
+  <a class="reference internal nav-link" href="#id1">
+   小结
   </a>
  </li>
 </ul>
@@ -1510,39 +1510,34 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="sphx-glr-download-link-note admonition note">
-<p class="admonition-title">备注</p>
-<p>Click <a class="reference external" href="https://tvm.apache.org/docs/how_to/work_with_schedules/tedd.html#sphx-glr-download-how-to-work-with-schedules-tedd-py" title="(在 tvm v0.9.dev0)"><span class="xref std std-ref">here</span></a>
-to download the full example code</p>
-</div>
-<section class="sphx-glr-example-title" id="use-tensor-expression-debug-display-tedd-for-visualization">
-<span id="sphx-glr-how-to-work-with-schedules-tedd-py"></span><h1>Use Tensor Expression Debug Display (TEDD) for Visualization<a class="headerlink" href="#use-tensor-expression-debug-display-tedd-for-visualization" title="永久链接至标题">#</a></h1>
-<p><strong>Author</strong>: <a class="reference external" href="https://github.com/yongfeng-nv">Yongfeng Gu</a></p>
-<p>This is an introduction about using TEDD to visualize tensor expressions.</p>
-<p>Tensor Expressions are scheduled with primitives.  Although individual
-primitives are usually easy to understand, they become complicated quickly
-when you put them together. We have introduced an operational model of
-schedule primitives in Tensor Expression.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="tedd">
+<h1>使用 TEDD 进行可视化<a class="headerlink" href="#tedd" title="永久链接至标题">#</a></h1>
+<p><strong>原作者</strong>: <a class="reference external" href="https://github.com/yongfeng-nv">Yongfeng Gu</a></p>
+<p>这是关于使用 TEDD (Tensor Expression Debug Display) 可视化张量表达式的介绍。</p>
+<p>张量表达式使用原语(primitive)调度。尽管单个原语通常很容易理解，但当您将它们放在一起时，它们很快就变得复杂了。在张量表达式中引入了调度原语的运算模型 (operational model)。</p>
 <ul class="simple">
-<li><p>the interactions between different schedule primitives,</p></li>
-<li><p>the impact of the schedule primitives on the final code generation.</p></li>
+<li><p>不同调度原语之间的交互，</p></li>
+<li><p>调度原语对最终代码生成(code generation)的影响。</p></li>
 </ul>
-<p>The operational model is based on a Dataflow Graph, a Schedule Tree and an
-IterVar Relationship Graph. Schedule primitives perform operations on these
-graphs.</p>
-<p>TEDD renders these three graphs from a given schedule.  This tutorial demonstrates
-how to use TEDD and how to interpret the rendered graphs.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tvm</span>
+<p>运算模型基于数据流图(Dataflow Graph)、调度树(Schedule Tree)和迭代关系图(IterVar Relationship Graph)。调度原语对这些图执行运算。</p>
+<p>TEDD 根据给定的调度呈现这三个图。本教程演示了如何使用 TEDD 以及如何解释呈现的图。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tvm</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">te</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">topi</span>
 <span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">tedd</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display_svg</span>
 </pre></div>
 </div>
-<section id="define-and-schedule-convolution-with-bias-and-relu">
-<h2>Define and Schedule Convolution with Bias and ReLU<a class="headerlink" href="#define-and-schedule-convolution-with-bias-and-relu" title="永久链接至标题">#</a></h2>
-<p>Let’s build an example Tensor Expression for a convolution followed by Bias and ReLU.
-We first connect conv2d, add, and relu TOPIs.  Then, we create a TOPI generic schedule.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">batch</span> <span class="o">=</span> <span class="mi">1</span>
+</div>
+</div>
+<section id="bias-relu">
+<h2>定义和调度带有 bias 和 ReLU 的卷积<a class="headerlink" href="#bias-relu" title="永久链接至标题">#</a></h2>
+<p>建立包含 Bias 和 ReLU 的卷积张量表达式的例子。首先连接 conv2d、add 和 relu TOPIs。然后，创建 TOPI 通用调度。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">batch</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">in_channel</span> <span class="o">=</span> <span class="mi">256</span>
 <span class="n">in_size</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="n">num_filter</span> <span class="o">=</span> <span class="mi">256</span>
@@ -1562,75 +1557,76 @@ We first connect conv2d, add, and relu TOPIs.  Then, we create a TOPI generic sc
     <span class="n">s</span> <span class="o">=</span> <span class="n">topi</span><span class="o">.</span><span class="n">generic</span><span class="o">.</span><span class="n">schedule_conv2d_hwcn</span><span class="p">([</span><span class="n">t_relu</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+</div>
 </section>
-<section id="render-graphs-with-tedd">
-<h2>Render Graphs with TEDD<a class="headerlink" href="#render-graphs-with-tedd" title="永久链接至标题">#</a></h2>
-<p>We render graphs to see the computation
-and how it is scheduled.
-If you run the tutorial in a Jupyter notebook, you can use the following commented lines
-to render SVG figures showing in notebook directly.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tedd</span><span class="o">.</span><span class="n">viz_dataflow_graph</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">dot_file_path</span><span class="o">=</span><span class="s2">&quot;/tmp/dfg.dot&quot;</span><span class="p">)</span>
-<span class="c1"># tedd.viz_dataflow_graph(s, show_svg = True)</span>
+<section id="tedd-graph">
+<h2>使用 TEDD 渲染 Graph<a class="headerlink" href="#tedd-graph" title="永久链接至标题">#</a></h2>
+<p>渲染图来查看计算过程以及如何调度它。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">graph</span> <span class="o">=</span> <span class="n">tedd</span><span class="o">.</span><span class="n">viz_dataflow_graph</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">show_svg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">display_svg</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="https://github.com/dmlc/web-data/raw/main/tvm/tutorial/tedd_dfg.png" class="align-center" src="https://github.com/dmlc/web-data/raw/main/tvm/tutorial/tedd_dfg.png" />
-<p>The first one is a dataflow graph.  Every node represents a stage with name and memory
-scope shown in the middle and inputs/outputs information on the sides.
-Edges show nodes’ dependency.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tedd</span><span class="o">.</span><span class="n">viz_schedule_tree</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">dot_file_path</span><span class="o">=</span><span class="s2">&quot;/tmp/scheduletree.dot&quot;</span><span class="p">)</span>
-<span class="c1"># tedd.viz_schedule_tree(s, show_svg = True)</span>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/d729340db92f5e1c87b44466cda668d888e77403f8d4bdaadf5b3dcd85571e2e.svg" src="../../../_images/d729340db92f5e1c87b44466cda668d888e77403f8d4bdaadf5b3dcd85571e2e.svg" /></div>
+</div>
+<p>也可保存图到本地:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tedd</span><span class="o">.</span><span class="n">viz_dataflow_graph</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">dot_file_path</span><span class="o">=</span><span class="s2">&quot;/tmp/dfg.dot&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We just rendered the schedule tree graph.  You may notice an warning about ranges not
-available.
-The message also suggests to call normalize() to infer range information.  We will
-skip inspecting the first schedule tree and encourage you to compare the graphs before
-and after normalize() for its impact.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
-<span class="n">tedd</span><span class="o">.</span><span class="n">viz_schedule_tree</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">dot_file_path</span><span class="o">=</span><span class="s2">&quot;/tmp/scheduletree2.dot&quot;</span><span class="p">)</span>
-<span class="c1"># tedd.viz_schedule_tree(s, show_svg = True)</span>
+<p>第一个是数据流图。每个节点表示一个阶段，中间显示名称和 memory scope，两侧显示 inputs/outputs 信息。边表示节点的依赖关系。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tree</span> <span class="o">=</span> <span class="n">tedd</span><span class="o">.</span><span class="n">viz_schedule_tree</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">show_svg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># tedd.viz_schedule_tree(s, dot_file_path=&quot;/tmp/scheduletree.dot&quot;)</span>
+<span class="n">display_svg</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="https://github.com/dmlc/web-data/raw/main/tvm/tutorial/tedd_st.png" class="align-center" src="https://github.com/dmlc/web-data/raw/main/tvm/tutorial/tedd_st.png" />
-<p>Now, let us take a close look at the second schedule tree.  Every block under ROOT
-represents a
-stage.  Stage name shows in the top row and compute shows in the bottom row.
-The middle rows are for IterVars, the higher the outer, the lower the inner.
-An IterVar row contains its index, name, type, and other optional information.
-Let’s use the W.shared stage as an example.  The top row tells
-its name, “W.shared”, and memory scope, “Shared”.  Its compute is
-<code class="code docutils literal notranslate"><span class="pre">W(ax0,</span> <span class="pre">ax1,</span> <span class="pre">ax2,</span> <span class="pre">ax3)</span></code>.
-Its outer most loop IterVar is ax0.ax1.fused.ax2.fused.ax3.fused.outer,
-indexed with 0, of kDataPar, bound to threadIdx.y, and with range(min=0, ext=8).
-You can also tell
-IterVar type with the index box color, shown in the legend.</p>
-<p>If a stage doesn’t compute_at any other stage, it has an edge directly to the
-ROOT node.  Otherwise, it has an edge pointing to the IterVar it attaches to,
-such as W.shared attaches to rx.outer in the middle compute stage.</p>
-<div class="admonition note">
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/c465189be93a5f281d130ffac87702074a3ed0a3d6469059a10cfb73e2760c8d.svg" src="../../../_images/c465189be93a5f281d130ffac87702074a3ed0a3d6469059a10cfb73e2760c8d.svg" /></div>
+</div>
+<p>刚刚渲染了调度树图。您可能会注意到关于范围不可用的警告。</p>
+<p>该消息还建议调用 <code class="docutils literal notranslate"><span class="pre">normalize()</span></code> 来推断范围信息。鼓励您比较 <code class="docutils literal notranslate"><span class="pre">normalize()</span></code> 前后的图表，以了解其影响。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+<span class="c1"># tedd.viz_schedule_tree(s, dot_file_path=&quot;/tmp/scheduletree2.dot&quot;)</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">tedd</span><span class="o">.</span><span class="n">viz_schedule_tree</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">show_svg</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">display_svg</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/a548a8b8e3ffd89ec76ecb3f88c03baa10a976cdf877b827a4df7ea5c5b9d61a.svg" src="../../../_images/a548a8b8e3ffd89ec76ecb3f88c03baa10a976cdf877b827a4df7ea5c5b9d61a.svg" /></div>
+</div>
+<p>现在，仔细看看第二个调度树。ROOT 下的每个块代表一个阶段。阶段名称显示在顶部行，计算显示在底部行。中间的行是 IterVars，外部越高，内部越低。</p>
+<p>IterVar 行包含它的索引、名称、类型和其他可选信息。以 W.shared 为例。第一行告诉它的名称 “W.shared” 和内存作用域 “Shared”。它的计算是: <code class="docutils literal notranslate"><span class="pre">W(ax0,</span> <span class="pre">ax1,</span> <span class="pre">ax2,</span> <span class="pre">ax3)</span></code>。它最外层的循环 IterVar 是 ax0.ax1.fused.ax2.fused.ax3.fused.outer，kDataPar 的索引为 0，绑定到 threadIdx.y 和 range(min=0, ext=8)。</p>
+<p>您还可以使用图例中所示的索引框颜色来告诉 IterVar 类型。</p>
+<p>如果一个阶段没有 compute_at 的任何其他阶段，它就有一条直接到 ROOT 节点的边。否则，它有一条边指向它所附加的 IterVar，例如 W.shared  附加到 rx.outer 中间计算阶段。</p>
+<div class="alert alert-info admonition note">
 <p class="admonition-title">备注</p>
-<p>By definition, IterVars are internal nodes and computes are leaf nodes in
-a schedule tree.   The edges among IterVars and compute within one stage are
-omitted, making every stage a block, for better readability.</p>
+<p>根据定义，itervar 是内部节点，计算是调度树的叶子节点。省略了 IterVars 之间的边和阶段内的计算，使每个阶段成为块，以提高可读性。</p>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tedd</span><span class="o">.</span><span class="n">viz_itervar_relationship_graph</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">dot_file_path</span><span class="o">=</span><span class="s2">&quot;/tmp/itervar.dot&quot;</span><span class="p">)</span>
-<span class="c1"># tedd.viz_itervar_relationship_graph(s, show_svg = True)</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># tedd.viz_itervar_relationship_graph(s, dot_file_path=&quot;/tmp/itervar.dot&quot;)</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">tedd</span><span class="o">.</span><span class="n">viz_itervar_relationship_graph</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">show_svg</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">display_svg</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="https://github.com/dmlc/web-data/raw/main/tvm/tutorial/tedd_itervar_rel.png" class="align-center" src="https://github.com/dmlc/web-data/raw/main/tvm/tutorial/tedd_itervar_rel.png" />
-<p>The last one is an IterVar Relationship Graph.  Every subgraph represents a
-stage and contains IterVar nodes and transformation nodes.  For example,
-W.shared has three split nodes and three fuse nodes.  The rest are IterVar
-nodes of the same format as the IterVar rows in Schedule Trees.  Root
-IterVars are those not driven by any transformation node, such as ax0; leaf
-IterVars don’t drive any transformation node and have non-negative indices,
-such as ax0.ax1.fused.ax2.fused.ax3.fused.outer with index of 0.</p>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/7c3b50eaeb5849cdc00024fdffc32c30e67d906462098b7a2ec1035aba3153cf.svg" src="../../../_images/7c3b50eaeb5849cdc00024fdffc32c30e67d906462098b7a2ec1035aba3153cf.svg" /></div>
+</div>
+<p>最后一个是迭代关系图(IterVar Relationship Graph)。每个子图表示一个阶段，并包含 IterVar 节点和变换节点。例如，W.shared 有三个 split 节点和三个 fuse 节点。其余的是 IterVar 节点，其格式与 Schedule Trees 中的 IterVar 行相同。Root itervar 是那些不受任何变换节点驱动的迭代器，例如 ax0; 叶 IterVars 不驱动任何变换节点，并且具有非负索引，如 ax0.ax1.fused.ax2.fused.ax3.fused.outer 索引为 0。</p>
 </section>
-<section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="永久链接至标题">#</a></h2>
-<p>This tutorial demonstrates the usage of TEDD.  We use an example built
-with TOPI to show the schedules under the hood.  You can also use
-it before and after any schedule primitive to inspect its effect.</p>
+<section id="id1">
+<h2>小结<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
+<p>本教程演示了 TEDD 的用法。使用一个用 TOPI 构建的示例来显示底层的调度。您还可以在任何调度原语之前和之后使用它来检查其效果。</p>
 </section>
 </section>
 
@@ -1666,7 +1662,7 @@ it before and after any schedule primitive to inspect its effect.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-14, 06:57:29.<br/>
+    Last updated on 2022-06-14, 11:05:17.<br/>
 </p>
         </footer>
     </div>

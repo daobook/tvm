@@ -288,7 +288,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 6,
+      "execution_count": 17,
       "metadata": {
         "collapsed": false
       },
@@ -307,7 +307,8 @@
         "loaded_lib = tvm.runtime.load_module(path_lib)\n",
         "input_data = tvm.nd.array(data)\n",
         "\n",
-        "module = graph_executor.GraphModule(loaded_lib[\"default\"](dev))\n",
+        "mod = loaded_lib[\"default\"](dev)\n",
+        "module = graph_executor.GraphModule(mod)\n",
         "module.run(data=input_data)\n",
         "out_deploy = module.get_output(0).numpy()\n",
         "\n",
@@ -317,6 +318,13 @@
         "# check whether the output from deployed module is consistent with original one\n",
         "np.testing.assert_allclose(out_deploy, out, atol=1e-5)"
       ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {},
+      "outputs": [],
+      "source": []
     }
   ],
   "metadata": {

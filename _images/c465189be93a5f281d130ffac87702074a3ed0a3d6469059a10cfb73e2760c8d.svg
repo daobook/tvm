@@ -1,0 +1,320 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1402pt" height="575pt" viewBox="0.00 0.00 1402.00 575.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 571)">
+<title>Schedule Tree</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-571 1398,-571 1398,4 -4,4"/>
+<g id="clust1" class="cluster">
+<title>cluster_legend</title>
+<polygon fill="none" stroke="black" points="8,-104 8,-368 152,-368 152,-104 8,-104"/>
+<text text-anchor="middle" x="80" y="-111.8" font-family="Times,serif" font-size="14.00">Legend</text>
+</g>
+<!-- legend -->
+<g id="node1" class="node">
+<title>legend</title>
+<polygon fill="#ffffff" stroke="transparent" points="17,-334.5 17,-359.5 27,-359.5 27,-334.5 17,-334.5"/>
+<polygon fill="none" stroke="black" points="17,-334.5 17,-359.5 27,-359.5 27,-334.5 17,-334.5"/>
+<polygon fill="white" stroke="transparent" points="27,-334.5 27,-359.5 144,-359.5 144,-334.5 27,-334.5"/>
+<polygon fill="none" stroke="black" points="27,-334.5 27,-359.5 144,-359.5 144,-334.5 27,-334.5"/>
+<text text-anchor="start" x="52" y="-343.3" font-family="Times,serif" font-size="14.00">kDataPar</text>
+<polygon fill="#2980b9" stroke="transparent" points="17,-309.5 17,-334.5 27,-334.5 27,-309.5 17,-309.5"/>
+<polygon fill="none" stroke="black" points="17,-309.5 17,-334.5 27,-334.5 27,-309.5 17,-309.5"/>
+<polygon fill="white" stroke="transparent" points="27,-309.5 27,-334.5 144,-334.5 144,-309.5 27,-309.5"/>
+<polygon fill="none" stroke="black" points="27,-309.5 27,-334.5 144,-334.5 144,-309.5 27,-309.5"/>
+<text text-anchor="start" x="36" y="-318.3" font-family="Times,serif" font-size="14.00">kThreadIndex</text>
+<polygon fill="#fad7a0" stroke="transparent" points="17,-284.5 17,-309.5 27,-309.5 27,-284.5 17,-284.5"/>
+<polygon fill="none" stroke="black" points="17,-284.5 17,-309.5 27,-309.5 27,-284.5 17,-284.5"/>
+<polygon fill="white" stroke="transparent" points="27,-284.5 27,-309.5 144,-309.5 144,-284.5 27,-284.5"/>
+<polygon fill="none" stroke="black" points="27,-284.5 27,-309.5 144,-309.5 144,-284.5 27,-284.5"/>
+<text text-anchor="start" x="32" y="-293.3" font-family="Times,serif" font-size="14.00">kCommReduce</text>
+<polygon fill="#d35400" stroke="transparent" points="17,-259.5 17,-284.5 27,-284.5 27,-259.5 17,-259.5"/>
+<polygon fill="none" stroke="black" points="17,-259.5 17,-284.5 27,-284.5 27,-259.5 17,-259.5"/>
+<polygon fill="white" stroke="transparent" points="27,-259.5 27,-284.5 144,-284.5 144,-259.5 27,-259.5"/>
+<polygon fill="none" stroke="black" points="27,-259.5 27,-284.5 144,-284.5 144,-259.5 27,-259.5"/>
+<text text-anchor="start" x="51.5" y="-268.3" font-family="Times,serif" font-size="14.00">kOrdered</text>
+<polygon fill="#abb2b9" stroke="transparent" points="17,-234.5 17,-259.5 27,-259.5 27,-234.5 17,-234.5"/>
+<polygon fill="none" stroke="black" points="17,-234.5 17,-259.5 27,-259.5 27,-234.5 17,-234.5"/>
+<polygon fill="white" stroke="transparent" points="27,-234.5 27,-259.5 144,-259.5 144,-234.5 27,-234.5"/>
+<polygon fill="none" stroke="black" points="27,-234.5 27,-259.5 144,-259.5 144,-234.5 27,-234.5"/>
+<text text-anchor="start" x="53.5" y="-243.3" font-family="Times,serif" font-size="14.00">kOpaque</text>
+<polygon fill="#d2b4de" stroke="transparent" points="17,-209.5 17,-234.5 27,-234.5 27,-209.5 17,-209.5"/>
+<polygon fill="none" stroke="black" points="17,-209.5 17,-234.5 27,-234.5 27,-209.5 17,-209.5"/>
+<polygon fill="white" stroke="transparent" points="27,-209.5 27,-234.5 144,-234.5 144,-209.5 27,-209.5"/>
+<polygon fill="none" stroke="black" points="27,-209.5 27,-234.5 144,-234.5 144,-209.5 27,-209.5"/>
+<text text-anchor="start" x="50" y="-218.3" font-family="Times,serif" font-size="14.00">kUnrolled</text>
+<polygon fill="#aed6f1" stroke="transparent" points="17,-184.5 17,-209.5 27,-209.5 27,-184.5 17,-184.5"/>
+<polygon fill="none" stroke="black" points="17,-184.5 17,-209.5 27,-209.5 27,-184.5 17,-184.5"/>
+<polygon fill="white" stroke="transparent" points="27,-184.5 27,-209.5 144,-209.5 144,-184.5 27,-184.5"/>
+<polygon fill="none" stroke="black" points="27,-184.5 27,-209.5 144,-209.5 144,-184.5 27,-184.5"/>
+<text text-anchor="start" x="43.5" y="-193.3" font-family="Times,serif" font-size="14.00">kVectorized</text>
+<polygon fill="#f5b7b1" stroke="transparent" points="17,-159.5 17,-184.5 27,-184.5 27,-159.5 17,-159.5"/>
+<polygon fill="none" stroke="black" points="17,-159.5 17,-184.5 27,-184.5 27,-159.5 17,-159.5"/>
+<polygon fill="white" stroke="transparent" points="27,-159.5 27,-184.5 144,-184.5 144,-159.5 27,-159.5"/>
+<polygon fill="none" stroke="black" points="27,-159.5 27,-184.5 144,-184.5 144,-159.5 27,-159.5"/>
+<text text-anchor="start" x="39.5" y="-168.3" font-family="Times,serif" font-size="14.00">kParallelized</text>
+<polygon fill="#a9dfbf" stroke="transparent" points="17,-134.5 17,-159.5 27,-159.5 27,-134.5 17,-134.5"/>
+<polygon fill="none" stroke="black" points="17,-134.5 17,-159.5 27,-159.5 27,-134.5 17,-134.5"/>
+<polygon fill="white" stroke="transparent" points="27,-134.5 27,-159.5 144,-159.5 144,-134.5 27,-134.5"/>
+<polygon fill="none" stroke="black" points="27,-134.5 27,-159.5 144,-159.5 144,-134.5 27,-134.5"/>
+<text text-anchor="start" x="42.5" y="-143.3" font-family="Times,serif" font-size="14.00">kTensorized</text>
+</g>
+<!-- Stage_0 -->
+<g id="node2" class="node">
+<title>Stage_0</title>
+<polygon fill="lightgrey" stroke="transparent" points="162,-227.5 162,-267.5 224,-267.5 224,-227.5 162,-227.5"/>
+<polygon fill="none" stroke="black" points="162,-227.5 162,-267.5 224,-267.5 224,-227.5 162,-227.5"/>
+<text text-anchor="start" x="188" y="-251.3" font-family="Times,serif" font-size="14.00">A</text>
+<text text-anchor="start" x="167" y="-236.3" font-family="Times,serif" font-size="14.00">Scope: </text>
+</g>
+<!-- ROOT -->
+<g id="node9" class="node">
+<title>ROOT</title>
+<ellipse fill="none" stroke="black" cx="706" cy="-549" rx="27" ry="18"/>
+<text text-anchor="middle" x="706" y="-545.3" font-family="Times,serif" font-size="14.00">ROOT</text>
+</g>
+<!-- Stage_0&#45;&gt;ROOT -->
+<g id="edge1" class="edge">
+<title>Stage_0-&gt;ROOT</title>
+<path fill="none" stroke="#000000" d="M189.29,-267.67C181.51,-314.29 169.1,-434.17 233,-495 264.43,-524.92 562.68,-541.42 668.77,-546.38"/>
+<polygon fill="#000000" stroke="#000000" points="668.85,-549.89 679,-546.85 669.17,-542.9 668.85,-549.89"/>
+</g>
+<!-- Stage_1 -->
+<g id="node3" class="node">
+<title>Stage_1</title>
+<polygon fill="lightgrey" stroke="transparent" points="242,-342.5 242,-382.5 478,-382.5 478,-342.5 242,-342.5"/>
+<polygon fill="none" stroke="black" points="242,-342.5 242,-382.5 478,-382.5 478,-342.5 242,-342.5"/>
+<text text-anchor="start" x="325" y="-366.3" font-family="Times,serif" font-size="14.00">pad_temp</text>
+<text text-anchor="start" x="334" y="-351.3" font-family="Times,serif" font-size="14.00">Scope: </text>
+<polygon fill="#ffffff" stroke="transparent" points="242,-302.5 242,-342.5 279,-342.5 279,-302.5 242,-302.5"/>
+<polygon fill="none" stroke="black" points="242,-302.5 242,-342.5 279,-342.5 279,-302.5 242,-302.5"/>
+<text text-anchor="start" x="255.5" y="-318.8" font-family="Times,serif" font-size="14.00">0</text>
+<polygon fill="white" stroke="transparent" points="279,-302.5 279,-342.5 478,-342.5 478,-302.5 279,-302.5"/>
+<polygon fill="none" stroke="black" points="279,-302.5 279,-342.5 478,-342.5 478,-302.5 279,-302.5"/>
+<text text-anchor="start" x="310" y="-326.3" font-family="Times,serif" font-size="14.00">i0: int32(kDataPar)</text>
+<text text-anchor="start" x="297.5" y="-311.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=34)</text>
+<polygon fill="#ffffff" stroke="transparent" points="242,-262.5 242,-302.5 279,-302.5 279,-262.5 242,-262.5"/>
+<polygon fill="none" stroke="black" points="242,-262.5 242,-302.5 279,-302.5 279,-262.5 242,-262.5"/>
+<text text-anchor="start" x="255.5" y="-278.8" font-family="Times,serif" font-size="14.00">1</text>
+<polygon fill="white" stroke="transparent" points="279,-262.5 279,-302.5 478,-302.5 478,-262.5 279,-262.5"/>
+<polygon fill="none" stroke="black" points="279,-262.5 279,-302.5 478,-302.5 478,-262.5 279,-262.5"/>
+<text text-anchor="start" x="310" y="-286.3" font-family="Times,serif" font-size="14.00">i1: int32(kDataPar)</text>
+<text text-anchor="start" x="297.5" y="-271.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=34)</text>
+<polygon fill="#ffffff" stroke="transparent" points="242,-222.5 242,-262.5 279,-262.5 279,-222.5 242,-222.5"/>
+<polygon fill="none" stroke="black" points="242,-222.5 242,-262.5 279,-262.5 279,-222.5 242,-222.5"/>
+<text text-anchor="start" x="255.5" y="-238.8" font-family="Times,serif" font-size="14.00">2</text>
+<polygon fill="white" stroke="transparent" points="279,-222.5 279,-262.5 478,-262.5 478,-222.5 279,-222.5"/>
+<polygon fill="none" stroke="black" points="279,-222.5 279,-262.5 478,-262.5 478,-222.5 279,-222.5"/>
+<text text-anchor="start" x="310" y="-246.3" font-family="Times,serif" font-size="14.00">i2: int32(kDataPar)</text>
+<text text-anchor="start" x="293" y="-231.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=256)</text>
+<polygon fill="#ffffff" stroke="transparent" points="242,-182.5 242,-222.5 279,-222.5 279,-182.5 242,-182.5"/>
+<polygon fill="none" stroke="black" points="242,-182.5 242,-222.5 279,-222.5 279,-182.5 242,-182.5"/>
+<text text-anchor="start" x="255.5" y="-198.8" font-family="Times,serif" font-size="14.00">3</text>
+<polygon fill="white" stroke="transparent" points="279,-182.5 279,-222.5 478,-222.5 478,-182.5 279,-182.5"/>
+<polygon fill="none" stroke="black" points="279,-182.5 279,-222.5 478,-222.5 478,-182.5 279,-182.5"/>
+<text text-anchor="start" x="310" y="-206.3" font-family="Times,serif" font-size="14.00">i3: int32(kDataPar)</text>
+<text text-anchor="start" x="302" y="-191.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=1)</text>
+<polygon fill="none" stroke="black" points="242,-112.5 242,-182.5 478,-182.5 478,-112.5 242,-112.5"/>
+<text text-anchor="start" x="261.5" y="-166.3" font-family="Times,serif" font-size="14.00">[tir.if_then_else(((((i0 &gt;= 1)</text>
+<text text-anchor="start" x="247" y="-151.3" font-family="Times,serif" font-size="14.00"> &amp;&amp; (i0 &lt; 33)) &amp;&amp; (i1 &gt;= 1)) &amp;</text>
+<text text-anchor="start" x="265.5" y="-136.3" font-family="Times,serif" font-size="14.00">&amp; (i1 &lt; 33)), A[(i0 - 1), (i1 </text>
+<text text-anchor="start" x="306" y="-121.3" font-family="Times,serif" font-size="14.00">- 1), i2, i3], 0f)]</text>
+</g>
+<!-- Stage_1&#45;&gt;ROOT -->
+<g id="edge2" class="edge">
+<title>Stage_1-&gt;ROOT</title>
+<path fill="none" stroke="#000000" d="M403.78,-382.57C423.31,-423.98 450.38,-466.21 487,-495 540.18,-536.81 621.44,-546.32 668.58,-548.09"/>
+<polygon fill="#000000" stroke="#000000" points="668.57,-551.59 678.66,-548.37 668.76,-544.59 668.57,-551.59"/>
+</g>
+<!-- Stage_2 -->
+<g id="node4" class="node">
+<title>Stage_2</title>
+<polygon fill="lightgrey" stroke="transparent" points="496,-227.5 496,-267.5 558,-267.5 558,-227.5 496,-227.5"/>
+<polygon fill="none" stroke="black" points="496,-227.5 496,-267.5 558,-267.5 558,-227.5 496,-227.5"/>
+<text text-anchor="start" x="519.5" y="-251.3" font-family="Times,serif" font-size="14.00">W</text>
+<text text-anchor="start" x="501" y="-236.3" font-family="Times,serif" font-size="14.00">Scope: </text>
+</g>
+<!-- Stage_2&#45;&gt;ROOT -->
+<g id="edge3" class="edge">
+<title>Stage_2-&gt;ROOT</title>
+<path fill="none" stroke="#000000" d="M524.31,-267.71C519.1,-312.88 512.59,-427.11 568,-495 592.86,-525.46 637.38,-538.44 669.13,-543.96"/>
+<polygon fill="#000000" stroke="#000000" points="668.94,-547.47 679.36,-545.56 670.02,-540.56 668.94,-547.47"/>
+</g>
+<!-- Stage_3 -->
+<g id="node5" class="node">
+<title>Stage_3</title>
+<polygon fill="lightgrey" stroke="transparent" points="577,-454.5 577,-494.5 836,-494.5 836,-454.5 577,-454.5"/>
+<polygon fill="none" stroke="black" points="577,-454.5 577,-494.5 836,-494.5 836,-454.5 577,-454.5"/>
+<text text-anchor="start" x="658.5" y="-478.3" font-family="Times,serif" font-size="14.00">conv2d_hwcn</text>
+<text text-anchor="start" x="680.5" y="-463.3" font-family="Times,serif" font-size="14.00">Scope: </text>
+<polygon fill="#ffffff" stroke="transparent" points="577,-414.5 577,-454.5 622,-454.5 622,-414.5 577,-414.5"/>
+<polygon fill="none" stroke="black" points="577,-414.5 577,-454.5 622,-454.5 622,-414.5 577,-414.5"/>
+<text text-anchor="start" x="594.5" y="-430.8" font-family="Times,serif" font-size="14.00">0</text>
+<polygon fill="white" stroke="transparent" points="622,-414.5 622,-454.5 836,-454.5 836,-414.5 622,-414.5"/>
+<polygon fill="none" stroke="black" points="622,-414.5 622,-454.5 836,-454.5 836,-414.5 622,-414.5"/>
+<text text-anchor="start" x="659" y="-438.3" font-family="Times,serif" font-size="14.00">yy: int32(kDataPar)</text>
+<text text-anchor="start" x="648" y="-423.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=32)</text>
+<polygon fill="#ffffff" stroke="transparent" points="577,-374.5 577,-414.5 622,-414.5 622,-374.5 577,-374.5"/>
+<polygon fill="none" stroke="black" points="577,-374.5 577,-414.5 622,-414.5 622,-374.5 577,-374.5"/>
+<text text-anchor="start" x="594.5" y="-390.8" font-family="Times,serif" font-size="14.00">1</text>
+<polygon fill="white" stroke="transparent" points="622,-374.5 622,-414.5 836,-414.5 836,-374.5 622,-374.5"/>
+<polygon fill="none" stroke="black" points="622,-374.5 622,-414.5 836,-414.5 836,-374.5 622,-374.5"/>
+<text text-anchor="start" x="659" y="-398.3" font-family="Times,serif" font-size="14.00">xx: int32(kDataPar)</text>
+<text text-anchor="start" x="648" y="-383.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=32)</text>
+<polygon fill="#ffffff" stroke="transparent" points="577,-334.5 577,-374.5 622,-374.5 622,-334.5 577,-334.5"/>
+<polygon fill="none" stroke="black" points="577,-334.5 577,-374.5 622,-374.5 622,-334.5 577,-334.5"/>
+<text text-anchor="start" x="594.5" y="-350.8" font-family="Times,serif" font-size="14.00">2</text>
+<polygon fill="white" stroke="transparent" points="622,-334.5 622,-374.5 836,-374.5 836,-334.5 622,-334.5"/>
+<polygon fill="none" stroke="black" points="622,-334.5 622,-374.5 836,-374.5 836,-334.5 622,-334.5"/>
+<text text-anchor="start" x="662.5" y="-358.3" font-family="Times,serif" font-size="14.00">ff: int32(kDataPar)</text>
+<text text-anchor="start" x="643.5" y="-343.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=256)</text>
+<polygon fill="#ffffff" stroke="transparent" points="577,-294.5 577,-334.5 622,-334.5 622,-294.5 577,-294.5"/>
+<polygon fill="none" stroke="black" points="577,-294.5 577,-334.5 622,-334.5 622,-294.5 577,-294.5"/>
+<text text-anchor="start" x="594.5" y="-310.8" font-family="Times,serif" font-size="14.00">3</text>
+<polygon fill="white" stroke="transparent" points="622,-294.5 622,-334.5 836,-334.5 836,-294.5 622,-294.5"/>
+<polygon fill="none" stroke="black" points="622,-294.5 622,-334.5 836,-334.5 836,-294.5 622,-294.5"/>
+<text text-anchor="start" x="658" y="-318.3" font-family="Times,serif" font-size="14.00">nn: int32(kDataPar)</text>
+<text text-anchor="start" x="652.5" y="-303.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=1)</text>
+<polygon fill="#fad7a0" stroke="transparent" points="577,-254.5 577,-294.5 622,-294.5 622,-254.5 577,-254.5"/>
+<polygon fill="none" stroke="black" points="577,-254.5 577,-294.5 622,-294.5 622,-254.5 577,-254.5"/>
+<text text-anchor="start" x="594.5" y="-270.8" font-family="Times,serif" font-size="14.00">4</text>
+<polygon fill="white" stroke="transparent" points="622,-254.5 622,-294.5 836,-294.5 836,-254.5 622,-254.5"/>
+<polygon fill="none" stroke="black" points="622,-254.5 622,-294.5 836,-294.5 836,-254.5 622,-254.5"/>
+<text text-anchor="start" x="639.5" y="-278.3" font-family="Times,serif" font-size="14.00">rx: int32(kCommReduce)</text>
+<text text-anchor="start" x="652.5" y="-263.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=3)</text>
+<polygon fill="#fad7a0" stroke="transparent" points="577,-214.5 577,-254.5 622,-254.5 622,-214.5 577,-214.5"/>
+<polygon fill="none" stroke="black" points="577,-214.5 577,-254.5 622,-254.5 622,-214.5 577,-214.5"/>
+<text text-anchor="start" x="594.5" y="-230.8" font-family="Times,serif" font-size="14.00">5</text>
+<polygon fill="white" stroke="transparent" points="622,-214.5 622,-254.5 836,-254.5 836,-214.5 622,-214.5"/>
+<polygon fill="none" stroke="black" points="622,-214.5 622,-254.5 836,-254.5 836,-214.5 622,-214.5"/>
+<text text-anchor="start" x="639.5" y="-238.3" font-family="Times,serif" font-size="14.00">ry: int32(kCommReduce)</text>
+<text text-anchor="start" x="652.5" y="-223.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=3)</text>
+<polygon fill="#fad7a0" stroke="transparent" points="577,-174.5 577,-214.5 622,-214.5 622,-174.5 577,-174.5"/>
+<polygon fill="none" stroke="black" points="577,-174.5 577,-214.5 622,-214.5 622,-174.5 577,-174.5"/>
+<text text-anchor="start" x="594.5" y="-190.8" font-family="Times,serif" font-size="14.00">6</text>
+<polygon fill="white" stroke="transparent" points="622,-174.5 622,-214.5 836,-214.5 836,-174.5 622,-174.5"/>
+<polygon fill="none" stroke="black" points="622,-174.5 622,-214.5 836,-214.5 836,-174.5 622,-174.5"/>
+<text text-anchor="start" x="640" y="-198.3" font-family="Times,serif" font-size="14.00">rc: int32(kCommReduce)</text>
+<text text-anchor="start" x="643.5" y="-183.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=256)</text>
+<polygon fill="none" stroke="black" points="577,0.5 577,-174.5 836,-174.5 836,0.5 577,0.5"/>
+<text text-anchor="start" x="582" y="-158.3" font-family="Times,serif" font-size="14.00">[reduce(combiner=comm_reducer(</text>
+<text text-anchor="start" x="603.5" y="-143.3" font-family="Times,serif" font-size="14.00">result=[(x + y)], lhs=[x], rhs</text>
+<text text-anchor="start" x="601" y="-128.3" font-family="Times,serif" font-size="14.00">=[y], identity_element=[0f]), </text>
+<text text-anchor="start" x="595" y="-113.3" font-family="Times,serif" font-size="14.00">source=[(pad_temp[(yy + ry), (</text>
+<text text-anchor="start" x="606.5" y="-98.3" font-family="Times,serif" font-size="14.00">xx + rx), rc, nn]*W[ry, rx, rc</text>
+<text text-anchor="start" x="613.5" y="-83.3" font-family="Times,serif" font-size="14.00">, ff])], init=[], axis=[iter_v</text>
+<text text-anchor="start" x="598.5" y="-68.3" font-family="Times,serif" font-size="14.00">ar(rx, range(min=0, ext=3)), i</text>
+<text text-anchor="start" x="593.5" y="-53.3" font-family="Times,serif" font-size="14.00">ter_var(ry, range(min=0, ext=3</text>
+<text text-anchor="start" x="602.5" y="-38.3" font-family="Times,serif" font-size="14.00">)), iter_var(rc, range(min=0, </text>
+<text text-anchor="start" x="595" y="-23.3" font-family="Times,serif" font-size="14.00">ext=256))], where=(bool)1, val</text>
+<text text-anchor="start" x="659" y="-8.3" font-family="Times,serif" font-size="14.00">ue_index=0)]</text>
+</g>
+<!-- Stage_3&#45;&gt;ROOT -->
+<g id="edge4" class="edge">
+<title>Stage_3-&gt;ROOT</title>
+<path fill="none" stroke="#000000" d="M706,-495.14C706,-504.6 706,-513.15 706,-520.48"/>
+<polygon fill="#000000" stroke="#000000" points="702.5,-520.64 706,-530.64 709.5,-520.64 702.5,-520.64"/>
+</g>
+<!-- Stage_4 -->
+<g id="node6" class="node">
+<title>Stage_4</title>
+<polygon fill="lightgrey" stroke="transparent" points="854,-227.5 854,-267.5 916,-267.5 916,-227.5 854,-227.5"/>
+<polygon fill="none" stroke="black" points="854,-227.5 854,-267.5 916,-267.5 916,-227.5 854,-227.5"/>
+<text text-anchor="start" x="870" y="-251.3" font-family="Times,serif" font-size="14.00">bias</text>
+<text text-anchor="start" x="859" y="-236.3" font-family="Times,serif" font-size="14.00">Scope: </text>
+</g>
+<!-- Stage_4&#45;&gt;ROOT -->
+<g id="edge5" class="edge">
+<title>Stage_4-&gt;ROOT</title>
+<path fill="none" stroke="#000000" d="M887.8,-267.71C893.24,-312.88 900.32,-427.11 845,-495 819.83,-525.89 774.5,-538.8 742.46,-544.18"/>
+<polygon fill="#000000" stroke="#000000" points="741.93,-540.72 732.57,-545.67 742.98,-547.64 741.93,-540.72"/>
+</g>
+<!-- Stage_5 -->
+<g id="node7" class="node">
+<title>Stage_5</title>
+<polygon fill="lightgrey" stroke="transparent" points="935,-327.5 935,-367.5 1168,-367.5 1168,-327.5 935,-327.5"/>
+<polygon fill="none" stroke="black" points="935,-327.5 935,-367.5 1168,-367.5 1168,-327.5 935,-327.5"/>
+<text text-anchor="start" x="1030" y="-351.3" font-family="Times,serif" font-size="14.00">T_add</text>
+<text text-anchor="start" x="1025.5" y="-336.3" font-family="Times,serif" font-size="14.00">Scope: </text>
+<polygon fill="#ffffff" stroke="transparent" points="935,-287.5 935,-327.5 971,-327.5 971,-287.5 935,-287.5"/>
+<polygon fill="none" stroke="black" points="935,-287.5 935,-327.5 971,-327.5 971,-287.5 935,-287.5"/>
+<text text-anchor="start" x="948" y="-303.8" font-family="Times,serif" font-size="14.00">0</text>
+<polygon fill="white" stroke="transparent" points="971,-287.5 971,-327.5 1168,-327.5 1168,-287.5 971,-287.5"/>
+<polygon fill="none" stroke="black" points="971,-287.5 971,-327.5 1168,-327.5 1168,-287.5 971,-287.5"/>
+<text text-anchor="start" x="995" y="-311.3" font-family="Times,serif" font-size="14.00">ax0: int32(kDataPar)</text>
+<text text-anchor="start" x="988.5" y="-296.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=32)</text>
+<polygon fill="#ffffff" stroke="transparent" points="935,-247.5 935,-287.5 971,-287.5 971,-247.5 935,-247.5"/>
+<polygon fill="none" stroke="black" points="935,-247.5 935,-287.5 971,-287.5 971,-247.5 935,-247.5"/>
+<text text-anchor="start" x="948" y="-263.8" font-family="Times,serif" font-size="14.00">1</text>
+<polygon fill="white" stroke="transparent" points="971,-247.5 971,-287.5 1168,-287.5 1168,-247.5 971,-247.5"/>
+<polygon fill="none" stroke="black" points="971,-247.5 971,-287.5 1168,-287.5 1168,-247.5 971,-247.5"/>
+<text text-anchor="start" x="995" y="-271.3" font-family="Times,serif" font-size="14.00">ax1: int32(kDataPar)</text>
+<text text-anchor="start" x="988.5" y="-256.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=32)</text>
+<polygon fill="#ffffff" stroke="transparent" points="935,-207.5 935,-247.5 971,-247.5 971,-207.5 935,-207.5"/>
+<polygon fill="none" stroke="black" points="935,-207.5 935,-247.5 971,-247.5 971,-207.5 935,-207.5"/>
+<text text-anchor="start" x="948" y="-223.8" font-family="Times,serif" font-size="14.00">2</text>
+<polygon fill="white" stroke="transparent" points="971,-207.5 971,-247.5 1168,-247.5 1168,-207.5 971,-207.5"/>
+<polygon fill="none" stroke="black" points="971,-207.5 971,-247.5 1168,-247.5 1168,-207.5 971,-207.5"/>
+<text text-anchor="start" x="995" y="-231.3" font-family="Times,serif" font-size="14.00">ax2: int32(kDataPar)</text>
+<text text-anchor="start" x="984" y="-216.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=256)</text>
+<polygon fill="#ffffff" stroke="transparent" points="935,-167.5 935,-207.5 971,-207.5 971,-167.5 935,-167.5"/>
+<polygon fill="none" stroke="black" points="935,-167.5 935,-207.5 971,-207.5 971,-167.5 935,-167.5"/>
+<text text-anchor="start" x="948" y="-183.8" font-family="Times,serif" font-size="14.00">3</text>
+<polygon fill="white" stroke="transparent" points="971,-167.5 971,-207.5 1168,-207.5 1168,-167.5 971,-167.5"/>
+<polygon fill="none" stroke="black" points="971,-167.5 971,-207.5 1168,-207.5 1168,-167.5 971,-167.5"/>
+<text text-anchor="start" x="995" y="-191.3" font-family="Times,serif" font-size="14.00">ax3: int32(kDataPar)</text>
+<text text-anchor="start" x="993" y="-176.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=1)</text>
+<polygon fill="none" stroke="black" points="935,-127.5 935,-167.5 1168,-167.5 1168,-127.5 935,-127.5"/>
+<text text-anchor="start" x="940" y="-151.3" font-family="Times,serif" font-size="14.00">[(conv2d_hwcn[ax0, ax1, ax2, a</text>
+<text text-anchor="start" x="965.5" y="-136.3" font-family="Times,serif" font-size="14.00">x3] + bias[0, ax2, ax3])]</text>
+</g>
+<!-- Stage_5&#45;&gt;ROOT -->
+<g id="edge6" class="edge">
+<title>Stage_5-&gt;ROOT</title>
+<path fill="none" stroke="#000000" d="M1014.49,-367.53C994.81,-413.51 965.94,-462.71 925,-495 871.75,-537 790.17,-546.42 743.06,-548.13"/>
+<polygon fill="#000000" stroke="#000000" points="742.9,-544.63 732.99,-548.39 743.08,-551.63 742.9,-544.63"/>
+</g>
+<!-- Stage_6 -->
+<g id="node8" class="node">
+<title>Stage_6</title>
+<polygon fill="lightgrey" stroke="transparent" points="1186,-327.5 1186,-367.5 1394,-367.5 1394,-327.5 1186,-327.5"/>
+<polygon fill="none" stroke="black" points="1186,-327.5 1186,-367.5 1394,-367.5 1394,-327.5 1186,-327.5"/>
+<text text-anchor="start" x="1259" y="-351.3" font-family="Times,serif" font-size="14.00">compute</text>
+<text text-anchor="start" x="1264" y="-336.3" font-family="Times,serif" font-size="14.00">Scope: </text>
+<polygon fill="#ffffff" stroke="transparent" points="1186,-287.5 1186,-327.5 1209,-327.5 1209,-287.5 1186,-287.5"/>
+<polygon fill="none" stroke="black" points="1186,-287.5 1186,-327.5 1209,-327.5 1209,-287.5 1186,-287.5"/>
+<text text-anchor="start" x="1192.5" y="-303.8" font-family="Times,serif" font-size="14.00">0</text>
+<polygon fill="white" stroke="transparent" points="1209,-287.5 1209,-327.5 1394,-327.5 1394,-287.5 1209,-287.5"/>
+<polygon fill="none" stroke="black" points="1209,-287.5 1209,-327.5 1394,-327.5 1394,-287.5 1209,-287.5"/>
+<text text-anchor="start" x="1233" y="-311.3" font-family="Times,serif" font-size="14.00">i0: int32(kDataPar)</text>
+<text text-anchor="start" x="1220.5" y="-296.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=32)</text>
+<polygon fill="#ffffff" stroke="transparent" points="1186,-247.5 1186,-287.5 1209,-287.5 1209,-247.5 1186,-247.5"/>
+<polygon fill="none" stroke="black" points="1186,-247.5 1186,-287.5 1209,-287.5 1209,-247.5 1186,-247.5"/>
+<text text-anchor="start" x="1192.5" y="-263.8" font-family="Times,serif" font-size="14.00">1</text>
+<polygon fill="white" stroke="transparent" points="1209,-247.5 1209,-287.5 1394,-287.5 1394,-247.5 1209,-247.5"/>
+<polygon fill="none" stroke="black" points="1209,-247.5 1209,-287.5 1394,-287.5 1394,-247.5 1209,-247.5"/>
+<text text-anchor="start" x="1233" y="-271.3" font-family="Times,serif" font-size="14.00">i1: int32(kDataPar)</text>
+<text text-anchor="start" x="1220.5" y="-256.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=32)</text>
+<polygon fill="#ffffff" stroke="transparent" points="1186,-207.5 1186,-247.5 1209,-247.5 1209,-207.5 1186,-207.5"/>
+<polygon fill="none" stroke="black" points="1186,-207.5 1186,-247.5 1209,-247.5 1209,-207.5 1186,-207.5"/>
+<text text-anchor="start" x="1192.5" y="-223.8" font-family="Times,serif" font-size="14.00">2</text>
+<polygon fill="white" stroke="transparent" points="1209,-207.5 1209,-247.5 1394,-247.5 1394,-207.5 1209,-207.5"/>
+<polygon fill="none" stroke="black" points="1209,-207.5 1209,-247.5 1394,-247.5 1394,-207.5 1209,-207.5"/>
+<text text-anchor="start" x="1233" y="-231.3" font-family="Times,serif" font-size="14.00">i2: int32(kDataPar)</text>
+<text text-anchor="start" x="1216" y="-216.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=256)</text>
+<polygon fill="#ffffff" stroke="transparent" points="1186,-167.5 1186,-207.5 1209,-207.5 1209,-167.5 1186,-167.5"/>
+<polygon fill="none" stroke="black" points="1186,-167.5 1186,-207.5 1209,-207.5 1209,-167.5 1186,-167.5"/>
+<text text-anchor="start" x="1192.5" y="-183.8" font-family="Times,serif" font-size="14.00">3</text>
+<polygon fill="white" stroke="transparent" points="1209,-167.5 1209,-207.5 1394,-207.5 1394,-167.5 1209,-167.5"/>
+<polygon fill="none" stroke="black" points="1209,-167.5 1209,-207.5 1394,-207.5 1394,-167.5 1209,-167.5"/>
+<text text-anchor="start" x="1233" y="-191.3" font-family="Times,serif" font-size="14.00">i3: int32(kDataPar)</text>
+<text text-anchor="start" x="1225" y="-176.3" font-family="Times,serif" font-size="14.00">range(min=0, ext=1)</text>
+<polygon fill="none" stroke="black" points="1186,-127.5 1186,-167.5 1394,-167.5 1394,-127.5 1186,-127.5"/>
+<text text-anchor="start" x="1191" y="-151.3" font-family="Times,serif" font-size="14.00">[max(T_add[i0, i1, i2, i3], 0f</text>
+<text text-anchor="start" x="1284.5" y="-136.3" font-family="Times,serif" font-size="14.00">)]</text>
+</g>
+<!-- Stage_6&#45;&gt;ROOT -->
+<g id="edge7" class="edge">
+<title>Stage_6-&gt;ROOT</title>
+<path fill="none" stroke="#000000" d="M1262.71,-367.63C1245.83,-414.63 1219.05,-464.57 1177,-495 1107.94,-544.98 842.12,-548.78 743.29,-548.41"/>
+<polygon fill="#000000" stroke="#000000" points="743.19,-544.9 733.17,-548.35 743.15,-551.9 743.19,-544.9"/>
+</g>
+</g>
+</svg>
