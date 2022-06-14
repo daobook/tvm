@@ -1613,14 +1613,16 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># tedd.viz_itervar_relationship_graph(s, dot_file_path=&quot;/tmp/itervar.dot&quot;)</span>
-<span class="n">graph</span> <span class="o">=</span> <span class="n">tedd</span><span class="o">.</span><span class="n">viz_itervar_relationship_graph</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">show_svg</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">display_svg</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphviz</span> <span class="kn">import</span> <span class="n">Source</span>
+<span class="c1"># tedd.viz_itervar_relationship_graph(s, dot_file_path=&quot;/tmp/itervar.dot&quot;)</span>
+<span class="n">dot_string</span> <span class="o">=</span> <span class="n">tedd</span><span class="o">.</span><span class="n">viz_itervar_relationship_graph</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">output_dot_string</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">src</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="n">dot_string</span><span class="p">)</span>
+<span class="n">display_svg</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/7c3b50eaeb5849cdc00024fdffc32c30e67d906462098b7a2ec1035aba3153cf.svg" src="../../../_images/7c3b50eaeb5849cdc00024fdffc32c30e67d906462098b7a2ec1035aba3153cf.svg" /></div>
+<img alt="../../../_images/5bda5ad2a6c6faa492b24a68abb31701281f4de0cf5404acfee72a1e0ec2557e.svg" src="../../../_images/5bda5ad2a6c6faa492b24a68abb31701281f4de0cf5404acfee72a1e0ec2557e.svg" /></div>
 </div>
 <p>最后一个是迭代关系图(IterVar Relationship Graph)。每个子图表示一个阶段，并包含 IterVar 节点和变换节点。例如，W.shared 有三个 split 节点和三个 fuse 节点。其余的是 IterVar 节点，其格式与 Schedule Trees 中的 IterVar 行相同。Root itervar 是那些不受任何变换节点驱动的迭代器，例如 ax0; 叶 IterVars 不驱动任何变换节点，并且具有非负索引，如 ax0.ax1.fused.ax2.fused.ax3.fused.outer 索引为 0。</p>
 </section>
@@ -1662,7 +1664,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-14, 11:05:17.<br/>
+    Last updated on 2022-06-14, 12:31:46.<br/>
 </p>
         </footer>
     </div>
