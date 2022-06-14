@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Model Library Format &#8212; TVM  文档</title>
+    <title>Model 库格式 &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -501,7 +501,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../how_to/work_with_relay/index.html">
-       Work With Relay
+       使用 Relay
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
       <label for="toctree-checkbox-12">
@@ -511,12 +511,17 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/work_with_relay/build_gcn.html">
-         Building a Graph Convolutional Network
+         构建图卷积网络
         </a>
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/work_with_relay/using_external_lib.html">
-         Using External Libraries in Relay
+         在 Relay 中使用外部库
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/work_with_relay/using_relay_viz.html">
+         使用 Relay Visualizer 可视化 Relay
         </a>
        </li>
       </ul>
@@ -750,7 +755,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../how_to/profile/index.html">
-       Profile Models
+       模型剖析
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
       <label for="toctree-checkbox-19">
@@ -760,7 +765,7 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/profile/papi.html">
-         Getting Started With PAPI
+         PAPI 快速上手
         </a>
        </li>
       </ul>
@@ -798,7 +803,7 @@
    </li>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../dev/how_to/how_to.html">
-     Developer How-To Guide
+     开发者指南
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
     <label for="toctree-checkbox-22">
@@ -808,12 +813,12 @@
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/debugging_tvm.html">
-       Debuggging TVM
+       调试 TVM
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/relay_add_op.html">
-       Adding an Operator to Relay
+       添加算子到 Relay
       </a>
      </li>
      <li class="toctree-l3">
@@ -852,17 +857,17 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="debugger.html">
-     Debugger
+     调试器
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="virtual_machine.html">
-     Putting the VM in TVM: The Relay Virtual Machine
+     将 VM 放入 TVM：Relay Virtual Machine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="introduction_to_module_serialization.html">
-     Introduction to Module Serialization
+     模块序列化简介
     </a>
    </li>
    <li class="toctree-l2">
@@ -887,12 +892,12 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="hybrid_script.html">
-     Hybrid Frontend Developer Guide
+     Hybrid 前端开发指南
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="relay_intro.html">
-     Introduction to Relay IR
+     Relay IR 简介
     </a>
    </li>
    <li class="toctree-l2">
@@ -907,7 +912,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="benchmark.html">
-     Benchmark Performance Log Format
+     基准性能日志格式
     </a>
    </li>
    <li class="toctree-l2">
@@ -917,7 +922,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="security.html">
-     Security Guide
+     安全指南
     </a>
    </li>
    <li class="toctree-l2">
@@ -932,7 +937,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Model Library Format
+     Model 库格式
     </a>
    </li>
   </ul>
@@ -1057,7 +1062,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../reference/langref/relay_type.html">
-       Relay’s Type System
+       Relay 类型系统
       </a>
      </li>
      <li class="toctree-l3">
@@ -1067,7 +1072,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../reference/langref/relay_op.html">
-       Relay Core Tensor Operators
+       Relay 核心张量算子
       </a>
      </li>
      <li class="toctree-l3">
@@ -1077,7 +1082,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../reference/langref/hybrid_script.html">
-       Hybrid Frontend Language Reference
+       Hybrid 前端语言参考
       </a>
      </li>
     </ul>
@@ -1108,7 +1113,12 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../reference/api/python/ir.html">
+      <a class="reference internal" href="../reference/api/python/ir/module.html">
+       tvm.ir.module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/ir/index.html">
        tvm.ir
       </a>
      </li>
@@ -1442,23 +1452,23 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#about-model-library-format">
-   About Model Library Format
+  <a class="reference internal nav-link" href="#id1">
+   关于 Model 库格式
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-can-be-exported">
-   What can be Exported?
+  <a class="reference internal nav-link" href="#id2">
+   可以输出什么？
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#directory-layout">
-   Directory Layout
+  <a class="reference internal nav-link" href="#id3">
+   直接布局
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#description-of-sub-directories">
-   Description of Sub-directories
+  <a class="reference internal nav-link" href="#id4">
+   子目录的描述
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -1520,7 +1530,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Model Library Format</h1>
+                <h1>Model 库格式</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1531,23 +1541,23 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#about-model-library-format">
-   About Model Library Format
+  <a class="reference internal nav-link" href="#id1">
+   关于 Model 库格式
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-can-be-exported">
-   What can be Exported?
+  <a class="reference internal nav-link" href="#id2">
+   可以输出什么？
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#directory-layout">
-   Directory Layout
+  <a class="reference internal nav-link" href="#id3">
+   直接布局
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#description-of-sub-directories">
-   Description of Sub-directories
+  <a class="reference internal nav-link" href="#id4">
+   子目录的描述
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -1610,28 +1620,22 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="model-library-format">
-<span id="id1"></span><h1>Model Library Format<a class="headerlink" href="#model-library-format" title="永久链接至标题">#</a></h1>
-<section id="about-model-library-format">
-<h2>About Model Library Format<a class="headerlink" href="#about-model-library-format" title="永久链接至标题">#</a></h2>
-<p>TVM traditionally exports generated libraries as Dynamic Shared Objects (e.g. DLLs (Windows) or .so
-(linux)). Inferences can be performed using those libraries by loading them into an executable using
-<code class="docutils literal notranslate"><span class="pre">libtvm_runtime.so</span></code>. This process is very dependent on services provided by traditional OS.</p>
-<p>For deployment to unconventional platforms (e.g. those lacking traditional OS), TVM provides another
-output format, Model Library Format. Initially, the microTVM project is the primary use case for this
-format. Should it become useful in other use cases (and in particular, should it become possible to
-export BYOC artifacts in Model Library Format), it could be used as a general-purpose TVM export
-format.  Model Library Format is a tarball containing a file for each piece of the TVM compiler
-output.</p>
+  <section id="model">
+<span id="model-library-format"></span><h1>Model 库格式<a class="headerlink" href="#model" title="永久链接至标题">#</a></h1>
+<section id="id1">
+<h2>关于 Model 库格式<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
+<p>传统上，TVM 将生成的库导出为动态共享对象（Dynamic Shared Objects，如 dll （Windows）或 .so （linux））。
+通过使用 <code class="docutils literal notranslate"><span class="pre">libtvm_runtime.so</span></code> 将这些库加载到可执行文件中，可以使用这些库执行推断。这个过程对传统操作系统提供的服务有很大的依赖。</p>
+<p>对于部署到非传统平台（例如那些缺乏传统操作系统），TVM 提供了另一种输出格式，模型库格式（Model Library Format）。最初，microTVM 项目是这种格式的主要用例。
+如果它在其他用例中变得有用（特别是，如果可以模型库格式导出 BYOC 工件），它可以用作通用的 TVM 导出格式。模型库格式是 tarball，包含 TVM 编译器输出的每个部分的文件。</p>
 </section>
-<section id="what-can-be-exported">
-<h2>What can be Exported?<a class="headerlink" href="#what-can-be-exported" title="永久链接至标题">#</a></h2>
-<p>At the time of writing, export is limited to full models built with <code class="docutils literal notranslate"><span class="pre">tvm.relay.build</span></code>.</p>
+<section id="id2">
+<h2>可以输出什么？<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
+<p>在撰写本文时，导出仅限于使用  <code class="docutils literal notranslate"><span class="pre">tvm.relay.build</span></code> 构建的完整模型。</p>
 </section>
-<section id="directory-layout">
-<h2>Directory Layout<a class="headerlink" href="#directory-layout" title="永久链接至标题">#</a></h2>
-<p>Model Library Format is contained within a tarball. All paths are relative to the root of the
-tarball:</p>
+<section id="id3">
+<h2>直接布局<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h2>
+<p>Model Library Format 包含在 tarball 中。所有路径都相对于 tarball 的根目录：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> - Root of the tarball</p>
 <ul>
@@ -1664,8 +1668,8 @@ tarball:</p>
 </li>
 </ul>
 </section>
-<section id="description-of-sub-directories">
-<h2>Description of Sub-directories<a class="headerlink" href="#description-of-sub-directories" title="永久链接至标题">#</a></h2>
+<section id="id4">
+<h2>子目录的描述<a class="headerlink" href="#id4" title="永久链接至标题">#</a></h2>
 <section id="codegen">
 <span id="subdir-codegen"></span><h3><code class="docutils literal notranslate"><span class="pre">codegen</span></code><a class="headerlink" href="#codegen" title="永久链接至标题">#</a></h3>
 <p>All TVM-generated code is placed in this directory. At the time of writing, there is 1 file per
@@ -1809,7 +1813,7 @@ function and sub-functions.</p></li>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-09, 15:46:33.<br/>
+    Last updated on 2022-06-14, 06:57:29.<br/>
 </p>
         </footer>
     </div>

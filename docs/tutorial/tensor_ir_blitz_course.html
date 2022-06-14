@@ -501,7 +501,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../how_to/work_with_relay/index.html">
-       Work With Relay
+       使用 Relay
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
       <label for="toctree-checkbox-12">
@@ -511,12 +511,17 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/work_with_relay/build_gcn.html">
-         Building a Graph Convolutional Network
+         构建图卷积网络
         </a>
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/work_with_relay/using_external_lib.html">
-         Using External Libraries in Relay
+         在 Relay 中使用外部库
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/work_with_relay/using_relay_viz.html">
+         使用 Relay Visualizer 可视化 Relay
         </a>
        </li>
       </ul>
@@ -750,7 +755,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../how_to/profile/index.html">
-       Profile Models
+       模型剖析
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
       <label for="toctree-checkbox-19">
@@ -760,7 +765,7 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/profile/papi.html">
-         Getting Started With PAPI
+         PAPI 快速上手
         </a>
        </li>
       </ul>
@@ -798,7 +803,7 @@
    </li>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../dev/how_to/how_to.html">
-     Developer How-To Guide
+     开发者指南
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
     <label for="toctree-checkbox-22">
@@ -808,12 +813,12 @@
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/debugging_tvm.html">
-       Debuggging TVM
+       调试 TVM
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/relay_add_op.html">
-       Adding an Operator to Relay
+       添加算子到 Relay
       </a>
      </li>
      <li class="toctree-l3">
@@ -852,17 +857,17 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../arch/debugger.html">
-     Debugger
+     调试器
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../arch/virtual_machine.html">
-     Putting the VM in TVM: The Relay Virtual Machine
+     将 VM 放入 TVM：Relay Virtual Machine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../arch/introduction_to_module_serialization.html">
-     Introduction to Module Serialization
+     模块序列化简介
     </a>
    </li>
    <li class="toctree-l2">
@@ -887,12 +892,12 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../arch/hybrid_script.html">
-     Hybrid Frontend Developer Guide
+     Hybrid 前端开发指南
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../arch/relay_intro.html">
-     Introduction to Relay IR
+     Relay IR 简介
     </a>
    </li>
    <li class="toctree-l2">
@@ -907,7 +912,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../arch/benchmark.html">
-     Benchmark Performance Log Format
+     基准性能日志格式
     </a>
    </li>
    <li class="toctree-l2">
@@ -917,7 +922,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../arch/security.html">
-     Security Guide
+     安全指南
     </a>
    </li>
    <li class="toctree-l2">
@@ -932,7 +937,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../arch/model_library_format.html">
-     Model Library Format
+     Model 库格式
     </a>
    </li>
   </ul>
@@ -1057,7 +1062,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../reference/langref/relay_type.html">
-       Relay’s Type System
+       Relay 类型系统
       </a>
      </li>
      <li class="toctree-l3">
@@ -1067,7 +1072,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../reference/langref/relay_op.html">
-       Relay Core Tensor Operators
+       Relay 核心张量算子
       </a>
      </li>
      <li class="toctree-l3">
@@ -1077,7 +1082,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../reference/langref/hybrid_script.html">
-       Hybrid Frontend Language Reference
+       Hybrid 前端语言参考
       </a>
      </li>
     </ul>
@@ -1108,7 +1113,12 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../reference/api/python/ir.html">
+      <a class="reference internal" href="../reference/api/python/ir/module.html">
+       tvm.ir.module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/ir/index.html">
        tvm.ir
       </a>
      </li>
@@ -1524,24 +1534,18 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-</pre></div>
-</div>
-</div>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="tensorir">
+  <section class="tex2jax_ignore mathjax_ignore" id="tensorir">
 <span id="tir-blitz"></span><h1>TensorIR 的突击课程<a class="headerlink" href="#tensorir" title="永久链接至标题">#</a></h1>
 <p><strong>作者</strong>: <a class="reference external" href="https://github.com/Hzfengsy">Siyuan Feng</a></p>
-<p>TensorIR 是一种用于深度学习程序的特定域语言，有两个广泛的目的：</p>
+<p>TensorIR 是用于深度学习程序的特定域语言，有两个广泛的目的：</p>
 <ul class="simple">
-<li><p>一个在各种硬件后端进行程序转换和优化的实现。</p></li>
-<li><p>一个用于自动张量化程序优化的抽象。</p></li>
+<li><p>在各种硬件后端进行程序变换和优化的实现。</p></li>
+<li><p>用于自动张量化程序优化的抽象。</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tvm</span>
+<span class="kn">from</span> <span class="nn">tvm.script.parser</span> <span class="kn">import</span> <span class="n">ir_module</span>
 <span class="kn">from</span> <span class="nn">tvm.ir.module</span> <span class="kn">import</span> <span class="n">IRModule</span>
 <span class="kn">from</span> <span class="nn">tvm.script</span> <span class="kn">import</span> <span class="n">tir</span> <span class="k">as</span> <span class="n">T</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1553,33 +1557,33 @@ title="Print to PDF"
 <h2>IRModule<a class="headerlink" href="#irmodule" title="永久链接至标题">#</a></h2>
 <p>IRModule 是 TVM 的中心数据结构，它包含深度学习程序。它是 IR 变换和模型构建的基本关注对象。</p>
 <a class="reference internal image-reference" href="https://daobook.github.io/tvm-web-data/images/design/tvm_life_of_irmodule.png"><img alt="https://daobook.github.io/tvm-web-data/images/design/tvm_life_of_irmodule.png" src="https://daobook.github.io/tvm-web-data/images/design/tvm_life_of_irmodule.png" style="width: 85%;" /></a>
-<p>这是一个 IRModule 的生命周期（life cycle），它可以从 TVMScript 创建。TensorIR 调度原语（primitive）和传递（pass）是转换 IRModule 的两种主要方式。另外，对一个 IRModule 进行一系列的转换也是可以接受的。请注意，我们可以在 <strong>任何</strong> 阶段向 TVMScript 打印一个 IRModule。在所有转换和优化完成后，我们可以将 IRModule 构建为可运行的模块，以部署在目标设备上。</p>
-<p>基于 TensorIR 和 IRModule 的设计，我们能够创建一个新的编程方式：</p>
+<p>这是 IRModule 的生命周期（life cycle），它可以从 TVMScript 创建。TensorIR 调度原语（primitive）和传递（pass）是变换 IRModule 的两种主要方式。另外，对 IRModule 进行一系列的变换也是可以接受的。请注意，可以在 <strong>任何</strong> 阶段向 TVMScript 打印 IRModule。在所有变换和优化完成后，可以将 IRModule 构建为可运行的模块，以部署在目标设备上。</p>
+<p>基于 TensorIR 和 IRModule 的设计，能够创建新的编程方式：</p>
 <ol class="arabic simple">
-<li><p>用 TVMScript 写一个基于 Python-AST 语法的程序。</p></li>
-<li><p>用 python api 转换和优化一个程序。</p></li>
-<li><p>通过一个命令式的转换 API，交互式地检查和尝试性能。</p></li>
+<li><p>用 TVMScript 写基于 Python-AST 语法的程序。</p></li>
+<li><p>用 python api 变换和优化程序。</p></li>
+<li><p>通过命令式的变换 API，交互式地检查和尝试性能。</p></li>
 </ol>
 </section>
 <section id="id1">
 <h2>创建 IRModule<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
-<p>IRModule 可以通过编写 TVMScript 来创建，TVMScript 是 TVM IR 的一种可圆润化（round-trippable）的语法。</p>
-<p>与通过 <a class="reference internal" href="tensor_expr_get_started.html#tutorial-tensor-expr-get-started"><span class="std std-ref">张量表达式</span></a> 创建计算表达式不同，TensorIR 允许用户通过 TVMScript（一种嵌入 python AST 的语言）来编程。这种新方法使得编写复杂的程序并进一步调度和优化它成为可能。</p>
+<p>IRModule 可以通过编写 TVMScript 来创建，TVMScript 是 TVM IR 的可圆润化（round-trippable）的语法。</p>
+<p>与通过 <a class="reference internal" href="tensor_expr_get_started.html#tutorial-tensor-expr-get-started"><span class="std std-ref">张量表达式</span></a> 创建计算表达式不同，TensorIR 允许用户通过 TVMScript（嵌入式 python AST 的语言）来编程。这种新方法使得编写复杂的程序并进一步调度和优化它成为可能。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@tvm</span><span class="o">.</span><span class="n">script</span><span class="o">.</span><span class="n">ir_module</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@ir_module</span>
 <span class="k">class</span> <span class="nc">MyModule</span><span class="p">:</span>
     <span class="nd">@T</span><span class="o">.</span><span class="n">prim_func</span>
     <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">T</span><span class="o">.</span><span class="n">handle</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">T</span><span class="o">.</span><span class="n">handle</span><span class="p">):</span>
-        <span class="c1"># We exchange data between function by handles, which are similar to pointer.</span>
+        <span class="c1"># 通过句柄（handle）在函数之间交换数据，此操作类似于指针（pointer）。</span>
         <span class="n">T</span><span class="o">.</span><span class="n">func_attr</span><span class="p">({</span><span class="s2">&quot;global_symbol&quot;</span><span class="p">:</span> <span class="s2">&quot;main&quot;</span><span class="p">,</span> <span class="s2">&quot;tir.noalias&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
-        <span class="c1"># Create buffer from handles.</span>
+        <span class="c1"># 从句柄创建 buffer。</span>
         <span class="n">A</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">match_buffer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
         <span class="n">B</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">match_buffer</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
-            <span class="c1"># A block is an abstraction for computation.</span>
+            <span class="c1"># block 是计算的抽象。</span>
             <span class="k">with</span> <span class="n">T</span><span class="o">.</span><span class="n">block</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">):</span>
-                <span class="c1"># Define a spatial block iterator and bind it to value i.</span>
+                <span class="c1"># 定义 spatial block 迭代器，并将其绑定到值 i。</span>
                 <span class="n">vi</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">spatial</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
                 <span class="n">B</span><span class="p">[</span><span class="n">vi</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">vi</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1.0</span>
 
@@ -1596,7 +1600,7 @@ title="Print to PDF"
 @tvm.script.ir_module
 class Module:
     @T.prim_func
-    def main(A: T.Buffer[(8,), &quot;float32&quot;], B: T.Buffer[(8,), &quot;float32&quot;]) -&gt; None:
+    def main(A: T.Buffer[8, &quot;float32&quot;], B: T.Buffer[8, &quot;float32&quot;]) -&gt; None:
         # function attr dict
         T.func_attr({&quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True})
         # body
@@ -1612,7 +1616,7 @@ class Module:
 </div>
 </div>
 </div>
-<p>此外，我们还可以使用张量表达式 DSL 来编写简单的运算符，并将其转换为 IRModule。</p>
+<p>此外，还可以使用张量表达式 DSL 来编写简单的算子，并将其转换为 IRModule。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">te</span>
@@ -1630,7 +1634,7 @@ class Module:
 @tvm.script.ir_module
 class Module:
     @T.prim_func
-    def main(A: T.Buffer[(8,), &quot;float32&quot;], B: T.Buffer[(8,), &quot;float32&quot;]) -&gt; None:
+    def main(A: T.Buffer[8, &quot;float32&quot;], B: T.Buffer[8, &quot;float32&quot;]) -&gt; None:
         # function attr dict
         T.func_attr({&quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True})
         # body
@@ -1684,10 +1688,10 @@ class Module:
 </section>
 <section id="id3">
 <h2>转换 IRModule<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h2>
-<p>IRModule 是程序优化的中心数据结构，它可以通过 <code class="docutils literal notranslate"><span class="pre">Schedule</span></code> 进行转换。一个调度包含多个原语方法，以交互式地转换程序。每个原语都以某些方式改造程序，以带来额外的性能优化。</p>
+<p>IRModule 是程序优化的中心数据结构，它可以通过 <code class="docutils literal notranslate"><span class="pre">Schedule</span></code> 进行转换。调度包含多个原语方法，以交互式地转换程序。每个原语都以某些方式改造程序，以带来额外的性能优化。</p>
 <a class="reference internal image-reference" href="https://daobook.github.io/tvm-web-data/images/design/tvm_tensor_ir_opt_flow.png"><img alt="https://daobook.github.io/tvm-web-data/images/design/tvm_tensor_ir_opt_flow.png" class="align-center" src="https://daobook.github.io/tvm-web-data/images/design/tvm_tensor_ir_opt_flow.png" style="width: 100%;" /></a>
-<p>上面的图片是优化张量程序的典型工作流程。首先，我们需要在由 TVMScript 或 Tensor Expression 创建的初始 IRModule 上创建一个调度。然后，一连串的调度原语将有助于提高性能。最后，我们可以将其降低并构建为一个可运行的模块。</p>
-<p>这里我们只演示了一个非常简单的转换。首先，我们在输入的 <code class="docutils literal notranslate"><span class="pre">ir_module</span></code> 上创建调度。</p>
+<p>上面的图片是优化张量程序的典型工作流程。首先，需要在由 TVMScript 或 Tensor Expression 创建的初始 IRModule 上创建调度。然后，一连串的调度原语将有助于提高性能。最后，我们可以将其降低并构建为可运行的模块。</p>
+<p>这里只演示了非常简单的变换。首先，在输入的 <code class="docutils literal notranslate"><span class="pre">ir_module</span></code> 上创建调度。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sch</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">tir</span><span class="o">.</span><span class="n">Schedule</span><span class="p">(</span><span class="n">ir_module</span><span class="p">)</span>
@@ -1704,11 +1708,11 @@ class Module:
 <p>将该循环分为 3 个循环，并打印结果。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get block by its name</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 按 name 获取 block</span>
 <span class="n">block_b</span> <span class="o">=</span> <span class="n">sch</span><span class="o">.</span><span class="n">get_block</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
-<span class="c1"># Get loops surronding the block</span>
+<span class="c1"># 获取 block 周围的 loops</span>
 <span class="p">(</span><span class="n">i</span><span class="p">,)</span> <span class="o">=</span> <span class="n">sch</span><span class="o">.</span><span class="n">get_loops</span><span class="p">(</span><span class="n">block_b</span><span class="p">)</span>
-<span class="c1"># Tile the loop nesting.</span>
+<span class="c1"># 平铺（tile）循环嵌套。</span>
 <span class="n">i_0</span><span class="p">,</span> <span class="n">i_1</span><span class="p">,</span> <span class="n">i_2</span> <span class="o">=</span> <span class="n">sch</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">factors</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sch</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">script</span><span class="p">())</span>
 </pre></div>
@@ -1719,7 +1723,7 @@ class Module:
 @tvm.script.ir_module
 class Module:
     @T.prim_func
-    def main(A: T.Buffer[(8,), &quot;float32&quot;], B: T.Buffer[(8,), &quot;float32&quot;]) -&gt; None:
+    def main(A: T.Buffer[8, &quot;float32&quot;], B: T.Buffer[8, &quot;float32&quot;]) -&gt; None:
         # function attr dict
         T.func_attr({&quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True})
         # body
@@ -1735,7 +1739,7 @@ class Module:
 </div>
 </div>
 </div>
-<p>我们也可以重新调度循环的顺序。现在我们将循环 <code class="docutils literal notranslate"><span class="pre">i_2</span></code> 移到 <code class="docutils literal notranslate"><span class="pre">i_1</span></code> 的外面。</p>
+<p>也可以重新调度循环的顺序。现在将循环 <code class="docutils literal notranslate"><span class="pre">i_2</span></code> 移到 <code class="docutils literal notranslate"><span class="pre">i_1</span></code> 的外面。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sch</span><span class="o">.</span><span class="n">reorder</span><span class="p">(</span><span class="n">i_0</span><span class="p">,</span> <span class="n">i_2</span><span class="p">,</span> <span class="n">i_1</span><span class="p">)</span>
@@ -1748,7 +1752,7 @@ class Module:
 @tvm.script.ir_module
 class Module:
     @T.prim_func
-    def main(A: T.Buffer[(8,), &quot;float32&quot;], B: T.Buffer[(8,), &quot;float32&quot;]) -&gt; None:
+    def main(A: T.Buffer[8, &quot;float32&quot;], B: T.Buffer[8, &quot;float32&quot;]) -&gt; None:
         # function attr dict
         T.func_attr({&quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True})
         # body
@@ -1766,7 +1770,7 @@ class Module:
 </div>
 <section id="gpu">
 <h3>转化为 GPU 程序<a class="headerlink" href="#gpu" title="永久链接至标题">#</a></h3>
-<p>如果我们想在 GPU 上部署模型，线程绑定是必要的。幸运的是，我们也可以使用原语并做增量转换。</p>
+<p>如果想在 GPU 上部署模型，线程绑定是必要的。幸运的是，也可以使用原语并做增量变换。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sch</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">i_0</span><span class="p">,</span> <span class="s2">&quot;blockIdx.x&quot;</span><span class="p">)</span>
@@ -1780,7 +1784,7 @@ class Module:
 @tvm.script.ir_module
 class Module:
     @T.prim_func
-    def main(A: T.Buffer[(8,), &quot;float32&quot;], B: T.Buffer[(8,), &quot;float32&quot;]) -&gt; None:
+    def main(A: T.Buffer[8, &quot;float32&quot;], B: T.Buffer[8, &quot;float32&quot;]) -&gt; None:
         # function attr dict
         T.func_attr({&quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True})
         # body
@@ -1854,7 +1858,7 @@ class Module:
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-09, 15:46:33.<br/>
+    Last updated on 2022-06-14, 06:57:29.<br/>
 </p>
         </footer>
     </div>

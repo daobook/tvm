@@ -25,7 +25,7 @@ Python API
    runtime
    ndarray
    error
-   ir
+   ir/index
    target
    tir
    te

@@ -16,14 +16,15 @@
     under the License.
 
 ********************************
-Benchmark Performance Log Format
+基准性能日志格式
 ********************************
-This page details schema v0.1 for a unified benchmark log format. This schema will allow easier cross-references with other frameworks/runs, experiment reproduction, data for nightly perf regression, and the separation of logging/visualization efforts.
 
-Log Format Overview
+此页面详细介绍了统一基准日志格式的模式 v0.1。该模式（schema）将允许与 frameworks/runs, experiment reproduction、data for nightly perf regression 以及日志/可视化工作的分离。
+
+Log 格式概述
 ~~~~~~~~~~~~~~~~~~~
 
-For simplicity, we suggest prioritizing the fields `workload`, `engine`, `hardware` `runtime_ms_mean`, and `runtime_ms_std`. For finer-grained logging, one may additionally propagate the `*_config` fields.
+为了简单起见，建议对字段 `workload`、 `engine`、 `hardware` `runtime_ms_mean` 和 `runtime_ms_std` 进行优先级排序。对于更细粒度的日志记录，可以需另外 propagate `*_config` 字段。
 
 +-----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+------------------------------------------------------------------------------+
 | header                | examples                                                                                                                                                                     | category     | notes/justification                                                          |
@@ -69,11 +70,12 @@ For simplicity, we suggest prioritizing the fields `workload`, `engine`, `hardwa
 
 
 
-Storage format
+Storage 格式
 ~~~~~~~~~~~~~~
-Currently we're prototyping benchmark data as JSON objects for extensibility and convenience, especially in early versions of the schema. However, as we scale up benchmark aggregation and stabilize parameters, we anticipate switching to a columnar format, such as Arrow or Parquet.
 
-Here is sample data encoded as JSON:
+目前，将基准数据原型化为 JSON 对象，以获得扩展性和便捷性，特别是在该模式的早期版本中。但是，当我们扩展基准聚合和稳定参数时，我们预计会切换到 columnar 格式，如 Arrow 或 Parquet。
+
+下面是 JSON 格式的示例数据：
 
 ::
 

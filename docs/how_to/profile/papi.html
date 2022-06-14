@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Getting Started With PAPI &#8212; TVM  文档</title>
+    <title>PAPI 快速上手 &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -49,7 +49,7 @@
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
     <link rel="next" title="开发手册" href="../../../developer-guide.html" />
-    <link rel="prev" title="Profile Models" href="index.html" />
+    <link rel="prev" title="模型剖析" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -501,7 +501,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../work_with_relay/index.html">
-       Work With Relay
+       使用 Relay
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
       <label for="toctree-checkbox-12">
@@ -511,12 +511,17 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../work_with_relay/build_gcn.html">
-         Building a Graph Convolutional Network
+         构建图卷积网络
         </a>
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../work_with_relay/using_external_lib.html">
-         Using External Libraries in Relay
+         在 Relay 中使用外部库
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../work_with_relay/using_relay_viz.html">
+         使用 Relay Visualizer 可视化 Relay
         </a>
        </li>
       </ul>
@@ -750,7 +755,7 @@
      </li>
      <li class="toctree-l3 current active has-children">
       <a class="reference internal" href="index.html">
-       Profile Models
+       模型剖析
       </a>
       <input checked="" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
       <label for="toctree-checkbox-19">
@@ -760,7 +765,7 @@
       <ul class="current">
        <li class="toctree-l4 current active">
         <a class="current reference internal" href="#">
-         Getting Started With PAPI
+         PAPI 快速上手
         </a>
        </li>
       </ul>
@@ -798,7 +803,7 @@
    </li>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../../dev/how_to/how_to.html">
-     Developer How-To Guide
+     开发者指南
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
     <label for="toctree-checkbox-22">
@@ -808,12 +813,12 @@
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../../dev/how_to/debugging_tvm.html">
-       Debuggging TVM
+       调试 TVM
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../dev/how_to/relay_add_op.html">
-       Adding an Operator to Relay
+       添加算子到 Relay
       </a>
      </li>
      <li class="toctree-l3">
@@ -852,17 +857,17 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/debugger.html">
-     Debugger
+     调试器
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/virtual_machine.html">
-     Putting the VM in TVM: The Relay Virtual Machine
+     将 VM 放入 TVM：Relay Virtual Machine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/introduction_to_module_serialization.html">
-     Introduction to Module Serialization
+     模块序列化简介
     </a>
    </li>
    <li class="toctree-l2">
@@ -887,12 +892,12 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/hybrid_script.html">
-     Hybrid Frontend Developer Guide
+     Hybrid 前端开发指南
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/relay_intro.html">
-     Introduction to Relay IR
+     Relay IR 简介
     </a>
    </li>
    <li class="toctree-l2">
@@ -907,7 +912,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/benchmark.html">
-     Benchmark Performance Log Format
+     基准性能日志格式
     </a>
    </li>
    <li class="toctree-l2">
@@ -917,7 +922,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/security.html">
-     Security Guide
+     安全指南
     </a>
    </li>
    <li class="toctree-l2">
@@ -932,7 +937,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/model_library_format.html">
-     Model Library Format
+     Model 库格式
     </a>
    </li>
   </ul>
@@ -1057,7 +1062,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../reference/langref/relay_type.html">
-       Relay’s Type System
+       Relay 类型系统
       </a>
      </li>
      <li class="toctree-l3">
@@ -1067,7 +1072,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../reference/langref/relay_op.html">
-       Relay Core Tensor Operators
+       Relay 核心张量算子
       </a>
      </li>
      <li class="toctree-l3">
@@ -1077,7 +1082,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../reference/langref/hybrid_script.html">
-       Hybrid Frontend Language Reference
+       Hybrid 前端语言参考
       </a>
      </li>
     </ul>
@@ -1108,7 +1113,12 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../../reference/api/python/ir.html">
+      <a class="reference internal" href="../../reference/api/python/ir/module.html">
+       tvm.ir.module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/ir/index.html">
        tvm.ir
       </a>
      </li>
@@ -1382,7 +1392,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/docs/how_to/profile/papi.rst.txt"
+        <a href="../../../_sources/docs/how_to/profile/papi.ipynb.txt"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -1393,7 +1403,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.rst</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -1442,18 +1452,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installing-papi">
-   Installing PAPI
+  <a class="reference internal nav-link" href="#id1">
+   安装 PAPI
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#building-tvm-with-papi">
-   Building TVM With PAPI
+  <a class="reference internal nav-link" href="#papi-tvm">
+   用 PAPI 构建 TVM
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-papi-while-profiling">
-   Using PAPI While Profiling
+  <a class="reference internal nav-link" href="#id2">
+   在剖析时使用 PAPI
   </a>
  </li>
 </ul>
@@ -1465,7 +1475,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Getting Started With PAPI</h1>
+                <h1>PAPI 快速上手</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1476,18 +1486,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installing-papi">
-   Installing PAPI
+  <a class="reference internal nav-link" href="#id1">
+   安装 PAPI
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#building-tvm-with-papi">
-   Building TVM With PAPI
+  <a class="reference internal nav-link" href="#papi-tvm">
+   用 PAPI 构建 TVM
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-papi-while-profiling">
-   Using PAPI While Profiling
+  <a class="reference internal nav-link" href="#id2">
+   在剖析时使用 PAPI
   </a>
  </li>
 </ul>
@@ -1500,54 +1510,73 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="getting-started-with-papi">
-<h1>Getting Started With PAPI<a class="headerlink" href="#getting-started-with-papi" title="永久链接至标题">#</a></h1>
-<p>The Performance Application Programming Interface (PAPI) is a library that
-provides performance counters on a variety of platforms. Performance counters
-provide accurate low-level information about processors behavior during a given
-execution run. This information can contain simple metrics like total cycle
-count, cache misses, and instructions executed as well as more high level
-information like total FLOPS and warp occupancy. PAPI makes these metrics
-available while profiling.</p>
-<section id="installing-papi">
-<h2>Installing PAPI<a class="headerlink" href="#installing-papi" title="永久链接至标题">#</a></h2>
-<p>PAPI can either be installed using your package manager (<code class="docutils literal notranslate"><span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libpapi-dev</span></code>
-on Ubuntu), or from source here:
-<a class="reference external" href="https://bitbucket.org/icl/papi/src/master/">https://bitbucket.org/icl/papi/src/master/</a>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="papi">
+<h1>PAPI 快速上手<a class="headerlink" href="#papi" title="永久链接至标题">#</a></h1>
+<p>PAPI（Performance Application Programming Interface）是在各种平台上提供性能计数器的库。性能计数器提供关于给定执行运行期间处理器行为的准确底层信息。该信息可以包含简单的指标，如总周期计数（total cycle count）、缓存未命中（cache misses）和执行指令（instructions executed），以及更高级的信息，如总 FLOPS 和 warp 占用率（occupancy）。PAPI 使这些指标在分析时可用。</p>
+<section id="id1">
+<h2>安装 PAPI<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
+<p>PAPI 可以使用你的包管理器来安装（<code class="docutils literal notranslate"><span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libpapi-dev</span></code>）或者从<a class="reference external" href="https://bitbucket.org/icl/papi/src/master/">这里</a>获取源码</p>
 </section>
-<section id="building-tvm-with-papi">
-<h2>Building TVM With PAPI<a class="headerlink" href="#building-tvm-with-papi" title="永久链接至标题">#</a></h2>
-<p>To include PAPI in your build of TVM, set the following line in you <code class="docutils literal notranslate"><span class="pre">config.cmake</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="n">USE_PAPI</span> <span class="n">ON</span><span class="p">)</span>
+<section id="papi-tvm">
+<h2>用 PAPI 构建 TVM<a class="headerlink" href="#papi-tvm" title="永久链接至标题">#</a></h2>
+<p>要在 TVM 构建中包含 PAPI，需要在 <code class="docutils literal notranslate"><span class="pre">config.cmake</span></code> 中设置如下：</p>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span>set(USE_PAPI ON)
 </pre></div>
 </div>
-<p>If PAPI is installed in a non-standard place, you can specify where it is like so:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="n">USE_PAPI</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">papi</span><span class="o">.</span><span class="n">pc</span><span class="p">)</span>
+<p>如果 PAPI 被安装在非标准的地方，你可以像这样指定它的位置：</p>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span>set(USE_PAPI path/to/papi.pc)
 </pre></div>
 </div>
 </section>
-<section id="using-papi-while-profiling">
-<h2>Using PAPI While Profiling<a class="headerlink" href="#using-papi-while-profiling" title="永久链接至标题">#</a></h2>
-<p>If TVM has been built with PAPI (see above), then you can pass a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.runtime.profiling.PAPIMetricCollector</span></code> to
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">tvm.runtime.GraphModule.profile()</span></code> to collect performance metrics. Here
-is an example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;llvm&quot;</span>
-<span class="n">dev</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+<section id="id2">
+<h2>在剖析时使用 PAPI<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
+<p>如果 TVM 是用 PAPI 构建的(见上文)，那么你可以将 <code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.runtime.profiling.PAPIMetricCollector</span></code> 传递给 <code class="xref py py-meth docutils literal notranslate"><span class="pre">tvm.runtime.GraphModule.profile()</span></code> 来收集性能指标。下面是例子：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">from</span> <span class="nn">tvm.runtime</span> <span class="kn">import</span> <span class="n">profiler_vm</span>
+<span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">relay</span>
+<span class="kn">import</span> <span class="nn">tvm</span>
+<span class="kn">from</span> <span class="nn">tvm.relay.testing</span> <span class="kn">import</span> <span class="n">mlp</span>
+
+<span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;llvm&quot;</span>
+<span class="n">dev</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">cpu</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">Target</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">kind</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;llvm&quot;</span><span class="p">:</span>
+    <span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;PAPI_FP_OPS&quot;</span>
+<span class="k">elif</span> <span class="nb">str</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">kind</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;cuda&quot;</span><span class="p">:</span>
+    <span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;cuda:::event:shared_load:device=0&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">pytest</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Target </span><span class="si">{</span><span class="n">target</span><span class="o">.</span><span class="n">kind</span><span class="si">}</span><span class="s2"> not supported by this test&quot;</span><span class="p">)</span>
+
 <span class="n">mod</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">mlp</span><span class="o">.</span><span class="n">get_workload</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">exe</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 <span class="n">vm</span> <span class="o">=</span> <span class="n">profiler_vm</span><span class="o">.</span><span class="n">VirtualMachineProfiler</span><span class="p">(</span><span class="n">exe</span><span class="p">,</span> <span class="n">dev</span><span class="p">)</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">dev</span><span class="p">)</span>
-<span class="n">report</span> <span class="o">=</span> <span class="n">vm</span><span class="o">.</span><span class="n">profile</span><span class="p">(</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>为了保证正常运行，需要设定 <code class="docutils literal notranslate"><span class="pre">/proc/sys/kernel/perf_event_paranoid</span></code> 为 2 或者更小或者作为 root：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo sh -c <span class="s2">&quot;echo 2 &gt; /proc/sys/kernel/perf_event_paranoid&quot;</span> 
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">report</span> <span class="o">=</span> <span class="n">vm</span><span class="o">.</span><span class="n">profile</span><span class="p">(</span>
     <span class="p">[</span><span class="n">data</span><span class="p">],</span>
     <span class="n">func_name</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
-    <span class="n">collectors</span><span class="o">=</span><span class="p">[</span><span class="n">tvm</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">profiling</span><span class="o">.</span><span class="n">PAPIMetricCollector</span><span class="p">()],</span>
+    <span class="n">collectors</span><span class="o">=</span><span class="p">[</span><span class="n">tvm</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">profiling</span><span class="o">.</span><span class="n">PAPIMetricCollector</span><span class="p">({</span><span class="n">dev</span><span class="p">:</span> <span class="p">[</span><span class="n">metric</span><span class="p">]})],</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
+<p>结果：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Name</span>                                    <span class="n">perf</span><span class="p">::</span><span class="n">CACHE</span><span class="o">-</span><span class="n">MISSES</span>   <span class="n">perf</span><span class="p">::</span><span class="n">CYCLES</span>  <span class="n">perf</span><span class="p">::</span><span class="n">STALLED</span><span class="o">-</span><span class="n">CYCLES</span><span class="o">-</span><span class="n">BACKEND</span>  <span class="n">perf</span><span class="p">::</span><span class="n">INSTRUCTIONS</span>  <span class="n">perf</span><span class="p">::</span><span class="n">STALLED</span><span class="o">-</span><span class="n">CYCLES</span><span class="o">-</span><span class="n">FRONTEND</span>
 <span class="n">fused_nn_dense_nn_bias_add_nn_relu</span>                   <span class="mi">2</span><span class="p">,</span><span class="mi">494</span>      <span class="mi">1</span><span class="p">,</span><span class="mi">570</span><span class="p">,</span><span class="mi">698</span>                        <span class="mi">85</span><span class="p">,</span><span class="mi">608</span>             <span class="mi">675</span><span class="p">,</span><span class="mi">564</span>                         <span class="mi">39</span><span class="p">,</span><span class="mi">583</span>
 <span class="n">fused_nn_dense_nn_bias_add_nn_relu_1</span>                 <span class="mi">1</span><span class="p">,</span><span class="mi">149</span>        <span class="mi">655</span><span class="p">,</span><span class="mi">101</span>                        <span class="mi">13</span><span class="p">,</span><span class="mi">278</span>             <span class="mi">202</span><span class="p">,</span><span class="mi">297</span>                         <span class="mi">21</span><span class="p">,</span><span class="mi">380</span>
@@ -1559,14 +1588,19 @@ is an example:</p>
 <span class="n">Total</span>                                               <span class="mi">10</span><span class="p">,</span><span class="mi">644</span>      <span class="mi">8</span><span class="p">,</span><span class="mi">327</span><span class="p">,</span><span class="mi">360</span>                       <span class="mi">179</span><span class="p">,</span><span class="mi">310</span>           <span class="mi">2</span><span class="p">,</span><span class="mi">660</span><span class="p">,</span><span class="mi">569</span>                        <span class="mi">270</span><span class="p">,</span><span class="mi">044</span>
 </pre></div>
 </div>
-<p>You can also change which metrics are collected:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">report</span> <span class="o">=</span> <span class="n">vm</span><span class="o">.</span><span class="n">profile</span><span class="p">(</span>
+<p>还可以更改收集的指标：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">report</span> <span class="o">=</span> <span class="n">vm</span><span class="o">.</span><span class="n">profile</span><span class="p">(</span>
     <span class="p">[</span><span class="n">data</span><span class="p">],</span>
     <span class="n">func_name</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
     <span class="n">collectors</span><span class="o">=</span><span class="p">[</span><span class="n">tvm</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">profiling</span><span class="o">.</span><span class="n">PAPIMetricCollector</span><span class="p">({</span><span class="n">dev</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;PAPI_FP_OPS&quot;</span><span class="p">])],</span>
-<span class="p">)</span>
+                <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
+<p>结果：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Name</span>                                  <span class="n">PAPI_FP_OPS</span>
 <span class="n">fused_nn_dense_nn_bias_add_nn_relu</span>        <span class="mi">200</span><span class="p">,</span><span class="mi">832</span>
 <span class="n">fused_nn_dense_nn_bias_add_nn_relu_1</span>       <span class="mi">16</span><span class="p">,</span><span class="mi">448</span>
@@ -1578,8 +1612,7 @@ is an example:</p>
 <span class="n">Total</span>                                     <span class="mi">218</span><span class="p">,</span><span class="mi">988</span>
 </pre></div>
 </div>
-<p>You can find a list of available metrics by running the <code class="docutils literal notranslate"><span class="pre">papi_avail</span></code> and
-<code class="docutils literal notranslate"><span class="pre">papi_native_avail</span></code> commands.</p>
+<p>您可以通过运行 <code class="docutils literal notranslate"><span class="pre">papi_avail</span></code> 和 <code class="docutils literal notranslate"><span class="pre">papi_native_avail</span></code> 命令找到可用指标列表。</p>
 </section>
 </section>
 
@@ -1595,7 +1628,7 @@ is an example:</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">上一页</p>
-            <p class="prev-next-title">Profile Models</p>
+            <p class="prev-next-title">模型剖析</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../../../developer-guide.html" title="下一页 页">
@@ -1615,7 +1648,7 @@ is an example:</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-09, 15:46:33.<br/>
+    Last updated on 2022-06-14, 06:57:29.<br/>
 </p>
         </footer>
     </div>

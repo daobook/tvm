@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Adding an Operator to Relay &#8212; TVM  文档</title>
+    <title>添加算子到 Relay &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,7 +51,7 @@
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
     <link rel="next" title="Adding a Compiler Pass to Relay" href="relay_add_pass.html" />
-    <link rel="prev" title="Debuggging TVM" href="debugging_tvm.html" />
+    <link rel="prev" title="调试 TVM" href="debugging_tvm.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -503,7 +503,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../how_to/work_with_relay/index.html">
-       Work With Relay
+       使用 Relay
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
       <label for="toctree-checkbox-12">
@@ -513,12 +513,17 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../../how_to/work_with_relay/build_gcn.html">
-         Building a Graph Convolutional Network
+         构建图卷积网络
         </a>
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../../how_to/work_with_relay/using_external_lib.html">
-         Using External Libraries in Relay
+         在 Relay 中使用外部库
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/work_with_relay/using_relay_viz.html">
+         使用 Relay Visualizer 可视化 Relay
         </a>
        </li>
       </ul>
@@ -752,7 +757,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../how_to/profile/index.html">
-       Profile Models
+       模型剖析
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
       <label for="toctree-checkbox-19">
@@ -762,7 +767,7 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../../how_to/profile/papi.html">
-         Getting Started With PAPI
+         PAPI 快速上手
         </a>
        </li>
       </ul>
@@ -800,7 +805,7 @@
    </li>
    <li class="toctree-l2 current active has-children">
     <a class="reference internal" href="how_to.html">
-     Developer How-To Guide
+     开发者指南
     </a>
     <input checked="" class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
     <label for="toctree-checkbox-22">
@@ -810,12 +815,12 @@
     <ul class="current">
      <li class="toctree-l3">
       <a class="reference internal" href="debugging_tvm.html">
-       Debuggging TVM
+       调试 TVM
       </a>
      </li>
      <li class="toctree-l3 current active">
       <a class="current reference internal" href="#">
-       Adding an Operator to Relay
+       添加算子到 Relay
       </a>
      </li>
      <li class="toctree-l3">
@@ -854,17 +859,17 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/debugger.html">
-     Debugger
+     调试器
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/virtual_machine.html">
-     Putting the VM in TVM: The Relay Virtual Machine
+     将 VM 放入 TVM：Relay Virtual Machine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/introduction_to_module_serialization.html">
-     Introduction to Module Serialization
+     模块序列化简介
     </a>
    </li>
    <li class="toctree-l2">
@@ -889,12 +894,12 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/hybrid_script.html">
-     Hybrid Frontend Developer Guide
+     Hybrid 前端开发指南
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/relay_intro.html">
-     Introduction to Relay IR
+     Relay IR 简介
     </a>
    </li>
    <li class="toctree-l2">
@@ -909,7 +914,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/benchmark.html">
-     Benchmark Performance Log Format
+     基准性能日志格式
     </a>
    </li>
    <li class="toctree-l2">
@@ -919,7 +924,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/security.html">
-     Security Guide
+     安全指南
     </a>
    </li>
    <li class="toctree-l2">
@@ -934,7 +939,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/model_library_format.html">
-     Model Library Format
+     Model 库格式
     </a>
    </li>
   </ul>
@@ -1059,7 +1064,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../reference/langref/relay_type.html">
-       Relay’s Type System
+       Relay 类型系统
       </a>
      </li>
      <li class="toctree-l3">
@@ -1069,7 +1074,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../reference/langref/relay_op.html">
-       Relay Core Tensor Operators
+       Relay 核心张量算子
       </a>
      </li>
      <li class="toctree-l3">
@@ -1079,7 +1084,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../reference/langref/hybrid_script.html">
-       Hybrid Frontend Language Reference
+       Hybrid 前端语言参考
       </a>
      </li>
     </ul>
@@ -1110,7 +1115,12 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../../reference/api/python/ir.html">
+      <a class="reference internal" href="../../reference/api/python/ir/module.html">
+       tvm.ir.module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/ir/index.html">
        tvm.ir
       </a>
      </li>
@@ -1514,7 +1524,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Adding an Operator to Relay</h1>
+                <h1>添加算子到 Relay</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1597,14 +1607,12 @@ title="Print to PDF"
               <div>
                 
   <section id="adding-an-operator-to-relay">
-<span id="relay-add-op"></span><h1>Adding an Operator to Relay<a class="headerlink" href="#adding-an-operator-to-relay" title="永久链接至标题">#</a></h1>
-<p>In this document we will go over the steps needed to register a new TVM operator
-in Relay. We will be following this PR which adds a <a class="reference external" href="https://github.com/apache/tvm/pull/7722">cumulative product</a> operation as an example.
-The PR itself builds upon another PR which adds a <a class="reference external" href="https://github.com/apache/tvm/pull/7334">cumulative sum</a> operation.</p>
-<p>Registering a new operator requires a few steps:</p>
+<span id="relay-add-op"></span><h1>添加算子到 Relay<a class="headerlink" href="#adding-an-operator-to-relay" title="永久链接至标题">#</a></h1>
+<p>在本文档中，将介绍在 Relay 中注册新的 TVM 算子所需的步骤。我们将遵循这个 PR，它增加了 <a class="reference external" href="https://github.com/apache/tvm/pull/7722">cumulative product</a> 作为例子。PR 本身建立在另一个 PR 的基础上，后者添加了 <a class="reference external" href="https://github.com/apache/tvm/pull/7334">cumulative sum</a> 算子。</p>
+<p>注册新的算子需要几个步骤：</p>
 <ol class="arabic simple">
-<li><p>Add an attribute node declaring fixed arguments which are known at compile time</p></li>
-<li><p>Write a type relation for your operation to integrate into Relay’s type system.</p></li>
+<li><p>“添加属性节点，声明在编译时已知的固定参数</p></li>
+<li><p>为集成到 Relay 类型系统中的运算编写类型关系。</p></li>
 <li><p>Use the <code class="docutils literal notranslate"><span class="pre">RELAY_REGISTER_OP</span></code> macro in C++ to register the operator’s arity, type, and other hints for the compiler</p></li>
 <li><p>Write how the operator is computed</p></li>
 <li><p>Register the compute, schedule with the relay operator</p></li>
@@ -2034,7 +2042,7 @@ order to register the gradient.</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">上一页</p>
-            <p class="prev-next-title">Debuggging TVM</p>
+            <p class="prev-next-title">调试 TVM</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="relay_add_pass.html" title="下一页 页">
@@ -2054,7 +2062,7 @@ order to register the gradient.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-09, 15:46:33.<br/>
+    Last updated on 2022-06-14, 06:57:29.<br/>
 </p>
         </footer>
     </div>

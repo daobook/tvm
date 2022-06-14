@@ -501,7 +501,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../how_to/work_with_relay/index.html">
-       Work With Relay
+       使用 Relay
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
       <label for="toctree-checkbox-12">
@@ -511,12 +511,17 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/work_with_relay/build_gcn.html">
-         Building a Graph Convolutional Network
+         构建图卷积网络
         </a>
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/work_with_relay/using_external_lib.html">
-         Using External Libraries in Relay
+         在 Relay 中使用外部库
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/work_with_relay/using_relay_viz.html">
+         使用 Relay Visualizer 可视化 Relay
         </a>
        </li>
       </ul>
@@ -750,7 +755,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../how_to/profile/index.html">
-       Profile Models
+       模型剖析
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
       <label for="toctree-checkbox-19">
@@ -760,7 +765,7 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/profile/papi.html">
-         Getting Started With PAPI
+         PAPI 快速上手
         </a>
        </li>
       </ul>
@@ -798,7 +803,7 @@
    </li>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../dev/how_to/how_to.html">
-     Developer How-To Guide
+     开发者指南
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
     <label for="toctree-checkbox-22">
@@ -808,12 +813,12 @@
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/debugging_tvm.html">
-       Debuggging TVM
+       调试 TVM
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/relay_add_op.html">
-       Adding an Operator to Relay
+       添加算子到 Relay
       </a>
      </li>
      <li class="toctree-l3">
@@ -852,17 +857,17 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="debugger.html">
-     Debugger
+     调试器
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="virtual_machine.html">
-     Putting the VM in TVM: The Relay Virtual Machine
+     将 VM 放入 TVM：Relay Virtual Machine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="introduction_to_module_serialization.html">
-     Introduction to Module Serialization
+     模块序列化简介
     </a>
    </li>
    <li class="toctree-l2">
@@ -887,12 +892,12 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="hybrid_script.html">
-     Hybrid Frontend Developer Guide
+     Hybrid 前端开发指南
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="relay_intro.html">
-     Introduction to Relay IR
+     Relay IR 简介
     </a>
    </li>
    <li class="toctree-l2">
@@ -907,7 +912,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="benchmark.html">
-     Benchmark Performance Log Format
+     基准性能日志格式
     </a>
    </li>
    <li class="toctree-l2">
@@ -917,7 +922,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="security.html">
-     Security Guide
+     安全指南
     </a>
    </li>
    <li class="toctree-l2">
@@ -932,7 +937,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="model_library_format.html">
-     Model Library Format
+     Model 库格式
     </a>
    </li>
   </ul>
@@ -1057,7 +1062,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../reference/langref/relay_type.html">
-       Relay’s Type System
+       Relay 类型系统
       </a>
      </li>
      <li class="toctree-l3">
@@ -1067,7 +1072,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../reference/langref/relay_op.html">
-       Relay Core Tensor Operators
+       Relay 核心张量算子
       </a>
      </li>
      <li class="toctree-l3">
@@ -1077,7 +1082,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../reference/langref/hybrid_script.html">
-       Hybrid Frontend Language Reference
+       Hybrid 前端语言参考
       </a>
      </li>
     </ul>
@@ -1108,7 +1113,12 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../reference/api/python/ir.html">
+      <a class="reference internal" href="../reference/api/python/ir/module.html">
+       tvm.ir.module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/ir/index.html">
        tvm.ir
       </a>
      </li>
@@ -1705,7 +1715,7 @@ title="Print to PDF"
 <li><p><a class="reference internal" href="#example-compilation-flow">编译流程示例</a> 概述了 TVM 将模型的高级别描述转化为可部署模块的步骤。要开始使用，请先阅读本节。</p></li>
 <li><p><a class="reference internal" href="#logical-architecture-components">逻辑架构组件</a> 部分描述了逻辑组件。之后的章节是专注于每个逻辑组件的具体指南，按照组件的名称组织。</p></li>
 <li><p><a class="reference internal" href="device_target_interactions.html#tvm-target-specific-overview"><span class="std std-ref">设备/目标交互</span></a> 页面描述了 TVM 如何与每个支持的物理设备和代码生成目标交互。</p></li>
-<li><p>请随时查看 <a class="reference internal" href="../dev/how_to/how_to.html#dev-how-to"><span class="std std-ref">Developer How-To Guide</span></a>，了解有用的开发技巧。</p></li>
+<li><p>请随时查看 <a class="reference internal" href="../dev/how_to/how_to.html#dev-how-to"><span class="std std-ref">开发者指南</span></a>，了解有用的开发技巧。</p></li>
 </ul>
 <p>本指南提供了关于架构的几个互补性观点。首先，回顾了单一的端到端编译流程，并讨论了关键的数据结构和变换。这种基于运行时的观点着重于运行编译器时每个组件的相互作用。然后，将回顾代码库的逻辑模块和它们之间的关系。这一部分提供了一个静态的总体设计视图。</p>
 <section id="example-compilation-flow">
@@ -1841,9 +1851,9 @@ title="Print to PDF"
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="debugger.html">Debugger</a></li>
-<li class="toctree-l1"><a class="reference internal" href="virtual_machine.html">Putting the VM in TVM: The Relay Virtual Machine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction_to_module_serialization.html">Introduction to Module Serialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugger.html">调试器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virtual_machine.html">将 VM 放入 TVM：Relay Virtual Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction_to_module_serialization.html">模块序列化简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="device_target_interactions.html">Device/Target Interactions</a></li>
 </ul>
 </div>
@@ -1909,7 +1919,7 @@ title="Print to PDF"
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="inferbound.html">InferBound Pass</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hybrid_script.html">Hybrid Frontend Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_script.html">Hybrid 前端开发指南</a></li>
 </ul>
 </div>
 </section>
@@ -1922,7 +1932,7 @@ title="Print to PDF"
 <p>Relay 是用来表示完整模型的高级函数 IR。在 <cite>relay.transform</cite> 中定义了各种优化。Relay 编译器定义了多种方言，每种方言都被设计成支持特定类型的优化。值得注意的有 QNN（用于导入预量化模型）、VM（用于降级到动态虚拟机）、memory（用于内存优化）。</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="relay_intro.html">Introduction to Relay IR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relay_intro.html">Relay IR 简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relay_op_strategy.html">Relay Operator Strategy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="convert_layout.html">Convert Layout Pass</a></li>
 </ul>
@@ -1939,7 +1949,7 @@ title="Print to PDF"
 <p>自动化程序优化仍然是一个活跃的研究领域。因此，尝试模块化设计，以便研究人员可以通过 Python 绑定快速修改组件或应用他们自己的算法，并从 Python 绑定定制搜索和拔插他们的算法。</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="benchmark.html">Benchmark Performance Log Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmark.html">基准性能日志格式</a></li>
 </ul>
 </div>
 </section>
@@ -1956,7 +1966,7 @@ title="Print to PDF"
 <h2>安全<a class="headerlink" href="#security" title="永久链接至标题">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="security.html">Security Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">安全指南</a></li>
 </ul>
 </div>
 </section>
@@ -1966,7 +1976,7 @@ title="Print to PDF"
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="microtvm_design.html">microTVM Design Document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="microtvm_project_api.html">microTVM Project API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="model_library_format.html">Model Library Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_library_format.html">Model 库格式</a></li>
 </ul>
 </div>
 </section>
@@ -2004,7 +2014,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-09, 15:46:33.<br/>
+    Last updated on 2022-06-14, 06:57:29.<br/>
 </p>
         </footer>
     </div>

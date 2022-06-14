@@ -503,7 +503,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../how_to/work_with_relay/index.html">
-       Work With Relay
+       使用 Relay
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
       <label for="toctree-checkbox-12">
@@ -513,12 +513,17 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/work_with_relay/build_gcn.html">
-         Building a Graph Convolutional Network
+         构建图卷积网络
         </a>
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/work_with_relay/using_external_lib.html">
-         Using External Libraries in Relay
+         在 Relay 中使用外部库
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/work_with_relay/using_relay_viz.html">
+         使用 Relay Visualizer 可视化 Relay
         </a>
        </li>
       </ul>
@@ -752,7 +757,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../how_to/profile/index.html">
-       Profile Models
+       模型剖析
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
       <label for="toctree-checkbox-19">
@@ -762,7 +767,7 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/profile/papi.html">
-         Getting Started With PAPI
+         PAPI 快速上手
         </a>
        </li>
       </ul>
@@ -800,7 +805,7 @@
    </li>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../dev/how_to/how_to.html">
-     Developer How-To Guide
+     开发者指南
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
     <label for="toctree-checkbox-22">
@@ -810,12 +815,12 @@
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/debugging_tvm.html">
-       Debuggging TVM
+       调试 TVM
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/relay_add_op.html">
-       Adding an Operator to Relay
+       添加算子到 Relay
       </a>
      </li>
      <li class="toctree-l3">
@@ -854,17 +859,17 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../arch/debugger.html">
-     Debugger
+     调试器
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../arch/virtual_machine.html">
-     Putting the VM in TVM: The Relay Virtual Machine
+     将 VM 放入 TVM：Relay Virtual Machine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../arch/introduction_to_module_serialization.html">
-     Introduction to Module Serialization
+     模块序列化简介
     </a>
    </li>
    <li class="toctree-l2">
@@ -889,12 +894,12 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../arch/hybrid_script.html">
-     Hybrid Frontend Developer Guide
+     Hybrid 前端开发指南
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../arch/relay_intro.html">
-     Introduction to Relay IR
+     Relay IR 简介
     </a>
    </li>
    <li class="toctree-l2">
@@ -909,7 +914,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../arch/benchmark.html">
-     Benchmark Performance Log Format
+     基准性能日志格式
     </a>
    </li>
    <li class="toctree-l2">
@@ -919,7 +924,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../arch/security.html">
-     Security Guide
+     安全指南
     </a>
    </li>
    <li class="toctree-l2">
@@ -934,7 +939,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../arch/model_library_format.html">
-     Model Library Format
+     Model 库格式
     </a>
    </li>
   </ul>
@@ -1059,7 +1064,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../reference/langref/relay_type.html">
-       Relay’s Type System
+       Relay 类型系统
       </a>
      </li>
      <li class="toctree-l3">
@@ -1069,7 +1074,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../reference/langref/relay_op.html">
-       Relay Core Tensor Operators
+       Relay 核心张量算子
       </a>
      </li>
      <li class="toctree-l3">
@@ -1079,7 +1084,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../reference/langref/hybrid_script.html">
-       Hybrid Frontend Language Reference
+       Hybrid 前端语言参考
       </a>
      </li>
     </ul>
@@ -1110,7 +1115,12 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../reference/api/python/ir.html">
+      <a class="reference internal" href="../reference/api/python/ir/module.html">
+       tvm.ir.module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/ir/index.html">
        tvm.ir
       </a>
      </li>
@@ -1912,7 +1922,7 @@ No: 10	GFLOPS: 6.29/7.05	result: MeasureResult(costs=(0.042653947799999994,), er
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-09, 15:46:33.<br/>
+    Last updated on 2022-06-14, 06:57:29.<br/>
 </p>
         </footer>
     </div>

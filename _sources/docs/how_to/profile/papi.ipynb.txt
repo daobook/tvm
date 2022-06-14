@@ -1,0 +1,192 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# PAPI 快速上手\n",
+    "\n",
+    "PAPI（Performance Application Programming Interface）是在各种平台上提供性能计数器的库。性能计数器提供关于给定执行运行期间处理器行为的准确底层信息。该信息可以包含简单的指标，如总周期计数（total cycle count）、缓存未命中（cache misses）和执行指令（instructions executed），以及更高级的信息，如总 FLOPS 和 warp 占用率（occupancy）。PAPI 使这些指标在分析时可用。\n",
+    "\n",
+    "## 安装 PAPI\n",
+    "\n",
+    "PAPI 可以使用你的包管理器来安装（``apt-get install libpapi-dev``）或者从[这里](https://bitbucket.org/icl/papi/src/master/)获取源码\n",
+    "\n",
+    "\n",
+    "## 用 PAPI 构建 TVM\n",
+    "\n",
+    "要在 TVM 构建中包含 PAPI，需要在 ``config.cmake`` 中设置如下：\n",
+    "\n",
+    "```Makefile\n",
+    "set(USE_PAPI ON)\n",
+    "```\n",
+    "\n",
+    "如果 PAPI 被安装在非标准的地方，你可以像这样指定它的位置：\n",
+    "\n",
+    "```Makefile\n",
+    "set(USE_PAPI path/to/papi.pc)\n",
+    "```\n",
+    "\n",
+    "## 在剖析时使用 PAPI\n",
+    "\n",
+    "如果 TVM 是用 PAPI 构建的(见上文)，那么你可以将 {py:class}`tvm.runtime.profiling.PAPIMetricCollector` 传递给 {py:meth}`tvm.runtime.GraphModule.profile` 来收集性能指标。下面是例子："
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import pytest\n",
+    "from tvm.runtime import profiler_vm\n",
+    "from tvm import relay\n",
+    "import tvm\n",
+    "from tvm.relay.testing import mlp\n",
+    "\n",
+    "target = \"llvm\"\n",
+    "dev = tvm.cpu(0)\n",
+    "target = tvm.target.Target(target)\n",
+    "if str(target.kind) == \"llvm\":\n",
+    "    metric = \"PAPI_FP_OPS\"\n",
+    "elif str(target.kind) == \"cuda\":\n",
+    "    metric = \"cuda:::event:shared_load:device=0\"\n",
+    "else:\n",
+    "    pytest.skip(f\"Target {target.kind} not supported by this test\")\n",
+    "\n",
+    "mod, params = mlp.get_workload(1)\n",
+    "\n",
+    "exe = relay.vm.compile(mod, target, params=params)\n",
+    "vm = profiler_vm.VirtualMachineProfiler(exe, dev)\n",
+    "\n",
+    "data = tvm.nd.array(np.random.rand(1, 1, 28, 28).astype(\"float32\"), device=dev)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "为了保证正常运行，需要设定 `/proc/sys/kernel/perf_event_paranoid` 为 2 或者更小或者作为 root：\n",
+    "\n",
+    "```bash\n",
+    "sudo sh -c \"echo 2 > /proc/sys/kernel/perf_event_paranoid\" \n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "report = vm.profile(\n",
+    "    [data],\n",
+    "    func_name=\"main\",\n",
+    "    collectors=[tvm.runtime.profiling.PAPIMetricCollector({dev: [metric]})],\n",
+    ")\n",
+    "print(report)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "结果："
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "```\n",
+    "Name                                    perf::CACHE-MISSES   perf::CYCLES  perf::STALLED-CYCLES-BACKEND  perf::INSTRUCTIONS  perf::STALLED-CYCLES-FRONTEND\n",
+    "fused_nn_dense_nn_bias_add_nn_relu                   2,494      1,570,698                        85,608             675,564                         39,583\n",
+    "fused_nn_dense_nn_bias_add_nn_relu_1                 1,149        655,101                        13,278             202,297                         21,380\n",
+    "fused_nn_dense_nn_bias_add                             288        600,184                         8,321             163,446                         19,513\n",
+    "fused_nn_batch_flatten                                 301        587,049                         4,636             158,636                         18,565\n",
+    "fused_nn_softmax                                       154        575,143                         8,018             160,738                         18,995\n",
+    "----------\n",
+    "Sum                                                  4,386      3,988,175                       119,861           1,360,681                        118,036\n",
+    "Total                                               10,644      8,327,360                       179,310           2,660,569                        270,044\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "还可以更改收集的指标："
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "report = vm.profile(\n",
+    "    [data],\n",
+    "    func_name=\"main\",\n",
+    "    collectors=[tvm.runtime.profiling.PAPIMetricCollector({dev: [\"PAPI_FP_OPS\"])],\n",
+    "                )"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "结果："
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "```\n",
+    "Name                                  PAPI_FP_OPS\n",
+    "fused_nn_dense_nn_bias_add_nn_relu        200,832\n",
+    "fused_nn_dense_nn_bias_add_nn_relu_1       16,448\n",
+    "fused_nn_dense_nn_bias_add                  1,548\n",
+    "fused_nn_softmax                              160\n",
+    "fused_nn_batch_flatten                          0\n",
+    "----------\n",
+    "Sum                                       218,988\n",
+    "Total                                     218,988\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "您可以通过运行 ``papi_avail`` 和 ``papi_native_avail`` 命令找到可用指标列表。"
+   ]
+  }
+ ],
+ "metadata": {
+  "interpreter": {
+   "hash": "aa67ff675248b5ab29dcd2f00c1422844307085c8ca7c8ce7eddecd21b9c2975"
+  },
+  "kernelspec": {
+   "display_name": "Python 3.10.4 ('mxnetx')",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.4"
+  },
+  "orig_nbformat": 4
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

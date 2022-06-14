@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Introduction to Module Serialization &#8212; TVM  文档</title>
+    <title>模块序列化简介 &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -49,7 +49,7 @@
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
     <link rel="next" title="Device/Target Interactions" href="device_target_interactions.html" />
-    <link rel="prev" title="Putting the VM in TVM: The Relay Virtual Machine" href="virtual_machine.html" />
+    <link rel="prev" title="将 VM 放入 TVM：Relay Virtual Machine" href="virtual_machine.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -501,7 +501,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../how_to/work_with_relay/index.html">
-       Work With Relay
+       使用 Relay
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
       <label for="toctree-checkbox-12">
@@ -511,12 +511,17 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/work_with_relay/build_gcn.html">
-         Building a Graph Convolutional Network
+         构建图卷积网络
         </a>
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/work_with_relay/using_external_lib.html">
-         Using External Libraries in Relay
+         在 Relay 中使用外部库
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../how_to/work_with_relay/using_relay_viz.html">
+         使用 Relay Visualizer 可视化 Relay
         </a>
        </li>
       </ul>
@@ -750,7 +755,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../how_to/profile/index.html">
-       Profile Models
+       模型剖析
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
       <label for="toctree-checkbox-19">
@@ -760,7 +765,7 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/profile/papi.html">
-         Getting Started With PAPI
+         PAPI 快速上手
         </a>
        </li>
       </ul>
@@ -798,7 +803,7 @@
    </li>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../dev/how_to/how_to.html">
-     Developer How-To Guide
+     开发者指南
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
     <label for="toctree-checkbox-22">
@@ -808,12 +813,12 @@
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/debugging_tvm.html">
-       Debuggging TVM
+       调试 TVM
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/relay_add_op.html">
-       Adding an Operator to Relay
+       添加算子到 Relay
       </a>
      </li>
      <li class="toctree-l3">
@@ -852,17 +857,17 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="debugger.html">
-     Debugger
+     调试器
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="virtual_machine.html">
-     Putting the VM in TVM: The Relay Virtual Machine
+     将 VM 放入 TVM：Relay Virtual Machine
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Introduction to Module Serialization
+     模块序列化简介
     </a>
    </li>
    <li class="toctree-l2">
@@ -887,12 +892,12 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="hybrid_script.html">
-     Hybrid Frontend Developer Guide
+     Hybrid 前端开发指南
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="relay_intro.html">
-     Introduction to Relay IR
+     Relay IR 简介
     </a>
    </li>
    <li class="toctree-l2">
@@ -907,7 +912,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="benchmark.html">
-     Benchmark Performance Log Format
+     基准性能日志格式
     </a>
    </li>
    <li class="toctree-l2">
@@ -917,7 +922,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="security.html">
-     Security Guide
+     安全指南
     </a>
    </li>
    <li class="toctree-l2">
@@ -932,7 +937,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="model_library_format.html">
-     Model Library Format
+     Model 库格式
     </a>
    </li>
   </ul>
@@ -1057,7 +1062,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../reference/langref/relay_type.html">
-       Relay’s Type System
+       Relay 类型系统
       </a>
      </li>
      <li class="toctree-l3">
@@ -1067,7 +1072,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../reference/langref/relay_op.html">
-       Relay Core Tensor Operators
+       Relay 核心张量算子
       </a>
      </li>
      <li class="toctree-l3">
@@ -1077,7 +1082,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../reference/langref/hybrid_script.html">
-       Hybrid Frontend Language Reference
+       Hybrid 前端语言参考
       </a>
      </li>
     </ul>
@@ -1108,7 +1113,12 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../reference/api/python/ir.html">
+      <a class="reference internal" href="../reference/api/python/ir/module.html">
+       tvm.ir.module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reference/api/python/ir/index.html">
        tvm.ir
       </a>
      </li>
@@ -1442,23 +1452,23 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#module-export-example">
-   Module Export Example
+  <a class="reference internal nav-link" href="#module">
+   Module 导出示例
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#serialization">
-   Serialization
+  <a class="reference internal nav-link" href="#id2">
+   序列化
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#under-the-hood-of-serialization-and-format-standard">
-   Under the Hood of Serialization and Format Standard
+  <a class="reference internal nav-link" href="#id3">
+   在序列化和格式标准的框架下
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deserialization">
-   Deserialization
+  <a class="reference internal nav-link" href="#id4">
+   反序列化
   </a>
  </li>
 </ul>
@@ -1470,7 +1480,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction to Module Serialization</h1>
+                <h1>模块序列化简介</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1481,23 +1491,23 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#module-export-example">
-   Module Export Example
+  <a class="reference internal nav-link" href="#module">
+   Module 导出示例
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#serialization">
-   Serialization
+  <a class="reference internal nav-link" href="#id2">
+   序列化
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#under-the-hood-of-serialization-and-format-standard">
-   Under the Hood of Serialization and Format Standard
+  <a class="reference internal nav-link" href="#id3">
+   在序列化和格式标准的框架下
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deserialization">
-   Deserialization
+  <a class="reference internal nav-link" href="#id4">
+   反序列化
   </a>
  </li>
 </ul>
@@ -1510,14 +1520,12 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="introduction-to-module-serialization">
-<h1>Introduction to Module Serialization<a class="headerlink" href="#introduction-to-module-serialization" title="永久链接至标题">#</a></h1>
-<p>When to deploy TVM runtime module, no matter whether it is CPU or GPU, TVM only needs one single dynamic
-shared library. The key is our unified module serialization mechanism. This document will introduce TVM module
-serialization format standard and implementation details.</p>
-<section id="module-export-example">
-<h2>Module Export Example<a class="headerlink" href="#module-export-example" title="永久链接至标题">#</a></h2>
-<p>Let us build one ResNet-18 workload for GPU as an example first.</p>
+  <section id="id1">
+<h1>模块序列化简介<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h1>
+<p>部署 TVM 运行时模块时，无论是 CPU 还是 GPU, TVM 只需要一个动态共享库即可。关键是我们统一的模块序列化机制。本文档将介绍 TVM 模块序列化格式标准及实现细节。</p>
+<section id="module">
+<h2>Module 导出示例<a class="headerlink" href="#module" title="永久链接至标题">#</a></h2>
+<p>以 GPU 构建 ResNet-18 工作负载作为例子。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">relay</span>
 <span class="kn">from</span> <span class="nn">tvm.relay</span> <span class="kn">import</span> <span class="n">testing</span>
 <span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">utils</span>
@@ -1547,38 +1555,35 @@ serialization format standard and implementation details.</p>
 </pre></div>
 </div>
 </section>
-<section id="serialization">
-<h2>Serialization<a class="headerlink" href="#serialization" title="永久链接至标题">#</a></h2>
-<p>The entrance API is <code class="docutils literal notranslate"><span class="pre">export_library</span></code> of <code class="docutils literal notranslate"><span class="pre">tvm.module.Module</span></code>.
-Inside this function, we will do the following steps:</p>
+<section id="id2">
+<h2>序列化<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
+<p>入口 API 是 <code class="docutils literal notranslate"><span class="pre">tvm.module.Module</span></code> 的 <code class="docutils literal notranslate"><span class="pre">export_library</span></code> 。在这个函数中，将执行以下步骤：</p>
 <ol class="arabic simple">
-<li><p>Collect all DSO modules (LLVM modules and C modules)</p></li>
-<li><p>Once we have DSO modules, we will call <code class="docutils literal notranslate"><span class="pre">save</span></code> function to save them into files.</p></li>
-<li><p>Next, we will check whether we have imported modules, such as CUDA,
-OpenCL or anything else. We don’t restrict the module type here.
-Once we have imported modules, we will create one file named <code class="docutils literal notranslate"><span class="pre">devc.o</span></code> / <code class="docutils literal notranslate"><span class="pre">dev.cc</span></code>
-(so that we could embed the binary blob data of import modules into one dynamic shared library),
-then call function <code class="docutils literal notranslate"><span class="pre">_PackImportsToLLVM</span></code> or <code class="docutils literal notranslate"><span class="pre">_PackImportsToC</span></code> to do module serialization.</p></li>
-<li><p>Finally, we call <code class="docutils literal notranslate"><span class="pre">fcompile</span></code> which invokes <code class="docutils literal notranslate"><span class="pre">_cc.create_shared</span></code> to get
-dynamic shared library.</p></li>
+<li><p>收集所有 DSO 模块（LLVM 模块和 C 模块）</p></li>
+<li><p>一旦有了 DSO 模块，将调用 <code class="docutils literal notranslate"><span class="pre">save</span></code> 函数将它们保存到文件中。</p></li>
+<li><p>接下来，将检查是否导入了模块，如 CUDA, OpenCL 或其他任何东西。
+这里不限制模块类型。导入模块后，将创建名为 <code class="docutils literal notranslate"><span class="pre">devc.o</span></code> / <code class="docutils literal notranslate"><span class="pre">dev.cc</span></code> 的文件（这样就可以将导入模块的二进制 blob 数据嵌入到动态共享库中），
+然后调用函数 <code class="docutils literal notranslate"><span class="pre">_PackImportsToLLVM</span></code> 或 <code class="docutils literal notranslate"><span class="pre">_PackImportsToC</span></code> 来进行模块序列化。</p></li>
+<li><p>最后，回调 <code class="docutils literal notranslate"><span class="pre">fcompile</span></code>，它调用 <code class="docutils literal notranslate"><span class="pre">_cc.create_shared</span></code> 获取动态共享库。</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <ol class="arabic simple">
-<li><p>For C source modules, we will compile them and link them together with the DSO module.</p></li>
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">_PackImportsToLLVM</span></code> or <code class="docutils literal notranslate"><span class="pre">_PackImportsToC</span></code> depends on whether we enable LLVM in TVM.
-They achieve the same goal in fact.</p></li>
+<li><p>对于 C 源码模块，我们将编译它们，并将它们与 DSO 模块链接在一起。</p></li>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">_PackImportsToLLVM</span></code> 或 <code class="docutils literal notranslate"><span class="pre">_PackImportsToC</span></code> 取决于我们是否在 TVM 中启用 LLVM。</p></li>
 </ol>
+<blockquote>
+<div><p>他们实际上达到了相同的目标。</p>
+</div></blockquote>
 </div>
 </section>
-<section id="under-the-hood-of-serialization-and-format-standard">
-<h2>Under the Hood of Serialization and Format Standard<a class="headerlink" href="#under-the-hood-of-serialization-and-format-standard" title="永久链接至标题">#</a></h2>
-<p>As said before, we will do the serialization work in the <code class="docutils literal notranslate"><span class="pre">_PackImportsToLLVM</span></code> or <code class="docutils literal notranslate"><span class="pre">_PackImportsToC</span></code>.
-They both call <code class="docutils literal notranslate"><span class="pre">SerializeModule</span></code> to serialize the runtime module. In <code class="docutils literal notranslate"><span class="pre">SerializeModule</span></code>
-function, we firstly construct one helper class <code class="docutils literal notranslate"><span class="pre">ModuleSerializer</span></code>. It will take <code class="docutils literal notranslate"><span class="pre">module</span></code> to do some
-initialization work, like marking module index. Then we could use its <code class="docutils literal notranslate"><span class="pre">SerializeModule</span></code> to serialize module.</p>
-<p>For better understanding, let us dig the implementation of this class a little deeper.</p>
-<p>The following code is used to construct <code class="docutils literal notranslate"><span class="pre">ModuleSerializer</span></code>:</p>
+<section id="id3">
+<h2>在序列化和格式标准的框架下<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h2>
+<p>如前所述，将在 <code class="docutils literal notranslate"><span class="pre">_PackImportsToLLVM</span></code> 或 <code class="docutils literal notranslate"><span class="pre">_PackImportsToC</span></code> 中进行序列化工作。
+它们都调用 <code class="docutils literal notranslate"><span class="pre">SerializeModule</span></code> 来序列化运行时模块。在 <code class="docutils literal notranslate"><span class="pre">SerializeModule</span></code> 函数中，首先构造了辅助类 <code class="docutils literal notranslate"><span class="pre">ModuleSerializer</span></code>。
+它将需要模块做一些初始化工作，如标记模块索引。然后可以使用它的 <code class="docutils literal notranslate"><span class="pre">SerializeModule</span></code> 来序列化模块。</p>
+<p>为了更好地理解，更深入地研究这个类的实现。</p>
+<p>下面的代码用于构造 <code class="docutils literal notranslate"><span class="pre">ModuleSerializer</span></code>：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">explicit</span><span class="w"> </span><span class="n">ModuleSerializer</span><span class="p">(</span><span class="n">runtime</span><span class="o">::</span><span class="n">Module</span><span class="w"> </span><span class="n">mod</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">mod_</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">Init</span><span class="p">();</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -1589,22 +1594,16 @@ initialization work, like marking module index. Then we could use its <code clas
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>In <code class="docutils literal notranslate"><span class="pre">CreateModuleIndex()</span></code>, We will inspect module import relationship
-using DFS and create index for them. Note the root module is fixed at
-location 0. In our example, we have module relationship like this:</p>
+<p>在 <code class="docutils literal notranslate"><span class="pre">CreateModuleIndex()</span></code> 中，将使用 DFS 检查模块导入关系，并为它们创建索引。注意，root 模块固定在位置 0。在我们的例子中，有这样的模块关系：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="nl">llvm_mod</span><span class="p">:</span><span class="n">imported_modules</span><span class="w"></span>
 <span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">cuda_mod</span><span class="w"></span>
 </pre></div>
 </div>
-<p>So LLVM module will have index 0, CUDA module will have index 1.</p>
-<p>After constructing module index, we will try to construct import tree (<code class="docutils literal notranslate"><span class="pre">CreateImportTree()</span></code>),
-which will be used to restore module import relationship when we load
-the exported library back. In our design, we use CSR format to store
-import tree, each row is parent index, the child indices correspond to its children
-index. In code, we use <code class="docutils literal notranslate"><span class="pre">import_tree_row_ptr_</span></code> and
-<code class="docutils literal notranslate"><span class="pre">import_tree_child_indices_</span></code> to represent them.</p>
-<p>After initialization, we could serialize module using <code class="docutils literal notranslate"><span class="pre">SerializeModule</span></code> function.
-In its function logic, we will assume the serialization format like this:</p>
+<p>所以 LLVM 模块的索引为 0，CUDA 模块的索引为 1。</p>
+<p>在构造模块索引之后，尝试构造导入树（<code class="docutils literal notranslate"><span class="pre">CreateImportTree()</span></code>），当重新加载导出的库时，它将用于恢复模块导入关系。
+在我们的设计中，使用 CSR 格式来存储导入树，每一行是父索引，child 索引对应其 children 索引。
+在代码中，使用 <code class="docutils literal notranslate"><span class="pre">import_tree_row_ptr_</span></code> 和 <code class="docutils literal notranslate"><span class="pre">import_tree_child_indices_</span></code> 来表示它们。</p>
+<p>在初始化之后，可以使用 <code class="docutils literal notranslate"><span class="pre">SerializeModule</span></code> 函数来序列化模块。在它的函数逻辑中，将假设序列化格式如下：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">binary_blob_size</span><span class="w"></span>
 <span class="n">binary_blob_type_key</span><span class="w"></span>
 <span class="n">binary_blob_logic</span><span class="w"></span>
@@ -1615,43 +1614,30 @@ In its function logic, we will assume the serialization format like this:</p>
 <span class="n">_import_tree_logic</span><span class="w"></span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">binary_blob_size</span></code> is the number of blobs we will have in this
-serialization step. There will be three blobs in our example which
-are created for LLVM module, CUDA module, and <code class="docutils literal notranslate"><span class="pre">_import_tree</span></code>, respectively.</p>
-<p><code class="docutils literal notranslate"><span class="pre">binary_blob_type_key</span></code> is the blob type key of module. For LLVM / C module, whose
-blob type key is <code class="docutils literal notranslate"><span class="pre">_lib</span></code>. For CUDA module, it is <code class="docutils literal notranslate"><span class="pre">cuda</span></code>, which could be got by <code class="docutils literal notranslate"><span class="pre">module-&gt;type_key()</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">binary_blob_logic</span></code> is the logic handling of blob. For most of blob (like CUDA, OpenCL), we will call
-<code class="docutils literal notranslate"><span class="pre">SaveToBinary</span></code> function to serialize blob into binary. However, like LLVM / C module, we will only write
-<code class="docutils literal notranslate"><span class="pre">_lib</span></code> to indicate this is a DSO module.</p>
+<p><code class="docutils literal notranslate"><span class="pre">binary_blob_size</span></code> 是这个序列化步骤中 blob 的数量。在我们的例子中有三个 blob，分别为 LLVM 模块、CUDA 模块和 <code class="docutils literal notranslate"><span class="pre">_import_tree</span></code> 创建。</p>
+<p><code class="docutils literal notranslate"><span class="pre">binary_blob_type_key</span></code> 是模块的 blob 类型键。对于 LLVM / C 模块，其 blob 类型键为 <code class="docutils literal notranslate"><span class="pre">_lib</span></code>。
+对于 CUDA 模块，它是 <code class="docutils literal notranslate"><span class="pre">cuda</span></code>，可以通过 <code class="docutils literal notranslate"><span class="pre">module-&gt;type_key()</span></code> 获取。</p>
+<p><code class="docutils literal notranslate"><span class="pre">binary_blob_logic</span></code> 是对 blob 的逻辑处理。对于大多数 blob（如 CUDA, OpenCL），我们将调用 <code class="docutils literal notranslate"><span class="pre">SaveToBinary</span></code> 函数将 blob 序列化为二进制。
+然而，像 LLVM / C 模块一样，将只写 <code class="docutils literal notranslate"><span class="pre">_lib</span></code> 来表明这是 DSO 模块。</p>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>Whether or not it is required to implement the SaveToBinary virtual function depends on
-how the module is used. For example, If the module has information we need when we load
-the dynamic shared library back, we should do. Like CUDA module, we need its binary data
-passing to GPU driver when we load the dynamic shared library, so we should implement
-<code class="docutils literal notranslate"><span class="pre">SaveToBinary</span></code> to serialize its binary data. But for host module (like DSO), we don’t
-need other information when we load the dynamic shared library, so we don’t need to implement
-<code class="docutils literal notranslate"><span class="pre">SaveToBinary</span></code>. However, if in the future, we want to record some meta information of DSO module,
-we could implement <code class="docutils literal notranslate"><span class="pre">SaveToBinary</span></code> for DSO module too.</p>
+<p>是否需要实现 <code class="docutils literal notranslate"><span class="pre">SaveToBinary</span></code> 虚函数（virtual function）取决于模块的使用方式。
+例如，如果模块中有我们在加载动态共享库时需要的信息，我们应该这样做。
+与 CUDA 模块一样，我们在加载动态共享库时需要将其二进制数据传递给 GPU 驱动，因此我们需要实现 <code class="docutils literal notranslate"><span class="pre">SaveToBinary</span></code> 对其二进制数据进行序列化。
+但是对于主机模块（如 DSO），在加载动态共享库时不需要其他信息，因此不需要实现 <code class="docutils literal notranslate"><span class="pre">SaveToBinary</span></code>。
+但是，如果将来我们想要记录 DSO 模块的一些元信息，我们也可以为 DSO 模块实现 <code class="docutils literal notranslate"><span class="pre">SaveToBinary</span></code>。</p>
 </div>
-<p>Finally, we will write one key <code class="docutils literal notranslate"><span class="pre">_import_tree</span></code> unless our module only
-has one DSO module and it is in the root. It is used to reconstruct the
-module import relationship when we load the exported library back as said
-before. The <code class="docutils literal notranslate"><span class="pre">import_tree_logic</span></code> is just to write <code class="docutils literal notranslate"><span class="pre">import_tree_row_ptr_</span></code>
-and <code class="docutils literal notranslate"><span class="pre">import_tree_child_indices_</span></code> into stream.</p>
-<p>After this step, we will pack it into a symbol
-<code class="docutils literal notranslate"><span class="pre">runtime::symbol::tvm_dev_mblob</span></code> that can be recovered in the dynamic
-libary.</p>
-<p>Now, we complete the serialization part. As you have seen, we could
-support arbitrary modules to import ideally.</p>
+<p>最后，我们将写入一个键 <code class="docutils literal notranslate"><span class="pre">_import_tree</span></code> ，除非我们的模块只有一个 DSO 模块并且它位于根目录中。
+当我们像前面说的那样重新加载导出的库时，它被用来重建模块导入关系。
+<code class="docutils literal notranslate"><span class="pre">import_tree_logic</span></code> 只是将 <code class="docutils literal notranslate"><span class="pre">import_tree_row_ptr_</span></code> 和 <code class="docutils literal notranslate"><span class="pre">import_tree_child_indices_</span></code> 写入流。</p>
+<p>在这一步之后，将把它打包到可以在动态库中恢复的 symbol <code class="docutils literal notranslate"><span class="pre">runtime::symbol::tvm_dev_mblob</span></code> 中。</p>
+<p>现在，完成了序列化部分。如您所见，理想情况下，可以支持导入任意模块。</p>
 </section>
-<section id="deserialization">
-<h2>Deserialization<a class="headerlink" href="#deserialization" title="永久链接至标题">#</a></h2>
-<p>The entrance API is <code class="docutils literal notranslate"><span class="pre">tvm.runtime.load</span></code>. This function
-is to call <code class="docutils literal notranslate"><span class="pre">_LoadFromFile</span></code> in fact. If we dig it a little deeper, this is
-<code class="docutils literal notranslate"><span class="pre">Module::LoadFromFile</span></code>. In our example, the file is <code class="docutils literal notranslate"><span class="pre">deploy.so</span></code>,
-according to the function logic, we will call <code class="docutils literal notranslate"><span class="pre">module.loadfile_so</span></code> in
-<code class="docutils literal notranslate"><span class="pre">dso_library.cc</span></code>. The key is here:</p>
+<section id="id4">
+<h2>反序列化<a class="headerlink" href="#id4" title="永久链接至标题">#</a></h2>
+<p>入口 API 是 <code class="docutils literal notranslate"><span class="pre">tvm.runtime.load</span></code>。这个函数实际上是调用 <code class="docutils literal notranslate"><span class="pre">_LoadFromFile</span></code>。
+如果再深入一点，这就是 <code class="docutils literal notranslate"><span class="pre">Module::LoadFromFile</span></code>。在示例中，该文件是 <code class="docutils literal notranslate"><span class="pre">deploy.so</span></code>。
+因此，根据函数逻辑，将在 <code class="docutils literal notranslate"><span class="pre">dso_library.cc</span></code> 中回调 <code class="docutils literal notranslate"><span class="pre">module.loadfile_so</span></code>。关键点在：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Load the imported modules</span>
 <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">dev_mblob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">lib</span><span class="o">-&gt;</span><span class="n">GetSymbol</span><span class="p">(</span><span class="n">runtime</span><span class="o">::</span><span class="n">symbol</span><span class="o">::</span><span class="n">tvm_dev_mblob</span><span class="p">));</span><span class="w"></span>
 <span class="n">Module</span><span class="w"> </span><span class="n">root_mod</span><span class="p">;</span><span class="w"></span>
@@ -1663,10 +1649,8 @@ according to the function logic, we will call <code class="docutils literal notr
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>As said before, we will pack the blob into the symbol
-<code class="docutils literal notranslate"><span class="pre">runtime::symbol::tvm_dev_mblob</span></code>. During deserialization part, we will
-inspect it. If we have <code class="docutils literal notranslate"><span class="pre">runtime::symbol::tvm_dev_mblob</span></code>, we will call <code class="docutils literal notranslate"><span class="pre">ProcessModuleBlob</span></code>,
-whose logic like this:</p>
+<p>如前所述，把这个 blob 打包到 symbol <code class="docutils literal notranslate"><span class="pre">runtime::symbol::tvm_dev_mblob</span></code> 中。
+在反序列化部分，我们将检查它。如果我们有 <code class="docutils literal notranslate"><span class="pre">runtime::symbol::tvm_dev_mblob</span></code>，我们将调用 <code class="docutils literal notranslate"><span class="pre">ProcessModuleBlob</span></code>，其逻辑如下所示：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">READ</span><span class="p">(</span><span class="n">blob_size</span><span class="p">)</span><span class="w"></span>
 <span class="n">READ</span><span class="p">(</span><span class="n">blob_type_key</span><span class="p">)</span><span class="w"></span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">blob_size</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -1686,9 +1670,8 @@ whose logic like this:</p>
 <span class="k">return</span><span class="w"> </span><span class="n">root_module</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>After this, we will set the <code class="docutils literal notranslate"><span class="pre">ctx_address</span></code> to be the <code class="docutils literal notranslate"><span class="pre">root_module</span></code> so
-that allow lookup of symbol from root (so all symbols are visible).</p>
-<p>Finally, we complete the deserialization part.</p>
+<p>在此之后，把 <code class="docutils literal notranslate"><span class="pre">ctx_address</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">root_module</span></code>，以便允许从 root 查找 symbol（这样所有 symbol 都是可见的）。</p>
+<p>最终，完成反序列化部分。</p>
 </section>
 </section>
 
@@ -1704,7 +1687,7 @@ that allow lookup of symbol from root (so all symbols are visible).</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">上一页</p>
-            <p class="prev-next-title">Putting the VM in TVM: The Relay Virtual Machine</p>
+            <p class="prev-next-title">将 VM 放入 TVM：Relay Virtual Machine</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="device_target_interactions.html" title="下一页 页">
@@ -1724,7 +1707,7 @@ that allow lookup of symbol from root (so all symbols are visible).</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-09, 15:46:33.<br/>
+    Last updated on 2022-06-14, 06:57:29.<br/>
 </p>
         </footer>
     </div>

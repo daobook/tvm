@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Building a Graph Convolutional Network &#8212; TVM  文档</title>
+    <title>构建图卷积网络 &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,8 +50,8 @@
     <link rel="shortcut icon" href="../../../_static/tvm-logo-square.png"/>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="Using External Libraries in Relay" href="using_external_lib.html" />
-    <link rel="prev" title="Work With Relay" href="index.html" />
+    <link rel="next" title="在 Relay 中使用外部库" href="using_external_lib.html" />
+    <link rel="prev" title="使用 Relay" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -503,7 +503,7 @@
      </li>
      <li class="toctree-l3 current active has-children">
       <a class="reference internal" href="index.html">
-       Work With Relay
+       使用 Relay
       </a>
       <input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
       <label for="toctree-checkbox-12">
@@ -513,12 +513,17 @@
       <ul class="current">
        <li class="toctree-l4 current active">
         <a class="current reference internal" href="#">
-         Building a Graph Convolutional Network
+         构建图卷积网络
         </a>
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="using_external_lib.html">
-         Using External Libraries in Relay
+         在 Relay 中使用外部库
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="using_relay_viz.html">
+         使用 Relay Visualizer 可视化 Relay
         </a>
        </li>
       </ul>
@@ -752,7 +757,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../profile/index.html">
-       Profile Models
+       模型剖析
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
       <label for="toctree-checkbox-19">
@@ -762,7 +767,7 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../profile/papi.html">
-         Getting Started With PAPI
+         PAPI 快速上手
         </a>
        </li>
       </ul>
@@ -800,7 +805,7 @@
    </li>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../../dev/how_to/how_to.html">
-     Developer How-To Guide
+     开发者指南
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
     <label for="toctree-checkbox-22">
@@ -810,12 +815,12 @@
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../../dev/how_to/debugging_tvm.html">
-       Debuggging TVM
+       调试 TVM
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../dev/how_to/relay_add_op.html">
-       Adding an Operator to Relay
+       添加算子到 Relay
       </a>
      </li>
      <li class="toctree-l3">
@@ -854,17 +859,17 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/debugger.html">
-     Debugger
+     调试器
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/virtual_machine.html">
-     Putting the VM in TVM: The Relay Virtual Machine
+     将 VM 放入 TVM：Relay Virtual Machine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/introduction_to_module_serialization.html">
-     Introduction to Module Serialization
+     模块序列化简介
     </a>
    </li>
    <li class="toctree-l2">
@@ -889,12 +894,12 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/hybrid_script.html">
-     Hybrid Frontend Developer Guide
+     Hybrid 前端开发指南
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/relay_intro.html">
-     Introduction to Relay IR
+     Relay IR 简介
     </a>
    </li>
    <li class="toctree-l2">
@@ -909,7 +914,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/benchmark.html">
-     Benchmark Performance Log Format
+     基准性能日志格式
     </a>
    </li>
    <li class="toctree-l2">
@@ -919,7 +924,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/security.html">
-     Security Guide
+     安全指南
     </a>
    </li>
    <li class="toctree-l2">
@@ -934,7 +939,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/model_library_format.html">
-     Model Library Format
+     Model 库格式
     </a>
    </li>
   </ul>
@@ -1059,7 +1064,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../reference/langref/relay_type.html">
-       Relay’s Type System
+       Relay 类型系统
       </a>
      </li>
      <li class="toctree-l3">
@@ -1069,7 +1074,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../reference/langref/relay_op.html">
-       Relay Core Tensor Operators
+       Relay 核心张量算子
       </a>
      </li>
      <li class="toctree-l3">
@@ -1079,7 +1084,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../reference/langref/hybrid_script.html">
-       Hybrid Frontend Language Reference
+       Hybrid 前端语言参考
       </a>
      </li>
     </ul>
@@ -1110,7 +1115,12 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../../reference/api/python/ir.html">
+      <a class="reference internal" href="../../reference/api/python/ir/module.html">
+       tvm.ir.module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/ir/index.html">
        tvm.ir
       </a>
      </li>
@@ -1384,7 +1394,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/docs/how_to/work_with_relay/build_gcn.rst.txt"
+        <a href="../../../_sources/docs/how_to/work_with_relay/build_gcn.ipynb.txt"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -1395,7 +1405,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.rst</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -1444,53 +1454,53 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-gcn-in-dgl-with-pytorch-backend">
-   Define GCN in DGL with PyTorch backend
+  <a class="reference internal nav-link" href="#pytorch-dgl-gcn">
+   用 PyTorch 后端在 DGL 中定义 GCN
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-the-functions-to-load-dataset-and-evaluate-accuracy">
-   Define the functions to load dataset and evaluate accuracy
+  <a class="reference internal nav-link" href="#id2">
+   定义加载数据集和评估准确性的函数
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-the-data-and-set-up-model-parameters">
-   Load the data and set up model parameters
+  <a class="reference internal nav-link" href="#id3">
+   加载数据并设置模型参数
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#set-up-the-dgl-pytorch-model-and-get-the-golden-results">
-   Set up the DGL-PyTorch model and get the golden results
+  <a class="reference internal nav-link" href="#dgl-pytorch">
+   设定 DGL-PyTorch 模型并获得黄金结果
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-the-dgl-model-and-test-for-accuracy">
-   Run the DGL model and test for accuracy
+  <a class="reference internal nav-link" href="#dgl">
+   运行 DGL 模型并测试其准确性
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-graph-convolution-layer-in-relay">
-   Define Graph Convolution Layer in Relay
+  <a class="reference internal nav-link" href="#relay">
+   在 Relay 中定义图卷积层
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prepare-the-parameters-needed-in-the-graphconv-layers">
-   Prepare the parameters needed in the GraphConv layers
+  <a class="reference internal nav-link" href="#graphconv">
+   准备 GraphConv 层中所需的参数
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#put-layers-together">
-   Put layers together
+  <a class="reference internal nav-link" href="#id4">
+   把层放在一起
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#compile-and-run-with-tvm">
-   Compile and run with TVM
+  <a class="reference internal nav-link" href="#tvm">
+   使用 TVM 编译并运行
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-the-tvm-model-test-for-accuracy-and-verify-with-dgl">
-   Run the TVM model, test for accuracy and verify with DGL
+  <a class="reference internal nav-link" href="#tvm-dgl">
+   运行 TVM 模型，测试准确性并通过 DGL 验证
   </a>
  </li>
 </ul>
@@ -1502,7 +1512,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Building a Graph Convolutional Network</h1>
+                <h1>构建图卷积网络</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1513,53 +1523,53 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-gcn-in-dgl-with-pytorch-backend">
-   Define GCN in DGL with PyTorch backend
+  <a class="reference internal nav-link" href="#pytorch-dgl-gcn">
+   用 PyTorch 后端在 DGL 中定义 GCN
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-the-functions-to-load-dataset-and-evaluate-accuracy">
-   Define the functions to load dataset and evaluate accuracy
+  <a class="reference internal nav-link" href="#id2">
+   定义加载数据集和评估准确性的函数
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-the-data-and-set-up-model-parameters">
-   Load the data and set up model parameters
+  <a class="reference internal nav-link" href="#id3">
+   加载数据并设置模型参数
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#set-up-the-dgl-pytorch-model-and-get-the-golden-results">
-   Set up the DGL-PyTorch model and get the golden results
+  <a class="reference internal nav-link" href="#dgl-pytorch">
+   设定 DGL-PyTorch 模型并获得黄金结果
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-the-dgl-model-and-test-for-accuracy">
-   Run the DGL model and test for accuracy
+  <a class="reference internal nav-link" href="#dgl">
+   运行 DGL 模型并测试其准确性
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-graph-convolution-layer-in-relay">
-   Define Graph Convolution Layer in Relay
+  <a class="reference internal nav-link" href="#relay">
+   在 Relay 中定义图卷积层
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prepare-the-parameters-needed-in-the-graphconv-layers">
-   Prepare the parameters needed in the GraphConv layers
+  <a class="reference internal nav-link" href="#graphconv">
+   准备 GraphConv 层中所需的参数
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#put-layers-together">
-   Put layers together
+  <a class="reference internal nav-link" href="#id4">
+   把层放在一起
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#compile-and-run-with-tvm">
-   Compile and run with TVM
+  <a class="reference internal nav-link" href="#tvm">
+   使用 TVM 编译并运行
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-the-tvm-model-test-for-accuracy-and-verify-with-dgl">
-   Run the TVM model, test for accuracy and verify with DGL
+  <a class="reference internal nav-link" href="#tvm-dgl">
+   运行 TVM 模型，测试准确性并通过 DGL 验证
   </a>
  </li>
 </ul>
@@ -1572,29 +1582,23 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="sphx-glr-download-link-note admonition note">
-<p class="admonition-title">备注</p>
-<p>Click <a class="reference external" href="https://tvm.apache.org/docs/how_to/work_with_relay/build_gcn.html#sphx-glr-download-how-to-work-with-relay-build-gcn-py" title="(在 tvm v0.9.dev0)"><span class="xref std std-ref">here</span></a>
-to download the full example code</p>
-</div>
-<section class="sphx-glr-example-title" id="building-a-graph-convolutional-network">
-<span id="sphx-glr-how-to-work-with-relay-build-gcn-py"></span><h1>Building a Graph Convolutional Network<a class="headerlink" href="#building-a-graph-convolutional-network" title="永久链接至标题">#</a></h1>
-<p><strong>Author</strong>: <a class="reference external" href="https://yulunyao.io/">Yulun Yao</a>,             <a class="reference external" href="https://homes.cs.washington.edu/~cyulin/">Chien-Yu Lin</a></p>
-<p>This article is an introductory tutorial to build a Graph Convolutional Network (GCN) with Relay.
-In this tutorial, we will run our GCN on Cora dataset to demonstrate.
-Cora dataset is a common benchmark for Graph Neural Networks (GNN) and frameworks that support GNN training and inference.
-We directly load the dataset from DGL library to do the apples to apples comparison against DGL.</p>
-<p>Please refer to DGL doc for DGL installation at
-<a class="reference external" href="https://docs.dgl.ai/install/index.html">https://docs.dgl.ai/install/index.html</a>.</p>
-<p>Please refer to PyTorch guide for PyTorch installation at
-<a class="reference external" href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a>.</p>
-<section id="define-gcn-in-dgl-with-pytorch-backend">
-<h2>Define GCN in DGL with PyTorch backend<a class="headerlink" href="#define-gcn-in-dgl-with-pytorch-backend" title="永久链接至标题">#</a></h2>
-<p>DGL example: <a class="reference external" href="https://github.com/dmlc/dgl/tree/master/examples/pytorch/gcn">https://github.com/dmlc/dgl/tree/master/examples/pytorch/gcn</a>
-This part reuses the code from the above example.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
-<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>构建图卷积网络<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h1>
+<p><strong>原作者</strong>: <a class="reference external" href="https://yulunyao.io/">Yulun Yao</a>，<a class="reference external" href="https://homes.cs.washington.edu/~cyulin/">Chien-Yu Lin</a></p>
+<p>本文是介绍性教程，介绍如何使用 Relay 构建图卷积网络（Graph Convolutional Network，简称 GCN）。在本教程中，将在 Cora 数据集上演示 GCN。Cora 数据集是图神经网络（Graph Neural Networks，简称 GNN）和支持 GNN 训练和推理的框架的通用基准。直接从 DGL 库加载数据集，以便与 DGL 进行苹果对苹果的比较。</p>
+<p>DGL 安装请参阅</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.dgl.ai/install/index.html">DGL 文件</a></p></li>
+<li><p><a class="reference external" href="https://pytorch.org/get-started/locally/">PyTorch 安装指南</a></p></li>
+</ul>
+<section id="pytorch-dgl-gcn">
+<h2>用 PyTorch 后端在 DGL 中定义 GCN<a class="headerlink" href="#pytorch-dgl-gcn" title="永久链接至标题">#</a></h2>
+<p><a class="reference external" href="https://github.com/dmlc/dgl/tree/master/examples/pytorch/gcn">DGL 示例</a> 部分重用了上面示例中的代码。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="kn">from</span> <span class="nn">torch.nn</span> <span class="kn">import</span> <span class="n">functional</span> <span class="k">as</span> <span class="n">F</span>
 <span class="kn">import</span> <span class="nn">dgl</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">dgl.nn.pytorch</span> <span class="kn">import</span> <span class="n">GraphConv</span>
@@ -1602,7 +1606,7 @@ This part reuses the code from the above example.</p>
 
 <span class="k">class</span> <span class="nc">GCN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">n_infeat</span><span class="p">,</span> <span class="n">n_hidden</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">,</span> <span class="n">n_layers</span><span class="p">,</span> <span class="n">activation</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">GCN</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">g</span> <span class="o">=</span> <span class="n">g</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GraphConv</span><span class="p">(</span><span class="n">n_infeat</span><span class="p">,</span> <span class="n">n_hidden</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">activation</span><span class="p">))</span>
@@ -1613,7 +1617,7 @@ This part reuses the code from the above example.</p>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
         <span class="n">h</span> <span class="o">=</span> <span class="n">features</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">):</span>
-            <span class="c1"># handle api changes for differnt DGL version</span>
+            <span class="c1"># 处理不同 DGL 版本的 api 变更</span>
             <span class="k">if</span> <span class="n">dgl</span><span class="o">.</span><span class="n">__version__</span> <span class="o">&gt;</span> <span class="s2">&quot;0.3&quot;</span><span class="p">:</span>
                 <span class="n">h</span> <span class="o">=</span> <span class="n">layer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
@@ -1621,11 +1625,15 @@ This part reuses the code from the above example.</p>
         <span class="k">return</span> <span class="n">h</span>
 </pre></div>
 </div>
+</div>
+</div>
 </section>
-<section id="define-the-functions-to-load-dataset-and-evaluate-accuracy">
-<h2>Define the functions to load dataset and evaluate accuracy<a class="headerlink" href="#define-the-functions-to-load-dataset-and-evaluate-accuracy" title="永久链接至标题">#</a></h2>
-<p>You may substitute this part with your own dataset, here we load data from DGL</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dgl.data</span> <span class="kn">import</span> <span class="n">load_data</span>
+<section id="id2">
+<h2>定义加载数据集和评估准确性的函数<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
+<p>你可以用你自己的数据集代替这一部分，这里我们从 DGL 加载数据：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dgl.data</span> <span class="kn">import</span> <span class="n">load_data</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
 
 
@@ -1633,7 +1641,7 @@ This part reuses the code from the above example.</p>
     <span class="n">args</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;args&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;dataset&quot;</span><span class="p">])</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">args</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
 
-    <span class="c1"># Remove self-loops to avoid duplicate passing of a node&#39;s feature to itself</span>
+    <span class="c1"># 删除自循环，以避免重复传递节点的特性给自身</span>
     <span class="n">g</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">graph</span>
     <span class="n">g</span><span class="o">.</span><span class="n">remove_edges_from</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">selfloop_edges</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
     <span class="n">g</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">))</span>
@@ -1642,7 +1650,8 @@ This part reuses the code from the above example.</p>
 
 
 <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">logits</span><span class="p">):</span>
-    <span class="n">test_mask</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">test_mask</span>  <span class="c1"># the test set which isn&#39;t included in the training phase</span>
+    <span class="c1"># 训练阶段中不包含的测试集</span>
+    <span class="n">test_mask</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">test_mask</span>
 
     <span class="n">pred</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">acc</span> <span class="o">=</span> <span class="p">((</span><span class="n">pred</span> <span class="o">==</span> <span class="n">data</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span> <span class="o">*</span> <span class="n">test_mask</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">test_mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -1650,10 +1659,14 @@ This part reuses the code from the above example.</p>
     <span class="k">return</span> <span class="n">acc</span>
 </pre></div>
 </div>
+</div>
+</div>
 </section>
-<section id="load-the-data-and-set-up-model-parameters">
-<h2>Load the data and set up model parameters<a class="headerlink" href="#load-the-data-and-set-up-model-parameters" title="永久链接至标题">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<section id="id3">
+<h2>加载数据并设置模型参数<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Parameters</span>
 <span class="sd">----------</span>
 <span class="sd">dataset: str</span>
@@ -1672,7 +1685,6 @@ This part reuses the code from the above example.</p>
 <span class="sd">    dimension of model output (Number of classes)</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="s2">&quot;cora&quot;</span>
-
 <span class="n">g</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
 <span class="n">num_layers</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1681,11 +1693,37 @@ This part reuses the code from the above example.</p>
 <span class="n">num_classes</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">num_labels</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  NumNodes: 2708
+  NumEdges: 10556
+  NumFeats: 1433
+  NumClasses: 7
+  NumTrainingSamples: 140
+  NumValidationSamples: 500
+  NumTestSamples: 1000
+Done loading data from cached files.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/workspace/anaconda3/envs/torchx/lib/python3.10/site-packages/dgl/data/utils.py:288: UserWarning: Property dataset.graph will be deprecated, please use dataset[0] instead.
+  warnings.warn(&#39;Property {} will be deprecated, please use {} instead.&#39;.format(old, new))
+/media/workspace/anaconda3/envs/torchx/lib/python3.10/site-packages/dgl/data/utils.py:288: UserWarning: Property dataset.feat will be deprecated, please use g.ndata[&#39;feat&#39;] instead.
+  warnings.warn(&#39;Property {} will be deprecated, please use {} instead.&#39;.format(old, new))
+/media/workspace/anaconda3/envs/torchx/lib/python3.10/site-packages/dgl/data/utils.py:288: UserWarning: Property dataset.num_labels will be deprecated, please use dataset.num_classes instead.
+  warnings.warn(&#39;Property {} will be deprecated, please use {} instead.&#39;.format(old, new))
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="set-up-the-dgl-pytorch-model-and-get-the-golden-results">
-<h2>Set up the DGL-PyTorch model and get the golden results<a class="headerlink" href="#set-up-the-dgl-pytorch-model-and-get-the-golden-results" title="永久链接至标题">#</a></h2>
-<p>The weights are trained with <a class="reference external" href="https://github.com/dmlc/dgl/blob/master/examples/pytorch/gcn/train.py">https://github.com/dmlc/dgl/blob/master/examples/pytorch/gcn/train.py</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tvm.contrib.download</span> <span class="kn">import</span> <span class="n">download_testdata</span>
+<section id="dgl-pytorch">
+<h2>设定 DGL-PyTorch 模型并获得黄金结果<a class="headerlink" href="#dgl-pytorch" title="永久链接至标题">#</a></h2>
+<p>被训练的 <a class="reference external" href="https://github.com/dmlc/dgl/blob/master/examples/pytorch/gcn/train.py">weights</a>。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">env</span>
+
+<span class="kn">from</span> <span class="nn">tvm.contrib.download</span> <span class="kn">import</span> <span class="n">download_testdata</span>
 <span class="kn">from</span> <span class="nn">dgl</span> <span class="kn">import</span> <span class="n">DGLGraph</span>
 
 <span class="n">features</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">features</span><span class="p">)</span>
@@ -1701,10 +1739,28 @@ This part reuses the code from the above example.</p>
 <span class="n">torch_model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_path</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/pc/data/4tb/lxw/books/tvm/xinetzone/src
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/workspace/anaconda3/envs/torchx/lib/python3.10/site-packages/dgl/data/utils.py:288: UserWarning: Property dataset.feat will be deprecated, please use g.ndata[&#39;feat&#39;] instead.
+  warnings.warn(&#39;Property {} will be deprecated, please use {} instead.&#39;.format(old, new))
+/media/workspace/anaconda3/envs/torchx/lib/python3.10/site-packages/dgl/heterograph.py:72: DGLWarning: Recommend creating graphs by `dgl.graph(data)` instead of `dgl.DGLGraph(data)`.
+  dgl_warning(&#39;Recommend creating graphs by `dgl.graph(data)`&#39;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;All keys matched successfully&gt;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="run-the-dgl-model-and-test-for-accuracy">
-<h2>Run the DGL model and test for accuracy<a class="headerlink" href="#run-the-dgl-model-and-test-for-accuracy" title="永久链接至标题">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">torch_model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<section id="dgl">
+<h2>运行 DGL 模型并测试其准确性<a class="headerlink" href="#dgl" title="永久链接至标题">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">torch_model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
 <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
     <span class="n">logits_torch</span> <span class="o">=</span> <span class="n">torch_model</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Print the first five outputs from DGL-PyTorch execution</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">logits_torch</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
@@ -1713,20 +1769,37 @@ This part reuses the code from the above example.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test accuracy of DGL results: </span><span class="si">{:.2%}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Print the first five outputs from DGL-PyTorch execution
+ tensor([[ 0.2640, -1.0674,  0.0736,  0.7828, -0.7666, -0.0291, -0.1403],
+        [ 0.2670, -0.9722,  0.0714,  0.6953, -0.6088, -0.0735, -0.1660],
+        [ 0.2985, -0.9762,  0.1139,  0.5794, -0.5615, -0.0353, -0.1830],
+        [ 0.2773, -1.2461,  0.0398,  0.9599, -1.0011,  0.0598, -0.1064],
+        [ 0.3692, -1.0940,  0.0363,  0.6424, -0.6491,  0.0804, -0.1536]])
+Test accuracy of DGL results: 5.30%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/workspace/anaconda3/envs/torchx/lib/python3.10/site-packages/dgl/data/utils.py:288: UserWarning: Property dataset.test_mask will be deprecated, please use g.ndata[&#39;test_mask&#39;] instead.
+  warnings.warn(&#39;Property {} will be deprecated, please use {} instead.&#39;.format(old, new))
+/media/workspace/anaconda3/envs/torchx/lib/python3.10/site-packages/dgl/data/utils.py:288: UserWarning: Property dataset.label will be deprecated, please use g.ndata[&#39;label&#39;] instead.
+  warnings.warn(&#39;Property {} will be deprecated, please use {} instead.&#39;.format(old, new))
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="define-graph-convolution-layer-in-relay">
-<h2>Define Graph Convolution Layer in Relay<a class="headerlink" href="#define-graph-convolution-layer-in-relay" title="永久链接至标题">#</a></h2>
-<p>To run GCN on TVM, we first need to implement Graph Convolution Layer.
-You may refer to <a class="reference external" href="https://github.com/dmlc/dgl/blob/master/python/dgl/nn/mxnet/conv/graphconv.py">https://github.com/dmlc/dgl/blob/master/python/dgl/nn/mxnet/conv/graphconv.py</a> for a GraphConv Layer implemented in DGL with MXNet Backend</p>
-<p>The layer is defined with below operations, note that we apply two transposes to keep adjacency matrix on right hand side of sparse_dense operator,
-this method is temporary and will be updated in next few weeks when we have sparse matrix transpose and support for left sparse operator.</p>
-<blockquote>
-<div><div class="math notranslate nohighlight">
+<section id="relay">
+<h2>在 Relay 中定义图卷积层<a class="headerlink" href="#relay" title="永久链接至标题">#</a></h2>
+<p>要在 TVM 上运行 GCN，首先需要实现 Graph Convolution Layer。可以参考 <a class="reference external" href="https://github.com/dmlc/dgl/blob/master/python/dgl/nn/mxnet/conv/graphconv.py">在 DGL 中使用 MXNet 后端实现的 GraphConv 层</a>。</p>
+<p>该层定义如下运算，注意应用了两次转置来保持 sparse_dense 算子右手边的邻接矩阵，这个方法是临时的，在接下来的几周当有稀疏矩阵转置并且支持左稀疏算子的时候会更新。</p>
+<div class="math notranslate nohighlight">
 \[\mbox{GraphConv}(A, H, W)   = A * H * W
                             = ((H * W)^t * A^t)^t
                             = ((W^t * H^t) * A^t)^t\]</div>
-</div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">relay</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">relay</span>
 <span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">graph_executor</span>
 <span class="kn">import</span> <span class="nn">tvm</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">te</span>
@@ -1784,10 +1857,14 @@ this method is temporary and will be updated in next few weeks when we have spar
     <span class="k">return</span> <span class="n">output_t</span>
 </pre></div>
 </div>
+</div>
+</div>
 </section>
-<section id="prepare-the-parameters-needed-in-the-graphconv-layers">
-<h2>Prepare the parameters needed in the GraphConv layers<a class="headerlink" href="#prepare-the-parameters-needed-in-the-graphconv-layers" title="永久链接至标题">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<section id="graphconv">
+<h2>准备 GraphConv 层中所需的参数<a class="headerlink" href="#graphconv" title="永久链接至标题">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
 
@@ -1821,10 +1898,23 @@ this method is temporary and will be updated in next few weeks when we have spar
 <span class="k">assert</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;infeats&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;indptr&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_523780/3618165654.py:12: DeprecationWarning: 
+
+The scipy.sparse array containers will be used instead of matrices
+in Networkx 3.0. Use `to_scipy_sparse_array` instead.
+  adjacency = nx.to_scipy_sparse_matrix(g)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="put-layers-together">
-<h2>Put layers together<a class="headerlink" href="#put-layers-together" title="永久链接至标题">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define input features, norms, adjacency matrix in Relay</span>
+<section id="id4">
+<h2>把层放在一起<a class="headerlink" href="#id4" title="永久链接至标题">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define input features, norms, adjacency matrix in Relay</span>
 <span class="n">infeats</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s2">&quot;infeats&quot;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">norm</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;norm&quot;</span><span class="p">]))</span>
 <span class="n">g_data</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;g_data&quot;</span><span class="p">]))</span>
@@ -1863,11 +1953,15 @@ this method is temporary and will be updated in next few weeks when we have spar
 <span class="n">output</span> <span class="o">=</span> <span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
+</div>
+</div>
 </section>
-<section id="compile-and-run-with-tvm">
-<h2>Compile and run with TVM<a class="headerlink" href="#compile-and-run-with-tvm" title="永久链接至标题">#</a></h2>
-<p>Export the weigths from PyTorch model to Python Dict</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_params</span> <span class="o">=</span> <span class="p">{}</span>
+<section id="tvm">
+<h2>使用 TVM 编译并运行<a class="headerlink" href="#tvm" title="永久链接至标题">#</a></h2>
+<p>从 PyTorch 模型导出权重到 Python Dict：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_params</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">param_tensor</span> <span class="ow">in</span> <span class="n">torch_model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">():</span>
     <span class="n">model_params</span><span class="p">[</span><span class="n">param_tensor</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch_model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()[</span><span class="n">param_tensor</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 
@@ -1891,10 +1985,19 @@ this method is temporary and will be updated in next few weeks when we have spar
 <span class="n">m</span> <span class="o">=</span> <span class="n">graph_executor</span><span class="o">.</span><span class="n">GraphModule</span><span class="p">(</span><span class="n">lib</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">](</span><span class="n">dev</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>One or more operators have not been tuned. Please tune your model for better performance. Use DEBUG logging level to see more details.
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="run-the-tvm-model-test-for-accuracy-and-verify-with-dgl">
-<h2>Run the TVM model, test for accuracy and verify with DGL<a class="headerlink" href="#run-the-tvm-model-test-for-accuracy-and-verify-with-dgl" title="永久链接至标题">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<section id="tvm-dgl">
+<h2>运行 TVM 模型，测试准确性并通过 DGL 验证<a class="headerlink" href="#tvm-dgl" title="永久链接至标题">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 <span class="n">logits_tvm</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Print the first five outputs from TVM execution</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">logits_tvm</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 
@@ -1909,6 +2012,24 @@ this method is temporary and will be updated in next few weeks when we have spar
 <span class="c1"># Verify the results with the DGL model</span>
 <span class="n">tvm</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">logits_torch</span><span class="p">,</span> <span class="n">logits_tvm</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Print the first five outputs from TVM execution
+ [[ 0.26396316 -1.067397    0.07361096  0.78283393 -0.7665647  -0.02912378
+  -0.14030665]
+ [ 0.2670483  -0.97222644  0.07140031  0.6953188  -0.60881317 -0.07351625
+  -0.16601387]
+ [ 0.29854178 -0.97619903  0.11394241  0.57936156 -0.5615169  -0.03528827
+  -0.18298927]
+ [ 0.2773209  -1.2461467   0.0398193   0.95992005 -1.0011221   0.059847
+  -0.10642916]
+ [ 0.3691777  -1.0940018   0.03631139  0.6423676  -0.6491406   0.08039594
+  -0.1535899 ]]
+Test accuracy of TVM results: 5.30%
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1925,13 +2046,13 @@ this method is temporary and will be updated in next few weeks when we have spar
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">上一页</p>
-            <p class="prev-next-title">Work With Relay</p>
+            <p class="prev-next-title">使用 Relay</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="using_external_lib.html" title="下一页 页">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">下一页</p>
-        <p class="prev-next-title">Using External Libraries in Relay</p>
+        <p class="prev-next-title">在 Relay 中使用外部库</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -1945,7 +2066,7 @@ this method is temporary and will be updated in next few weeks when we have spar
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-09, 15:46:33.<br/>
+    Last updated on 2022-06-14, 06:57:29.<br/>
 </p>
         </footer>
     </div>
