@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../docs/reference/langref/relay_pattern.rst:21
 msgid "Pattern Matching in Relay"
-msgstr ""
+msgstr "Relay 中的模式匹配"
 
 #: ../../docs/reference/langref/relay_pattern.rst:23
 msgid ""
@@ -29,6 +29,8 @@ msgid ""
 " specific optimizations such as bitpacking, and layer slicing used by "
 "VTA."
 msgstr ""
+"在 TVM 中有很多地方，决定了 Relay 程序的纯数据流子图，并试图以某种方式变换它们，"
+"例如融合、量化、外部代码生成和设备特定的优化，如 bitpacking 和 VTA 使用的层切片。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:25
 msgid ""
@@ -39,6 +41,9 @@ msgid ""
 "other advanced machinery we first need a language of patterns to describe"
 " what we can match."
 msgstr ""
+"今天，许多这样的方法都需要大量无聊的样板代码来实现，并要求用户从 visitor 和 AST 匹配的角度考虑问题。"
+"许多这样的变换可以很容易地用图重写来描述。"
+"为了构建 rewriter 或其他高级机制，首先需要模式语言来描述可以匹配的内容。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:27
 msgid ""
@@ -49,6 +54,8 @@ msgid ""
 "set of patterns which describe which operators can be quantized on a "
 "given platform."
 msgstr ""
+"这样的语言不仅对构建 rewriter 有用，而且还为现有的 pass 提供了扩展点。"
+"例如，融合 pass 可以通过一组描述硬件能力的融合模式来参数化，量化通道可以采用一组模式来描述在给定平台上可以量化的算子。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:29
 msgid ""
@@ -57,10 +64,12 @@ msgid ""
 "patterns describing your hardware capabilities and an external compiler, "
 "providing a relatively smooth heterogeneous experience out of the box."
 msgstr ""
+"“在后端世界，可以使用相同的机制来构建更高级别的 API，使用自己的代码生成。"
+"这个 API 采用了一组描述你的硬件能力的模式和外部编译器，提供了相对平稳的开箱即用的异构体验。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:32
 msgid "Pattern Examples"
-msgstr ""
+msgstr "模式示例"
 
 #: ../../docs/reference/langref/relay_pattern.rst:34
 msgid ""
@@ -70,44 +79,51 @@ msgid ""
 "demonstrates how to write patterns. It is recommended to check "
 "`tests/python/relay/test_dataflow_pattern.py`_ for more use cases."
 msgstr ""
+"有相当多的算子的属性值得匹配。"
+"下面将研究如何匹配树的属性，并扩展原型中未充分探索的一些用例。"
+"本节演示如何编写模式。"
+"建议查看 `tests/python/relay/test_dataflow_pattern.py`_ 了解更多用例。""
 
 #: ../../docs/reference/langref/relay_pattern.rst:42
 msgid ""
 "If you cannot find the corresponding pattern node to match the Relay node"
 " you want, you are welcome to raise an issue or submit a PR to add it."
 msgstr ""
+"如果您无法找到与您想要的 Relay 节点匹配的对应模式节点，欢迎您提出 issue 或提交 PR 来添加它。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:46
 msgid "Matching One of Two Ops"
-msgstr ""
+msgstr "匹配两个 Ops 中的一个"
 
 #: ../../docs/reference/langref/relay_pattern.rst:48
 msgid ""
 "The first example is a simple case where we want to match one operator "
 "with a single input OR another operator with a single input:"
 msgstr ""
+"第一个例子是简单的例子，想要匹配带有单输入的算子或另一个单输入的算子："
 
 #: ../../docs/reference/langref/relay_pattern.rst:60
 msgid "Matching an Op with Attributes"
-msgstr ""
+msgstr "使用属性匹配 Op"
 
 #: ../../docs/reference/langref/relay_pattern.rst:62
 msgid ""
 "The next example is a dense operation with any operator that is marked "
 "element-wise:"
 msgstr ""
+"下一个例子是 dense 运算，带有任何标记为 element-wise 的算子:"
 
 #: ../../docs/reference/langref/relay_pattern.rst:73
 msgid "Here is another example to match an op with a specific attribute:"
-msgstr ""
+msgstr "下面是另一个使用特定属性匹配 op 的例子："
 
 #: ../../docs/reference/langref/relay_pattern.rst:83
 msgid "Or a convolution with a specific kernel size:"
-msgstr ""
+msgstr "或者具有特定 kernel 大小的卷积："
 
 #: ../../docs/reference/langref/relay_pattern.rst:96
 msgid "Matching an Optional Op"
-msgstr ""
+msgstr "匹配 Optional Op"
 
 #: ../../docs/reference/langref/relay_pattern.rst:98
 msgid ""
@@ -115,10 +131,12 @@ msgid ""
 "this pattern, we can match the graph of conv2d+bias_add+relu or the graph"
 " of conv2d+bias_add."
 msgstr ""
+"下一个例子是用可选算子匹配一个模式。"
+"在这个模式中，可以匹配 conv2d+bias_add+relu graph 或 conv2d+bias_add graph。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:119
 msgid "Matching Types"
-msgstr ""
+msgstr "匹配类型"
 
 #: ../../docs/reference/langref/relay_pattern.rst:121
 msgid ""
@@ -126,10 +144,11 @@ msgid ""
 "to match their types, in interms of the shape and data type. Here are "
 "some examples:"
 msgstr ""
+"除了用属性来匹配 ops，还可以根据形状和数据类型，制作模式来匹配它们的类型。这里有一些例子："
 
 #: ../../docs/reference/langref/relay_pattern.rst:148
 msgid "Matching Non-Call Nodes"
-msgstr ""
+msgstr "匹配 Non-Call 节点"
 
 #: ../../docs/reference/langref/relay_pattern.rst:150
 msgid ""
@@ -137,6 +156,8 @@ msgid ""
 "TupleGetItem nodes. Since there are not call nodes, we need to use "
 "specific pattern nodes to match them:"
 msgstr ""
+"有时可能还想匹配包含 Tuple 或 TupleGetItem 节点的模式。"
+"由于不是 call 节点，需要使用特定的模式节点来匹配它们："
 
 #: ../../docs/reference/langref/relay_pattern.rst:162
 msgid ""
@@ -144,12 +165,15 @@ msgid ""
 "Note that you can also use `is_tuple_get_item(bn_node)` to match a "
 "`TupleGetItem` node with any index."
 msgstr ""
+"下一个例子是匹配 ``batch_norm -> get(0) -> relu``。"
+"注意，您还可以使用 ``is_tuple_get_item(bn_node)`` 来匹配 ``TupleGetItem`` 节点和任何索引。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:181
 msgid ""
 "If we have a pattern that crosses a function boundary, we might want to "
 "match the Function itself"
 msgstr ""
+"如果有跨越函数边界的模式，可能希望匹配函数本身"
 
 #: ../../docs/reference/langref/relay_pattern.rst:194
 msgid ""
@@ -157,6 +181,8 @@ msgid ""
 "is useful to check if a specific parameter in a subgraph has been bound "
 "or not."
 msgstr ""
+"下一个例子是匹配 constant 节点的值。"
+"这对于检查子图中的特定参数是否被绑定很有用。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:219
 msgid ""
@@ -164,32 +190,36 @@ msgid ""
 "value, you can directly use ``is_expr``. This could be useful for "
 "algebraic simplify."
 msgstr ""
+"另一方面，如果需要将常数与特定值匹配，可以直接使用 ``is_expr``。这对代数简化很有用。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:232
 msgid "The next example is matching function nodes with a specific attribute:"
-msgstr ""
+msgstr "下一个例子是将函数节点与特定属性匹配："
 
 #: ../../docs/reference/langref/relay_pattern.rst:244
 msgid ""
 "A Relay ``If`` expression can be matched if all of its condition, true "
 "branch and false branch are matched:"
 msgstr ""
+"Relay ``If`` 表达式，如果它的所有条件，真分支和假分支都匹配，就可以匹配："
 
 #: ../../docs/reference/langref/relay_pattern.rst:261
 msgid ""
 "A Relay ``Let`` expression can be matched if all of its variable, value, "
 "and body are matched:"
 msgstr ""
+"如果 Relay ``Let`` 表达式的所有变量、值和 body 都匹配，那么它就可以被匹配："
 
 #: ../../docs/reference/langref/relay_pattern.rst:279
 msgid "Matching Diamonds and Post-Dominator Graphs"
-msgstr ""
+msgstr "匹配 Diamond 和 Post-Dominator Graph"
 
 #: ../../docs/reference/langref/relay_pattern.rst:281
 msgid ""
 "The next example is matching a diamond with two inputs at the top of the "
 "diamond::"
 msgstr ""
+"下一个例子是在 diamond 的顶部匹配两个 inputs ::"
 
 #: ../../docs/reference/langref/relay_pattern.rst:301
 msgid ""
@@ -200,10 +230,13 @@ msgid ""
 "language to describe fuse patterns, like elementwise operations followed "
 "by a conv2d::"
 msgstr ""
+"最后一个例子是将 diamond 与 post-dominator 的关系相匹配。"
+"在模式语言中嵌入支配分析作为匹配类型，以允许未知拓扑的模式匹配。"
+"这很重要，因为希望能够使用语言来描述融合模式，比如 elementwise 运算后面跟着 conv2d::"
 
 #: ../../docs/reference/langref/relay_pattern.rst:322
 msgid "Matching Fuzzy Patterns"
-msgstr ""
+msgstr "模糊匹配模式"
 
 #: ../../docs/reference/langref/relay_pattern.rst:324
 msgid ""
@@ -211,12 +244,15 @@ msgid ""
 "doesn't correspond to a set of patterns nodes exactly 1-to-1. There are a"
 " few other places where we support such \"fuzzy\" matching."
 msgstr ""
+"上面的 Dominator 分析允许匹配 Relay AST 的子图，该子图不与一组模式节点精确地 1-to-1 对应。"
+"在其他一些地方，也支持这种模糊（\"fuzzy\"）匹配。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:326
 msgid ""
 "Tuples, Functions, and Call nodes with any number of inputs can be "
 "matched by passing `None` as the argument value, i.e.::"
 msgstr ""
+"Tuple、Function 和具有任意数量输入的 Call 节点可以通过传递 ``None`` 作为参数值来匹配，即 ::"
 
 #: ../../docs/reference/langref/relay_pattern.rst:332
 msgid ""
@@ -224,6 +260,7 @@ msgid ""
 "constraining the use of the arguments rather than the number of "
 "arguments."
 msgstr ""
+"这些模式通过限制参数的使用而不是参数的数量来匹配更通用的类模式。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:334
 msgid ""
@@ -235,10 +272,14 @@ msgid ""
 "doesn't perfectly constrain the body of the function, so the resulting "
 "match is fuzzy."
 msgstr ""
+"此外，支持模糊体匹配（fuzzy bodies）函数，即受模式约束的函数体。"
+"模式 ``FunctionPattern([is_var(), is_var()], wildcard() + wildcard()])`` 将匹配 ``relay.Function([x, y], x + y)``，"
+"但它也将匹配 ``relay.Function([x, y], x * x + y)``。"
+"在第二种情况下，模式没有完美地约束函数体，因此产生的匹配是模糊的。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:338
 msgid "Pattern Language Design"
-msgstr ""
+msgstr "模式语言设计"
 
 #: ../../docs/reference/langref/relay_pattern.rst:340
 msgid ""
@@ -247,12 +288,15 @@ msgid ""
 "language is to provide a regular-expression like capability for matching "
 "data-flow graphs and doing rewriting."
 msgstr ""
+"提出的模式语言被设计成 Relay IR 的镜像，并对常见场景提供额外的支持。"
+"模式语言的目标是提供类似正则表达式的功能来匹配数据流图并进行重写。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:342
 msgid ""
 "The high level design is to introduce a language of patterns for now we "
 "propose the language as::"
 msgstr ""
+"高层次的设计是引入模式语言，现在提出这种语言为 ::"
 
 #: ../../docs/reference/langref/relay_pattern.rst:363
 msgid ""
@@ -260,80 +304,86 @@ msgid ""
 "select sub-graphs as well as verify that the graph does match the "
 "pattern."
 msgstr ""
+"然后，上述语言提供了匹配接口，可以选择子图，以及验证图是否匹配模式。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:366
 msgid "Expression Pattern"
-msgstr ""
+msgstr "表达式模式"
 
 #: ../../docs/reference/langref/relay_pattern.rst:368
 msgid "Match a literal expression."
-msgstr ""
+msgstr "匹配 literal 表达式。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:371
 msgid "Wildcard"
-msgstr ""
+msgstr "通配符"
 
 #: ../../docs/reference/langref/relay_pattern.rst:373
 msgid "Match any expression."
-msgstr ""
+msgstr "匹配任何表达式。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:376
 msgid "Type Pattern"
-msgstr ""
+msgstr "类型模式"
 
 #: ../../docs/reference/langref/relay_pattern.rst:378
 msgid ""
 "Check that the expression matched by the nested pattern has a particular "
 "type."
 msgstr ""
+"检查嵌套模式匹配的表达式是否具有特定的类型。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:381
 msgid "DType Pattern"
-msgstr ""
+msgstr "DType 模式"
 
 #: ../../docs/reference/langref/relay_pattern.rst:383
 msgid ""
 "Check that the expression matched by the nested pattern has a particular "
 "data type."
 msgstr ""
+"检查嵌套模式匹配的表达式是否具有特定的数据类型。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:386
 msgid "Shape Pattern"
-msgstr ""
+msgstr "Shape 模式"
 
 #: ../../docs/reference/langref/relay_pattern.rst:388
 msgid ""
 "Check that the expression matched by the nested pattern has a particular "
 "output shape."
 msgstr ""
+"检查与嵌套模式匹配的表达式是否具有特定的输出形状。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:391
 msgid "Attribute Pattern"
-msgstr ""
+msgstr "属性模式"
 
 #: ../../docs/reference/langref/relay_pattern.rst:393
 msgid ""
 "Check that the operator matched by the pattern has an attribute with a "
 "particular value."
 msgstr ""
+"检查与模式匹配的算子是否具有具有特定值的属性。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:396
 msgid "Variable Pattern"
-msgstr ""
+msgstr "变量模式"
 
 #: ../../docs/reference/langref/relay_pattern.rst:398
 msgid ""
 "Check that the expression is a relay Variable, and optional provide a "
 "name to match to the Variable name."
 msgstr ""
+"检查表达式是否是 relay 变量，并可选地提供与变量名匹配的名称。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:402
 msgid "Alternate"
-msgstr ""
+msgstr "备用"
 
 #: ../../docs/reference/langref/relay_pattern.rst:404
 msgid "Either match the first pattern or the second pattern."
-msgstr ""
+msgstr "要么匹配第一种模式，要么匹配第二种模式。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:407
 msgid "Domination"
@@ -346,34 +396,35 @@ msgid ""
 "pattern use outputs of the parent), and that ever node between the child "
 "and the pattern matches the path pattern."
 msgstr ""
+"匹配子模式，找到父模式的匹配，确保子模式最终主导父模式（即，模式之外的节点没有使用父模式的输出），并且子模式和模式之间的任何节点都匹配路径模式。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:412
 msgid "Function Pattern"
-msgstr ""
+msgstr "函数模式"
 
 #: ../../docs/reference/langref/relay_pattern.rst:414
 msgid "Match a Function with a body and parameters"
-msgstr ""
+msgstr "用函数体和参数匹配函数"
 
 #: ../../docs/reference/langref/relay_pattern.rst:417
 msgid "If Pattern"
-msgstr ""
+msgstr "If 模式"
 
 #: ../../docs/reference/langref/relay_pattern.rst:419
 msgid "Match an If with condition, true branch, and false branch"
-msgstr ""
+msgstr "将 If 与条件、真分支和假分支匹配"
 
 #: ../../docs/reference/langref/relay_pattern.rst:422
 msgid "Let Pattern"
-msgstr ""
+msgstr "Let 模式"
 
 #: ../../docs/reference/langref/relay_pattern.rst:424
 msgid "Match a Let with a variable, value, and body"
-msgstr ""
+msgstr "将 Let 与变量、值和 body 匹配"
 
 #: ../../docs/reference/langref/relay_pattern.rst:427
 msgid "Applications"
-msgstr ""
+msgstr "应用"
 
 #: ../../docs/reference/langref/relay_pattern.rst:429
 msgid ""
@@ -381,10 +432,11 @@ msgid ""
 "pattern processing. Here we introduce two pattern processing approaches "
 "and provide some examples."
 msgstr ""
+"模式语言不仅提供模式匹配，还提供模式处理。这里将介绍两种模式处理方法并提供一些示例。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:433
 msgid "Pattern Rewriting"
-msgstr ""
+msgstr "模式重写"
 
 #: ../../docs/reference/langref/relay_pattern.rst:435
 msgid ""
@@ -394,6 +446,9 @@ msgid ""
 "The constructor parameter ``require_type`` indicates whether InferType is"
 " required to be run before the callback."
 msgstr ""
+"如果您想用另一个子图替换匹配的模式，您可以利用 ``rewrite`` 变换。"
+"下面是使用单个 batch_norm op 重写一系列算术算子的示例。"
+"构造函数参数 ``require_type`` 指示是否需要在回调之前运行 InferType。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:476
 msgid ""
@@ -401,6 +456,8 @@ msgid ""
 "when the rewriter matches ``self.pattern``. ``node_map`` is a dictionary "
 "mapping from pattern nodes to matched nodes in the graph."
 msgstr ""
+"``def callback(self, pre, post, node_map)`` 将在 rewriter 匹配 ``self.pattern`` 时被调用。"
+"``node_map`` 是从模式节点映射到图中匹配节点的字典。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:479
 msgid ""
@@ -410,10 +467,13 @@ msgid ""
 "will run in a loop. If you want to avoid multiple rewrites, you can pass "
 "a ``rewrite_once=True`` parameter to the constructor."
 msgstr ""
+"回调函数将在返回的模式上递归调用，直到模式停止变化。"
+"因此，如果 ``self.pattern`` 匹配回调返回的图的任何部分，rewriter 将循环运行。"
+"如果你想避免多次重写，你可以向构造函数传递 ``rewrite_once=True`` 参数。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:482
 msgid "Pattern Partitioning"
-msgstr ""
+msgstr "模式分区"
 
 #: ../../docs/reference/langref/relay_pattern.rst:484
 msgid ""
@@ -424,10 +484,14 @@ msgid ""
 "``pattern.partition`` to create a new Relay function for each matched "
 "subgraph. The functionality is similar to the op fusion pass in TVM:"
 msgstr ""
+"如果您想对匹配的子图执行更复杂的处理，而您不满足于 ``rewrite``，"
+"您可以考虑将匹配的子图划分到单独的 Relay 函数，并对该函数执行其他处理。"
+"这里使用 ``pattern.partition`` 为每个匹配的子图创建新的 Relay 函数。"
+"该功能类似于 TVM 中的 op 融合 pass："
 
 #: ../../docs/reference/langref/relay_pattern.rst:519
 msgid "Note that you can also specify the attributes for the created functions:"
-msgstr ""
+msgstr "注意，你也可以为创建的函数指定属性："
 
 #: ../../docs/reference/langref/relay_pattern.rst:535
 msgid ""
@@ -436,6 +500,8 @@ msgid ""
 "The following example demonstrates a case that checks input data layout "
 "of a subgraph:"
 msgstr ""
+"如果需要使用模式语言无法指定的自定义检查函数，可以在分区时指定 ``check`` 函数。"
+"下面的例子是演示检查子图输入数据布局的案例："
 
 #: ../../docs/reference/langref/relay_pattern.rst:547
 msgid ""
@@ -444,4 +510,5 @@ msgid ""
 " 1. This feature is useful if the conditions of matching a pattern cannot"
 " be verified by analyzing the pattern itself."
 msgstr ""
-
+"在这个例子中，检查匹配的子图的第一个参数（即 ``pre.args[0]`` ）是否有数据布局 \"NCHW\" 以及它的批大小是否为 1。"
+"如果模式匹配的条件不能通过分析模式本身来验证，那么这个特性就很有用。"
