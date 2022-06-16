@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Pattern Matching in Relay &#8212; TVM  文档</title>
+    <title>Relay 中的模式匹配 &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -723,7 +723,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../how_to/extend_tvm/index.html">
-       Extend TVM
+       拓展 TVM
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
       <label for="toctree-checkbox-18">
@@ -733,7 +733,7 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../../how_to/extend_tvm/low_level_custom_pass.html">
-         Writing a Customized Pass
+         编写定制 Pass
         </a>
        </li>
        <li class="toctree-l4">
@@ -1077,7 +1077,7 @@
      </li>
      <li class="toctree-l3 current active">
       <a class="current reference internal" href="#">
-       Pattern Matching in Relay
+       Relay 中的模式匹配
       </a>
      </li>
      <li class="toctree-l3">
@@ -1453,89 +1453,89 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pattern-examples">
-   Pattern Examples
+   模式示例
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matching-one-of-two-ops">
-     Matching One of Two Ops
+     匹配两个 Ops 中的一个
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matching-an-op-with-attributes">
-     Matching an Op with Attributes
+     使用属性匹配 Op
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matching-an-optional-op">
-     Matching an Optional Op
+     匹配 Optional Op
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matching-types">
-     Matching Types
+     匹配类型
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matching-non-call-nodes">
-     Matching Non-Call Nodes
+     匹配 Non-Call 节点
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matching-diamonds-and-post-dominator-graphs">
-     Matching Diamonds and Post-Dominator Graphs
+     匹配 Diamond 和 Post-Dominator Graph
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matching-fuzzy-patterns">
-   Matching Fuzzy Patterns
+   模糊匹配模式
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pattern-language-design">
-   Pattern Language Design
+   模式语言设计
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#expression-pattern">
-     Expression Pattern
+     表达式模式
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#wildcard">
-     Wildcard
+     通配符
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#type-pattern">
-     Type Pattern
+     类型模式
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dtype-pattern">
-     DType Pattern
+     DType 模式
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#shape-pattern">
-     Shape Pattern
+     Shape 模式
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#attribute-pattern">
-     Attribute Pattern
+     属性模式
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#variable-pattern">
-     Variable Pattern
+     变量模式
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#alternate">
-     Alternate
+     备用
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -1545,34 +1545,34 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#function-pattern">
-     Function Pattern
+     函数模式
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#if-pattern">
-     If Pattern
+     If 模式
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#let-pattern">
-     Let Pattern
+     Let 模式
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#applications">
-   Applications
+   应用
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pattern-rewriting">
-     Pattern Rewriting
+     模式重写
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pattern-partitioning">
-     Pattern Partitioning
+     模式分区
     </a>
    </li>
   </ul>
@@ -1586,7 +1586,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Pattern Matching in Relay</h1>
+                <h1>Relay 中的模式匹配</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1598,89 +1598,89 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pattern-examples">
-   Pattern Examples
+   模式示例
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matching-one-of-two-ops">
-     Matching One of Two Ops
+     匹配两个 Ops 中的一个
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matching-an-op-with-attributes">
-     Matching an Op with Attributes
+     使用属性匹配 Op
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matching-an-optional-op">
-     Matching an Optional Op
+     匹配 Optional Op
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matching-types">
-     Matching Types
+     匹配类型
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matching-non-call-nodes">
-     Matching Non-Call Nodes
+     匹配 Non-Call 节点
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matching-diamonds-and-post-dominator-graphs">
-     Matching Diamonds and Post-Dominator Graphs
+     匹配 Diamond 和 Post-Dominator Graph
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matching-fuzzy-patterns">
-   Matching Fuzzy Patterns
+   模糊匹配模式
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pattern-language-design">
-   Pattern Language Design
+   模式语言设计
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#expression-pattern">
-     Expression Pattern
+     表达式模式
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#wildcard">
-     Wildcard
+     通配符
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#type-pattern">
-     Type Pattern
+     类型模式
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dtype-pattern">
-     DType Pattern
+     DType 模式
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#shape-pattern">
-     Shape Pattern
+     Shape 模式
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#attribute-pattern">
-     Attribute Pattern
+     属性模式
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#variable-pattern">
-     Variable Pattern
+     变量模式
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#alternate">
-     Alternate
+     备用
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -1690,34 +1690,34 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#function-pattern">
-     Function Pattern
+     函数模式
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#if-pattern">
-     If Pattern
+     If 模式
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#let-pattern">
-     Let Pattern
+     Let 模式
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#applications">
-   Applications
+   应用
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pattern-rewriting">
-     Pattern Rewriting
+     模式重写
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pattern-partitioning">
-     Pattern Partitioning
+     模式分区
     </a>
    </li>
   </ul>
@@ -1733,25 +1733,21 @@ title="Print to PDF"
               <div>
                 
   <section id="pattern-matching-in-relay">
-<h1>Pattern Matching in Relay<a class="headerlink" href="#pattern-matching-in-relay" title="永久链接至标题">#</a></h1>
-<p>There are many places in TVM where we identify pure data-flow sub-graphs of the Relay program and attempt to transform them in some way example passes include fusion, quantization, external code generation, and device specific optimizations such as bitpacking, and layer slicing used by VTA.</p>
-<p>Many of these passes today require a lots of boring boilerplate code in order to implement as well as requiring users to think in terms of visitors and AST matching. Many of these transformations can easily be described in terms of graph rewrites. In order to build a rewriter or other advanced machinery we first need a language of patterns to describe what we can match.</p>
-<p>Such a language is not just useful for building a rewriter but also providing extension points for existing passes. For example the fusion pass could be parameterized by a set of fusion patterns which describes the capability of your hardware, and the quantization pass could take a set of patterns which describe which operators can be quantized on a given platform.</p>
-<p>In the backend world, we could use the same machinery to build a higher level API using bring your own code generation. This API takes set of patterns describing your hardware capabilities and an external compiler, providing a relatively smooth heterogeneous experience out of the box.</p>
+<h1>Relay 中的模式匹配<a class="headerlink" href="#pattern-matching-in-relay" title="永久链接至标题">#</a></h1>
+<p>在 TVM 中有很多地方，决定了 Relay 程序的纯数据流子图，并试图以某种方式变换它们，例如融合、量化、外部代码生成和设备特定的优化，如 bitpacking 和 VTA 使用的层切片。</p>
+<p>今天，许多这样的方法都需要大量无聊的样板代码来实现，并要求用户从 visitor 和 AST 匹配的角度考虑问题。许多这样的变换可以很容易地用图重写来描述。为了构建 rewriter 或其他高级机制，首先需要模式语言来描述可以匹配的内容。</p>
+<p>这样的语言不仅对构建 rewriter 有用，而且还为现有的 pass 提供了扩展点。例如，融合 pass 可以通过一组描述硬件能力的融合模式来参数化，量化通道可以采用一组模式来描述在给定平台上可以量化的算子。</p>
+<p>“在后端世界，可以使用相同的机制来构建更高级别的 API，使用自己的代码生成。这个 API 采用了一组描述你的硬件能力的模式和外部编译器，提供了相对平稳的开箱即用的异构体验。</p>
 <section id="pattern-examples">
-<h2>Pattern Examples<a class="headerlink" href="#pattern-examples" title="永久链接至标题">#</a></h2>
-<p>There are quite a few properties of operators that are worth matching. Below we examine how to match tree properties, and expand on some use cases that are not fully explored in the prototype. This section
-demonstrates how to write patterns. It is recommended to check <a class="reference external" href="https://github.com/apache/tvm/blob/main/tests/python/relay/test_dataflow_pattern.py">tests/python/relay/test_dataflow_pattern.py</a>
-for more use cases.</p>
+<h2>模式示例<a class="headerlink" href="#pattern-examples" title="永久链接至标题">#</a></h2>
+<p>有相当多的算子的属性值得匹配。下面将研究如何匹配树的属性，并扩展原型中未充分探索的一些用例。本节演示如何编写模式。建议查看 <a class="reference external" href="https://github.com/apache/tvm/blob/main/tests/python/relay/test_dataflow_pattern.py">tests/python/relay/test_dataflow_pattern.py</a> 了解更多用例。”</p>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>If you cannot find the corresponding pattern node to match the Relay node you want,
-you are welcome to raise an issue or submit a PR to add it.</p>
+<p>如果您无法找到与您想要的 Relay 节点匹配的对应模式节点，欢迎您提出 issue 或提交 PR 来添加它。</p>
 </div>
 <section id="matching-one-of-two-ops">
-<h3>Matching One of Two Ops<a class="headerlink" href="#matching-one-of-two-ops" title="永久链接至标题">#</a></h3>
-<p>The first example is a simple case where we want to match one operator with a single input OR
-another operator with a single input:</p>
+<h3>匹配两个 Ops 中的一个<a class="headerlink" href="#matching-one-of-two-ops" title="永久链接至标题">#</a></h3>
+<p>第一个例子是简单的例子，想要匹配带有单输入的算子或另一个单输入的算子：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_match_op_or</span><span class="p">():</span>
     <span class="n">is_add_or_sub</span> <span class="o">=</span> <span class="n">is_op</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="n">is_op</span><span class="p">(</span><span class="s1">&#39;subtract&#39;</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">is_add_or_sub</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">relay</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">))</span>
@@ -1760,8 +1756,8 @@ another operator with a single input:</p>
 </div>
 </section>
 <section id="matching-an-op-with-attributes">
-<h3>Matching an Op with Attributes<a class="headerlink" href="#matching-an-op-with-attributes" title="永久链接至标题">#</a></h3>
-<p>The next example is a dense operation with any operator that is marked element-wise:</p>
+<h3>使用属性匹配 Op<a class="headerlink" href="#matching-an-op-with-attributes" title="永久链接至标题">#</a></h3>
+<p>下一个例子是 dense 运算，带有任何标记为 element-wise 的算子:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_no_match_attr</span><span class="p">():</span>
     <span class="n">op</span> <span class="o">=</span> <span class="n">is_op</span><span class="p">(</span><span class="s1">&#39;nn.dense&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">has_attr</span><span class="p">({</span><span class="s2">&quot;TOpPattern&quot;</span><span class="p">:</span> <span class="n">K_ELEMWISE</span><span class="p">})</span>
     <span class="n">op_pat</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">wildcard</span><span class="p">(),</span> <span class="n">wildcard</span><span class="p">())</span>
@@ -1770,7 +1766,7 @@ another operator with a single input:</p>
     <span class="k">assert</span> <span class="ow">not</span> <span class="n">op_pat</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">relay</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Here is another example to match an op with a specific attribute:</p>
+<p>下面是另一个使用特定属性匹配 op 的例子：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_match_data_layout</span><span class="p">():</span>
     <span class="n">is_conv2d</span> <span class="o">=</span> <span class="n">is_op</span><span class="p">(</span><span class="s1">&#39;nn.conv2d&#39;</span><span class="p">)(</span><span class="n">wildcard</span><span class="p">(),</span> <span class="n">wildcard</span><span class="p">())</span><span class="o">.</span><span class="n">has_attr</span><span class="p">({</span><span class="s2">&quot;data_layout&quot;</span><span class="p">:</span> <span class="s2">&quot;NHWC&quot;</span><span class="p">})</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
@@ -1778,7 +1774,7 @@ another operator with a single input:</p>
     <span class="k">assert</span> <span class="ow">not</span> <span class="n">is_conv2d</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">relay</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Or a convolution with a specific kernel size:</p>
+<p>或者具有特定 kernel 大小的卷积：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_match_kernel_size</span><span class="p">():</span>
     <span class="n">is_conv2d</span> <span class="o">=</span> <span class="n">is_op</span><span class="p">(</span><span class="s2">&quot;nn.conv2d&quot;</span><span class="p">)(</span><span class="n">wildcard</span><span class="p">(),</span> <span class="n">wildcard</span><span class="p">())</span><span class="o">.</span><span class="n">has_attr</span><span class="p">({</span><span class="s2">&quot;kernel_size&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
@@ -1788,9 +1784,8 @@ another operator with a single input:</p>
 </div>
 </section>
 <section id="matching-an-optional-op">
-<h3>Matching an Optional Op<a class="headerlink" href="#matching-an-optional-op" title="永久链接至标题">#</a></h3>
-<p>The next example is matching a pattern with one optional operator. In this pattern,
-we can match the graph of conv2d+bias_add+relu or the graph of conv2d+bias_add.</p>
+<h3>匹配 Optional Op<a class="headerlink" href="#matching-an-optional-op" title="永久链接至标题">#</a></h3>
+<p>下一个例子是用可选算子匹配一个模式。在这个模式中，可以匹配 conv2d+bias_add+relu graph 或 conv2d+bias_add graph。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_match_optional</span><span class="p">():</span>
     <span class="n">conv_node</span> <span class="o">=</span> <span class="n">is_op</span><span class="p">(</span><span class="s1">&#39;nn.conv2d&#39;</span><span class="p">)(</span><span class="n">wildcard</span><span class="p">(),</span> <span class="n">wildcard</span><span class="p">())</span>
     <span class="n">bias_node</span> <span class="o">=</span> <span class="n">is_op</span><span class="p">(</span><span class="s1">&#39;nn.bias_add&#39;</span><span class="p">)(</span><span class="n">conv_node</span><span class="p">,</span> <span class="n">wildcard</span><span class="p">())</span>
@@ -1808,8 +1803,8 @@ we can match the graph of conv2d+bias_add+relu or the graph of conv2d+bias_add.<
 </div>
 </section>
 <section id="matching-types">
-<h3>Matching Types<a class="headerlink" href="#matching-types" title="永久链接至标题">#</a></h3>
-<p>In addition to matching ops with attributes, we can also make a pattern to match their types, in interms of the shape and data type. Here are some examples:</p>
+<h3>匹配类型<a class="headerlink" href="#matching-types" title="永久链接至标题">#</a></h3>
+<p>除了用属性来匹配 ops，还可以根据形状和数据类型，制作模式来匹配它们的类型。这里有一些例子：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_match_type</span><span class="p">():</span>
     <span class="c1"># Match any op with float32</span>
     <span class="n">pat1</span> <span class="o">=</span> <span class="n">has_dtype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
@@ -1834,9 +1829,8 @@ we can match the graph of conv2d+bias_add+relu or the graph of conv2d+bias_add.<
 </div>
 </section>
 <section id="matching-non-call-nodes">
-<h3>Matching Non-Call Nodes<a class="headerlink" href="#matching-non-call-nodes" title="永久链接至标题">#</a></h3>
-<p>Sometimes we may also want to match a pattern that includes Tuple or TupleGetItem nodes.
-Since there are not call nodes, we need to use specific pattern nodes to match them:</p>
+<h3>匹配 Non-Call 节点<a class="headerlink" href="#matching-non-call-nodes" title="永久链接至标题">#</a></h3>
+<p>有时可能还想匹配包含 Tuple 或 TupleGetItem 节点的模式。由于不是 call 节点，需要使用特定的模式节点来匹配它们：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_match_tuple</span><span class="p">():</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
@@ -1845,7 +1839,7 @@ Since there are not call nodes, we need to use specific pattern nodes to match t
     <span class="k">assert</span> <span class="n">tuple_pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">relay</span><span class="o">.</span><span class="n">expr</span><span class="o">.</span><span class="n">Tuple</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)))</span>
 </pre></div>
 </div>
-<p>The next example is matching a pattern of batch_norm -&gt; get(0) -&gt; relu. Note that you can also use <cite>is_tuple_get_item(bn_node)</cite> to match a <cite>TupleGetItem</cite> node with any index.</p>
+<p>下一个例子是匹配 <code class="docutils literal notranslate"><span class="pre">batch_norm</span> <span class="pre">-&gt;</span> <span class="pre">get(0)</span> <span class="pre">-&gt;</span> <span class="pre">relu</span></code>。注意，您还可以使用 <code class="docutils literal notranslate"><span class="pre">is_tuple_get_item(bn_node)</span></code> 来匹配 <code class="docutils literal notranslate"><span class="pre">TupleGetItem</span></code> 节点和任何索引。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_match_tuple_get_item</span><span class="p">():</span>
     <span class="n">bn_node</span> <span class="o">=</span> <span class="n">is_op</span><span class="p">(</span><span class="s1">&#39;nn.batch_norm&#39;</span><span class="p">)(</span><span class="n">wildcard</span><span class="p">(),</span> <span class="n">wildcard</span><span class="p">(),</span> <span class="n">wildcard</span><span class="p">(),</span> <span class="n">wildcard</span><span class="p">(),</span> <span class="n">wildcard</span><span class="p">())</span>
     <span class="n">tuple_get_item_node</span> <span class="o">=</span> <span class="n">is_tuple_get_item</span><span class="p">(</span><span class="n">bn_node</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -1862,7 +1856,7 @@ Since there are not call nodes, we need to use specific pattern nodes to match t
     <span class="n">pat</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>If we have a pattern that crosses a function boundary, we might want to match the Function itself</p>
+<p>如果有跨越函数边界的模式，可能希望匹配函数本身</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_match_func</span><span class="p">():</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
@@ -1872,8 +1866,7 @@ Since there are not call nodes, we need to use specific pattern nodes to match t
     <span class="k">assert</span> <span class="n">func_pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">relay</span><span class="o">.</span><span class="n">Function</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>The next example is matching a constant node regarding its values. This is useful to check
-if a specific parameter in a subgraph has been bound or not.</p>
+<p>下一个例子是匹配 constant 节点的值。这对于检查子图中的特定参数是否被绑定很有用。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_match_constant</span><span class="p">():</span>
     <span class="n">conv2d</span> <span class="o">=</span> <span class="n">is_op</span><span class="p">(</span><span class="s1">&#39;nn.conv2d&#39;</span><span class="p">)(</span><span class="n">wildcard</span><span class="p">(),</span> <span class="n">is_constant</span><span class="p">())</span>
     <span class="n">pattern</span> <span class="o">=</span> <span class="n">is_op</span><span class="p">(</span><span class="s1">&#39;nn.bias_add&#39;</span><span class="p">)(</span><span class="n">conv2d</span><span class="p">,</span> <span class="n">wildcard</span><span class="p">())</span>
@@ -1895,8 +1888,7 @@ if a specific parameter in a subgraph has been bound or not.</p>
     <span class="k">assert</span> <span class="n">pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">mod</span><span class="p">[</span><span class="s1">&#39;main&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>On the other hand, if you need to match the constant with a specific value, you can directly
-use <code class="docutils literal notranslate"><span class="pre">is_expr</span></code>. This could be useful for algebraic simplify.</p>
+<p>另一方面，如果需要将常数与特定值匹配，可以直接使用 <code class="docutils literal notranslate"><span class="pre">is_expr</span></code>。这对代数简化很有用。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_match_plus_zero</span><span class="p">():</span>
     <span class="n">zero</span> <span class="o">=</span> <span class="p">(</span><span class="n">is_expr</span><span class="p">(</span><span class="n">relay</span><span class="o">.</span><span class="n">const</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="o">|</span> <span class="n">is_expr</span><span class="p">(</span><span class="n">relay</span><span class="o">.</span><span class="n">const</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)))</span>
     <span class="n">pattern</span> <span class="o">=</span> <span class="n">wildcard</span><span class="p">()</span> <span class="o">+</span> <span class="n">zero</span>
@@ -1906,7 +1898,7 @@ use <code class="docutils literal notranslate"><span class="pre">is_expr</span><
     <span class="k">assert</span> <span class="n">pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The next example is matching function nodes with a specific attribute:</p>
+<p>下一个例子是将函数节点与特定属性匹配：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_match_function</span><span class="p">():</span>
     <span class="n">pattern</span> <span class="o">=</span> <span class="n">wildcard</span><span class="p">()</span><span class="o">.</span><span class="n">has_attr</span><span class="p">({</span><span class="s2">&quot;Composite&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">})</span>
 
@@ -1916,8 +1908,7 @@ use <code class="docutils literal notranslate"><span class="pre">is_expr</span><
     <span class="k">assert</span> <span class="n">pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>A Relay <code class="docutils literal notranslate"><span class="pre">If</span></code> expression can be matched if all of its condition, true branch and false branch
-are matched:</p>
+<p>Relay <code class="docutils literal notranslate"><span class="pre">If</span></code> 表达式，如果它的所有条件，真分支和假分支都匹配，就可以匹配：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_match_if</span><span class="p">():</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">is_var</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">is_var</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
@@ -1930,8 +1921,7 @@ are matched:</p>
     <span class="k">assert</span> <span class="n">pat</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">relay</span><span class="o">.</span><span class="n">expr</span><span class="o">.</span><span class="n">If</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>A Relay <code class="docutils literal notranslate"><span class="pre">Let</span></code> expression can be matched if all of its variable, value, and body
-are matched:</p>
+<p>如果 Relay <code class="docutils literal notranslate"><span class="pre">Let</span></code> 表达式的所有变量、值和 body 都匹配，那么它就可以被匹配：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_match_let</span><span class="p">():</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">is_var</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">is_var</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
@@ -1947,8 +1937,8 @@ are matched:</p>
 </div>
 </section>
 <section id="matching-diamonds-and-post-dominator-graphs">
-<h3>Matching Diamonds and Post-Dominator Graphs<a class="headerlink" href="#matching-diamonds-and-post-dominator-graphs" title="永久链接至标题">#</a></h3>
-<p>The next example is matching a diamond with two inputs at the top of the diamond:</p>
+<h3>匹配 Diamond 和 Post-Dominator Graph<a class="headerlink" href="#matching-diamonds-and-post-dominator-graphs" title="永久链接至标题">#</a></h3>
+<p>下一个例子是在 diamond 的顶部匹配两个 inputs</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_match_diamond</span><span class="p">():</span>
     <span class="c1"># Pattern</span>
     <span class="n">is_conv2d</span> <span class="o">=</span> <span class="n">is_op</span><span class="p">(</span><span class="s1">&#39;nn.conv2d&#39;</span><span class="p">)(</span><span class="n">is_var</span><span class="p">(),</span> <span class="n">is_var</span><span class="p">())</span>
@@ -1968,7 +1958,7 @@ are matched:</p>
     <span class="k">assert</span> <span class="n">diamond</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The final example is matching diamonds with a post-dominator relationship. We embed dominator analysis as type of matching in the pattern language in order to allow for pattern matching with unknown topology. This is important because we want to be able to use the language to describe fuse patterns, like elementwise operations followed by a conv2d:</p>
+<p>最后一个例子是将 diamond 与 post-dominator 的关系相匹配。在模式语言中嵌入支配分析作为匹配类型，以允许未知拓扑的模式匹配。这很重要，因为希望能够使用语言来描述融合模式，比如 elementwise 运算后面跟着 conv2d:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_match_dom_diamond</span><span class="p">():</span>
     <span class="c1"># Pattern</span>
     <span class="n">is_conv2d</span> <span class="o">=</span> <span class="n">is_op</span><span class="p">(</span><span class="s1">&#39;nn.conv2d&#39;</span><span class="p">)(</span><span class="n">is_var</span><span class="p">(),</span> <span class="n">is_var</span><span class="p">())</span>
@@ -1990,21 +1980,21 @@ are matched:</p>
 </section>
 </section>
 <section id="matching-fuzzy-patterns">
-<h2>Matching Fuzzy Patterns<a class="headerlink" href="#matching-fuzzy-patterns" title="永久链接至标题">#</a></h2>
-<p>The Dominator analysis above lets one match a subgraph of Relay AST that doesn’t correspond to a set of patterns nodes exactly 1-to-1. There are a few other places where we support such “fuzzy” matching.</p>
-<p>Tuples, Functions, and Call nodes with any number of inputs can be matched by passing <cite>None</cite> as the argument value, i.e.:</p>
+<h2>模糊匹配模式<a class="headerlink" href="#matching-fuzzy-patterns" title="永久链接至标题">#</a></h2>
+<p>上面的 Dominator 分析允许匹配 Relay AST 的子图，该子图不与一组模式节点精确地 1-to-1 对应。在其他一些地方，也支持这种模糊（”fuzzy”）匹配。</p>
+<p>Tuple、Function 和具有任意数量输入的 Call 节点可以通过传递 <code class="docutils literal notranslate"><span class="pre">None</span></code> 作为参数值来匹配，即</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tuple_pattern</span> <span class="o">=</span> <span class="n">is_tuple</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">func_pattern</span> <span class="o">=</span> <span class="n">FunctionPattern</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">wildcard</span><span class="p">()</span> <span class="o">+</span> <span class="n">wildcard</span><span class="p">())</span>
 <span class="n">call_pattern</span> <span class="o">=</span> <span class="n">func_pattern</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>These patterns allow matching more generic classes patterns by constraining the use of the arguments rather than the number of arguments.</p>
-<p>Additionally, we support matching Functions with fuzzy bodies, i.e., a function body that is under constrained by the pattern. The pattern <cite>FunctionPattern([is_var(), is_var()], wildcard() + wildcard()])</cite> will match <cite>relay.Function([x, y], x + y)</cite>, but it will also match <cite>relay.Function([x, y], x * x + y)</cite>. In the second case, the pattern doesn’t perfectly constrain the body of the function, so the resulting match is fuzzy.</p>
+<p>这些模式通过限制参数的使用而不是参数的数量来匹配更通用的类模式。</p>
+<p>此外，支持模糊体匹配（fuzzy bodies）函数，即受模式约束的函数体。模式 <code class="docutils literal notranslate"><span class="pre">FunctionPattern([is_var(),</span> <span class="pre">is_var()],</span> <span class="pre">wildcard()</span> <span class="pre">+</span> <span class="pre">wildcard()])</span></code> 将匹配 <code class="docutils literal notranslate"><span class="pre">relay.Function([x,</span> <span class="pre">y],</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">y)</span></code>，但它也将匹配 <code class="docutils literal notranslate"><span class="pre">relay.Function([x,</span> <span class="pre">y],</span> <span class="pre">x</span> <span class="pre">*</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">y)</span></code>。在第二种情况下，模式没有完美地约束函数体，因此产生的匹配是模糊的。</p>
 </section>
 <section id="pattern-language-design">
-<h2>Pattern Language Design<a class="headerlink" href="#pattern-language-design" title="永久链接至标题">#</a></h2>
-<p>The pattern language proposed is designed to be a mirror of Relay’s IR with additional support for common scenarios. The goal of the pattern language is to provide a regular-expression like capability for matching data-flow graphs and doing rewriting.</p>
-<p>The high level design is to introduce a language of patterns for now we propose the language as:</p>
+<h2>模式语言设计<a class="headerlink" href="#pattern-language-design" title="永久链接至标题">#</a></h2>
+<p>提出的模式语言被设计成 Relay IR 的镜像，并对常见场景提供额外的支持。模式语言的目标是提供类似正则表达式的功能来匹配数据流图并进行重写。</p>
+<p>高层次的设计是引入模式语言，现在提出这种语言为</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Pattern ::= expr
         | *
         | pattern(pattern1, ... patternN)
@@ -2025,66 +2015,62 @@ are matched:</p>
         | FunctionPattern(params, body)
 </pre></div>
 </div>
-<p>The above language then provides a matching interface with both can select sub-graphs as well as verify that the graph does match the pattern.</p>
+<p>然后，上述语言提供了匹配接口，可以选择子图，以及验证图是否匹配模式。</p>
 <section id="expression-pattern">
-<h3>Expression Pattern<a class="headerlink" href="#expression-pattern" title="永久链接至标题">#</a></h3>
-<p>Match a literal expression.</p>
+<h3>表达式模式<a class="headerlink" href="#expression-pattern" title="永久链接至标题">#</a></h3>
+<p>匹配 literal 表达式。</p>
 </section>
 <section id="wildcard">
-<h3>Wildcard<a class="headerlink" href="#wildcard" title="永久链接至标题">#</a></h3>
-<p>Match any expression.</p>
+<h3>通配符<a class="headerlink" href="#wildcard" title="永久链接至标题">#</a></h3>
+<p>匹配任何表达式。</p>
 </section>
 <section id="type-pattern">
-<h3>Type Pattern<a class="headerlink" href="#type-pattern" title="永久链接至标题">#</a></h3>
-<p>Check that the expression matched by the nested pattern has a particular type.</p>
+<h3>类型模式<a class="headerlink" href="#type-pattern" title="永久链接至标题">#</a></h3>
+<p>检查嵌套模式匹配的表达式是否具有特定的类型。</p>
 </section>
 <section id="dtype-pattern">
-<h3>DType Pattern<a class="headerlink" href="#dtype-pattern" title="永久链接至标题">#</a></h3>
-<p>Check that the expression matched by the nested pattern has a particular data type.</p>
+<h3>DType 模式<a class="headerlink" href="#dtype-pattern" title="永久链接至标题">#</a></h3>
+<p>检查嵌套模式匹配的表达式是否具有特定的数据类型。</p>
 </section>
 <section id="shape-pattern">
-<h3>Shape Pattern<a class="headerlink" href="#shape-pattern" title="永久链接至标题">#</a></h3>
-<p>Check that the expression matched by the nested pattern has a particular output shape.</p>
+<h3>Shape 模式<a class="headerlink" href="#shape-pattern" title="永久链接至标题">#</a></h3>
+<p>检查与嵌套模式匹配的表达式是否具有特定的输出形状。</p>
 </section>
 <section id="attribute-pattern">
-<h3>Attribute Pattern<a class="headerlink" href="#attribute-pattern" title="永久链接至标题">#</a></h3>
-<p>Check that the operator matched by the pattern has an attribute with a particular value.</p>
+<h3>属性模式<a class="headerlink" href="#attribute-pattern" title="永久链接至标题">#</a></h3>
+<p>检查与模式匹配的算子是否具有具有特定值的属性。</p>
 </section>
 <section id="variable-pattern">
-<h3>Variable Pattern<a class="headerlink" href="#variable-pattern" title="永久链接至标题">#</a></h3>
-<p>Check that the expression is a relay Variable, and optional provide a name to match to the Variable name.</p>
+<h3>变量模式<a class="headerlink" href="#variable-pattern" title="永久链接至标题">#</a></h3>
+<p>检查表达式是否是 relay 变量，并可选地提供与变量名匹配的名称。</p>
 </section>
 <section id="alternate">
-<h3>Alternate<a class="headerlink" href="#alternate" title="永久链接至标题">#</a></h3>
-<p>Either match the first pattern or the second pattern.</p>
+<h3>备用<a class="headerlink" href="#alternate" title="永久链接至标题">#</a></h3>
+<p>要么匹配第一种模式，要么匹配第二种模式。</p>
 </section>
 <section id="domination">
 <h3>Domination<a class="headerlink" href="#domination" title="永久链接至标题">#</a></h3>
-<p>Match child pattern, find a match for the parent pattern, insuring that the child ultimately dominates the parent (i.e., no nodes outside the pattern use outputs of the parent), and that ever node between the child and the pattern matches the path pattern.</p>
+<p>匹配子模式，找到父模式的匹配，确保子模式最终主导父模式（即，模式之外的节点没有使用父模式的输出），并且子模式和模式之间的任何节点都匹配路径模式。</p>
 </section>
 <section id="function-pattern">
-<h3>Function Pattern<a class="headerlink" href="#function-pattern" title="永久链接至标题">#</a></h3>
-<p>Match a Function with a body and parameters</p>
+<h3>函数模式<a class="headerlink" href="#function-pattern" title="永久链接至标题">#</a></h3>
+<p>用函数体和参数匹配函数</p>
 </section>
 <section id="if-pattern">
-<h3>If Pattern<a class="headerlink" href="#if-pattern" title="永久链接至标题">#</a></h3>
-<p>Match an If with condition, true branch, and false branch</p>
+<h3>If 模式<a class="headerlink" href="#if-pattern" title="永久链接至标题">#</a></h3>
+<p>将 If 与条件、真分支和假分支匹配</p>
 </section>
 <section id="let-pattern">
-<h3>Let Pattern<a class="headerlink" href="#let-pattern" title="永久链接至标题">#</a></h3>
-<p>Match a Let with a variable, value, and body</p>
+<h3>Let 模式<a class="headerlink" href="#let-pattern" title="永久链接至标题">#</a></h3>
+<p>将 Let 与变量、值和 body 匹配</p>
 </section>
 </section>
 <section id="applications">
-<h2>Applications<a class="headerlink" href="#applications" title="永久链接至标题">#</a></h2>
-<p>The pattern language provides not only the pattern matching but also pattern processing.
-Here we introduce two pattern processing approaches and provide some examples.</p>
+<h2>应用<a class="headerlink" href="#applications" title="永久链接至标题">#</a></h2>
+<p>模式语言不仅提供模式匹配，还提供模式处理。这里将介绍两种模式处理方法并提供一些示例。</p>
 <section id="pattern-rewriting">
-<h3>Pattern Rewriting<a class="headerlink" href="#pattern-rewriting" title="永久链接至标题">#</a></h3>
-<p>If you would like to replace the matched pattern with another subgraph, you can leverage
-the <code class="docutils literal notranslate"><span class="pre">rewrite</span></code> transformation. Here is an example of rewriting a series of arithmetic operators
-with a single batch_norm op. The constructor parameter <code class="docutils literal notranslate"><span class="pre">require_type</span></code> indicates whether InferType
-is required to be run before the callback.</p>
+<h3>模式重写<a class="headerlink" href="#pattern-rewriting" title="永久链接至标题">#</a></h3>
+<p>如果您想用另一个子图替换匹配的模式，您可以利用 <code class="docutils literal notranslate"><span class="pre">rewrite</span></code> 变换。下面是使用单个 batch_norm op 重写一系列算术算子的示例。构造函数参数 <code class="docutils literal notranslate"><span class="pre">require_type</span></code> 指示是否需要在回调之前运行 InferType。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BatchnormCallback</span><span class="p">(</span><span class="n">DFPatternCallback</span><span class="p">):</span>
     <span class="c1"># A callback class to rewrite the matched pattern to a batch_norm op.</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">require_type</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -2120,17 +2106,12 @@ is required to be run before the callback.</p>
     <span class="k">assert</span> <span class="n">tvm</span><span class="o">.</span><span class="n">ir</span><span class="o">.</span><span class="n">structural_equal</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">relay</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">batch_norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-5</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>The function <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">callback(self,</span> <span class="pre">pre,</span> <span class="pre">post,</span> <span class="pre">node_map)</span></code> will be invoked when the rewriter matches
-<code class="docutils literal notranslate"><span class="pre">self.pattern</span></code>. <code class="docutils literal notranslate"><span class="pre">node_map</span></code> is a dictionary mapping from pattern nodes to matched nodes in the graph.</p>
-<p>The callback function will be invoked recursively on the returned pattern until the pattern stops changing. As a result, if <code class="docutils literal notranslate"><span class="pre">self.pattern</span></code> matches any part of the graph that the callback returned, the rewriter will run in a loop. If you want to avoid multiple rewrites, you can pass a <code class="docutils literal notranslate"><span class="pre">rewrite_once=True</span></code> parameter to the constructor.</p>
+<p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">callback(self,</span> <span class="pre">pre,</span> <span class="pre">post,</span> <span class="pre">node_map)</span></code> 将在 rewriter 匹配 <code class="docutils literal notranslate"><span class="pre">self.pattern</span></code> 时被调用。<code class="docutils literal notranslate"><span class="pre">node_map</span></code> 是从模式节点映射到图中匹配节点的字典。</p>
+<p>回调函数将在返回的模式上递归调用，直到模式停止变化。因此，如果 <code class="docutils literal notranslate"><span class="pre">self.pattern</span></code> 匹配回调返回的图的任何部分，rewriter 将循环运行。如果你想避免多次重写，你可以向构造函数传递 <code class="docutils literal notranslate"><span class="pre">rewrite_once=True</span></code> 参数。</p>
 </section>
 <section id="pattern-partitioning">
-<h3>Pattern Partitioning<a class="headerlink" href="#pattern-partitioning" title="永久链接至标题">#</a></h3>
-<p>If you would like to perform a more complex processing for matched subgraphs and you are not
-satisfied with <code class="docutils literal notranslate"><span class="pre">rewrite</span></code>, you may consider partitioning the matched subgraphs to a separate
-Relay function and perform other processes to the function. Here we use <code class="docutils literal notranslate"><span class="pre">pattern.partition</span></code>
-to create a new Relay function for each matched subgraph. The functionality is similar to
-the op fusion pass in TVM:</p>
+<h3>模式分区<a class="headerlink" href="#pattern-partitioning" title="永久链接至标题">#</a></h3>
+<p>如果您想对匹配的子图执行更复杂的处理，而您不满足于 <code class="docutils literal notranslate"><span class="pre">rewrite</span></code>，您可以考虑将匹配的子图划分到单独的 Relay 函数，并对该函数执行其他处理。这里使用 <code class="docutils literal notranslate"><span class="pre">pattern.partition</span></code> 为每个匹配的子图创建新的 Relay 函数。该功能类似于 TVM 中的 op 融合 pass：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># A pattern matching conv2d+relu.</span>
 <span class="n">pattern</span> <span class="o">=</span> <span class="n">is_op</span><span class="p">(</span><span class="s2">&quot;nn.relu&quot;</span><span class="p">)(</span><span class="n">is_op</span><span class="p">(</span><span class="s2">&quot;nn.conv2d&quot;</span><span class="p">)(</span><span class="n">wildcard</span><span class="p">(),</span> <span class="n">wildcard</span><span class="p">()))</span>
 
@@ -2159,7 +2140,7 @@ the op fusion pass in TVM:</p>
 <span class="c1"># %1(%x, %w, %b)</span>
 </pre></div>
 </div>
-<p>Note that you can also specify the attributes for the created functions:</p>
+<p>注意，你也可以为创建的函数指定属性：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pattern</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">relu</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Composite&#39;</span><span class="p">:</span> <span class="s1">&#39;one_layer&#39;</span><span class="p">}))</span>
 <span class="c1"># free_var %x: Tensor[(1, 3, 224, 224), float32]</span>
 <span class="c1"># free_var %w: Tensor[(3, 3, 3, 3), float32]</span>
@@ -2173,9 +2154,7 @@ the op fusion pass in TVM:</p>
 <span class="c1"># %1(%x, %w, %b)</span>
 </pre></div>
 </div>
-<p>If you need a customized checking function that cannot be specified using pattern language,
-you can specify <code class="docutils literal notranslate"><span class="pre">check</span></code> function when partitioning. The following example demonstrates a
-case that checks input data layout of a subgraph:</p>
+<p>如果需要使用模式语言无法指定的自定义检查函数，可以在分区时指定 <code class="docutils literal notranslate"><span class="pre">check</span></code> 函数。下面的例子是演示检查子图输入数据布局的案例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">pre</span><span class="p">):</span>
     <span class="n">conv</span> <span class="o">=</span> <span class="n">pre</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">conv</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">data_layout</span> <span class="o">==</span> <span class="s2">&quot;NCHW&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">bool</span><span class="p">(</span><span class="n">conv</span><span class="o">.</span><span class="n">checked_type</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
@@ -2183,9 +2162,7 @@ case that checks input data layout of a subgraph:</p>
 <span class="n">pattern</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">relu</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="n">check</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In this example, we check if the first argument of the matched subgraph (i.e., <code class="docutils literal notranslate"><span class="pre">pre.args[0]</span></code>)
-has data layout “NCHW” and if its batch size is 1. This feature is useful if the conditions
-of matching a pattern cannot be verified by analyzing the pattern itself.</p>
+<p>在这个例子中，检查匹配的子图的第一个参数（即 <code class="docutils literal notranslate"><span class="pre">pre.args[0]</span></code> ）是否有数据布局 “NCHW” 以及它的批大小是否为 1。如果模式匹配的条件不能通过分析模式本身来验证，那么这个特性就很有用。</p>
 </section>
 </section>
 </section>
@@ -2222,7 +2199,7 @@ of matching a pattern cannot be verified by analyzing the pattern itself.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-14, 12:31:46.<br/>
+    Last updated on 2022-06-16, 12:34:18.<br/>
 </p>
         </footer>
     </div>

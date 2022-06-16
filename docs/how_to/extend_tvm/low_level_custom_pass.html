@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Writing a Customized Pass &#8212; TVM  文档</title>
+    <title>编写定制 Pass &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -49,7 +49,7 @@
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
     <link rel="next" title="How to Use TVM Pass Infra" href="use_pass_infra.html" />
-    <link rel="prev" title="Extend TVM" href="index.html" />
+    <link rel="prev" title="拓展 TVM" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -723,7 +723,7 @@
      </li>
      <li class="toctree-l3 current active has-children">
       <a class="reference internal" href="index.html">
-       Extend TVM
+       拓展 TVM
       </a>
       <input checked="" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
       <label for="toctree-checkbox-18">
@@ -733,7 +733,7 @@
       <ul class="current">
        <li class="toctree-l4 current active">
         <a class="current reference internal" href="#">
-         Writing a Customized Pass
+         编写定制 Pass
         </a>
        </li>
        <li class="toctree-l4">
@@ -1077,7 +1077,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../reference/langref/relay_pattern.html">
-       Pattern Matching in Relay
+       Relay 中的模式匹配
       </a>
      </li>
      <li class="toctree-l3">
@@ -1392,7 +1392,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/docs/how_to/extend_tvm/low_level_custom_pass.rst.txt"
+        <a href="../../../_sources/docs/how_to/extend_tvm/low_level_custom_pass.ipynb.txt"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -1403,7 +1403,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.rst</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -1452,13 +1452,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prerequisites">
-   Prerequisites
+  <a class="reference internal nav-link" href="#id1">
+   前提条件
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#writing-a-pass">
-   Writing a Pass
+  <a class="reference internal nav-link" href="#id2">
+   编写 Pass
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -1467,20 +1467,20 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ir-transformation">
-     IR Transformation
+    <a class="reference internal nav-link" href="#ir">
+     IR 变换
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#glue-to-lowering">
-   Glue to Lowering
+  <a class="reference internal nav-link" href="#glue-lower-pass">
+   Glue 到 lower pass
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quick-view">
-   Quick View
+  <a class="reference internal nav-link" href="#id3">
+   快速视图
   </a>
  </li>
 </ul>
@@ -1492,7 +1492,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Writing a Customized Pass</h1>
+                <h1>编写定制 Pass</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1503,13 +1503,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prerequisites">
-   Prerequisites
+  <a class="reference internal nav-link" href="#id1">
+   前提条件
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#writing-a-pass">
-   Writing a Pass
+  <a class="reference internal nav-link" href="#id2">
+   编写 Pass
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -1518,20 +1518,20 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ir-transformation">
-     IR Transformation
+    <a class="reference internal nav-link" href="#ir">
+     IR 变换
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#glue-to-lowering">
-   Glue to Lowering
+  <a class="reference internal nav-link" href="#glue-lower-pass">
+   Glue 到 lower pass
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quick-view">
-   Quick View
+  <a class="reference internal nav-link" href="#id3">
+   快速视图
   </a>
  </li>
 </ul>
@@ -1544,40 +1544,32 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="sphx-glr-download-link-note admonition note">
-<p class="admonition-title">备注</p>
-<p>Click <a class="reference external" href="https://tvm.apache.org/docs/how_to/extend_tvm/low_level_custom_pass.html#sphx-glr-download-how-to-extend-tvm-low-level-custom-pass-py" title="(在 tvm v0.9.dev0)"><span class="xref std std-ref">here</span></a>
-to download the full example code</p>
-</div>
-<section class="sphx-glr-example-title" id="writing-a-customized-pass">
-<span id="sphx-glr-how-to-extend-tvm-low-level-custom-pass-py"></span><h1>Writing a Customized Pass<a class="headerlink" href="#writing-a-customized-pass" title="永久链接至标题">#</a></h1>
-<p><strong>Author</strong>: <a class="reference external" href="https://were.github.io">Jian Weng</a></p>
-<p>TVM is a framework that abstracts away the heterogenity of machine learning accelerators.
-Sometimes users may want customize some analysis and IR transformations
-to adapt TVM to their own specialized hardware. This tutorial helps users write
-a customized pass in TVM.</p>
-<section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="永久链接至标题">#</a></h2>
-<p>Before reading this tutorial, we assume readers have already known these topics well:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="pass">
+<h1>编写定制 Pass<a class="headerlink" href="#pass" title="永久链接至标题">#</a></h1>
+<p><strong>原作者</strong>: <a class="reference external" href="https://were.github.io">Jian Weng</a></p>
+<p>TVM 是抽象出机器学习加速器异质性（heterogenity）的框架。有时用户可能希望定制一些分析和 IR 变换，使 TVM 适应他们自己的专用硬件。本教程帮助用户在 TVM 中编写定制的pass。</p>
+<section id="id1">
+<h2>前提条件<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
+<p>在阅读本教程之前，假设读者已经很好地了解了这些主题：</p>
 <ul class="simple">
-<li><p>Writing an algorithm in TVM and schedule it. Otherwise, see example tutorials like
-<a class="reference internal" href="../optimize_operators/opt_gemm.html#opt-gemm"><span class="std std-ref">How to optimize GEMM on CPU</span></a>.</p></li>
-<li><p>The basic structure of HalideIR. Otherwise, see <code class="docutils literal notranslate"><span class="pre">HalideIR/src/ir/IR.h</span></code> to learn what
-attributes of IR nodes are defined.</p></li>
-<li><p>Visitor design pattern. Otherwise, check the
-<a class="reference external" href="https://docs.python.org/3/library/ast.html">Python AST module</a> to see how an AST
-visitor is implemented.</p></li>
-<li><p>How a Schedule is lowered to either an IRModule class or a LLVM module. Otherwise,
-take a look at <code class="docutils literal notranslate"><span class="pre">python/tvm/build_module.py</span></code> to get some basics.</p></li>
+<li><p>在 TVM 中编写算法并对其进行调度。否则，请参阅示例教程，如 <a class="reference internal" href="../optimize_operators/opt_gemm.html#opt-gemm"><span class="std std-ref">How to optimize GEMM on CPU</span></a>。</p></li>
+<li><p>HalideIR 的基本结构。否则，请参见 <code class="docutils literal notranslate"><span class="pre">HalideIR/src/ir/IR.h</span></code> 来了解 IR 节点定义了哪些属性。</p></li>
+<li><p>访问者设计模式（Visitor design pattern）。否则，请查看 <a class="reference external" href="https://docs.python.org/3/library/ast.html">Python AST 模块</a>，查看 AST visitor 是如何实现的。</p></li>
+<li><p>如何将 Schedule 降格（lower）为 IRModule class 或 LLVM module。否则，请查看 <code class="docutils literal notranslate"><span class="pre">python/tvm/build_module.py</span></code> 以获得一些基础知识。</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tvm</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tvm</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">te</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># import numpy as np</span>
 </pre></div>
 </div>
-<p>We first write a very simple vector add and build it with the default schedule. Then, we use
-our customized lowering pass to manipulate the IR directly instead of using schedule primitives.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">tir</span><span class="o">.</span><span class="n">const</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="s2">&quot;int32&quot;</span><span class="p">)</span>
+</div>
+</div>
+<p>编写非常简单的向量加法，并使用默认的调度来构建它。然后，使用定制的 lower pass 直接操作 IR，而不是使用调度原语（primitives.）。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">tir</span><span class="o">.</span><span class="n">const</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="s2">&quot;int32&quot;</span><span class="p">)</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">placeholder</span><span class="p">((</span><span class="n">n</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">placeholder</span><span class="p">((</span><span class="n">n</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">compute</span><span class="p">((</span><span class="n">n</span><span class="p">,),</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">)</span>
@@ -1587,49 +1579,60 @@ our customized lowering pass to manipulate the IR directly instead of using sche
 <span class="nb">print</span><span class="p">(</span><span class="n">ir</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>@main = primfn(a_1: handle, b_1: handle, c_1: handle) -&gt; ()
+  attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
+  buffers = {a: Buffer(a_2: Pointer(float32), float32, [128], []),
+             b: Buffer(b_2: Pointer(float32), float32, [128], []),
+             c: Buffer(c_2: Pointer(float32), float32, [128], [])}
+  buffer_map = {a_1: a, b_1: b, c_1: c}
+  preflattened_buffer_map = {a_1: a_3: Buffer(a_2, float32, [128], []), b_1: b_3: Buffer(b_2, float32, [128], []), c_1: c_3: Buffer(c_2, float32, [128], [])} {
+  for (i: int32, 0, 128) {
+    c[i] = (a[i] + b[i])
+  }
+}
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="writing-a-pass">
-<h2>Writing a Pass<a class="headerlink" href="#writing-a-pass" title="永久链接至标题">#</a></h2>
-<p>Essentially, an “IR transformation pass” is a function which maps a statement to a new statement.
-Thus, we define this vectorize function and implement it step by step.</p>
-<p>TVM already provides two class for users to both analyze and transform IR.</p>
+<section id="id2">
+<h2>编写 Pass<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
+<p>本质上，“IR 变换 pass” 是将语句映射到新语句的函数。因此，我们定义了这个向量化函数，并逐步实现它。</p>
+<p>TVM 已经为用户提供了两个类来分析和变换 IR。</p>
 <section id="ir-visitor">
 <h3>IR Visitor<a class="headerlink" href="#ir-visitor" title="永久链接至标题">#</a></h3>
-<p>We can use <code class="docutils literal notranslate"><span class="pre">tvm.tir.stmt_functor.post_order_visit(stmt,</span> <span class="pre">func)</span></code> to gather information from the Halide IR.
-<code class="docutils literal notranslate"><span class="pre">func</span></code> is a function callback. This function will be called before exiting the current IR node,
-i.e. post-order visit. Then we leverage side effects to store the result of IR visit, because the
-return value of <code class="docutils literal notranslate"><span class="pre">func</span></code> will be ignored.</p>
-<div class="admonition note">
+<p>可以使用 <code class="docutils literal notranslate"><span class="pre">tvm.tir.stmt_functor.post_order_visit(stmt,</span> <span class="pre">func)</span></code> 从 Halide IR 收集信息。<code class="docutils literal notranslate"><span class="pre">func</span></code> 是回调函数。该函数将在退出当前 IR 节点之前调用，即后序访问（post-order visit）。然后利用副作用来存储 IR 访问的结果，因为 <code class="docutils literal notranslate"><span class="pre">func</span></code> 的返回值会被忽略。</p>
+<div class="alert alert-info admonition note">
 <p class="admonition-title">备注</p>
-<p>You MUST use some array to store the result of IR visit. Even the value is a single variable.
-This is mainly due to the constraints in the Python-C runtime. The variable values will be
-refreshed every recursion but the array values will be preserved.</p>
+<p>你必须使用一些数组来存储 IR 访问的结果。甚至值也是 single 变量。这主要是由于 Python-C 运行时中的约束。每次递归都会刷新变量值，但保留数组值。</p>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">loops</span> <span class="o">=</span> <span class="p">[]</span>
-
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loops</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">def</span> <span class="nf">find_width8</span><span class="p">(</span><span class="n">op</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Find all the &#39;tir.For&#39; nodes whose extent can be divided by 8.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;找出所有范围能被 8 除的 &#39;tir.For&#39; 节点。&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">tvm</span><span class="o">.</span><span class="n">tir</span><span class="o">.</span><span class="n">For</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">extent</span><span class="p">,</span> <span class="n">tvm</span><span class="o">.</span><span class="n">tir</span><span class="o">.</span><span class="n">IntImm</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">op</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">value</span> <span class="o">%</span> <span class="mi">8</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">loops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="ir-transformation">
-<h3>IR Transformation<a class="headerlink" href="#ir-transformation" title="永久链接至标题">#</a></h3>
-<p>The transformation interface is slightly different from the visitor interface. There is only a
-post-order callback in the visitor, but transformation visitor supports both a pre-order and a
-post-order callback. If you want to keep the origin IR node, just return None. If you want to
-change the current node to some node, use TVM IR maker interface to build it and return
-this value.</p>
-<div class="admonition note">
-<p class="admonition-title">备注</p>
-<p>If the pre-order function is called and returns a value which is not None, the post-order
-function will be skipped.</p>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">vectorize8</span><span class="p">(</span><span class="n">op</span><span class="p">):</span>
+</div>
+</section>
+<section id="ir">
+<h3>IR 变换<a class="headerlink" href="#ir" title="永久链接至标题">#</a></h3>
+<p>变换（transformation）接口与 visitor 接口略有不同。在 visitor 中只有 post-order 回调，但是  transformation visitor 同时支持 pre-order 和 post-order 回调。如果您想保留原始 IR 节点，只需返回 None。如果您想将当前节点更改为某个节点，请使用 TVM IR maker 接口来构建它并返回此值。</p>
+<div class="alert alert-info admonition note">
+<p class="admonition-title">备注</p>
+<p>如果 pre-order 函数被调用并返回非 None 的值，则 post-order 函数将被跳过。</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">vectorize8</span><span class="p">(</span><span class="n">op</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Split can vectorize the loops found in `find_width8`.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">loops</span><span class="p">:</span>
         <span class="n">extent</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">value</span>
@@ -1649,48 +1652,67 @@ function will be skipped.</p>
     <span class="n">tvm</span><span class="o">.</span><span class="n">tir</span><span class="o">.</span><span class="n">stmt_functor</span><span class="o">.</span><span class="n">post_order_visit</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">find_width8</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">loops</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">sf</span>
+        <span class="k">return</span> <span class="n">f</span>
 
     <span class="c1"># The last list arugment indicates what kinds of nodes will be transformed.</span>
     <span class="c1"># Thus, in this case only `For` nodes will call `vectorize8`</span>
     <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">with_body</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">tir</span><span class="o">.</span><span class="n">stmt_functor</span><span class="o">.</span><span class="n">ir_transform</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">vectorize8</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;tir.For&quot;</span><span class="p">]))</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="glue-to-lowering">
-<h2>Glue to Lowering<a class="headerlink" href="#glue-to-lowering" title="永久链接至标题">#</a></h2>
-<p>So far, we are done with writing this IR transformation pass. What we need to do next is to glue
-this pass to TVM’s lower pass.</p>
-<p>In this case, we inject the pass written above into the TVM standard lowering
-pass by feeding <strong>a list of tuple</strong> as argument to <code class="docutils literal notranslate"><span class="pre">tir.add_lower_pass</span></code>. “Tuple” indicates different
-phases of lowering. In TVM, there are four phases of lowering and user-customized ones will be
-called after each phase is done.</p>
-<div class="admonition note">
-<p class="admonition-title">备注</p>
-<dl class="simple">
-<dt>Here are the essential transformations done by each phase:</dt><dd><ul class="simple">
-<li><p>Phase 0 generates the raw IR and loop levels.</p></li>
-<li><p>Phase 1 flattens the array storage.</p></li>
-<li><p>Phase 2 transforms loops, like unroll, vectorization and thread-binding.</p></li>
-<li><p>Phase 3 does some cleanup work.</p></li>
-</ul>
-</dd>
-</dl>
 </div>
-<p>Thus, a good place to put this transformation pass is just after Phase 1.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;tir.add_lower_pass&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="n">vectorize</span><span class="p">)]}):</span>
+</div>
+</section>
+</section>
+<section id="glue-lower-pass">
+<h2>Glue 到 lower pass<a class="headerlink" href="#glue-lower-pass" title="永久链接至标题">#</a></h2>
+<p>到目前为止，已经完成了这个 IR 变换过程。接下来需要做的是将这个 pass 粘合到 TVM 的 lower pass 上。</p>
+<p>在本例中，通过向 <code class="docutils literal notranslate"><span class="pre">tir.add_lower_pass</span></code> 提供元组参数列表，将上面编写的 pass 注入到 TVM 标准 lower pass 中。“Tuple” 表明 lower 的不同阶段。在 TVM 中，有四个 lower 阶段，每个阶段(phase)完成后将调用用户自定义的阶段。</p>
+<div class="alert alert-info admonition note">
+<p class="admonition-title">备注</p>
+<p>以下是每个阶段所做的基本变换：</p>
+<ul class="simple">
+<li><p>阶段 0：生成 raw IR 和循环级别（loop levels）。</p></li>
+<li><p>阶段 1：对 array storage 进行扁平化（flatten）。</p></li>
+<li><p>阶段 2：变换循环（transforms loops）：如 unroll、vectorization 和 thread-binding。</p></li>
+<li><p>阶段 3：做一些清理工作。</p></li>
+</ul>
+</div>
+<p>因此，将这个变换过程放置在阶段 1 之后是一个很好的地方。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;tir.add_lower_pass&quot;</span><span class="p">:</span>
+                                       <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="n">vectorize</span><span class="p">)]}):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">sch</span><span class="p">,</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">]))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>@main = primfn(a_1: handle, b_1: handle, c_1: handle) -&gt; ()
+  attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
+  buffers = {a: Buffer(a_2: Pointer(float32), float32, [128], []),
+             b: Buffer(b_2: Pointer(float32), float32, [128], []),
+             c: Buffer(c_2: Pointer(float32), float32, [128], [])}
+  buffer_map = {a_1: a, b_1: b, c_1: c}
+  preflattened_buffer_map = {a_1: a_3: Buffer(a_2, float32, [128], []), b_1: b_3: Buffer(b_2, float32, [128], []), c_1: c_3: Buffer(c_2, float32, [128], [])} {
+  for (i.outer: int32, 0, 16) {
+    let cse_var_1: int32 = (i.outer*8)
+    c[ramp(cse_var_1, 1, 8)] = (a[ramp(cse_var_1, 1, 8)] + b[ramp(cse_var_1, 1, 8)])
+  }
+}
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="quick-view">
-<h2>Quick View<a class="headerlink" href="#quick-view" title="永久链接至标题">#</a></h2>
-<p>This tutorial gives a quick view of writing a customized IR transformation pass:
-- Use <code class="docutils literal notranslate"><span class="pre">tvm.tir.stmt_functor.post_order_visit</span></code> to gather information on each IR nodes.
-- Use <code class="docutils literal notranslate"><span class="pre">tvm.tir.stmt_functor.ir_transform</span></code> to transform IR nodes.
-- Wrap up two above to write an IR-transformation function.
-- Use <code class="docutils literal notranslate"><span class="pre">tvm.transform.PassContext</span></code> to put this function to TVM lowering pass</p>
+<section id="id3">
+<h2>快速视图<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h2>
+<p>本教程提供了编写自定义 IR 变换 pass 的快速视图：</p>
+<ul class="simple">
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">tvm.tir.stmt_functor.post_order_visit</span></code> 收集每个 IR 节点的信息。</p></li>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">tvm.tir.stmt_functor.ir_transform</span></code> 变换 IR 节点。</p></li>
+<li><p>包装上面的两个，写出 IR-transformation 函数。</p></li>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">tvm.transform.PassContext</span></code> 将该函数放入 TVM lowering pass</p></li>
+</ul>
 </section>
 </section>
 
@@ -1706,7 +1728,7 @@ called after each phase is done.</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">上一页</p>
-            <p class="prev-next-title">Extend TVM</p>
+            <p class="prev-next-title">拓展 TVM</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="use_pass_infra.html" title="下一页 页">
@@ -1726,7 +1748,7 @@ called after each phase is done.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-14, 12:31:46.<br/>
+    Last updated on 2022-06-16, 12:34:18.<br/>
 </p>
         </footer>
     </div>

@@ -723,7 +723,7 @@
      </li>
      <li class="toctree-l3 current active has-children">
       <a class="reference internal" href="index.html">
-       Extend TVM
+       拓展 TVM
       </a>
       <input checked="" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
       <label for="toctree-checkbox-18">
@@ -733,7 +733,7 @@
       <ul class="current">
        <li class="toctree-l4">
         <a class="reference internal" href="low_level_custom_pass.html">
-         Writing a Customized Pass
+         编写定制 Pass
         </a>
        </li>
        <li class="toctree-l4">
@@ -1077,7 +1077,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../reference/langref/relay_pattern.html">
-       Pattern Matching in Relay
+       Relay 中的模式匹配
       </a>
      </li>
      <li class="toctree-l3">
@@ -1392,7 +1392,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/docs/how_to/extend_tvm/use_pass_instrument.rst.txt"
+        <a href="../../../_sources/docs/how_to/extend_tvm/use_pass_instrument.ipynb.txt"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -1403,7 +1403,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.rst</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -1540,23 +1540,20 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="sphx-glr-download-link-note admonition note">
-<p class="admonition-title">备注</p>
-<p>Click <a class="reference external" href="https://tvm.apache.org/docs/how_to/extend_tvm/use_pass_instrument.html#sphx-glr-download-how-to-extend-tvm-use-pass-instrument-py" title="(在 tvm v0.9.dev0)"><span class="xref std std-ref">here</span></a>
-to download the full example code</p>
-</div>
-<section class="sphx-glr-example-title" id="how-to-use-tvm-pass-instrument">
-<span id="tutorial-use-pass-instrument"></span><span id="sphx-glr-how-to-extend-tvm-use-pass-instrument-py"></span><h1>How to Use TVM Pass Instrument<a class="headerlink" href="#how-to-use-tvm-pass-instrument" title="永久链接至标题">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="how-to-use-tvm-pass-instrument">
+<h1>How to Use TVM Pass Instrument<a class="headerlink" href="#how-to-use-tvm-pass-instrument" title="永久链接至标题">#</a></h1>
 <p><strong>Author</strong>: <a class="reference external" href="https://github.com/chiwwang">Chi-Wei Wang</a></p>
 <p>As more and more passes are implemented, it becomes useful to instrument
 pass execution, analyze per-pass effects, and observe various events.</p>
-<p>We can instrument passes by providing a list of <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.instrument.PassInstrument" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.ir.instrument.PassInstrument</span></code></a>
-instances to <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.PassContext" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.PassContext</span></code></a>. We provide a pass instrument
-for collecting timing information (<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.instrument.PassTimingInstrument" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.ir.instrument.PassTimingInstrument</span></code></a>),
-but an extension mechanism is available via the <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.instrument.pass_instrument" title="(在 tvm v0.9.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.instrument.pass_instrument()</span></code></a> decorator.</p>
-<p>This tutorial demostrates how developers can use <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> to instrument
-passes. Please also refer to the <a class="reference internal" href="../../arch/pass_infra.html#pass-infra"><span class="std std-ref">Pass Infrastructure</span></a>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tvm</span>
+<p>We can instrument passes by providing a list of :py:class:<code class="docutils literal notranslate"><span class="pre">tvm.ir.instrument.PassInstrument</span></code>
+instances to :py:class:<code class="docutils literal notranslate"><span class="pre">tvm.transform.PassContext</span></code>. We provide a pass instrument
+for collecting timing information (:py:class:<code class="docutils literal notranslate"><span class="pre">tvm.ir.instrument.PassTimingInstrument</span></code>),
+but an extension mechanism is available via the :py:func:<code class="docutils literal notranslate"><span class="pre">tvm.instrument.pass_instrument</span></code> decorator.</p>
+<p>This tutorial demonstrates how developers can use <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> to instrument
+passes. Please also refer to the <code class="docutils literal notranslate"><span class="pre">pass-infra</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tvm</span>
 <span class="kn">import</span> <span class="nn">tvm.relay</span> <span class="k">as</span> <span class="nn">relay</span>
 <span class="kn">from</span> <span class="nn">tvm.relay.testing</span> <span class="kn">import</span> <span class="n">resnet</span>
 <span class="kn">from</span> <span class="nn">tvm.contrib.download</span> <span class="kn">import</span> <span class="n">download_testdata</span>
@@ -1567,10 +1564,14 @@ passes. Please also refer to the <a class="reference internal" href="../../arch/
 <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 <section id="create-an-example-relay-program">
 <h2>Create An Example Relay Program<a class="headerlink" href="#create-an-example-relay-program" title="永久链接至标题">#</a></h2>
 <p>We use pre-defined resnet-18 network in Relay.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">num_of_image_class</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">image_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">)</span>
 <span class="n">output_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_of_image_class</span><span class="p">)</span>
@@ -1579,13 +1580,17 @@ passes. Please also refer to the <a class="reference internal" href="../../arch/
 <span class="nb">print</span><span class="p">(</span><span class="n">relay_mod</span><span class="o">.</span><span class="n">astext</span><span class="p">(</span><span class="n">show_meta_data</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+</div>
 </section>
 <section id="create-passcontext-with-instruments">
 <h2>Create PassContext With Instruments<a class="headerlink" href="#create-passcontext-with-instruments" title="永久链接至标题">#</a></h2>
 <p>To run all passes with an instrument, pass it via the <code class="docutils literal notranslate"><span class="pre">instruments</span></code> argument to
 the <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> constructor. A built-in <code class="docutils literal notranslate"><span class="pre">PassTimingInstrument</span></code> is used to
 profile the execution time of each passes.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">timing_inst</span> <span class="o">=</span> <span class="n">PassTimingInstrument</span><span class="p">()</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">timing_inst</span> <span class="o">=</span> <span class="n">PassTimingInstrument</span><span class="p">()</span>
 <span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">instruments</span><span class="o">=</span><span class="p">[</span><span class="n">timing_inst</span><span class="p">]):</span>
     <span class="n">relay_mod</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">InferType</span><span class="p">()(</span><span class="n">relay_mod</span><span class="p">)</span>
     <span class="n">relay_mod</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">FoldScaleAxis</span><span class="p">()(</span><span class="n">relay_mod</span><span class="p">)</span>
@@ -1595,6 +1600,8 @@ profile the execution time of each passes.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">profiles</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 </section>
 <section id="use-current-passcontext-with-instruments">
 <h2>Use Current PassContext With Instruments<a class="headerlink" href="#use-current-passcontext-with-instruments" title="永久链接至标题">#</a></h2>
@@ -1603,8 +1610,10 @@ profile the execution time of each passes.</p>
 Note that <code class="docutils literal notranslate"><span class="pre">override_instruments</span></code> executes <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> method
 if any instrument already exists. Then it switches to new instruments
 and calls <code class="docutils literal notranslate"><span class="pre">enter_pass_ctx</span></code> method of new instruments.
-Refer to following sections and <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.instrument.pass_instrument" title="(在 tvm v0.9.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.instrument.pass_instrument()</span></code></a> for these methods.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cur_pass_ctx</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="o">.</span><span class="n">current</span><span class="p">()</span>
+Refer to following sections and :py:func:<code class="docutils literal notranslate"><span class="pre">tvm.instrument.pass_instrument</span></code> for these methods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cur_pass_ctx</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="o">.</span><span class="n">current</span><span class="p">()</span>
 <span class="n">cur_pass_ctx</span><span class="o">.</span><span class="n">override_instruments</span><span class="p">([</span><span class="n">timing_inst</span><span class="p">])</span>
 <span class="n">relay_mod</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">InferType</span><span class="p">()(</span><span class="n">relay_mod</span><span class="p">)</span>
 <span class="n">relay_mod</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">FoldScaleAxis</span><span class="p">()(</span><span class="n">relay_mod</span><span class="p">)</span>
@@ -1613,24 +1622,32 @@ Refer to following sections and <a class="reference external" href="https://tvm.
 <span class="nb">print</span><span class="p">(</span><span class="n">profiles</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Register empty list to clear existing instruments.</p>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> of <code class="docutils literal notranslate"><span class="pre">PassTimingInstrument</span></code> is called.
 Profiles are cleared so nothing is printed.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cur_pass_ctx</span><span class="o">.</span><span class="n">override_instruments</span><span class="p">([])</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cur_pass_ctx</span><span class="o">.</span><span class="n">override_instruments</span><span class="p">([])</span>
 <span class="c1"># Uncomment the call to .render() to see a warning like:</span>
 <span class="c1"># Warning: no passes have been profiled, did you enable pass profiling?</span>
 <span class="c1"># profiles = timing_inst.render()</span>
 </pre></div>
 </div>
+</div>
+</div>
 </section>
 <section id="create-customized-instrument-class">
 <h2>Create Customized Instrument Class<a class="headerlink" href="#create-customized-instrument-class" title="永久链接至标题">#</a></h2>
 <p>A customized instrument class can be created using the
-<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.instrument.pass_instrument" title="(在 tvm v0.9.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.instrument.pass_instrument()</span></code></a> decorator.</p>
+:py:func:<code class="docutils literal notranslate"><span class="pre">tvm.instrument.pass_instrument</span></code> decorator.</p>
 <p>Let’s create an instrument class which calculates the change in number of
 occurrences of each operator caused by each pass. We can look at <code class="docutils literal notranslate"><span class="pre">op.name</span></code> to
 find the name of each operator. And we do this before and after passes to calculate the difference.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@pass_instrument</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@pass_instrument</span>
 <span class="k">class</span> <span class="nc">RelayCallNodeDiffer</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_op_diff</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1704,6 +1721,8 @@ find the name of each operator. And we do this before and after passes to calcul
         <span class="k">return</span> <span class="n">ret</span>
 </pre></div>
 </div>
+</div>
+</div>
 </section>
 <section id="apply-passes-and-multiple-instrument-classes">
 <h2>Apply Passes and Multiple Instrument Classes<a class="headerlink" href="#apply-passes-and-multiple-instrument-classes" title="永久链接至标题">#</a></h2>
@@ -1713,7 +1732,9 @@ obeying the order of <code class="docutils literal notranslate"><span class="pre
 So for instrument classes like <code class="docutils literal notranslate"><span class="pre">PassTimingInstrument</span></code>, it is inevitable to
 count-up the execution time of other instrument classes to the final
 profile result.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">call_node_inst</span> <span class="o">=</span> <span class="n">RelayCallNodeDiffer</span><span class="p">()</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">call_node_inst</span> <span class="o">=</span> <span class="n">RelayCallNodeDiffer</span><span class="p">()</span>
 <span class="n">desired_layouts</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;nn.conv2d&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;NHWC&quot;</span><span class="p">,</span> <span class="s2">&quot;HWIO&quot;</span><span class="p">],</span>
 <span class="p">}</span>
@@ -1734,19 +1755,27 @@ profile result.</p>
 <span class="c1"># print(profiles)</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>We can see how many CallNode increase/decrease per op type.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Printing the change in number of occurrences of each operator caused by each pass...&quot;</span><span class="p">)</span>
 <span class="n">pprint</span><span class="p">(</span><span class="n">call_node_inst</span><span class="o">.</span><span class="n">get_pass_to_op_diff</span><span class="p">())</span>
 </pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="exception-handling">
 <h2>Exception Handling<a class="headerlink" href="#exception-handling" title="永久链接至标题">#</a></h2>
 <p>Let’s see what happens if an exception occurs in a method of a <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code>.</p>
 <p>Define <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> classes which raise exceptions in enter/exit <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PassExampleBase</span><span class="p">:</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PassExampleBase</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
 
@@ -1786,11 +1815,15 @@ profile result.</p>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> bad exit_pass_ctx&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>If an exception occurs in <code class="docutils literal notranslate"><span class="pre">enter_pass_ctx</span></code>, <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> will disable the pass
 instrumentation. And it will run the <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> of each <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code>
 which successfully finished <code class="docutils literal notranslate"><span class="pre">enter_pass_ctx</span></code>.</p>
-<p>In following example, we can see <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> of <cite>PassFine_0</cite> is executed after exception.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">demo_ctx</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span>
+<p>In following example, we can see <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> of <code class="docutils literal notranslate"><span class="pre">PassFine_0</span></code> is executed after exception.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">demo_ctx</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span>
     <span class="n">instruments</span><span class="o">=</span><span class="p">[</span>
         <span class="n">PassFine</span><span class="p">(</span><span class="s2">&quot;PassFine_0&quot;</span><span class="p">),</span>
         <span class="n">PassBadEnterCtx</span><span class="p">(</span><span class="s2">&quot;PassBadEnterCtx&quot;</span><span class="p">),</span>
@@ -1804,15 +1837,23 @@ which successfully finished <code class="docutils literal notranslate"><span cla
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Catching&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Exceptions in <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> instances cause all instruments of the current <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>
 to be cleared, so nothing is printed when <code class="docutils literal notranslate"><span class="pre">override_instruments</span></code> is called.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">demo_ctx</span><span class="o">.</span><span class="n">override_instruments</span><span class="p">([])</span>  <span class="c1"># no PassFine_0 exit_pass_ctx printed....etc</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">demo_ctx</span><span class="o">.</span><span class="n">override_instruments</span><span class="p">([])</span>  <span class="c1"># no PassFine_0 exit_pass_ctx printed....etc</span>
 </pre></div>
+</div>
+</div>
 </div>
 <p>If an exception occurs in <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code>, then the pass instrument is disabled.
 Then exception is propagated. That means <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> instances registered
 after the one throwing the exception do not execute <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">demo_ctx</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">demo_ctx</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span>
     <span class="n">instruments</span><span class="o">=</span><span class="p">[</span>
         <span class="n">PassFine</span><span class="p">(</span><span class="s2">&quot;PassFine_0&quot;</span><span class="p">),</span>
         <span class="n">PassBadExitCtx</span><span class="p">(</span><span class="s2">&quot;PassBadExitCtx&quot;</span><span class="p">),</span>
@@ -1827,11 +1868,15 @@ after the one throwing the exception do not execute <code class="docutils litera
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Catching&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>Exceptions occured in <code class="docutils literal notranslate"><span class="pre">should_run</span></code>, <code class="docutils literal notranslate"><span class="pre">run_before_pass</span></code>, <code class="docutils literal notranslate"><span class="pre">run_after_pass</span></code>
+</div>
+</div>
+<p>Exceptions occurred in <code class="docutils literal notranslate"><span class="pre">should_run</span></code>, <code class="docutils literal notranslate"><span class="pre">run_before_pass</span></code>, <code class="docutils literal notranslate"><span class="pre">run_after_pass</span></code>
 are not handled explicitly – we rely on the context manager (the <code class="docutils literal notranslate"><span class="pre">with</span></code> syntax)
 to exit <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> safely.</p>
 <p>We use <code class="docutils literal notranslate"><span class="pre">run_before_pass</span></code> as an example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@pass_instrument</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@pass_instrument</span>
 <span class="k">class</span> <span class="nc">PassBadRunBefore</span><span class="p">(</span><span class="n">PassExampleBase</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">run_before_pass</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mod</span><span class="p">,</span> <span class="n">pass_info</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="s2">&quot;bad run_before_pass!!!&quot;</span><span class="p">)</span>
@@ -1853,15 +1898,23 @@ to exit <code class="docutils literal notranslate"><span class="pre">PassContext
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Catching&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Also note that pass instrumentation is not disable. So if we call
 <code class="docutils literal notranslate"><span class="pre">override_instruments</span></code>, the <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> of old registered <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code>
 is called.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">demo_ctx</span><span class="o">.</span><span class="n">override_instruments</span><span class="p">([])</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">demo_ctx</span><span class="o">.</span><span class="n">override_instruments</span><span class="p">([])</span>
 </pre></div>
+</div>
+</div>
 </div>
 <p>If we don’t wrap pass execution with <code class="docutils literal notranslate"><span class="pre">with</span></code> syntax, <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> is not
 called. Let try this with current <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cur_pass_ctx</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="o">.</span><span class="n">current</span><span class="p">()</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cur_pass_ctx</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="o">.</span><span class="n">current</span><span class="p">()</span>
 <span class="n">cur_pass_ctx</span><span class="o">.</span><span class="n">override_instruments</span><span class="p">(</span>
     <span class="p">[</span>
         <span class="n">PassFine</span><span class="p">(</span><span class="s2">&quot;PassFine_0&quot;</span><span class="p">),</span>
@@ -1871,18 +1924,28 @@ called. Let try this with current <code class="docutils literal notranslate"><sp
 <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Then call passes. <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> is not executed after the exception,
 as expectation.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="c1"># No ``exit_pass_ctx`` got executed.</span>
     <span class="n">relay_mod</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">InferType</span><span class="p">()(</span><span class="n">relay_mod</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Catching&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Clear instruments.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cur_pass_ctx</span><span class="o">.</span><span class="n">override_instruments</span><span class="p">([])</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cur_pass_ctx</span><span class="o">.</span><span class="n">override_instruments</span><span class="p">([])</span>
 </pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1919,7 +1982,7 @@ as expectation.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-14, 12:31:46.<br/>
+    Last updated on 2022-06-16, 12:34:18.<br/>
 </p>
         </footer>
     </div>

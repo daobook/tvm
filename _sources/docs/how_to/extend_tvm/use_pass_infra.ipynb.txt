@@ -1,0 +1,429 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "\n",
+        "\n",
+        "# How to Use TVM Pass Infra\n",
+        "**Author**: [Zhi Chen](https://github.com/zhiics)\n",
+        "\n",
+        "As the number of optimization passes increases in Relay/tir, it becomes intractable to\n",
+        "execute them and maintain their dependencies manually. Therefore, we have\n",
+        "introduced an infrastructure to manage the optimization passes and make it\n",
+        "applicable to different layers of the IR in the TVM stack.\n",
+        "\n",
+        "The optimizations of a Relay/tir program could be applied at various granularity,\n",
+        "namely function-level and module-level using :py:class:`tvm.relay.transform.FunctionPass`/\n",
+        ":py:class:`tvm.tir.transform.PrimFuncPass` and :py:class:`tvm.transform.ModulePass`\n",
+        "respectively. Or users can rely on :py:class:`tvm.transform.Sequential` to apply a sequence of passes\n",
+        "on a Relay/tir program where the dependencies between passes can be resolved by the\n",
+        "pass infra. For more details about each type of these passes, please refer to\n",
+        "the `pass-infra`\n",
+        "\n",
+        "This tutorial mainly demonstrates how developers can use the pass infra to perform\n",
+        "a certain optimization and create an optimization pipeline for a Relay program.\n",
+        "The same approach can be used for tir as well.\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false
+      },
+      "outputs": [],
+      "source": [
+        "import numpy as np\n",
+        "import tvm\n",
+        "from tvm import te\n",
+        "import tvm.relay as relay"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Create An Example Relay Program\n",
+        "First of all, we create a simple Relay program for the tutorial. This program\n",
+        "will be used by various optimizations of the examples in this tutorial.\n",
+        "Similarly, users can write a tir primitive function and apply the tir passes.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false
+      },
+      "outputs": [],
+      "source": [
+        "def example():\n",
+        "    shape = (1, 64, 54, 54)\n",
+        "    c_data = np.empty(shape).astype(\"float32\")\n",
+        "    c = relay.const(c_data)\n",
+        "    weight = relay.var(\"weight\", shape=(64, 64, 3, 3))\n",
+        "    x = relay.var(\"x\", relay.TensorType((1, 64, 56, 56), \"float32\"))\n",
+        "    conv = relay.nn.conv2d(x, weight)\n",
+        "    y = relay.add(c, c)\n",
+        "    y = relay.multiply(y, relay.const(2, \"float32\"))\n",
+        "    y = relay.add(conv, y)\n",
+        "    z = relay.add(y, c)\n",
+        "    z1 = relay.add(y, c)\n",
+        "    z2 = relay.add(z, z1)\n",
+        "    return relay.Function([x, weight], z2)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Optimize the Program\n",
+        "Now we would like to optimize the program. Relay features a host of\n",
+        "optimizations. We will select some of them to apply on this example program.\n",
+        "\n",
+        "There are multiple ways to optimize a Relay program. Below we will provide\n",
+        "examples for each of them.\n",
+        "\n",
+        "### Manually Apply Optimization Passes\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false
+      },
+      "outputs": [],
+      "source": [
+        "# Let's first create a relay Module which contains one or multiple Relay\n",
+        "# functions for optimization.\n",
+        "f = example()\n",
+        "mod = tvm.IRModule.from_expr(f)\n",
+        "\n",
+        "# Now we can apply constant folding on the module.\n",
+        "# fold_const here is a callback that doesn't take any parameters.\n",
+        "fold_const = relay.transform.FoldConstant()\n",
+        "# Then, we can invoke the pass on the given module. Note that the constant\n",
+        "# folding pass works at the function-level. That being said, each function in\n",
+        "# the module will be applied with the optimization. Users don't need to iterate\n",
+        "# through individual functions manually to apply this pass.\n",
+        "mod = fold_const(mod)\n",
+        "# We can see from the updated program that the constants are folded.\n",
+        "print(mod)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "More optimizations can be applied in the similar manner. For instance, we can\n",
+        "eliminate the common expressions that used by `z` and `z1`.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false
+      },
+      "outputs": [],
+      "source": [
+        "mod = relay.transform.EliminateCommonSubexpr()(mod)\n",
+        "print(mod)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Some optimizations, such as fusion, are parametric as well. For example,\n",
+        "opt level 0 will not allow operators to be fused together. Users can pass the\n",
+        "`fuse_opt_level` to enable this.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false
+      },
+      "outputs": [],
+      "source": [
+        "mod = relay.transform.FuseOps(fuse_opt_level=0)(mod)\n",
+        "\n",
+        "# We can observe that the optimized module contains functions that only have\n",
+        "# a signle primitive op.\n",
+        "print(mod)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Use Sequential to Apply a Sequence of Passes\n",
+        "Applying passes as above is actually tedious and it may require users to have\n",
+        "better understanding about the dependencies between them. For example, fusion\n",
+        "currently doesn't work well on let bindings. Therefore, we would not be able\n",
+        "to fuse operators that were fusable if :py:func:`relay.transform.ToANormalForm` is applied before\n",
+        "fusion, as this pass generates let bindings for each expression to\n",
+        "canonicalize a Relay program.\n",
+        "\n",
+        "Relay, hence, provides :py:class:`tvm.transform.Sequential` to alleviate developers from handling\n",
+        "these issues explicitly by specifying the required passes of each pass and\n",
+        "packing them as a whole to execute. For example, the same passes can now be\n",
+        "applied using the sequential style as the following. :py:class:`tvm.transform.Sequential` is\n",
+        "similar to [torch.nn.sequential](https://pytorch.org/docs/stable/nn.html#torch.nn.Sequential)\n",
+        "and [mxnet.gluon.block](https://mxnet.apache.org/api/python/docs/_modules/mxnet/gluon/block.html).\n",
+        "For example, `torch.nn.sequential` is used to contain a sequence of PyTorch\n",
+        "`Modules` that will be added to build a network. It focuses on the network\n",
+        "layers. Instead, the :py:class:`tvm.transform.Sequential` in our pass infra works on the optimizing\n",
+        "pass.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false
+      },
+      "outputs": [],
+      "source": [
+        "# Now let's execute some passes through :py:class:`tvm.transform.Sequential`\n",
+        "f = example()\n",
+        "mod = tvm.IRModule.from_expr(f)\n",
+        "# Glob the interested passes.\n",
+        "seq = tvm.transform.Sequential(\n",
+        "    [\n",
+        "        relay.transform.FoldConstant(),\n",
+        "        relay.transform.EliminateCommonSubexpr(),\n",
+        "        relay.transform.FuseOps(fuse_opt_level=2),\n",
+        "    ]\n",
+        ")\n",
+        "mod1 = seq(mod)\n",
+        "print(mod1)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "From the transformed Relay program, we can see that there are still two\n",
+        "identical addition operations. This is because ``EliminateCommonSubexpr``\n",
+        "was not actually performed. The reason is because only the passes that have\n",
+        "optimization level less or equal to 2 will be executed by default under\n",
+        ":py:class:`tvm.transform.Sequential`. The pass infra,\n",
+        "however, provides a configuration interface\n",
+        "for users to customize the optimization level that they want to execute.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false
+      },
+      "outputs": [],
+      "source": [
+        "with tvm.transform.PassContext(opt_level=3):\n",
+        "    mod2 = seq(mod)\n",
+        "print(mod2)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Now we can see that only one of the two identical additions is kept.\n",
+        "\n",
+        "In addition, users can selectively disable some passes using the\n",
+        "`disabled_pass` config, which is similar to the `-fno-xxx` option used the\n",
+        "general purpose compilers, such as Clang and GCC. For example, we can disable\n",
+        "EliminateCommonSubexpr as following. The printed module will again show two\n",
+        "identical addition operations.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false
+      },
+      "outputs": [],
+      "source": [
+        "with tvm.transform.PassContext(opt_level=3, disabled_pass=[\"EliminateCommonSubexpr\"]):\n",
+        "    mod3 = seq(mod)\n",
+        "print(mod3)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Implement a Pass Using Python Decorator\n",
+        "The next example illustrates how we can orchestrate a customized optimization\n",
+        "pipeline through the pass infra using Python decorators. This functionality\n",
+        "greatly eases the implementation of passes. For example, users can simply\n",
+        "define a decorated class to do function-level optimizations as the following\n",
+        "example shows. `transform_function` wraps a class to replace all constants\n",
+        "with a multiple of `c`. Later on, each function in a given module will be\n",
+        "visited and each constant in the function will be replaced when we invoke the\n",
+        "customized pass.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false
+      },
+      "outputs": [],
+      "source": [
+        "@relay.transform.function_pass(opt_level=1)\n",
+        "class CustomPipeline:\n",
+        "    \"\"\"Simple test function to replace one argument to another.\"\"\"\n",
+        "\n",
+        "    def __init__(self, multiplier):\n",
+        "        self.multiplier = multiplier\n",
+        "\n",
+        "    # This function can define a pass.\n",
+        "    def transform_function(self, func, mod, ctx):\n",
+        "        obj = self\n",
+        "\n",
+        "        class ReplaceConstant(tvm.relay.ExprMutator):\n",
+        "            def visit_constant(self, c):\n",
+        "                return relay.multiply(obj.multiplier, c)\n",
+        "\n",
+        "        return ReplaceConstant().visit(func)\n",
+        "\n",
+        "\n",
+        "f = example()\n",
+        "mod = tvm.IRModule.from_expr(f)\n",
+        "custom_pass = CustomPipeline(multiplier=relay.const(3, \"float32\"))\n",
+        "assert custom_pass.info.name == \"CustomPipeline\"\n",
+        "mod3 = custom_pass(mod)\n",
+        "print(mod3)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Debug a Pass\n",
+        "TVM provides users a plug-and-play style debugging pass that print the IR\n",
+        "after a certain pass is done through a special pass (``PrintIR``) to dump the IR of the\n",
+        "whole module. A slightly modified version of the sequential pass example\n",
+        "could be like the following to enable IR dumping for ``FoldConstant`` optimization.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false
+      },
+      "outputs": [],
+      "source": [
+        "f = example()\n",
+        "mod = tvm.IRModule.from_expr(f)\n",
+        "seq = tvm.transform.Sequential(\n",
+        "    [\n",
+        "        relay.transform.FoldConstant(),\n",
+        "        tvm.transform.PrintIR(),\n",
+        "        relay.transform.EliminateCommonSubexpr(),\n",
+        "        relay.transform.FuseOps(),\n",
+        "    ]\n",
+        ")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "By inserting the ``PrintIR`` pass after ``FoldConstant``, the pass infra will\n",
+        "dump out the module IR when ``FoldConstant`` is done. Users can plug in this\n",
+        "pass after any pass they want to debug for viewing the optimization effect.\n",
+        "\n",
+        "There is a more flexible debugging mechanism. One can implement a ``PassInstrument``\n",
+        "class to execute arbitrary code not only before and/or after each pass but also\n",
+        "at entering/exiting ``PassContext``. See `pass_instrument_cpp_backend`\n",
+        "for more details.\n",
+        "\n",
+        "Here we use :py::func`tvm.instrument.pass_instrument` decorator to implement\n",
+        "a PassInsturment class printing IR before execution of each passes:\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false
+      },
+      "outputs": [],
+      "source": [
+        "@tvm.instrument.pass_instrument\n",
+        "class PrintIR:\n",
+        "    \"\"\"Print the name of the pass, the IR, only before passes execute.\"\"\"\n",
+        "\n",
+        "    def run_before_pass(self, mod, info):\n",
+        "        print(\"Running pass: {}\", info)\n",
+        "        print(mod)\n",
+        "\n",
+        "\n",
+        "with tvm.transform.PassContext(opt_level=3, instruments=[PrintIR()]):\n",
+        "    with tvm.target.Target(\"llvm\"):\n",
+        "        # Perform the optimizations.\n",
+        "        mod = seq(mod)\n",
+        "print(mod)\n",
+        "\n",
+        "print(\"done\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Summary\n",
+        "This tutorial has covered how we can write and invoke passes in TVM more\n",
+        "conveniently using the pass infra. Different ways of invoking a pass are also\n",
+        "discussed. Using :py:class:`tvm.transform.Sequential` can largely help\n",
+        "users to ease the work of handling multiple optimization passes and their\n",
+        "dependencies. In addition, an example is provided to illustrate\n",
+        "how we can debug a pass using the ``PrintIR`` and tracing.\n",
+        "\n"
+      ]
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.7.5"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
