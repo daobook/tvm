@@ -1534,21 +1534,21 @@ title="Print to PDF"
 <span id="tutorial-cross-compilation-and-rpc"></span><h1>交叉编译和RPC<a class="headerlink" href="#rpc" title="永久链接至标题">#</a></h1>
 <p><strong>作者</strong>: <a class="reference external" href="https://github.com/ZihengJiang/">Ziheng Jiang</a>, <a class="reference external" href="https://github.com/merrymercy/">Lianmin Zheng</a></p>
 <p>本教程介绍了 TVM 中的交叉编译和使用 RPC 的远程设备执行。</p>
-<p>通过交叉编译和 RPC，<strong>你可以在本地机器上编译一个程序，然后在远程设备上运行它</strong>。在远程设备资源有限的情况下，如 Raspberry Pi 和移动平台，这很有用。在本教程中，我们将使用 Raspberry Pi 作为 CPU 例子，使用 Firefly-RK3399 作为 OpenCL 例子。</p>
+<p>通过交叉编译和 RPC，<strong>你可以在本地机器上编译程序，然后在远程设备上运行它</strong>。在远程设备资源有限的情况下，如 Raspberry Pi 和移动平台，这很有用。在本教程中，将使用 Raspberry Pi 作为 CPU 例子，使用 Firefly-RK3399 作为 OpenCL 例子。</p>
 <section id="tvm">
 <h2>在设备上建立 TVM 运行时<a class="headerlink" href="#tvm" title="永久链接至标题">#</a></h2>
 <p>第一步是在远程设备上建立 TVM 运行时。</p>
 <div class="alert alert-info admonition">
 <p class="admonition-title">注意</p>
-<p>本节和下一节的所有指令都应该在目标设备上执行，例如 Raspberry Pi。我们假设目标设备运行的是 Linux。</p>
+<p>本节和下一节的所有指令都应该在目标设备上执行，例如 Raspberry Pi。假设目标设备运行的是 Linux。</p>
 </div>
-<p>由于我们在本地机器上进行编译，远程设备只用于运行生成的代码。我们只需要在远程设备上构建 TVM 运行时。</p>
+<p>由于在本地机器上进行编译，远程设备只用于运行生成的代码。只需要在远程设备上构建 TVM 运行时。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone --recursive https://github.com/apache/tvm tvm
 <span class="nb">cd</span> tvm
 make runtime -j2
 </pre></div>
 </div>
-<p>成功构建运行时后，我们需要在 <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> 文件中设置环境变量。我们可以用 <code class="docutils literal notranslate"><span class="pre">vi</span> <span class="pre">~/.bashrc</span></code> 编辑 <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>，并添加以下一行（假设你的 TVM 目录在 <code class="docutils literal notranslate"><span class="pre">~/tvm</span></code>）。</p>
+<p>成功构建运行时后，需要在 <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> 文件中设置环境变量。可以用 <code class="docutils literal notranslate"><span class="pre">vi</span> <span class="pre">~/.bashrc</span></code> 编辑 <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>，并添加以下一行（假设 TVM 目录 <code class="docutils literal notranslate"><span class="pre">~/tvm</span></code>）。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:~/tvm/python
 </pre></div>
 </div>
@@ -1567,9 +1567,9 @@ make runtime -j2
 <p>在本地机器上声明和交叉编译内核</p>
 <div class="alert alert-info admonition">
 <p class="admonition-title">注意</p>
-<p>现在我们回到本地机器，它安装了一个完整的 TVM（含 LLVM）。</p>
+<p>现在我们回到本地机器，它安装了完整的 TVM（含 LLVM）。</p>
 </div>
-<p>这里我们将在本地机器上声明一个简单的内核：</p>
+<p>这里将在本地机器上声明简单的内核：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1587,7 +1587,7 @@ make runtime -j2
 </div>
 </div>
 </div>
-<p>然后我们交叉编译内核。对于 Raspberry Pi 3B 来说，目标应该是 <code class="docutils literal notranslate"><span class="pre">'llvm</span> <span class="pre">-mtriple=armv7l-linux-gnueabihf'</span></code>，但我们在这里使用 <code class="docutils literal notranslate"><span class="pre">'llvm'</span></code> 来使这个教程可以在我们的网页构建服务器上运行。请看下面区块中的详细说明。</p>
+<p>然后交叉编译内核。对于 Raspberry Pi 3B 来说，目标应该是 <code class="docutils literal notranslate"><span class="pre">'llvm</span> <span class="pre">-mtriple=armv7l-linux-gnueabihf'</span></code>，但在这里使用 <code class="docutils literal notranslate"><span class="pre">'llvm'</span></code> 来使这个教程可以在网页构建服务器上运行。请看下面区块中的详细说明。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">local_demo</span> <span class="o">=</span> <span class="kc">True</span>
@@ -1598,7 +1598,7 @@ make runtime -j2
     <span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;llvm -mtriple=armv7l-linux-gnueabihf&quot;</span>
 
 <span class="n">func</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">],</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;add_one&quot;</span><span class="p">)</span>
-<span class="c1"># save the lib at a local temp folder</span>
+<span class="c1"># 将该 lib 保存在本地临时文件夹中</span>
 <span class="n">temp</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">tempdir</span><span class="p">()</span>
 <span class="n">path</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="s2">&quot;lib.tar&quot;</span><span class="p">)</span>
 <span class="n">func</span><span class="o">.</span><span class="n">export_library</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
@@ -1609,7 +1609,7 @@ make runtime -j2
 <div class="alert alert-info admonition">
 <p class="admonition-title">注意</p>
 <p>要在真正的远程设备上运行本教程，请将 <code class="docutils literal notranslate"><span class="pre">local_demo</span></code> 改为 <code class="docutils literal notranslate"><span class="pre">False</span></code>，并将 <code class="docutils literal notranslate"><span class="pre">target</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">build</span></code> 改为适合你设备的目标 triple。对于不同的设备，目标 triple 可能是不同的。例如，对于 Raspberry Pi 3B，它是 <code class="docutils literal notranslate"><span class="pre">'llvm</span> <span class="pre">-mtriple=armv7l-linux-gnueabihf'</span></code>，对于 RK3399，它是 <code class="docutils literal notranslate"><span class="pre">'llvm</span> <span class="pre">-mtriple=aarch64-linux-gnu'</span></code>。</p>
-<p>通常，你可以通过在你的设备上运行 <code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">-v</span></code> 来查询目标，并寻找以 <code class="docutils literal notranslate"><span class="pre">Target:</span></code> 开始的行。（尽管它可能仍然是一个松散的配置）。</p>
+<p>通常，你可以通过在你的设备上运行 <code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">-v</span></code> 来查询目标，并寻找以 <code class="docutils literal notranslate"><span class="pre">Target:</span></code> 开始的行。（尽管它可能仍然是松散的配置）。</p>
 <p>除了<code class="docutils literal notranslate"><span class="pre">-mtriple</span></code>，你还可以设置其他的编译选项，比如：</p>
 <dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">-mcpu=&lt;cpuname&gt;</span></code></dt><dd><p>指定一个当前架构中的特定芯片来生成代码。默认情况下，这是从目标芯片中推断出来的，并自动检测到当前架构。</p>
@@ -1625,13 +1625,14 @@ make runtime -j2
 </section>
 <section id="rpc-cpu">
 <h2>通过 RPC 远程运行 CPU 内核<a class="headerlink" href="#rpc-cpu" title="永久链接至标题">#</a></h2>
-<p>我们将展示如何在远程设备上运行已经生成的 CPU 内核。首先，我们从远程设备获得一个 RPC 会话。</p>
+<p>展示如何在远程设备上运行已经生成的 CPU 内核。</p>
+<p>从远程设备获得 RPC 会话。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">local_demo</span><span class="p">:</span>
     <span class="n">remote</span> <span class="o">=</span> <span class="n">rpc</span><span class="o">.</span><span class="n">LocalSession</span><span class="p">()</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="c1"># 以下是我的环境，将其改为你的目标设备的 IP 地址</span>
+    <span class="c1"># 将其改为你的目标设备的 IP 地址</span>
     <span class="n">host</span> <span class="o">=</span> <span class="s2">&quot;10.77.1.162&quot;</span>
     <span class="n">port</span> <span class="o">=</span> <span class="mi">9090</span>
     <span class="n">remote</span> <span class="o">=</span> <span class="n">rpc</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
@@ -1639,7 +1640,7 @@ make runtime -j2
 </div>
 </div>
 </div>
-<p>将 lib 上传至远程设备，然后调用设备本地编译器重新链接它们。现在 <code class="docutils literal notranslate"><span class="pre">func</span></code> 是一个远程模块对象。</p>
+<p>将 lib 上传至远程设备，然后调用设备本地编译器重新链接它们。现在 <code class="docutils literal notranslate"><span class="pre">func</span></code> 是远程模块对象。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">remote</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
@@ -1656,7 +1657,7 @@ make runtime -j2
 </div>
 </div>
 </div>
-<p>当你想评估内核在远程设备上的性能时，避免网络开销是很重要的。<code class="docutils literal notranslate"><span class="pre">time_evaluator</span></code> 将返回一个远程函数，该函数在远程设备上运行多次，测量每次运行的成本并返回测量的成本。网络开销被排除在外。</p>
+<p>当你想评估内核在远程设备上的性能时，避免网络开销是很重要的。<code class="docutils literal notranslate"><span class="pre">time_evaluator</span></code> 将返回远程函数，该函数在远程设备上运行多次，测量每次运行的成本并返回测量的成本。网络开销被排除在外。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_f</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">time_evaluator</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -1666,7 +1667,7 @@ make runtime -j2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.445e-07 secs/op
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.396e-07 secs/op
 </pre></div>
 </div>
 </div>
@@ -1678,14 +1679,14 @@ make runtime -j2
 <div class="alert alert-info admonition">
 <p class="admonition-title">注意</p>
 <p>Raspberry Pi 不支持 OpenCL，以下代码是在 Firefly-RK3399 上测试的。你可以按照这个 <a class="reference external" href="https://gist.github.com/mli/585aed2cec0b5178b1a510f9f236afa2">教程</a> 来设置操作系统和 RK3399 的 OpenCL 驱动。</p>
-<p>此外，我们还需要在 rk3399 板上启用 OpenCL 来构建运行时。在 TVM 根目录下，执行</p>
+<p>此外，还需要在 rk3399 板上启用 OpenCL 来构建运行时。在 TVM 根目录下，执行</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp cmake/config.cmake .
 sed -i <span class="s2">&quot;s/USE_OPENCL OFF/USE_OPENCL ON/&quot;</span> config.cmake
 make runtime -j4
 </pre></div>
 </div>
 </div>
-<p>下面的函数显示了我们如何远程运行一个 OpenCL 内核</p>
+<p>下面的函数显示了如何远程运行 OpenCL 内核：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_opencl</span><span class="p">():</span>
@@ -1725,8 +1726,8 @@ make runtime -j4
 <section id="id2">
 <h2>总结<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
 <ul class="simple">
-<li><p>本教程提供了 TVM 中交叉编译和 RPC 功能的介绍。</p></li>
-<li><p>在远程设备上设置一个 RPC 服务器。</p></li>
+<li><p>本教程提供 TVM 中交叉编译和 RPC 功能的介绍。</p></li>
+<li><p>在远程设备上设置 RPC 服务器。</p></li>
 <li><p>设置目标设备配置，在本地机器上交叉编译内核。</p></li>
 <li><p>通过 RPC API 远程上传和运行内核。</p></li>
 </ul>
@@ -1765,7 +1766,7 @@ make runtime -j4
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-17, 05:37:50.<br/>
+    Last updated on 2022-06-19, 14:57:27.<br/>
 </p>
         </footer>
     </div>
