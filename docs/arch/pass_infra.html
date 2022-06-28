@@ -48,8 +48,8 @@
     <link rel="shortcut icon" href="../../_static/tvm-logo-square.png"/>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="InferBound Pass" href="inferbound.html" />
-    <link rel="prev" title="Device/Target Interactions" href="device_target_interactions.html" />
+    <link rel="next" title="Device/Target Interactions" href="device_target_interactions.html" />
+    <link rel="prev" title="模块序列化简介" href="introduction_to_module_serialization.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -738,12 +738,12 @@
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/extend_tvm/use_pass_infra.html">
-         How to Use TVM Pass Infra
+         如何使用 TVM Pass Infra
         </a>
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/extend_tvm/use_pass_instrument.html">
-         How to Use TVM Pass Instrument
+         如何使用 TVM Pass Instrument
         </a>
        </li>
        <li class="toctree-l4">
@@ -868,11 +868,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="introduction_to_module_serialization.html">
      模块序列化简介
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="device_target_interactions.html">
-     Device/Target Interactions
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -1452,13 +1447,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-design">
-   The Design
+  <a class="reference internal nav-link" href="#id1">
+   设计
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#c-backend">
-     C++ Backend
+    <a class="reference internal nav-link" href="#c">
+     C++ 后端
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -1509,7 +1504,7 @@ title="Print to PDF"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
+      <a class="reference internal nav-link" href="#id2">
        PassContext
       </a>
      </li>
@@ -1552,13 +1547,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-design">
-   The Design
+  <a class="reference internal nav-link" href="#id1">
+   设计
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#c-backend">
-     C++ Backend
+    <a class="reference internal nav-link" href="#c">
+     C++ 后端
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -1609,7 +1604,7 @@ title="Print to PDF"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
+      <a class="reference internal nav-link" href="#id2">
        PassContext
       </a>
      </li>
@@ -1644,54 +1639,31 @@ title="Print to PDF"
                 
   <section id="pass-infrastructure">
 <span id="pass-infra"></span><h1>Pass Infrastructure<a class="headerlink" href="#pass-infrastructure" title="永久链接至标题">#</a></h1>
-<p>Both Relay and TVM IR contain a series of optimization passes which improve performance metrics
-of models such as mean inference, memory footprint, or power consumption for
-specific devices. There is a suite of standard optimizations as well as machine
-learning-specific optimizations including constant folding, dead code
-elimination, operator layout alteration, operator fusion, buffer handling, and
-loop transformation, etc. Each of these passes is structured as a ir-to-ir
-transformation using the analysis result collected during and/or before traversal.</p>
-<p>However, as TVM evolves quickly, the need for a more systematic and efficient
-way to manage these passes is becoming apparent. In addition, a generic
-framework that manages the passes across different layers of the TVM stack (e.g.
-Relay and tir) paves the way for developers to quickly prototype and plug the
-implemented passes into the system.</p>
-<p>This doc describes the design of such an infra that takes the advantage of the
-way production compilers are used to manage the optimization passes and the style
-modern deep learning frameworks adopted to build up layers.</p>
-<p>For example, many existing production compilers, such as GCC and LLVM, employ
-pass managers to effectively manage the execution of passes. Initially managing
-passes is straightforward as the number of passes is small, but mature compilers
-will contain hundreds of individual passes. Often external users will want to
-have custom passes correctly scheduled without having to modify a single
-handcrafted pass order.</p>
-<p>Similarly, modern deep learning frameworks, such as Pytorch and MXNet
-Gluon, also have the tendency to enable pass-style layer construction
-scheme through <a class="reference external" href="https://pytorch.org/docs/stable/nn.html?highlight=sequential#torch.nn.Sequential">Sequential</a> and <a class="reference external" href="https://mxnet.apache.org/api/python/docs/api/gluon/block.html#gluon-block">Block</a>, respectively. With such constructs,
-these modern frameworks are able to conveniently add modules/layers to their
-containers and build up neural networks easily.</p>
-<p>The design of the Relay pass infra is largely inspired by the the hierarchical
-pass manager used in LLVM and the block-style containers used in the popular
-deep learning frameworks. The major goals of the pass infra include:</p>
+<p>Relay 和 TVM IR 都包含一系列优化 passes，用于改善模型的性能指标，如 mean inference、memory footprint 或特定设备的 power consumption。
+有一套标准的优化和机器学习特有的优化，包括常量折叠（constant folding）、死代码消除（ead code
+elimination）、算子布局更改（operator layout alteration）、算子融合（operator fusion）、buffer 处理和 loop transformation 等。
+使用遍历（traversal）期间和/或遍历之前收集的分析结果，将每一个 passes 构造为 ir-to-ir 变换。</p>
+<p>然而，随着 TVM 的迅速发展，对管理这些 passes 的更系统和有效的方法的需求变得越来越明显。
+另外，管理跨 TVM 栈不同层（如 Relay 和 tir）的传递的通用框架为开发人员快速原型化和将实现的传递插入到系统中铺平了道路。</p>
+<p>本文档描述了这样的基础设施（infra）的设计，它利用了生产编译器（production compiler）管理优化过程的方式，以及现代深度学习框架用于构建层的风格。</p>
+<p>例如，许多现有的生产编译器，如 GCC 和 LLVM，都采用了传递管理器来有效地管理传递的执行。
+最初管理传递是简单的，因为传递的次数很少，但成熟的编译器将包含数百次单独的传递。
+外部用户通常希望能够正确地调度自定义传递，而不需要修改手工制作的传递 order。</p>
+<p>同样，现代的深度学习框架，如 Pytorch 和 MXNet Gluon，也有分别通过 <a class="reference external" href="https://pytorch.org/docs/stable/nn.html?highlight=sequential#torch.nn.Sequential">Sequential</a> 和 <a class="reference external" href="https://mxnet.apache.org/api/python/docs/api/gluon/block.html#gluon-block">Block</a> 实现 pass-style 层构造方案的趋势。
+有了这样的结构，这些现代框架能够方便地将模块/层添加到它们的容器中，并轻松地构建神经网络。</p>
+<p>Relay pass infra 的设计很大程度上受到 LLVM 中使用的分层 pass 管理器和流行的深度学习框架中使用的 block-style 容器的启发。pass infra 的主要目标包括</p>
 <ol class="arabic simple">
-<li><p>enabling better programmatic orchestration of optimizations. This allows
-users to flexibly customize and build their own optimization pipelines.</p></li>
-<li><p>providing a user-friendly way to debug optimization passes.</p></li>
-<li><p>alleviating developers from manually and respectively resolving the
-dependencies between passes.</p></li>
-<li><p>simplifying the implementation of new passes for developers. For example, we
-allow users to implement a pass in Python and let the pass infra manipulate
-its execution.</p></li>
+<li><p>支持更好的优化编程编排（orchestration）。这允许用户灵活地定制和构建自己的优化管道。</p></li>
+<li><p>提供一种用户友好的方式来调试优化 passes。</p></li>
+<li><p>减轻开发人员手工修改和分别解决传递之间的依赖关系。</p></li>
+<li><p>简化开发人员实现新的 passes 的过程。例如，允许用户在 Python 中实现 pass，并让 pass infra 操作它的执行。</p></li>
 </ol>
-<section id="the-design">
-<h2>The Design<a class="headerlink" href="#the-design" title="永久链接至标题">#</a></h2>
-<p>We focus on ease of extension for users, making it possible for users to quickly
-add new passes without loss of backward compatibility. The design contains both
-the backend and the frontend. The former implements the main logic of the pass
-infra. The latter provides simple APIs for users to interact with, i.e.,
-allowing users to quickly create their own optimization pipelines.</p>
-<section id="c-backend">
-<h3>C++ Backend<a class="headerlink" href="#c-backend" title="永久链接至标题">#</a></h3>
+<section id="id1">
+<h2>设计<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
+<p>专注于用户扩展的易用性，使用户能够在不损失向后兼容性的情况下快速添加新的 passes。
+该设计包括后端和前端。前者实现了 passes 底层的主要逻辑。后者提供了简单的 API 供用户交互，即允许用户快速创建自己的优化管道。</p>
+<section id="c">
+<h3>C++ 后端<a class="headerlink" href="#c" title="永久链接至标题">#</a></h3>
 <p>We provide a <code class="docutils literal notranslate"><span class="pre">PassInfo</span></code> object to contain the basic information needed by
 a pass. <code class="docutils literal notranslate"><span class="pre">name</span></code> is the pass name, <code class="docutils literal notranslate"><span class="pre">opt_level</span></code> indicates at which optimization
 level the pass will be enabled, and <code class="docutils literal notranslate"><span class="pre">required</span></code> represents the passes that are
@@ -2120,8 +2092,8 @@ implementation is provided in <a class="reference external" href="https://github
 <a class="reference external" href="https://github.com/apache/tvm/blob/main/python/tvm/ir/transform.py">python/tvm/ir/transform.py</a>). The backend
 receives the information and decides which function it should use to create
 a Pass object.</p>
-<section id="id1">
-<h4>PassContext<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h4>
+<section id="id2">
+<h4>PassContext<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h4>
 <p>Python frontend provides a wrapper for the <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> to enable the
 <code class="docutils literal notranslate"><span class="pre">with</span></code> syntax by overriding <code class="docutils literal notranslate"><span class="pre">__enter__</span></code> and <code class="docutils literal notranslate"><span class="pre">__exit__</span></code>. A <code class="docutils literal notranslate"><span class="pre">current</span></code>
 static method is offered for users to get the context that is in use under
@@ -2230,7 +2202,7 @@ optimization pipeline and debug Relay and tir passes, please refer to the
 <a class="reference external" href="https://github.com/apache/tvm/blob/main/tutorials/dev/use_pass_infra.py">use pass infra</a> tutorial.</p>
 </section>
 <section id="pass-instrument-py-frontend">
-<span id="id2"></span><h4>Pass Instrument<a class="headerlink" href="#pass-instrument-py-frontend" title="永久链接至标题">#</a></h4>
+<span id="id3"></span><h4>Pass Instrument<a class="headerlink" href="#pass-instrument-py-frontend" title="永久链接至标题">#</a></h4>
 <p>One can implement a <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> by using the <code class="docutils literal notranslate"><span class="pre">pass_instrument</span></code>
 decorator(<a class="reference external" href="https://github.com/apache/tvm/blob/main/python/tvm/ir/instrument.py">python/tvm/ir/instrument.py</a>) on a class implementing following methods.
 Note that it is recommended to use the <code class="docutils literal notranslate"><span class="pre">pass_instrument</span></code> decorator to implement
@@ -2295,17 +2267,17 @@ new <code class="docutils literal notranslate"><span class="pre">PassInstrument<
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="device_target_interactions.html" title="上一页 页">
+    <a class='left-prev' id="prev-link" href="introduction_to_module_serialization.html" title="上一页 页">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">上一页</p>
-            <p class="prev-next-title">Device/Target Interactions</p>
+            <p class="prev-next-title">模块序列化简介</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="inferbound.html" title="下一页 页">
+    <a class='right-next' id="next-link" href="device_target_interactions.html" title="下一页 页">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">下一页</p>
-        <p class="prev-next-title">InferBound Pass</p>
+        <p class="prev-next-title">Device/Target Interactions</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -2319,7 +2291,7 @@ new <code class="docutils literal notranslate"><span class="pre">PassInstrument<
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-19, 14:57:27.<br/>
+    Last updated on 2022-06-28, 06:09:53.<br/>
 </p>
         </footer>
     </div>

@@ -738,12 +738,12 @@
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="how_to/extend_tvm/use_pass_infra.html">
-         How to Use TVM Pass Infra
+         如何使用 TVM Pass Infra
         </a>
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="how_to/extend_tvm/use_pass_instrument.html">
-         How to Use TVM Pass Instrument
+         如何使用 TVM Pass Instrument
         </a>
        </li>
        <li class="toctree-l4">
@@ -868,11 +868,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="arch/introduction_to_module_serialization.html">
      模块序列化简介
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="arch/device_target_interactions.html">
-     Device/Target Interactions
     </a>
    </li>
    <li class="toctree-l2">
@@ -1601,12 +1596,13 @@ pip install -r frozen-requirements.txt
 <span class="c1"># work on most environments (e.g. MacOS).</span>
 <span class="nb">export</span> <span class="nv">TVM_TUTORIAL_EXEC_PATTERN</span><span class="o">=</span>none
 
+<span class="nb">cd</span> docs
 make html
 </pre></div>
 </div>
 </li>
 <li><p>运行 HTTP 服务并可以在浏览器 http://localhost:8000 访问</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> docs/_build/html <span class="o">&amp;&amp;</span> python3 -m http.server
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> _build/html <span class="o">&amp;&amp;</span> python3 -m http.server
 </pre></div>
 </div>
 </li>
@@ -1675,7 +1671,7 @@ python tests/scripts/ci.py docs --tutorial-pattern<span class="o">=</span>file_n
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-19, 14:57:27.<br/>
+    Last updated on 2022-06-28, 06:09:53.<br/>
 </p>
         </footer>
     </div>

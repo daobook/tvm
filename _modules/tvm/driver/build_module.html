@@ -735,12 +735,12 @@
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../../../docs/how_to/extend_tvm/use_pass_infra.html">
-         How to Use TVM Pass Infra
+         如何使用 TVM Pass Infra
         </a>
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../../../docs/how_to/extend_tvm/use_pass_instrument.html">
-         How to Use TVM Pass Instrument
+         如何使用 TVM Pass Instrument
         </a>
        </li>
        <li class="toctree-l4">
@@ -865,11 +865,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../../../docs/arch/introduction_to_module_serialization.html">
      模块序列化简介
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../docs/arch/device_target_interactions.html">
-     Device/Target Interactions
     </a>
    </li>
    <li class="toctree-l2">
@@ -1430,13 +1425,14 @@ title="Fullscreen mode"
 
 <span class="kn">import</span> <span class="nn">tvm.tir</span>
 
+<span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">te</span>
+
 <span class="kn">from</span> <span class="nn">tvm.runtime</span> <span class="kn">import</span> <span class="n">Module</span>
 <span class="kn">from</span> <span class="nn">tvm.runtime</span> <span class="kn">import</span> <span class="n">ndarray</span>
 <span class="kn">from</span> <span class="nn">tvm.ir</span> <span class="kn">import</span> <span class="n">container</span>
 <span class="kn">from</span> <span class="nn">tvm.tir</span> <span class="kn">import</span> <span class="n">PrimFunc</span>
 <span class="kn">from</span> <span class="nn">tvm.ir.module</span> <span class="kn">import</span> <span class="n">IRModule</span>
 <span class="kn">from</span> <span class="nn">tvm.te</span> <span class="kn">import</span> <span class="n">tensor</span>
-<span class="kn">from</span> <span class="nn">tvm.te</span> <span class="kn">import</span> <span class="n">schedule</span>
 <span class="kn">from</span> <span class="nn">tvm.target</span> <span class="kn">import</span> <span class="n">Target</span>
 <span class="kn">from</span> <span class="nn">tvm.tir.buffer</span> <span class="kn">import</span> <span class="n">Buffer</span>
 <span class="kn">from</span> <span class="nn">tvm.tir.expr</span> <span class="kn">import</span> <span class="n">Var</span>
@@ -1469,7 +1465,7 @@ title="Fullscreen mode"
 
 
 <span class="k">def</span> <span class="nf">schedule_to_module</span><span class="p">(</span>
-    <span class="n">sch</span><span class="p">:</span> <span class="n">schedule</span><span class="o">.</span><span class="n">Schedule</span><span class="p">,</span>
+    <span class="n">sch</span><span class="p">:</span> <span class="n">te</span><span class="o">.</span><span class="n">Schedule</span><span class="p">,</span>
     <span class="n">args</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Buffer</span><span class="p">,</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Var</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;main&quot;</span><span class="p">,</span>
     <span class="n">binds</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Buffer</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1498,7 +1494,7 @@ title="Fullscreen mode"
 
 
 <div class="viewcode-block" id="lower"><a class="viewcode-back" href="../../../docs/reference/api/python/driver.html#tvm.lower">[文档]</a><span class="k">def</span> <span class="nf">lower</span><span class="p">(</span>
-    <span class="n">inp</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">schedule</span><span class="o">.</span><span class="n">Schedule</span><span class="p">,</span> <span class="n">PrimFunc</span><span class="p">,</span> <span class="n">IRModule</span><span class="p">],</span>
+    <span class="n">inp</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">te</span><span class="o">.</span><span class="n">Schedule</span><span class="p">,</span> <span class="n">PrimFunc</span><span class="p">,</span> <span class="n">IRModule</span><span class="p">],</span>
     <span class="n">args</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Buffer</span><span class="p">,</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Var</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;main&quot;</span><span class="p">,</span>
     <span class="n">binds</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Buffer</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1536,13 +1532,15 @@ title="Fullscreen mode"
         <span class="k">return</span> <span class="n">ffi</span><span class="o">.</span><span class="n">lower_module</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">simple_mode</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">PrimFunc</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">ffi</span><span class="o">.</span><span class="n">lower_primfunc</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">simple_mode</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">schedule</span><span class="o">.</span><span class="n">Schedule</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">te</span><span class="o">.</span><span class="n">Schedule</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">ffi</span><span class="o">.</span><span class="n">lower_schedule</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">binds</span><span class="p">,</span> <span class="n">simple_mode</span><span class="p">)</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Expected input to be an IRModule, PrimFunc or Schedule, but got, &quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">inp</span><span class="p">))</span></div>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Expected input to be an IRModule, PrimFunc or te.Schedule, but got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="build"><a class="viewcode-back" href="../../../docs/reference/api/python/driver.html#tvm.build">[文档]</a><span class="k">def</span> <span class="nf">build</span><span class="p">(</span>
-    <span class="n">inputs</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">schedule</span><span class="o">.</span><span class="n">Schedule</span><span class="p">,</span> <span class="n">PrimFunc</span><span class="p">,</span> <span class="n">IRModule</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">IRModule</span><span class="p">]],</span>
+    <span class="n">inputs</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">te</span><span class="o">.</span><span class="n">Schedule</span><span class="p">,</span> <span class="n">PrimFunc</span><span class="p">,</span> <span class="n">IRModule</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">IRModule</span><span class="p">]],</span>
     <span class="n">args</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Buffer</span><span class="p">,</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Var</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">target</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Target</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">target_host</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Target</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1626,7 +1624,7 @@ title="Fullscreen mode"
 <span class="sd">    ----</span>
 <span class="sd">    See the note on :any:`tvm.target` on target string format.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">schedule</span><span class="o">.</span><span class="n">Schedule</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">te</span><span class="o">.</span><span class="n">Schedule</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">args</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;args must be given for build from schedule&quot;</span><span class="p">)</span>
         <span class="n">input_mod</span> <span class="o">=</span> <span class="n">lower</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">binds</span><span class="o">=</span><span class="n">binds</span><span class="p">)</span>
@@ -1641,7 +1639,8 @@ title="Fullscreen mode"
         <span class="n">input_mod</span> <span class="o">=</span> <span class="n">lower</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
     <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="n">container</span><span class="o">.</span><span class="n">Map</span><span class="p">)):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Inputs must be Schedule, IRModule or dict of target to IRModule, &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Inputs must be te.Schedule, IRModule, PrimFunc, &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;or dict of target to IRModule, &quot;</span>
             <span class="sa">f</span><span class="s2">&quot;but got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="p">)</span>
 
@@ -1741,7 +1740,7 @@ title="Fullscreen mode"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-19, 14:57:27.<br/>
+    Last updated on 2022-06-28, 06:09:53.<br/>
 </p>
         </footer>
     </div>

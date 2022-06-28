@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>How to Use TVM Pass Infra &#8212; TVM  文档</title>
+    <title>如何使用 TVM Pass Infra &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -48,7 +48,7 @@
     <link rel="shortcut icon" href="../../../_static/tvm-logo-square.png"/>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="How to Use TVM Pass Instrument" href="use_pass_instrument.html" />
+    <link rel="next" title="如何使用 TVM Pass Instrument" href="use_pass_instrument.html" />
     <link rel="prev" title="编写定制 Pass" href="low_level_custom_pass.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
@@ -738,12 +738,12 @@
        </li>
        <li class="toctree-l4 current active">
         <a class="current reference internal" href="#">
-         How to Use TVM Pass Infra
+         如何使用 TVM Pass Infra
         </a>
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="use_pass_instrument.html">
-         How to Use TVM Pass Instrument
+         如何使用 TVM Pass Instrument
         </a>
        </li>
        <li class="toctree-l4">
@@ -868,11 +868,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/introduction_to_module_serialization.html">
      模块序列化简介
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../arch/device_target_interactions.html">
-     Device/Target Interactions
     </a>
    </li>
    <li class="toctree-l2">
@@ -1452,40 +1447,40 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-an-example-relay-program">
-   Create An Example Relay Program
+  <a class="reference internal nav-link" href="#relay">
+   创建 Relay 程序示例
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#optimize-the-program">
-   Optimize the Program
+  <a class="reference internal nav-link" href="#id1">
+   优化程序
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#manually-apply-optimization-passes">
-     Manually Apply Optimization Passes
+    <a class="reference internal nav-link" href="#passes">
+     手动应用优化 passes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#use-sequential-to-apply-a-sequence-of-passes">
-     Use Sequential to Apply a Sequence of Passes
+    <a class="reference internal nav-link" href="#sequential-passes">
+     使用 Sequential 来应用 Passes 序列
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#implement-a-pass-using-python-decorator">
-   Implement a Pass Using Python Decorator
+  <a class="reference internal nav-link" href="#python-pass">
+   使用 Python 装饰器实现 Pass
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#debug-a-pass">
-   Debug a Pass
+  <a class="reference internal nav-link" href="#pass">
+   调试 Pass
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
+  <a class="reference internal nav-link" href="#id2">
+   小结
   </a>
  </li>
 </ul>
@@ -1497,7 +1492,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>How to Use TVM Pass Infra</h1>
+                <h1>如何使用 TVM Pass Infra</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1508,40 +1503,40 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-an-example-relay-program">
-   Create An Example Relay Program
+  <a class="reference internal nav-link" href="#relay">
+   创建 Relay 程序示例
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#optimize-the-program">
-   Optimize the Program
+  <a class="reference internal nav-link" href="#id1">
+   优化程序
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#manually-apply-optimization-passes">
-     Manually Apply Optimization Passes
+    <a class="reference internal nav-link" href="#passes">
+     手动应用优化 passes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#use-sequential-to-apply-a-sequence-of-passes">
-     Use Sequential to Apply a Sequence of Passes
+    <a class="reference internal nav-link" href="#sequential-passes">
+     使用 Sequential 来应用 Passes 序列
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#implement-a-pass-using-python-decorator">
-   Implement a Pass Using Python Decorator
+  <a class="reference internal nav-link" href="#python-pass">
+   使用 Python 装饰器实现 Pass
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#debug-a-pass">
-   Debug a Pass
+  <a class="reference internal nav-link" href="#pass">
+   调试 Pass
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
+  <a class="reference internal nav-link" href="#id2">
+   小结
   </a>
  </li>
 </ul>
@@ -1554,23 +1549,12 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="how-to-use-tvm-pass-infra">
-<h1>How to Use TVM Pass Infra<a class="headerlink" href="#how-to-use-tvm-pass-infra" title="永久链接至标题">#</a></h1>
-<p><strong>Author</strong>: <a class="reference external" href="https://github.com/zhiics">Zhi Chen</a></p>
-<p>As the number of optimization passes increases in Relay/tir, it becomes intractable to
-execute them and maintain their dependencies manually. Therefore, we have
-introduced an infrastructure to manage the optimization passes and make it
-applicable to different layers of the IR in the TVM stack.</p>
-<p>The optimizations of a Relay/tir program could be applied at various granularity,
-namely function-level and module-level using :py:class:<code class="docutils literal notranslate"><span class="pre">tvm.relay.transform.FunctionPass</span></code>/
-:py:class:<code class="docutils literal notranslate"><span class="pre">tvm.tir.transform.PrimFuncPass</span></code> and :py:class:<code class="docutils literal notranslate"><span class="pre">tvm.transform.ModulePass</span></code>
-respectively. Or users can rely on :py:class:<code class="docutils literal notranslate"><span class="pre">tvm.transform.Sequential</span></code> to apply a sequence of passes
-on a Relay/tir program where the dependencies between passes can be resolved by the
-pass infra. For more details about each type of these passes, please refer to
-the <code class="docutils literal notranslate"><span class="pre">pass-infra</span></code></p>
-<p>This tutorial mainly demonstrates how developers can use the pass infra to perform
-a certain optimization and create an optimization pipeline for a Relay program.
-The same approach can be used for tir as well.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="tvm-pass-infra">
+<h1>如何使用 TVM Pass Infra<a class="headerlink" href="#tvm-pass-infra" title="永久链接至标题">#</a></h1>
+<p><strong>原作者</strong>: <a class="reference external" href="https://github.com/zhiics">Zhi Chen</a></p>
+<p>随着在 Relay/tir 中优化 pass 数量的增加，手动执行它们并维护它们的依赖关系变得非常棘手。因此，TVM 引入了 infrastructure 来管理优化 pass，并使其适用于 TVM 堆栈中 IR 的不同层。</p>
+<p>Relay/tir 程序的优化可以应用在不同的粒度上，即函数级 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/relay/transform.html#tvm.relay.transform.FunctionPass" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.relay.transform.FunctionPass</span></code></a>/<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/tir.html#tvm.tir.transform.PrimFuncPass" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.tir.transform.PrimFuncPass</span></code></a> 和模块级 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.ModulePass" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.ModulePass</span></code></a>。或者用户可以依赖于 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.Sequential" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.Sequential</span></code></a> 在 Relay/tir 程序上应用 pass 序列，其中 pass 之间的依赖性可以由 <code class="docutils literal notranslate"><span class="pre">pass</span> <span class="pre">infra</span></code> 解析。有关每种 pass 的详细信息，请参阅 <a class="reference internal" href="../../arch/pass_infra.html#pass-infra"><span class="std std-ref">Pass Infrastructure</span></a>。</p>
+<p>本教程主要演示开发人员如何使用 pass infra 执行某种优化，并为 Relay 程序创建优化管道。同样的方法也可以用于 tir。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1581,11 +1565,9 @@ The same approach can be used for tir as well.</p>
 </div>
 </div>
 </div>
-<section id="create-an-example-relay-program">
-<h2>Create An Example Relay Program<a class="headerlink" href="#create-an-example-relay-program" title="永久链接至标题">#</a></h2>
-<p>First of all, we create a simple Relay program for the tutorial. This program
-will be used by various optimizations of the examples in this tutorial.
-Similarly, users can write a tir primitive function and apply the tir passes.</p>
+<section id="relay">
+<h2>创建 Relay 程序示例<a class="headerlink" href="#relay" title="永久链接至标题">#</a></h2>
+<p>首先，为创建简单的 Relay 程序。本教程中的示例将使用这个程序进行各种优化。类似地，用户可以编写 tir 原语函数并应用 tir passes。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">example</span><span class="p">():</span>
@@ -1607,37 +1589,70 @@ Similarly, users can write a tir primitive function and apply the tir passes.</p
 </div>
 </div>
 </section>
-<section id="optimize-the-program">
-<h2>Optimize the Program<a class="headerlink" href="#optimize-the-program" title="永久链接至标题">#</a></h2>
-<p>Now we would like to optimize the program. Relay features a host of
-optimizations. We will select some of them to apply on this example program.</p>
-<p>There are multiple ways to optimize a Relay program. Below we will provide
-examples for each of them.</p>
-<section id="manually-apply-optimization-passes">
-<h3>Manually Apply Optimization Passes<a class="headerlink" href="#manually-apply-optimization-passes" title="永久链接至标题">#</a></h3>
+<section id="id1">
+<h2>优化程序<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
+<p>现在要优化程序。Relay 具有许多优化功能。选择其中一些应用到这个示例程序中。</p>
+<p>有多种方法来优化 Relay 程序。下面将分别提供它们的示例。</p>
+<section id="passes">
+<h3>手动应用优化 passes<a class="headerlink" href="#passes" title="永久链接至标题">#</a></h3>
+<p>创建 Relay 模块，它包含一个或多个用于优化的 Relay 函数。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s first create a relay Module which contains one or multiple Relay</span>
-<span class="c1"># functions for optimization.</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">example</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">example</span><span class="p">()</span>
 <span class="n">mod</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">IRModule</span><span class="o">.</span><span class="n">from_expr</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-
-<span class="c1"># Now we can apply constant folding on the module.</span>
-<span class="c1"># fold_const here is a callback that doesn&#39;t take any parameters.</span>
-<span class="n">fold_const</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">FoldConstant</span><span class="p">()</span>
-<span class="c1"># Then, we can invoke the pass on the given module. Note that the constant</span>
-<span class="c1"># folding pass works at the function-level. That being said, each function in</span>
-<span class="c1"># the module will be applied with the optimization. Users don&#39;t need to iterate</span>
-<span class="c1"># through individual functions manually to apply this pass.</span>
-<span class="n">mod</span> <span class="o">=</span> <span class="n">fold_const</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
-<span class="c1"># We can see from the updated program that the constants are folded.</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>def @main(%x: Tensor[(1, 64, 56, 56), float32], %weight: Tensor[(64, 64, 3, 3), float32]) {
+  %0 = add(meta[relay.Constant][0], meta[relay.Constant][0]);
+  %1 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]);
+  %2 = multiply(%0, 2f);
+  %3 = add(%1, %2);
+  %4 = add(%3, meta[relay.Constant][0]);
+  %5 = add(%3, meta[relay.Constant][0]);
+  add(%4, %5)
+}
+</pre></div>
 </div>
-<p>More optimizations can be applied in the similar manner. For instance, we can
-eliminate the common expressions that used by <code class="docutils literal notranslate"><span class="pre">z</span></code> and <code class="docutils literal notranslate"><span class="pre">z1</span></code>.</p>
+</div>
+</div>
+<p>可以对模块应用常量折叠。</p>
+<p><code class="docutils literal notranslate"><span class="pre">fold_const</span></code> 是不带任何参数的回调函数。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fold_const</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">FoldConstant</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>对给定的模块调用 pass。注意，常量折叠传递在函数级工作。也就是说，模块中的每个函数都将被优化应用。用户不需要手动遍历各个函数来应用此传递。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span> <span class="o">=</span> <span class="n">fold_const</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+<span class="c1"># 可以从更新的程序中看到，常数是折叠的。</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
+  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %1 = add(%0, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %2 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %3 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  add(%2, %3) /* ty=Tensor[(1, 64, 54, 54), float32] */
+}
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/pc/data/4tb/lxw/anaconda3/envs/torch/lib/python3.10/site-packages/tvm/driver/build_module.py:263: UserWarning: target_host parameter is going to be deprecated. Please pass in tvm.target.Target(target, host=target_host) instead.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<p>以类似的方式应用更多的优化。例如，可以消除  <code class="docutils literal notranslate"><span class="pre">z</span></code> 和 <code class="docutils literal notranslate"><span class="pre">z1</span></code> 使用的常见表达式。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">EliminateCommonSubexpr</span><span class="p">()(</span><span class="n">mod</span><span class="p">)</span>
@@ -1645,46 +1660,62 @@ eliminate the common expressions that used by <code class="docutils literal notr
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
+  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %1 = add(%0, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %2 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  add(%2, %2) /* ty=Tensor[(1, 64, 54, 54), float32] */
+}
+</pre></div>
 </div>
-<p>Some optimizations, such as fusion, are parametric as well. For example,
-opt level 0 will not allow operators to be fused together. Users can pass the
-<code class="docutils literal notranslate"><span class="pre">fuse_opt_level</span></code> to enable this.</p>
+</div>
+</div>
+<p>一些优化，如融合，也是参数化的。例如，opt 级别 0 将不允许算子融合在一起。用户可以通过 <code class="docutils literal notranslate"><span class="pre">fuse_opt_level</span></code> 来启用它。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">FuseOps</span><span class="p">(</span><span class="n">fuse_opt_level</span><span class="o">=</span><span class="mi">0</span><span class="p">)(</span><span class="n">mod</span><span class="p">)</span>
 
-<span class="c1"># We can observe that the optimized module contains functions that only have</span>
-<span class="c1"># a signle primitive op.</span>
+<span class="c1"># 可以观察到，优化后的模块包含的函数只有 primitive op</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
+  %0 = fn (%p03: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %p12: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, Primitive=1) -&gt; Tensor[(1, 64, 54, 54), float32] {
+    nn.conv2d(%p03, %p12, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -&gt; Tensor[(1, 64, 54, 54), float32] */;
+  %1 = %0(%x, %weight) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %2 = fn (%p02: Tensor[(1, 64, 54, 54), float32] /* ty=Tensor[(1, 64, 54, 54), float32] */, %p11: Tensor[(1, 64, 54, 54), float32] /* ty=Tensor[(1, 64, 54, 54), float32] */, Primitive=1) -&gt; Tensor[(1, 64, 54, 54), float32] {
+    add(%p02, %p11) /* ty=Tensor[(1, 64, 54, 54), float32] */
+  } /* ty=fn (Tensor[(1, 64, 54, 54), float32], Tensor[(1, 64, 54, 54), float32]) -&gt; Tensor[(1, 64, 54, 54), float32] */;
+  %3 = %2(%1, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %4 = fn (%p01: Tensor[(1, 64, 54, 54), float32] /* ty=Tensor[(1, 64, 54, 54), float32] */, %p1: Tensor[(1, 64, 54, 54), float32] /* ty=Tensor[(1, 64, 54, 54), float32] */, Primitive=1) -&gt; Tensor[(1, 64, 54, 54), float32] {
+    add(%p01, %p1) /* ty=Tensor[(1, 64, 54, 54), float32] */
+  } /* ty=fn (Tensor[(1, 64, 54, 54), float32], Tensor[(1, 64, 54, 54), float32]) -&gt; Tensor[(1, 64, 54, 54), float32] */;
+  %5 = %4(%3, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %6 = fn (%p0: Tensor[(1, 64, 54, 54), float32] /* ty=Tensor[(1, 64, 54, 54), float32] */, Primitive=1) -&gt; Tensor[(1, 64, 54, 54), float32] {
+    add(%p0, %p0) /* ty=Tensor[(1, 64, 54, 54), float32] */
+  } /* ty=fn (Tensor[(1, 64, 54, 54), float32]) -&gt; Tensor[(1, 64, 54, 54), float32] */;
+  %6(%5) /* ty=Tensor[(1, 64, 54, 54), float32] */
+}
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="use-sequential-to-apply-a-sequence-of-passes">
-<h3>Use Sequential to Apply a Sequence of Passes<a class="headerlink" href="#use-sequential-to-apply-a-sequence-of-passes" title="永久链接至标题">#</a></h3>
-<p>Applying passes as above is actually tedious and it may require users to have
-better understanding about the dependencies between them. For example, fusion
-currently doesn’t work well on let bindings. Therefore, we would not be able
-to fuse operators that were fusable if :py:func:<code class="docutils literal notranslate"><span class="pre">relay.transform.ToANormalForm</span></code> is applied before
-fusion, as this pass generates let bindings for each expression to
-canonicalize a Relay program.</p>
-<p>Relay, hence, provides :py:class:<code class="docutils literal notranslate"><span class="pre">tvm.transform.Sequential</span></code> to alleviate developers from handling
-these issues explicitly by specifying the required passes of each pass and
-packing them as a whole to execute. For example, the same passes can now be
-applied using the sequential style as the following. :py:class:<code class="docutils literal notranslate"><span class="pre">tvm.transform.Sequential</span></code> is
-similar to <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#torch.nn.Sequential">torch.nn.sequential</a>
-and <a class="reference external" href="https://mxnet.apache.org/api/python/docs/_modules/mxnet/gluon/block.html">mxnet.gluon.block</a>.
-For example, <code class="docutils literal notranslate"><span class="pre">torch.nn.sequential</span></code> is used to contain a sequence of PyTorch
-<code class="docutils literal notranslate"><span class="pre">Modules</span></code> that will be added to build a network. It focuses on the network
-layers. Instead, the :py:class:<code class="docutils literal notranslate"><span class="pre">tvm.transform.Sequential</span></code> in our pass infra works on the optimizing
-pass.</p>
+<section id="sequential-passes">
+<h3>使用 Sequential 来应用 Passes 序列<a class="headerlink" href="#sequential-passes" title="永久链接至标题">#</a></h3>
+<p>像上面那样应用 pass 实际上是很乏味的，它可能需要用户更好地理解它们之间的依赖关系。例如，fusion 目前在 let 绑定上不能很好地工作。因此，如果在融合之前应用  <code class="xref py py-func docutils literal notranslate"><span class="pre">relay.transform.ToANormalForm()</span></code>，将无法融合可融合的算子，因为此 pass 为每个表达式生成 let 绑定，以规范化 Relay 程序。</p>
+<p>因此，Relay 提供了 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.Sequential" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.Sequential</span></code></a>，通过指定每个 pass 所需的 passes 并将它们打包为一个整体来执行，从而使开发人员不必明确地处理这些问题。例如，现在可以使用 sequential 样式应用相同的 pass，如下所示。<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.Sequential" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.Sequential</span></code></a> 与 <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#torch.nn.Sequential">torch.nn.sequential</a> 和 <a class="reference external" href="https://mxnet.apache.org/api/python/docs/_modules/mxnet/gluon/block.html">mxnet.gluon.block</a> 类似。</p>
+<p>例如，<code class="docutils literal notranslate"><span class="pre">torch.nn.sequential</span></code> 用于包含 PyTorch 模块序列，这些模块将被添加以构建网络。它主要关注网络层。相反，pass infra 中的 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.Sequential" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.Sequential</span></code></a> 作用于优化 pass。</p>
+<p>下面通过 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.Sequential" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.Sequential</span></code></a> 执行一些传递：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now let&#39;s execute some passes through :py:class:`tvm.transform.Sequential`</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">example</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">example</span><span class="p">()</span>
 <span class="n">mod</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">IRModule</span><span class="o">.</span><span class="n">from_expr</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="c1"># Glob the interested passes.</span>
+<span class="c1"># Glob 感兴趣的 passes.</span>
 <span class="n">seq</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
     <span class="p">[</span>
         <span class="n">relay</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">FoldConstant</span><span class="p">(),</span>
@@ -1697,14 +1728,22 @@ pass.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
+  %4 = fn (%p0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %p1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %p2: Tensor[(1, 64, 54, 54), float32] /* ty=Tensor[(1, 64, 54, 54), float32] */, %p3: Tensor[(1, 64, 54, 54), float32] /* ty=Tensor[(1, 64, 54, 54), float32] */, Primitive=1) -&gt; Tensor[(1, 64, 54, 54), float32] {
+    %0 = nn.conv2d(%p0, %p1, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+    %1 = add(%0, %p2) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+    %2 = add(%1, %p3) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+    %3 = add(%1, %p3) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+    add(%2, %3) /* ty=Tensor[(1, 64, 54, 54), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32], Tensor[(1, 64, 54, 54), float32], Tensor[(1, 64, 54, 54), float32]) -&gt; Tensor[(1, 64, 54, 54), float32] */;
+  %4(%x, %weight, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */
+}
+</pre></div>
 </div>
-<p>From the transformed Relay program, we can see that there are still two
-identical addition operations. This is because <code class="docutils literal notranslate"><span class="pre">EliminateCommonSubexpr</span></code>
-was not actually performed. The reason is because only the passes that have
-optimization level less or equal to 2 will be executed by default under
-:py:class:<code class="docutils literal notranslate"><span class="pre">tvm.transform.Sequential</span></code>. The pass infra,
-however, provides a configuration interface
-for users to customize the optimization level that they want to execute.</p>
+</div>
+</div>
+<p>从变换后的 Relay 程序中，可以看到仍然有两个相同的加法运算。这是因为实际上并没有执行 <code class="docutils literal notranslate"><span class="pre">EliminateCommonSubexpr</span></code>。原因是在 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.Sequential" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.Sequential</span></code></a> 下，默认只执行优化级别小于或等于 2 的传递。然而，pass infra 为用户提供了配置接口，以定制他们想要执行的优化级别。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
@@ -1713,13 +1752,22 @@ for users to customize the optimization level that they want to execute.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
+  %3 = fn (%p0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %p1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %p2: Tensor[(1, 64, 54, 54), float32] /* ty=Tensor[(1, 64, 54, 54), float32] */, %p3: Tensor[(1, 64, 54, 54), float32] /* ty=Tensor[(1, 64, 54, 54), float32] */, Primitive=1) -&gt; Tensor[(1, 64, 54, 54), float32] {
+    %0 = nn.conv2d(%p0, %p1, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+    %1 = add(%0, %p2) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+    %2 = add(%1, %p3) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+    add(%2, %2) /* ty=Tensor[(1, 64, 54, 54), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32], Tensor[(1, 64, 54, 54), float32], Tensor[(1, 64, 54, 54), float32]) -&gt; Tensor[(1, 64, 54, 54), float32] */;
+  %3(%x, %weight, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */
+}
+</pre></div>
 </div>
-<p>Now we can see that only one of the two identical additions is kept.</p>
-<p>In addition, users can selectively disable some passes using the
-<code class="docutils literal notranslate"><span class="pre">disabled_pass</span></code> config, which is similar to the <code class="docutils literal notranslate"><span class="pre">-fno-xxx</span></code> option used the
-general purpose compilers, such as Clang and GCC. For example, we can disable
-EliminateCommonSubexpr as following. The printed module will again show two
-identical addition operations.</p>
+</div>
+</div>
+<p>现在可以看到，两个相同的加法项中只有一个被保留了。</p>
+<p>此外，用户可以使用 <code class="docutils literal notranslate"><span class="pre">disabled_pass</span></code> 配置有选择地禁用一些传递，这类似于通用编译器（如 Clang 和 GCC）使用的 <code class="docutils literal notranslate"><span class="pre">-fno-xxx</span></code> 选项。例如，可以如下所示禁用 <code class="docutils literal notranslate"><span class="pre">EliminateCommonSubexpr</span></code>。打印的模块将再次显示两个相同的加法运算。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">disabled_pass</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;EliminateCommonSubexpr&quot;</span><span class="p">]):</span>
@@ -1728,19 +1776,26 @@ identical addition operations.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
+  %4 = fn (%p0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %p1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %p2: Tensor[(1, 64, 54, 54), float32] /* ty=Tensor[(1, 64, 54, 54), float32] */, %p3: Tensor[(1, 64, 54, 54), float32] /* ty=Tensor[(1, 64, 54, 54), float32] */, Primitive=1) -&gt; Tensor[(1, 64, 54, 54), float32] {
+    %0 = nn.conv2d(%p0, %p1, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+    %1 = add(%0, %p2) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+    %2 = add(%1, %p3) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+    %3 = add(%1, %p3) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+    add(%2, %3) /* ty=Tensor[(1, 64, 54, 54), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32], Tensor[(1, 64, 54, 54), float32], Tensor[(1, 64, 54, 54), float32]) -&gt; Tensor[(1, 64, 54, 54), float32] */;
+  %4(%x, %weight, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */
+}
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
-<section id="implement-a-pass-using-python-decorator">
-<h2>Implement a Pass Using Python Decorator<a class="headerlink" href="#implement-a-pass-using-python-decorator" title="永久链接至标题">#</a></h2>
-<p>The next example illustrates how we can orchestrate a customized optimization
-pipeline through the pass infra using Python decorators. This functionality
-greatly eases the implementation of passes. For example, users can simply
-define a decorated class to do function-level optimizations as the following
-example shows. <code class="docutils literal notranslate"><span class="pre">transform_function</span></code> wraps a class to replace all constants
-with a multiple of <code class="docutils literal notranslate"><span class="pre">c</span></code>. Later on, each function in a given module will be
-visited and each constant in the function will be replaced when we invoke the
-customized pass.</p>
+<section id="python-pass">
+<h2>使用 Python 装饰器实现 Pass<a class="headerlink" href="#python-pass" title="永久链接至标题">#</a></h2>
+<p>下一个示例演示了如何使用 Python 装饰器借助 pass infra 编排定制的优化管道。这个功能大大简化了 pass 的实现。例如，用户可以简单地定义装饰类来进行函数级优化，如下面的示例所示。<code class="docutils literal notranslate"><span class="pre">transform_function</span></code> 包装类，用 <code class="docutils literal notranslate"><span class="pre">c</span></code> 的倍数替换所有常量。稍后，将访问给定模块中的每个函数，并在调用自定义传递时替换函数中的每个常量。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@relay</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">function_pass</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1770,14 +1825,26 @@ customized pass.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
+  %0 = multiply(3f /* ty=float32 */, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %1 = add(%0, %0) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %2 = multiply(3f /* ty=float32 */, 2f /* ty=float32 */) /* ty=float32 */;
+  %3 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %4 = multiply(%1, %2) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %5 = add(%3, %4) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %6 = add(%5, %0) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %7 = add(%5, %0) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  add(%6, %7) /* ty=Tensor[(1, 64, 54, 54), float32] */
+}
+</pre></div>
+</div>
+</div>
 </div>
 </section>
-<section id="debug-a-pass">
-<h2>Debug a Pass<a class="headerlink" href="#debug-a-pass" title="永久链接至标题">#</a></h2>
-<p>TVM provides users a plug-and-play style debugging pass that print the IR
-after a certain pass is done through a special pass (<code class="docutils literal notranslate"><span class="pre">PrintIR</span></code>) to dump the IR of the
-whole module. A slightly modified version of the sequential pass example
-could be like the following to enable IR dumping for <code class="docutils literal notranslate"><span class="pre">FoldConstant</span></code> optimization.</p>
+<section id="pass">
+<h2>调试 Pass<a class="headerlink" href="#pass" title="永久链接至标题">#</a></h2>
+<p>TVM 为用户提供了即插即用风格（plug-and-play）的调试传递，它通过特殊的传递（ <code class="docutils literal notranslate"><span class="pre">PrintIR</span></code> ） 转储（dump）整个模块的 IR，在完成某个传递后打印 IR。对 sequential 传递示例稍加修改的版本如下所示，以便为 <code class="docutils literal notranslate"><span class="pre">FoldConstant</span></code> 优化启用 IR 转储。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">example</span><span class="p">()</span>
@@ -1794,15 +1861,9 @@ could be like the following to enable IR dumping for <code class="docutils liter
 </div>
 </div>
 </div>
-<p>By inserting the <code class="docutils literal notranslate"><span class="pre">PrintIR</span></code> pass after <code class="docutils literal notranslate"><span class="pre">FoldConstant</span></code>, the pass infra will
-dump out the module IR when <code class="docutils literal notranslate"><span class="pre">FoldConstant</span></code> is done. Users can plug in this
-pass after any pass they want to debug for viewing the optimization effect.</p>
-<p>There is a more flexible debugging mechanism. One can implement a <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code>
-class to execute arbitrary code not only before and/or after each pass but also
-at entering/exiting <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>. See <code class="docutils literal notranslate"><span class="pre">pass_instrument_cpp_backend</span></code>
-for more details.</p>
-<p>Here we use :py::func<code class="docutils literal notranslate"><span class="pre">tvm.instrument.pass_instrument</span></code> decorator to implement
-a PassInsturment class printing IR before execution of each passes:</p>
+<p>通过在 <code class="docutils literal notranslate"><span class="pre">FoldConstant</span></code> 之后插入 <code class="docutils literal notranslate"><span class="pre">PrintIR</span></code>，当 <code class="docutils literal notranslate"><span class="pre">FoldConstant</span></code> 完成时，pass infra 将转储模块 IR。用户可以在想要调试的任何 pass 之后插入它，以查看优化效果。</p>
+<p>有一个更灵活的调试机制。可以实现 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 类来执行任意代码，不仅在每次传递之前和/或之后，还可以在进入/退出 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 时执行。查看 <a class="reference internal" href="../../arch/pass_infra.html#pass-instrument-cpp-backend"><span class="std std-ref">Pass Instrument</span></a> 了解更多信息。</p>
+<p>这里使用 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.instrument.pass_instrument" title="(在 tvm v0.9.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.instrument.pass_instrument()</span></code></a> 装饰器，实现 PassInsturment 类在每次 Pass 执行前打印 IR：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@tvm</span><span class="o">.</span><span class="n">instrument</span><span class="o">.</span><span class="n">pass_instrument</span>
@@ -1824,16 +1885,158 @@ a PassInsturment class printing IR before execution of each passes:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running pass: {} The meta data of the pass - pass name: sequential, opt_level: 0, required passes: []
+
+def @main(%x: Tensor[(1, 64, 56, 56), float32], %weight: Tensor[(64, 64, 3, 3), float32]) {
+  %0 = add(meta[relay.Constant][0], meta[relay.Constant][0]);
+  %1 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]);
+  %2 = multiply(%0, 2f);
+  %3 = add(%1, %2);
+  %4 = add(%3, meta[relay.Constant][0]);
+  %5 = add(%3, meta[relay.Constant][0]);
+  add(%4, %5)
+}
+
+
+Running pass: {} The meta data of the pass - pass name: FoldConstant, opt_level: 2, required passes: []
+
+def @main(%x: Tensor[(1, 64, 56, 56), float32], %weight: Tensor[(64, 64, 3, 3), float32]) {
+  %0 = add(meta[relay.Constant][0], meta[relay.Constant][0]);
+  %1 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]);
+  %2 = multiply(%0, 2f);
+  %3 = add(%1, %2);
+  %4 = add(%3, meta[relay.Constant][0]);
+  %5 = add(%3, meta[relay.Constant][0]);
+  add(%4, %5)
+}
+
+
+Running pass: {} The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%x: Tensor[(1, 64, 56, 56), float32], %weight: Tensor[(64, 64, 3, 3), float32]) {
+  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]);
+  %1 = add(%0, meta[relay.Constant][0]);
+  %2 = add(%1, meta[relay.Constant][1]);
+  %3 = add(%1, meta[relay.Constant][1]);
+  add(%2, %3)
+}
+
+
+Running pass: {} The meta data of the pass - pass name: PrintIR, opt_level: 0, required passes: []
+
+def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
+  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %1 = add(%0, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %2 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %3 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  add(%2, %3) /* ty=Tensor[(1, 64, 54, 54), float32] */
+}
+
+
+Running pass: {} The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
+  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %1 = add(%0, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %2 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %3 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  add(%2, %3) /* ty=Tensor[(1, 64, 54, 54), float32] */
+}
+
+
+Running pass: {} The meta data of the pass - pass name: EliminateCommonSubexpr, opt_level: 3, required passes: [
+InferType, ]
+
+def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
+  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %1 = add(%0, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %2 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %3 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  add(%2, %3) /* ty=Tensor[(1, 64, 54, 54), float32] */
+}
+
+
+Running pass: {} The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
+  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %1 = add(%0, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %2 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  add(%2, %2) /* ty=Tensor[(1, 64, 54, 54), float32] */
+}
+
+
+Running pass: {} The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
+  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %1 = add(%0, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %2 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  add(%2, %2) /* ty=Tensor[(1, 64, 54, 54), float32] */
+}
+
+
+Running pass: {} The meta data of the pass - pass name: FuseOps, opt_level: 0, required passes: [
+InferType, ]
+
+def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
+  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %1 = add(%0, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %2 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  add(%2, %2) /* ty=Tensor[(1, 64, 54, 54), float32] */
+}
+
+
+Running pass: {} The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
+  %3 = fn (%p0: Tensor[(1, 64, 56, 56), float32], %p1: Tensor[(64, 64, 3, 3), float32], %p2: Tensor[(1, 64, 54, 54), float32], %p3: Tensor[(1, 64, 54, 54), float32], Primitive=1) -&gt; Tensor[(1, 64, 54, 54), float32] {
+    %0 = nn.conv2d(%p0, %p1, padding=[0, 0, 0, 0]);
+    %1 = add(%0, %p2);
+    %2 = add(%1, %p3);
+    add(%2, %2)
+  };
+  %3(%x, %weight, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */)
+}
+
+
+def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
+  %3 = fn (%p0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %p1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %p2: Tensor[(1, 64, 54, 54), float32] /* ty=Tensor[(1, 64, 54, 54), float32] */, %p3: Tensor[(1, 64, 54, 54), float32] /* ty=Tensor[(1, 64, 54, 54), float32] */, Primitive=1) -&gt; Tensor[(1, 64, 54, 54), float32] {
+    %0 = nn.conv2d(%p0, %p1, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+    %1 = add(%0, %p2) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+    %2 = add(%1, %p3) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+    add(%2, %2) /* ty=Tensor[(1, 64, 54, 54), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32], Tensor[(1, 64, 54, 54), float32], Tensor[(1, 64, 54, 54), float32]) -&gt; Tensor[(1, 64, 54, 54), float32] */;
+  %3(%x, %weight, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */
+}
+
+
+done
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10:15:04] /media/pc/data/4tb/lxw/books/tvm/src/ir/transform.cc:592: PrintIR():
+#[version = &quot;0.0.5&quot;]
+def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
+  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %1 = add(%0, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %2 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  %3 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
+  add(%2, %3) /* ty=Tensor[(1, 64, 54, 54), float32] */
+}
+
+/* For debugging purposes the metadata section has been omitted.
+ * If you would like to see the full metadata section you can set the 
+ * option to `True` when invoking `astext`. 
+ */
+</pre></div>
+</div>
+</div>
 </div>
 </section>
-<section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="永久链接至标题">#</a></h2>
-<p>This tutorial has covered how we can write and invoke passes in TVM more
-conveniently using the pass infra. Different ways of invoking a pass are also
-discussed. Using :py:class:<code class="docutils literal notranslate"><span class="pre">tvm.transform.Sequential</span></code> can largely help
-users to ease the work of handling multiple optimization passes and their
-dependencies. In addition, an example is provided to illustrate
-how we can debug a pass using the <code class="docutils literal notranslate"><span class="pre">PrintIR</span></code> and tracing.</p>
+<section id="id2">
+<h2>小结<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
+<p>本教程介绍了如何使用 pass infra 更方便地在 TVM 中编写和调用 pass。本文还讨论了调用 pass 的不同方法。使用 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.Sequential" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.Sequential</span></code></a> 可以很大程度上帮助用户简化处理多个优化传递及其依赖关系的工作。此外，还提供了示例来说明如何使用 <code class="docutils literal notranslate"><span class="pre">PrintIR</span></code> 和跟踪调试 pass。</p>
 </section>
 </section>
 
@@ -1855,7 +2058,7 @@ how we can debug a pass using the <code class="docutils literal notranslate"><sp
     <a class='right-next' id="next-link" href="use_pass_instrument.html" title="下一页 页">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">下一页</p>
-        <p class="prev-next-title">How to Use TVM Pass Instrument</p>
+        <p class="prev-next-title">如何使用 TVM Pass Instrument</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -1869,7 +2072,7 @@ how we can debug a pass using the <code class="docutils literal notranslate"><sp
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-19, 14:57:27.<br/>
+    Last updated on 2022-06-28, 06:09:53.<br/>
 </p>
         </footer>
     </div>

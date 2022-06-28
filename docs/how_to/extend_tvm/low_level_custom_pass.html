@@ -48,7 +48,7 @@
     <link rel="shortcut icon" href="../../../_static/tvm-logo-square.png"/>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="How to Use TVM Pass Infra" href="use_pass_infra.html" />
+    <link rel="next" title="如何使用 TVM Pass Infra" href="use_pass_infra.html" />
     <link rel="prev" title="拓展 TVM" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
@@ -738,12 +738,12 @@
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="use_pass_infra.html">
-         How to Use TVM Pass Infra
+         如何使用 TVM Pass Infra
         </a>
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="use_pass_instrument.html">
-         How to Use TVM Pass Instrument
+         如何使用 TVM Pass Instrument
         </a>
        </li>
        <li class="toctree-l4">
@@ -868,11 +868,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/introduction_to_module_serialization.html">
      模块序列化简介
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../arch/device_target_interactions.html">
-     Device/Target Interactions
     </a>
    </li>
    <li class="toctree-l2">
@@ -1550,7 +1545,7 @@ title="Print to PDF"
 <p>TVM 是抽象出机器学习加速器异质性（heterogenity）的框架。有时用户可能希望定制一些分析和 IR 变换，使 TVM 适应他们自己的专用硬件。本教程帮助用户在 TVM 中编写定制的pass。</p>
 <section id="id1">
 <h2>前提条件<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
-<p>在阅读本教程之前，假设读者已经很好地了解了这些主题：</p>
+<p>在阅读本教程开始之前，假设读者已经很好地了解了以下主题：</p>
 <ul class="simple">
 <li><p>在 TVM 中编写算法并对其进行调度。否则，请参阅示例教程，如 <a class="reference internal" href="../optimize_operators/opt_gemm.html#opt-gemm"><span class="std std-ref">How to optimize GEMM on CPU</span></a>。</p></li>
 <li><p>HalideIR 的基本结构。否则，请参见 <code class="docutils literal notranslate"><span class="pre">HalideIR/src/ir/IR.h</span></code> 来了解 IR 节点定义了哪些属性。</p></li>
@@ -1561,7 +1556,6 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tvm</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">te</span>
-<span class="c1"># import numpy as np</span>
 </pre></div>
 </div>
 </div>
@@ -1599,7 +1593,7 @@ title="Print to PDF"
 </section>
 <section id="id2">
 <h2>编写 Pass<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
-<p>本质上，“IR 变换 pass” 是将语句映射到新语句的函数。因此，我们定义了这个向量化函数，并逐步实现它。</p>
+<p>本质上，“IR 变换 pass” 是将语句映射到新语句的函数。因此，下面定义了一个向量化函数，并逐步实现它。</p>
 <p>TVM 已经为用户提供了两个类来分析和变换 IR。</p>
 <section id="ir-visitor">
 <h3>IR Visitor<a class="headerlink" href="#ir-visitor" title="永久链接至标题">#</a></h3>
@@ -1734,7 +1728,7 @@ title="Print to PDF"
     <a class='right-next' id="next-link" href="use_pass_infra.html" title="下一页 页">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">下一页</p>
-        <p class="prev-next-title">How to Use TVM Pass Infra</p>
+        <p class="prev-next-title">如何使用 TVM Pass Infra</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -1748,7 +1742,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-19, 14:57:27.<br/>
+    Last updated on 2022-06-28, 06:09:53.<br/>
 </p>
         </footer>
     </div>
