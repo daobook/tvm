@@ -20,63 +20,40 @@
 Pass Infrastructure
 ===================
 
-Both Relay and TVM IR contain a series of optimization passes which improve performance metrics
-of models such as mean inference, memory footprint, or power consumption for
-specific devices. There is a suite of standard optimizations as well as machine
-learning-specific optimizations including constant folding, dead code
-elimination, operator layout alteration, operator fusion, buffer handling, and
-loop transformation, etc. Each of these passes is structured as a ir-to-ir
-transformation using the analysis result collected during and/or before traversal.
+Relay 和 TVM IR 都包含一系列优化 passes，用于改善模型的性能指标，如 mean inference、memory footprint 或特定设备的 power consumption。
+有一套标准的优化和机器学习特有的优化，包括常量折叠（constant folding）、死代码消除（ead code
+elimination）、算子布局更改（operator layout alteration）、算子融合（operator fusion）、buffer 处理和 loop transformation 等。
+使用遍历（traversal）期间和/或遍历之前收集的分析结果，将每一个 passes 构造为 ir-to-ir 变换。
 
-However, as TVM evolves quickly, the need for a more systematic and efficient
-way to manage these passes is becoming apparent. In addition, a generic
-framework that manages the passes across different layers of the TVM stack (e.g.
-Relay and tir) paves the way for developers to quickly prototype and plug the
-implemented passes into the system.
+然而，随着 TVM 的迅速发展，对管理这些 passes 的更系统和有效的方法的需求变得越来越明显。
+另外，管理跨 TVM 栈不同层（如 Relay 和 tir）的传递的通用框架为开发人员快速原型化和将实现的传递插入到系统中铺平了道路。
 
-This doc describes the design of such an infra that takes the advantage of the
-way production compilers are used to manage the optimization passes and the style
-modern deep learning frameworks adopted to build up layers.
+本文档描述了这样的基础设施（infra）的设计，它利用了生产编译器（production compiler）管理优化过程的方式，以及现代深度学习框架用于构建层的风格。
 
-For example, many existing production compilers, such as GCC and LLVM, employ
-pass managers to effectively manage the execution of passes. Initially managing
-passes is straightforward as the number of passes is small, but mature compilers
-will contain hundreds of individual passes. Often external users will want to
-have custom passes correctly scheduled without having to modify a single
-handcrafted pass order.
+例如，许多现有的生产编译器，如 GCC 和 LLVM，都采用了传递管理器来有效地管理传递的执行。
+最初管理传递是简单的，因为传递的次数很少，但成熟的编译器将包含数百次单独的传递。
+外部用户通常希望能够正确地调度自定义传递，而不需要修改手工制作的传递 order。
 
-Similarly, modern deep learning frameworks, such as Pytorch and MXNet
-Gluon, also have the tendency to enable pass-style layer construction
-scheme through `Sequential`_ and `Block`_, respectively. With such constructs,
-these modern frameworks are able to conveniently add modules/layers to their
-containers and build up neural networks easily.
+同样，现代的深度学习框架，如 Pytorch 和 MXNet Gluon，也有分别通过 `Sequential`_ 和 `Block`_ 实现 pass-style 层构造方案的趋势。
+有了这样的结构，这些现代框架能够方便地将模块/层添加到它们的容器中，并轻松地构建神经网络。
 
-The design of the Relay pass infra is largely inspired by the the hierarchical
-pass manager used in LLVM and the block-style containers used in the popular
-deep learning frameworks. The major goals of the pass infra include:
+Relay pass infra 的设计很大程度上受到 LLVM 中使用的分层 pass 管理器和流行的深度学习框架中使用的 block-style 容器的启发。pass infra 的主要目标包括
 
-#) enabling better programmatic orchestration of optimizations. This allows
-   users to flexibly customize and build their own optimization pipelines.
+#) 支持更好的优化编程编排（orchestration）。这允许用户灵活地定制和构建自己的优化管道。
 
-#) providing a user-friendly way to debug optimization passes.
+#) 提供一种用户友好的方式来调试优化 passes。
 
-#) alleviating developers from manually and respectively resolving the
-   dependencies between passes.
+#) 减轻开发人员手工修改和分别解决传递之间的依赖关系。
 
-#) simplifying the implementation of new passes for developers. For example, we
-   allow users to implement a pass in Python and let the pass infra manipulate
-   its execution.
+#) 简化开发人员实现新的 passes 的过程。例如，允许用户在 Python 中实现 pass，并让 pass infra 操作它的执行。
 
-The Design
+设计
 ----------
 
-We focus on ease of extension for users, making it possible for users to quickly
-add new passes without loss of backward compatibility. The design contains both
-the backend and the frontend. The former implements the main logic of the pass
-infra. The latter provides simple APIs for users to interact with, i.e.,
-allowing users to quickly create their own optimization pipelines.
+专注于用户扩展的易用性，使用户能够在不损失向后兼容性的情况下快速添加新的 passes。
+该设计包括后端和前端。前者实现了 passes 底层的主要逻辑。后者提供了简单的 API 供用户交互，即允许用户快速创建自己的优化管道。
 
-C++ Backend
+C++ 后端
 ~~~~~~~~~~~
 
 We provide a ``PassInfo`` object to contain the basic information needed by
