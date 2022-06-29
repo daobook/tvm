@@ -1559,7 +1559,6 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">tvm</span>
-<span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">te</span>
 <span class="kn">import</span> <span class="nn">tvm.relay</span> <span class="k">as</span> <span class="nn">relay</span>
 </pre></div>
 </div>
@@ -1646,7 +1645,7 @@ title="Print to PDF"
 }
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/pc/data/4tb/lxw/anaconda3/envs/torch/lib/python3.10/site-packages/tvm/driver/build_module.py:263: UserWarning: target_host parameter is going to be deprecated. Please pass in tvm.target.Target(target, host=target_host) instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/pc/data/4tb/lxw/anaconda3/envs/torch/lib/python3.10/site-packages/tvm/driver/build_module.py:267: UserWarning: target_host parameter is going to be deprecated. Please pass in tvm.target.Target(target, host=target_host) instead.
   warnings.warn(
 </pre></div>
 </div>
@@ -1885,153 +1884,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running pass: {} The meta data of the pass - pass name: sequential, opt_level: 0, required passes: []
-
-def @main(%x: Tensor[(1, 64, 56, 56), float32], %weight: Tensor[(64, 64, 3, 3), float32]) {
-  %0 = add(meta[relay.Constant][0], meta[relay.Constant][0]);
-  %1 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]);
-  %2 = multiply(%0, 2f);
-  %3 = add(%1, %2);
-  %4 = add(%3, meta[relay.Constant][0]);
-  %5 = add(%3, meta[relay.Constant][0]);
-  add(%4, %5)
-}
-
-
-Running pass: {} The meta data of the pass - pass name: FoldConstant, opt_level: 2, required passes: []
-
-def @main(%x: Tensor[(1, 64, 56, 56), float32], %weight: Tensor[(64, 64, 3, 3), float32]) {
-  %0 = add(meta[relay.Constant][0], meta[relay.Constant][0]);
-  %1 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]);
-  %2 = multiply(%0, 2f);
-  %3 = add(%1, %2);
-  %4 = add(%3, meta[relay.Constant][0]);
-  %5 = add(%3, meta[relay.Constant][0]);
-  add(%4, %5)
-}
-
-
-Running pass: {} The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
-
-def @main(%x: Tensor[(1, 64, 56, 56), float32], %weight: Tensor[(64, 64, 3, 3), float32]) {
-  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]);
-  %1 = add(%0, meta[relay.Constant][0]);
-  %2 = add(%1, meta[relay.Constant][1]);
-  %3 = add(%1, meta[relay.Constant][1]);
-  add(%2, %3)
-}
-
-
-Running pass: {} The meta data of the pass - pass name: PrintIR, opt_level: 0, required passes: []
-
-def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
-  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %1 = add(%0, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %2 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %3 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  add(%2, %3) /* ty=Tensor[(1, 64, 54, 54), float32] */
-}
-
-
-Running pass: {} The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
-
-def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
-  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %1 = add(%0, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %2 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %3 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  add(%2, %3) /* ty=Tensor[(1, 64, 54, 54), float32] */
-}
-
-
-Running pass: {} The meta data of the pass - pass name: EliminateCommonSubexpr, opt_level: 3, required passes: [
-InferType, ]
-
-def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
-  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %1 = add(%0, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %2 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %3 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  add(%2, %3) /* ty=Tensor[(1, 64, 54, 54), float32] */
-}
-
-
-Running pass: {} The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
-
-def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
-  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %1 = add(%0, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %2 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  add(%2, %2) /* ty=Tensor[(1, 64, 54, 54), float32] */
-}
-
-
-Running pass: {} The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
-
-def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
-  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %1 = add(%0, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %2 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  add(%2, %2) /* ty=Tensor[(1, 64, 54, 54), float32] */
-}
-
-
-Running pass: {} The meta data of the pass - pass name: FuseOps, opt_level: 0, required passes: [
-InferType, ]
-
-def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
-  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %1 = add(%0, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %2 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  add(%2, %2) /* ty=Tensor[(1, 64, 54, 54), float32] */
-}
-
-
-Running pass: {} The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
-
-def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
-  %3 = fn (%p0: Tensor[(1, 64, 56, 56), float32], %p1: Tensor[(64, 64, 3, 3), float32], %p2: Tensor[(1, 64, 54, 54), float32], %p3: Tensor[(1, 64, 54, 54), float32], Primitive=1) -&gt; Tensor[(1, 64, 54, 54), float32] {
-    %0 = nn.conv2d(%p0, %p1, padding=[0, 0, 0, 0]);
-    %1 = add(%0, %p2);
-    %2 = add(%1, %p3);
-    add(%2, %2)
-  };
-  %3(%x, %weight, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */)
-}
-
-
-def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
-  %3 = fn (%p0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %p1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %p2: Tensor[(1, 64, 54, 54), float32] /* ty=Tensor[(1, 64, 54, 54), float32] */, %p3: Tensor[(1, 64, 54, 54), float32] /* ty=Tensor[(1, 64, 54, 54), float32] */, Primitive=1) -&gt; Tensor[(1, 64, 54, 54), float32] {
-    %0 = nn.conv2d(%p0, %p1, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-    %1 = add(%0, %p2) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-    %2 = add(%1, %p3) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-    add(%2, %2) /* ty=Tensor[(1, 64, 54, 54), float32] */
-  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32], Tensor[(1, 64, 54, 54), float32], Tensor[(1, 64, 54, 54), float32]) -&gt; Tensor[(1, 64, 54, 54), float32] */;
-  %3(%x, %weight, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */
-}
-
-
-done
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10:15:04] /media/pc/data/4tb/lxw/books/tvm/src/ir/transform.cc:592: PrintIR():
-#[version = &quot;0.0.5&quot;]
-def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */) -&gt; Tensor[(1, 64, 54, 54), float32] {
-  %0 = nn.conv2d(%x, %weight, padding=[0, 0, 0, 0]) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %1 = add(%0, meta[relay.Constant][0] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %2 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  %3 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(1, 64, 54, 54), float32] */) /* ty=Tensor[(1, 64, 54, 54), float32] */;
-  add(%2, %3) /* ty=Tensor[(1, 64, 54, 54), float32] */
-}
-
-/* For debugging purposes the metadata section has been omitted.
- * If you would like to see the full metadata section you can set the 
- * option to `True` when invoking `astext`. 
- */
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="id2">
@@ -2072,7 +1924,7 @@ def @main(%x: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), flo
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-28, 06:09:53.<br/>
+    Last updated on 2022-06-29, 12:42:37.<br/>
 </p>
         </footer>
     </div>

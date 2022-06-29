@@ -1495,7 +1495,7 @@ of underlying module functions</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tvm.contrib.graph_executor.GraphModule.benchmark">
-<span class="sig-name descname"><span class="pre">benchmark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'run'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_repeat_ms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_to_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/contrib/graph_executor.html#GraphModule.benchmark"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.contrib.graph_executor.GraphModule.benchmark" title="永久链接至目标">#</a></dt>
+<span class="sig-name descname"><span class="pre">benchmark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'run'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_repeat_ms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_to_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cooldown_interval_ms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeats_to_cooldown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/contrib/graph_executor.html#GraphModule.benchmark"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.contrib.graph_executor.GraphModule.benchmark" title="永久链接至目标">#</a></dt>
 <dd><p>Calculate runtime of a function by repeatedly calling it.</p>
 <p>Use this function to get an accurate measurement of the runtime of a function. The function
 is run multiple times in order to account for variability in measurements, processor speed
@@ -1524,13 +1524,18 @@ between the timer starting and stopping. In order to amortize any timing overhea
 <cite>number</cite> should be increased when the runtime of the function is small (less than a 1/10
 of a millisecond).</p>
 </dd>
-<dt>min_repeat_ms<span class="classifier">Optional[float]</span></dt><dd><p>If set, the inner loop will be run until it takes longer than <cite>min_repeat_ms</cite>
+<dt>min_repeat_ms<span class="classifier">Optional[int]</span></dt><dd><p>If set, the inner loop will be run until it takes longer than <cite>min_repeat_ms</cite>
 milliseconds. This can be used to ensure that the function is run enough to get an
 accurate measurement.</p>
 </dd>
 <dt>end_to_end<span class="classifier">bool</span></dt><dd><p>If set, include time to transfer input tensors to the device and time to transfer
 returned tensors in the total runtime. This will give accurate timings for end to end
 workloads.</p>
+</dd>
+<dt>cooldown_interval_ms: Optional[int]</dt><dd><p>The cooldown interval in milliseconds between the number of repeats defined by
+<cite>repeats_to_cooldown</cite>.</p>
+</dd>
+<dt>repeats_to_cooldown: Optional[int]</dt><dd><p>The number of repeats before the cooldown is activated.</p>
 </dd>
 <dt>kwargs<span class="classifier">Dict[str, Object]</span></dt><dd><p>Named arguments to the function. These are cached before running timing code, so that
 data transfer costs are not counted in the runtime.</p>
@@ -1757,7 +1762,7 @@ device_type_id : List of device type and device id</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-28, 06:09:53.<br/>
+    Last updated on 2022-06-29, 12:42:37.<br/>
 </p>
         </footer>
     </div>

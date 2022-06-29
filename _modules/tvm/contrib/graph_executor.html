@@ -1758,6 +1758,8 @@ title="Fullscreen mode"
         <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
         <span class="n">min_repeat_ms</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">end_to_end</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">cooldown_interval_ms</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">repeats_to_cooldown</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calculate runtime of a function by repeatedly calling it.</span>
@@ -1797,7 +1799,7 @@ title="Fullscreen mode"
 <span class="sd">            `number` should be increased when the runtime of the function is small (less than a 1/10</span>
 <span class="sd">            of a millisecond).</span>
 
-<span class="sd">        min_repeat_ms : Optional[float]</span>
+<span class="sd">        min_repeat_ms : Optional[int]</span>
 <span class="sd">            If set, the inner loop will be run until it takes longer than `min_repeat_ms`</span>
 <span class="sd">            milliseconds. This can be used to ensure that the function is run enough to get an</span>
 <span class="sd">            accurate measurement.</span>
@@ -1806,6 +1808,13 @@ title="Fullscreen mode"
 <span class="sd">            If set, include time to transfer input tensors to the device and time to transfer</span>
 <span class="sd">            returned tensors in the total runtime. This will give accurate timings for end to end</span>
 <span class="sd">            workloads.</span>
+
+<span class="sd">        cooldown_interval_ms: Optional[int]</span>
+<span class="sd">            The cooldown interval in milliseconds between the number of repeats defined by</span>
+<span class="sd">            `repeats_to_cooldown`.</span>
+
+<span class="sd">        repeats_to_cooldown: Optional[int]</span>
+<span class="sd">            The number of repeats before the cooldown is activated.</span>
 
 <span class="sd">        kwargs : Dict[str, Object]</span>
 <span class="sd">            Named arguments to the function. These are cached before running timing code, so that</span>
@@ -1834,7 +1843,13 @@ title="Fullscreen mode"
         <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">time_evaluator</span><span class="p">(</span>
-            <span class="n">func_name</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">number</span><span class="p">,</span> <span class="n">min_repeat_ms</span><span class="o">=</span><span class="n">min_repeat_ms</span>
+            <span class="n">func_name</span><span class="p">,</span>
+            <span class="n">device</span><span class="p">,</span>
+            <span class="n">repeat</span><span class="o">=</span><span class="n">repeat</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="n">number</span><span class="p">,</span>
+            <span class="n">min_repeat_ms</span><span class="o">=</span><span class="n">min_repeat_ms</span><span class="p">,</span>
+            <span class="n">cooldown_interval_ms</span><span class="o">=</span><span class="n">cooldown_interval_ms</span><span class="p">,</span>
+            <span class="n">repeats_to_cooldown</span><span class="o">=</span><span class="n">repeats_to_cooldown</span><span class="p">,</span>
         <span class="p">)()</span></div></div>
 </pre></div>
 
@@ -1855,7 +1870,7 @@ title="Fullscreen mode"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-28, 06:09:53.<br/>
+    Last updated on 2022-06-29, 12:42:37.<br/>
 </p>
         </footer>
     </div>
