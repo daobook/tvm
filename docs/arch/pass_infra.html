@@ -1462,28 +1462,28 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#pass-constructs">
-       Pass Constructs
+      <a class="reference internal nav-link" href="#pass">
+       Pass 构建
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#module-level-passes">
-       Module-Level Passes
+      <a class="reference internal nav-link" href="#passes">
+       模块级 Passes
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#function-level-passes">
-       Function-Level Passes
+      <a class="reference internal nav-link" href="#id2">
+       函数级 Passes
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#sequential-passes">
-       Sequential Passes
+      <a class="reference internal nav-link" href="#id3">
+       序列级 Passes
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#pass-registration">
-       Pass Registration
+      <a class="reference internal nav-link" href="#id4">
+       Pass 注册
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -1492,25 +1492,25 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#built-in-instrument">
-       Built-in Instrument
+      <a class="reference internal nav-link" href="#instrument">
+       内建 Instrument
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#python-frontend">
-     Python Frontend
+    <a class="reference internal nav-link" href="#python">
+     Python 前端
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
+      <a class="reference internal nav-link" href="#id5">
        PassContext
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#pass-objects">
-       Pass Objects
+      <a class="reference internal nav-link" href="#id6">
+       Pass 对象
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -1519,8 +1519,8 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#override-instruments-in-current-passcontext">
-       Override Instruments in Current PassContext
+      <a class="reference internal nav-link" href="#current-passcontext-instruments">
+       在 Current PassContext 中覆写 Instruments
       </a>
      </li>
     </ul>
@@ -1562,28 +1562,28 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#pass-constructs">
-       Pass Constructs
+      <a class="reference internal nav-link" href="#pass">
+       Pass 构建
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#module-level-passes">
-       Module-Level Passes
+      <a class="reference internal nav-link" href="#passes">
+       模块级 Passes
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#function-level-passes">
-       Function-Level Passes
+      <a class="reference internal nav-link" href="#id2">
+       函数级 Passes
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#sequential-passes">
-       Sequential Passes
+      <a class="reference internal nav-link" href="#id3">
+       序列级 Passes
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#pass-registration">
-       Pass Registration
+      <a class="reference internal nav-link" href="#id4">
+       Pass 注册
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -1592,25 +1592,25 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#built-in-instrument">
-       Built-in Instrument
+      <a class="reference internal nav-link" href="#instrument">
+       内建 Instrument
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#python-frontend">
-     Python Frontend
+    <a class="reference internal nav-link" href="#python">
+     Python 前端
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
+      <a class="reference internal nav-link" href="#id5">
        PassContext
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#pass-objects">
-       Pass Objects
+      <a class="reference internal nav-link" href="#id6">
+       Pass 对象
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -1619,8 +1619,8 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#override-instruments-in-current-passcontext">
-       Override Instruments in Current PassContext
+      <a class="reference internal nav-link" href="#current-passcontext-instruments">
+       在 Current PassContext 中覆写 Instruments
       </a>
      </li>
     </ul>
@@ -1664,16 +1664,11 @@ elimination）、算子布局更改（operator layout alteration）、算子融�
 该设计包括后端和前端。前者实现了 passes 底层的主要逻辑。后者提供了简单的 API 供用户交互，即允许用户快速创建自己的优化管道。</p>
 <section id="c">
 <h3>C++ 后端<a class="headerlink" href="#c" title="永久链接至标题">#</a></h3>
-<p>We provide a <code class="docutils literal notranslate"><span class="pre">PassInfo</span></code> object to contain the basic information needed by
-a pass. <code class="docutils literal notranslate"><span class="pre">name</span></code> is the pass name, <code class="docutils literal notranslate"><span class="pre">opt_level</span></code> indicates at which optimization
-level the pass will be enabled, and <code class="docutils literal notranslate"><span class="pre">required</span></code> represents the passes that are
-required to execute a certain pass (see <a class="reference external" href="https://github.com/apache/tvm/blob/main/include/tvm/ir/transform.h">include/tvm/ir/transform.h</a> for
-more details). For example, during registration of a pass (will be covered in
-later), the pass developers can specify the name of the pass, the optimization
-level it will be performed at, and/or the passes that are required.
-<code class="docutils literal notranslate"><span class="pre">opt_level</span></code> could be used to help the pass infra identify if a certain pass
-needs to be executed when running under a user-provided optimization level. The
-<code class="docutils literal notranslate"><span class="pre">required</span></code> field can be used by the pass infra to resolve pass dependencies.</p>
+<p>提供 <code class="docutils literal notranslate"><span class="pre">PassInfo</span></code> 对象来包含 pass 所需的基本信息。
+<code class="docutils literal notranslate"><span class="pre">name</span></code> 是 pass 名称，<code class="docutils literal notranslate"><span class="pre">opt_level</span></code> 表示在哪个优化级别将启用传递，<code class="docutils literal notranslate"><span class="pre">required</span></code> 表示执行某个传递所需的传递（有关详细信息，请参阅 <a class="reference external" href="https://github.com/apache/tvm/blob/main/include/tvm/ir/transform.h">include/tvm/ir/transform.h</a> ）。
+例如，在 pass 的注册过程中（将在后面讨论），pass 开发人员可以指定 pass 的名称，它将执行的优化级别，和/或所需的 pass。
+<code class="docutils literal notranslate"><span class="pre">opt_level</span></code> 可用于帮助 pass infra 识别在用户提供的优化级别下运行时是否需要执行某个 pass。
+<code class="docutils literal notranslate"><span class="pre">required</span></code> 字段可以被 pass infra 用来解析传递依赖关系。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">PassInfoNode</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">opt_level</span><span class="p">;</span><span class="w"></span>
@@ -1683,23 +1678,15 @@ needs to be executed when running under a user-provided optimization level. The
 </div>
 <section id="passcontext">
 <h4>PassContext<a class="headerlink" href="#passcontext" title="永久链接至标题">#</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">PassContext</span></code> carries useful information for an optimization pass. For
-example, it contains the error reporting system so optimization authors can
-provide diagnostics about why an optimization fails. <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> is also
-designed to replace the old <code class="docutils literal notranslate"><span class="pre">BuildConfig</span></code> which was used to help users
-configure the compilation options, including optimization level and
-required/disabled passes, etc. For instance, we may have a configuration which
-performs all passes at <code class="docutils literal notranslate"><span class="pre">opt_level=3</span></code> with some disabled passes using
-<code class="docutils literal notranslate"><span class="pre">disabled_pass=xx</span></code> provided by <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>. Now we could glob all passes
-at <code class="docutils literal notranslate"><span class="pre">opt_level=3</span></code> and exclude those in the disabled pass list. <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>
-also provides a way to instrument all passes. See section <a class="reference internal" href="#pass-instrument-cpp-backend"><span class="std std-ref">Pass Instrument</span></a>.</p>
-<p>This class is designed for users to conveniently write the Python <code class="docutils literal notranslate"><span class="pre">with</span></code>
-syntax to perform optimizations under a certain configuration. In addition, the
-users can obtain the context that is available within a certain program scope in
-a thread-safe way through <code class="docutils literal notranslate"><span class="pre">PassContext::Current()</span></code>, since a thread-local store
-<code class="docutils literal notranslate"><span class="pre">PassContextThreadLocalStore</span></code> is used to hold the created pass context
-objects. Examples will be provided later to show how we can use both the C++ and
-Python APIs to create a compilation pipeline using pass context.</p>
+<p><code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 为优化传递携带有用的信息。例如，它包含错误报告系统，这样优化作者就可以对优化失败的原因进行诊断。
+<code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 还被设计用来取代旧的 <code class="docutils literal notranslate"><span class="pre">BuildConfig</span></code>，后者用于帮助用户配置编译选项，包括优化级别和所需/禁用 pass 等。
+例如，可能有一个配置，使用 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 提供的 <code class="docutils literal notranslate"><span class="pre">disabled_pass=xx</span></code> 在 <code class="docutils literal notranslate"><span class="pre">opt_level=3</span></code> 执行所有的传递，并禁用一些传递。
+现在，可以 glob <code class="docutils literal notranslate"><span class="pre">opt_level=3</span></code> 的所有传递，并排除那些在禁用的传递列表中。<code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 还提供了一种方法来检测（instrument）所有的传递。
+参考 <a class="reference internal" href="#pass-instrument-cpp-backend"><span class="std std-ref">Pass Instrument</span></a> 部分。</p>
+<p>这个类是为用户设计的，用户可以方便地编写 Python <code class="docutils literal notranslate"><span class="pre">with</span></code> 语法，在特定的配置下执行优化。
+此外，用户可以通过 <code class="docutils literal notranslate"><span class="pre">PassContext::Current()</span></code> 以线程安全的方式获得在某个程序范围内可用的上下文，
+因为线程本地存储 <code class="docutils literal notranslate"><span class="pre">PassContextThreadLocalStore</span></code> 用于保存创建的传递上下文对象。
+后面将提供一些示例，展示如何使用 C++ 和 Python API 使用传递上下文创建编译管道。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">PassContextNode</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">opt_level</span><span class="p">{</span><span class="mi">2</span><span class="p">};</span><span class="w"></span>
@@ -1746,13 +1733,10 @@ Python APIs to create a compilation pipeline using pass context.</p>
 </pre></div>
 </div>
 </section>
-<section id="pass-constructs">
-<h4>Pass Constructs<a class="headerlink" href="#pass-constructs" title="永久链接至标题">#</a></h4>
-<p>The pass infra is designed in a hierarchical manner, and it could work at
-different granularities of Relay/tir programs. A pure virtual class <code class="docutils literal notranslate"><span class="pre">PassNode</span></code> is
-introduced to serve as the base of the different optimization passes. This class
-contains several virtual methods that must be implemented by the
-subclasses at the level of modules, functions, or sequences of passes.</p>
+<section id="pass">
+<h4>Pass 构建<a class="headerlink" href="#pass" title="永久链接至标题">#</a></h4>
+<p>pass infra 是分层设计的，可以在不同粒度的 Relay/tir 程序中工作。
+引入纯虚类 <code class="docutils literal notranslate"><span class="pre">PassNode</span></code> 作为不同优化 passes 的基础。该类包含几个虚方法，这些方法必须由模块、函数或 pass 序列级别的子类实现。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">PassNode</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="n">PassInfo</span><span class="w"> </span><span class="nf">Info</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="n">Module</span><span class="w"> </span><span class="nf">operator</span><span class="p">()(</span><span class="k">const</span><span class="w"> </span><span class="n">IRModule</span><span class="o">&amp;</span><span class="w"> </span><span class="n">mod</span><span class="w"></span>
@@ -1760,25 +1744,18 @@ subclasses at the level of modules, functions, or sequences of passes.</p>
 <span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The functor shows how a pass must be realized, i.e. it always works on a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">IRModule</span></code> under a certain context. All passes are designed in a <code class="docutils literal notranslate"><span class="pre">Module</span></code> to <code class="docutils literal notranslate"><span class="pre">Module</span></code>
-manner. Therefore, optimizations governed by the pass infra will
-always update the whole module.</p>
-<p>Several subclasses have been created to implement different types of
-optimization passes, e.g., function-level passes, module-level passes, and
-sequential passes.  Each subclass itself could act as a pass manager. For
-instance, they could collect the required passes and execute them or build
-a dependency graph based on the given metadata. The full definition of them
-can be found in <a class="reference external" href="https://github.com/apache/tvm/blob/main/src/relay/ir/transform.cc">src/relay/ir/transform.cc</a> and <a class="reference external" href="https://github.com/apache/tvm/blob/main/src/ir/transform.cc">src/ir/transform.cc</a>.</p>
+<p>functor 展示了 pass 必须如何实现，也就是说，它总是在 <code class="xref py py-class docutils literal notranslate"><span class="pre">IRModule</span></code> 的特定上下文中工作。
+所有的 pass 都是以 <code class="docutils literal notranslate"><span class="pre">Module</span></code> 到 <code class="docutils literal notranslate"><span class="pre">Module</span></code> 的方式设计的。
+因此，由 pass infra 管理的优化将始终更新整个模块。</p>
+<p>已经创建了几个子类来实现不同类型的优化传递，例如，函数级传递、模块级传递和序列级传递。
+每个子类本身可以充当 pass 管理器。例如，可以收集所需的传递并执行它们，或者基于给定的元数据构建依赖关系图。
+它们的完整定义可以在 <a class="reference external" href="https://github.com/apache/tvm/blob/main/src/relay/ir/transform.cc">src/relay/ir/transform.cc</a> 和 <a class="reference external" href="https://github.com/apache/tvm/blob/main/src/ir/transform.cc">src/ir/transform.cc</a> 中找到。</p>
 </section>
-<section id="module-level-passes">
-<h4>Module-Level Passes<a class="headerlink" href="#module-level-passes" title="永久链接至标题">#</a></h4>
-<p>Module level passes are geared mainly for global and inter-procedural
-optimizations (IPO), which are similar to the module pass used in LLVM. Some
-typical passes in Relay that need the global picture of a module, such as
-A-normal form conversion and lambda lifting, etc., fall into this set. At this
-level, users can even add and/or delete functions in a module. Note that all
-passes</p>
+<section id="passes">
+<h4>模块级 Passes<a class="headerlink" href="#passes" title="永久链接至标题">#</a></h4>
+<p>模块级 passes 主要用于全局和过程间优化（inter-procedural optimizations，简称 IPO），这与 LLVM 中使用的模块 passes 类似。
+Relay 中一些需要模块 global picture 的典型过程，如 A-normal form conversion、lambda lifting 等，都属于这个集合。
+在这个级别上，用户甚至可以在模块中添加和/或删除函数。注意，所有的 passes</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ModulePassNode</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">PassNode</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">PassInfo</span><span class="w"> </span><span class="n">pass_info</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">runtime</span><span class="o">::</span><span class="n">TypedPackedFunc</span><span class="o">&lt;</span><span class="n">Module</span><span class="p">(</span><span class="n">Module</span><span class="p">,</span><span class="w"> </span><span class="n">PassContext</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pass_func</span><span class="p">;</span><span class="w"></span>
@@ -1787,25 +1764,17 @@ passes</p>
 <span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">pass_info</span></code> maintains the information needed by a module-level pass.
-<code class="docutils literal notranslate"><span class="pre">pass_func</span></code> sketches the real optimization. For example, we may need to
-perform dead code elimination on the module. We could implement the algorithm in
-the <code class="docutils literal notranslate"><span class="pre">pass_func</span></code> and let it run on a module. It will then remove the dead code
-including the unused functions in the module. Note that this field is designed
-as a packed function, which enables the implementation of the optimization in
-both C++ and Python.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pass_info</span></code> 维护模块级 pass 所需的信息。 <code class="docutils literal notranslate"><span class="pre">pass_func</span></code> 描述了真正的优化。例如，可能需要在模块上执行死代码消除。
+可以在 <code class="docutils literal notranslate"><span class="pre">pass_func</span></code> 中实现算法，并让它在模块上运行。然后，它将删除死代码，包括模块中未使用的函数。
+请注意，该字段被设计为 packed function，它支持在 C++ 和 Python 中实现优化。</p>
 </section>
-<section id="function-level-passes">
-<h4>Function-Level Passes<a class="headerlink" href="#function-level-passes" title="永久链接至标题">#</a></h4>
-<p>Function-level passes are used to implement various intra-function level
-optimizations for a given Relay/tir module. It fetches one function at a time from
-the function list of a module for optimization and yields a rewritten Relay
-<code class="docutils literal notranslate"><span class="pre">Function</span></code> or tir <code class="docutils literal notranslate"><span class="pre">PrimFunc</span></code>. Most of passes can be classified into this category, such as
-common subexpression elimination and inference simplification in Relay as well as vectorization
-and flattening storage in tir, etc.</p>
-<p>Note that the scope of passes at this level is either a Relay function or a tir primitive function.
-Therefore, we cannot add or delete a function through these passes as they are not aware of
-the global information.</p>
+<section id="id2">
+<h4>函数级 Passes<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h4>
+<p>函数级 Pass 用于为给定的 Relay/tir 模块实现各种内部函数级优化。
+它每次从模块的函数列表中获取一个函数用于优化，并生成重写的 Relay <code class="docutils literal notranslate"><span class="pre">Function</span></code> 或 tir <code class="docutils literal notranslate"><span class="pre">PrimFunc</span></code>。
+大多数的 Pass 都可以归为这一类，如 Relay 中常见的子表达式消除（subexpression elimination）和推理简化（inference simplification），
+以及 tir 中的向量化和扁平化存储（flattening storage）等。</p>
+<p>注意，这个级别的 pass 的作用域是 Relay 函数或 tir 原语函数。因此，不能通过这些 pass 添加或删除函数，因为它们不知道全局信息。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">FunctionPassNode</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">PassNode</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">PassInfo</span><span class="w"> </span><span class="n">pass_info</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">runtime</span><span class="o">::</span><span class="n">TypedPackedFunc</span><span class="o">&lt;</span><span class="n">Function</span><span class="p">(</span><span class="n">Function</span><span class="p">,</span><span class="w"> </span><span class="n">Module</span><span class="p">,</span><span class="w"> </span><span class="n">PassContext</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pass_func</span><span class="p">;</span><span class="w"></span>
@@ -1815,15 +1784,13 @@ the global information.</p>
 <span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">pass_info</span></code> is identical to what we just described in the module pass.
-<code class="docutils literal notranslate"><span class="pre">pass_func</span></code> takes a function for optimization, it also needs a module as we
-may use it for reporting errors. A function could be annotated with
-“SkipOptimization” so that it will be ignored during optimization.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pass_info</span></code> 与刚才在模块级 pass 中描述的内容相同。
+<code class="docutils literal notranslate"><span class="pre">pass_func</span></code> 接受函数来进行优化，它还需要模块，因为可能会使用它来报告错误。
+函数可以用 “SkipOptimization” 进行注解，以便在优化过程中忽略它。</p>
 </section>
-<section id="sequential-passes">
-<h4>Sequential Passes<a class="headerlink" href="#sequential-passes" title="永久链接至标题">#</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">SequentialPass</span></code> is similar to Pytorch <code class="docutils literal notranslate"><span class="pre">nn.Sequential</span></code> that contains a host
-of passes for execution.</p>
+<section id="id3">
+<h4>序列级 Passes<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">SequentialPass</span></code> 类似于 <code class="docutils literal notranslate"><span class="pre">nn.Sequential</span></code>，包含一系列执行过程的序列。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SequentialPassNode</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">PassNode</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">PassInfo</span><span class="w"> </span><span class="n">pass_info</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="c1">// Passes need to be executed.</span>
@@ -1833,14 +1800,10 @@ of passes for execution.</p>
 <span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Only a few passes currently in Relay are put in this group. For example,
-<code class="docutils literal notranslate"><span class="pre">FoldScaleAxis</span></code> requires to dispatch <code class="docutils literal notranslate"><span class="pre">ForwardFoldScaleAxis</span></code> and
-<code class="docutils literal notranslate"><span class="pre">BackwardFoldScaleAxis</span></code> internally. In addition, <code class="docutils literal notranslate"><span class="pre">BackwardFoldScaleAxis</span></code> is
-recommended to be fulfilled first. This pass, hence, is an ideal candidate for
-<code class="docutils literal notranslate"><span class="pre">SequentialPass</span></code>.</p>
-<p>The following code shows how individual passes in a sequential pass are invoked.
-Essentially, we sequentially execute each pass in a sequential pass using the
-order that they were appended to the pass list.</p>
+<p>目前在 Relay 中只有少数的 passes 被放在这个组中。
+例如， <code class="docutils literal notranslate"><span class="pre">FoldScaleAxis</span></code> 需要内部分派 <code class="docutils literal notranslate"><span class="pre">ForwardFoldScaleAxis</span></code> 和 <code class="docutils literal notranslate"><span class="pre">BackwardFoldScaleAxis</span></code>。
+此外，建议首先完成 <code class="docutils literal notranslate"><span class="pre">BackwardFoldScaleAxis</span></code>。因此，该 pass 是 <code class="docutils literal notranslate"><span class="pre">SequentialPass</span></code> 的理想候选者。</p>
+<p>下面的代码展示了如何调用序列 passes 中的单个 pass。从本质上讲，使用添加到 passes 列表的顺序，在 psss 序列中顺序地执行每个 pass。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Module</span><span class="w"> </span><span class="nf">SequentialNode::operator</span><span class="p">()(</span><span class="k">const</span><span class="w"> </span><span class="n">Module</span><span class="o">&amp;</span><span class="w"> </span><span class="k">module</span><span class="p">,</span><span class="w"></span>
 <span class="w">                                  </span><span class="k">const</span><span class="w"> </span><span class="n">PassContext</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pass_ctx</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">Module</span><span class="w"> </span><span class="n">mod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">module</span><span class="p">;</span><span class="w"></span>
@@ -1859,15 +1822,12 @@ order that they were appended to the pass list.</p>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Upon the invocation of a pass, we first check if this pass is enabled. This is
-done by first checking if the pass is explicitly disabled by a user, followed by
-inspecting if it is specified as a required pass by the user. If it is still
-undetermined whether this pass is enabled, its <code class="docutils literal notranslate"><span class="pre">opt_level</span></code> will be checked.
-This pass will be enabled and therefore executed only when its optimization
-level is not less than the configured optimization level in the pass context.</p>
-<p>To execute the pass, we need first to retrieve the registered pass in the TVM
-packed function registry using the pass name. This is possible because every
-pass is registered with an API endpoint as we will show later.</p>
+<p>在调用 pass 时，首先检查这个 pass 是否启用。
+首先检查 pass 是否被用户显式禁用，然后检查它是否被用户指定为必需的 pass。
+如果仍然不确定是否启用这个 pass，那么将检查它的 <code class="docutils literal notranslate"><span class="pre">opt_level</span></code>。
+只有当它的优化级别不低于在 pass 上下文中配置的优化级别时，该 pass 才会启用并执行。</p>
+<p>要执行 pass，首先需要使用 pass 名在 TVM 打包的函数注册表中检索注册的 pass。
+这是可能的，因为每一个 pass 都是用 API endpoint 注册的，将在后面展示。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Pass</span><span class="w"> </span><span class="nf">GetPass</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pass_name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">tvm</span><span class="o">::</span><span class="n">runtime</span><span class="o">::</span><span class="n">Registry</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">fpass_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;relay._transform.&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pass_name</span><span class="p">;</span><span class="w"></span>
@@ -1878,9 +1838,7 @@ pass is registered with an API endpoint as we will show later.</p>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Some helper functions are provided to create each type of these aforementioned
-passes. These helpers are also exposed to the Python frontend for users to
-favorably use Python APIs to create a specific pass object.</p>
+<p>提供了一些辅助函数来创建上述每种类型的 pass。这些辅助程序还暴露在 Python 前端，以便用户使用 Python API 创建特定的 pass 对象。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Pass</span><span class="w"> </span><span class="nf">CreateFunctionPass</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">runtime</span><span class="o">::</span><span class="n">TypedPackedFunc</span><span class="o">&lt;</span><span class="n">Function</span><span class="p">(</span><span class="n">Function</span><span class="p">,</span><span class="w"> </span><span class="n">IRModule</span><span class="p">,</span><span class="w"> </span><span class="n">PassContext</span><span class="p">)</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">pass_func</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">opt_level</span><span class="p">,</span><span class="w"></span>
@@ -1903,28 +1861,21 @@ favorably use Python APIs to create a specific pass object.</p>
 </pre></div>
 </div>
 </section>
-<section id="pass-registration">
-<h4>Pass Registration<a class="headerlink" href="#pass-registration" title="永久链接至标题">#</a></h4>
-<p>We’ve covered the concept of different level of passes and the context used for
-compilation. It would be interesting to see how easily users can register
-a pass.  Let’s take const folding as an example. This pass has already been
-implemented to fold constants in a Relay function (found in
-<a class="reference external" href="https://github.com/apache/tvm/blob/main/src/relay/transforms/fold_constant.cc">src/relay/transforms/fold_constant.cc</a>).</p>
-<p>An API was provided to perform the <code class="docutils literal notranslate"><span class="pre">Expr</span></code> to <code class="docutils literal notranslate"><span class="pre">Expr</span></code> transformation.</p>
+<section id="id4">
+<h4>Pass 注册<a class="headerlink" href="#id4" title="永久链接至标题">#</a></h4>
+<p>已经介绍了不同级别的 pass 的概念以及编译时使用的上下文。
+看看用户注册 pass 有多容易，这将是一件有趣的事情。以 const 折叠为例。
+这个 pass 已经实现了在 Relay 函数中折叠常量（参见 <a class="reference external" href="https://github.com/apache/tvm/blob/main/src/relay/transforms/fold_constant.cc">src/relay/transforms/fold_constant.cc</a>）。</p>
+<p>提供了 API 来执行 <code class="docutils literal notranslate"><span class="pre">Expr</span></code> 到 <code class="docutils literal notranslate"><span class="pre">Expr</span></code> 的变换。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Expr</span><span class="w"> </span><span class="nf">FoldConstant</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Expr</span><span class="o">&amp;</span><span class="w"> </span><span class="n">expr</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>In order to register this pass to the pass infra, we first need to decide at
-which level this pass will be performed. As const folding happens on individual
-functions, we should intuitively create a <code class="docutils literal notranslate"><span class="pre">FunctionPass</span></code> for it through
-<code class="docutils literal notranslate"><span class="pre">CreateFunctionPass</span></code>. The <code class="docutils literal notranslate"><span class="pre">pass_func</span></code> is returned as a packed function that
-invokes the <code class="docutils literal notranslate"><span class="pre">Expr</span></code> to <code class="docutils literal notranslate"><span class="pre">Expr</span></code> API on each function in a <cite>IRModule</cite>. <code class="docutils literal notranslate"><span class="pre">{}</span></code>
-indicates that no prerequisite is required for this pass. Otherwise, the pass
-developer has to identify and list them.</p>
-<p>Meanwhile, a pass API endpoint is registered with the name
-<code class="docutils literal notranslate"><span class="pre">relay._transform.FoldConstant</span></code>. This pass, therefore, becomes an entry in the
-registry that can be accessed by both C++ (e.g. the <code class="docutils literal notranslate"><span class="pre">GetPass</span></code> above) and
-Python when needed.</p>
+<p>为了将此 pass 注册到 pass infra，首先需要决定在哪个级别执行此 pass。
+由于 const 折叠发生在单个函数上，应该通过 <code class="docutils literal notranslate"><span class="pre">CreateFunctionPass</span></code> 直观地为它创建 <code class="docutils literal notranslate"><span class="pre">FunctionPass</span></code>。
+<code class="docutils literal notranslate"><span class="pre">pass_func</span></code> 作为打包函数返回，它调用了 <code class="docutils literal notranslate"><span class="pre">IRModule</span></code> 中每个函数的 <code class="docutils literal notranslate"><span class="pre">Expr</span></code> 到 <code class="docutils literal notranslate"><span class="pre">Expr</span></code> 的 API。
+<code class="docutils literal notranslate"><span class="pre">{}</span></code> 表示此 pass 不需要任何先决条件。否则，pass 开发人员必须识别并列出它们。</p>
+<p>同时，使用 <code class="docutils literal notranslate"><span class="pre">relay._transform.FoldConstant</span></code> 名称注册 pass API 端点。
+因此，这个 pass 成为注册表中的条目，C++（例如上面的 <code class="docutils literal notranslate"><span class="pre">GetPass</span></code>）和 Python 在需要时都可以访问它。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span><span class="w"> </span><span class="nn">transform</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
 <span class="n">Pass</span><span class="w"> </span><span class="nf">FoldConstant</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -1941,32 +1892,27 @@ Python when needed.</p>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace transform</span>
 </pre></div>
 </div>
-<p>To allow other C++ modules to apply this pass, we declare a free function in
-<a class="reference external" href="https://github.com/apache/tvm/blob/main/include/tvm/relay/transform.h">include/tvm/relay/transform.h</a> as the following:</p>
+<p>为了允许其他 C++ 模块应用此 pass，在 <a class="reference external" href="https://github.com/apache/tvm/blob/main/include/tvm/relay/transform.h">include/tvm/relay/transform.h</a>  中声明自由函数（free function）：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">TVM_DLL</span><span class="w"> </span><span class="n">Pass</span><span class="w"> </span><span class="n">FoldConstant</span><span class="p">();</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="pass-instrument">
 <span id="pass-instrument-cpp-backend"></span><h4>Pass Instrument<a class="headerlink" href="#pass-instrument" title="永久链接至标题">#</a></h4>
-<p>Pass Instrument is a mechanism to analyze the pass itself. For example,
-we can use the infrastructure to know how much time and memory a pass requires
-or how a pass can transform the IR module.</p>
-<p>We introduce four instrument points in the life-cycle of <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>.</p>
+<p>Pass Instrument 是分析 Pass 自身的机制。
+例如，可以使用 infrastructure 来获知 pass 需要多少时间和内存，或者 pass 如何变换 IR 模块。</p>
+<p>引入了 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 生命周期中的四个 instrument 点。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">TVM_DLL</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">InstrumentEnterPassContext</span><span class="p">();</span><span class="w"></span>
 <span class="n">TVM_DLL</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">InstrumentExitPassContext</span><span class="p">();</span><span class="w"></span>
 <span class="n">TVM_DLL</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">InstrumentBeforePass</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">IRModule</span><span class="o">&amp;</span><span class="w"> </span><span class="n">mod</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">PassInfo</span><span class="o">&amp;</span><span class="w"> </span><span class="n">info</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
 <span class="n">TVM_DLL</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">InstrumentAfterPass</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">IRModule</span><span class="o">&amp;</span><span class="w"> </span><span class="n">mod</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">PassInfo</span><span class="o">&amp;</span><span class="w"> </span><span class="n">info</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">InstrumentEnterPassContext</span></code> is called immediately when entering the scope
-of the <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> instance.</p>
-<p><code class="docutils literal notranslate"><span class="pre">InstrumentExitPassContext</span></code> is called when leaving the scope of <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>,
-or exceptions occur during the execution of passes.
-This method is also called when instruments is being overriden by <code class="docutils literal notranslate"><span class="pre">override_instruments</span></code> in <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.PassContext" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.PassContext</span></code></a>.
-See <a class="reference internal" href="#pass-instrument-overriden"><span class="std std-ref">Override Instruments in Current PassContext</span></a>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">InstrumentBeforePass</span></code> is called before execution.
-<code class="docutils literal notranslate"><span class="pre">InstrumentAfterPass</span></code> is called after execution if the pass should be run. The behavior is like:</p>
+<p>当进入 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 实例的作用域时，立即调用 <code class="docutils literal notranslate"><span class="pre">InstrumentEnterPassContext</span></code>。</p>
+<p>当离开 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 的作用域，或者在 pass 的执行过程中发生异常时，将调用 <code class="docutils literal notranslate"><span class="pre">InstrumentExitPassContext</span></code>。
+当在 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.PassContext" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.PassContext</span></code></a> 中被 <code class="docutils literal notranslate"><span class="pre">override_instruments</span></code> 重写 instruments 时，也会调用此方法。
+请参阅 <a class="reference internal" href="#pass-instrument-overriden"><span class="std std-ref">在 Current PassContext 中覆写 Instruments</span></a>。</p>
+<p>在执行之前调用 <code class="docutils literal notranslate"><span class="pre">InstrumentBeforePass</span></code>。如果通过，则在执行后调用 <code class="docutils literal notranslate"><span class="pre">InstrumentAfterPass</span></code>。行为编写如下：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pass_ctx</span><span class="p">.</span><span class="n">InstrumentBeforePass</span><span class="p">(</span><span class="n">ir_module</span><span class="p">,</span><span class="w"> </span><span class="n">pass_info</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">new_ir_module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">run_pass</span><span class="p">(</span><span class="n">ir_module</span><span class="p">,</span><span class="w"> </span><span class="n">pass_ctx</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">pass_ctx</span><span class="p">.</span><span class="n">InstrumentAfterPass</span><span class="p">(</span><span class="n">new_ir_module</span><span class="p">,</span><span class="w"> </span><span class="n">pass_info</span><span class="p">);</span><span class="w"></span>
@@ -1974,11 +1920,10 @@ See <a class="reference internal" href="#pass-instrument-overriden"><span class=
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> interface allow you to run arbitrary code inside above four methods.
-Multiple <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> instances can be registed into a single
-<code class="docutils literal notranslate"><span class="pre">PassContext</span></code>. <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> instances are called sequentially in the order of
-<code class="docutils literal notranslate"><span class="pre">instruments</span></code> argument passed to <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> provides following interfaces:</p>
+<p><code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 接口允许您在以上四个方法中运行任意代码。
+可以将多个 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 实例注册到单个 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 中。
+<code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 实例按照传递给 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 的 <code class="docutils literal notranslate"><span class="pre">instruments</span></code> 参数的顺序被调用。</p>
+<p><code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 提供的接口有：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span><span class="w"> </span><span class="nn">instrument</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">PassInstrumentNode</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -2000,8 +1945,8 @@ Multiple <code class="docutils literal notranslate"><span class="pre">PassInstru
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace instrument</span>
 </pre></div>
 </div>
-<p>Python frontend are provided to implement <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> quickly. See <a class="reference internal" href="#pass-instrument-py-frontend"><span class="std std-ref">Pass Instrument</span></a>.</p>
-<p>Within a <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>, the call sequence of a <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> instance is like:</p>
+<p>提供了 Python 前端来快速实现 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code>。参阅 <a class="reference internal" href="#pass-instrument-py-frontend"><span class="std std-ref">Pass Instrument</span></a>。</p>
+<p>在 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 中，<code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 实例的调用序列如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">PassContext</span><span class="p">(</span><span class="n">instruments</span><span class="o">=</span><span class="p">[</span><span class="n">pi</span><span class="p">])</span> <span class="c1"># pi = a PassInstrument implementation.</span>
     <span class="n">pi</span><span class="o">.</span><span class="n">EnterPassContext</span><span class="p">()</span>
 
@@ -2018,8 +1963,7 @@ Multiple <code class="docutils literal notranslate"><span class="pre">PassInstru
     <span class="n">pi</span><span class="o">.</span><span class="n">ExitPassContext</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Here is a brief introduction of relations between <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> interfaces
-and <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> methods. See (<a class="reference external" href="https://github.com/apache/tvm/blob/main/src/ir/transform.cc">src/ir/transform.cc</a>) for more details.</p>
+<p>下面简要介绍 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 接口和 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 方法之间的关系。阅读 (<a class="reference external" href="https://github.com/apache/tvm/blob/main/src/ir/transform.cc">src/ir/transform.cc</a>) 了解更多细节。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">InstrumentEnterPassContext</span></code></p>
 <ul>
@@ -2060,9 +2004,9 @@ We rely on Python Context Manager or <code class="docutils literal notranslate">
 </li>
 </ul>
 </section>
-<section id="built-in-instrument">
-<h4>Built-in Instrument<a class="headerlink" href="#built-in-instrument" title="永久链接至标题">#</a></h4>
-<p>There are several built-in instruments. Those marked with <em>TODO</em> are not implemented yet.</p>
+<section id="instrument">
+<h4>内建 Instrument<a class="headerlink" href="#instrument" title="永久链接至标题">#</a></h4>
+<p>有几个内置的 Instrument。那些标记了 <em>TODO</em> 的还没有实现。</p>
 <ul class="simple">
 <li><p>PassTimingInstrument (see <a class="reference external" href="https://github.com/apache/tvm/blob/main/src/ir/instrument.cc">src/ir/instrument.cc</a>)</p>
 <ul>
@@ -2084,20 +2028,15 @@ with the <code class="docutils literal notranslate"><span class="pre">PassInstru
 </ul>
 </section>
 </section>
-<section id="python-frontend">
-<h3>Python Frontend<a class="headerlink" href="#python-frontend" title="永久链接至标题">#</a></h3>
-<p>Only some simple APIs are needed for the frontend side. For example, we can
-provide users the following APIs to create and execute a pass (full
-implementation is provided in <a class="reference external" href="https://github.com/apache/tvm/blob/main/python/tvm/relay/transform/transform.py">python/tvm/relay/transform/transform.py</a> and
-<a class="reference external" href="https://github.com/apache/tvm/blob/main/python/tvm/ir/transform.py">python/tvm/ir/transform.py</a>). The backend
-receives the information and decides which function it should use to create
-a Pass object.</p>
-<section id="id2">
-<h4>PassContext<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h4>
-<p>Python frontend provides a wrapper for the <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> to enable the
-<code class="docutils literal notranslate"><span class="pre">with</span></code> syntax by overriding <code class="docutils literal notranslate"><span class="pre">__enter__</span></code> and <code class="docutils literal notranslate"><span class="pre">__exit__</span></code>. A <code class="docutils literal notranslate"><span class="pre">current</span></code>
-static method is offered for users to get the context that is in use under
-a certain scope.</p>
+<section id="python">
+<h3>Python 前端<a class="headerlink" href="#python" title="永久链接至标题">#</a></h3>
+<p>前端只需要一些简单的 API。
+例如，可以为用户提供以下 API 来创建和执行 pass（完整实现见 <a class="reference external" href="https://github.com/apache/tvm/blob/main/python/tvm/relay/transform/transform.py">python/tvm/relay/transform/transform.py</a> 和 <a class="reference external" href="https://github.com/apache/tvm/blob/main/python/tvm/ir/transform.py">python/tvm/ir/transform.py</a>）。
+后端接收信息并决定使用哪个函数来创建 Pass 对象。</p>
+<section id="id5">
+<h4>PassContext<a class="headerlink" href="#id5" title="永久链接至标题">#</a></h4>
+<p>Python 前端通过覆盖 <code class="docutils literal notranslate"><span class="pre">__enter__</span></code> 和 <code class="docutils literal notranslate"><span class="pre">__exit__</span></code> 为 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 提供了包装器来启用 <code class="docutils literal notranslate"><span class="pre">with</span></code> 语法。
+为用户提供了 <code class="docutils literal notranslate"><span class="pre">current</span></code> 静态方法来获取在一定范围内正在使用的上下文。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@tvm</span><span class="o">.</span><span class="n">_ffi</span><span class="o">.</span><span class="n">register_object</span><span class="p">(</span><span class="s2">&quot;transform.PassContext&quot;</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">PassContext</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">Object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -2113,44 +2052,34 @@ a certain scope.</p>
         <span class="k">return</span> <span class="n">_transform</span><span class="o">.</span><span class="n">GetCurrentPassContext</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>A <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> is used to configure the compilation options, including the
-optimization level and required/disabled passes. It can also take a dictionary
-of configs so that different passes can conveniently fetch the passed data, such
-as fallback device info and step/depth for loop unrolling, etc. In order to
-enable fetching the required config, the key must be registered through
-<code class="docutils literal notranslate"><span class="pre">TVM_REGISTER_PASS_CONFIG_OPTION</span></code>. For example, the following is used by the
-loop unrolling pass</p>
+<p><code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 用于配置编译选项，包括优化级别和所需/禁用的 pass。
+它还可以使用配置字典，以便不同的 pass 可以方便地获取 pass 的数据，例如回退设备信息和循环展开的 step/depth 等。
+为了能够获取所需的配置，key 必须通过 <code class="docutils literal notranslate"><span class="pre">TVM_REGISTER_PASS_CONFIG_OPTION</span></code> 进行注册。例如，循环展开 pass 使用以下代码</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">TVM_REGISTER_PASS_CONFIG_OPTION</span><span class="p">(</span><span class="s">&quot;tir.UnrollLoop&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">UnrollLoopConfig</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Please refer to <a class="reference external" href="https://github.com/apache/tvm/blob/main/src/tir/transforms/unroll_loop.cc">src/tir/transforms/unroll_loop.cc</a> for more details.</p>
+<p>请参阅 <a class="reference external" href="https://github.com/apache/tvm/blob/main/src/tir/transforms/unroll_loop.cc">src/tir/transforms/unroll_loop.cc</a> 了解更多细节。</p>
 </section>
-<section id="pass-objects">
-<h4>Pass Objects<a class="headerlink" href="#pass-objects" title="永久链接至标题">#</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">Pass</span></code> is the base class of all pass objects. All methods here are just simple
-wrappers that were implemented in the backend. They are defined for users to
-conveniently interact with the base class in Python. Only a <code class="docutils literal notranslate"><span class="pre">__call__</span></code> is
-defined in the pass base class to make the subclasses as callable objects so
-that they can be invoked easily (e.g., <code class="docutils literal notranslate"><span class="pre">pass_xx(arg)</span></code>) for execution.</p>
+<section id="id6">
+<h4>Pass 对象<a class="headerlink" href="#id6" title="永久链接至标题">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Pass</span></code> 是所有 pass 对象的基类。这里的所有方法都只是在后端实现的简单包装器。
+它们是为用户定义的，以便方便地与 Python 中的基类交互。
+在 pass 基类中只定义了 <code class="docutils literal notranslate"><span class="pre">__call__</span></code>，以使子类成为可调用对象，以便它们可以轻松调用（例如 <code class="docutils literal notranslate"><span class="pre">pass_xx(arg)</span></code>）执行。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@register_relay_node</span>
 <span class="k">class</span> <span class="nc">Pass</span><span class="p">(</span><span class="n">RelayNode</span><span class="p">):</span>
    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mod</span><span class="p">):</span>
        <span class="k">return</span> <span class="n">_transform</span><span class="o">.</span><span class="n">RunPass</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mod</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Some auxiliary APIs are provided to enable easy creation of passes from
-the Python frontend and to let the pass infra control the execution. For
-example, <code class="docutils literal notranslate"><span class="pre">module_pass</span></code>, <code class="docutils literal notranslate"><span class="pre">function_pass</span></code>, and <code class="docutils literal notranslate"><span class="pre">sequential</span></code> are provided to
-users so that they can customize their own pass or pass pipeline.</p>
-<p>For all the passes that are implemented in the C++ backend, we provide
-corresponding Python APIs in <a class="reference external" href="https://github.com/apache/tvm/blob/main/python/tvm/ir/transform.py">python/tvm/ir/transform.py</a> and
-<a class="reference external" href="https://github.com/apache/tvm/blob/main/python/tvm/relay/transform/transform.py">python/tvm/relay/transform/transform.py</a>, respectively. For instance,
-const folding has a Python API like the following:</p>
+<p>提供了一些辅助 API，以支持从 Python 前端轻松创建 pass，并让 pass infra 控制执行。
+例如， <code class="docutils literal notranslate"><span class="pre">module_pass</span></code> 、 <code class="docutils literal notranslate"><span class="pre">function_pass</span></code> 和 <code class="docutils literal notranslate"><span class="pre">sequential</span></code> 被提供给用户，以便他们可以定制自己的 pass 或 pass 管道。</p>
+<p>对于所有在 C++ 后端实现的 pass，在 <a class="reference external" href="https://github.com/apache/tvm/blob/main/python/tvm/ir/transform.py">python/tvm/ir/transform.py</a> 和 <a class="reference external" href="https://github.com/apache/tvm/blob/main/python/tvm/relay/transform/transform.py">python/tvm/relay/transform/transform.py</a> 中提供了相应的 Python API。
+例如，const 折叠有如下的 Python API：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">FoldConstant</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">_transform</span><span class="o">.</span><span class="n">FoldConstant</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Users can build a pass through decoration like the following:</p>
+<p>用户可以借助装饰器创建 pass，如下所示：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="nd">@relay</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">module_pass</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
  <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
     <span class="n">tp</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">TensorType</span><span class="p">((</span><span class="mi">10</span><span class="p">,),</span> <span class="s2">&quot;float32&quot;</span><span class="p">)</span>
@@ -2166,17 +2095,14 @@ const folding has a Python API like the following:</p>
 <span class="k">assert</span> <span class="n">module_pass</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">opt_level</span> <span class="o">==</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">transform</span></code> function here adds an <code class="docutils literal notranslate"><span class="pre">abs</span></code> function to the input module,
-but it could be any customized optimizations at the module level. After
-creating this <code class="docutils literal notranslate"><span class="pre">module_pass</span></code>, users can apply it on any Relay module. For
-example, we can build an empty module and apply this pass to add an <code class="docutils literal notranslate"><span class="pre">abs</span></code>
-function.</p>
+<p>这里的 <code class="docutils literal notranslate"><span class="pre">transform</span></code> 函数向输入模块添加了 <code class="docutils literal notranslate"><span class="pre">abs</span></code> 函数，但它也可以是模块级的任何定制优化。
+创建这个 <code class="docutils literal notranslate"><span class="pre">module_pass</span></code> 之后，用户可以将它应用到任何 Relay 模块上。
+例如，可以构建空模块，并应用此传递来添加 <code class="docutils literal notranslate"><span class="pre">abs</span></code> 函数。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">IRModule</span><span class="p">()</span>
 <span class="n">mod</span> <span class="o">=</span> <span class="n">module_pass</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Correspondingly, we also offer such functionality for <code class="docutils literal notranslate"><span class="pre">function_pass</span></code>. For
-instance, an example function-level pass could be written as the following:</p>
+<p>相应地，也为 <code class="docutils literal notranslate"><span class="pre">function_pass</span></code> 提供了这样的功能。例如，函数级 pass 的例子可以这样写：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@relay</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">function_pass</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">TestReplaceFunc</span><span class="p">:</span>
    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_func</span><span class="p">):</span>
@@ -2196,54 +2122,47 @@ instance, an example function-level pass could be written as the following:</p>
 <span class="n">res_mod</span> <span class="o">=</span> <span class="n">fpass</span><span class="p">(</span><span class="n">input_mod</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Alternatively, users can also directly register a pass without using the
-decorators and then invoke it. For more examples about how to customize your own
-optimization pipeline and debug Relay and tir passes, please refer to the
-<a class="reference external" href="https://github.com/apache/tvm/blob/main/tutorials/dev/use_pass_infra.py">use pass infra</a> tutorial.</p>
+<p>或者，用户也可以直接注册 pass，而不使用装饰器，然后调用它。
+关于如何定制自己的优化管道和调试 Relay 和 tir pass 的更多示例，请参阅 <a class="reference external" href="https://github.com/apache/tvm/blob/main/tutorials/dev/use_pass_infra.py">use pass infra</a> 教程。</p>
 </section>
 <section id="pass-instrument-py-frontend">
-<span id="id3"></span><h4>Pass Instrument<a class="headerlink" href="#pass-instrument-py-frontend" title="永久链接至标题">#</a></h4>
-<p>One can implement a <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> by using the <code class="docutils literal notranslate"><span class="pre">pass_instrument</span></code>
-decorator(<a class="reference external" href="https://github.com/apache/tvm/blob/main/python/tvm/ir/instrument.py">python/tvm/ir/instrument.py</a>) on a class implementing following methods.
-Note that it is recommended to use the <code class="docutils literal notranslate"><span class="pre">pass_instrument</span></code> decorator to implement
-<code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code>, instead of overriding or subclassing.</p>
+<span id="id7"></span><h4>Pass Instrument<a class="headerlink" href="#pass-instrument-py-frontend" title="永久链接至标题">#</a></h4>
+<p>你可以通过在实现以下方法的类上使用 <code class="docutils literal notranslate"><span class="pre">pass_instrument</span></code> 装饰器(<a class="reference external" href="https://github.com/apache/tvm/blob/main/python/tvm/ir/instrument.py">python/tvm/ir/instrument.py</a>)来实现 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 。
+注意，建议使用 <code class="docutils literal notranslate"><span class="pre">pass_instrument</span></code> 装饰器来实现 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code>，而不是重写或子类化。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">enter_pass_ctx</span></code></p>
 <ul>
-<li><p>This method is run when entering <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>.</p></li>
+<li><p>该方法在进入 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 时运行。</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code></p>
 <ul>
-<li><p>This method is run when exiting <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>.</p></li>
+<li><p>该方法在退出 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 时运行。</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">should_run</span></code></p>
 <ul>
-<li><p>This method is run before a pass is executed, returning a boolean
-indicating whether or not the pass should be run.</p></li>
+<li><p>此方法在执行 pass 之前运行，返回布尔值，指示是否应该运行 pass。</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">run_before_pass</span></code></p>
 <ul>
-<li><p>If a pass should be run, this method is run just before pass execution.</p></li>
+<li><p>如果要运行 pass，这个方法会在 pass 执行之前运行。</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">run_after_pass</span></code></p>
 <ul>
-<li><p>This method is run right after a pass has been executed.</p></li>
+<li><p>此方法在执行 pass 之后立即运行。</p></li>
 </ul>
 </li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> instances can be registered through <code class="docutils literal notranslate"><span class="pre">instruments</span></code> argument in
-<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.PassContext" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.PassContext</span></code></a>.</p>
-<p><a class="reference external" href="https://github.com/apache/tvm/blob/main/tutorials/dev/use_pass_instrument.py">use pass instrument</a> tutorial provides examples for how to implement <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> with Python APIs.</p>
+<p><code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 实例可以通过 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.PassContext" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.PassContext</span></code></a> 中的 <code class="docutils literal notranslate"><span class="pre">instruments</span></code> 参数进行注册。</p>
+<p><a class="reference external" href="https://github.com/apache/tvm/blob/main/tutorials/dev/use_pass_instrument.py">use pass instrument</a> 教程提供了如何用 Python API 实现 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 的例子。</p>
 </section>
-<section id="override-instruments-in-current-passcontext">
-<span id="pass-instrument-overriden"></span><h4>Override Instruments in Current PassContext<a class="headerlink" href="#override-instruments-in-current-passcontext" title="永久链接至标题">#</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">override_instruments</span></code> method is provided to override the <code class="docutils literal notranslate"><span class="pre">instruments</span></code> of current <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>.
-For example, if passes are run without explicitly creating a new <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>,
-one can still register <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> into the global <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> by:</p>
+<section id="current-passcontext-instruments">
+<span id="pass-instrument-overriden"></span><h4>在 Current PassContext 中覆写 Instruments<a class="headerlink" href="#current-passcontext-instruments" title="永久链接至标题">#</a></h4>
+<p>提供 <code class="docutils literal notranslate"><span class="pre">override_instruments</span></code> 方法来覆盖当前 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 的 <code class="docutils literal notranslate"><span class="pre">instruments</span></code>。
+例如，如果 pass 在运行时没有显式地创建新的 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>，仍然可以通过以下方式将 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 注册到全局 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cur_pass_ctx</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="o">.</span><span class="n">current</span><span class="p">()</span>
 <span class="c1"># override PassInstrument instances</span>
 <span class="n">cur_pass_ctx</span><span class="o">.</span><span class="n">override_instruments</span><span class="p">([</span><span class="n">pass_inst</span><span class="p">])</span>
@@ -2251,9 +2170,8 @@ one can still register <code class="docutils literal notranslate"><span class="p
 <span class="n">result</span> <span class="o">=</span> <span class="n">pass_inst</span><span class="o">.</span><span class="n">get_result</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Note that when <code class="docutils literal notranslate"><span class="pre">override_instruments</span></code> is called, the <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> method of
-old <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> instances are called. Then the <code class="docutils literal notranslate"><span class="pre">enter_pass_ctx</span></code> method of
-new <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> are called.</p>
+<p>注意，当调用 <code class="docutils literal notranslate"><span class="pre">override_instruments</span></code> 时，会调用旧 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 实例的 <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> 方法。
+然后调用新的 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 的 <code class="docutils literal notranslate"><span class="pre">enter_pass_ctx</span></code> 方法。</p>
 </section>
 </section>
 </section>
@@ -2291,7 +2209,7 @@ new <code class="docutils literal notranslate"><span class="pre">PassInstrument<
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-29, 12:42:37.<br/>
+    Last updated on 2022-06-30, 10:45:10.<br/>
 </p>
         </footer>
     </div>
