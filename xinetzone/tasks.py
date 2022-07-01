@@ -82,8 +82,8 @@ def update(ctx):
 @task
 def ln_env(ctx,
            root="/media/pc/data/4tb/lxw/books/tvm",
-           target="/media/pc/data/4tb/lxw/anaconda3/envs/torch",
-           python_version="3.10"):
+           target="/media/pc/data/4tb/lxw/anaconda3/envs/tvm39",
+           python_version="3.9"):
     '''将 TVM 库添加到 Python 环境
     '''
     # so_files = ["libtvm_runtime.so", "libvta_fsim.so", "libtvm.so"]
