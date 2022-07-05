@@ -1425,7 +1425,8 @@ title="Fullscreen mode"
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">tvm</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">autotvm</span><span class="p">,</span> <span class="n">te</span>
-<span class="kn">from</span> <span class="nn">tvm.ir.transform</span> <span class="kn">import</span> <span class="n">PassContext</span>
+<span class="kn">from</span> <span class="nn">tvm.auto_scheduler</span> <span class="kn">import</span> <span class="n">is_auto_scheduler_enabled</span>
+<span class="kn">from</span> <span class="nn">tvm.meta_schedule</span> <span class="kn">import</span> <span class="n">is_meta_schedule_dispatch_enabled</span>
 <span class="kn">from</span> <span class="nn">tvm.runtime</span> <span class="kn">import</span> <span class="n">Object</span>
 <span class="kn">from</span> <span class="nn">tvm.support</span> <span class="kn">import</span> <span class="n">libinfo</span>
 <span class="kn">from</span> <span class="nn">tvm.target</span> <span class="kn">import</span> <span class="n">Target</span>
@@ -1582,7 +1583,7 @@ title="Fullscreen mode"
 
     <span class="c1"># Disable autotvm if auto_scheduler is enabled.</span>
     <span class="c1"># (i.e., always return the implementation with the highest priority for auto-scheduler).</span>
-    <span class="k">if</span> <span class="n">PassContext</span><span class="o">.</span><span class="n">current</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;relay.backend.use_auto_scheduler&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_auto_scheduler_enabled</span><span class="p">()</span> <span class="ow">or</span> <span class="n">is_meta_schedule_dispatch_enabled</span><span class="p">():</span>
         <span class="n">use_autotvm</span> <span class="o">=</span> <span class="kc">False</span>
 
     <span class="c1"># If not use autotvm, always return the implementation with the highest priority</span>
@@ -1829,7 +1830,7 @@ title="Fullscreen mode"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-30, 10:46:55.<br/>
+    Last updated on 2022-07-05, 04:57:33.<br/>
 </p>
         </footer>
     </div>

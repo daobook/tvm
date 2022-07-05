@@ -1452,23 +1452,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-the-platform-and-model-targets">
-   Define the platform and model targets.
+  <a class="reference internal nav-link" href="#id2">
+   定义平台和模型目标
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#obtain-an-execution-remote">
-   Obtain an execution remote.
+  <a class="reference internal nav-link" href="#id3">
+   获取执行远程
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#build-the-inference-graph-executor">
-   Build the inference graph executor.
+  <a class="reference internal nav-link" href="#graph-executor">
+   构建推理 graph executor
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perform-image-detection-inference">
-   Perform image detection inference.
+  <a class="reference internal nav-link" href="#id4">
+   执行图像检测推理
   </a>
  </li>
 </ul>
@@ -1496,23 +1496,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-the-platform-and-model-targets">
-   Define the platform and model targets.
+  <a class="reference internal nav-link" href="#id2">
+   定义平台和模型目标
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#obtain-an-execution-remote">
-   Obtain an execution remote.
+  <a class="reference internal nav-link" href="#id3">
+   获取执行远程
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#build-the-inference-graph-executor">
-   Build the inference graph executor.
+  <a class="reference internal nav-link" href="#graph-executor">
+   构建推理 graph executor
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perform-image-detection-inference">
-   Perform image detection inference.
+  <a class="reference internal nav-link" href="#id4">
+   执行图像检测推理
   </a>
  </li>
 </ul>
@@ -1612,19 +1612,11 @@ pip3 install opencv-python
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RemoteDisconnected(&#39;Remote end closed connection without response&#39;)
-Download attempt 0/3 failed, retrying.
-RemoteDisconnected(&#39;Remote end closed connection without response&#39;)
-Download attempt 0/3 failed, retrying.
-</pre></div>
-</div>
-</div>
 </div>
 </section>
-<section id="define-the-platform-and-model-targets">
-<h2>Define the platform and model targets.<a class="headerlink" href="#define-the-platform-and-model-targets" title="永久链接至标题">#</a></h2>
-<p>Execute on CPU vs. VTA, and define the model.</p>
+<section id="id2">
+<h2>定义平台和模型目标<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
+<p>在 CPU 和VTA 上执行，并定义模型。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load VTA parameters from the 3rdparty/vta-hw/config/vta_config.json file</span>
@@ -1654,10 +1646,9 @@ Download attempt 0/3 failed, retrying.
 </div>
 </div>
 </section>
-<section id="obtain-an-execution-remote">
-<h2>Obtain an execution remote.<a class="headerlink" href="#obtain-an-execution-remote" title="永久链接至标题">#</a></h2>
-<p>When target is ‘pynq’ or other FPGA backend, reconfigure FPGA and runtime.
-Otherwise, if target is ‘sim’, execute locally.</p>
+<section id="id3">
+<h2>获取执行远程<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h2>
+<p>当 target 为 ‘pynq’ 或其他 FPGA 后端时，重新配置 FPGA 和运行时。否则，如果 target 为 ‘sim’，则在本地执行。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">TARGET</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;sim&quot;</span><span class="p">,</span> <span class="s2">&quot;tsim&quot;</span><span class="p">]:</span>
@@ -1697,19 +1688,17 @@ Otherwise, if target is ‘sim’, execute locally.</p>
 </div>
 </div>
 </section>
-<section id="build-the-inference-graph-executor">
-<h2>Build the inference graph executor.<a class="headerlink" href="#build-the-inference-graph-executor" title="永久链接至标题">#</a></h2>
-<p>Using Darknet library load downloaded vision model and compile with Relay.
-The compilation steps are:</p>
+<section id="graph-executor">
+<h2>构建推理 graph executor<a class="headerlink" href="#graph-executor" title="永久链接至标题">#</a></h2>
+<p>利用 Darknet 库加载下载视觉模型，并用 Relay 编译。编译步骤如下：</p>
 <ol class="arabic simple">
-<li><p>Front end translation from Darknet into Relay module.</p></li>
-<li><p>Apply 8-bit quantization: here we skip the first conv layer,
-and dense layer which will both be executed in fp32 on the CPU.</p></li>
-<li><p>Perform graph packing to alter the data layout for tensorization.</p></li>
-<li><p>Perform constant folding to reduce number of operators (e.g. eliminate batch norm multiply).</p></li>
-<li><p>Perform relay build to object file.</p></li>
-<li><p>Load the object file onto remote (FPGA device).</p></li>
-<li><p>Generate graph executor, <code class="docutils literal notranslate"><span class="pre">m</span></code>.</p></li>
+<li><p>从 Darknet 到 Relay 模块的前端翻译。</p></li>
+<li><p>应用 8 位量化：这里跳过第一个 conv 层和 dense 层，它们都将在 CPU 上的 fp32 中执行。</p></li>
+<li><p>执行 graph packing 以更改数据布局以进行张量化。</p></li>
+<li><p>执行常量折叠以减少算子的数量（例如，消除 batch norm 乘法）。</p></li>
+<li><p>执行 Relay 构建 object 文件。</p></li>
+<li><p>将 object 文件加载到远程（FPGA 设备）。</p></li>
+<li><p>生成 graph executor <code class="docutils literal notranslate"><span class="pre">m</span></code>。</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1773,12 +1762,33 @@ and dense layer which will both be executed in fp32 on the CPU.</p></li>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yolov3-tiny inference graph built in 24.58s!
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/pc/data/4tb/lxw/anaconda3/envs/torch/lib/python3.10/site-packages/tvm/driver/build_module.py:267: UserWarning: target_host parameter is going to be deprecated. Please pass in tvm.target.Target(target, host=target_host) instead.
+  warnings.warn(
+One or more operators have not been tuned. Please tune your model for better performance. Use DEBUG logging level to see more details.
+[15:39:08] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[15:39:08] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[15:39:09] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[15:39:09] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[15:39:09] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[15:39:10] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[15:39:10] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[15:39:10] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[15:39:11] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[15:39:11] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+[15:39:11] /media/pc/data/4tb/lxw/books/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+2022-07-02 15:39:15.872 INFO load_module /tmp/tmpx4fzz6vr/graphlib.tar
+</pre></div>
+</div>
+</div>
 </div>
 </section>
-<section id="perform-image-detection-inference">
-<h2>Perform image detection inference.<a class="headerlink" href="#perform-image-detection-inference" title="永久链接至标题">#</a></h2>
-<p>We run detect on an downloaded image
-Download test image</p>
+<section id="id4">
+<h2>执行图像检测推理<a class="headerlink" href="#id4" title="永久链接至标题">#</a></h2>
+<p>检测已下载的图像：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">neth</span><span class="p">,</span> <span class="n">netw</span><span class="p">]</span> <span class="o">=</span> <span class="n">dshape</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
@@ -1849,6 +1859,24 @@ Download test image</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RemoteDisconnected(&#39;Remote end closed connection without response&#39;)
+Download attempt 0/3 failed, retrying.
+</pre></div>
+</div>
+<img alt="../../../../../_images/658402153082011af55a6709b4ad4f89dd9459b213a7924bb57949c41ee027c0.png" src="../../../../../_images/658402153082011af55a6709b4ad4f89dd9459b213a7924bb57949c41ee027c0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution statistics:
+	inp_load_nbytes :         25462784
+	wgt_load_nbytes :         17558016
+	acc_load_nbytes :            96128
+	uop_load_nbytes :             5024
+	out_store_nbytes:          3396224
+	gemm_counter    :         10578048
+	alu_counter     :           849056
+</pre></div>
+</div>
+<img alt="../../../../../_images/55ef742b0e3f64d8df9eade9a36abbc2176f844bf83689f32d6ba10b79f9ba05.png" src="../../../../../_images/55ef742b0e3f64d8df9eade9a36abbc2176f844bf83689f32d6ba10b79f9ba05.png" />
+</div>
 </div>
 </section>
 </section>
@@ -1885,7 +1913,7 @@ Download test image</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-30, 10:46:55.<br/>
+    Last updated on 2022-07-05, 04:57:33.<br/>
 </p>
         </footer>
     </div>

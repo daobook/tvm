@@ -410,21 +410,17 @@ Pass Instrument 是分析 Pass 自身的机制。
 
 - ``InstrumentEnterPassContext``
 
-  * ``EnterPassContext()`` is executed in the order of ``instruments`` passed to the ``PassContext``.
-  * When an exception raises, ``PassContext`` disable the pass instrumentation
-    by clearing all registered ``PassInstrument`` instances.
-  * Then ``PassContext`` execute ``ExitPassContext()`` method of each ``PassInstrument``
-    instances which successfully finished ``EnterPassContext()``
-  * For example, if ``PassInstrument`` A, B, and C are registered to a ``PassContext``
-    and A finished ``EnterPassContext()`` while B throws an exception, then C
-    is never executed; ``ExitPassContext()`` of A is executed.
+  * ``EnterPassContext()`` 是按照传递给 ``PassContext`` 的 ``instruments`` 顺序执行的。
+  * 当异常触发时， ``PassContext`` 通过清除所有注册的 ``PassInstrument`` 实例来禁用 pass 检测（instrumentation）。
+  * 然后 ``PassContext`` 对每个成功完成 ``EnterPassContext()`` 的 ``PassInstrument`` 实例执行 ``ExitPassContext()`` 方法
+  * 例如，如果 ``PassInstrument`` A、B 和 C 被注册到 ``PassContext``，A 完成了 ``EnterPassContext()``，而 B 抛出异常，那么 C 永远不会被执行；执行 A 的 ``ExitPassContext()``。
+
 
 - ``InstrumentExitPassContext``
 
-  * ``ExitPassContext()`` of each ``PassInstrument`` instances are executed in
-    the order of ``instruments`` passed to the ``PassContext``.
-  * While an exception occurs, ``instruments`` is cleared.
-  * ``PassInstrument`` Instances registered after the one throwing exceptions do not execute ``ExitPassContext``.
+  * 每个 ``PassInstrument`` 实例的 ``ExitPassContext()`` 将按照传递给 ``PassContext`` 的 ``instruments`` 顺序执行。
+  * 当触发异常，则 ``instruments`` 被清除。
+  * ``PassInstrument`` 在抛出异常之后注册的 ``PassInstrument`` 实例不执行  ``ExitPassContext``。
 
 - ``InstrumentBeforePass``
 

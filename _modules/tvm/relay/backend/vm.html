@@ -1600,8 +1600,9 @@ title="Fullscreen mode"
 <span class="sd">    device : :py:class:`~tvm.runtime.Device`</span>
 <span class="sd">        The runtime device to run the code on.</span>
 
-<span class="sd">    target : :py:class:`Target`</span>
-<span class="sd">        The target option to build the function.</span>
+<span class="sd">    target : any multi-target like object, see Target.canon_multi_target</span>
+<span class="sd">        For homogeneous compilation, the unique build target.</span>
+<span class="sd">        For heterogeneous compilation, a dictionary or list of possible build targets.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mod</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
@@ -1644,7 +1645,7 @@ title="Fullscreen mode"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-30, 10:46:55.<br/>
+    Last updated on 2022-07-05, 04:57:33.<br/>
 </p>
         </footer>
     </div>

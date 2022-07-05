@@ -1536,7 +1536,7 @@ of expression.</p>
 </dd>
 <dt>device<span class="classifier">Device</span></dt><dd><p>The runtime device to run the code on.</p>
 </dd>
-<dt>target<span class="classifier">tvm.Target</span></dt><dd><p>The target option to build the function.</p>
+<dt>target<span class="classifier">tvm.Target</span></dt><dd><p>The target option to build the function. Only homogeneous execution is supported.</p>
 </dd>
 </dl>
 <p>CAUTION: Despite the API the module is prepared upon each call to evaluate
@@ -1850,7 +1850,8 @@ supported by <cite>tvm.runtime.vm</cite>.</p>
 </dd>
 <dt>device<span class="classifier"><a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.Device" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Device</span></code></a></span></dt><dd><p>The runtime device to run the code on.</p>
 </dd>
-<dt>target<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Target</span></code></span></dt><dd><p>The target option to build the function.</p>
+<dt>target<span class="classifier">any multi-target like object, see Target.canon_multi_target</span></dt><dd><p>For homogeneous compilation, the unique build target.
+For heterogeneous compilation, a dictionary or list of possible build targets.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1917,7 +1918,7 @@ during inference time. Used for constant folding.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-30, 10:46:55.<br/>
+    Last updated on 2022-07-05, 04:57:33.<br/>
 </p>
         </footer>
     </div>

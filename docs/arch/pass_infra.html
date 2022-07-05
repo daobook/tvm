@@ -1967,22 +1967,17 @@ Relay 中一些需要模块 global picture 的典型过程，如 A-normal form c
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">InstrumentEnterPassContext</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">EnterPassContext()</span></code> is executed in the order of <code class="docutils literal notranslate"><span class="pre">instruments</span></code> passed to the <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>.</p></li>
-<li><p>When an exception raises, <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> disable the pass instrumentation
-by clearing all registered <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> instances.</p></li>
-<li><p>Then <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> execute <code class="docutils literal notranslate"><span class="pre">ExitPassContext()</span></code> method of each <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code>
-instances which successfully finished <code class="docutils literal notranslate"><span class="pre">EnterPassContext()</span></code></p></li>
-<li><p>For example, if <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> A, B, and C are registered to a <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>
-and A finished <code class="docutils literal notranslate"><span class="pre">EnterPassContext()</span></code> while B throws an exception, then C
-is never executed; <code class="docutils literal notranslate"><span class="pre">ExitPassContext()</span></code> of A is executed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EnterPassContext()</span></code> 是按照传递给 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 的 <code class="docutils literal notranslate"><span class="pre">instruments</span></code> 顺序执行的。</p></li>
+<li><p>当异常触发时， <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 通过清除所有注册的 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 实例来禁用 pass 检测（instrumentation）。</p></li>
+<li><p>然后 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 对每个成功完成 <code class="docutils literal notranslate"><span class="pre">EnterPassContext()</span></code> 的 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 实例执行 <code class="docutils literal notranslate"><span class="pre">ExitPassContext()</span></code> 方法</p></li>
+<li><p>例如，如果 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> A、B 和 C 被注册到 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>，A 完成了 <code class="docutils literal notranslate"><span class="pre">EnterPassContext()</span></code>，而 B 抛出异常，那么 C 永远不会被执行；执行 A 的 <code class="docutils literal notranslate"><span class="pre">ExitPassContext()</span></code>。</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">InstrumentExitPassContext</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">ExitPassContext()</span></code> of each <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> instances are executed in
-the order of <code class="docutils literal notranslate"><span class="pre">instruments</span></code> passed to the <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>.</p></li>
-<li><p>While an exception occurs, <code class="docutils literal notranslate"><span class="pre">instruments</span></code> is cleared.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> Instances registered after the one throwing exceptions do not execute <code class="docutils literal notranslate"><span class="pre">ExitPassContext</span></code>.</p></li>
+<li><p>每个 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 实例的 <code class="docutils literal notranslate"><span class="pre">ExitPassContext()</span></code> 将按照传递给 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 的 <code class="docutils literal notranslate"><span class="pre">instruments</span></code> 顺序执行。</p></li>
+<li><p>当触发异常，则 <code class="docutils literal notranslate"><span class="pre">instruments</span></code> 被清除。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 在抛出异常之后注册的 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 实例不执行  <code class="docutils literal notranslate"><span class="pre">ExitPassContext</span></code>。</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">InstrumentBeforePass</span></code></p>
@@ -2209,7 +2204,7 @@ with the <code class="docutils literal notranslate"><span class="pre">PassInstru
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-06-30, 10:46:55.<br/>
+    Last updated on 2022-07-05, 04:57:33.<br/>
 </p>
         </footer>
     </div>
