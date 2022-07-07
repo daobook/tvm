@@ -64,7 +64,7 @@ msgid ""
 "patterns describing your hardware capabilities and an external compiler, "
 "providing a relatively smooth heterogeneous experience out of the box."
 msgstr ""
-"“在后端世界，可以使用相同的机制来构建更高级别的 API，使用自己的代码生成。"
+"在后端世界，可以使用相同的机制来构建更高级别的 API，使用自己的代码生成。"
 "这个 API 采用了一组描述你的硬件能力的模式和外部编译器，提供了相对平稳的开箱即用的异构体验。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:32
@@ -82,7 +82,7 @@ msgstr ""
 "有相当多的算子的属性值得匹配。"
 "下面将研究如何匹配树的属性，并扩展原型中未充分探索的一些用例。"
 "本节演示如何编写模式。"
-"建议查看 `tests/python/relay/test_dataflow_pattern.py`_ 了解更多用例。""
+"建议查看 `tests/python/relay/test_dataflow_pattern.py`_ 了解更多用例。"
 
 #: ../../docs/reference/langref/relay_pattern.rst:42
 msgid ""
