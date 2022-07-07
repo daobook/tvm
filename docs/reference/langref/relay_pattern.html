@@ -1732,10 +1732,10 @@ title="Print to PDF"
 <p>在 TVM 中有很多地方，决定了 Relay 程序的纯数据流子图，并试图以某种方式变换它们，例如融合、量化、外部代码生成和设备特定的优化，如 bitpacking 和 VTA 使用的层切片。</p>
 <p>今天，许多这样的方法都需要大量无聊的样板代码来实现，并要求用户从 visitor 和 AST 匹配的角度考虑问题。许多这样的变换可以很容易地用图重写来描述。为了构建 rewriter 或其他高级机制，首先需要模式语言来描述可以匹配的内容。</p>
 <p>这样的语言不仅对构建 rewriter 有用，而且还为现有的 pass 提供了扩展点。例如，融合 pass 可以通过一组描述硬件能力的融合模式来参数化，量化通道可以采用一组模式来描述在给定平台上可以量化的算子。</p>
-<p>“在后端世界，可以使用相同的机制来构建更高级别的 API，使用自己的代码生成。这个 API 采用了一组描述你的硬件能力的模式和外部编译器，提供了相对平稳的开箱即用的异构体验。</p>
+<p>在后端世界，可以使用相同的机制来构建更高级别的 API，使用自己的代码生成。这个 API 采用了一组描述你的硬件能力的模式和外部编译器，提供了相对平稳的开箱即用的异构体验。</p>
 <section id="pattern-examples">
 <h2>模式示例<a class="headerlink" href="#pattern-examples" title="永久链接至标题">#</a></h2>
-<p>有相当多的算子的属性值得匹配。下面将研究如何匹配树的属性，并扩展原型中未充分探索的一些用例。本节演示如何编写模式。建议查看 <a class="reference external" href="https://github.com/apache/tvm/blob/main/tests/python/relay/test_dataflow_pattern.py">tests/python/relay/test_dataflow_pattern.py</a> 了解更多用例。”</p>
+<p>有相当多的算子的属性值得匹配。下面将研究如何匹配树的属性，并扩展原型中未充分探索的一些用例。本节演示如何编写模式。建议查看 <a class="reference external" href="https://github.com/apache/tvm/blob/main/tests/python/relay/test_dataflow_pattern.py">tests/python/relay/test_dataflow_pattern.py</a> 了解更多用例。</p>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>如果您无法找到与您想要的 Relay 节点匹配的对应模式节点，欢迎您提出 issue 或提交 PR 来添加它。</p>
@@ -2194,7 +2194,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-07-06, 01:28:52.<br/>
+    Last updated on 2022-07-07, 05:05:55.<br/>
 </p>
         </footer>
     </div>
