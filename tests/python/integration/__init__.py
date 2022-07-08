@@ -14,14 +14,4 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-
-""" Computes and Schedules for Hexagon slice ops. """
-
-from .avg_pool2d import avg_pool2d_compute, avg_pool2d_STIR_schedule
-from .add_subtract_multiply import *
-from .argmax import argmax_compute, argmax_schedule
-from .batch_flatten import batch_flatten_compute, batch_flatten_stir_schedule
-from .softmax_slice import *
-from .clip import *
-from .conv2d import *
-from .reshape import reshape_compute, reshape_stir_schedule
+"""Infrastructure and tests for e2e integration tests."""
