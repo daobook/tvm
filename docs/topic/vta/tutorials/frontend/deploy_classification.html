@@ -1542,7 +1542,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="vta-mxnet">
 <span id="sphx-glr-topic-vta-tutorials-frontend-deploy-classification-py"></span><h1>在 VTA 上从 MxNet 部署预训练的视觉模型<a class="headerlink" href="#vta-mxnet" title="永久链接至标题">#</a></h1>
 <p><strong>Author</strong>: <a class="reference external" href="https://homes.cs.washington.edu/~moreau/">Thierry Moreau</a></p>
-<p>本教程提供了端到端的 demo，介绍了如何在 VTA 加速器设计上运行 ImageNet 分类推理来执行 ImageNet 分类任务。它将 Relay 展示为前端编译器，它可以执行量化（VTA 只支持 int8/32 推断）和 graph packing（以便在 core 中支持张量化），从而为硬件目标处理计算图。</p>
+<p>本教程提供了端到端的 demo，介绍了如何在 VTA 加速器设计上运行 ImageNet 分类推理来执行 ImageNet 分类任务。它将 Relay 展示为前端编译器，它可以执行量化（VTA 只支持 int8/32 推理）和 graph packing（以便在 core 中支持张量化），从而为硬件目标处理计算图。</p>
 <section id="id1">
 <h2>安装依赖<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
 <p>要在 <code class="docutils literal notranslate"><span class="pre">tvm</span></code> 中使用 <code class="docutils literal notranslate"><span class="pre">autovm</span></code> 包，需要安装一些额外的依赖项。（如果你使用 python2，将 “3” 改为 “2”）：</p>
@@ -1552,12 +1552,7 @@ title="Print to PDF"
 <p>现在回到 python 代码。导入包。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from __future__ import absolute_import, print_function</span>
-<span class="c1"># import argparse, json, requests, sys</span>
-<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span>
-<span class="c1"># from io import BytesIO</span>
-<span class="c1"># from os.path import join</span>
-<span class="c1"># from os.path import isfile</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
 <span class="kn">from</span> <span class="nn">mxnet.gluon.model_zoo</span> <span class="kn">import</span> <span class="n">vision</span>
@@ -1567,7 +1562,6 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">tvm</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">tvm.ir.transform</span> <span class="kn">import</span> <span class="n">PassContext</span>
-<span class="c1"># from tvm import te</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">rpc</span><span class="p">,</span> <span class="n">autotvm</span><span class="p">,</span> <span class="n">relay</span>
 <span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">graph_executor</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">download</span>
 <span class="c1"># from tvm.contrib.debugger import debug_executor</span>
@@ -1602,7 +1596,7 @@ title="Print to PDF"
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="s2">&quot;vta&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ctx</span> <span class="o">=</span> <span class="s2">&quot;vta&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -1629,7 +1623,7 @@ title="Print to PDF"
 <p>设定运行目标设备：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">target</span> <span class="k">if</span> <span class="n">device</span> <span class="o">==</span> <span class="s2">&quot;vta&quot;</span> <span class="k">else</span> <span class="n">env</span><span class="o">.</span><span class="n">target_vta_cpu</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">target</span> <span class="k">if</span> <span class="n">ctx</span> <span class="o">==</span> <span class="s2">&quot;vta&quot;</span> <span class="k">else</span> <span class="n">env</span><span class="o">.</span><span class="n">target_vta_cpu</span>
 </pre></div>
 </div>
 </div>
@@ -1684,7 +1678,7 @@ title="Print to PDF"
     <span class="n">ctxes</span> <span class="o">=</span> <span class="p">[</span><span class="n">remote</span><span class="o">.</span><span class="n">ext_dev</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">remote</span><span class="o">.</span><span class="n">cpu</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="c1"># Graph runtime</span>
-    <span class="n">ctxes</span> <span class="o">=</span> <span class="n">remote</span><span class="o">.</span><span class="n">ext_dev</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="n">device</span> <span class="o">==</span> <span class="s2">&quot;vta&quot;</span> <span class="k">else</span> <span class="n">remote</span><span class="o">.</span><span class="n">cpu</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ctxes</span> <span class="o">=</span> <span class="n">remote</span><span class="o">.</span><span class="n">ext_dev</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="n">ctx</span> <span class="o">==</span> <span class="s2">&quot;vta&quot;</span> <span class="k">else</span> <span class="n">remote</span><span class="o">.</span><span class="n">cpu</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1695,7 +1689,7 @@ title="Print to PDF"
 <p>从 Gluon 模型动物园抓取视觉模型，用 Relay 编译。编译步骤如下：</p>
 <ol class="arabic simple">
 <li><p>将 MXNet 前端模块翻译为 Relay 模块。</p></li>
-<li><p>应用 8-bit 量化：这里我们跳过了第一个 conv 层和 dense 层，这两个层都将在 CPU 上的 fp32 中执行。</p></li>
+<li><p>应用 8-bit 量化：这里跳过了第一个 conv 层和 dense 层，这两个层都将在 CPU 上的 fp32 中执行。</p></li>
 <li><p>执行  graph packing 来改变张量化的数据布局。</p></li>
 <li><p>进行常数折叠以减少算子的数量（例如，消除 batch norm multiply）。</p></li>
 <li><p>执行对 object 文件的 relay 构建。</p></li>
@@ -1926,7 +1920,7 @@ resnet18_v1 prediction for sample 0
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-07-14, 03:32:07.<br/>
+    Last updated on 2022-07-14, 11:01:14.<br/>
 </p>
         </footer>
     </div>
