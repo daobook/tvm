@@ -1608,15 +1608,15 @@ title="Print to PDF"
 </div></blockquote>
 <section id="vta-overview">
 <h2>VTA 概述<a class="headerlink" href="#vta-overview" title="永久链接至标题">#</a></h2>
-<p>VTA 是通用的深度学习加速器，用于快速和高效的密集线性代数。VTA 集成了简单的类 RISC 处理器，可以在 1 级或 2 级张量寄存器上执行密集的线性代数操作。此外，该设计采用解耦的访问-执行来隐藏内存访问延迟。</p>
-<p>在更广泛的范围内，VTA 可以作为模板深度学习加速器设计，用于全堆栈优化，向编译器堆栈公开通用张量计算接口。</p>
+<p>VTA 是通用的深度学习加速器，用于快速和高效的密集线性代数。VTA 集成了简单的类 RISC 处理器，可以在 1 级或 2 级张量寄存器上执行密集的线性代数操作。此外，该设计采用解耦的 access-execute 来隐藏内存访问延迟。</p>
+<p>在更广泛的范围内，VTA 可以作为全栈优化的深度学习加速器设计模板，向编译器堆栈公开通用张量计算接口。</p>
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/uwsampl/web-data/main/vta/blogpost/vta_overview.png"><img alt="https://raw.githubusercontent.com/uwsampl/web-data/main/vta/blogpost/vta_overview.png" class="align-center" src="https://raw.githubusercontent.com/uwsampl/web-data/main/vta/blogpost/vta_overview.png" style="width: 80%;" /></a>
 <p>上图给出了 VTA 硬件组织的高级概述。VTA 由四个模块组成，通过 FIFO 队列和局部内存块（local memory blocks，简称 SRAM）相互通信，以实现任务级管道并行：</p>
 <ul class="simple">
 <li><p>fetch 模块负责从 DRAM 中加载指令流。它还解码这些指令，将它们路由到三个命令队列中的一个。</p></li>
 <li><p>load 模块负责将 DRAM 的输入张量和权重张量加载到数据专用的 on-chip 内存中。</p></li>
-<li><p>compute 模块使用 GEMM 核心进行密集线性代数计算，使用张量 ALU 进行通用计算。它还负责将数据从 DRAM 加载到 register 文件，并将微操作内核加载到 micro-op cache。</p></li>
-<li><p>store 模块将计算核心产生的结果存储回 DRAM。</p></li>
+<li><p>compute 模块使用 GEMM 核心进行密集线性代数计算，使用张量 ALU 进行通用计算。它还负责将数据从 DRAM 加载到 register 文件，并将 micro-op 内核加载到 micro-op cache。</p></li>
+<li><p>store 模块将计算 core 产生的结果存储回 DRAM。</p></li>
 </ul>
 </section>
 <section id="hls-hardware-source-organization">
@@ -1764,10 +1764,10 @@ gets generated to provide DMA access to DRAM.</p></li>
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/uwsampl/web-data/main/vta/developer/gemm_core.png"><img alt="https://raw.githubusercontent.com/uwsampl/web-data/main/vta/developer/gemm_core.png" class="align-center" src="https://raw.githubusercontent.com/uwsampl/web-data/main/vta/developer/gemm_core.png" style="width: 100%;" /></a>
 <p><strong>GEMM 核心</strong> 通过在上图中描述的 2 级嵌套循环中执行微代码序列来评估 GEMM 指令。GEMM 核心每个周期可以执行一次输入权重矩阵乘法。单周期矩阵乘法的维数定义了硬件 <em>tensorization intrinsic</em>，TVM 编译器必须降低计算调度。这种内在的张量化是由 input、weight 和 accumulator 张量的 dimension 定义的。每种数据类型都可以具有不同的整数精度：通常权值和输入类型都是低精度的（8 位或更少），而累加器张量具有更宽的类型以防止溢出（32 位）。为了保持 GEMM 核心的繁忙，每个输入缓冲区、权重缓冲区和寄存器文件都必须暴露足够的 read/write bandwidth。</p>
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/uwsampl/web-data/main/vta/developer/alu_core.png"><img alt="https://raw.githubusercontent.com/uwsampl/web-data/main/vta/developer/alu_core.png" class="align-center" src="https://raw.githubusercontent.com/uwsampl/web-data/main/vta/developer/alu_core.png" style="width: 100%;" /></a>
-<p>张量 ALU 支持一组标准运算来实现通用的激活、归一化和池化算子。VTA 是一种模块化设计，张量 ALU 支持的运算范围可以扩展到更高的运算覆盖范围，但代价是更高的资源利用率。张量 ALU 可以进行张量-张量运算，也可以对一个即时值进行张量-标量运算。张量 ALU 的操作码和直接值由高级 CISC 指令指定。在张量 ALU 计算上下文中的微代码只负责指定数据访问模式。</p>
+<p>张量 ALU 支持一组标准运算来实现通用的激活、归一化和池化算子。VTA 是一种模块化设计，张量 ALU 支持的运算范围可以扩展到更高的运算覆盖范围，但代价是更高的资源利用率。张量 ALU 可以进行张量-张量运算，也可以对临时值进行张量-标量运算。张量 ALU 的 opcode 和临时值由高层的 CISC 指令指定。在张量 ALU 计算上下文中的微代码只负责指定数据访问模式。</p>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>在计算吞吐量方面，张量 ALU 并不以每个周期一个操作的速度执行。限制来自读取端口的缺乏：由于每个周期可以读取一个寄存器文件张量，张量 ALU 的启动间隔至少为 2（即每 2 个周期最多执行 1 次操作）。此外，一次执行一个张量-张量操作的代价可能很高，特别是考虑到寄存器文件类型很宽，通常是 32 位整数。因此，为了平衡张量 ALU 和 GEMM 核心的资源利用足迹，张量-张量操作在默认情况下是通过多个循环的向量-向量操作来执行的。</p>
+<p>在计算吞吐量方面，张量 ALU 并不以每个周期一个运算的速度执行。限制来自读取端口的缺乏：由于每个周期可以读取一个寄存器文件张量，张量 ALU 的启动间隔至少为 2（即每 2 个周期最多执行 1 次运算）。此外，一次执行一个张量-张量运算的代价可能很高，特别是考虑到寄存器文件类型很宽，通常是 32 位整数。因此，为了平衡张量 ALU 和 GEMM core 的资源利用 footprint，张量-张量运算在默认情况下是通过多个循环的向量-向量运算来执行的。</p>
 </div>
 </section>
 <section id="load-and-store-modules">
@@ -1810,7 +1810,7 @@ gets generated to provide DMA access to DRAM.</p></li>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-07-14, 02:10:47.<br/>
+    Last updated on 2022-07-14, 03:32:07.<br/>
 </p>
         </footer>
     </div>
