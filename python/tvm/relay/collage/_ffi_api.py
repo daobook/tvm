@@ -1,4 +1,3 @@
-#!/bin/bash
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
 # distributed with this work for additional information
@@ -15,33 +14,8 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
+"""FFI APIs for the Collage partitioner."""
+import tvm._ffi
 
-set -e
-set -u
-set -o pipefail
 
-# install libraries for python package on ubuntu
-pip3 install --upgrade \
-    attrs \
-    cloudpickle \
-    cython \
-    decorator \
-    mypy \
-    numpy~=1.19.5 \
-    orderedset \
-    packaging \
-    Pillow==9.1.0 \
-    psutil \
-    pytest \
-    git+https://github.com/tlc-pack/tlcpack-sphinx-addon.git@7f69989f1c6a6713d0bd7c27f8da2b48344117d3 \
-    pytest-profiling \
-    pytest-xdist \
-    pytest-rerunfailures==10.2 \
-    requests \
-    scipy \
-    Jinja2 \
-    synr==0.6.0 \
-    junitparser==2.4.2 \
-    six \
-    tornado \
-    pytest-lazy-fixture
+tvm._ffi._init_api("relay.collage", __name__)
