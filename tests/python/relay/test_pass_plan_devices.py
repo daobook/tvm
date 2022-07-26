@@ -57,7 +57,7 @@ recover_virtual_device_map = tvm._ffi.get_global_func("relay.transform.RecoverVi
 
 def rewrite_and_assert(in_mod, expected_mod):
     """Manually run the pass and assert it's structurally equals to the expected."""
-    config = tvm.target.make_compilation_config(CTXT, TARGETS, HOST_TARGET)
+    config = tvm.target.make_compilation_config(CTXT, TARGETS)
     actual_mod = relay.transform.InferType()(in_mod)
     actual_mod = relay.transform.PlanDevices(config)(actual_mod)
     actual_mod = relay.transform.InferType()(actual_mod)
@@ -1774,10 +1774,60 @@ def test_stack_overflow():
             metatable,
         )
 
-    config = tvm.target.make_compilation_config(CTXT, TARGETS, HOST_TARGET)
+    config = tvm.target.make_compilation_config(CTXT, TARGETS)
     actual_mod = relay.transform.InferType()(input())
     actual_mod = relay.transform.PlanDevices(config)(actual_mod)
     relay.transform.InferType()(actual_mod)
+
+
+def test_primitive():
+    """Annotations on Primitive functions should be accepted, even though the body
+    of the Primitive function is not considered during PlanDevices."""
+    global_virtual_device = tvm.target.VirtualDevice(memory_scope="global")
+    texture_virtual_device = tvm.target.VirtualDevice(memory_scope="global.texture")
+    metatable = {
+        "VirtualDevice": [
+            global_virtual_device,
+            texture_virtual_device,
+        ]
+    }
+
+    mod = tvm.parser.parse(
+        """
+        #[version = "0.0.5"]
+        def @main(%data1: Tensor[(1, 32, 40, 40), float32],
+                  %data2: Tensor[(1, 32, 40, 40), float32]) {
+          %0 = fn (%a, Primitive=1) {
+            layout_transform(%a, src_layout="NCHW", dst_layout="NCHW4c")
+          };
+          %1 = %0(%data1);
+          %3 = %0(%data2);
+          %5 = fn (%a {virtual_device=meta[VirtualDevice][0]},  // global
+                   %b {virtual_device=meta[VirtualDevice][0]},  // global
+                   virtual_device=meta[VirtualDevice][1],       // texture 
+                   Primitive=1) {
+            add(%a, %b)
+          };
+          %6 = %5(%1, %3);
+          %10 = fn (%a, 
+                    virtual_device=meta[VirtualDevice][0],      // global 
+                    Primitive=1) {
+            layout_transform(%a, src_layout="NCHW4c", dst_layout="NCHW")
+          };
+          %10(%6)
+        }
+        """,
+        "from_string",
+        None,
+        metatable,
+    )
+    print(mod)
+
+    config = tvm.target.make_compilation_config(CTXT, GPU_TARGET)
+    mod = relay.transform.InferType()(mod)
+    # PlanDevices should succeed.
+    mod = relay.transform.PlanDevices(config)(mod)
+    print(mod)
 
 
 if __name__ == "__main__":
