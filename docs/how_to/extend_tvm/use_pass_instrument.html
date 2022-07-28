@@ -1539,7 +1539,7 @@ title="Print to PDF"
 <h1>如何使用 TVM Pass Instrument<a class="headerlink" href="#tvm-pass-instrument" title="永久链接至标题">#</a></h1>
 <p><strong>原作者</strong>: <a class="reference external" href="https://github.com/chiwwang">Chi-Wei Wang</a></p>
 <p>随着越来越多的 pass 被实现，检测每个 pass 的执行、分析每个 pass 的效果和观测各种事件变得越来越有用。</p>
-<p>可以通过向 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.PassContext" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.PassContext</span></code></a> 提供 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.instrument.PassInstrument" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.ir.instrument.PassInstrument</span></code></a> 实例列表来检测（instrument）传递。提供了用于收集计时信息的 pass 工具（<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.instrument.PassTimingInstrument" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.ir.instrument.PassTimingInstrument</span></code></a>），但可以通过 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.instrument.pass_instrument" title="(在 tvm v0.9.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.instrument.pass_instrument()</span></code></a> 装饰器使用扩展机制。</p>
+<p>可以通过向 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.PassContext" title="(在 tvm v0.10.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.PassContext</span></code></a> 提供 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.instrument.PassInstrument" title="(在 tvm v0.10.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.ir.instrument.PassInstrument</span></code></a> 实例列表来检测（instrument）传递。提供了用于收集计时信息的 pass 工具（<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.instrument.PassTimingInstrument" title="(在 tvm v0.10.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.ir.instrument.PassTimingInstrument</span></code></a>），但可以通过 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.instrument.pass_instrument" title="(在 tvm v0.10.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.instrument.pass_instrument()</span></code></a> 装饰器使用扩展机制。</p>
 <p>本教程演示了开发人员如何使用 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 检测（instrument） passes。请参阅 <a class="reference internal" href="../../arch/pass_infra.html#pass-infra"><span class="std std-ref">Pass Infrastructure</span></a>。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1701,7 +1701,7 @@ FoldScaleAxis: 9218us [7us] (47.76%; 47.76%)
 </section>
 <section id="id1">
 <h2>使用当前带 Instruments 的 PassContext<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
-<p>你也可以使用当前的 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 并通过 <code class="docutils literal notranslate"><span class="pre">override_instruments</span></code> 方法注册 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 实例。注意，如果任何 instrument 已经存在，<code class="docutils literal notranslate"><span class="pre">override_instruments</span></code> 会执行 <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> 方法。然后切换到新的 instrument，调用新 instrument 的 <code class="docutils literal notranslate"><span class="pre">enter_pass_ctx</span></code> 方法。有关这些方法，请参阅以下部分和 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.instrument.pass_instrument" title="(在 tvm v0.9.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.instrument.pass_instrument()</span></code></a>。</p>
+<p>你也可以使用当前的 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 并通过 <code class="docutils literal notranslate"><span class="pre">override_instruments</span></code> 方法注册 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 实例。注意，如果任何 instrument 已经存在，<code class="docutils literal notranslate"><span class="pre">override_instruments</span></code> 会执行 <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> 方法。然后切换到新的 instrument，调用新 instrument 的 <code class="docutils literal notranslate"><span class="pre">enter_pass_ctx</span></code> 方法。有关这些方法，请参阅以下部分和 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.instrument.pass_instrument" title="(在 tvm v0.10.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.instrument.pass_instrument()</span></code></a>。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cur_pass_ctx</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="o">.</span><span class="n">current</span><span class="p">()</span>
@@ -1730,7 +1730,7 @@ FoldScaleAxis: 9218us [7us] (47.76%; 47.76%)
 </section>
 <section id="instrument">
 <h2>创建定制的 Instrument 类<a class="headerlink" href="#instrument" title="永久链接至标题">#</a></h2>
-<p>可以使用 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.instrument.pass_instrument" title="(在 tvm v0.9.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.instrument.pass_instrument()</span></code></a> 装饰器创建定制的 instrument 类。</p>
+<p>可以使用 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.instrument.pass_instrument" title="(在 tvm v0.10.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.instrument.pass_instrument()</span></code></a> 装饰器创建定制的 instrument 类。</p>
 <p>创建 instrument 类，它可以计算每次传递所导致的每个算子出现次数的变化。可以查看 <code class="docutils literal notranslate"><span class="pre">op.name</span></code> 来查找每个算子的名称。在传递前后这样做来计算差异。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2064,7 +2064,7 @@ as expectation.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-07-27, 13:05:48.<br/>
+    Last updated on 2022-07-28, 13:41:21.<br/>
 </p>
         </footer>
     </div>

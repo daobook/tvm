@@ -1527,7 +1527,7 @@ title="Print to PDF"
                 
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">备注</p>
-<p>Click <a class="reference external" href="https://tvm.apache.org/docs/how_to/work_with_schedules/intrin_math.html#sphx-glr-download-how-to-work-with-schedules-intrin-math-py" title="(在 tvm v0.9.dev0)"><span class="xref std std-ref">here</span></a>
+<p>Click <a class="reference external" href="https://tvm.apache.org/docs/how_to/work_with_schedules/intrin_math.html#sphx-glr-download-how-to-work-with-schedules-intrin-math-py" title="(在 tvm v0.10.dev0)"><span class="xref std std-ref">here</span></a>
 to download the full example code</p>
 </div>
 <section class="sphx-glr-example-title" id="intrinsics-and-math-functions">
@@ -1552,7 +1552,7 @@ the interface via tvm’s intrinsic API.</p>
 <h2>Direct Declare Extern Math Call<a class="headerlink" href="#direct-declare-extern-math-call" title="永久链接至标题">#</a></h2>
 <p>The most straight-forward way to call target specific function is via
 extern function call construct in tvm.
-In the following example, we use <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/tir.html#tvm.tir.call_pure_extern" title="(在 tvm v0.9.dev0)"><code class="xref any docutils literal notranslate"><span class="pre">tvm.tir.call_pure_extern</span></code></a> to call
+In the following example, we use <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/tir.html#tvm.tir.call_pure_extern" title="(在 tvm v0.10.dev0)"><code class="xref any docutils literal notranslate"><span class="pre">tvm.tir.call_pure_extern</span></code></a> to call
 <code class="code docutils literal notranslate"><span class="pre">__expf</span></code> function, which is only available under CUDA.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">placeholder</span><span class="p">((</span><span class="n">n</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
@@ -1576,7 +1576,7 @@ Ideally, we want to write same code for any device and any data type.</p>
 <p>TVM intrinsic provides the user a mechanism to achieve this, and this
 is the recommended way to solve the problem.
 The following code use te.exp instead, which create an intrinsic call
-:py:<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/te.html#tvm.te.exp" title="(在 tvm v0.9.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.te.exp()</span></code></a> to do the exponential.</p>
+:py:<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/te.html#tvm.te.exp" title="(在 tvm v0.10.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.te.exp()</span></code></a> to do the exponential.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">placeholder</span><span class="p">((</span><span class="n">n</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">te</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
@@ -1598,7 +1598,7 @@ The same te.exp can also be used for float64 data types.</p>
 </section>
 <section id="intrinsic-lowering-rule">
 <h2>Intrinsic Lowering Rule<a class="headerlink" href="#intrinsic-lowering-rule" title="永久链接至标题">#</a></h2>
-<p>When <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/te.html#tvm.te.exp" title="(在 tvm v0.9.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.te.exp()</span></code></a> is called, TVM creates an intrinsic Call Expr.
+<p>When <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/te.html#tvm.te.exp" title="(在 tvm v0.10.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.te.exp()</span></code></a> is called, TVM creates an intrinsic Call Expr.
 TVM uses transformation rules to transform the intrinsic
 call to device specific extern calls.</p>
 <p>TVM also allows user to customize the rules during runtime.
@@ -1712,7 +1712,7 @@ The following example add an intrinsic <code class="code docutils literal notran
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-07-27, 13:05:48.<br/>
+    Last updated on 2022-07-28, 13:41:21.<br/>
 </p>
         </footer>
     </div>

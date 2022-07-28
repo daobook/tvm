@@ -1544,7 +1544,7 @@ title="Print to PDF"
 <p>这个实用程序将 IR 模块可视化为节点和边。它定义了一组接口，包括 parser、plotter(renderer)、graph、node 和 edges。
 提供了默认 parser。用户可以实现自己的 renderer 来渲染 graph。</p>
 <p>在这里，使用 renderer 在文本形式中渲染 graph。它是轻量级的、类似 AST 的可视化工具，灵感来自 <a class="reference external" href="https://clang.llvm.org/docs/IntroductionToTheClangAST.html">clang ast-dump</a>。下面将介绍如何通过接口类实现定制的 parser 和 renderer。</p>
-<p>更多细节见：<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/contrib.html#module-tvm.contrib.relay_viz" title="(在 tvm v0.9.dev0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tvm.contrib.relay_viz</span></code></a>。</p>
+<p>更多细节见：<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/contrib.html#module-tvm.contrib.relay_viz" title="(在 tvm v0.10.dev0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tvm.contrib.relay_viz</span></code></a>。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tvm</span>
@@ -1807,7 +1807,7 @@ fn (%data, %bias) {
 <section id="id1">
 <h2>小结<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
 <p>本教程演示了 Relay Visualizer 及其定制的用法。</p>
-<p><a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.RelayVisualizer" title="(在 tvm v0.9.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.contrib.relay_viz.RelayVisualizer</span></code></a> 由定义在 <code class="docutils literal notranslate"><span class="pre">interface.py</span></code> 中的接口组成。</p>
+<p><a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/contrib.html#tvm.contrib.relay_viz.RelayVisualizer" title="(在 tvm v0.10.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.contrib.relay_viz.RelayVisualizer</span></code></a> 由定义在 <code class="docutils literal notranslate"><span class="pre">interface.py</span></code> 中的接口组成。</p>
 <p>它的目标是快速 look-then-fix 迭代。构造函数参数的目的是简单，而定制仍然可以通过一组接口类进行。</p>
 </section>
 </section>
@@ -1844,7 +1844,7 @@ fn (%data, %bias) {
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-07-27, 13:05:48.<br/>
+    Last updated on 2022-07-28, 13:41:21.<br/>
 </p>
         </footer>
     </div>
