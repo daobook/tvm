@@ -40,7 +40,16 @@ namespace printer {
  */
 class DocNode : public Object {
  public:
-  void VisitAttrs(AttrVisitor* v) {}
+  /*!
+   * \brief The list of object paths of the source IR node.
+   *
+   * This is used to trace back to the IR node position where
+   * this Doc is generated, in order to position the diagnostic
+   * message.
+   */
+  mutable Array<ObjectPath> source_paths;
+
+  void VisitAttrs(AttrVisitor* v) { v->Visit("source_paths", &source_paths); }
 
   static constexpr const char* _type_key = "script.printer.Doc";
   TVM_DECLARE_BASE_OBJECT_INFO(DocNode, Object);
@@ -1067,7 +1076,7 @@ class FunctionDocNode : public StmtDocNode {
   /*! \brief Decorators of function. */
   Array<ExprDoc> decorators;
   /*! \brief The return type of function. */
-  ExprDoc return_type{nullptr};
+  Optional<ExprDoc> return_type{NullOpt};
   /*! \brief The body of function. */
   Array<StmtDoc> body;
 
@@ -1100,7 +1109,7 @@ class FunctionDoc : public StmtDoc {
    * \param body The body of function.
    */
   explicit FunctionDoc(IdDoc name, Array<AssignDoc> args, Array<ExprDoc> decorators,
-                       ExprDoc return_type, Array<StmtDoc> body);
+                       Optional<ExprDoc> return_type, Array<StmtDoc> body);
   TVM_DEFINE_NOTNULLABLE_OBJECT_REF_METHODS(FunctionDoc, StmtDoc, FunctionDocNode);
 };
 

@@ -198,7 +198,7 @@ ReturnDoc::ReturnDoc(ExprDoc value) {
 }
 
 FunctionDoc::FunctionDoc(IdDoc name, Array<AssignDoc> args, Array<ExprDoc> decorators,
-                         ExprDoc return_type, Array<StmtDoc> body) {
+                         Optional<ExprDoc> return_type, Array<StmtDoc> body) {
   ObjectPtr<FunctionDocNode> n = make_object<FunctionDocNode>();
   n->name = name;
   n->args = args;
@@ -217,6 +217,10 @@ ClassDoc::ClassDoc(IdDoc name, Array<ExprDoc> decorators, Array<StmtDoc> body) {
 }
 
 TVM_REGISTER_NODE_TYPE(DocNode);
+TVM_REGISTER_GLOBAL("script.printer.DocSetSourcePaths")
+    .set_body_typed([](Doc doc, Array<ObjectPath> source_paths) {
+      doc->source_paths = source_paths;
+    });
 
 TVM_REGISTER_NODE_TYPE(ExprDocNode);
 TVM_REGISTER_GLOBAL("script.printer.ExprDocAttr").set_body_method<ExprDoc>(&ExprDocNode::Attr);
@@ -345,7 +349,7 @@ TVM_REGISTER_GLOBAL("script.printer.ReturnDoc").set_body_typed([](ExprDoc value)
 TVM_REGISTER_NODE_TYPE(FunctionDocNode);
 TVM_REGISTER_GLOBAL("script.printer.FunctionDoc")
     .set_body_typed([](IdDoc name, Array<AssignDoc> args, Array<ExprDoc> decorators,
-                       ExprDoc return_type, Array<StmtDoc> body) {
+                       Optional<ExprDoc> return_type, Array<StmtDoc> body) {
       return FunctionDoc(name, args, decorators, return_type, body);
     });
 

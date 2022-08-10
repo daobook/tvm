@@ -21,30 +21,32 @@ Doc objects, then access and modify their attributes correctly.
 
 import pytest
 
+import tvm
+from tvm.runtime import ObjectPath
 from tvm.script.printer.doc import (
-    LiteralDoc,
-    IdDoc,
+    AssertDoc,
+    AssignDoc,
     AttrAccessDoc,
-    IndexDoc,
     CallDoc,
-    OperationKind,
-    OperationDoc,
-    LambdaDoc,
-    TupleDoc,
-    ListDoc,
+    ClassDoc,
     DictDoc,
+    ExprStmtDoc,
+    ForDoc,
+    FunctionDoc,
+    IdDoc,
+    IfDoc,
+    IndexDoc,
+    LambdaDoc,
+    ListDoc,
+    LiteralDoc,
+    OperationDoc,
+    OperationKind,
+    ReturnDoc,
+    ScopeDoc,
     SliceDoc,
     StmtBlockDoc,
-    AssignDoc,
-    IfDoc,
+    TupleDoc,
     WhileDoc,
-    ForDoc,
-    ScopeDoc,
-    ExprStmtDoc,
-    AssertDoc,
-    ReturnDoc,
-    FunctionDoc,
-    ClassDoc,
 )
 
 
@@ -451,6 +453,13 @@ def test_return_doc():
     ],
 )
 @pytest.mark.parametrize(
+    "return_type",
+    [
+        None,
+        LiteralDoc(None),
+    ],
+)
+@pytest.mark.parametrize(
     "body",
     [
         [],
@@ -458,9 +467,8 @@ def test_return_doc():
         [ExprStmtDoc(IdDoc("x")), ExprStmtDoc(IdDoc("y"))],
     ],
 )
-def test_function_doc(args, decorators, body):
+def test_function_doc(args, decorators, return_type, body):
     name = IdDoc("name")
-    return_type = LiteralDoc(None)
 
     doc = FunctionDoc(name, args, decorators, return_type, body)
 
@@ -503,4 +511,26 @@ def test_stmt_doc_comment():
 
     comment = "test comment"
     doc.comment = comment
+    # Make sure the previous statement doesn't set attribute
+    # as if it's an ordinary Python object.
+    assert "comment" not in doc.__dict__
     assert doc.comment == comment
+
+
+def test_doc_source_paths():
+    doc = IdDoc("x")
+    assert len(doc.source_paths) == 0
+
+    source_paths = [ObjectPath.root(), ObjectPath.root().attr("x")]
+
+    doc.source_paths = source_paths
+    # This should triggers the __getattr__ and gets a tvm.ir.container.Array
+    assert not isinstance(doc.source_paths, list)
+    assert list(doc.source_paths) == source_paths
+
+    doc.source_paths = []
+    assert len(doc.source_paths) == 0
+
+
+if __name__ == "__main__":
+    tvm.testing.main()
