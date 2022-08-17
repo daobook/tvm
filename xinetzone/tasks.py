@@ -21,7 +21,7 @@ def init(ctx,
     # 安装这些最小的共享库（Linux）
     ctx.run('sudo apt-get update')
     package_cmd = ('sudo apt-get install -y python3 python3-dev '
-                   'python3-setuptools gcc libtinfo-dev zlib1g-dev '
+                   'gcc g++ libtinfo-dev zlib1g-dev '
                    'build-essential cmake libedit-dev libxml2-dev')
     ctx.run(package_cmd)
     ctx.run('sudo apt install clang-12 clangd-12 llvm-12 liblldb-12-dev')
