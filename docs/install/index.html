@@ -150,8 +150,8 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="tlcpack.html">
-       TLCPack
+      <a class="reference internal" href="nnpack.html">
+       NNPACK Contrib Installation
       </a>
      </li>
     </ul>
@@ -1450,8 +1450,6 @@ title="Print to PDF"
                 
   <section id="installing-tvm">
 <span id="installation"></span><h1>安装 TVM<a class="headerlink" href="#installing-tvm" title="永久链接至标题">#</a></h1>
-<p>签出到 <a class="reference internal" href="from_source.html#install-from-source"><span class="std std-ref">从源码安装 TVM</span></a>。从源代码安装为您提供了最大的灵活性，可以从官方源代码版本有效地配置构建。如果您有兴趣部署到移动或嵌入式设备，则无需在您的设备上安装整个 TVM 堆栈。相反，您只需运行时并且可以使用 <a class="reference internal" href="../how_to/deploy/index.html#deploy-and-integration"><span class="std std-ref">部署和集成指南</span></a> 进行安装。</p>
-<p>如果您想快速试用 TVM 或运行一些演示和教程，您可以从 <a class="reference internal" href="docker.html#docker-images"><span class="std std-ref">Docker 安装</span></a> 签出。您还可以试用从第三方预构建的 <a class="reference internal" href="tlcpack.html"><span class="doc">TLCPack Python 和 Conda 包</span></a>。</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="from_source.html">从源码安装</a><ul>
@@ -1466,9 +1464,27 @@ title="Print to PDF"
 <li class="toctree-l2"><a class="reference internal" href="docker.html#docker-source">Docker 源码</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tlcpack.html">TLCPack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nnpack.html">NNPACK Contrib Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nnpack.html#conditions">Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nnpack.html#build-install-nnpack">Build/Install NNPACK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nnpack.html#build-tvm-with-nnpack-support">Build TVM with NNPACK support</a></li>
+</ul>
+</li>
 </ul>
 </div>
+<p>Visit the <a class="reference internal" href="from_source.html#install-from-source"><span class="std std-ref">install TVM from source</span></a> page to install TVM from the source code. Installing
+from source gives you the maximum flexibility to configure the build effectively from the official source releases.
+If you are interested in deploying to mobile or embedded devices, you do not need to
+install the entire TVM stack on your device. Instead, you only need the runtime and can install using the
+<a class="reference internal" href="../how_to/deploy/index.html#deploy-and-integration"><span class="std std-ref">deployment and integration guide</span></a>.</p>
+<p>If you would like to quickly try out TVM or run some demo and tutorials, you
+can <a class="reference internal" href="docker.html#docker-images"><span class="std std-ref">install from Docker</span></a>. You can also use TVM locally through <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Linux/MacOS CPU build only!</span>
+<span class="c1"># See tlcpack.ai for other pre-built binaries including CUDA</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">apache</span><span class="o">-</span><span class="n">tvm</span>
+</pre></div>
+</div>
+<p>For more details on installation of pre-built binaries, visit <a class="reference external" href="https://tlcpack.ai">tlcpack.ai</a>.</p>
 </section>
 
 
@@ -1503,7 +1519,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-07-28, 13:41:21.<br/>
+    Last updated on 2022-08-17, 03:35:29.<br/>
 </p>
         </footer>
     </div>

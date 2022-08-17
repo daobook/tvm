@@ -147,8 +147,8 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../../../docs/install/tlcpack.html">
-       TLCPack
+      <a class="reference internal" href="../../../docs/install/nnpack.html">
+       NNPACK Contrib Installation
       </a>
      </li>
     </ul>
@@ -1417,6 +1417,8 @@ title="Fullscreen mode"
 <span class="c1"># specific language governing permissions and limitations</span>
 <span class="c1"># under the License.</span>
 <span class="sd">&quot;&quot;&quot;IRModule that holds the functions and type definitions.&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
 <span class="kn">from</span> <span class="nn">tvm._ffi.base</span> <span class="kn">import</span> <span class="n">string_types</span>
 <span class="kn">import</span> <span class="nn">tvm._ffi</span>
 
@@ -1678,6 +1680,19 @@ title="Fullscreen mode"
             <span class="bp">self</span><span class="p">,</span> <span class="n">tir_prefix</span><span class="p">,</span> <span class="n">show_meta</span>
         <span class="p">)</span>  <span class="c1"># type: ignore</span>
 
+    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A sugar for print highlighted TVM script.</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        style : str, optional</span>
+<span class="sd">            Pygments styles extended by &quot;light&quot; (default) and &quot;dark&quot;, by default &quot;light&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">tvm.script.highlight</span> <span class="kn">import</span> <span class="n">cprint</span>  <span class="c1"># pylint: disable=import-outside-toplevel</span>
+
+        <span class="c1"># Use deferred import to avoid circular import while keeping cprint under tvm/script</span>
+        <span class="n">cprint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">get_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr_key</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the IRModule attribute.</span>
 
@@ -1731,7 +1746,7 @@ title="Fullscreen mode"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-07-28, 13:41:21.<br/>
+    Last updated on 2022-08-17, 03:35:29.<br/>
 </p>
         </footer>
     </div>

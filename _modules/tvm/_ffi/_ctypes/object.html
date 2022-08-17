@@ -147,8 +147,8 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../../../../docs/install/tlcpack.html">
-       TLCPack
+      <a class="reference internal" href="../../../../docs/install/nnpack.html">
+       NNPACK Contrib Installation
       </a>
      </li>
     </ul>
@@ -1427,8 +1427,11 @@ title="Fullscreen mode"
 <span class="n">ObjectHandle</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span>
 <span class="n">__init_by_constructor__</span> <span class="o">=</span> <span class="kc">None</span>
 
-<span class="sd">&quot;&quot;&quot;Maps object type to its constructor&quot;&quot;&quot;</span>
+<span class="sd">&quot;&quot;&quot;Maps object type index to its constructor&quot;&quot;&quot;</span>
 <span class="n">OBJECT_TYPE</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="sd">&quot;&quot;&quot;Maps object type to its type index&quot;&quot;&quot;</span>
+<span class="n">OBJECT_INDEX</span> <span class="o">=</span> <span class="p">{}</span>
 
 <span class="n">_CLASS_OBJECT</span> <span class="o">=</span> <span class="kc">None</span>
 
@@ -1443,7 +1446,13 @@ title="Fullscreen mode"
     <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">NDArrayBase</span><span class="p">):</span>
         <span class="n">_register_ndarray</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span>
         <span class="k">return</span>
-    <span class="n">OBJECT_TYPE</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="bp">cls</span></div>
+    <span class="n">OBJECT_TYPE</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="bp">cls</span>
+    <span class="n">OBJECT_INDEX</span><span class="p">[</span><span class="bp">cls</span><span class="p">]</span> <span class="o">=</span> <span class="n">index</span></div>
+
+
+<div class="viewcode-block" id="_get_object_type_index"><a class="viewcode-back" href="../../../../refs/_ffi/object.html#tvm._ffi._ctypes.object._get_object_type_index">[文档]</a><span class="k">def</span> <span class="nf">_get_object_type_index</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;get the type index of object class&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">OBJECT_INDEX</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span></div>
 
 
 <span class="k">def</span> <span class="nf">_return_object</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -1577,7 +1586,7 @@ title="Fullscreen mode"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-07-28, 13:41:21.<br/>
+    Last updated on 2022-08-17, 03:35:29.<br/>
 </p>
         </footer>
     </div>
