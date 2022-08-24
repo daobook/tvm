@@ -317,6 +317,11 @@
        TOPI 简介
       </a>
      </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/uma.html">
+       通过 UMA 使您的硬件加速器 TVM-ready
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toctree-l2 current active has-children">
@@ -580,7 +585,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../optimize_operators/index.html">
-       Optimize Tensor Operators
+       优化张量算子
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
       <label for="toctree-checkbox-14">
@@ -590,7 +595,7 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../optimize_operators/opt_gemm.html">
-         How to optimize GEMM on CPU
+         如何在 CPU 上优化 GEMM
         </a>
        </li>
        <li class="toctree-l4">
@@ -1528,6 +1533,13 @@ title="Print to PDF"
 <p>如果 TVM 是用 PAPI 构建的(见上文)，那么你可以将 <code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.runtime.profiling.PAPIMetricCollector</span></code> 传递给 <code class="xref py py-meth docutils literal notranslate"><span class="pre">tvm.runtime.GraphModule.profile()</span></code> 来收集性能指标。下面是例子：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">set_env</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pytest</span>
 <span class="kn">from</span> <span class="nn">tvm.runtime</span> <span class="kn">import</span> <span class="n">profiler_vm</span>
@@ -1554,6 +1566,11 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>One or more operators have not been tuned. Please tune your model for better performance. Use DEBUG logging level to see more details.
+</pre></div>
+</div>
+</div>
 </div>
 <p>为了保证正常运行，需要设定 <code class="docutils literal notranslate"><span class="pre">/proc/sys/kernel/perf_event_paranoid</span></code> 为 2 或者更小或者作为 root：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo sh -c <span class="s2">&quot;echo 2 &gt; /proc/sys/kernel/perf_event_paranoid&quot;</span> 
@@ -1561,12 +1578,45 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">report</span> <span class="o">=</span> <span class="n">vm</span><span class="o">.</span><span class="n">profile</span><span class="p">(</span>
-    <span class="p">[</span><span class="n">data</span><span class="p">],</span>
-    <span class="n">func_name</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
-    <span class="n">collectors</span><span class="o">=</span><span class="p">[</span><span class="n">tvm</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">profiling</span><span class="o">.</span><span class="n">PAPIMetricCollector</span><span class="p">({</span><span class="n">dev</span><span class="p">:</span> <span class="p">[</span><span class="n">metric</span><span class="p">]})],</span>
-<span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tvm.runtime</span> <span class="kn">import</span> <span class="n">profiling</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">report</span> <span class="o">=</span> <span class="n">vm</span><span class="o">.</span><span class="n">profile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">func_name</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">report2</span> <span class="o">=</span> <span class="n">profiling</span><span class="o">.</span><span class="n">Report</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="n">report2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name                                         Duration (us)  Percent  Device  Count                                                    Argument Shapes              Hash  VM::Argument Shapes  
+vm_mod_fused_nn_dense_nn_bias_add_nn_relu            97.76    30.27    cpu0      1  float32[1, 784], float32[128, 784], float32[128], float32[1, 128]  35ac6d50e6e03a62                       
+vm_mod_fused_nn_dense_nn_bias_add_nn_relu_1          19.82     6.14    cpu0      1     float32[1, 128], float32[64, 128], float32[64], float32[1, 64]  7c89e1efbba1ce3b                       
+vm_mod_fused_nn_dense_nn_bias_add                    11.72     3.63    cpu0      1       float32[1, 64], float32[10, 64], float32[10], float32[1, 10]  8a679957c4723fed                       
+VM::AllocStorage                                      8.31     2.57    cpu0      4                                                                                                            
+VM::UnknownOp                                         5.62     1.74    cpu0      9                                                                                                            
+VM::AllocTensor                                       4.17     1.29    cpu0      1                                                    float32[1, 128]                                         
+VM::AllocTensor                                       3.67     1.14    cpu0      2                                                     float32[1, 10]                                         
+vm_mod_fused_nn_softmax                               2.27     0.70    cpu0      1                                     float32[1, 10], float32[1, 10]  0cc19816e7a3c070                       
+VM::AllocTensor                                       2.06     0.64    cpu0      1                                                     float32[1, 64]                                         
+VM::ReshapeTensor                                     2.00     0.62    cpu0      1                                                                                                            
+----------                                                                                                                                                                                    
+Sum                                                 157.40    48.74             22                                                                                                            
+Total                                               322.97             cpu0      1                                                                                                            
+
+Configuration
+-------------
+Number of threads: 24
+Executor: VM
 </pre></div>
 </div>
 </div>
@@ -1643,7 +1693,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-08-17, 11:18:35.<br/>
+    Last updated on 2022-08-24, 08:57:06.<br/>
 </p>
         </footer>
     </div>

@@ -34,9 +34,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 1,
    "metadata": {},
    "outputs": [],
+   "source": [
+    "import set_env"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "One or more operators have not been tuned. Please tune your model for better performance. Use DEBUG logging level to see more details.\n"
+     ]
+    }
+   ],
    "source": [
     "import numpy as np\n",
     "import pytest\n",
@@ -76,16 +93,59 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 4,
    "metadata": {},
    "outputs": [],
    "source": [
-    "report = vm.profile(\n",
-    "    [data],\n",
-    "    func_name=\"main\",\n",
-    "    collectors=[tvm.runtime.profiling.PAPIMetricCollector({dev: [metric]})],\n",
-    ")\n",
-    "print(report)"
+    "from tvm.runtime import profiling"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "report = vm.profile(data, func_name=\"main\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Name                                         Duration (us)  Percent  Device  Count                                                    Argument Shapes              Hash  VM::Argument Shapes  \n",
+       "vm_mod_fused_nn_dense_nn_bias_add_nn_relu            97.76    30.27    cpu0      1  float32[1, 784], float32[128, 784], float32[128], float32[1, 128]  35ac6d50e6e03a62                       \n",
+       "vm_mod_fused_nn_dense_nn_bias_add_nn_relu_1          19.82     6.14    cpu0      1     float32[1, 128], float32[64, 128], float32[64], float32[1, 64]  7c89e1efbba1ce3b                       \n",
+       "vm_mod_fused_nn_dense_nn_bias_add                    11.72     3.63    cpu0      1       float32[1, 64], float32[10, 64], float32[10], float32[1, 10]  8a679957c4723fed                       \n",
+       "VM::AllocStorage                                      8.31     2.57    cpu0      4                                                                                                            \n",
+       "VM::UnknownOp                                         5.62     1.74    cpu0      9                                                                                                            \n",
+       "VM::AllocTensor                                       4.17     1.29    cpu0      1                                                    float32[1, 128]                                         \n",
+       "VM::AllocTensor                                       3.67     1.14    cpu0      2                                                     float32[1, 10]                                         \n",
+       "vm_mod_fused_nn_softmax                               2.27     0.70    cpu0      1                                     float32[1, 10], float32[1, 10]  0cc19816e7a3c070                       \n",
+       "VM::AllocTensor                                       2.06     0.64    cpu0      1                                                     float32[1, 64]                                         \n",
+       "VM::ReshapeTensor                                     2.00     0.62    cpu0      1                                                                                                            \n",
+       "----------                                                                                                                                                                                    \n",
+       "Sum                                                 157.40    48.74             22                                                                                                            \n",
+       "Total                                               322.97             cpu0      1                                                                                                            \n",
+       "\n",
+       "Configuration\n",
+       "-------------\n",
+       "Number of threads: 24\n",
+       "Executor: VM"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "report2 = profiling.Report.from_json(report.json())\n",
+    "report2"
    ]
   },
   {
@@ -165,11 +225,8 @@
   }
  ],
  "metadata": {
-  "interpreter": {
-   "hash": "aa67ff675248b5ab29dcd2f00c1422844307085c8ca7c8ce7eddecd21b9c2975"
-  },
   "kernelspec": {
-   "display_name": "Python 3.10.4 ('mxnetx')",
+   "display_name": "Python 3.8.13 ('xc': conda)",
    "language": "python",
    "name": "python3"
   },
@@ -183,9 +240,14 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.10.4"
+   "version": "3.8.13"
   },
-  "orig_nbformat": 4
+  "orig_nbformat": 4,
+  "vscode": {
+   "interpreter": {
+    "hash": "f4772b2d9fb5f4e213cea28dc6a0e63daacdc3e8a701d5a5063e88b8cfe3308a"
+   }
+  }
  },
  "nbformat": 4,
  "nbformat_minor": 2

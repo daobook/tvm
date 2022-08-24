@@ -317,6 +317,11 @@
        TOPI 简介
       </a>
      </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="uma.html">
+       通过 UMA 使您的硬件加速器 TVM-ready
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toctree-l2 has-children">
@@ -580,7 +585,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../how_to/optimize_operators/index.html">
-       Optimize Tensor Operators
+       优化张量算子
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
       <label for="toctree-checkbox-14">
@@ -590,7 +595,7 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/optimize_operators/opt_gemm.html">
-         How to optimize GEMM on CPU
+         如何在 CPU 上优化 GEMM
         </a>
        </li>
        <li class="toctree-l4">
@@ -1643,6 +1648,11 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading /home/pc/.mxnet/models/resnet50_v2-ecdde353.zipfb5fcb5b-aff3-421a-88c5-0a435c35dd37 from https://apache-mxnet.s3-accelerate.dualstack.amazonaws.com/gluon/models/resnet50_v2-ecdde353.zip...
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="id2">
@@ -1707,7 +1717,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>One or more operators have not been tuned. Please tune your model for better performance. Use DEBUG logging level to see more details.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:autotvm:One or more operators have not been tuned. Please tune your model for better performance. Use DEBUG logging level to see more details.
 </pre></div>
 </div>
 </div>
@@ -1768,7 +1778,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean&#39;: 56.41244653845206, &#39;median&#39;: 55.057341896463186, &#39;std&#39;: 4.664292276979083}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean&#39;: 56.3440875500055, &#39;median&#39;: 55.918911850039876, &#39;std&#39;: 1.285981826882138}
 </pre></div>
 </div>
 </div>
@@ -1797,11 +1807,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>class=&#39;tiger cat&#39; with probability=0.523403
-class=&#39;tabby, tabby cat&#39; with probability=0.406607
-class=&#39;Egyptian cat&#39; with probability=0.036959
-class=&#39;tiger, Panthera tigris&#39; with probability=0.004273
-class=&#39;plastic bag&#39; with probability=0.002398
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>class=&#39;tiger cat&#39; with probability=0.526644
+class=&#39;tabby, tabby cat&#39; with probability=0.403282
+class=&#39;Egyptian cat&#39; with probability=0.036493
+class=&#39;tiger, Panthera tigris&#39; with probability=0.004262
+class=&#39;plastic bag&#39; with probability=0.002360
 </pre></div>
 </div>
 </div>
@@ -1891,6 +1901,34 @@ class=&#39;plastic bag&#39; with probability=0.002398
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Task  1/25]  Current/Best:  124.03/ 209.03 GFLOPS | Progress: (10/10) | 9.14 s Done.
+[Task  2/25]  Current/Best:   10.13/ 138.98 GFLOPS | Progress: (10/10) | 5.16 s Done.
+[Task  3/25]  Current/Best:   60.39/ 189.33 GFLOPS | Progress: (10/10) | 5.35 s Done.
+[Task  4/25]  Current/Best:  157.80/ 198.05 GFLOPS | Progress: (10/10) | 10.60 s Done.
+[Task  5/25]  Current/Best:  119.60/ 201.84 GFLOPS | Progress: (10/10) | 5.97 s Done.
+[Task  6/25]  Current/Best:  161.13/ 175.95 GFLOPS | Progress: (10/10) | 10.85 s Done.
+[Task  7/25]  Current/Best:  178.74/ 178.74 GFLOPS | Progress: (10/10) | 4.88 s Done.
+[Task  8/25]  Current/Best:   84.07/ 159.35 GFLOPS | Progress: (10/10) | 8.79 s Done.
+[Task  9/25]  Current/Best:  105.97/ 140.39 GFLOPS | Progress: (10/10) | 5.93 s Done.
+[Task 10/25]  Current/Best:   50.02/ 159.02 GFLOPS | Progress: (10/10) | 5.13 s Done.
+[Task 11/25]  Current/Best:  176.24/ 180.60 GFLOPS | Progress: (10/10) | 6.60 s Done.
+[Task 12/25]  Current/Best:  127.63/ 203.93 GFLOPS | Progress: (10/10) | 12.71 s Done.
+[Task 13/25]  Current/Best:   64.96/ 159.08 GFLOPS | Progress: (10/10) | 5.41 s Done.
+[Task 14/25]  Current/Best:  148.87/ 189.87 GFLOPS | Progress: (10/10) | 12.93 s Done.
+[Task 16/25]  Current/Best:    0.00/   0.00 GFLOPS | Progress: (0/10) | 0.00 s s Done.
+[Task 16/25]  Current/Best:   52.36/ 138.04 GFLOPS | Progress: (10/10) | 6.06 s Done.
+[Task 17/25]  Current/Best:  192.82/ 196.61 GFLOPS | Progress: (10/10) | 5.23 s Done.
+[Task 18/25]  Current/Best:  207.65/ 207.65 GFLOPS | Progress: (10/10) | 11.32 s Done.
+[Task 19/25]  Current/Best:  101.41/ 172.61 GFLOPS | Progress: (10/10) | 5.80 s Done.
+[Task 20/25]  Current/Best:  174.55/ 174.55 GFLOPS | Progress: (10/10) | 10.94 s Done.
+[Task 21/25]  Current/Best:   37.73/ 115.20 GFLOPS | Progress: (10/10) | 12.14 s Done.
+[Task 22/25]  Current/Best:   54.50/ 116.77 GFLOPS | Progress: (10/10) | 6.51 s Done.
+[Task 23/25]  Current/Best:  196.81/ 196.81 GFLOPS | Progress: (10/10) | 13.28 s Done.
+[Task 25/25]  Current/Best:    3.11/   7.80 GFLOPS | Progress: (10/10) | 12.74 s Done.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="id6">
@@ -1932,11 +1970,11 @@ class=&#39;plastic bag&#39; with probability=0.002398
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>class=&#39;tiger cat&#39; with probability=0.523401
-class=&#39;tabby, tabby cat&#39; with probability=0.406608
-class=&#39;Egyptian cat&#39; with probability=0.036959
-class=&#39;tiger, Panthera tigris&#39; with probability=0.004273
-class=&#39;plastic bag&#39; with probability=0.002398
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>class=&#39;tiger cat&#39; with probability=0.526639
+class=&#39;tabby, tabby cat&#39; with probability=0.403286
+class=&#39;Egyptian cat&#39; with probability=0.036493
+class=&#39;tiger, Panthera tigris&#39; with probability=0.004262
+class=&#39;plastic bag&#39; with probability=0.002361
 </pre></div>
 </div>
 </div>
@@ -1965,8 +2003,8 @@ class=&#39;plastic bag&#39; with probability=0.002398
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>optimized: {&#39;mean&#39;: 59.14512207498774, &#39;median&#39;: 56.0865213512443, &#39;std&#39;: 6.336781476178801}
-unoptimized: {&#39;mean&#39;: 56.41244653845206, &#39;median&#39;: 55.057341896463186, &#39;std&#39;: 4.664292276979083}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>optimized: {&#39;mean&#39;: 36.29807254000298, &#39;median&#39;: 35.39204624999002, &#39;std&#39;: 2.746931858081105}
+unoptimized: {&#39;mean&#39;: 56.3440875500055, &#39;median&#39;: 55.918911850039876, &#39;std&#39;: 1.285981826882138}
 </pre></div>
 </div>
 </div>
@@ -2011,7 +2049,7 @@ unoptimized: {&#39;mean&#39;: 56.41244653845206, &#39;median&#39;: 55.0573418964
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-08-17, 11:18:35.<br/>
+    Last updated on 2022-08-24, 08:57:06.<br/>
 </p>
         </footer>
     </div>

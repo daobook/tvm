@@ -319,6 +319,11 @@
        TOPI 简介
       </a>
      </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../tutorial/uma.html">
+       通过 UMA 使您的硬件加速器 TVM-ready
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toctree-l2 has-children">
@@ -582,7 +587,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../../how_to/optimize_operators/index.html">
-       Optimize Tensor Operators
+       优化张量算子
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
       <label for="toctree-checkbox-14">
@@ -592,7 +597,7 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../../../how_to/optimize_operators/opt_gemm.html">
-         How to optimize GEMM on CPU
+         如何在 CPU 上优化 GEMM
         </a>
        </li>
        <li class="toctree-l4">
@@ -1677,10 +1682,19 @@ title="Print to PDF"
 <p>首先，需要导入 TVM，这是深度学习优化编译器。还需要导入 VTA python 包，其中包含针对 TVM 的 VTA 特定扩展，以实现 VTA 设计。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">set_env</span> <span class="c1"># 加载 VTA/TVM</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">tvm</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">te</span>
 <span class="kn">import</span> <span class="nn">vta</span>
+<span class="kn">from</span> <span class="nn">tvm.ir.module</span> <span class="kn">import</span> <span class="n">IRModule</span>
+<span class="kn">from</span> <span class="nn">tvm.script</span> <span class="kn">import</span> <span class="n">tir</span> <span class="k">as</span> <span class="n">T</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
@@ -1760,7 +1774,7 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>首先，描述存在于 main memory 中的输入张量 <code class="docutils literal notranslate"><span class="pre">A</span></code> 和 <code class="docutils literal notranslate"><span class="pre">B</span></code>。</p></li>
 <li><p>其次，需要声明中间张量 <code class="docutils literal notranslate"><span class="pre">A_buf</span></code> 和 <code class="docutils literal notranslate"><span class="pre">B_buf</span></code>，它们将位于 VTA 的 on-chip buffers 中。有了这个额外的计算阶段，就可以显式地分阶段进行 cached 的读写操作。</p></li>
-<li><p>第三，描述向量加法运算，它将 <code class="docutils literal notranslate"><span class="pre">A_buf</span></code> 添加到 <code class="docutils literal notranslate"><span class="pre">B_buf</span></code> 以生成 <code class="docutils literal notranslate"><span class="pre">C_buf</span></code>。</p></li>
+<li><p>第三，描述向量加法运算：<code class="docutils literal notranslate"><span class="pre">C_buf</span> <span class="pre">=</span> <span class="pre">A_buf</span> <span class="pre">+</span> <span class="pre">B_buf</span></code>。</p></li>
 <li><p>最后的运算是强制转换并复制回 DRAM，到结果张量 <code class="docutils literal notranslate"><span class="pre">C</span></code> 中。</p></li>
 </ul>
 <img alt="../../../../_images/vadd_dataflow.png" class="align-center" src="../../../../_images/vadd_dataflow.png" />
@@ -1797,12 +1811,12 @@ title="Print to PDF"
 <p>查看 <code class="xref py py-data docutils literal notranslate"><span class="pre">env.acc_dtype</span></code> 和 <code class="xref py py-data docutils literal notranslate"><span class="pre">env.inp_dtype</span></code>：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">env</span><span class="o">.</span><span class="n">acc_dtype</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">inp_dtype</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">env</span><span class="o">.</span><span class="n">acc_dtype</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">inp_dtype</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">out_dtype</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">wgt_dtype</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;int32&#39;, &#39;int8&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;int32&#39;, &#39;int8&#39;, &#39;int8&#39;, &#39;int8&#39;)
 </pre></div>
 </div>
 </div>
@@ -1810,9 +1824,8 @@ title="Print to PDF"
 <p>此外，A 和 B 的数据类型也需要匹配 <code class="docutils literal notranslate"><span class="pre">env.acc_dtype</span></code>，由 <code class="docutils literal notranslate"><span class="pre">vta_config.json</span></code> 文件设置为 32 位整型。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 平铺数据格式的 A 占位符张量</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 平铺 A, B 占位符张量数据</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">acc_dtype</span><span class="p">)</span>
-<span class="c1"># 平铺数据格式的 B 占位符张量</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">acc_dtype</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1839,9 +1852,9 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A copy buffer</span>
-<span class="n">A_buf</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">i</span><span class="p">:</span> <span class="n">A</span><span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">),</span> <span class="s2">&quot;A_buf&quot;</span><span class="p">)</span>
+<span class="n">A_buf</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">i</span><span class="p">:</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;A_buf&quot;</span><span class="p">)</span>
 <span class="c1"># B copy buffer</span>
-<span class="n">B_buf</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">i</span><span class="p">:</span> <span class="n">B</span><span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">),</span> <span class="s2">&quot;B_buf&quot;</span><span class="p">)</span>
+<span class="n">B_buf</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">i</span><span class="p">:</span> <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;B_buf&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1866,7 +1879,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 描述 VTA 中的向量加法</span>
-<span class="n">fcompute</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">i</span><span class="p">:</span> <span class="n">A_buf</span><span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">acc_dtype</span><span class="p">)</span> <span class="o">+</span> <span class="n">B_buf</span><span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">acc_dtype</span><span class="p">)</span>
+<span class="n">fcompute</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">i</span><span class="p">:</span> <span class="n">A_buf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">acc_dtype</span><span class="p">)</span> <span class="o">+</span> <span class="n">B_buf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">acc_dtype</span><span class="p">)</span>
 <span class="n">C_buf</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">fcompute</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;C_buf&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1884,7 +1897,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 转换为输出类型，并发送到 main memory</span>
-<span class="n">fcompute</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">i</span><span class="p">:</span> <span class="n">C_buf</span><span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">inp_dtype</span><span class="p">)</span>
+<span class="n">fcompute</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">i</span><span class="p">:</span> <span class="n">C_buf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">inp_dtype</span><span class="p">)</span>
 <span class="n">C</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">fcompute</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1895,55 +1908,65 @@ title="Print to PDF"
 </section>
 <section id="id4">
 <h2>调度计算<a class="headerlink" href="#id4" title="永久链接至标题">#</a></h2>
-<p>虽然上面的几行描述了计算规则，但我们可以通过许多方式得到 <code class="docutils literal notranslate"><span class="pre">C</span></code>。TVM 要求用户提供一种名为 <strong>调度</strong> （<em>schedule</em>） 的计算实现。</p>
+<p>虽然上面的几行描述了计算规则，但我们可以通过许多方式得到 <code class="docutils literal notranslate"><span class="pre">C</span></code>。TVM 要求用户提供名为 <strong>调度</strong> （<em>schedule</em>） 的计算实现。</p>
 <p>调度是对原始计算的一组变换，它在不影响正确性的情况下变换计算的实现。这个简单的 VTA 编程教程旨在演示基本的调度变换，将原始调度映射到 VTA 硬件原语（primitives）。</p>
 <section id="id5">
 <h3>默认调度<a class="headerlink" href="#id5" title="永久链接至标题">#</a></h3>
 <p>在构造了调度之后，默认情况下，调度会以如下方式计算 <code class="docutils literal notranslate"><span class="pre">C</span></code>：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">create_schedule</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
-<span class="c1"># 查看生成的调度</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">func_name</span> <span class="o">=</span> <span class="s2">&quot;add&quot;</span>
+<span class="n">te_func</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">create_prim_func</span><span class="p">([</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">])</span><span class="o">.</span><span class="n">with_attr</span><span class="p">({</span><span class="s2">&quot;global_symbol&quot;</span><span class="p">:</span> <span class="n">func_name</span><span class="p">})</span>
+<span class="n">MyModule</span> <span class="o">=</span> <span class="n">IRModule</span><span class="p">({</span><span class="n">func_name</span><span class="p">:</span> <span class="n">te_func</span><span class="p">})</span>
+<span class="n">sch</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">tir</span><span class="o">.</span><span class="n">Schedule</span><span class="p">(</span><span class="n">MyModule</span><span class="p">)</span>
+<span class="n">sch</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>@main = primfn(A_1: handle, B_1: handle, C_1: handle) -&gt; ()
-  attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
-  buffers = {A: Buffer(A_2: Pointer(int32), int32, [1024], []),
-             B: Buffer(B_2: Pointer(int32), int32, [1024], []),
-             C: Buffer(C_2: Pointer(int8), int8, [1024], [])}
-  buffer_map = {A_1: A, B_1: B, C_1: C}
-  preflattened_buffer_map = {A_1: A_3: Buffer(A_2, int32, [1, 64, 1, 16], []), B_1: B_3: Buffer(B_2, int32, [1, 64, 1, 16], []), C_1: C_3: Buffer(C_2, int8, [1, 64, 1, 16], [])} {
-  allocate(A_buf: Pointer(global int32), int32, [1024]), storage_scope = global;
-  allocate(B_buf: Pointer(global int32), int32, [1024]), storage_scope = global {
-    for (i1: int32, 0, 64) {
-      for (i3: int32, 0, 16) {
-        let cse_var_1: int32 = ((i1*16) + i3)
-        A_buf_1: Buffer(A_buf, int32, [1024], [])[cse_var_1] = A[cse_var_1]
-      }
-    }
-    for (i1_1: int32, 0, 64) {
-      for (i3_1: int32, 0, 16) {
-        let cse_var_2: int32 = ((i1_1*16) + i3_1)
-        B_buf_1: Buffer(B_buf, int32, [1024], [])[cse_var_2] = B[cse_var_2]
-      }
-    }
-    for (i1_2: int32, 0, 64) {
-      for (i3_2: int32, 0, 16) {
-        let cse_var_3: int32 = ((i1_2*16) + i3_2)
-        A_buf_2: Buffer(A_buf, int32, [1024], [])[cse_var_3] = (A_buf_1[cse_var_3] + B_buf_1[cse_var_3])
-      }
-    }
-    for (i1_3: int32, 0, 64) {
-      for (i3_3: int32, 0, 16) {
-        let cse_var_4: int32 = ((i1_3*16) + i3_3)
-        C[cse_var_4] = cast(int8, A_buf_2[cse_var_4])
-      }
-    }
-  }
-}
+<div class="output text_html"><div class="highlight" style="background: "><pre style="line-height: 125%;"><span></span><span style="color: #007979; font-style: italic"># from tvm.script import tir as T</span>
+<span style="color: #AA22FF">@tvm</span><span style="color: #AA22FF; font-weight: bold">.</span>script<span style="color: #AA22FF; font-weight: bold">.</span>ir_module
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Module</span>:
+    <span style="color: #AA22FF">@T</span><span style="color: #AA22FF; font-weight: bold">.</span>prim_func
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">add</span>(A: T<span style="color: #AA22FF; font-weight: bold">.</span>Buffer[(<span style="color: #008000">1</span>, <span style="color: #008000">64</span>, <span style="color: #008000">1</span>, <span style="color: #008000">16</span>), <span style="color: #BA2121">&quot;int32&quot;</span>], B: T<span style="color: #AA22FF; font-weight: bold">.</span>Buffer[(<span style="color: #008000">1</span>, <span style="color: #008000">64</span>, <span style="color: #008000">1</span>, <span style="color: #008000">16</span>), <span style="color: #BA2121">&quot;int32&quot;</span>], C: T<span style="color: #AA22FF; font-weight: bold">.</span>Buffer[(<span style="color: #008000">1</span>, <span style="color: #008000">64</span>, <span style="color: #008000">1</span>, <span style="color: #008000">16</span>), <span style="color: #BA2121">&quot;int8&quot;</span>]) <span style="color: #AA22FF; font-weight: bold">-&gt;</span> <span style="color: #008000; font-weight: bold">None</span>:
+        <span style="color: #007979; font-style: italic"># function attr dict</span>
+        T<span style="color: #AA22FF; font-weight: bold">.</span>func_attr({<span style="color: #BA2121">&quot;global_symbol&quot;</span>: <span style="color: #BA2121">&quot;add&quot;</span>, <span style="color: #BA2121">&quot;tir.noalias&quot;</span>: <span style="color: #008000; font-weight: bold">True</span>})
+        <span style="color: #007979; font-style: italic"># body</span>
+        <span style="color: #007979; font-style: italic"># with T.block(&quot;root&quot;)</span>
+        A_buf <span style="color: #AA22FF; font-weight: bold">=</span> T<span style="color: #AA22FF; font-weight: bold">.</span>alloc_buffer([<span style="color: #008000">1</span>, <span style="color: #008000">64</span>, <span style="color: #008000">1</span>, <span style="color: #008000">16</span>], dtype<span style="color: #AA22FF; font-weight: bold">=</span><span style="color: #BA2121">&quot;int32&quot;</span>)
+        B_buf <span style="color: #AA22FF; font-weight: bold">=</span> T<span style="color: #AA22FF; font-weight: bold">.</span>alloc_buffer([<span style="color: #008000">1</span>, <span style="color: #008000">64</span>, <span style="color: #008000">1</span>, <span style="color: #008000">16</span>], dtype<span style="color: #AA22FF; font-weight: bold">=</span><span style="color: #BA2121">&quot;int32&quot;</span>)
+        C_buf <span style="color: #AA22FF; font-weight: bold">=</span> T<span style="color: #AA22FF; font-weight: bold">.</span>alloc_buffer([<span style="color: #008000">1</span>, <span style="color: #008000">64</span>, <span style="color: #008000">1</span>, <span style="color: #008000">16</span>], dtype<span style="color: #AA22FF; font-weight: bold">=</span><span style="color: #BA2121">&quot;int32&quot;</span>)
+        <span style="color: #008000; font-weight: bold">for</span> i0, i1, i2, i3 <span style="color: #008000; font-weight: bold">in</span> T<span style="color: #AA22FF; font-weight: bold">.</span>grid(<span style="color: #008000">1</span>, <span style="color: #008000">64</span>, <span style="color: #008000">1</span>, <span style="color: #008000">16</span>):
+            <span style="color: #008000; font-weight: bold">with</span> T<span style="color: #AA22FF; font-weight: bold">.</span>block(<span style="color: #BA2121">&quot;A_buf&quot;</span>):
+                i0_1, i1_1, i2_1, i3_1 <span style="color: #AA22FF; font-weight: bold">=</span> T<span style="color: #AA22FF; font-weight: bold">.</span>axis<span style="color: #AA22FF; font-weight: bold">.</span>remap(<span style="color: #BA2121">&quot;SSSS&quot;</span>, [i0, i1, i2, i3])
+                T<span style="color: #AA22FF; font-weight: bold">.</span>reads(A[i0_1, i1_1, i2_1, i3_1])
+                T<span style="color: #AA22FF; font-weight: bold">.</span>writes(A_buf[i0_1, i1_1, i2_1, i3_1])
+                A_buf[i0_1, i1_1, i2_1, i3_1] <span style="color: #AA22FF; font-weight: bold">=</span> A[i0_1, i1_1, i2_1, i3_1]
+        <span style="color: #008000; font-weight: bold">for</span> i0, i1, i2, i3 <span style="color: #008000; font-weight: bold">in</span> T<span style="color: #AA22FF; font-weight: bold">.</span>grid(<span style="color: #008000">1</span>, <span style="color: #008000">64</span>, <span style="color: #008000">1</span>, <span style="color: #008000">16</span>):
+            <span style="color: #008000; font-weight: bold">with</span> T<span style="color: #AA22FF; font-weight: bold">.</span>block(<span style="color: #BA2121">&quot;B_buf&quot;</span>):
+                i0_2, i1_2, i2_2, i3_2 <span style="color: #AA22FF; font-weight: bold">=</span> T<span style="color: #AA22FF; font-weight: bold">.</span>axis<span style="color: #AA22FF; font-weight: bold">.</span>remap(<span style="color: #BA2121">&quot;SSSS&quot;</span>, [i0, i1, i2, i3])
+                T<span style="color: #AA22FF; font-weight: bold">.</span>reads(B[i0_2, i1_2, i2_2, i3_2])
+                T<span style="color: #AA22FF; font-weight: bold">.</span>writes(B_buf[i0_2, i1_2, i2_2, i3_2])
+                B_buf[i0_2, i1_2, i2_2, i3_2] <span style="color: #AA22FF; font-weight: bold">=</span> B[i0_2, i1_2, i2_2, i3_2]
+        <span style="color: #008000; font-weight: bold">for</span> i0_3, i1_3, i2_3, i3_3 <span style="color: #008000; font-weight: bold">in</span> T<span style="color: #AA22FF; font-weight: bold">.</span>grid(<span style="color: #008000">1</span>, <span style="color: #008000">64</span>, <span style="color: #008000">1</span>, <span style="color: #008000">16</span>):
+            <span style="color: #008000; font-weight: bold">with</span> T<span style="color: #AA22FF; font-weight: bold">.</span>block(<span style="color: #BA2121">&quot;C_buf&quot;</span>):
+                i0_4, i1_4, i2_4, i3_4 <span style="color: #AA22FF; font-weight: bold">=</span> T<span style="color: #AA22FF; font-weight: bold">.</span>axis<span style="color: #AA22FF; font-weight: bold">.</span>remap(<span style="color: #BA2121">&quot;SSSS&quot;</span>, [i0_3, i1_3, i2_3, i3_3])
+                T<span style="color: #AA22FF; font-weight: bold">.</span>reads(A_buf[i0_4, i1_4, i2_4, i3_4], B_buf[i0_4, i1_4, i2_4, i3_4])
+                T<span style="color: #AA22FF; font-weight: bold">.</span>writes(C_buf[i0_4, i1_4, i2_4, i3_4])
+                C_buf[i0_4, i1_4, i2_4, i3_4] <span style="color: #AA22FF; font-weight: bold">=</span> A_buf[i0_4, i1_4, i2_4, i3_4] <span style="color: #AA22FF; font-weight: bold">+</span> B_buf[i0_4, i1_4, i2_4, i3_4]
+        <span style="color: #008000; font-weight: bold">for</span> i0_5, i1_5, i2_5, i3_5 <span style="color: #008000; font-weight: bold">in</span> T<span style="color: #AA22FF; font-weight: bold">.</span>grid(<span style="color: #008000">1</span>, <span style="color: #008000">64</span>, <span style="color: #008000">1</span>, <span style="color: #008000">16</span>):
+            <span style="color: #008000; font-weight: bold">with</span> T<span style="color: #AA22FF; font-weight: bold">.</span>block(<span style="color: #BA2121">&quot;C&quot;</span>):
+                i0_6, i1_6, i2_6, i3_6 <span style="color: #AA22FF; font-weight: bold">=</span> T<span style="color: #AA22FF; font-weight: bold">.</span>axis<span style="color: #AA22FF; font-weight: bold">.</span>remap(<span style="color: #BA2121">&quot;SSSS&quot;</span>, [i0_5, i1_5, i2_5, i3_5])
+                T<span style="color: #AA22FF; font-weight: bold">.</span>reads(C_buf[i0_6, i1_6, i2_6, i3_6])
+                T<span style="color: #AA22FF; font-weight: bold">.</span>writes(C[i0_6, i1_6, i2_6, i3_6])
+                C[i0_6, i1_6, i2_6, i3_6] <span style="color: #AA22FF; font-weight: bold">=</span> T<span style="color: #AA22FF; font-weight: bold">.</span>cast(C_buf[i0_6, i1_6, i2_6, i3_6], <span style="color: #BA2121">&quot;int8&quot;</span>)
+    
+</pre></div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">create_schedule</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2036,18 +2059,6 @@ title="Print to PDF"
 <p>在下面一行中，使用 <a class="reference internal" href="../../../reference/api/python/driver.html#tvm.build" title="tvm.build"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.build()</span></code></a> 来创建函数。<code class="docutils literal notranslate"><span class="pre">build</span></code> 函数接受调度、函数的期望签名（包括输入和输出）以及想要编译的目标语言。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">env</span><span class="o">.</span><span class="n">target_host</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;llvm&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ctx = tvm.target.Target(&quot;ext_dev&quot;, host=env.target_host)</span>
 <span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;ext_dev&quot;</span>
 <span class="n">my_vadd</span> <span class="o">=</span> <span class="n">vta</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my_vadd&quot;</span><span class="p">)</span>
@@ -2083,6 +2094,11 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">remote</span><span class="o">.</span><span class="n">load_module</span><span class="p">(</span><span class="s2">&quot;vadd.o&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-08-24 14:56:04.809 INFO load_module /tmp/tmprd6er6js/vadd.o
 </pre></div>
 </div>
 </div>
@@ -2210,7 +2226,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-08-17, 11:18:35.<br/>
+    Last updated on 2022-08-24, 08:57:06.<br/>
 </p>
         </footer>
     </div>

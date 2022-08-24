@@ -317,6 +317,11 @@
        TOPI 简介
       </a>
      </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/uma.html">
+       通过 UMA 使您的硬件加速器 TVM-ready
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toctree-l2 current active has-children">
@@ -580,7 +585,7 @@
      </li>
      <li class="toctree-l3 current active has-children">
       <a class="reference internal" href="index.html">
-       Optimize Tensor Operators
+       优化张量算子
       </a>
       <input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
       <label for="toctree-checkbox-14">
@@ -590,7 +595,7 @@
       <ul class="current">
        <li class="toctree-l4">
         <a class="reference internal" href="opt_gemm.html">
-         How to optimize GEMM on CPU
+         如何在 CPU 上优化 GEMM
         </a>
        </li>
        <li class="toctree-l4">
@@ -1387,7 +1392,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/docs/how_to/optimize_operators/opt_conv_tensorcore.rst.txt"
+        <a href="../../../_sources/docs/how_to/optimize_operators/opt_conv_tensorcore.ipynb.txt"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -1398,7 +1403,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.rst</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -1555,28 +1560,30 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="sphx-glr-download-link-note admonition note">
-<p class="admonition-title">备注</p>
-<p>Click <a class="reference external" href="https://tvm.apache.org/docs/how_to/optimize_operators/opt_conv_tensorcore.html#sphx-glr-download-how-to-optimize-operators-opt-conv-tensorcore-py" title="(在 tvm v0.10.dev0)"><span class="xref std std-ref">here</span></a>
-to download the full example code</p>
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
 </div>
-<section class="sphx-glr-example-title" id="how-to-optimize-convolution-using-tensorcores">
-<span id="opt-conv-tensorcore"></span><span id="sphx-glr-how-to-optimize-operators-opt-conv-tensorcore-py"></span><h1>How to optimize convolution using TensorCores<a class="headerlink" href="#how-to-optimize-convolution-using-tensorcores" title="永久链接至标题">#</a></h1>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="how-to-optimize-convolution-using-tensorcores">
+<h1>How to optimize convolution using TensorCores<a class="headerlink" href="#how-to-optimize-convolution-using-tensorcores" title="永久链接至标题">#</a></h1>
 <p><strong>Author</strong>: <a class="reference external" href="https://github.com/Hzfengsy">Siyuan Feng</a></p>
 <p>In this tutorial, we will demonstrate how to write a high performance convolution
 schedule using TensorCores in TVM. In this example, we assume the input to
-convolution has a large batch. We strongly recommend covering the <a class="reference internal" href="opt_conv_cuda.html#opt-conv-gpu"><span class="std std-ref">How to optimize convolution on GPU</span></a> tutorial first.</p>
+convolution has a large batch. We strongly recommend covering the <code class="docutils literal notranslate"><span class="pre">opt-conv-gpu</span></code> tutorial first.</p>
 <section id="tensorcore-introduction">
 <h2>TensorCore Introduction<a class="headerlink" href="#tensorcore-introduction" title="永久链接至标题">#</a></h2>
 <p>Each Tensor Core provides a 4x4x4 matrix processing array that operates
-<code class="code docutils literal notranslate"><span class="pre">D</span> <span class="pre">=</span> <span class="pre">A</span> <span class="pre">*</span> <span class="pre">B</span> <span class="pre">+</span> <span class="pre">C</span></code>, where A, B, C and D are 4x4 matrices as Figure shows.
+:code:<code class="docutils literal notranslate"><span class="pre">D</span> <span class="pre">=</span> <span class="pre">A</span> <span class="pre">*</span> <span class="pre">B</span> <span class="pre">+</span> <span class="pre">C</span></code>, where A, B, C and D are 4x4 matrices as Figure shows.
 The matrix multiplication inputs A and B are FP16 matrices, while the accumulation
 matrices C and D may be FP16 or FP32 matrices.</p>
 <p>However, CUDA programmers can only use warp-level primitive
-<code class="code docutils literal notranslate"><span class="pre">wmma::mma_sync(acc_frag,</span> <span class="pre">a_frag,</span> <span class="pre">b_frag,</span> <span class="pre">acc_frag)</span></code> to perform
+:code:<code class="docutils literal notranslate"><span class="pre">wmma::mma_sync(acc_frag,</span> <span class="pre">a_frag,</span> <span class="pre">b_frag,</span> <span class="pre">acc_frag)</span></code> to perform
 16x16x16 half-precision matrix multiplication on tensor cores. Before invoking
 the matrix multiplication, programmers must load data from memory into registers
-with primitive <code class="code docutils literal notranslate"><span class="pre">wmma::load_matrix_sync</span></code>, explicitly. The NVCC compiler translates
+with primitive :code:<code class="docutils literal notranslate"><span class="pre">wmma::load_matrix_sync</span></code>, explicitly. The NVCC compiler translates
 that primitive into multiple memory load instructions. At run time, every thread loads
 16 elements from matrix A and 16 elements from B.</p>
 </section>
@@ -1586,7 +1593,9 @@ that primitive into multiple memory load instructions. At run time, every thread
 The batch size is 256. Convolution filters contain 512 filters of size 3 x 3.
 We use stride size 1 and padding size 1 for the convolution. In the example, we use
 NHWCnc memory layout.The following code defines the convolution algorithm in TVM.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tvm</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tvm</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">te</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">nvcc</span>
@@ -1678,14 +1687,18 @@ NHWCnc memory layout.The following code defines the convolution algorithm in TVM
 <span class="n">s</span><span class="p">[</span><span class="n">Apad</span><span class="p">]</span><span class="o">.</span><span class="n">compute_inline</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+</div>
 </section>
 <section id="memory-scope">
 <h2>Memory Scope<a class="headerlink" href="#memory-scope" title="永久链接至标题">#</a></h2>
 <p>In traditional GPU schedule, we have global, shared and local memory scope.
-To support TensorCores, we add another three special memory scope: <code class="code docutils literal notranslate"><span class="pre">wmma.matrix_a</span></code>,
-<code class="code docutils literal notranslate"><span class="pre">wmma.matrix_b</span></code> and <code class="code docutils literal notranslate"><span class="pre">wmma.accumulator</span></code>. On hardware, all fragments scope
+To support TensorCores, we add another three special memory scope: :code:<code class="docutils literal notranslate"><span class="pre">wmma.matrix_a</span></code>,
+:code:<code class="docutils literal notranslate"><span class="pre">wmma.matrix_b</span></code> and :code:<code class="docutils literal notranslate"><span class="pre">wmma.accumulator</span></code>. On hardware, all fragments scope
 stores at the on-chip registers level, the same place with local memory.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Designate the memory hierarchy</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Designate the memory hierarchy</span>
 <span class="n">AS</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">cache_read</span><span class="p">(</span><span class="n">Apad</span><span class="p">,</span> <span class="s2">&quot;shared&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">Conv</span><span class="p">])</span>
 <span class="n">WS</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">cache_read</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="s2">&quot;shared&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">Conv</span><span class="p">])</span>
 <span class="n">AF</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">cache_read</span><span class="p">(</span><span class="n">AS</span><span class="p">,</span> <span class="s2">&quot;wmma.matrix_a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">Conv</span><span class="p">])</span>
@@ -1693,16 +1706,20 @@ stores at the on-chip registers level, the same place with local memory.</p>
 <span class="n">ConvF</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">cache_write</span><span class="p">(</span><span class="n">Conv</span><span class="p">,</span> <span class="s2">&quot;wmma.accumulator&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 </section>
 <section id="define-tensor-intrinsic">
 <h2>Define Tensor Intrinsic<a class="headerlink" href="#define-tensor-intrinsic" title="永久链接至标题">#</a></h2>
 <p>In fact, TensorCore is a special hardware operation. So, we can just use tensorize
 to replace a unit of computation with the TensorCore instruction. The first thing is
 that we need to define tensor intrinsic.</p>
-<p>There are four basic operation in TensorCore: <code class="code docutils literal notranslate"><span class="pre">fill_fragment</span></code>, <code class="code docutils literal notranslate"><span class="pre">load_matrix</span></code>,
-<code class="code docutils literal notranslate"><span class="pre">mma_sync</span></code> and <code class="code docutils literal notranslate"><span class="pre">store_matrix</span></code>. Since <code class="code docutils literal notranslate"><span class="pre">fill_fragment</span></code> and <code class="code docutils literal notranslate"><span class="pre">mma_sync</span></code>
+<p>There are four basic operation in TensorCore: :code:<code class="docutils literal notranslate"><span class="pre">fill_fragment</span></code>, :code:<code class="docutils literal notranslate"><span class="pre">load_matrix</span></code>,
+:code:<code class="docutils literal notranslate"><span class="pre">mma_sync</span></code> and :code:<code class="docutils literal notranslate"><span class="pre">store_matrix</span></code>. Since :code:<code class="docutils literal notranslate"><span class="pre">fill_fragment</span></code> and :code:<code class="docutils literal notranslate"><span class="pre">mma_sync</span></code>
 are both used in matrix multiplication, so we can just write following three intrinsics.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">intrin_wmma_load_matrix</span><span class="p">(</span><span class="n">scope</span><span class="p">):</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">intrin_wmma_load_matrix</span><span class="p">(</span><span class="n">scope</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">16</span>
     <span class="n">A</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">placeholder</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float16&quot;</span><span class="p">)</span>
     <span class="n">BA</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">tir</span><span class="o">.</span><span class="n">decl_buffer</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s2">&quot;shared&quot;</span><span class="p">,</span> <span class="n">data_alignment</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">offset_factor</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
@@ -1821,27 +1838,28 @@ are both used in matrix multiplication, so we can just write following three int
     <span class="k">return</span> <span class="n">te</span><span class="o">.</span><span class="n">decl_tensor_intrin</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">op</span><span class="p">,</span> <span class="n">intrin_func</span><span class="p">,</span> <span class="n">binds</span><span class="o">=</span><span class="p">{</span><span class="n">A</span><span class="p">:</span> <span class="n">BA</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="n">BC</span><span class="p">})</span>
 </pre></div>
 </div>
+</div>
+</div>
 </section>
 <section id="scheduling-the-computation">
 <h2>Scheduling the Computation<a class="headerlink" href="#scheduling-the-computation" title="永久链接至标题">#</a></h2>
 <p>To use TensorCores in TVM, we must schedule the computation into specific structure
 to match the tensor intrinsic. The same as traditional GPU programs, we can also use
 shared memory to boost the speed. If you have any questions about blocking and shared
-memory, please refer <a class="reference internal" href="opt_conv_cuda.html#opt-conv-gpu"><span class="std std-ref">How to optimize convolution on GPU</span></a>.</p>
+memory, please refer <code class="docutils literal notranslate"><span class="pre">opt-conv-gpu</span></code>.</p>
 <p>In this example, each block contains 2x4 warps, and each warp calls 4x2 TensorCore
 instructions. Thus, the output shape of each warp is 64x32 and each block outputs
 128x128 titles. Due to the limit of shared memory space, we only load 2 blocks (2x128x128 tiles)
 one time.</p>
-<div class="admonition note">
-<p class="admonition-title">备注</p>
-<p><em>Warp-level Operation</em></p>
+<div class="alert alert-info"><h4>Note</h4><p>*Warp-level Operation*
 <p>Note that all TensorCore instructions are warp-level instructions, which means all 32 threads
-in a warp should do this instruction simultaneously. Making theadIdx.x extent=32 is one of the
+in a warp should do this instruction simultaneously. Making threadIdx.x extent=32 is one of the
 easiest way to solve this. Then We can bind threadIdx.x to any loops except those contain
 TensorCore intrinsics directly or indirectly. Also note that it is not the unique solution.
-The only thing we should do is to make sure all threads in a warp can call TensorCore at the same time.</p>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define tiling sizes</span>
+The only thing we should do is to make sure all threads in a warp can call TensorCore at the same time.</p></div></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define tiling sizes</span>
 <span class="n">block_row_warps</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">block_col_warps</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">warp_row_tiles</span> <span class="o">=</span> <span class="mi">2</span>
@@ -1904,17 +1922,23 @@ The only thing we should do is to make sure all threads in a warp can call Tenso
 <span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">Conv</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+</div>
 </section>
 <section id="lowering-computation-to-intrinsics">
 <h2>Lowering Computation to Intrinsics<a class="headerlink" href="#lowering-computation-to-intrinsics" title="永久链接至标题">#</a></h2>
 <p>The last phase is to lower the computation loops down to TensorCore hardware intrinsics
 by mapping the 2D convolution to tensor intrinsics</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">[</span><span class="n">AF</span><span class="p">]</span><span class="o">.</span><span class="n">tensorize</span><span class="p">(</span><span class="n">AF</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">axis</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">intrin_wmma_load_matrix</span><span class="p">(</span><span class="s2">&quot;wmma.matrix_a&quot;</span><span class="p">))</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">[</span><span class="n">AF</span><span class="p">]</span><span class="o">.</span><span class="n">tensorize</span><span class="p">(</span><span class="n">AF</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">axis</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">intrin_wmma_load_matrix</span><span class="p">(</span><span class="s2">&quot;wmma.matrix_a&quot;</span><span class="p">))</span>
 <span class="n">s</span><span class="p">[</span><span class="n">WF</span><span class="p">]</span><span class="o">.</span><span class="n">tensorize</span><span class="p">(</span><span class="n">WF</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">axis</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">intrin_wmma_load_matrix</span><span class="p">(</span><span class="s2">&quot;wmma.matrix_b&quot;</span><span class="p">))</span>
 <span class="n">s</span><span class="p">[</span><span class="n">Conv</span><span class="p">]</span><span class="o">.</span><span class="n">tensorize</span><span class="p">(</span><span class="n">nnc</span><span class="p">,</span> <span class="n">intrin_wmma_store_matrix</span><span class="p">())</span>
 <span class="n">s</span><span class="p">[</span><span class="n">ConvF</span><span class="p">]</span><span class="o">.</span><span class="n">tensorize</span><span class="p">(</span><span class="n">nnf</span><span class="p">,</span> <span class="n">intrin_wmma_gemm</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">Conv</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="generate-cuda-kernel">
@@ -1922,7 +1946,9 @@ by mapping the 2D convolution to tensor intrinsics</p>
 <p>Finally we use TVM to generate and compile the CUDA kernel, and evaluate the latency of convolution.
 Since TensorCores are only supported in NVIDIA GPU with Compute Capability 7.0 or higher, it may not
 be able to run on our build server</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dev</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">cuda</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dev</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">cuda</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">nvcc</span><span class="o">.</span><span class="n">have_tensorcore</span><span class="p">(</span><span class="n">dev</span><span class="o">.</span><span class="n">compute_version</span><span class="p">):</span>
     <span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;tir.UnrollLoop&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;auto_max_step&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">}}):</span>
         <span class="n">func</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">Conv</span><span class="p">],</span> <span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
@@ -1934,6 +1960,8 @@ be able to run on our build server</p>
     <span class="n">evaluator</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">time_evaluator</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;conv2d with tensor core: </span><span class="si">%f</span><span class="s2"> ms&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">evaluator</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span> <span class="o">*</span> <span class="mf">1e3</span><span class="p">))</span>
 </pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="summary">
@@ -1975,7 +2003,7 @@ call TensorCores on specific GPUs.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-08-17, 11:18:35.<br/>
+    Last updated on 2022-08-24, 08:57:06.<br/>
 </p>
         </footer>
     </div>

@@ -85,7 +85,15 @@
    "cell_type": "code",
    "execution_count": 2,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Downloading /home/pc/.mxnet/models/resnet50_v2-ecdde353.zipfb5fcb5b-aff3-421a-88c5-0a435c35dd37 from https://apache-mxnet.s3-accelerate.dualstack.amazonaws.com/gluon/models/resnet50_v2-ecdde353.zip...\n"
+     ]
+    }
+   ],
    "source": [
     "from mxnet.gluon.model_zoo import vision\n",
     "\n",
@@ -179,7 +187,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "One or more operators have not been tuned. Please tune your model for better performance. Use DEBUG logging level to see more details.\n"
+      "WARNING:autotvm:One or more operators have not been tuned. Please tune your model for better performance. Use DEBUG logging level to see more details.\n"
      ]
     }
    ],
@@ -252,7 +260,7 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "{'mean': 56.41244653845206, 'median': 55.057341896463186, 'std': 4.664292276979083}\n"
+      "{'mean': 56.3440875500055, 'median': 55.918911850039876, 'std': 1.285981826882138}\n"
      ]
     }
    ],
@@ -288,18 +296,18 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
+   "execution_count": 10,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "class='tiger cat' with probability=0.523403\n",
-      "class='tabby, tabby cat' with probability=0.406607\n",
-      "class='Egyptian cat' with probability=0.036959\n",
-      "class='tiger, Panthera tigris' with probability=0.004273\n",
-      "class='plastic bag' with probability=0.002398\n"
+      "class='tiger cat' with probability=0.526644\n",
+      "class='tabby, tabby cat' with probability=0.403282\n",
+      "class='Egyptian cat' with probability=0.036493\n",
+      "class='tiger, Panthera tigris' with probability=0.004262\n",
+      "class='plastic bag' with probability=0.002360\n"
      ]
     }
    ],
@@ -338,7 +346,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 10,
+   "execution_count": 11,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -356,7 +364,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 11,
+   "execution_count": 12,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -384,7 +392,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 12,
+   "execution_count": 13,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -414,9 +422,40 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 14,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[Task  1/25]  Current/Best:  124.03/ 209.03 GFLOPS | Progress: (10/10) | 9.14 s Done.\n",
+      "[Task  2/25]  Current/Best:   10.13/ 138.98 GFLOPS | Progress: (10/10) | 5.16 s Done.\n",
+      "[Task  3/25]  Current/Best:   60.39/ 189.33 GFLOPS | Progress: (10/10) | 5.35 s Done.\n",
+      "[Task  4/25]  Current/Best:  157.80/ 198.05 GFLOPS | Progress: (10/10) | 10.60 s Done.\n",
+      "[Task  5/25]  Current/Best:  119.60/ 201.84 GFLOPS | Progress: (10/10) | 5.97 s Done.\n",
+      "[Task  6/25]  Current/Best:  161.13/ 175.95 GFLOPS | Progress: (10/10) | 10.85 s Done.\n",
+      "[Task  7/25]  Current/Best:  178.74/ 178.74 GFLOPS | Progress: (10/10) | 4.88 s Done.\n",
+      "[Task  8/25]  Current/Best:   84.07/ 159.35 GFLOPS | Progress: (10/10) | 8.79 s Done.\n",
+      "[Task  9/25]  Current/Best:  105.97/ 140.39 GFLOPS | Progress: (10/10) | 5.93 s Done.\n",
+      "[Task 10/25]  Current/Best:   50.02/ 159.02 GFLOPS | Progress: (10/10) | 5.13 s Done.\n",
+      "[Task 11/25]  Current/Best:  176.24/ 180.60 GFLOPS | Progress: (10/10) | 6.60 s Done.\n",
+      "[Task 12/25]  Current/Best:  127.63/ 203.93 GFLOPS | Progress: (10/10) | 12.71 s Done.\n",
+      "[Task 13/25]  Current/Best:   64.96/ 159.08 GFLOPS | Progress: (10/10) | 5.41 s Done.\n",
+      "[Task 14/25]  Current/Best:  148.87/ 189.87 GFLOPS | Progress: (10/10) | 12.93 s Done.\n",
+      "[Task 16/25]  Current/Best:    0.00/   0.00 GFLOPS | Progress: (0/10) | 0.00 s s Done.\n",
+      "[Task 16/25]  Current/Best:   52.36/ 138.04 GFLOPS | Progress: (10/10) | 6.06 s Done.\n",
+      "[Task 17/25]  Current/Best:  192.82/ 196.61 GFLOPS | Progress: (10/10) | 5.23 s Done.\n",
+      "[Task 18/25]  Current/Best:  207.65/ 207.65 GFLOPS | Progress: (10/10) | 11.32 s Done.\n",
+      "[Task 19/25]  Current/Best:  101.41/ 172.61 GFLOPS | Progress: (10/10) | 5.80 s Done.\n",
+      "[Task 20/25]  Current/Best:  174.55/ 174.55 GFLOPS | Progress: (10/10) | 10.94 s Done.\n",
+      "[Task 21/25]  Current/Best:   37.73/ 115.20 GFLOPS | Progress: (10/10) | 12.14 s Done.\n",
+      "[Task 22/25]  Current/Best:   54.50/ 116.77 GFLOPS | Progress: (10/10) | 6.51 s Done.\n",
+      "[Task 23/25]  Current/Best:  196.81/ 196.81 GFLOPS | Progress: (10/10) | 13.28 s Done.\n",
+      "[Task 25/25]  Current/Best:    3.11/   7.80 GFLOPS | Progress: (10/10) | 12.74 s Done.\n"
+     ]
+    }
+   ],
    "source": [
     "# begin by extracting the tasks from the onnx model\n",
     "tasks = autotvm.task.extract_from_program(mod[\"main\"], target=target, params=params)\n",
@@ -449,7 +488,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 14,
+   "execution_count": 15,
    "metadata": {},
    "outputs": [
     {
@@ -478,18 +517,18 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 15,
+   "execution_count": 16,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "class='tiger cat' with probability=0.523401\n",
-      "class='tabby, tabby cat' with probability=0.406608\n",
-      "class='Egyptian cat' with probability=0.036959\n",
-      "class='tiger, Panthera tigris' with probability=0.004273\n",
-      "class='plastic bag' with probability=0.002398\n"
+      "class='tiger cat' with probability=0.526639\n",
+      "class='tabby, tabby cat' with probability=0.403286\n",
+      "class='Egyptian cat' with probability=0.036493\n",
+      "class='tiger, Panthera tigris' with probability=0.004262\n",
+      "class='plastic bag' with probability=0.002361\n"
      ]
     }
    ],
@@ -518,15 +557,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 16,
+   "execution_count": 17,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "optimized: {'mean': 59.14512207498774, 'median': 56.0865213512443, 'std': 6.336781476178801}\n",
-      "unoptimized: {'mean': 56.41244653845206, 'median': 55.057341896463186, 'std': 4.664292276979083}\n"
+      "optimized: {'mean': 36.29807254000298, 'median': 35.39204624999002, 'std': 2.746931858081105}\n",
+      "unoptimized: {'mean': 56.3440875500055, 'median': 55.918911850039876, 'std': 1.285981826882138}\n"
      ]
     }
    ],
@@ -560,11 +599,8 @@
   }
  ],
  "metadata": {
-  "interpreter": {
-   "hash": "ee40e4cbda3c4716866f133b45765e0887afdbc9aa3bd872ab229f889d521355"
-  },
   "kernelspec": {
-   "display_name": "Python 3.10.4 ('mx')",
+   "display_name": "Python 3.8.13 ('py38': conda)",
    "language": "python",
    "name": "python3"
   },
@@ -578,7 +614,12 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.10.4"
+   "version": "3.8.13"
+  },
+  "vscode": {
+   "interpreter": {
+    "hash": "28558e8daad512806f5c536a1a04c119185f99f65b79002708a12162d02a79c7"
+   }
   }
  },
  "nbformat": 4,

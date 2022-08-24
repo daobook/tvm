@@ -1,18 +1,11 @@
 :orphan:
 
-
-
 .. _sphx_glr_how_to_optimize_operators:
 
-Optimize Tensor Operators
+优化张量算子
 -------------------------
 
-These how-tos demonstrate how to optimize a variety of tensor operations for a
-variety of targets.
-
-
-
-
+这些“how-to”演示了如何针对各种目标优化各种张量运算。
 
 .. toctree::
    :hidden:

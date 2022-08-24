@@ -317,6 +317,11 @@
        TOPI 简介
       </a>
      </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="uma.html">
+       通过 UMA 使您的硬件加速器 TVM-ready
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toctree-l2 has-children">
@@ -580,7 +585,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../how_to/optimize_operators/index.html">
-       Optimize Tensor Operators
+       优化张量算子
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
       <label for="toctree-checkbox-14">
@@ -590,7 +595,7 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/optimize_operators/opt_gemm.html">
-         How to optimize GEMM on CPU
+         如何在 CPU 上优化 GEMM
         </a>
        </li>
        <li class="toctree-l4">
@@ -1633,7 +1638,7 @@ title="Print to PDF"
 <span class="n">model_path</span> <span class="o">=</span> <span class="s1">&#39;resnet50-v2-7.onnx&#39;</span>
 <span class="n">onnx_model</span> <span class="o">=</span> <span class="n">onnx</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span> <span class="c1"># Step 1: Load</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span> <span class="n">shape_dict</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">]})</span> <span class="c1"># Step 1: Load</span>
 </pre></div>
 </div>
 </div>
@@ -1697,6 +1702,11 @@ pip install cloudpickle
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-08-23 16:25:41.215 INFO load_module /tmp/tmpy38dimyb/mod.so
+</pre></div>
+</div>
+</div>
 </div>
 <p>也可以打印结果：</p>
 <div class="cell docutils container">
@@ -1708,7 +1718,7 @@ pip install cloudpickle
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution time summary:
  mean (ms)   median (ms)    max (ms)     min (ms)     std (ms)  
-  49.3520      48.6953      51.4826      48.5731       1.0808   
+  32.4099      32.7354      34.6098      30.4952       1.1764   
                
 Output Names:
  [&#39;output_0&#39;]
@@ -1725,7 +1735,7 @@ Output Names:
 <span class="n">tvmc</span><span class="o">.</span><span class="n">tune</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;llvm&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>可能存在可以忽略的用户警告。这将使最终结果更快，但可能需要数小时来调优。</p>
+<p>这将使最终结果更快，但可能需要数小时来调优。</p>
 <p>请参阅下面的 <a class="reference internal" href="#id3"><span class="std std-ref">保存调优结果</span></a>。如果希望应用调优结果，请确保将调优结果传递到 <code class="docutils literal notranslate"><span class="pre">compile</span></code> 中。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 2: Compile</span>
 <span class="n">tvmc</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">model</span><span class="p">,</span>
@@ -1742,7 +1752,7 @@ Output Names:
 <p>为了以后更快，加载模型（Step 1）后保存 Relay 版本。然后，模型将出现在您为稍后转换语法保存它的地方。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span> <span class="c1">#Step 1: Load</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span> <span class="n">shape_dict</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">]})</span> <span class="c1">#Step 1: Load</span>
 <span class="n">desired_model_path</span> <span class="o">=</span> <span class="s1">&#39;new_model.onnx&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">desired_model_path</span><span class="p">)</span>
 </pre></div>
@@ -1760,6 +1770,11 @@ Output Names:
 <span class="n">new_package</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">TVMCPackage</span><span class="p">(</span><span class="n">package_path</span><span class="o">=</span><span class="s2">&quot;whatever&quot;</span><span class="p">)</span>
 <span class="c1">#Step 3: Run</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">new_package</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-08-23 16:30:54.066 INFO load_module /tmp/tmpiqji9k25/mod.so
 </pre></div>
 </div>
 </div>
@@ -1785,8 +1800,8 @@ Output Names:
 <h3>保存调优结果<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h3>
 <p>调优结果可以保存在文件中，以便以后重用。</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="38a2be32-bbcb-450b-a580-8e66478600b7" name="f22c29a6-bd57-4983-9e30-b06318e63815" type="radio">
-</input><label class="tabbed-label" for="38a2be32-bbcb-450b-a580-8e66478600b7">
+<input checked="checked" id="eb48755a-30ef-482b-9174-1ee6f5b1154d" name="5bb56cde-d1e6-4285-9f63-d69be271bae8" type="radio">
+</input><label class="tabbed-label" for="eb48755a-30ef-482b-9174-1ee6f5b1154d">
 方式1</label><div class="tabbed-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log_file</span> <span class="o">=</span> <span class="s2">&quot;hello.json&quot;</span>
 
@@ -1800,8 +1815,8 @@ Output Names:
 </pre></div>
 </div>
 </div>
-<input id="2e2c2238-6d1f-4ad6-a228-48d872a9ae6b" name="f22c29a6-bd57-4983-9e30-b06318e63815" type="radio">
-</input><label class="tabbed-label" for="2e2c2238-6d1f-4ad6-a228-48d872a9ae6b">
+<input id="9ac5150e-d819-41f5-bb1b-e61b5851eaa5" name="5bb56cde-d1e6-4285-9f63-d69be271bae8" type="radio">
+</input><label class="tabbed-label" for="9ac5150e-d819-41f5-bb1b-e61b5851eaa5">
 方式2</label><div class="tabbed-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run tuning</span>
 <span class="n">tuning_records</span> <span class="o">=</span> <span class="n">tvmc</span><span class="o">.</span><span class="n">tune</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;llvm&quot;</span><span class="p">)</span>
@@ -1875,7 +1890,7 @@ Output Names:
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-08-17, 11:18:35.<br/>
+    Last updated on 2022-08-24, 08:57:06.<br/>
 </p>
         </footer>
     </div>

@@ -19,6 +19,15 @@
     {
       "cell_type": "code",
       "execution_count": 1,
+      "metadata": {},
+      "outputs": [],
+      "source": [
+        "import set_env # 加载 VTA/TVM"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
       "metadata": {
         "collapsed": false
       },
@@ -28,6 +37,8 @@
         "import tvm\n",
         "from tvm import te\n",
         "import vta\n",
+        "from tvm.ir.module import IRModule\n",
+        "from tvm.script import tir as T\n",
         "import numpy as np"
       ]
     },
@@ -45,7 +56,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 2,
+      "execution_count": 3,
       "metadata": {
         "collapsed": false
       },
@@ -67,7 +78,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 3,
+      "execution_count": 4,
       "metadata": {},
       "outputs": [],
       "source": [
@@ -89,7 +100,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 4,
+      "execution_count": 5,
       "metadata": {},
       "outputs": [],
       "source": [
@@ -106,7 +117,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 5,
+      "execution_count": 6,
       "metadata": {
         "collapsed": false
       },
@@ -146,7 +157,7 @@
         "\n",
         "- 首先，描述存在于 main memory 中的输入张量 `A` 和 `B`。\n",
         "- 其次，需要声明中间张量 `A_buf` 和 `B_buf`，它们将位于 VTA 的 on-chip buffers 中。有了这个额外的计算阶段，就可以显式地分阶段进行 cached 的读写操作。\n",
-        "- 第三，描述向量加法运算，它将 `A_buf` 添加到 `B_buf` 以生成 `C_buf`。\n",
+        "- 第三，描述向量加法运算：`C_buf = A_buf + B_buf`。\n",
         "- 最后的运算是强制转换并复制回 DRAM，到结果张量 `C` 中。\n",
         "\n",
         "\n",
@@ -168,7 +179,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 6,
+      "execution_count": 7,
       "metadata": {},
       "outputs": [],
       "source": [
@@ -190,7 +201,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 7,
+      "execution_count": 8,
       "metadata": {},
       "outputs": [
         {
@@ -199,7 +210,7 @@
               "(1, 64, 1, 16)"
             ]
           },
-          "execution_count": 7,
+          "execution_count": 8,
           "metadata": {},
           "output_type": "execute_result"
         }
@@ -217,22 +228,22 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 8,
+      "execution_count": 9,
       "metadata": {},
       "outputs": [
         {
           "data": {
             "text/plain": [
-              "('int32', 'int8')"
+              "('int32', 'int8', 'int8', 'int8')"
             ]
           },
-          "execution_count": 8,
+          "execution_count": 9,
           "metadata": {},
           "output_type": "execute_result"
         }
       ],
       "source": [
-        "env.acc_dtype, env.inp_dtype"
+        "env.acc_dtype, env.inp_dtype, env.out_dtype, env.wgt_dtype"
       ]
     },
     {
@@ -244,15 +255,14 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 9,
+      "execution_count": 10,
       "metadata": {
         "collapsed": false
       },
       "outputs": [],
       "source": [
-        "# 平铺数据格式的 A 占位符张量\n",
+        "# 平铺 A, B 占位符张量数据\n",
         "A = te.placeholder(shape, name=\"A\", dtype=env.acc_dtype)\n",
-        "# 平铺数据格式的 B 占位符张量\n",
         "B = te.placeholder(shape, name=\"B\", dtype=env.acc_dtype)"
       ]
     },
@@ -265,7 +275,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 10,
+      "execution_count": 11,
       "metadata": {},
       "outputs": [
         {
@@ -274,7 +284,7 @@
               "Tensor(shape=[1, 64, 1, 16], op.name=A)"
             ]
           },
-          "execution_count": 10,
+          "execution_count": 11,
           "metadata": {},
           "output_type": "execute_result"
         }
@@ -296,21 +306,21 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 11,
+      "execution_count": 12,
       "metadata": {
         "collapsed": false
       },
       "outputs": [],
       "source": [
         "# A copy buffer\n",
-        "A_buf = te.compute(shape, lambda *i: A(*i), \"A_buf\")\n",
+        "A_buf = te.compute(shape, lambda *i: A[i], \"A_buf\")\n",
         "# B copy buffer\n",
-        "B_buf = te.compute(shape, lambda *i: B(*i), \"B_buf\")"
+        "B_buf = te.compute(shape, lambda *i: B[i], \"B_buf\")"
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": 12,
+      "execution_count": 13,
       "metadata": {},
       "outputs": [
         {
@@ -319,7 +329,7 @@
               "Tensor(shape=[1, 64, 1, 16], op.name=A_buf)"
             ]
           },
-          "execution_count": 12,
+          "execution_count": 13,
           "metadata": {},
           "output_type": "execute_result"
         }
@@ -341,14 +351,14 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 13,
+      "execution_count": 14,
       "metadata": {
         "collapsed": false
       },
       "outputs": [],
       "source": [
         "# 描述 VTA 中的向量加法\n",
-        "fcompute = lambda *i: A_buf(*i).astype(env.acc_dtype) + B_buf(*i).astype(env.acc_dtype)\n",
+        "fcompute = lambda *i: A_buf[i].astype(env.acc_dtype) + B_buf[i].astype(env.acc_dtype)\n",
         "C_buf = te.compute(shape, fcompute, name=\"C_buf\")"
       ]
     },
@@ -371,14 +381,14 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 14,
+      "execution_count": 15,
       "metadata": {
         "collapsed": false
       },
       "outputs": [],
       "source": [
         "# 转换为输出类型，并发送到 main memory\n",
-        "fcompute = lambda *i: C_buf(*i).astype(env.inp_dtype)\n",
+        "fcompute = lambda *i: C_buf[i].astype(env.inp_dtype)\n",
         "C = te.compute(shape, fcompute, name=\"C\")"
       ]
     },
@@ -395,7 +405,7 @@
       "source": [
         "## 调度计算\n",
         "\n",
-        "虽然上面的几行描述了计算规则，但我们可以通过许多方式得到 `C`。TVM 要求用户提供一种名为 **调度** （*schedule*） 的计算实现。\n",
+        "虽然上面的几行描述了计算规则，但我们可以通过许多方式得到 `C`。TVM 要求用户提供名为 **调度** （*schedule*） 的计算实现。\n",
         "\n",
         "调度是对原始计算的一组变换，它在不影响正确性的情况下变换计算的实现。这个简单的 VTA 编程教程旨在演示基本的调度变换，将原始调度映射到 VTA 硬件原语（primitives）。\n",
         "\n",
@@ -406,59 +416,74 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 15,
-      "metadata": {
-        "collapsed": false
-      },
+      "execution_count": 16,
+      "metadata": {},
       "outputs": [
         {
-          "name": "stdout",
-          "output_type": "stream",
-          "text": [
-            "@main = primfn(A_1: handle, B_1: handle, C_1: handle) -> ()\n",
-            "  attr = {\"from_legacy_te_schedule\": True, \"global_symbol\": \"main\", \"tir.noalias\": True}\n",
-            "  buffers = {A: Buffer(A_2: Pointer(int32), int32, [1024], []),\n",
-            "             B: Buffer(B_2: Pointer(int32), int32, [1024], []),\n",
-            "             C: Buffer(C_2: Pointer(int8), int8, [1024], [])}\n",
-            "  buffer_map = {A_1: A, B_1: B, C_1: C}\n",
-            "  preflattened_buffer_map = {A_1: A_3: Buffer(A_2, int32, [1, 64, 1, 16], []), B_1: B_3: Buffer(B_2, int32, [1, 64, 1, 16], []), C_1: C_3: Buffer(C_2, int8, [1, 64, 1, 16], [])} {\n",
-            "  allocate(A_buf: Pointer(global int32), int32, [1024]), storage_scope = global;\n",
-            "  allocate(B_buf: Pointer(global int32), int32, [1024]), storage_scope = global {\n",
-            "    for (i1: int32, 0, 64) {\n",
-            "      for (i3: int32, 0, 16) {\n",
-            "        let cse_var_1: int32 = ((i1*16) + i3)\n",
-            "        A_buf_1: Buffer(A_buf, int32, [1024], [])[cse_var_1] = A[cse_var_1]\n",
-            "      }\n",
-            "    }\n",
-            "    for (i1_1: int32, 0, 64) {\n",
-            "      for (i3_1: int32, 0, 16) {\n",
-            "        let cse_var_2: int32 = ((i1_1*16) + i3_1)\n",
-            "        B_buf_1: Buffer(B_buf, int32, [1024], [])[cse_var_2] = B[cse_var_2]\n",
-            "      }\n",
-            "    }\n",
-            "    for (i1_2: int32, 0, 64) {\n",
-            "      for (i3_2: int32, 0, 16) {\n",
-            "        let cse_var_3: int32 = ((i1_2*16) + i3_2)\n",
-            "        A_buf_2: Buffer(A_buf, int32, [1024], [])[cse_var_3] = (A_buf_1[cse_var_3] + B_buf_1[cse_var_3])\n",
-            "      }\n",
-            "    }\n",
-            "    for (i1_3: int32, 0, 64) {\n",
-            "      for (i3_3: int32, 0, 16) {\n",
-            "        let cse_var_4: int32 = ((i1_3*16) + i3_3)\n",
-            "        C[cse_var_4] = cast(int8, A_buf_2[cse_var_4])\n",
-            "      }\n",
-            "    }\n",
-            "  }\n",
-            "}\n",
-            "\n",
-            "\n"
-          ]
+          "data": {
+            "text/html": [
+              "<div class=\"highlight\" style=\"background: \"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #007979; font-style: italic\"># from tvm.script import tir as T</span>\n",
+              "<span style=\"color: #AA22FF\">@tvm</span><span style=\"color: #AA22FF; font-weight: bold\">.</span>script<span style=\"color: #AA22FF; font-weight: bold\">.</span>ir_module\n",
+              "<span style=\"color: #008000; font-weight: bold\">class</span> <span style=\"color: #0000FF; font-weight: bold\">Module</span>:\n",
+              "    <span style=\"color: #AA22FF\">@T</span><span style=\"color: #AA22FF; font-weight: bold\">.</span>prim_func\n",
+              "    <span style=\"color: #008000; font-weight: bold\">def</span> <span style=\"color: #0000FF\">add</span>(A: T<span style=\"color: #AA22FF; font-weight: bold\">.</span>Buffer[(<span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">64</span>, <span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">16</span>), <span style=\"color: #BA2121\">&quot;int32&quot;</span>], B: T<span style=\"color: #AA22FF; font-weight: bold\">.</span>Buffer[(<span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">64</span>, <span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">16</span>), <span style=\"color: #BA2121\">&quot;int32&quot;</span>], C: T<span style=\"color: #AA22FF; font-weight: bold\">.</span>Buffer[(<span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">64</span>, <span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">16</span>), <span style=\"color: #BA2121\">&quot;int8&quot;</span>]) <span style=\"color: #AA22FF; font-weight: bold\">-&gt;</span> <span style=\"color: #008000; font-weight: bold\">None</span>:\n",
+              "        <span style=\"color: #007979; font-style: italic\"># function attr dict</span>\n",
+              "        T<span style=\"color: #AA22FF; font-weight: bold\">.</span>func_attr({<span style=\"color: #BA2121\">&quot;global_symbol&quot;</span>: <span style=\"color: #BA2121\">&quot;add&quot;</span>, <span style=\"color: #BA2121\">&quot;tir.noalias&quot;</span>: <span style=\"color: #008000; font-weight: bold\">True</span>})\n",
+              "        <span style=\"color: #007979; font-style: italic\"># body</span>\n",
+              "        <span style=\"color: #007979; font-style: italic\"># with T.block(&quot;root&quot;)</span>\n",
+              "        A_buf <span style=\"color: #AA22FF; font-weight: bold\">=</span> T<span style=\"color: #AA22FF; font-weight: bold\">.</span>alloc_buffer([<span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">64</span>, <span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">16</span>], dtype<span style=\"color: #AA22FF; font-weight: bold\">=</span><span style=\"color: #BA2121\">&quot;int32&quot;</span>)\n",
+              "        B_buf <span style=\"color: #AA22FF; font-weight: bold\">=</span> T<span style=\"color: #AA22FF; font-weight: bold\">.</span>alloc_buffer([<span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">64</span>, <span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">16</span>], dtype<span style=\"color: #AA22FF; font-weight: bold\">=</span><span style=\"color: #BA2121\">&quot;int32&quot;</span>)\n",
+              "        C_buf <span style=\"color: #AA22FF; font-weight: bold\">=</span> T<span style=\"color: #AA22FF; font-weight: bold\">.</span>alloc_buffer([<span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">64</span>, <span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">16</span>], dtype<span style=\"color: #AA22FF; font-weight: bold\">=</span><span style=\"color: #BA2121\">&quot;int32&quot;</span>)\n",
+              "        <span style=\"color: #008000; font-weight: bold\">for</span> i0, i1, i2, i3 <span style=\"color: #008000; font-weight: bold\">in</span> T<span style=\"color: #AA22FF; font-weight: bold\">.</span>grid(<span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">64</span>, <span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">16</span>):\n",
+              "            <span style=\"color: #008000; font-weight: bold\">with</span> T<span style=\"color: #AA22FF; font-weight: bold\">.</span>block(<span style=\"color: #BA2121\">&quot;A_buf&quot;</span>):\n",
+              "                i0_1, i1_1, i2_1, i3_1 <span style=\"color: #AA22FF; font-weight: bold\">=</span> T<span style=\"color: #AA22FF; font-weight: bold\">.</span>axis<span style=\"color: #AA22FF; font-weight: bold\">.</span>remap(<span style=\"color: #BA2121\">&quot;SSSS&quot;</span>, [i0, i1, i2, i3])\n",
+              "                T<span style=\"color: #AA22FF; font-weight: bold\">.</span>reads(A[i0_1, i1_1, i2_1, i3_1])\n",
+              "                T<span style=\"color: #AA22FF; font-weight: bold\">.</span>writes(A_buf[i0_1, i1_1, i2_1, i3_1])\n",
+              "                A_buf[i0_1, i1_1, i2_1, i3_1] <span style=\"color: #AA22FF; font-weight: bold\">=</span> A[i0_1, i1_1, i2_1, i3_1]\n",
+              "        <span style=\"color: #008000; font-weight: bold\">for</span> i0, i1, i2, i3 <span style=\"color: #008000; font-weight: bold\">in</span> T<span style=\"color: #AA22FF; font-weight: bold\">.</span>grid(<span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">64</span>, <span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">16</span>):\n",
+              "            <span style=\"color: #008000; font-weight: bold\">with</span> T<span style=\"color: #AA22FF; font-weight: bold\">.</span>block(<span style=\"color: #BA2121\">&quot;B_buf&quot;</span>):\n",
+              "                i0_2, i1_2, i2_2, i3_2 <span style=\"color: #AA22FF; font-weight: bold\">=</span> T<span style=\"color: #AA22FF; font-weight: bold\">.</span>axis<span style=\"color: #AA22FF; font-weight: bold\">.</span>remap(<span style=\"color: #BA2121\">&quot;SSSS&quot;</span>, [i0, i1, i2, i3])\n",
+              "                T<span style=\"color: #AA22FF; font-weight: bold\">.</span>reads(B[i0_2, i1_2, i2_2, i3_2])\n",
+              "                T<span style=\"color: #AA22FF; font-weight: bold\">.</span>writes(B_buf[i0_2, i1_2, i2_2, i3_2])\n",
+              "                B_buf[i0_2, i1_2, i2_2, i3_2] <span style=\"color: #AA22FF; font-weight: bold\">=</span> B[i0_2, i1_2, i2_2, i3_2]\n",
+              "        <span style=\"color: #008000; font-weight: bold\">for</span> i0_3, i1_3, i2_3, i3_3 <span style=\"color: #008000; font-weight: bold\">in</span> T<span style=\"color: #AA22FF; font-weight: bold\">.</span>grid(<span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">64</span>, <span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">16</span>):\n",
+              "            <span style=\"color: #008000; font-weight: bold\">with</span> T<span style=\"color: #AA22FF; font-weight: bold\">.</span>block(<span style=\"color: #BA2121\">&quot;C_buf&quot;</span>):\n",
+              "                i0_4, i1_4, i2_4, i3_4 <span style=\"color: #AA22FF; font-weight: bold\">=</span> T<span style=\"color: #AA22FF; font-weight: bold\">.</span>axis<span style=\"color: #AA22FF; font-weight: bold\">.</span>remap(<span style=\"color: #BA2121\">&quot;SSSS&quot;</span>, [i0_3, i1_3, i2_3, i3_3])\n",
+              "                T<span style=\"color: #AA22FF; font-weight: bold\">.</span>reads(A_buf[i0_4, i1_4, i2_4, i3_4], B_buf[i0_4, i1_4, i2_4, i3_4])\n",
+              "                T<span style=\"color: #AA22FF; font-weight: bold\">.</span>writes(C_buf[i0_4, i1_4, i2_4, i3_4])\n",
+              "                C_buf[i0_4, i1_4, i2_4, i3_4] <span style=\"color: #AA22FF; font-weight: bold\">=</span> A_buf[i0_4, i1_4, i2_4, i3_4] <span style=\"color: #AA22FF; font-weight: bold\">+</span> B_buf[i0_4, i1_4, i2_4, i3_4]\n",
+              "        <span style=\"color: #008000; font-weight: bold\">for</span> i0_5, i1_5, i2_5, i3_5 <span style=\"color: #008000; font-weight: bold\">in</span> T<span style=\"color: #AA22FF; font-weight: bold\">.</span>grid(<span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">64</span>, <span style=\"color: #008000\">1</span>, <span style=\"color: #008000\">16</span>):\n",
+              "            <span style=\"color: #008000; font-weight: bold\">with</span> T<span style=\"color: #AA22FF; font-weight: bold\">.</span>block(<span style=\"color: #BA2121\">&quot;C&quot;</span>):\n",
+              "                i0_6, i1_6, i2_6, i3_6 <span style=\"color: #AA22FF; font-weight: bold\">=</span> T<span style=\"color: #AA22FF; font-weight: bold\">.</span>axis<span style=\"color: #AA22FF; font-weight: bold\">.</span>remap(<span style=\"color: #BA2121\">&quot;SSSS&quot;</span>, [i0_5, i1_5, i2_5, i3_5])\n",
+              "                T<span style=\"color: #AA22FF; font-weight: bold\">.</span>reads(C_buf[i0_6, i1_6, i2_6, i3_6])\n",
+              "                T<span style=\"color: #AA22FF; font-weight: bold\">.</span>writes(C[i0_6, i1_6, i2_6, i3_6])\n",
+              "                C[i0_6, i1_6, i2_6, i3_6] <span style=\"color: #AA22FF; font-weight: bold\">=</span> T<span style=\"color: #AA22FF; font-weight: bold\">.</span>cast(C_buf[i0_6, i1_6, i2_6, i3_6], <span style=\"color: #BA2121\">&quot;int8&quot;</span>)\n",
+              "    \n",
+              "</pre></div>\n"
+            ],
+            "text/plain": [
+              "<IPython.core.display.HTML object>"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
         }
       ],
       "source": [
-        "s = te.create_schedule(C.op)\n",
-        "# 查看生成的调度\n",
-        "print(tvm.lower(s, [A, B, C], simple_mode=True))"
+        "func_name = \"add\"\n",
+        "te_func = te.create_prim_func([A, B, C]).with_attr({\"global_symbol\": func_name})\n",
+        "MyModule = IRModule({func_name: te_func})\n",
+        "sch = tvm.tir.Schedule(MyModule)\n",
+        "sch.mod.show()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 17,
+      "metadata": {},
+      "outputs": [],
+      "source": [
+        "s = te.create_schedule(C.op)"
       ]
     },
     {
@@ -479,7 +504,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 16,
+      "execution_count": 18,
       "metadata": {
         "collapsed": false
       },
@@ -490,7 +515,7 @@
               "stage(C_buf, compute(C_buf, body=[(A_buf[i0, i1, i2, i3] + B_buf[i0, i1, i2, i3])], axis=[iter_var(i0, range(min=0, ext=1)), iter_var(i1, range(min=0, ext=64)), iter_var(i2, range(min=0, ext=1)), iter_var(i3, range(min=0, ext=16))], reduce_axis=[], tag=, attrs={}))"
             ]
           },
-          "execution_count": 16,
+          "execution_count": 18,
           "metadata": {},
           "output_type": "execute_result"
         }
@@ -514,7 +539,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 17,
+      "execution_count": 19,
       "metadata": {
         "collapsed": false
       },
@@ -538,7 +563,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 18,
+      "execution_count": 20,
       "metadata": {
         "collapsed": false
       },
@@ -596,27 +621,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 19,
-      "metadata": {},
-      "outputs": [
-        {
-          "data": {
-            "text/plain": [
-              "'llvm'"
-            ]
-          },
-          "execution_count": 19,
-          "metadata": {},
-          "output_type": "execute_result"
-        }
-      ],
-      "source": [
-        "env.target_host"
-      ]
-    },
-    {
-      "cell_type": "code",
-      "execution_count": 20,
+      "execution_count": 21,
       "metadata": {
         "collapsed": false
       },
@@ -642,7 +647,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 21,
+      "execution_count": 22,
       "metadata": {
         "collapsed": false
       },
@@ -661,7 +666,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 22,
+      "execution_count": 23,
       "metadata": {},
       "outputs": [],
       "source": [
@@ -679,11 +684,19 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 23,
+      "execution_count": 24,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stderr",
+          "output_type": "stream",
+          "text": [
+            "2022-08-24 14:56:04.809 INFO load_module /tmp/tmprd6er6js/vadd.o\n"
+          ]
+        }
+      ],
       "source": [
         "f = remote.load_module(\"vadd.o\")"
       ]
@@ -708,7 +721,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 24,
+      "execution_count": 25,
       "metadata": {},
       "outputs": [],
       "source": [
@@ -726,7 +739,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 25,
+      "execution_count": 26,
       "metadata": {},
       "outputs": [],
       "source": [
@@ -743,7 +756,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 26,
+      "execution_count": 27,
       "metadata": {},
       "outputs": [],
       "source": [
@@ -759,7 +772,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 27,
+      "execution_count": 28,
       "metadata": {
         "collapsed": false
       },
@@ -779,7 +792,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 28,
+      "execution_count": 29,
       "metadata": {},
       "outputs": [],
       "source": [
@@ -797,7 +810,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 29,
+      "execution_count": 30,
       "metadata": {
         "collapsed": false
       },
@@ -837,7 +850,7 @@
   ],
   "metadata": {
     "kernelspec": {
-      "display_name": "Python 3.8.13 ('tvm38': conda)",
+      "display_name": "Python 3.8.13 ('xc': conda)",
       "language": "python",
       "name": "python3"
     },
@@ -855,7 +868,7 @@
     },
     "vscode": {
       "interpreter": {
-        "hash": "3555d4060e1bb256f2e385b42190aa51debd92785a45a343e60f30a52ea749ac"
+        "hash": "f4772b2d9fb5f4e213cea28dc6a0e63daacdc3e8a701d5a5063e88b8cfe3308a"
       }
     }
   },

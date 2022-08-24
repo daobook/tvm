@@ -69,21 +69,20 @@
           "output_type": "stream",
           "text": [
             "<class 'tvm.ir.module.IRModule'>\n",
-            "# from tvm.script import tir as T\n",
-            "@tvm.script.ir_module\n",
-            "class Module:\n",
-            "    @T.prim_func\n",
-            "    def main(A: T.Buffer[8, \"float32\"], B: T.Buffer[8, \"float32\"]) -> None:\n",
-            "        # function attr dict\n",
-            "        T.func_attr({\"global_symbol\": \"main\", \"tir.noalias\": True})\n",
-            "        # body\n",
-            "        # with T.block(\"root\")\n",
-            "        for i in T.serial(8):\n",
-            "            with T.block(\"B\"):\n",
-            "                vi = T.axis.spatial(8, i)\n",
-            "                T.reads(A[vi])\n",
-            "                T.writes(B[vi])\n",
-            "                B[vi] = A[vi] + T.float32(1)\n",
+            "\u001b[38;5;129m@tvm\u001b[39m\u001b[38;5;129;01m.\u001b[39;00mscript\u001b[38;5;129;01m.\u001b[39;00mir_module\n",
+            "\u001b[38;5;28;01mclass\u001b[39;00m \u001b[38;5;21;01mModule\u001b[39;00m:\n",
+            "    \u001b[38;5;129m@T\u001b[39m\u001b[38;5;129;01m.\u001b[39;00mprim_func\n",
+            "    \u001b[38;5;28;01mdef\u001b[39;00m \u001b[38;5;21mmain\u001b[39m(A: T\u001b[38;5;129;01m.\u001b[39;00mBuffer[\u001b[38;5;28m8\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m], B: T\u001b[38;5;129;01m.\u001b[39;00mBuffer[\u001b[38;5;28m8\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m]) \u001b[38;5;129;01m-\u001b[39;00m\u001b[38;5;129;01m>\u001b[39;00m \u001b[38;5;28;01mNone\u001b[39;00m:\n",
+            "        \u001b[38;5;30;03m# function attr dict\u001b[39;00m\n",
+            "        T\u001b[38;5;129;01m.\u001b[39;00mfunc_attr({\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mglobal_symbol\u001b[39m\u001b[38;5;124m\"\u001b[39m: \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mmain\u001b[39m\u001b[38;5;124m\"\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mtir.noalias\u001b[39m\u001b[38;5;124m\"\u001b[39m: \u001b[38;5;28;01mTrue\u001b[39;00m})\n",
+            "        \u001b[38;5;30;03m# body\u001b[39;00m\n",
+            "        \u001b[38;5;30;03m# with T.block(\"root\")\u001b[39;00m\n",
+            "        \u001b[38;5;28;01mfor\u001b[39;00m i \u001b[38;5;28;01min\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mserial(\u001b[38;5;28m8\u001b[39m):\n",
+            "            \u001b[38;5;28;01mwith\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mblock(\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mB\u001b[39m\u001b[38;5;124m\"\u001b[39m):\n",
+            "                vi \u001b[38;5;129;01m=\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00maxis\u001b[38;5;129;01m.\u001b[39;00mspatial(\u001b[38;5;28m8\u001b[39m, i)\n",
+            "                T\u001b[38;5;129;01m.\u001b[39;00mreads(A[vi])\n",
+            "                T\u001b[38;5;129;01m.\u001b[39;00mwrites(B[vi])\n",
+            "                B[vi] \u001b[38;5;129;01m=\u001b[39;00m A[vi] \u001b[38;5;129;01m+\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mfloat32(\u001b[38;5;28m1\u001b[39m)\n",
             "    \n",
             "\n"
           ]
@@ -93,12 +92,8 @@
         "@ir_module\n",
         "class MyModule:\n",
         "    @T.prim_func\n",
-        "    def main(a: T.handle, b: T.handle):\n",
-        "        # 通过句柄（handle）在函数之间交换数据，此操作类似于指针（pointer）。\n",
+        "    def main(A: T.Buffer[8, \"float32\"], B: T.Buffer[8, \"float32\"]):\n",
         "        T.func_attr({\"global_symbol\": \"main\", \"tir.noalias\": True})\n",
-        "        # 从句柄创建 buffer。\n",
-        "        A = T.match_buffer(a, (8,), dtype=\"float32\")\n",
-        "        B = T.match_buffer(b, (8,), dtype=\"float32\")\n",
         "        for i in range(8):\n",
         "            # block 是计算的抽象。\n",
         "            with T.block(\"B\"):\n",
@@ -109,7 +104,7 @@
         "\n",
         "ir_module = MyModule\n",
         "print(type(ir_module))\n",
-        "print(ir_module.script())"
+        "ir_module.show()"
       ]
     },
     {
@@ -130,21 +125,20 @@
           "name": "stdout",
           "output_type": "stream",
           "text": [
-            "# from tvm.script import tir as T\n",
-            "@tvm.script.ir_module\n",
-            "class Module:\n",
-            "    @T.prim_func\n",
-            "    def main(A: T.Buffer[8, \"float32\"], B: T.Buffer[8, \"float32\"]) -> None:\n",
-            "        # function attr dict\n",
-            "        T.func_attr({\"global_symbol\": \"main\", \"tir.noalias\": True})\n",
-            "        # body\n",
-            "        # with T.block(\"root\")\n",
-            "        for i0 in T.serial(8):\n",
-            "            with T.block(\"B\"):\n",
-            "                i0_1 = T.axis.spatial(8, i0)\n",
-            "                T.reads(A[i0_1])\n",
-            "                T.writes(B[i0_1])\n",
-            "                B[i0_1] = A[i0_1] + T.float32(1)\n",
+            "\u001b[38;5;129m@tvm\u001b[39m\u001b[38;5;129;01m.\u001b[39;00mscript\u001b[38;5;129;01m.\u001b[39;00mir_module\n",
+            "\u001b[38;5;28;01mclass\u001b[39;00m \u001b[38;5;21;01mModule\u001b[39;00m:\n",
+            "    \u001b[38;5;129m@T\u001b[39m\u001b[38;5;129;01m.\u001b[39;00mprim_func\n",
+            "    \u001b[38;5;28;01mdef\u001b[39;00m \u001b[38;5;21mmain\u001b[39m(A: T\u001b[38;5;129;01m.\u001b[39;00mBuffer[\u001b[38;5;28m8\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m], B: T\u001b[38;5;129;01m.\u001b[39;00mBuffer[\u001b[38;5;28m8\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m]) \u001b[38;5;129;01m-\u001b[39;00m\u001b[38;5;129;01m>\u001b[39;00m \u001b[38;5;28;01mNone\u001b[39;00m:\n",
+            "        \u001b[38;5;30;03m# function attr dict\u001b[39;00m\n",
+            "        T\u001b[38;5;129;01m.\u001b[39;00mfunc_attr({\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mglobal_symbol\u001b[39m\u001b[38;5;124m\"\u001b[39m: \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mmain\u001b[39m\u001b[38;5;124m\"\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mtir.noalias\u001b[39m\u001b[38;5;124m\"\u001b[39m: \u001b[38;5;28;01mTrue\u001b[39;00m})\n",
+            "        \u001b[38;5;30;03m# body\u001b[39;00m\n",
+            "        \u001b[38;5;30;03m# with T.block(\"root\")\u001b[39;00m\n",
+            "        \u001b[38;5;28;01mfor\u001b[39;00m i0 \u001b[38;5;28;01min\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mserial(\u001b[38;5;28m8\u001b[39m):\n",
+            "            \u001b[38;5;28;01mwith\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mblock(\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mB\u001b[39m\u001b[38;5;124m\"\u001b[39m):\n",
+            "                i0_1 \u001b[38;5;129;01m=\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00maxis\u001b[38;5;129;01m.\u001b[39;00mspatial(\u001b[38;5;28m8\u001b[39m, i0)\n",
+            "                T\u001b[38;5;129;01m.\u001b[39;00mreads(A[i0_1])\n",
+            "                T\u001b[38;5;129;01m.\u001b[39;00mwrites(B[i0_1])\n",
+            "                B[i0_1] \u001b[38;5;129;01m=\u001b[39;00m A[i0_1] \u001b[38;5;129;01m+\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mfloat32(\u001b[38;5;28m1\u001b[39m)\n",
             "    \n",
             "\n"
           ]
@@ -157,7 +151,7 @@
         "B = te.compute((8,), lambda *i: A(*i) + 1.0, name=\"B\")\n",
         "func = te.create_prim_func([A, B])\n",
         "ir_module_from_te = IRModule({\"main\": func})\n",
-        "print(ir_module_from_te.script())"
+        "ir_module_from_te.show()"
       ]
     },
     {
@@ -273,21 +267,20 @@
           "name": "stdout",
           "output_type": "stream",
           "text": [
-            "# from tvm.script import tir as T\n",
-            "@tvm.script.ir_module\n",
-            "class Module:\n",
-            "    @T.prim_func\n",
-            "    def main(A: T.Buffer[8, \"float32\"], B: T.Buffer[8, \"float32\"]) -> None:\n",
-            "        # function attr dict\n",
-            "        T.func_attr({\"global_symbol\": \"main\", \"tir.noalias\": True})\n",
-            "        # body\n",
-            "        # with T.block(\"root\")\n",
-            "        for i_0, i_1, i_2 in T.grid(2, 2, 2):\n",
-            "            with T.block(\"B\"):\n",
-            "                vi = T.axis.spatial(8, i_0 * 4 + i_1 * 2 + i_2)\n",
-            "                T.reads(A[vi])\n",
-            "                T.writes(B[vi])\n",
-            "                B[vi] = A[vi] + T.float32(1)\n",
+            "\u001b[38;5;129m@tvm\u001b[39m\u001b[38;5;129;01m.\u001b[39;00mscript\u001b[38;5;129;01m.\u001b[39;00mir_module\n",
+            "\u001b[38;5;28;01mclass\u001b[39;00m \u001b[38;5;21;01mModule\u001b[39;00m:\n",
+            "    \u001b[38;5;129m@T\u001b[39m\u001b[38;5;129;01m.\u001b[39;00mprim_func\n",
+            "    \u001b[38;5;28;01mdef\u001b[39;00m \u001b[38;5;21mmain\u001b[39m(A: T\u001b[38;5;129;01m.\u001b[39;00mBuffer[\u001b[38;5;28m8\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m], B: T\u001b[38;5;129;01m.\u001b[39;00mBuffer[\u001b[38;5;28m8\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m]) \u001b[38;5;129;01m-\u001b[39;00m\u001b[38;5;129;01m>\u001b[39;00m \u001b[38;5;28;01mNone\u001b[39;00m:\n",
+            "        \u001b[38;5;30;03m# function attr dict\u001b[39;00m\n",
+            "        T\u001b[38;5;129;01m.\u001b[39;00mfunc_attr({\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mglobal_symbol\u001b[39m\u001b[38;5;124m\"\u001b[39m: \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mmain\u001b[39m\u001b[38;5;124m\"\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mtir.noalias\u001b[39m\u001b[38;5;124m\"\u001b[39m: \u001b[38;5;28;01mTrue\u001b[39;00m})\n",
+            "        \u001b[38;5;30;03m# body\u001b[39;00m\n",
+            "        \u001b[38;5;30;03m# with T.block(\"root\")\u001b[39;00m\n",
+            "        \u001b[38;5;28;01mfor\u001b[39;00m i_0, i_1, i_2 \u001b[38;5;28;01min\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mgrid(\u001b[38;5;28m2\u001b[39m, \u001b[38;5;28m2\u001b[39m, \u001b[38;5;28m2\u001b[39m):\n",
+            "            \u001b[38;5;28;01mwith\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mblock(\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mB\u001b[39m\u001b[38;5;124m\"\u001b[39m):\n",
+            "                vi \u001b[38;5;129;01m=\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00maxis\u001b[38;5;129;01m.\u001b[39;00mspatial(\u001b[38;5;28m8\u001b[39m, i_0 \u001b[38;5;129;01m*\u001b[39;00m \u001b[38;5;28m4\u001b[39m \u001b[38;5;129;01m+\u001b[39;00m i_1 \u001b[38;5;129;01m*\u001b[39;00m \u001b[38;5;28m2\u001b[39m \u001b[38;5;129;01m+\u001b[39;00m i_2)\n",
+            "                T\u001b[38;5;129;01m.\u001b[39;00mreads(A[vi])\n",
+            "                T\u001b[38;5;129;01m.\u001b[39;00mwrites(B[vi])\n",
+            "                B[vi] \u001b[38;5;129;01m=\u001b[39;00m A[vi] \u001b[38;5;129;01m+\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mfloat32(\u001b[38;5;28m1\u001b[39m)\n",
             "    \n",
             "\n"
           ]
@@ -299,8 +292,8 @@
         "# 获取 block 周围的 loops\n",
         "(i,) = sch.get_loops(block_b)\n",
         "# 平铺（tile）循环嵌套。\n",
-        "i_0, i_1, i_2 = sch.split(i, factors=[2, 2, 2])\n",
-        "print(sch.mod.script())"
+        "i_0, i_1, i_2 = sch.split(i, factors=[None, 2, 2])\n",
+        "sch.mod.show()"
       ]
     },
     {
@@ -321,21 +314,20 @@
           "name": "stdout",
           "output_type": "stream",
           "text": [
-            "# from tvm.script import tir as T\n",
-            "@tvm.script.ir_module\n",
-            "class Module:\n",
-            "    @T.prim_func\n",
-            "    def main(A: T.Buffer[8, \"float32\"], B: T.Buffer[8, \"float32\"]) -> None:\n",
-            "        # function attr dict\n",
-            "        T.func_attr({\"global_symbol\": \"main\", \"tir.noalias\": True})\n",
-            "        # body\n",
-            "        # with T.block(\"root\")\n",
-            "        for i_0, i_2, i_1 in T.grid(2, 2, 2):\n",
-            "            with T.block(\"B\"):\n",
-            "                vi = T.axis.spatial(8, i_0 * 4 + i_1 * 2 + i_2)\n",
-            "                T.reads(A[vi])\n",
-            "                T.writes(B[vi])\n",
-            "                B[vi] = A[vi] + T.float32(1)\n",
+            "\u001b[38;5;129m@tvm\u001b[39m\u001b[38;5;129;01m.\u001b[39;00mscript\u001b[38;5;129;01m.\u001b[39;00mir_module\n",
+            "\u001b[38;5;28;01mclass\u001b[39;00m \u001b[38;5;21;01mModule\u001b[39;00m:\n",
+            "    \u001b[38;5;129m@T\u001b[39m\u001b[38;5;129;01m.\u001b[39;00mprim_func\n",
+            "    \u001b[38;5;28;01mdef\u001b[39;00m \u001b[38;5;21mmain\u001b[39m(A: T\u001b[38;5;129;01m.\u001b[39;00mBuffer[\u001b[38;5;28m8\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m], B: T\u001b[38;5;129;01m.\u001b[39;00mBuffer[\u001b[38;5;28m8\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m]) \u001b[38;5;129;01m-\u001b[39;00m\u001b[38;5;129;01m>\u001b[39;00m \u001b[38;5;28;01mNone\u001b[39;00m:\n",
+            "        \u001b[38;5;30;03m# function attr dict\u001b[39;00m\n",
+            "        T\u001b[38;5;129;01m.\u001b[39;00mfunc_attr({\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mglobal_symbol\u001b[39m\u001b[38;5;124m\"\u001b[39m: \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mmain\u001b[39m\u001b[38;5;124m\"\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mtir.noalias\u001b[39m\u001b[38;5;124m\"\u001b[39m: \u001b[38;5;28;01mTrue\u001b[39;00m})\n",
+            "        \u001b[38;5;30;03m# body\u001b[39;00m\n",
+            "        \u001b[38;5;30;03m# with T.block(\"root\")\u001b[39;00m\n",
+            "        \u001b[38;5;28;01mfor\u001b[39;00m i_0, i_2, i_1 \u001b[38;5;28;01min\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mgrid(\u001b[38;5;28m2\u001b[39m, \u001b[38;5;28m2\u001b[39m, \u001b[38;5;28m2\u001b[39m):\n",
+            "            \u001b[38;5;28;01mwith\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mblock(\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mB\u001b[39m\u001b[38;5;124m\"\u001b[39m):\n",
+            "                vi \u001b[38;5;129;01m=\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00maxis\u001b[38;5;129;01m.\u001b[39;00mspatial(\u001b[38;5;28m8\u001b[39m, i_0 \u001b[38;5;129;01m*\u001b[39;00m \u001b[38;5;28m4\u001b[39m \u001b[38;5;129;01m+\u001b[39;00m i_1 \u001b[38;5;129;01m*\u001b[39;00m \u001b[38;5;28m2\u001b[39m \u001b[38;5;129;01m+\u001b[39;00m i_2)\n",
+            "                T\u001b[38;5;129;01m.\u001b[39;00mreads(A[vi])\n",
+            "                T\u001b[38;5;129;01m.\u001b[39;00mwrites(B[vi])\n",
+            "                B[vi] \u001b[38;5;129;01m=\u001b[39;00m A[vi] \u001b[38;5;129;01m+\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mfloat32(\u001b[38;5;28m1\u001b[39m)\n",
             "    \n",
             "\n"
           ]
@@ -343,7 +335,7 @@
       ],
       "source": [
         "sch.reorder(i_0, i_2, i_1)\n",
-        "print(sch.mod.script())"
+        "sch.mod.show()"
       ]
     },
     {
@@ -366,23 +358,22 @@
           "name": "stdout",
           "output_type": "stream",
           "text": [
-            "# from tvm.script import tir as T\n",
-            "@tvm.script.ir_module\n",
-            "class Module:\n",
-            "    @T.prim_func\n",
-            "    def main(A: T.Buffer[8, \"float32\"], B: T.Buffer[8, \"float32\"]) -> None:\n",
-            "        # function attr dict\n",
-            "        T.func_attr({\"global_symbol\": \"main\", \"tir.noalias\": True})\n",
-            "        # body\n",
-            "        # with T.block(\"root\")\n",
-            "        for i_0 in T.thread_binding(2, thread=\"blockIdx.x\"):\n",
-            "            for i_2 in T.thread_binding(2, thread=\"threadIdx.x\"):\n",
-            "                for i_1 in T.serial(2):\n",
-            "                    with T.block(\"B\"):\n",
-            "                        vi = T.axis.spatial(8, i_0 * 4 + i_1 * 2 + i_2)\n",
-            "                        T.reads(A[vi])\n",
-            "                        T.writes(B[vi])\n",
-            "                        B[vi] = A[vi] + T.float32(1)\n",
+            "\u001b[38;5;129m@tvm\u001b[39m\u001b[38;5;129;01m.\u001b[39;00mscript\u001b[38;5;129;01m.\u001b[39;00mir_module\n",
+            "\u001b[38;5;28;01mclass\u001b[39;00m \u001b[38;5;21;01mModule\u001b[39;00m:\n",
+            "    \u001b[38;5;129m@T\u001b[39m\u001b[38;5;129;01m.\u001b[39;00mprim_func\n",
+            "    \u001b[38;5;28;01mdef\u001b[39;00m \u001b[38;5;21mmain\u001b[39m(A: T\u001b[38;5;129;01m.\u001b[39;00mBuffer[\u001b[38;5;28m8\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m], B: T\u001b[38;5;129;01m.\u001b[39;00mBuffer[\u001b[38;5;28m8\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m]) \u001b[38;5;129;01m-\u001b[39;00m\u001b[38;5;129;01m>\u001b[39;00m \u001b[38;5;28;01mNone\u001b[39;00m:\n",
+            "        \u001b[38;5;30;03m# function attr dict\u001b[39;00m\n",
+            "        T\u001b[38;5;129;01m.\u001b[39;00mfunc_attr({\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mglobal_symbol\u001b[39m\u001b[38;5;124m\"\u001b[39m: \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mmain\u001b[39m\u001b[38;5;124m\"\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mtir.noalias\u001b[39m\u001b[38;5;124m\"\u001b[39m: \u001b[38;5;28;01mTrue\u001b[39;00m})\n",
+            "        \u001b[38;5;30;03m# body\u001b[39;00m\n",
+            "        \u001b[38;5;30;03m# with T.block(\"root\")\u001b[39;00m\n",
+            "        \u001b[38;5;28;01mfor\u001b[39;00m i_0 \u001b[38;5;28;01min\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mthread_binding(\u001b[38;5;28m2\u001b[39m, thread\u001b[38;5;129;01m=\u001b[39;00m\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mblockIdx.x\u001b[39m\u001b[38;5;124m\"\u001b[39m):\n",
+            "            \u001b[38;5;28;01mfor\u001b[39;00m i_2 \u001b[38;5;28;01min\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mthread_binding(\u001b[38;5;28m2\u001b[39m, thread\u001b[38;5;129;01m=\u001b[39;00m\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mthreadIdx.x\u001b[39m\u001b[38;5;124m\"\u001b[39m):\n",
+            "                \u001b[38;5;28;01mfor\u001b[39;00m i_1 \u001b[38;5;28;01min\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mserial(\u001b[38;5;28m2\u001b[39m):\n",
+            "                    \u001b[38;5;28;01mwith\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mblock(\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mB\u001b[39m\u001b[38;5;124m\"\u001b[39m):\n",
+            "                        vi \u001b[38;5;129;01m=\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00maxis\u001b[38;5;129;01m.\u001b[39;00mspatial(\u001b[38;5;28m8\u001b[39m, i_0 \u001b[38;5;129;01m*\u001b[39;00m \u001b[38;5;28m4\u001b[39m \u001b[38;5;129;01m+\u001b[39;00m i_1 \u001b[38;5;129;01m*\u001b[39;00m \u001b[38;5;28m2\u001b[39m \u001b[38;5;129;01m+\u001b[39;00m i_2)\n",
+            "                        T\u001b[38;5;129;01m.\u001b[39;00mreads(A[vi])\n",
+            "                        T\u001b[38;5;129;01m.\u001b[39;00mwrites(B[vi])\n",
+            "                        B[vi] \u001b[38;5;129;01m=\u001b[39;00m A[vi] \u001b[38;5;129;01m+\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mfloat32(\u001b[38;5;28m1\u001b[39m)\n",
             "    \n",
             "\n"
           ]
@@ -391,7 +382,7 @@
       "source": [
         "sch.bind(i_0, \"blockIdx.x\")\n",
         "sch.bind(i_2, \"threadIdx.x\")\n",
-        "print(sch.mod.script())"
+        "sch.mod.show()"
       ]
     },
     {
@@ -426,11 +417,18 @@
         "print(cuda_a)\n",
         "print(cuda_b)"
       ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {},
+      "outputs": [],
+      "source": []
     }
   ],
   "metadata": {
     "kernelspec": {
-      "display_name": "Python 3.10.4 ('mxnetx')",
+      "display_name": "Python 3.8.13 ('py38': conda)",
       "language": "python",
       "name": "python3"
     },
@@ -444,11 +442,11 @@
       "name": "python",
       "nbconvert_exporter": "python",
       "pygments_lexer": "ipython3",
-      "version": "3.10.4"
+      "version": "3.8.13"
     },
     "vscode": {
       "interpreter": {
-        "hash": "aa67ff675248b5ab29dcd2f00c1422844307085c8ca7c8ce7eddecd21b9c2975"
+        "hash": "28558e8daad512806f5c536a1a04c119185f99f65b79002708a12162d02a79c7"
       }
     }
   },

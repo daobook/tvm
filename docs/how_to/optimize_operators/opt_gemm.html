@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>How to optimize GEMM on CPU &#8212; TVM  文档</title>
+    <title>如何在 CPU 上优化 GEMM &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -49,7 +49,7 @@
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
     <link rel="next" title="How to optimize convolution on GPU" href="opt_conv_cuda.html" />
-    <link rel="prev" title="Optimize Tensor Operators" href="index.html" />
+    <link rel="prev" title="优化张量算子" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -317,6 +317,11 @@
        TOPI 简介
       </a>
      </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/uma.html">
+       通过 UMA 使您的硬件加速器 TVM-ready
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toctree-l2 current active has-children">
@@ -580,7 +585,7 @@
      </li>
      <li class="toctree-l3 current active has-children">
       <a class="reference internal" href="index.html">
-       Optimize Tensor Operators
+       优化张量算子
       </a>
       <input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
       <label for="toctree-checkbox-14">
@@ -590,7 +595,7 @@
       <ul class="current">
        <li class="toctree-l4 current active">
         <a class="current reference internal" href="#">
-         How to optimize GEMM on CPU
+         如何在 CPU 上优化 GEMM
         </a>
        </li>
        <li class="toctree-l4">
@@ -1387,7 +1392,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/docs/how_to/optimize_operators/opt_gemm.rst.txt"
+        <a href="../../../_sources/docs/how_to/optimize_operators/opt_gemm.ipynb.txt"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -1398,7 +1403,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.rst</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -1495,7 +1500,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>How to optimize GEMM on CPU</h1>
+                <h1>如何在 CPU 上优化 GEMM</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1555,33 +1560,19 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="sphx-glr-download-link-note admonition note">
-<p class="admonition-title">备注</p>
-<p>Click <a class="reference external" href="https://tvm.apache.org/docs/how_to/optimize_operators/opt_gemm.html#sphx-glr-download-how-to-optimize-operators-opt-gemm-py" title="(在 tvm v0.10.dev0)"><span class="xref std std-ref">here</span></a>
-to download the full example code</p>
-</div>
-<section class="sphx-glr-example-title" id="how-to-optimize-gemm-on-cpu">
-<span id="opt-gemm"></span><span id="sphx-glr-how-to-optimize-operators-opt-gemm-py"></span><h1>How to optimize GEMM on CPU<a class="headerlink" href="#how-to-optimize-gemm-on-cpu" title="永久链接至标题">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="cpu-gemm">
+<h1>如何在 CPU 上优化 GEMM<a class="headerlink" href="#cpu-gemm" title="永久链接至标题">#</a></h1>
 <p><strong>Author</strong>: <a class="reference external" href="https://github.com/were">Jian Weng</a>,             <a class="reference external" href="https://github.com/yuruofeifei">Ruofei Yu</a></p>
-<p>(TL;DR) TVM provides abstract interfaces which allows users to depict an algorithm and the
-algorithm’s implementing organization (the so-called schedule) separately. Typically, writing
-algorithm in high-performance schedule breaks the algorithm’s readability and modularity. Also,
-trying various seemingly promising schedules is time-consuming. With the help of TVM, we can
-try these schedules efficiently to enhance the performance.</p>
-<p>In this tutorial, we will demonstrate how to use TVM to optimize square matrix multiplication
-and achieve 200 times faster than baseline by simply adding 18 extra lines of code.</p>
-<dl class="simple">
-<dt>There are two important optimizations on intense computation applications executed on CPU:</dt><dd><ol class="arabic simple">
-<li><p>Increase the cache hit rate of memory access. Both complex numerical computation and hot-spot
+<p>TVM 提供了抽象的接口，允许用户分别描述算法和算法的实现组织（所谓的调度）。通常，在高性能调度中编写算法会破坏算法的可读性和模块化。此外，尝试各种看起来很棒的调度是很耗时的。在 TVM 的帮助下，可以有效地尝试这些调度，以提高性能。</p>
+<p>在本教程中，将演示如何使用 TVM 优化方阵乘法，并通过添加额外的 18 行代码来实现比基线快 200 倍的速度。</p>
+<p>There are two important optimizations on intense computation applications executed on CPU:
+1. Increase the cache hit rate of memory access. Both complex numerical computation and hot-spot
 memory access can be accelerated from high cache hit rate. This requires us to transform the
-origin memory access pattern to the pattern fits the cache policy.</p></li>
-<li><p>SIMD (Single instruction multi-data), or we call it vector processing unit. Every time, a
+origin memory access pattern to the pattern fits the cache policy.
+2. SIMD (Single instruction multi-data), or we call it vector processing unit. Every time, a
 small batch of data, rather than a single grid, will be processed. This requires us to
 transform the data access pattern in the loop body in uniform pattern so that the LLVM
-backend can lower it to SIMD.</p></li>
-</ol>
-</dd>
-</dl>
+backend can lower it to SIMD.</p>
 <p>Actually, all the methodologies used in this tutorial is a subset of tricks mentioned in this
 <a class="reference external" href="https://github.com/flame/how-to-optimize-gemm">repo</a>. Some of them have been applied by TVM
 abstraction automatically, but some of them cannot be simply applied due to TVM constraints.</p>
@@ -1592,7 +1583,9 @@ Intel i7-4770HQ CPU. The cache line size should be 64 bytes for all the x86 CPUs
 <p>In this tutorial, we will demo how to use TVM to optimize matrix multiplication.
 Before actually demonstrating, we first define these variables.
 Then we write a baseline implementation, the simplest way to write a matrix multiplication in TVM.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tvm</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tvm</span>
 <span class="kn">import</span> <span class="nn">tvm.testing</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">te</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
@@ -1653,10 +1646,16 @@ Then we write a baseline implementation, the simplest way to write a matrix mult
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Baseline: </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">evaluator</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>In TVM, we can always inspect lower level IR to debug or optimize our schedule.
 Here is the generated IR using our baseline schedule.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="blocking">
@@ -1665,7 +1664,9 @@ Here is the generated IR using our baseline schedule.</p>
 block by block. The memory access inside the block is a small neighbourhood which is with high
 memory locality. In this tutorial, I picked up 32 as the blocking factor. So the block will
 fill 32 * 32 * sizeof(float) which is 4KB in the cache whose total size is 32KB (L1 data cache)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bn</span> <span class="o">=</span> <span class="mi">32</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bn</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="n">kfactor</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">create_schedule</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
 
@@ -1690,19 +1691,27 @@ fill 32 * 32 * sizeof(float) which is 4KB in the cache whose total size is 32KB 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opt1: </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">evaluator</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Here is the generated IR after blocking.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="vectorization">
 <h2>Vectorization<a class="headerlink" href="#vectorization" title="永久链接至标题">#</a></h2>
 <p>Another important trick is vectorization. When the memory access pattern is uniform,
 the compiler can detect this pattern and pass the continuous memory to vector processor. In TVM,
-we can use <cite>vectorize</cite> interface to hint the compiler this pattern, so that we can accelerate it
+we can use <code class="docutils literal notranslate"><span class="pre">vectorize</span></code> interface to hint the compiler this pattern, so that we can accelerate it
 vastly.</p>
 <p>In this tutorial, we chose to vectorize the inner loop row data since it is cache friendly.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">create_schedule</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">create_schedule</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
 <span class="n">mo</span><span class="p">,</span> <span class="n">no</span><span class="p">,</span> <span class="n">mi</span><span class="p">,</span> <span class="n">ni</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">C</span><span class="p">]</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">axis</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">C</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">axis</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bn</span><span class="p">,</span> <span class="n">bn</span><span class="p">)</span>
 <span class="p">(</span><span class="n">kaxis</span><span class="p">,)</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">C</span><span class="p">]</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">reduce_axis</span>
 <span class="n">ko</span><span class="p">,</span> <span class="n">ki</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">C</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">kaxis</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="n">kfactor</span><span class="p">)</span>
@@ -1723,9 +1732,15 @@ vastly.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opt2: </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">evaluator</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Here is the generated IR after vectorization.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="loop-permutation">
@@ -1734,7 +1749,9 @@ vastly.</p>
 Next we will look at the access pattern of A. In current schedule, A is accessed column by column
 which is not cache friendly. If we change the nested loop order of ki and inner axes mi,
 the access pattern for A matrix is more cache friendly.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">create_schedule</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">create_schedule</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
 <span class="n">mo</span><span class="p">,</span> <span class="n">no</span><span class="p">,</span> <span class="n">mi</span><span class="p">,</span> <span class="n">ni</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">C</span><span class="p">]</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">axis</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">C</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">axis</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bn</span><span class="p">,</span> <span class="n">bn</span><span class="p">)</span>
 <span class="p">(</span><span class="n">kaxis</span><span class="p">,)</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">C</span><span class="p">]</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">reduce_axis</span>
 <span class="n">ko</span><span class="p">,</span> <span class="n">ki</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">C</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">kaxis</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="n">kfactor</span><span class="p">)</span>
@@ -1754,9 +1771,15 @@ the access pattern for A matrix is more cache friendly.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opt3: </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">evaluator</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Here is the generated IR after loop permutation.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="array-packing">
@@ -1773,7 +1796,9 @@ also the vector size for B in the inner loop.  This reorder splits N into two di
 bigN (N/bn) and littleN (bn) — and the new dimensions [N/bn][K][bn] match the indexing of B
 from outer to inner loops (no, ko, ki, ni) resulting in a sequential access pattern for B after
 flattening.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># We have to re-write the algorithm slightly.</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We have to re-write the algorithm slightly.</span>
 <span class="n">packedB</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span>
     <span class="p">(</span><span class="n">N</span> <span class="o">/</span> <span class="n">bn</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">bn</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">bigN</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">littleN</span><span class="p">:</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">bigN</span> <span class="o">*</span> <span class="n">bn</span> <span class="o">+</span> <span class="n">littleN</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;packedB&quot;</span>
 <span class="p">)</span>
@@ -1807,9 +1832,15 @@ flattening.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opt4: </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">evaluator</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Here is the generated IR after array packing.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="write-cache-for-blocks">
@@ -1817,7 +1848,9 @@ flattening.</p>
 <p>After blocking, the program will write result to C block by block, the access pattern
 is not sequential. So we can use a sequential cache array to hold the block results and
 write to C when all the block results are ready.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">create_schedule</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">create_schedule</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
 
 <span class="c1"># Allocate write cache</span>
 <span class="n">CC</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">cache_write</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="s2">&quot;global&quot;</span><span class="p">)</span>
@@ -1835,7 +1868,7 @@ write to C when all the block results are ready.</p>
 <span class="n">s</span><span class="p">[</span><span class="n">CC</span><span class="p">]</span><span class="o">.</span><span class="n">reorder</span><span class="p">(</span><span class="n">ko</span><span class="p">,</span> <span class="n">mc</span><span class="p">,</span> <span class="n">ki</span><span class="p">,</span> <span class="n">nc</span><span class="p">)</span>
 <span class="n">s</span><span class="p">[</span><span class="n">CC</span><span class="p">]</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">nc</span><span class="p">)</span>
 
-<span class="c1"># TODO: Add separate optimization step to discuss loop unrolloing</span>
+<span class="c1"># TODO: Add separate optimization step to discuss loop unrolling</span>
 <span class="c1"># unrolling is a loop optimization strategy which can reduce branch</span>
 <span class="c1"># prediction failures and increases the chance of concurrent execution</span>
 <span class="c1"># unroll kfactor loops</span>
@@ -1856,15 +1889,23 @@ write to C when all the block results are ready.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opt5: </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">evaluator</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Here is the generated IR after blocking.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="parallel">
 <h2>Parallel<a class="headerlink" href="#parallel" title="永久链接至标题">#</a></h2>
-<p>Futhermore, we can also utilize multi-core processors to do the thread-level parallelization.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">create_schedule</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
+<p>Furthermore, we can also utilize multi-core processors to do the thread-level parallelization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">create_schedule</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
 
 <span class="n">CC</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">cache_write</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="s2">&quot;global&quot;</span><span class="p">)</span>
 
@@ -1899,18 +1940,24 @@ write to C when all the block results are ready.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opt6: </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">opt6_time</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Here is the generated IR after parallelization.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="永久链接至标题">#</a></h2>
 <p>After applying the above simple optimizations with only 18 lines of code,
-our generated code can achieve 60% of the <cite>numpy</cite> performance with MKL.
+our generated code can achieve 60% of the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> performance with MKL.
 Note that the outputs on the web page reflect the running times on a non-exclusive
 Docker container, thereby they are <em>unreliable</em>. It is highly encouraged to run the
-tutorial by yourself to observe the performance gain acheived by TVM.</p>
+tutorial by yourself to observe the performance gain achieved by TVM.</p>
 </section>
 </section>
 
@@ -1926,7 +1973,7 @@ tutorial by yourself to observe the performance gain acheived by TVM.</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">上一页</p>
-            <p class="prev-next-title">Optimize Tensor Operators</p>
+            <p class="prev-next-title">优化张量算子</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="opt_conv_cuda.html" title="下一页 页">
@@ -1946,7 +1993,7 @@ tutorial by yourself to observe the performance gain acheived by TVM.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-08-17, 11:18:35.<br/>
+    Last updated on 2022-08-24, 08:57:06.<br/>
 </p>
         </footer>
     </div>

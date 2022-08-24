@@ -317,6 +317,11 @@
        TOPI 简介
       </a>
      </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="uma.html">
+       通过 UMA 使您的硬件加速器 TVM-ready
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toctree-l2 has-children">
@@ -580,7 +585,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../how_to/optimize_operators/index.html">
-       Optimize Tensor Operators
+       优化张量算子
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
       <label for="toctree-checkbox-14">
@@ -590,7 +595,7 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/optimize_operators/opt_gemm.html">
-         How to optimize GEMM on CPU
+         如何在 CPU 上优化 GEMM
         </a>
        </li>
        <li class="toctree-l4">
@@ -1569,12 +1574,8 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@ir_module</span>
 <span class="k">class</span> <span class="nc">MyModule</span><span class="p">:</span>
     <span class="nd">@T</span><span class="o">.</span><span class="n">prim_func</span>
-    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">T</span><span class="o">.</span><span class="n">handle</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">T</span><span class="o">.</span><span class="n">handle</span><span class="p">):</span>
-        <span class="c1"># 通过句柄（handle）在函数之间交换数据，此操作类似于指针（pointer）。</span>
+    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">T</span><span class="o">.</span><span class="n">Buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;float32&quot;</span><span class="p">],</span> <span class="n">B</span><span class="p">:</span> <span class="n">T</span><span class="o">.</span><span class="n">Buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;float32&quot;</span><span class="p">]):</span>
         <span class="n">T</span><span class="o">.</span><span class="n">func_attr</span><span class="p">({</span><span class="s2">&quot;global_symbol&quot;</span><span class="p">:</span> <span class="s2">&quot;main&quot;</span><span class="p">,</span> <span class="s2">&quot;tir.noalias&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
-        <span class="c1"># 从句柄创建 buffer。</span>
-        <span class="n">A</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">match_buffer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
-        <span class="n">B</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">match_buffer</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
             <span class="c1"># block 是计算的抽象。</span>
             <span class="k">with</span> <span class="n">T</span><span class="o">.</span><span class="n">block</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">):</span>
@@ -1585,27 +1586,26 @@ title="Print to PDF"
 
 <span class="n">ir_module</span> <span class="o">=</span> <span class="n">MyModule</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">ir_module</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ir_module</span><span class="o">.</span><span class="n">script</span><span class="p">())</span>
+<span class="n">ir_module</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;tvm.ir.module.IRModule&#39;&gt;
-# from tvm.script import tir as T
-@tvm.script.ir_module
-class Module:
-    @T.prim_func
-    def main(A: T.Buffer[8, &quot;float32&quot;], B: T.Buffer[8, &quot;float32&quot;]) -&gt; None:
-        # function attr dict
-        T.func_attr({&quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True})
-        # body
-        # with T.block(&quot;root&quot;)
-        for i in T.serial(8):
-            with T.block(&quot;B&quot;):
-                vi = T.axis.spatial(8, i)
-                T.reads(A[vi])
-                T.writes(B[vi])
-                B[vi] = A[vi] + T.float32(1)
+<span class=" -Color -Color-C129">@tvm</span><span class=" -Color -Color-Bold -Color-Bold-C129">.</span>script<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>ir_module
+<span class=" -Color -Color-Bold -Color-Bold-C28">class</span> <span class=" -Color -Color-Bold -Color-Bold-C21">Module</span>:
+    <span class=" -Color -Color-C129">@T</span><span class=" -Color -Color-Bold -Color-Bold-C129">.</span>prim_func
+    <span class=" -Color -Color-Bold -Color-Bold-C28">def</span> <span class=" -Color -Color-C21">main</span>(A: T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>Buffer[<span class=" -Color -Color-C28">8</span>, <span class=" -Color -Color-C124">&quot;float32&quot;</span>], B: T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>Buffer[<span class=" -Color -Color-C28">8</span>, <span class=" -Color -Color-C124">&quot;float32&quot;</span>]) <span class=" -Color -Color-Bold -Color-Bold-C129">-&gt;</span> <span class=" -Color -Color-Bold -Color-Bold-C28">None</span>:
+        <span class=" -Color -Color-C30"># function attr dict</span>
+        T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>func_attr({<span class=" -Color -Color-C124">&quot;global_symbol&quot;</span>: <span class=" -Color -Color-C124">&quot;main&quot;</span>, <span class=" -Color -Color-C124">&quot;tir.noalias&quot;</span>: <span class=" -Color -Color-Bold -Color-Bold-C28">True</span>})
+        <span class=" -Color -Color-C30"># body</span>
+        <span class=" -Color -Color-C30"># with T.block(&quot;root&quot;)</span>
+        <span class=" -Color -Color-Bold -Color-Bold-C28">for</span> i <span class=" -Color -Color-Bold -Color-Bold-C28">in</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>serial(<span class=" -Color -Color-C28">8</span>):
+            <span class=" -Color -Color-Bold -Color-Bold-C28">with</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>block(<span class=" -Color -Color-C124">&quot;B&quot;</span>):
+                vi <span class=" -Color -Color-Bold -Color-Bold-C129">=</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>axis<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>spatial(<span class=" -Color -Color-C28">8</span>, i)
+                T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>reads(A[vi])
+                T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>writes(B[vi])
+                B[vi] <span class=" -Color -Color-Bold -Color-Bold-C129">=</span> A[vi] <span class=" -Color -Color-Bold -Color-Bold-C129">+</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>float32(<span class=" -Color -Color-C28">1</span>)
     
 </pre></div>
 </div>
@@ -1620,26 +1620,25 @@ class Module:
 <span class="n">B</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">compute</span><span class="p">((</span><span class="mi">8</span><span class="p">,),</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">i</span><span class="p">:</span> <span class="n">A</span><span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
 <span class="n">func</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">create_prim_func</span><span class="p">([</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">])</span>
 <span class="n">ir_module_from_te</span> <span class="o">=</span> <span class="n">IRModule</span><span class="p">({</span><span class="s2">&quot;main&quot;</span><span class="p">:</span> <span class="n">func</span><span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ir_module_from_te</span><span class="o">.</span><span class="n">script</span><span class="p">())</span>
+<span class="n">ir_module_from_te</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># from tvm.script import tir as T
-@tvm.script.ir_module
-class Module:
-    @T.prim_func
-    def main(A: T.Buffer[8, &quot;float32&quot;], B: T.Buffer[8, &quot;float32&quot;]) -&gt; None:
-        # function attr dict
-        T.func_attr({&quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True})
-        # body
-        # with T.block(&quot;root&quot;)
-        for i0 in T.serial(8):
-            with T.block(&quot;B&quot;):
-                i0_1 = T.axis.spatial(8, i0)
-                T.reads(A[i0_1])
-                T.writes(B[i0_1])
-                B[i0_1] = A[i0_1] + T.float32(1)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C129">@tvm</span><span class=" -Color -Color-Bold -Color-Bold-C129">.</span>script<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>ir_module
+<span class=" -Color -Color-Bold -Color-Bold-C28">class</span> <span class=" -Color -Color-Bold -Color-Bold-C21">Module</span>:
+    <span class=" -Color -Color-C129">@T</span><span class=" -Color -Color-Bold -Color-Bold-C129">.</span>prim_func
+    <span class=" -Color -Color-Bold -Color-Bold-C28">def</span> <span class=" -Color -Color-C21">main</span>(A: T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>Buffer[<span class=" -Color -Color-C28">8</span>, <span class=" -Color -Color-C124">&quot;float32&quot;</span>], B: T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>Buffer[<span class=" -Color -Color-C28">8</span>, <span class=" -Color -Color-C124">&quot;float32&quot;</span>]) <span class=" -Color -Color-Bold -Color-Bold-C129">-&gt;</span> <span class=" -Color -Color-Bold -Color-Bold-C28">None</span>:
+        <span class=" -Color -Color-C30"># function attr dict</span>
+        T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>func_attr({<span class=" -Color -Color-C124">&quot;global_symbol&quot;</span>: <span class=" -Color -Color-C124">&quot;main&quot;</span>, <span class=" -Color -Color-C124">&quot;tir.noalias&quot;</span>: <span class=" -Color -Color-Bold -Color-Bold-C28">True</span>})
+        <span class=" -Color -Color-C30"># body</span>
+        <span class=" -Color -Color-C30"># with T.block(&quot;root&quot;)</span>
+        <span class=" -Color -Color-Bold -Color-Bold-C28">for</span> i0 <span class=" -Color -Color-Bold -Color-Bold-C28">in</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>serial(<span class=" -Color -Color-C28">8</span>):
+            <span class=" -Color -Color-Bold -Color-Bold-C28">with</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>block(<span class=" -Color -Color-C124">&quot;B&quot;</span>):
+                i0_1 <span class=" -Color -Color-Bold -Color-Bold-C129">=</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>axis<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>spatial(<span class=" -Color -Color-C28">8</span>, i0)
+                T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>reads(A[i0_1])
+                T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>writes(B[i0_1])
+                B[i0_1] <span class=" -Color -Color-Bold -Color-Bold-C129">=</span> A[i0_1] <span class=" -Color -Color-Bold -Color-Bold-C129">+</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>float32(<span class=" -Color -Color-C28">1</span>)
     
 </pre></div>
 </div>
@@ -1708,27 +1707,26 @@ class Module:
 <span class="c1"># 获取 block 周围的 loops</span>
 <span class="p">(</span><span class="n">i</span><span class="p">,)</span> <span class="o">=</span> <span class="n">sch</span><span class="o">.</span><span class="n">get_loops</span><span class="p">(</span><span class="n">block_b</span><span class="p">)</span>
 <span class="c1"># 平铺（tile）循环嵌套。</span>
-<span class="n">i_0</span><span class="p">,</span> <span class="n">i_1</span><span class="p">,</span> <span class="n">i_2</span> <span class="o">=</span> <span class="n">sch</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">factors</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sch</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">script</span><span class="p">())</span>
+<span class="n">i_0</span><span class="p">,</span> <span class="n">i_1</span><span class="p">,</span> <span class="n">i_2</span> <span class="o">=</span> <span class="n">sch</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">factors</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">sch</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># from tvm.script import tir as T
-@tvm.script.ir_module
-class Module:
-    @T.prim_func
-    def main(A: T.Buffer[8, &quot;float32&quot;], B: T.Buffer[8, &quot;float32&quot;]) -&gt; None:
-        # function attr dict
-        T.func_attr({&quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True})
-        # body
-        # with T.block(&quot;root&quot;)
-        for i_0, i_1, i_2 in T.grid(2, 2, 2):
-            with T.block(&quot;B&quot;):
-                vi = T.axis.spatial(8, i_0 * 4 + i_1 * 2 + i_2)
-                T.reads(A[vi])
-                T.writes(B[vi])
-                B[vi] = A[vi] + T.float32(1)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C129">@tvm</span><span class=" -Color -Color-Bold -Color-Bold-C129">.</span>script<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>ir_module
+<span class=" -Color -Color-Bold -Color-Bold-C28">class</span> <span class=" -Color -Color-Bold -Color-Bold-C21">Module</span>:
+    <span class=" -Color -Color-C129">@T</span><span class=" -Color -Color-Bold -Color-Bold-C129">.</span>prim_func
+    <span class=" -Color -Color-Bold -Color-Bold-C28">def</span> <span class=" -Color -Color-C21">main</span>(A: T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>Buffer[<span class=" -Color -Color-C28">8</span>, <span class=" -Color -Color-C124">&quot;float32&quot;</span>], B: T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>Buffer[<span class=" -Color -Color-C28">8</span>, <span class=" -Color -Color-C124">&quot;float32&quot;</span>]) <span class=" -Color -Color-Bold -Color-Bold-C129">-&gt;</span> <span class=" -Color -Color-Bold -Color-Bold-C28">None</span>:
+        <span class=" -Color -Color-C30"># function attr dict</span>
+        T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>func_attr({<span class=" -Color -Color-C124">&quot;global_symbol&quot;</span>: <span class=" -Color -Color-C124">&quot;main&quot;</span>, <span class=" -Color -Color-C124">&quot;tir.noalias&quot;</span>: <span class=" -Color -Color-Bold -Color-Bold-C28">True</span>})
+        <span class=" -Color -Color-C30"># body</span>
+        <span class=" -Color -Color-C30"># with T.block(&quot;root&quot;)</span>
+        <span class=" -Color -Color-Bold -Color-Bold-C28">for</span> i_0, i_1, i_2 <span class=" -Color -Color-Bold -Color-Bold-C28">in</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>grid(<span class=" -Color -Color-C28">2</span>, <span class=" -Color -Color-C28">2</span>, <span class=" -Color -Color-C28">2</span>):
+            <span class=" -Color -Color-Bold -Color-Bold-C28">with</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>block(<span class=" -Color -Color-C124">&quot;B&quot;</span>):
+                vi <span class=" -Color -Color-Bold -Color-Bold-C129">=</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>axis<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>spatial(<span class=" -Color -Color-C28">8</span>, i_0 <span class=" -Color -Color-Bold -Color-Bold-C129">*</span> <span class=" -Color -Color-C28">4</span> <span class=" -Color -Color-Bold -Color-Bold-C129">+</span> i_1 <span class=" -Color -Color-Bold -Color-Bold-C129">*</span> <span class=" -Color -Color-C28">2</span> <span class=" -Color -Color-Bold -Color-Bold-C129">+</span> i_2)
+                T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>reads(A[vi])
+                T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>writes(B[vi])
+                B[vi] <span class=" -Color -Color-Bold -Color-Bold-C129">=</span> A[vi] <span class=" -Color -Color-Bold -Color-Bold-C129">+</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>float32(<span class=" -Color -Color-C28">1</span>)
     
 </pre></div>
 </div>
@@ -1738,26 +1736,25 @@ class Module:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sch</span><span class="o">.</span><span class="n">reorder</span><span class="p">(</span><span class="n">i_0</span><span class="p">,</span> <span class="n">i_2</span><span class="p">,</span> <span class="n">i_1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sch</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">script</span><span class="p">())</span>
+<span class="n">sch</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># from tvm.script import tir as T
-@tvm.script.ir_module
-class Module:
-    @T.prim_func
-    def main(A: T.Buffer[8, &quot;float32&quot;], B: T.Buffer[8, &quot;float32&quot;]) -&gt; None:
-        # function attr dict
-        T.func_attr({&quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True})
-        # body
-        # with T.block(&quot;root&quot;)
-        for i_0, i_2, i_1 in T.grid(2, 2, 2):
-            with T.block(&quot;B&quot;):
-                vi = T.axis.spatial(8, i_0 * 4 + i_1 * 2 + i_2)
-                T.reads(A[vi])
-                T.writes(B[vi])
-                B[vi] = A[vi] + T.float32(1)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C129">@tvm</span><span class=" -Color -Color-Bold -Color-Bold-C129">.</span>script<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>ir_module
+<span class=" -Color -Color-Bold -Color-Bold-C28">class</span> <span class=" -Color -Color-Bold -Color-Bold-C21">Module</span>:
+    <span class=" -Color -Color-C129">@T</span><span class=" -Color -Color-Bold -Color-Bold-C129">.</span>prim_func
+    <span class=" -Color -Color-Bold -Color-Bold-C28">def</span> <span class=" -Color -Color-C21">main</span>(A: T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>Buffer[<span class=" -Color -Color-C28">8</span>, <span class=" -Color -Color-C124">&quot;float32&quot;</span>], B: T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>Buffer[<span class=" -Color -Color-C28">8</span>, <span class=" -Color -Color-C124">&quot;float32&quot;</span>]) <span class=" -Color -Color-Bold -Color-Bold-C129">-&gt;</span> <span class=" -Color -Color-Bold -Color-Bold-C28">None</span>:
+        <span class=" -Color -Color-C30"># function attr dict</span>
+        T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>func_attr({<span class=" -Color -Color-C124">&quot;global_symbol&quot;</span>: <span class=" -Color -Color-C124">&quot;main&quot;</span>, <span class=" -Color -Color-C124">&quot;tir.noalias&quot;</span>: <span class=" -Color -Color-Bold -Color-Bold-C28">True</span>})
+        <span class=" -Color -Color-C30"># body</span>
+        <span class=" -Color -Color-C30"># with T.block(&quot;root&quot;)</span>
+        <span class=" -Color -Color-Bold -Color-Bold-C28">for</span> i_0, i_2, i_1 <span class=" -Color -Color-Bold -Color-Bold-C28">in</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>grid(<span class=" -Color -Color-C28">2</span>, <span class=" -Color -Color-C28">2</span>, <span class=" -Color -Color-C28">2</span>):
+            <span class=" -Color -Color-Bold -Color-Bold-C28">with</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>block(<span class=" -Color -Color-C124">&quot;B&quot;</span>):
+                vi <span class=" -Color -Color-Bold -Color-Bold-C129">=</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>axis<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>spatial(<span class=" -Color -Color-C28">8</span>, i_0 <span class=" -Color -Color-Bold -Color-Bold-C129">*</span> <span class=" -Color -Color-C28">4</span> <span class=" -Color -Color-Bold -Color-Bold-C129">+</span> i_1 <span class=" -Color -Color-Bold -Color-Bold-C129">*</span> <span class=" -Color -Color-C28">2</span> <span class=" -Color -Color-Bold -Color-Bold-C129">+</span> i_2)
+                T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>reads(A[vi])
+                T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>writes(B[vi])
+                B[vi] <span class=" -Color -Color-Bold -Color-Bold-C129">=</span> A[vi] <span class=" -Color -Color-Bold -Color-Bold-C129">+</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>float32(<span class=" -Color -Color-C28">1</span>)
     
 </pre></div>
 </div>
@@ -1770,28 +1767,27 @@ class Module:
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sch</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">i_0</span><span class="p">,</span> <span class="s2">&quot;blockIdx.x&quot;</span><span class="p">)</span>
 <span class="n">sch</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">i_2</span><span class="p">,</span> <span class="s2">&quot;threadIdx.x&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sch</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">script</span><span class="p">())</span>
+<span class="n">sch</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># from tvm.script import tir as T
-@tvm.script.ir_module
-class Module:
-    @T.prim_func
-    def main(A: T.Buffer[8, &quot;float32&quot;], B: T.Buffer[8, &quot;float32&quot;]) -&gt; None:
-        # function attr dict
-        T.func_attr({&quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True})
-        # body
-        # with T.block(&quot;root&quot;)
-        for i_0 in T.thread_binding(2, thread=&quot;blockIdx.x&quot;):
-            for i_2 in T.thread_binding(2, thread=&quot;threadIdx.x&quot;):
-                for i_1 in T.serial(2):
-                    with T.block(&quot;B&quot;):
-                        vi = T.axis.spatial(8, i_0 * 4 + i_1 * 2 + i_2)
-                        T.reads(A[vi])
-                        T.writes(B[vi])
-                        B[vi] = A[vi] + T.float32(1)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C129">@tvm</span><span class=" -Color -Color-Bold -Color-Bold-C129">.</span>script<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>ir_module
+<span class=" -Color -Color-Bold -Color-Bold-C28">class</span> <span class=" -Color -Color-Bold -Color-Bold-C21">Module</span>:
+    <span class=" -Color -Color-C129">@T</span><span class=" -Color -Color-Bold -Color-Bold-C129">.</span>prim_func
+    <span class=" -Color -Color-Bold -Color-Bold-C28">def</span> <span class=" -Color -Color-C21">main</span>(A: T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>Buffer[<span class=" -Color -Color-C28">8</span>, <span class=" -Color -Color-C124">&quot;float32&quot;</span>], B: T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>Buffer[<span class=" -Color -Color-C28">8</span>, <span class=" -Color -Color-C124">&quot;float32&quot;</span>]) <span class=" -Color -Color-Bold -Color-Bold-C129">-&gt;</span> <span class=" -Color -Color-Bold -Color-Bold-C28">None</span>:
+        <span class=" -Color -Color-C30"># function attr dict</span>
+        T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>func_attr({<span class=" -Color -Color-C124">&quot;global_symbol&quot;</span>: <span class=" -Color -Color-C124">&quot;main&quot;</span>, <span class=" -Color -Color-C124">&quot;tir.noalias&quot;</span>: <span class=" -Color -Color-Bold -Color-Bold-C28">True</span>})
+        <span class=" -Color -Color-C30"># body</span>
+        <span class=" -Color -Color-C30"># with T.block(&quot;root&quot;)</span>
+        <span class=" -Color -Color-Bold -Color-Bold-C28">for</span> i_0 <span class=" -Color -Color-Bold -Color-Bold-C28">in</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>thread_binding(<span class=" -Color -Color-C28">2</span>, thread<span class=" -Color -Color-Bold -Color-Bold-C129">=</span><span class=" -Color -Color-C124">&quot;blockIdx.x&quot;</span>):
+            <span class=" -Color -Color-Bold -Color-Bold-C28">for</span> i_2 <span class=" -Color -Color-Bold -Color-Bold-C28">in</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>thread_binding(<span class=" -Color -Color-C28">2</span>, thread<span class=" -Color -Color-Bold -Color-Bold-C129">=</span><span class=" -Color -Color-C124">&quot;threadIdx.x&quot;</span>):
+                <span class=" -Color -Color-Bold -Color-Bold-C28">for</span> i_1 <span class=" -Color -Color-Bold -Color-Bold-C28">in</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>serial(<span class=" -Color -Color-C28">2</span>):
+                    <span class=" -Color -Color-Bold -Color-Bold-C28">with</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>block(<span class=" -Color -Color-C124">&quot;B&quot;</span>):
+                        vi <span class=" -Color -Color-Bold -Color-Bold-C129">=</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>axis<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>spatial(<span class=" -Color -Color-C28">8</span>, i_0 <span class=" -Color -Color-Bold -Color-Bold-C129">*</span> <span class=" -Color -Color-C28">4</span> <span class=" -Color -Color-Bold -Color-Bold-C129">+</span> i_1 <span class=" -Color -Color-Bold -Color-Bold-C129">*</span> <span class=" -Color -Color-C28">2</span> <span class=" -Color -Color-Bold -Color-Bold-C129">+</span> i_2)
+                        T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>reads(A[vi])
+                        T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>writes(B[vi])
+                        B[vi] <span class=" -Color -Color-Bold -Color-Bold-C129">=</span> A[vi] <span class=" -Color -Color-Bold -Color-Bold-C129">+</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>float32(<span class=" -Color -Color-C28">1</span>)
     
 </pre></div>
 </div>
@@ -1853,7 +1849,7 @@ class Module:
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-08-17, 11:18:35.<br/>
+    Last updated on 2022-08-24, 08:57:06.<br/>
 </p>
         </footer>
     </div>

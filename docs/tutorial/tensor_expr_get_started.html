@@ -317,6 +317,11 @@
        TOPI 简介
       </a>
      </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="uma.html">
+       通过 UMA 使您的硬件加速器 TVM-ready
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toctree-l2 has-children">
@@ -580,7 +585,7 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../how_to/optimize_operators/index.html">
-       Optimize Tensor Operators
+       优化张量算子
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
       <label for="toctree-checkbox-14">
@@ -590,7 +595,7 @@
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../how_to/optimize_operators/opt_gemm.html">
-         How to optimize GEMM on CPU
+         如何在 CPU 上优化 GEMM
         </a>
        </li>
        <li class="toctree-l4">
@@ -1719,7 +1724,7 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">env</span>
+<span class="c1"># import env</span>
 
 <span class="kn">import</span> <span class="nn">tvm</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">testing</span>
@@ -1839,7 +1844,7 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numpy running time: 0.000016
-naive: 0.000015
+naive: 0.000014
 </pre></div>
 </div>
 </div>
@@ -1891,7 +1896,7 @@ naive: 0.000015
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>parallel: 0.000013
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>parallel: 0.000009
 </pre></div>
 </div>
 </div>
@@ -1928,7 +1933,7 @@ naive: 0.000015
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vector: 0.000014
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vector: 0.000016
 @main = primfn(A_1: handle, B_1: handle, C_1: handle) -&gt; ()
   attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
   buffers = {A: Buffer(A_2: Pointer(float32), float32, [(stride: int32*n: int32)], [], type=&quot;auto&quot;),
@@ -1967,10 +1972,10 @@ naive: 0.000015
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            Operator	              Timing	         Performance
-               numpy	1.6419119201600552e-05	                 1.0
-               naive	         1.54819e-05	  0.9429190329826469
-            parallel	         1.27897e-05	  0.7789516503877533
-              vector	1.4490100000000002e-05	  0.8825138438965406
+               numpy	1.6368599999623258e-05	                 1.0
+               naive	1.3736999999999999e-05	  0.8392287672932427
+            parallel	          9.0642e-06	  0.5537553608866136
+              vector	         1.63411e-05	  0.9983199540813574
 </pre></div>
 </div>
 </div>
@@ -2234,7 +2239,7 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
 <section id="te">
 <h2>实例2：用 TE 手动优化矩阵乘法<a class="headerlink" href="#te" title="永久链接至标题">#</a></h2>
 <p>现在我们将考虑第二个更高级的例子，演示仅用 18 行 python 代码，TVM 如何将一个普通的矩阵乘法操作加快 18 倍。</p>
-<p>矩阵乘法是一个计算密集型操作。为了获得良好的 CPU 性能，有两个重要的优化措施：</p>
+<p>矩阵乘法是计算密集型运算。为了获得良好的 CPU 性能，有两个重要的优化措施：</p>
 <ol class="arabic simple">
 <li><p>提高内存访问的高速缓存命中率。复杂的数值计算和热点内存（hot-spot memory）访问都可以通过高缓存命中率（high cache hit rate）来加速。这就要求我们将原点内存（origin ）访问模式转化为符合高速缓存策略的模式。</p></li>
 <li><p>SIMD（单指令多数据），也被称为矢量处理单元。在每个周期中，SIMD 可以处理一小批数据，而不是处理一个单一的值。这就要求我们将循环体中的数据访问模式转化为统一模式，以便 LLVM 后端可以将其降低到 SIMD。</p></li>
@@ -2295,8 +2300,13 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numpy running time: 0.009737
+</pre></div>
 </div>
-<p>现在我们用 TVM TE 写一个基本的矩阵乘法，并验证它产生的结果与 <code class="docutils literal notranslate"><span class="pre">numpy</span></code> 的实现相同。我们还写了一个函数，它将帮助我们衡量调度优化的性能。</p>
+</div>
+</div>
+<p>现在用 TVM TE 编写基本的矩阵乘法，并验证它产生的结果与 <code class="docutils literal notranslate"><span class="pre">numpy</span></code> 的实现相同。我们还写了一个函数，它将帮助衡量调度优化的性能。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TVM Matrix Multiplication using TE</span>
@@ -2334,11 +2344,38 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>none: 2.199183
+</pre></div>
+</div>
+</div>
 </div>
 <p>让我们来看看使用 TVM 低级函数的运算器和默认调度的中间表示。请注意这个实现基本上是矩阵乘法的天真实现，在 A 和 B 矩阵的索引上使用三个嵌套循环。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>@main = primfn(A_1: handle, B_1: handle, C_1: handle) -&gt; ()
+  attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
+  buffers = {A: Buffer(A_2: Pointer(float32), float32, [1048576], []),
+             B: Buffer(B_2: Pointer(float32), float32, [1048576], []),
+             C: Buffer(C_2: Pointer(float32), float32, [1048576], [])}
+  buffer_map = {A_1: A, B_1: B, C_1: C}
+  preflattened_buffer_map = {A_1: A_3: Buffer(A_2, float32, [1024, 1024], []), B_1: B_3: Buffer(B_2, float32, [1024, 1024], []), C_1: C_3: Buffer(C_2, float32, [1024, 1024], [])} {
+  for (x: int32, 0, 1024) {
+    for (y: int32, 0, 1024) {
+      C[((x*1024) + y)] = 0f32
+      for (k: int32, 0, 1024) {
+        let cse_var_2: int32 = (x*1024)
+        let cse_var_1: int32 = (cse_var_2 + y)
+        C[cse_var_1] = (C[cse_var_1] + (A[(cse_var_2 + k)]*B[((k*1024) + y)]))
+      }
+    }
+  }
+}
 </pre></div>
 </div>
 </div>
@@ -2365,11 +2402,49 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>blocking: 0.243443
+</pre></div>
+</div>
+</div>
 </div>
 <p>通过重新安排计算顺序以利用缓存，你应该看到计算的性能有了明显的改善。现在，打印内部表示，并将其与原始表示进行比较。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>@main = primfn(A_1: handle, B_1: handle, C_1: handle) -&gt; ()
+  attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
+  buffers = {A: Buffer(A_2: Pointer(float32), float32, [1048576], []),
+             B: Buffer(B_2: Pointer(float32), float32, [1048576], []),
+             C: Buffer(C_2: Pointer(float32), float32, [1048576], [])}
+  buffer_map = {A_1: A, B_1: B, C_1: C}
+  preflattened_buffer_map = {A_1: A_3: Buffer(A_2, float32, [1024, 1024], []), B_1: B_3: Buffer(B_2, float32, [1024, 1024], []), C_1: C_3: Buffer(C_2, float32, [1024, 1024], [])} {
+  for (x.outer: int32, 0, 32) {
+    for (y.outer: int32, 0, 32) {
+      for (x.inner.init: int32, 0, 32) {
+        for (y.inner.init: int32, 0, 32) {
+          C[((((x.outer*32768) + (x.inner.init*1024)) + (y.outer*32)) + y.inner.init)] = 0f32
+        }
+      }
+      for (k.outer: int32, 0, 256) {
+        for (k.inner: int32, 0, 4) {
+          for (x.inner: int32, 0, 32) {
+            for (y.inner: int32, 0, 32) {
+              let cse_var_3: int32 = (y.outer*32)
+              let cse_var_2: int32 = ((x.outer*32768) + (x.inner*1024))
+              let cse_var_1: int32 = ((cse_var_2 + cse_var_3) + y.inner)
+              C[cse_var_1] = (C[cse_var_1] + (A[((cse_var_2 + (k.outer*4)) + k.inner)]*B[((((k.outer*4096) + (k.inner*1024)) + cse_var_3) + y.inner)]))
+            }
+          }
+        }
+      }
+    }
+  }
+}
 </pre></div>
 </div>
 </div>
@@ -2388,6 +2463,36 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
 
 <span class="c1"># The generalized IR after vectorization</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vectorization: 0.250517
+@main = primfn(A_1: handle, B_1: handle, C_1: handle) -&gt; ()
+  attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
+  buffers = {A: Buffer(A_2: Pointer(float32), float32, [1048576], []),
+             B: Buffer(B_2: Pointer(float32), float32, [1048576], []),
+             C: Buffer(C_2: Pointer(float32), float32, [1048576], [])}
+  buffer_map = {A_1: A, B_1: B, C_1: C}
+  preflattened_buffer_map = {A_1: A_3: Buffer(A_2, float32, [1024, 1024], []), B_1: B_3: Buffer(B_2, float32, [1024, 1024], []), C_1: C_3: Buffer(C_2, float32, [1024, 1024], [])} {
+  for (x.outer: int32, 0, 32) {
+    for (y.outer: int32, 0, 32) {
+      for (x.inner.init: int32, 0, 32) {
+        C[ramp((((x.outer*32768) + (x.inner.init*1024)) + (y.outer*32)), 1, 32)] = broadcast(0f32, 32)
+      }
+      for (k.outer: int32, 0, 256) {
+        for (k.inner: int32, 0, 4) {
+          for (x.inner: int32, 0, 32) {
+            let cse_var_3: int32 = (y.outer*32)
+            let cse_var_2: int32 = ((x.outer*32768) + (x.inner*1024))
+            let cse_var_1: int32 = (cse_var_2 + cse_var_3)
+            C[ramp(cse_var_1, 1, 32)] = (C[ramp(cse_var_1, 1, 32)] + (broadcast(A[((cse_var_2 + (k.outer*4)) + k.inner)], 32)*B[ramp((((k.outer*4096) + (k.inner*1024)) + cse_var_3), 1, 32)]))
+          }
+        }
+      }
+    }
+  }
+}
 </pre></div>
 </div>
 </div>
@@ -2416,6 +2521,36 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loop permutation: 0.120133
+@main = primfn(A_1: handle, B_1: handle, C_1: handle) -&gt; ()
+  attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
+  buffers = {A: Buffer(A_2: Pointer(float32), float32, [1048576], []),
+             B: Buffer(B_2: Pointer(float32), float32, [1048576], []),
+             C: Buffer(C_2: Pointer(float32), float32, [1048576], [])}
+  buffer_map = {A_1: A, B_1: B, C_1: C}
+  preflattened_buffer_map = {A_1: A_3: Buffer(A_2, float32, [1024, 1024], []), B_1: B_3: Buffer(B_2, float32, [1024, 1024], []), C_1: C_3: Buffer(C_2, float32, [1024, 1024], [])} {
+  for (x.outer: int32, 0, 32) {
+    for (y.outer: int32, 0, 32) {
+      for (x.inner.init: int32, 0, 32) {
+        C[ramp((((x.outer*32768) + (x.inner.init*1024)) + (y.outer*32)), 1, 32)] = broadcast(0f32, 32)
+      }
+      for (k.outer: int32, 0, 256) {
+        for (x.inner: int32, 0, 32) {
+          for (k.inner: int32, 0, 4) {
+            let cse_var_3: int32 = (y.outer*32)
+            let cse_var_2: int32 = ((x.outer*32768) + (x.inner*1024))
+            let cse_var_1: int32 = (cse_var_2 + cse_var_3)
+            C[ramp(cse_var_1, 1, 32)] = (C[ramp(cse_var_1, 1, 32)] + (broadcast(A[((cse_var_2 + (k.outer*4)) + k.inner)], 32)*B[ramp((((k.outer*4096) + (k.inner*1024)) + cse_var_3), 1, 32)]))
+          }
+        }
+      }
+    }
+  }
+}
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="id15">
@@ -2426,7 +2561,7 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
 <p>为了实现这一目标，将不得不从新的默认调度开始，考虑到 B 的新包装，值得花点时间来评论一下。TE 是编写优化运算符的强大而富有表现力的语言，但它往往需要对你所编写的底层算法、数据结构和硬件目标有一些了解。在本教程的后面，我们将讨论一些让 TVM 承担这一负担的选项。无论如何，让我们继续编写新的优化调度。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 我们必须稍微重写一下这个算法。</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 必须重写算法。</span>
 <span class="n">packedB</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">compute</span><span class="p">((</span><span class="n">N</span> <span class="o">/</span> <span class="n">bn</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">bn</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">B</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">bn</span> <span class="o">+</span> <span class="n">z</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;packedB&quot;</span><span class="p">)</span>
 <span class="n">C</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span>
     <span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">N</span><span class="p">),</span>
@@ -2451,6 +2586,43 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
 
 <span class="c1"># Here is the generated IR after array packing.</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array packing: 0.131140
+@main = primfn(A_1: handle, B_1: handle, C_1: handle) -&gt; ()
+  attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
+  buffers = {A: Buffer(A_2: Pointer(float32), float32, [1048576], []),
+             B: Buffer(B_2: Pointer(float32), float32, [1048576], []),
+             C: Buffer(C_2: Pointer(float32), float32, [1048576], [])}
+  buffer_map = {A_1: A, B_1: B, C_1: C}
+  preflattened_buffer_map = {A_1: A_3: Buffer(A_2, float32, [1024, 1024], []), B_1: B_3: Buffer(B_2, float32, [1024, 1024], []), C_1: C_3: Buffer(C_2, float32, [1024, 1024], [])} {
+  allocate(packedB: Pointer(global float32x32), float32x32, [32768]), storage_scope = global {
+    for (x: int32, 0, 32) &quot;parallel&quot; {
+      for (y: int32, 0, 1024) {
+        packedB_1: Buffer(packedB, float32x32, [32768], [])[((x*1024) + y)] = B[ramp(((y*1024) + (x*32)), 1, 32)]
+      }
+    }
+    for (x.outer: int32, 0, 32) {
+      for (y.outer: int32, 0, 32) {
+        for (x.inner.init: int32, 0, 32) {
+          C[ramp((((x.outer*32768) + (x.inner.init*1024)) + (y.outer*32)), 1, 32)] = broadcast(0f32, 32)
+        }
+        for (k.outer: int32, 0, 256) {
+          for (x.inner: int32, 0, 32) {
+            for (k.inner: int32, 0, 4) {
+              let cse_var_3: int32 = ((x.outer*32768) + (x.inner*1024))
+              let cse_var_2: int32 = (k.outer*4)
+              let cse_var_1: int32 = (cse_var_3 + (y.outer*32))
+              C[ramp(cse_var_1, 1, 32)] = (C[ramp(cse_var_1, 1, 32)] + (broadcast(A[((cse_var_3 + cse_var_2) + k.inner)], 32)*packedB_1[(((y.outer*1024) + cse_var_2) + k.inner)]))
+            }
+          }
+        }
+      }
+    }
+  }
+}
 </pre></div>
 </div>
 </div>
@@ -2491,6 +2663,53 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>block caching: 0.114994
+@main = primfn(A_1: handle, B_1: handle, C_1: handle) -&gt; ()
+  attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
+  buffers = {A: Buffer(A_2: Pointer(float32), float32, [1048576], []),
+             B: Buffer(B_2: Pointer(float32), float32, [1048576], []),
+             C: Buffer(C_2: Pointer(float32), float32, [1048576], [])}
+  buffer_map = {A_1: A, B_1: B, C_1: C}
+  preflattened_buffer_map = {A_1: A_3: Buffer(A_2, float32, [1024, 1024], []), B_1: B_3: Buffer(B_2, float32, [1024, 1024], []), C_1: C_3: Buffer(C_2, float32, [1024, 1024], [])} {
+  allocate(packedB: Pointer(global float32x32), float32x32, [32768]), storage_scope = global;
+  allocate(C.global: Pointer(global float32), float32, [1024]), storage_scope = global {
+    for (x: int32, 0, 32) &quot;parallel&quot; {
+      for (y: int32, 0, 1024) {
+        packedB_1: Buffer(packedB, float32x32, [32768], [])[((x*1024) + y)] = B[ramp(((y*1024) + (x*32)), 1, 32)]
+      }
+    }
+    for (x.outer: int32, 0, 32) {
+      for (y.outer: int32, 0, 32) {
+        for (x.c.init: int32, 0, 32) {
+          C.global_1: Buffer(C.global, float32, [1024], [])[ramp((x.c.init*32), 1, 32)] = broadcast(0f32, 32)
+        }
+        for (k.outer: int32, 0, 256) {
+          for (x.c: int32, 0, 32) {
+            let cse_var_4: int32 = (k.outer*4)
+            let cse_var_3: int32 = (x.c*32)
+            let cse_var_2: int32 = ((y.outer*1024) + cse_var_4)
+            let cse_var_1: int32 = (((x.outer*32768) + (x.c*1024)) + cse_var_4)
+             {
+              C.global_1[ramp(cse_var_3, 1, 32)] = (C.global_1[ramp(cse_var_3, 1, 32)] + (broadcast(A[cse_var_1], 32)*packedB_1[cse_var_2]))
+              C.global_1[ramp(cse_var_3, 1, 32)] = (C.global_1[ramp(cse_var_3, 1, 32)] + (broadcast(A[(cse_var_1 + 1)], 32)*packedB_1[(cse_var_2 + 1)]))
+              C.global_1[ramp(cse_var_3, 1, 32)] = (C.global_1[ramp(cse_var_3, 1, 32)] + (broadcast(A[(cse_var_1 + 2)], 32)*packedB_1[(cse_var_2 + 2)]))
+              C.global_1[ramp(cse_var_3, 1, 32)] = (C.global_1[ramp(cse_var_3, 1, 32)] + (broadcast(A[(cse_var_1 + 3)], 32)*packedB_1[(cse_var_2 + 3)]))
+            }
+          }
+        }
+        for (x.inner: int32, 0, 32) {
+          for (y.inner: int32, 0, 32) {
+            C[((((x.outer*32768) + (x.inner*1024)) + (y.outer*32)) + y.inner)] = C.global_1[((x.inner*32) + y.inner)]
+          }
+        }
+      }
+    }
+  }
+}
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="id17">
@@ -2514,6 +2733,53 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>parallelization: 0.015585
+@main = primfn(A_1: handle, B_1: handle, C_1: handle) -&gt; ()
+  attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
+  buffers = {A: Buffer(A_2: Pointer(float32), float32, [1048576], []),
+             B: Buffer(B_2: Pointer(float32), float32, [1048576], []),
+             C: Buffer(C_2: Pointer(float32), float32, [1048576], [])}
+  buffer_map = {A_1: A, B_1: B, C_1: C}
+  preflattened_buffer_map = {A_1: A_3: Buffer(A_2, float32, [1024, 1024], []), B_1: B_3: Buffer(B_2, float32, [1024, 1024], []), C_1: C_3: Buffer(C_2, float32, [1024, 1024], [])} {
+  allocate(packedB: Pointer(global float32x32), float32x32, [32768]), storage_scope = global {
+    for (x: int32, 0, 32) &quot;parallel&quot; {
+      for (y: int32, 0, 1024) {
+        packedB_1: Buffer(packedB, float32x32, [32768], [])[((x*1024) + y)] = B[ramp(((y*1024) + (x*32)), 1, 32)]
+      }
+    }
+    for (x.outer: int32, 0, 32) &quot;parallel&quot; {
+      allocate(C.global: Pointer(global float32), float32, [1024]), storage_scope = global;
+      for (y.outer: int32, 0, 32) {
+        for (x.c.init: int32, 0, 32) {
+          C.global_1: Buffer(C.global, float32, [1024], [])[ramp((x.c.init*32), 1, 32)] = broadcast(0f32, 32)
+        }
+        for (k.outer: int32, 0, 256) {
+          for (x.c: int32, 0, 32) {
+            let cse_var_4: int32 = (k.outer*4)
+            let cse_var_3: int32 = (x.c*32)
+            let cse_var_2: int32 = ((y.outer*1024) + cse_var_4)
+            let cse_var_1: int32 = (((x.outer*32768) + (x.c*1024)) + cse_var_4)
+             {
+              C.global_1[ramp(cse_var_3, 1, 32)] = (C.global_1[ramp(cse_var_3, 1, 32)] + (broadcast(A[cse_var_1], 32)*packedB_1[cse_var_2]))
+              C.global_1[ramp(cse_var_3, 1, 32)] = (C.global_1[ramp(cse_var_3, 1, 32)] + (broadcast(A[(cse_var_1 + 1)], 32)*packedB_1[(cse_var_2 + 1)]))
+              C.global_1[ramp(cse_var_3, 1, 32)] = (C.global_1[ramp(cse_var_3, 1, 32)] + (broadcast(A[(cse_var_1 + 2)], 32)*packedB_1[(cse_var_2 + 2)]))
+              C.global_1[ramp(cse_var_3, 1, 32)] = (C.global_1[ramp(cse_var_3, 1, 32)] + (broadcast(A[(cse_var_1 + 3)], 32)*packedB_1[(cse_var_2 + 3)]))
+            }
+          }
+        }
+        for (x.inner: int32, 0, 32) {
+          for (y.inner: int32, 0, 32) {
+            C[((((x.outer*32768) + (x.inner*1024)) + (y.outer*32)) + y.inner)] = C.global_1[((x.inner*32) + y.inner)]
+          }
+        }
+      }
+    }
+  }
+}
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="id18">
@@ -2528,6 +2794,18 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
         <span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="s2">&quot;</span>
         <span class="o">%</span> <span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">baseline</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
     <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            Operator	              Timing	         Performance
+                none	        2.1991831244	                 1.0
+            blocking	        0.2434425718	  0.1106968169676266
+       vectorization	 0.25051660519999996	 0.11391348106508777
+    loop permutation	 0.12013333500000001	 0.05462634451270437
+       array packing	        0.1311404479	 0.05963143607505576
+       block caching	 0.11499378200000002	0.052289316303013006
+     parallelization	0.015584684999999997	0.007086579024314741
 </pre></div>
 </div>
 </div>
@@ -2581,7 +2859,7 @@ extern &quot;C&quot; __global__ void __launch_bounds__(64) myadd_kernel0(float* 
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-08-17, 11:18:35.<br/>
+    Last updated on 2022-08-24, 08:57:06.<br/>
 </p>
         </footer>
     </div>
