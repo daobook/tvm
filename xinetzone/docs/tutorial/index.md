@@ -15,4 +15,5 @@ tensor_ir_blitz_course
 cross_compilation_and_rpc
 relay_quick_start
 intro_topi
+uma
 ```
