@@ -104,6 +104,41 @@ def test_tir_op_tvm_throw_last_error():
     assert expr.op.name == "tir.tvm_throw_last_error"
 
 
+def test_tir_op_vectorlow():
+    buffer = tir.decl_buffer((4, 4), "int8", offset_factor=1)
+    vec = buffer.vload([0, 0], dtype="int8x16")
+    expr = tir.vectorlow("int8x8", vec)
+    assert expr.op.name == "tir.vectorlow"
+
+
+def test_tir_op_vectorhigh():
+    buffer = tir.decl_buffer((4, 4), "int8", offset_factor=1)
+    vec = buffer.vload([0, 0], dtype="int8x16")
+    expr = tir.vectorhigh("int8x8", vec)
+    assert expr.op.name == "tir.vectorhigh"
+
+
+def test_tir_op_vectorcombine():
+    buffer = tir.decl_buffer((4, 4), "int8", offset_factor=1)
+    vec = buffer.vload([0, 0], dtype="int8x16")
+    expr = tir.vectorcombine("int8x8", vec, vec)
+    assert expr.op.name == "tir.vectorcombine"
+
+
+def test_tir_op_shift_left():
+    x = tir.Var("x", dtype="int32")
+    y = tir.Var("x", dtype="int32")
+    expr = tir.shift_left(x, y)
+    assert expr.op.name == "tir.shift_left"
+
+
+def test_tir_op_shift_right():
+    x = tir.Var("x", dtype="int32")
+    y = tir.Var("x", dtype="int32")
+    expr = tir.shift_right(x, y)
+    assert expr.op.name == "tir.shift_right"
+
+
 def test_tir_op_TVMBackendAllocWorkspace():
     expr = tir.TVMBackendAllocWorkspace(0, 1, 2, 3, 4)
     assert expr.op.name == "tir.TVMBackendAllocWorkspace"
@@ -130,5 +165,10 @@ if __name__ == "__main__":
     test_tir_op_type_annotation()
     test_tir_op_tvm_access_ptr()
     test_tir_op_tvm_throw_last_error()
+    test_tir_op_vectorlow()
+    test_tir_op_vectorhigh()
+    test_tir_op_vectorcombine()
+    test_tir_op_shift_left()
+    test_tir_op_shift_right()
     test_tir_op_TVMBackendAllocWorkspace()
     test_tir_op_TVMBackendFreeWorkspace()

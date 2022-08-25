@@ -595,6 +595,63 @@ def tvm_throw_last_error():
     return call_intrin("handle", "tir.tvm_throw_last_error")
 
 
+def vectorlow(dtype, vec):
+    """Get the low level half of the vector
+
+    Parameters
+    ----------
+    dtype : str
+       The data type of the result.
+
+    vec : list
+       The input vector.
+
+    Returns
+    -------
+    call : PrimExpr
+        The call expression.
+    """
+    return call_intrin(dtype, "tir.vectorlow", vec)
+
+
+def vectorhigh(dtype, vec):
+    """Get the high level half of the vector
+
+    Parameters
+    ----------
+    dtype : str
+       The data type of the result.
+
+    vec : list
+       The input vector.
+
+    Returns
+    -------
+    call : PrimExpr
+        The call expression.
+    """
+    return call_intrin(dtype, "tir.vectorhigh", vec)
+
+
+def vectorcombine(dtype, vec1, vec2):
+    """Concat two vectors
+
+    Parameters
+    ----------
+    vec1 : list
+       The input vector.
+
+    vec2 : list
+       The input vector.
+
+    Returns
+    -------
+    call : PrimExpr
+        The call expression.
+    """
+    return call_intrin(dtype, "tir.vectorcombine", vec1, vec2)
+
+
 def ret(val):
     """Create a tir return expression
 
@@ -1545,6 +1602,44 @@ def q_multiply_shift(x, y, q, s):
         The result.
     """
     return call_intrin("int32", "tir.q_multiply_shift", x, y, q, s)
+
+
+def shift_left(x, y, span=None):
+    """Return the result of x left shifted by y bits.
+
+    Parameters
+    ----------
+    x : PrimExpr
+        Input argument.
+
+    y : PrimExpr
+        Input argument.
+
+    Returns
+    -------
+    z : PrimExpr
+        The result.
+    """
+    return _ffi_api.left_shift(x, y, span)
+
+
+def shift_right(x, y, span=None):
+    """Return the result of x right shifted by y bits.
+
+    Parameters
+    ----------
+    x : PrimExpr
+        Input argument.
+
+    y : PrimExpr
+        Input argument.
+
+    Returns
+    -------
+    z : PrimExpr
+        The result.
+    """
+    return _ffi_api.right_shift(x, y, span)
 
 
 def fmod(x, y):

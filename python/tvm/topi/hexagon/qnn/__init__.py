@@ -14,26 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""Defines functions to analyze available opcodes in the ARM ISA."""
 
-import tvm.target
+""" Computes and schedules for Hexagon quantized ops """
 
-
-ARM_MPROFILE_DSP_SUPPORT_LIST = [
-    "cortex-m7",
-    "cortex-m4",
-    "cortex-m33",
-    "cortex-m35p",
-    "cortex-m55",
-]
-
-
-class IsaAnalyzer(object):
-    """Checks ISA support for given target"""
-
-    def __init__(self, target):
-        self.target = tvm.target.Target(target)
-
-    @property
-    def has_dsp_support(self):
-        return self.target.mcpu is not None and self.target.mcpu in ARM_MPROFILE_DSP_SUPPORT_LIST
+from .avg_pool2d import qnn_avg_pool2d_compute, qnn_avg_pool2d_schedule
