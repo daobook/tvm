@@ -23,4 +23,5 @@ TVM 包括各种前端，可以导入不同格式的模型。这些教程演示�
    from_coreml
    from_darknet
    from_caffe2
+   from_oneflow
    from_paddle

@@ -9,8 +9,10 @@ microTVM 支持在 bare-metal 平台上进行推断，例如，那些没有传�
 .. toctree::
    :hidden:
 
+   micro_aot
    micro_autotune
    micro_ethosu
    micro_reference_vm
    micro_tflite
+   micro_train
    micro_tvmc

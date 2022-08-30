@@ -1,7 +1,4 @@
 :orphan:
-
-
-
 .. _sphx_glr_how_to_extend_tvm:
 
 拓展 TVM

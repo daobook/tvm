@@ -10,7 +10,6 @@ TVM 是一个由硬件供应商、编译器工程师和 ML 研究人员组成的
 
 docs/README
 start
-study/index
 user-guide
 developer-guide
 docs/arch/index

@@ -62,22 +62,29 @@
     "import tvm\n",
     "from tvm.relay.testing import mlp\n",
     "\n",
-    "target = \"llvm\"\n",
-    "dev = tvm.cpu(0)\n",
-    "target = tvm.target.Target(target)\n",
-    "if str(target.kind) == \"llvm\":\n",
-    "    metric = \"PAPI_FP_OPS\"\n",
-    "elif str(target.kind) == \"cuda\":\n",
-    "    metric = \"cuda:::event:shared_load:device=0\"\n",
-    "else:\n",
-    "    pytest.skip(f\"Target {target.kind} not supported by this test\")\n",
     "\n",
+    "target = \"llvm\"\n",
+    "dev = tvm.cpu()\n",
     "mod, params = mlp.get_workload(1)\n",
     "\n",
     "exe = relay.vm.compile(mod, target, params=params)\n",
     "vm = profiler_vm.VirtualMachineProfiler(exe, dev)\n",
     "\n",
     "data = tvm.nd.array(np.random.rand(1, 1, 28, 28).astype(\"float32\"), device=dev)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "```python\n",
+    "report = vm.profile(\n",
+    "    [data],\n",
+    "    func_name=\"main\",\n",
+    "    collectors=[tvm.runtime.profiling.PAPIMetricCollector({tvm.cpu(): [\"PAPI_FP_OPS\"]})],\n",
+    ")\n",
+    "print(report)\n",
+    "```"
    ]
   },
   {
@@ -92,91 +99,10 @@
    ]
   },
   {
-   "cell_type": "code",
-   "execution_count": 4,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "from tvm.runtime import profiling"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 8,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "report = vm.profile(data, func_name=\"main\")"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 12,
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "Name                                         Duration (us)  Percent  Device  Count                                                    Argument Shapes              Hash  VM::Argument Shapes  \n",
-       "vm_mod_fused_nn_dense_nn_bias_add_nn_relu            97.76    30.27    cpu0      1  float32[1, 784], float32[128, 784], float32[128], float32[1, 128]  35ac6d50e6e03a62                       \n",
-       "vm_mod_fused_nn_dense_nn_bias_add_nn_relu_1          19.82     6.14    cpu0      1     float32[1, 128], float32[64, 128], float32[64], float32[1, 64]  7c89e1efbba1ce3b                       \n",
-       "vm_mod_fused_nn_dense_nn_bias_add                    11.72     3.63    cpu0      1       float32[1, 64], float32[10, 64], float32[10], float32[1, 10]  8a679957c4723fed                       \n",
-       "VM::AllocStorage                                      8.31     2.57    cpu0      4                                                                                                            \n",
-       "VM::UnknownOp                                         5.62     1.74    cpu0      9                                                                                                            \n",
-       "VM::AllocTensor                                       4.17     1.29    cpu0      1                                                    float32[1, 128]                                         \n",
-       "VM::AllocTensor                                       3.67     1.14    cpu0      2                                                     float32[1, 10]                                         \n",
-       "vm_mod_fused_nn_softmax                               2.27     0.70    cpu0      1                                     float32[1, 10], float32[1, 10]  0cc19816e7a3c070                       \n",
-       "VM::AllocTensor                                       2.06     0.64    cpu0      1                                                     float32[1, 64]                                         \n",
-       "VM::ReshapeTensor                                     2.00     0.62    cpu0      1                                                                                                            \n",
-       "----------                                                                                                                                                                                    \n",
-       "Sum                                                 157.40    48.74             22                                                                                                            \n",
-       "Total                                               322.97             cpu0      1                                                                                                            \n",
-       "\n",
-       "Configuration\n",
-       "-------------\n",
-       "Number of threads: 24\n",
-       "Executor: VM"
-      ]
-     },
-     "execution_count": 12,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "report2 = profiling.Report.from_json(report.json())\n",
-    "report2"
-   ]
-  },
-  {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "结果："
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "```\n",
-    "Name                                    perf::CACHE-MISSES   perf::CYCLES  perf::STALLED-CYCLES-BACKEND  perf::INSTRUCTIONS  perf::STALLED-CYCLES-FRONTEND\n",
-    "fused_nn_dense_nn_bias_add_nn_relu                   2,494      1,570,698                        85,608             675,564                         39,583\n",
-    "fused_nn_dense_nn_bias_add_nn_relu_1                 1,149        655,101                        13,278             202,297                         21,380\n",
-    "fused_nn_dense_nn_bias_add                             288        600,184                         8,321             163,446                         19,513\n",
-    "fused_nn_batch_flatten                                 301        587,049                         4,636             158,636                         18,565\n",
-    "fused_nn_softmax                                       154        575,143                         8,018             160,738                         18,995\n",
-    "----------\n",
-    "Sum                                                  4,386      3,988,175                       119,861           1,360,681                        118,036\n",
-    "Total                                               10,644      8,327,360                       179,310           2,660,569                        270,044\n",
-    "```"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "还可以更改收集的指标："
+    "## VM"
    ]
   },
   {
@@ -185,43 +111,200 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "report = vm.profile(\n",
-    "    [data],\n",
-    "    func_name=\"main\",\n",
-    "    collectors=[tvm.runtime.profiling.PAPIMetricCollector({dev: [\"PAPI_FP_OPS\"])],\n",
-    "                )"
+    "dtype = \"float32\"\n",
+    "target = \"llvm\"\n",
+    "x = relay.var(\"x\", shape=(relay.Any(), relay.Any()), dtype=dtype)\n",
+    "y = relay.var(\"y\", shape=(relay.Any(), relay.Any()), dtype=dtype)\n",
+    "mod = tvm.IRModule()\n",
+    "mod[\"main\"] = relay.Function([x, y], relay.add(x, y))\n",
+    "exe = relay.vm.compile(mod, target)\n",
+    "vm = profiler_vm.VirtualMachineProfiler(exe, dev)\n",
+    "\n",
+    "data = np.random.rand(28, 28).astype(\"float32\")\n",
+    "report = vm.profile(data, data, func_name=\"main\")\n",
+    "assert \"fused_add\" in str(report)\n",
+    "assert \"Total\" in str(report)\n",
+    "assert \"AllocTensorReg\" in str(report)\n",
+    "assert \"AllocStorage\" in str(report)\n",
+    "assert report.configuration[\"Executor\"] == \"VM\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from io import StringIO\n",
+    "import csv\n",
+    "\n",
+    "def read_csv(report):\n",
+    "    f = StringIO(report.csv())\n",
+    "    headers = []\n",
+    "    rows = []\n",
+    "    reader = csv.reader(f, delimiter=\",\")\n",
+    "    # force parsing\n",
+    "    in_header = True\n",
+    "    for row in reader:\n",
+    "        if in_header:\n",
+    "            headers = row\n",
+    "            in_header = False\n",
+    "            rows = [[] for x in headers]\n",
+    "        else:\n",
+    "            for i in range(len(row)):\n",
+    "                rows[i].append(row[i])\n",
+    "    return dict(zip(headers, rows))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "_csv = read_csv(report)\n",
+    "\n",
+    "assert \"Hash\" in _csv.keys()\n",
+    "# Ops should have a duration greater than zero.\n",
+    "assert all(\n",
+    "    [\n",
+    "        float(dur) > 0\n",
+    "        for dur, name in zip(_csv[\"Duration (us)\"], _csv[\"Name\"])\n",
+    "        if name[:5] == \"fused\"\n",
+    "    ]\n",
+    ")\n",
+    "# AllocTensor or AllocStorage may be cached, so their duration could be 0.\n",
+    "assert all(\n",
+    "    [\n",
+    "        float(dur) >= 0\n",
+    "        for dur, name in zip(_csv[\"Duration (us)\"], _csv[\"Name\"])\n",
+    "        if name[:5] != \"fused\"\n",
+    "    ]\n",
+    ")"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "结果："
+    "## Graph Executor"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Name                                                 Duration (us)  Percent  Device  Count                                                    Argument Shapes              Hash  \n",
+       "tvmgen_default_fused_nn_dense_nn_bias_add_nn_relu           110.43    50.35    cpu0      1  float32[1, 784], float32[128, 784], float32[128], float32[1, 128]  35ac6d50e6e03a62  \n",
+       "tvmgen_default_fused_nn_dense_nn_bias_add_nn_relu_1          21.70     9.90    cpu0      1     float32[1, 128], float32[64, 128], float32[64], float32[1, 64]  7c89e1efbba1ce3b  \n",
+       "tvmgen_default_fused_nn_dense_nn_bias_add                    11.81     5.39    cpu0      1       float32[1, 64], float32[10, 64], float32[10], float32[1, 10]  8a679957c4723fed  \n",
+       "tvmgen_default_fused_nn_softmax                               1.68     0.77    cpu0      1                                     float32[1, 10], float32[1, 10]  0cc19816e7a3c070  \n",
+       "__nop                                                         1.60     0.73    cpu0      1                             float32[1, 1, 28, 28], float32[1, 784]  9efde5b782d81fa1  \n",
+       "----------                                                                                                                                                                       \n",
+       "Sum                                                         147.23    67.13              5                                                                                       \n",
+       "Total                                                       219.30             cpu0      1                                                                                       \n",
+       "\n",
+       "Configuration\n",
+       "-------------\n",
+       "Number of threads: 24\n",
+       "Executor: Graph"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "from tvm.contrib.debugger import debug_executor\n",
+    "\n",
+    "mod, params = mlp.get_workload(1)\n",
+    "\n",
+    "exe = relay.build(mod, target, params=params)\n",
+    "gr = debug_executor.create(exe.get_graph_json(), exe.lib, dev)\n",
+    "\n",
+    "data = np.random.rand(1, 1, 28, 28).astype(\"float32\")\n",
+    "report = gr.profile(data=data)\n",
+    "assert \"fused_nn_softmax\" in str(report)\n",
+    "assert \"Total\" in str(report)\n",
+    "assert \"Hash\" in str(report)\n",
+    "assert \"Graph\" in str(report)\n",
+    "report"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "```\n",
-    "Name                                  PAPI_FP_OPS\n",
-    "fused_nn_dense_nn_bias_add_nn_relu        200,832\n",
-    "fused_nn_dense_nn_bias_add_nn_relu_1       16,448\n",
-    "fused_nn_dense_nn_bias_add                  1,548\n",
-    "fused_nn_softmax                              160\n",
-    "fused_nn_batch_flatten                          0\n",
-    "----------\n",
-    "Sum                                       218,988\n",
-    "Total                                     218,988\n",
-    "```"
+    "## 算子"
    ]
   },
   {
-   "cell_type": "markdown",
+   "cell_type": "code",
+   "execution_count": 7,
    "metadata": {},
+   "outputs": [],
    "source": [
-    "您可以通过运行 ``papi_avail`` 和 ``papi_native_avail`` 命令找到可用指标列表。"
+    "from tvm.runtime.profiling import Report\n",
+    "from tvm.script import tir as T\n",
+    "\n",
+    "@T.prim_func\n",
+    "def axpy_cpu(a: T.handle, b: T.handle, c: T.handle) -> None:\n",
+    "    A = T.match_buffer(a, [10], \"float64\")\n",
+    "    B = T.match_buffer(b, [10], \"float64\")\n",
+    "    C = T.match_buffer(c, [10], \"float64\")\n",
+    "    for i in range(10):\n",
+    "        C[i] = A[i] + B[i]\n",
+    "\n",
+    "\n",
+    "@T.prim_func\n",
+    "def axpy_gpu(a: T.handle, b: T.handle, c: T.handle) -> None:\n",
+    "    A = T.match_buffer(a, [10], \"float64\")\n",
+    "    B = T.match_buffer(b, [10], \"float64\")\n",
+    "    C = T.match_buffer(c, [10], \"float64\")\n",
+    "    for i in T.thread_binding(0, 10, \"threadIdx.x\"):\n",
+    "        C[i] = A[i] + B[i]"
    ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def test_profile_function(target, dev):\n",
+    "    target = tvm.target.Target(target)\n",
+    "    if str(target.kind) == \"llvm\":\n",
+    "        metric = \"PAPI_FP_OPS\"\n",
+    "        func = axpy_cpu\n",
+    "    elif str(target.kind) == \"cuda\":\n",
+    "        metric = (\n",
+    "            \"cuda:::gpu__compute_memory_access_throughput.max.pct_of_peak_sustained_region:device=0\"\n",
+    "        )\n",
+    "        func = axpy_gpu\n",
+    "    else:\n",
+    "        pytest.skip(f\"Target {target.kind} not supported by this test\")\n",
+    "    f = tvm.build(func, target=target)\n",
+    "    a = tvm.nd.array(np.ones(10), device=dev)\n",
+    "    b = tvm.nd.array(np.ones(10), device=dev)\n",
+    "    c = tvm.nd.array(np.zeros(10), device=dev)\n",
+    "    report = tvm.runtime.profiling.profile_function(\n",
+    "        f, dev, [tvm.runtime.profiling.PAPIMetricCollector({dev: [metric]})]\n",
+    "    )(a, b, c)\n",
+    "    assert metric in report.keys()\n",
+    "    assert report[metric].value > 0"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
   }
  ],
  "metadata": {

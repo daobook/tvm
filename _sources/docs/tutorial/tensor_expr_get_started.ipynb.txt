@@ -174,7 +174,7 @@
           "output_type": "stream",
           "text": [
             "Numpy running time: 0.000016\n",
-            "naive: 0.000014\n"
+            "naive: 0.000013\n"
           ]
         }
       ],
@@ -288,7 +288,7 @@
           "name": "stdout",
           "output_type": "stream",
           "text": [
-            "parallel: 0.000009\n"
+            "parallel: 0.000022\n"
           ]
         }
       ],
@@ -321,7 +321,7 @@
           "name": "stdout",
           "output_type": "stream",
           "text": [
-            "vector: 0.000016\n",
+            "vector: 0.000017\n",
             "@main = primfn(A_1: handle, B_1: handle, C_1: handle) -> ()\n",
             "  attr = {\"from_legacy_te_schedule\": True, \"global_symbol\": \"main\", \"tir.noalias\": True}\n",
             "  buffers = {A: Buffer(A_2: Pointer(float32), float32, [(stride: int32*n: int32)], [], type=\"auto\"),\n",
@@ -389,10 +389,10 @@
           "output_type": "stream",
           "text": [
             "            Operator\t              Timing\t         Performance\n",
-            "               numpy\t1.6368599999623258e-05\t                 1.0\n",
-            "               naive\t1.3736999999999999e-05\t  0.8392287672932427\n",
-            "            parallel\t          9.0642e-06\t  0.5537553608866136\n",
-            "              vector\t         1.63411e-05\t  0.9983199540813574\n"
+            "               numpy\t1.5522249741479753e-05\t                 1.0\n",
+            "               naive\t1.3208600000000001e-05\t  0.8509462365305823\n",
+            "            parallel\t         2.17076e-05\t  1.3984828463358165\n",
+            "              vector\t1.6507899999999998e-05\t  1.0634991882578924\n"
           ]
         }
       ],
@@ -684,7 +684,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 17,
+      "execution_count": null,
       "metadata": {
         "collapsed": false
       },
@@ -740,7 +740,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 18,
+      "execution_count": 17,
       "metadata": {
         "collapsed": false
       },
@@ -749,7 +749,7 @@
           "name": "stdout",
           "output_type": "stream",
           "text": [
-            "Numpy running time: 0.009737\n"
+            "Numpy running time: 0.023805\n"
           ]
         }
       ],
@@ -812,7 +812,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 19,
+      "execution_count": 18,
       "metadata": {
         "collapsed": false
       },
@@ -821,7 +821,7 @@
           "name": "stdout",
           "output_type": "stream",
           "text": [
-            "none: 2.199183\n"
+            "none: 2.233156\n"
           ]
         }
       ],
@@ -869,7 +869,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 20,
+      "execution_count": 19,
       "metadata": {
         "collapsed": false
       },
@@ -920,7 +920,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 21,
+      "execution_count": 20,
       "metadata": {
         "collapsed": false
       },
@@ -929,7 +929,7 @@
           "name": "stdout",
           "output_type": "stream",
           "text": [
-            "blocking: 0.243443\n"
+            "blocking: 0.249289\n"
           ]
         }
       ],
@@ -956,7 +956,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 22,
+      "execution_count": 21,
       "metadata": {
         "collapsed": false
       },
@@ -1016,7 +1016,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 23,
+      "execution_count": 22,
       "metadata": {
         "collapsed": false
       },
@@ -1025,7 +1025,7 @@
           "name": "stdout",
           "output_type": "stream",
           "text": [
-            "vectorization: 0.250517\n",
+            "vectorization: 0.257297\n",
             "@main = primfn(A_1: handle, B_1: handle, C_1: handle) -> ()\n",
             "  attr = {\"from_legacy_te_schedule\": True, \"global_symbol\": \"main\", \"tir.noalias\": True}\n",
             "  buffers = {A: Buffer(A_2: Pointer(float32), float32, [1048576], []),\n",
@@ -1077,7 +1077,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 24,
+      "execution_count": 23,
       "metadata": {
         "collapsed": false
       },
@@ -1086,7 +1086,7 @@
           "name": "stdout",
           "output_type": "stream",
           "text": [
-            "loop permutation: 0.120133\n",
+            "loop permutation: 0.130006\n",
             "@main = primfn(A_1: handle, B_1: handle, C_1: handle) -> ()\n",
             "  attr = {\"from_legacy_te_schedule\": True, \"global_symbol\": \"main\", \"tir.noalias\": True}\n",
             "  buffers = {A: Buffer(A_2: Pointer(float32), float32, [1048576], []),\n",
@@ -1152,7 +1152,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 25,
+      "execution_count": 24,
       "metadata": {
         "collapsed": false
       },
@@ -1161,7 +1161,7 @@
           "name": "stdout",
           "output_type": "stream",
           "text": [
-            "array packing: 0.131140\n",
+            "array packing: 0.140257\n",
             "@main = primfn(A_1: handle, B_1: handle, C_1: handle) -> ()\n",
             "  attr = {\"from_legacy_te_schedule\": True, \"global_symbol\": \"main\", \"tir.noalias\": True}\n",
             "  buffers = {A: Buffer(A_2: Pointer(float32), float32, [1048576], []),\n",
@@ -1238,7 +1238,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 26,
+      "execution_count": 25,
       "metadata": {
         "collapsed": false
       },
@@ -1247,7 +1247,7 @@
           "name": "stdout",
           "output_type": "stream",
           "text": [
-            "block caching: 0.114994\n",
+            "block caching: 0.131626\n",
             "@main = primfn(A_1: handle, B_1: handle, C_1: handle) -> ()\n",
             "  attr = {\"from_legacy_te_schedule\": True, \"global_symbol\": \"main\", \"tir.noalias\": True}\n",
             "  buffers = {A: Buffer(A_2: Pointer(float32), float32, [1048576], []),\n",
@@ -1336,7 +1336,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 27,
+      "execution_count": 26,
       "metadata": {
         "collapsed": false
       },
@@ -1345,7 +1345,7 @@
           "name": "stdout",
           "output_type": "stream",
           "text": [
-            "parallelization: 0.015585\n",
+            "parallelization: 0.026403\n",
             "@main = primfn(A_1: handle, B_1: handle, C_1: handle) -> ()\n",
             "  attr = {\"from_legacy_te_schedule\": True, \"global_symbol\": \"main\", \"tir.noalias\": True}\n",
             "  buffers = {A: Buffer(A_2: Pointer(float32), float32, [1048576], []),\n",
@@ -1420,7 +1420,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 28,
+      "execution_count": 27,
       "metadata": {
         "collapsed": false
       },
@@ -1430,13 +1430,13 @@
           "output_type": "stream",
           "text": [
             "            Operator\t              Timing\t         Performance\n",
-            "                none\t        2.1991831244\t                 1.0\n",
-            "            blocking\t        0.2434425718\t  0.1106968169676266\n",
-            "       vectorization\t 0.25051660519999996\t 0.11391348106508777\n",
-            "    loop permutation\t 0.12013333500000001\t 0.05462634451270437\n",
-            "       array packing\t        0.1311404479\t 0.05963143607505576\n",
-            "       block caching\t 0.11499378200000002\t0.052289316303013006\n",
-            "     parallelization\t0.015584684999999997\t0.007086579024314741\n"
+            "                none\t         2.233155965\t                 1.0\n",
+            "            blocking\t        0.2492886151\t 0.11163063351018566\n",
+            "       vectorization\t         0.257297356\t  0.1152169217164373\n",
+            "    loop permutation\t        0.1300062278\t0.058216367256731225\n",
+            "       array packing\t         0.140256607\t 0.06280645382509144\n",
+            "       block caching\t 0.13162604679999998\t 0.05894171695258194\n",
+            "     parallelization\t         0.026402827\t0.011823100318029064\n"
           ]
         }
       ],

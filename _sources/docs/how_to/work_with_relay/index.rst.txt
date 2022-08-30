@@ -13,4 +13,5 @@
 
    build_gcn
    using_external_lib
+   using_pipeline_executor
    using_relay_viz

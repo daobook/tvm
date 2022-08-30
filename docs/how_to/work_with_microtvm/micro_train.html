@@ -1,0 +1,2430 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Training Vision Models for microTVM on Arduino &#8212; TVM  文档</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../../../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <link rel="shortcut icon" href="../../../_static/tvm-logo-square.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="Executing a Tiny Model with TVMC Micro" href="micro_tvmc.html" />
+    <link rel="prev" title="microTVM with TFLite Models" href="micro_tflite.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_CN">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/tvm-logo-small.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">TVM  文档</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   TVM 文档
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../start.html">
+   快速上手
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../install/index.html">
+     安装 TVM
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../install/from_source.html">
+       从源码安装
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../install/nnpack.html">
+         NNPACK Contrib Installation
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../install/docker.html">
+       Docker 镜像
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../install/nnpack.html">
+       NNPACK Contrib Installation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../contribute/index.html">
+     贡献者指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/community.html">
+       TVM 社区指南
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/pull_request.html">
+       提交 Pull Request
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/code_review.html">
+       Code Reviews
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/committer_guide.html">
+       Committer Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/document.html">
+       Documentation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/code_guide.html">
+       Code Guide and Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/git_howto.html">
+       Git Usage Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/ci.html">
+       Using TVM’s CI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/release_process.html">
+       Release Process
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../contribute/error_handling.html">
+       Error Handling Guide
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../../user-guide.html">
+   用户手册
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../tutorial/index.html">
+     用户指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/introduction.html">
+       TVM 和模型优化的概述
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tvmc_command_line_driver.html">
+       用 TVMC 编译和优化模型
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tvmc_python.html">
+       开始使用 TVMC Python：TVM 的高级 API
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/autotvm_relay_x86.html">
+       用 Python 接口编译和优化模型（AutoTVM）
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tensor_expr_get_started.html">
+       使用张量表达式处理算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/autotvm_matmul_x86.html">
+       用调度模板和 AutoTVM 优化算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/auto_scheduler_matmul_x86.html">
+       使用自动调度优化运算
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/tensor_ir_blitz_course.html">
+       TensorIR 的突击课程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/cross_compilation_and_rpc.html">
+       交叉编译和RPC
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/relay_quick_start.html">
+       编译深度学习模型的快速入门教程
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/intro_topi.html">
+       TOPI 简介
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../tutorial/uma.html">
+       通过 UMA 使您的硬件加速器 TVM-ready
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="../index.html">
+     How To 指南
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../compile_models/index.html">
+       编译深度学习模型
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+      <label for="toctree-checkbox-8">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_pytorch.html">
+         编译 PyTorch 模型
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_tensorflow.html">
+         Compile Tensorflow Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_mxnet.html">
+         编译 MXNet 模型
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_onnx.html">
+         Compile ONNX Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_keras.html">
+         Compile Keras Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_tflite.html">
+         Compile TFLite Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_coreml.html">
+         Compile CoreML Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_darknet.html">
+         Compile YOLO-V2 and YOLO-V3 in DarkNet Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_caffe2.html">
+         Compile Caffe2 Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_oneflow.html">
+         Compile OneFlow Models
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../compile_models/from_paddle.html">
+         Compile PaddlePaddle Models
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../deploy/index.html">
+       部署模型并集成到 TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+      <label for="toctree-checkbox-9">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy/cpp_deploy.html">
+         使用 C++ API 部署 TVM Module
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy/android.html">
+         Deploy to Android
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy/integrate.html">
+         集成 TVM 到你的项目
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy/hls.html">
+         HLS Backend Example
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy/arm_compute_lib.html">
+         集成 Relay Arm
+         <sup>
+          ®
+         </sup>
+         计算库
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy/tensorrt.html">
+         Relay TensorRT Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy/vitis_ai.html">
+         Vitis AI Integration
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy/bnns.html">
+         Relay BNNS Integration
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../deploy_models/index.html">
+       部署深度学习模型
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy_models/deploy_model_on_android.html">
+         Deploy the Pretrained Model on Android
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy_models/deploy_model_on_rasp.html">
+         Deploy the Pretrained Model on Raspberry Pi
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy_models/deploy_object_detection_pytorch.html">
+         编译 PyTorch 目标检测模型
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy_models/deploy_prequantized.html">
+         使用 TVM 部署框架预量化模型
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy_models/deploy_prequantized_tflite.html">
+         Deploy a Framework-prequantized Model with TVM - Part 3 (TFLite)
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy_models/deploy_quantized.html">
+         在 CUDA 上部署已量化模型
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy_models/deploy_sparse.html">
+         Deploy a Hugging Face Pruned Model on CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../deploy_models/deploy_ssd_gluoncv.html">
+         部署 Single Shot Multibox Detector(SSD) 模型
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../work_with_relay/index.html">
+       使用 Relay
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+      <label for="toctree-checkbox-11">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../work_with_relay/build_gcn.html">
+         构建图卷积网络
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../work_with_relay/using_external_lib.html">
+         在 Relay 中使用外部库
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../work_with_relay/using_pipeline_executor.html">
+         在 Relay 中使用管道执行器
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../work_with_relay/using_relay_viz.html">
+         使用 Relay Visualizer 可视化 Relay
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../work_with_schedules/index.html">
+       使用 Tensor Expression 和 Schedules
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+      <label for="toctree-checkbox-12">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../work_with_schedules/schedule_primitives.html">
+         Schedule Primitives in TVM
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../work_with_schedules/reduction.html">
+         Reduction
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../work_with_schedules/intrin_math.html">
+         Intrinsics and Math Functions
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../work_with_schedules/scan.html">
+         Scan and Recurrent Kernel
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../work_with_schedules/extern_op.html">
+         External Tensor Functions
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../work_with_schedules/tensorize.html">
+         Use Tensorize to Leverage Hardware Intrinsics
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../work_with_schedules/tuple_inputs.html">
+         Compute and Reduce with Tuple Inputs
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../work_with_schedules/tedd.html">
+         使用 TEDD 进行可视化
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../optimize_operators/index.html">
+       优化张量算子
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+      <label for="toctree-checkbox-13">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../optimize_operators/opt_gemm.html">
+         How to optimize GEMM on CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../optimize_operators/opt_conv_cuda.html">
+         How to optimize convolution on GPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../optimize_operators/opt_conv_tensorcore.html">
+         How to optimize convolution using TensorCores
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../tune_with_autotvm/index.html">
+       Auto-Tune with Templates and AutoTVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+      <label for="toctree-checkbox-14">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autotvm/tune_conv2d_cuda.html">
+         Tuning High Performance Convolution on NVIDIA GPUs
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autotvm/tune_relay_cuda.html">
+         Auto-tuning a Convolutional Network for NVIDIA GPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autotvm/tune_relay_x86.html">
+         Auto-tuning a Convolutional Network for x86 CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autotvm/tune_relay_arm.html">
+         Auto-tuning a Convolutional Network for ARM CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autotvm/tune_relay_mobile_gpu.html">
+         Auto-tuning a Convolutional Network for Mobile GPU
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../tune_with_autoscheduler/index.html">
+       使用自动调度器进行无模板调度
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+      <label for="toctree-checkbox-15">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autoscheduler/tune_conv2d_layer_cuda.html">
+         Auto-scheduling a Convolution Layer for GPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autoscheduler/tune_network_x86.html">
+         Auto-scheduling a Neural Network for x86 CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autoscheduler/tune_network_cuda.html">
+         Auto-scheduling a Neural Network for NVIDIA GPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autoscheduler/tune_network_arm.html">
+         Auto-scheduling a Neural Network for ARM CPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autoscheduler/tune_network_mali.html">
+         Auto-scheduling a Neural Network for mali GPU
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../tune_with_autoscheduler/tune_sparse_x86.html">
+         Auto-scheduling Sparse Matrix Multiplication on CPU with Custom Sketch Rule
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 current active has-children">
+      <a class="reference internal" href="index.html">
+       使用 microTVM
+      </a>
+      <input checked="" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+      <label for="toctree-checkbox-16">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="current">
+       <li class="toctree-l4">
+        <a class="reference internal" href="micro_aot.html">
+         microTVM Host-Driven AoT
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="micro_autotune.html">
+         使用 microTVM Autotuning
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="micro_ethosu.html">
+         在 bare metal Arm® Cortex®-M55 CPU 和 Ethos™-U55 NPU 上运行 TVM
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="micro_reference_vm.html">
+         microTVM 参考虚拟机
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="micro_tflite.html">
+         microTVM with TFLite Models
+        </a>
+       </li>
+       <li class="toctree-l4 current active">
+        <a class="current reference internal" href="#">
+         Training Vision Models for microTVM on Arduino
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="micro_tvmc.html">
+         Executing a Tiny Model with TVMC Micro
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extend_tvm/index.html">
+       拓展 TVM
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+      <label for="toctree-checkbox-17">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extend_tvm/low_level_custom_pass.html">
+         编写定制 Pass
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extend_tvm/use_pass_infra.html">
+         如何使用 TVM Pass Infra
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extend_tvm/use_pass_instrument.html">
+         如何使用 TVM Pass Instrument
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extend_tvm/bring_your_own_datatypes.html">
+         Bring Your Own Datatypes to TVM
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../profile/index.html">
+       模型剖析
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+      <label for="toctree-checkbox-18">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../profile/papi.html">
+         PAPI 快速上手
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../errors.html">
+       处理 TVM 的错误
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../faq.html">
+       常见问题
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../developer-guide.html">
+   开发手册
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../dev/tutorial/index.html">
+     开发者教程
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+    <label for="toctree-checkbox-20">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/tutorial/codebase_walkthrough.html">
+       TVM 代码库的实例演练
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../dev/how_to/how_to.html">
+     开发者指南
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/debugging_tvm.html">
+       调试 TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/relay_add_op.html">
+       添加算子到 Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/relay_add_pass.html">
+       Adding a Compiler Pass to Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/relay_bring_your_own_codegen.html">
+       Bring Your Own Codegen To TVM
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../dev/how_to/pytest_target_parametrization.html">
+       Python Target Parametrization
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../arch/index.html">
+   设计与架构
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/runtime.html">
+     TVM 运行时系统
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/debugger.html">
+     调试器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/virtual_machine.html">
+     将 VM 放入 TVM：Relay Virtual Machine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/introduction_to_module_serialization.html">
+     模块序列化简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/pass_infra.html">
+     Pass Infrastructure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/device_target_interactions.html">
+     Device/Target Interactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/inferbound.html">
+     InferBound Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/hybrid_script.html">
+     Hybrid 前端开发指南
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/relay_intro.html">
+     Relay IR 简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/relay_op_strategy.html">
+     Relay Operator Strategy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/convert_layout.html">
+     Convert Layout Pass
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/benchmark.html">
+     基准性能日志格式
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/frontend/tensorflow.html">
+     TensorFlow Frontend
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/security.html">
+     安全指南
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/microtvm_design.html">
+     microTVM Design Document
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/microtvm_project_api.html">
+     microTVM Project API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../arch/model_library_format.html">
+     Model 库格式
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../topic-guides.html">
+   主题指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../topic/microtvm/index.html">
+     microTVM：裸机上的 TVM
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../topic/vta/index.html">
+     VTA：通用张量加速器
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+    <label for="toctree-checkbox-24">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../topic/vta/install.html">
+       VTA 安装指南
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../topic/vta/dev/index.html">
+       VTA 设计和开发指南
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/dev/config.html">
+         VTA 配置
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/dev/hardware.html">
+         VTA 硬件指南
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../topic/vta/tutorials/index.html">
+       VTA 教程
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/vta_get_started.html">
+         VTA 入门
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/matrix_multiply.html">
+         简单的矩阵乘法
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/frontend/index.html">
+         编译深度学习模型
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/optimize/index.html">
+         优化 Tensor 算子
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../topic/vta/tutorials/autotvm/index.html">
+         自动调优
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../reference-guide.html">
+   参考指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../reference/langref/index.html">
+     语言参考
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+    <label for="toctree-checkbox-28">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_expr.html">
+       Relay 表达式
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_type.html">
+       Relay 类型系统
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_adt.html">
+       Algebraic Data Types in Relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_op.html">
+       Relay 核心张量算子
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/relay_pattern.html">
+       Relay 中的模式匹配
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/langref/hybrid_script.html">
+       Hybrid 前端语言参考
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../reference/api/python/index.html">
+     Python API
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/runtime.html">
+       tvm.runtime
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/ndarray.html">
+       tvm.runtime.ndarray
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/error.html">
+       tvm.error
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/ir/module.html">
+       tvm.ir.module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/ir/index.html">
+       tvm.ir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/target.html">
+       tvm.target
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/tir.html">
+       tvm.tir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/te.html">
+       tvm.te
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/driver.html">
+       tvm.driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/index.html">
+       tvm.relay
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/frontend.html">
+       tvm.relay.frontend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/nn.html">
+       tvm.relay.nn
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/vision.html">
+       tvm.relay.vision
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/image.html">
+       tvm.relay.image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/transform.html">
+       tvm.relay.transform
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/analysis.html">
+       tvm.relay.analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/backend.html">
+       tvm.relay.backend
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/dataflow_pattern.html">
+       tvm.relay.dataflow_pattern
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/relay/testing.html">
+       tvm.relay.testing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/autotvm.html">
+       tvm.autotvm
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/auto_scheduler.html">
+       tvm.auto_scheduler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/rpc.html">
+       tvm.rpc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/micro.html">
+       tvm.micro
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/contrib.html">
+       tvm.contrib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/graph_executor.html">
+       tvm.contrib.graph_executor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/topi.html">
+       tvm.topi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../reference/api/python/vta/index.html">
+       vta
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../reference/api/links.html">
+     其他 API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../reference/publications.html">
+     出版物
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../refs/index.html">
+   参考
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+  <label for="toctree-checkbox-30">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../refs/_ffi/index.html">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _ffi
+      </span>
+     </code>
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/base.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.base
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/libinfo.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.libinfo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/object.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi._ctypes.object
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/registry.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.registry
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../refs/_ffi/runtime_ctypes.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         _ffi.runtime_ctypes
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/docs/how_to/work_with_microtvm/micro_train.ipynb.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> 导航
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivation">
+   Motivation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#installing-the-prerequisites">
+     Installing the Prerequisites
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-the-gpu">
+     Using the GPU
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choosing-our-work-dir">
+     Choosing Our Work Dir
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-the-data">
+   Downloading the Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-the-data">
+   Loading the Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#whats-inside-our-dataset">
+     What’s Inside Our Dataset?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validating-our-accuracy">
+     Validating our Accuracy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Loading the Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-transfer-learning">
+     What is Transfer Learning?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modifying-our-network">
+     Modifying Our Network
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fine-tuning-our-network">
+     Fine Tuning Our Network
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quantization">
+   Quantization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#download-the-model-if-desired">
+     Download the Model if Desired
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compiling-with-tvm-for-arduino">
+   Compiling With TVM For Arduino
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choosing-an-arduino-board">
+     Choosing an Arduino Board
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generating-our-project">
+     Generating our project
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing-our-arduino-project">
+   Testing our Arduino Project
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-our-arduino-script">
+   Writing our Arduino Script
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compiling-our-code">
+     Compiling Our Code
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uploading-to-our-device">
+   Uploading to Our Device
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expected-results">
+     Expected Results
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#next-steps">
+     Next Steps
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Training Vision Models for microTVM on Arduino</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> 导航 </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivation">
+   Motivation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#installing-the-prerequisites">
+     Installing the Prerequisites
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-the-gpu">
+     Using the GPU
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choosing-our-work-dir">
+     Choosing Our Work Dir
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-the-data">
+   Downloading the Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-the-data">
+   Loading the Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#whats-inside-our-dataset">
+     What’s Inside Our Dataset?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validating-our-accuracy">
+     Validating our Accuracy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Loading the Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-transfer-learning">
+     What is Transfer Learning?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modifying-our-network">
+     Modifying Our Network
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fine-tuning-our-network">
+     Fine Tuning Our Network
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quantization">
+   Quantization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#download-the-model-if-desired">
+     Download the Model if Desired
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compiling-with-tvm-for-arduino">
+   Compiling With TVM For Arduino
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choosing-an-arduino-board">
+     Choosing an Arduino Board
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generating-our-project">
+     Generating our project
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing-our-arduino-project">
+   Testing our Arduino Project
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-our-arduino-script">
+   Writing our Arduino Script
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compiling-our-code">
+     Compiling Our Code
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uploading-to-our-device">
+   Uploading to Our Device
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expected-results">
+     Expected Results
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#next-steps">
+     Next Steps
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="training-vision-models-for-microtvm-on-arduino">
+<h1>Training Vision Models for microTVM on Arduino<a class="headerlink" href="#training-vision-models-for-microtvm-on-arduino" title="永久链接至标题">#</a></h1>
+<p><strong>Author</strong>: <a class="reference external" href="https://github.com/guberti">Gavin Uberti</a></p>
+<p>This tutorial shows how MobileNetV1 models can be trained
+to fit on embedded devices, and how those models can be
+deployed to Arduino using TVM.</p>
+<div class="alert alert-info"><h4>Note</h4><p>This tutorial is best viewed as a Jupyter Notebook. You can download and run it locally
+  using the link at the bottom of this page, or open it online for free using Google Colab.
+  Click the icon below to open in Google Colab.</p></div>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/tlc-pack/web-data/main/images/utilities/colab_button.png"><img alt="https://raw.githubusercontent.com/tlc-pack/web-data/main/images/utilities/colab_button.png" class="align-center" src="https://raw.githubusercontent.com/tlc-pack/web-data/main/images/utilities/colab_button.png" style="width: 300px;" /></a>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="永久链接至标题">#</a></h2>
+<p>When building IOT devices, we often want them to <strong>see and understand</strong> the world around them.
+This can take many forms, but often times a device will want to know if a certain <strong>kind of
+object</strong> is in its field of vision.</p>
+<p>For example, a security camera might look for <strong>people</strong>, so it can decide whether to save a video
+to memory. A traffic light might look for <strong>cars</strong>, so it can judge which lights should change
+first. Or a forest camera might look for a <strong>kind of animal</strong>, so they can estimate how large
+the animal population is.</p>
+<p>To make these devices affordable, we would like them to need only a low-cost processor like the
+<a class="reference external" href="https://www.nordicsemi.com/Products/nRF52840">nRF52840</a> (costing five dollars each on Mouser) or the <a class="reference external" href="https://www.raspberrypi.com/products/rp2040/">RP2040</a> (just $1.45 each!).</p>
+<p>These devices have very little memory (~250 KB RAM), meaning that no conventional edge AI
+vision model (like MobileNet or EfficientNet) will be able to run. In this tutorial, we will
+show how these models can be modified to work around this requirement. Then, we will use TVM
+to compile and deploy it for an Arduino that uses one of these processors.</p>
+<section id="installing-the-prerequisites">
+<h3>Installing the Prerequisites<a class="headerlink" href="#installing-the-prerequisites" title="永久链接至标题">#</a></h3>
+<p>This tutorial will use TensorFlow to train the model - a widely used machine learning library
+created by Google. TensorFlow is a very low-level library, however, so we will the Keras
+interface to talk to TensorFlow. We will also use TensorFlow Lite to perform quantization on
+our model, as TensorFlow by itself does not support this.</p>
+<p>Once we have our generated model, we will use TVM to compile and test it. To avoid having to
+build from source, we’ll install <code class="docutils literal notranslate"><span class="pre">tlcpack</span></code> - a community build of TVM. Lastly, we’ll also
+install <code class="docutils literal notranslate"><span class="pre">imagemagick</span></code> and <code class="docutils literal notranslate"><span class="pre">curl</span></code> to preprocess data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
+pip install -q tensorflow tflite
+pip install -q tlcpack-nightly -f https://tlcpack.ai/wheels
+apt-get -qq install imagemagick curl
+
+# Install Arduino CLI and library for Nano 33 BLE
+curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+/content/bin/arduino-cli core update-index
+/content/bin/arduino-cli core install arduino:mbed_nano
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-the-gpu">
+<h3>Using the GPU<a class="headerlink" href="#using-the-gpu" title="永久链接至标题">#</a></h3>
+<p>This tutorial demonstrates training a neural network, which is requires a lot of computing power
+and will go much faster if you have a GPU. If you are viewing this tutorial on Google Colab, you
+can enable a GPU by going to <strong>Runtime-&gt;Change runtime type</strong> and selecting “GPU” as our hardware
+accelerator. If you are running locally, you can <a class="reference external" href="https://www.tensorflow.org/guide/gpu">follow TensorFlow’s guide</a> instead.</p>
+<p>We can test our GPU installation with the following code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">tf</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">gpu_device_name</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No GPU was detected!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model training will take much longer (~30 minutes instead of ~5)&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;GPU detected - you&#39;re good to go.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="choosing-our-work-dir">
+<h3>Choosing Our Work Dir<a class="headerlink" href="#choosing-our-work-dir" title="永久链接至标题">#</a></h3>
+<p>We need to pick a directory where our image datasets, trained model, and eventual Arduino sketch
+will all live. If running on Google Colab, we’ll save everything in <code class="docutils literal notranslate"><span class="pre">/root</span></code> (aka <code class="docutils literal notranslate"><span class="pre">~</span></code>) but you’ll
+probably want to store it elsewhere if running locally. Note that this variable only affects Python
+scripts - you’ll have to adjust the Bash commands too.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">FOLDER</span> <span class="o">=</span> <span class="s2">&quot;/root&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="downloading-the-data">
+<h2>Downloading the Data<a class="headerlink" href="#downloading-the-data" title="永久链接至标题">#</a></h2>
+<p>Convolutional neural networks usually learn by looking at many images, along with labels telling
+the network what those images are. To get these images, we’ll need a publicly available dataset
+with thousands of images of all sorts of objects and labels of what’s in each image. We’ll also
+need a bunch of images that <strong>aren’t</strong> of cars, as we’re trying to distinguish these two classes.</p>
+<p>In this tutorial, we’ll create a model to detect if an image contains a <strong>car</strong>, but you can use
+whatever category you like! Just change the source URL below to one containing images of another
+type of object.</p>
+<p>To get our car images, we’ll be downloading the <a class="reference external" href="http://ai.stanford.edu/~jkrause/cars/car_dataset.html">Stanford Cars dataset</a>,
+which contains 16,185 full color images of cars. We’ll also need images of random things that
+aren’t cars, so we’ll use the <a class="reference external" href="https://cocodataset.org/#home">COCO 2017</a> validation set (it’s
+smaller, and thus faster to download than the full training set. Training on the full data set
+would yield better results). Note that there are some cars in the COCO 2017 data set, but it’s
+a small enough fraction not to matter - just keep in mind that this will drive down our percieved
+accuracy slightly.</p>
+<p>We could use the TensorFlow dataloader utilities, but we’ll instead do it manually to make sure
+it’s easy to change the datasets being used. We’ll end up with the following file hierarchy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/root
+├── images
+│   ├── object
+│   │   ├── 000001.jpg
+│   │   │ ...
+│   │   └── 016185.jpg
+│   ├── object.tgz
+│   ├── random
+│   │   ├── 000000000139.jpg
+│   │   │ ...
+│   │   └── 000000581781.jpg
+│   └── random.zip
+</pre></div>
+</div>
+<p>We should also note that Stanford cars has 8k images, while the COCO 2017 validation set is 5k
+images - it is not a 50/50 split! If we wanted to, we could weight these classes differently
+during training to correct for this, but training will still work if we ignore it. It should
+take about <strong>2 minutes</strong> to download the Stanford Cars, while COCO 2017 validation will take
+<strong>1 minute</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">urllib.request</span>
+
+<span class="c1"># Download datasets</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/downloads&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/images&quot;</span><span class="p">)</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span>
+    <span class="s2">&quot;https://data.deepai.org/stanfordcars.zip&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/downloads/target.zip&quot;</span>
+<span class="p">)</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span>
+    <span class="s2">&quot;http://images.cocodataset.org/zips/val2017.zip&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/downloads/random.zip&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Extract them and rename their folders</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">unpack_archive</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/downloads/target.zip&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/downloads&quot;</span><span class="p">)</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">unpack_archive</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/downloads/random.zip&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/downloads&quot;</span><span class="p">)</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/downloads/cars_train/cars_train&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/images/target&quot;</span><span class="p">)</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/downloads/val2017&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/images/random&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="loading-the-data">
+<h2>Loading the Data<a class="headerlink" href="#loading-the-data" title="永久链接至标题">#</a></h2>
+<p>Currently, our data is stored on-disk as JPG files of various sizes. To train with it, we’ll have
+to load the images into memory, resize them to be 64x64, and convert them to raw, uncompressed
+data. Keras’s <code class="docutils literal notranslate"><span class="pre">image_dataset_from_directory</span></code> will take care of most of this, though it loads
+images such that each pixel value is a float from 0 to 255.</p>
+<p>We’ll also need to load labels, though Keras will help with this. From our subdirectory structure,
+it knows the images in <code class="docutils literal notranslate"><span class="pre">/objects</span></code> are one class, and those in <code class="docutils literal notranslate"><span class="pre">/random</span></code> another. Setting
+<code class="docutils literal notranslate"><span class="pre">label_mode='categorical'</span></code> tells Keras to convert these into <strong>categorical labels</strong> - a 2x1 vector
+that’s either <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">0]</span></code> for an object of our target class, or <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code> vector for anything else.
+We’ll also set <code class="docutils literal notranslate"><span class="pre">shuffle=True</span></code> to randomize the order of our examples.</p>
+<p>We will also <strong>batch</strong> the data - grouping samples into clumps to make our training go faster.
+Setting <code class="docutils literal notranslate"><span class="pre">batch_size</span> <span class="pre">=</span> <span class="pre">32</span></code> is a decent number.</p>
+<p>Lastly, in machine learning we generally want our inputs to be small numbers. We’ll thus use a
+<code class="docutils literal notranslate"><span class="pre">Rescaling</span></code> layer to change our images such that each pixel is a float between <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">1.0</span></code>,
+instead of <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">255</span></code>. We need to be careful not to rescale our categorical labels though, so
+we’ll use a <code class="docutils literal notranslate"><span class="pre">lambda</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">IMAGE_SIZE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">unscaled_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">image_dataset_from_directory</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/images&quot;</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">label_mode</span><span class="o">=</span><span class="s2">&quot;categorical&quot;</span><span class="p">,</span>
+    <span class="n">image_size</span><span class="o">=</span><span class="n">IMAGE_SIZE</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">rescale</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Rescaling</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mi">255</span><span class="p">)</span>
+<span class="n">full_dataset</span> <span class="o">=</span> <span class="n">unscaled_dataset</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">im</span><span class="p">,</span> <span class="n">lbl</span><span class="p">:</span> <span class="p">(</span><span class="n">rescale</span><span class="p">(</span><span class="n">im</span><span class="p">),</span> <span class="n">lbl</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="whats-inside-our-dataset">
+<h3>What’s Inside Our Dataset?<a class="headerlink" href="#whats-inside-our-dataset" title="永久链接至标题">#</a></h3>
+<p>Before giving this data set to our neural network, we ought to give it a quick visual inspection.
+Does the data look properly transformed? Do the labels seem appropriate? And what’s our ratio of
+objects to other stuff? We can display some examples from our datasets using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">num_target_class</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/images/target/&quot;</span><span class="p">))</span>
+<span class="n">num_random_class</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/images/random/&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/images/target contains </span><span class="si">{</span><span class="n">num_target_class</span><span class="si">}</span><span class="s2"> images&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/images/random contains </span><span class="si">{</span><span class="n">num_random_class</span><span class="si">}</span><span class="s2"> images&quot;</span><span class="p">)</span>
+
+<span class="c1"># Show some samples and their labels</span>
+<span class="n">SAMPLES_TO_SHOW</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">unscaled_dataset</span><span class="o">.</span><span class="n">unbatch</span><span class="p">()):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">SAMPLES_TO_SHOW</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">SAMPLES_TO_SHOW</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;uint8&quot;</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">label</span><span class="o">.</span><span class="n">numpy</span><span class="p">()))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="validating-our-accuracy">
+<h3>Validating our Accuracy<a class="headerlink" href="#validating-our-accuracy" title="永久链接至标题">#</a></h3>
+<p>While developing our model, we’ll often want to check how accurate it is (e.g. to see if it
+improves during training). How do we do this? We could just train it on <em>all</em> of the data, and
+then ask it to classify that same data. However, our model could cheat by just memorizing all of
+the samples, which would make it <em>appear</em> to have very high accuracy, but perform very badly in
+reality. In practice, this “memorizing” is called <strong>overfitting</strong>.</p>
+<p>To prevent this, we will set aside some of the data (we’ll use 20%) as a <strong>validation set</strong>. Our
+model will never be trained on validation data - we’ll only use it to check our model’s accuracy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_batches</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_dataset</span><span class="p">)</span>
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">full_dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">num_batches</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">))</span>
+<span class="n">validation_dataset</span> <span class="o">=</span> <span class="n">full_dataset</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id1">
+<h2>Loading the Data<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
+<p>In the past decade, <a class="reference external" href="https://en.wikipedia.org/wiki/Convolutional_neural_network">convolutional neural networks</a> have been widely
+adopted for image classification tasks. State-of-the-art models like <a class="reference external" href="https://arxiv.org/abs/2104.00298">EfficientNet V2</a> are able
+to perform image classification better than even humans! Unfortunately, these models have tens of
+millions of parameters, and thus won’t fit on cheap security camera computers.</p>
+<p>Our applications generally don’t need perfect accuracy - 90% is good enough. We can thus use the
+older and smaller MobileNet V1 architecture. But this <em>still</em> won’t be small enough - by default,
+MobileNet V1 with 224x224 inputs and alpha 1.0 takes ~50 MB to just <strong>store</strong>. To reduce the size
+of the model, there are three knobs we can turn. First, we can reduce the size of the input images
+from 224x224 to 96x96 or 64x64, and Keras makes it easy to do this. We can also reduce the <strong>alpha</strong>
+of the model, from 1.0 to 0.25, which downscales the width of the network (and the number of
+filters) by a factor of four. And if we were really strapped for space, we could reduce the
+number of <strong>channels</strong> by making our model take grayscale images instead of RGB ones.</p>
+<p>In this tutorial, we will use an RGB 64x64 input image and alpha 0.25. This is not quite
+ideal, but it allows the finished model to fit in 192 KB of RAM, while still letting us perform
+transfer learning using the official TensorFlow source models (if we used alpha &lt;0.25 or a
+grayscale input, we wouldn’t be able to do this).</p>
+<section id="what-is-transfer-learning">
+<h3>What is Transfer Learning?<a class="headerlink" href="#what-is-transfer-learning" title="永久链接至标题">#</a></h3>
+<p>Deep learning has <a class="reference external" href="https://paperswithcode.com/sota/image-classification-on-imagenet">dominated image classification</a> for a long time,
+but training neural networks takes a lot of time. When a neural network is trained “from scratch”,
+its parameters start out randomly initialized, forcing it to learn very slowly how to tell images
+apart.</p>
+<p>With transfer learning, we instead start with a neural network that’s <strong>already</strong> good at a
+specific task. In this example, that task is classifying images from <a class="reference external" href="https://www.image-net.org/">the ImageNet database</a>. This
+means the network already has some object detection capabilities, and is likely closer to what you
+want then a random model would be.</p>
+<p>This works especially well with image processing neural networks like MobileNet. In practice, it
+turns out the convolutional layers of the model (i.e. the first 90% of the layers) are used for
+identifying low-level features like lines and shapes - only the last few fully connected layers
+are used to determine how those shapes make up the objects the network is trying to detect.</p>
+<p>We can take advantage of this by starting training with a MobileNet model that was trained on
+ImageNet, and already knows how to identify those lines and shapes. We can then just remove the
+last few layers from this pretrained model, and add our own final layers. We’ll then train this
+conglomerate model for a few epochs on our cars vs non-cars dataset, to adjust the first layers
+and train from scratch the last layers. This process of training an already-partially-trained
+model is called <em>fine-tuning</em>.</p>
+<p>Source MobileNets for transfer learning have been <a class="reference external" href="https://github.com/tensorflow/models/blob/master/research/slim/nets/mobilenet_v1.md">pretrained by the TensorFlow folks</a>, so we
+can just download the one closest to what we want (the 128x128 input model with 0.25 depth scale).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/models&quot;</span><span class="p">)</span>
+<span class="n">WEIGHTS_PATH</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/models/mobilenet_2_5_128_tf.h5&quot;</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span>
+    <span class="s2">&quot;https://storage.googleapis.com/tensorflow/keras-applications/mobilenet/mobilenet_2_5_128_tf.h5&quot;</span><span class="p">,</span>
+    <span class="n">WEIGHTS_PATH</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">pretrained</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">applications</span><span class="o">.</span><span class="n">MobileNet</span><span class="p">(</span>
+    <span class="n">input_shape</span><span class="o">=</span><span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">WEIGHTS_PATH</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="modifying-our-network">
+<h3>Modifying Our Network<a class="headerlink" href="#modifying-our-network" title="永久链接至标题">#</a></h3>
+<p>As mentioned above, our pretrained model is designed to classify the 1,000 ImageNet categories,
+but we want to convert it to classify cars. Since only the bottom few layers are task-specific,
+we’ll <strong>cut off the last five layers</strong> of our original model. In their place we’ll build our own
+“tail” to the model by performing respape, dropout, flatten, and softmax operations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">InputLayer</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="n">IMAGE_SIZE</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">pretrained</span><span class="o">.</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">pretrained</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">output</span><span class="p">))</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">())</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fine-tuning-our-network">
+<h3>Fine Tuning Our Network<a class="headerlink" href="#fine-tuning-our-network" title="永久链接至标题">#</a></h3>
+<p>When training neural networks, we must set a parameter called the <strong>learning rate</strong> that controls
+how fast our network learns. It must be set carefully - too slow, and our network will take
+forever to train; too fast, and our network won’t be able to learn some fine details. Generally
+for Adam (the optimizer we’re using), <code class="docutils literal notranslate"><span class="pre">0.001</span></code> is a pretty good learning rate (and is what’s
+recommended in the <a class="reference external" href="https://arxiv.org/abs/1412.6980">original paper</a>). However, in this case
+<code class="docutils literal notranslate"><span class="pre">0.0005</span></code> seems to work a little better.</p>
+<p>We’ll also pass the validation set from earlier to <code class="docutils literal notranslate"><span class="pre">model.fit</span></code>. This will evaluate how good our
+model is each time we train it, and let us track how our model is improving. Once training is
+finished, the model should have a validation accuracy around <code class="docutils literal notranslate"><span class="pre">0.98</span></code> (meaning it was right 98% of
+the time on our validation set).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.0005</span><span class="p">),</span>
+    <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;categorical_crossentropy&quot;</span><span class="p">,</span>
+    <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="n">validation_dataset</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="quantization">
+<h2>Quantization<a class="headerlink" href="#quantization" title="永久链接至标题">#</a></h2>
+<p>We’ve done a decent job of reducing our model’s size so far - changing the input dimension,
+along with removing the bottom layers reduced the model to just 219k parameters. However, each of
+these parameters is a <code class="docutils literal notranslate"><span class="pre">float32</span></code> that takes four bytes, so our model will take up almost one MB!</p>
+<p>Additionally, it might be the case that our hardware doesn’t have built-in support for floating
+point numbers. While most high-memory Arduinos (like the Nano 33 BLE) do have hardware support,
+some others (like the Arduino Due) do not. On any boards <em>without</em> dedicated hardware support,
+floating point multiplication will be extremely slow.</p>
+<p>To address both issues we will <strong>quantize</strong> the model - representing the weights as eight bit
+integers. It’s more complex than just rounding, though - to get the best performance, TensorFlow
+tracks how each neuron in our model activates, so we can figure out how most accurately simulate
+the neuron’s original activations with integer operations.</p>
+<p>We will help TensorFlow do this by creating a representative dataset - a subset of the original
+that is used for tracking how those neurons activate. We’ll then pass this into a <code class="docutils literal notranslate"><span class="pre">TFLiteConverter</span></code>
+(Keras itself does not have quantization support) with an <code class="docutils literal notranslate"><span class="pre">Optimize</span></code> flag to tell TFLite to perform
+the conversion. By default, TFLite keeps the inputs and outputs of our model as floats, so we must
+explicitly tell it to avoid this behavior.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">representative_dataset</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">image_batch</span><span class="p">,</span> <span class="n">label_batch</span> <span class="ow">in</span> <span class="n">full_dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="p">[</span><span class="n">image_batch</span><span class="p">]</span>
+
+
+<span class="n">converter</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">lite</span><span class="o">.</span><span class="n">TFLiteConverter</span><span class="o">.</span><span class="n">from_keras_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">converter</span><span class="o">.</span><span class="n">optimizations</span> <span class="o">=</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">lite</span><span class="o">.</span><span class="n">Optimize</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">]</span>
+<span class="n">converter</span><span class="o">.</span><span class="n">representative_dataset</span> <span class="o">=</span> <span class="n">representative_dataset</span>
+<span class="n">converter</span><span class="o">.</span><span class="n">target_spec</span><span class="o">.</span><span class="n">supported_ops</span> <span class="o">=</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">lite</span><span class="o">.</span><span class="n">OpsSet</span><span class="o">.</span><span class="n">TFLITE_BUILTINS_INT8</span><span class="p">]</span>
+<span class="n">converter</span><span class="o">.</span><span class="n">inference_input_type</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">uint8</span>
+<span class="n">converter</span><span class="o">.</span><span class="n">inference_output_type</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">uint8</span>
+
+<span class="n">quantized_model</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="download-the-model-if-desired">
+<h3>Download the Model if Desired<a class="headerlink" href="#download-the-model-if-desired" title="永久链接至标题">#</a></h3>
+<p>We’ve now got a finished model that you can use locally or in other tutorials (try autotuning
+this model or viewing it on <a class="reference external" href="https://netron.app/">https://netron.app/</a>). But before we do
+those things, we’ll have to write it to a file (<code class="docutils literal notranslate"><span class="pre">quantized.tflite</span></code>). If you’re running this
+tutorial on Google Colab, you’ll have to uncomment the last two lines to download the file
+after writing it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">QUANTIZED_MODEL_PATH</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/models/quantized.tflite&quot;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">QUANTIZED_MODEL_PATH</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">quantized_model</span><span class="p">)</span>
+<span class="c1"># from google.colab import files</span>
+<span class="c1"># files.download(QUANTIZED_MODEL_PATH)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="compiling-with-tvm-for-arduino">
+<h2>Compiling With TVM For Arduino<a class="headerlink" href="#compiling-with-tvm-for-arduino" title="永久链接至标题">#</a></h2>
+<p>TensorFlow has a built-in framework for deploying to microcontrollers - <a class="reference external" href="https://www.tensorflow.org/lite/microcontrollers">TFLite Micro</a>. However,
+it’s poorly supported by development boards and does not support autotuning. We will use Apache
+TVM instead.</p>
+<p>TVM can be used either with its command line interface (<code class="docutils literal notranslate"><span class="pre">tvmc</span></code>) or with its Python interface. The
+Python interface is fully-featured and more stable, so we’ll use it here.</p>
+<p>TVM is an optimizing compiler, and optimizations to our model are performed in stages via
+<strong>intermediate representations</strong>. The first of these is <a class="reference external" href="https://arxiv.org/abs/1810.00952">Relay</a> a high-level intermediate
+representation emphasizing portability. The conversion from <code class="docutils literal notranslate"><span class="pre">.tflite</span></code> to Relay is done without any
+knowledge of our “end goal” - the fact we intend to run this model on an Arduino.</p>
+<section id="choosing-an-arduino-board">
+<h3>Choosing an Arduino Board<a class="headerlink" href="#choosing-an-arduino-board" title="永久链接至标题">#</a></h3>
+<p>Next, we’ll have to decide exactly which Arduino board to use. The Arduino sketch that we
+ultimately generate should be compatible with any board, but knowing which board we are using in
+advance allows TVM to adjust its compilation strategy to get better performance.</p>
+<p>There is one catch - we need enough <strong>memory</strong> (flash and RAM) to be able to run our model. We
+won’t ever be able to run a complex vision model like a MobileNet on an Arduino Uno - that board
+only has 2 kB of RAM and 32 kB of flash! Our model has ~200,000 parameters, so there is just no
+way it could fit.</p>
+<p>For this tutorial, we will use the Nano 33 BLE, which has 1 MB of flash memory and 256 KB of RAM.
+However, any other Arduino with those specs or better should also work.</p>
+</section>
+<section id="generating-our-project">
+<h3>Generating our project<a class="headerlink" href="#generating-our-project" title="永久链接至标题">#</a></h3>
+<p>Next, we’ll compile the model to TVM’s MLF (model library format) intermediate representation,
+which consists of C/C++ code and is designed for autotuning. To improve performance, we’ll tell
+TVM that we’re compiling for the <code class="docutils literal notranslate"><span class="pre">nrf52840</span></code> microprocessor (the one the Nano 33 BLE uses). We’ll
+also tell it to use the C runtime (abbreviated <code class="docutils literal notranslate"><span class="pre">crt</span></code>) and to use ahead-of-time memory allocation
+(abbreviated <code class="docutils literal notranslate"><span class="pre">aot</span></code>, which helps reduce the model’s memory footprint). Lastly, we will disable
+vectorization with <code class="docutils literal notranslate"><span class="pre">&quot;tir.disable_vectorize&quot;:</span> <span class="pre">True</span></code>, as C has no native vectorized types.</p>
+<p>Once we have set these configuration parameters, we will call <code class="docutils literal notranslate"><span class="pre">tvm.relay.build</span></code> to compile our
+Relay model into the MLF intermediate representation. From here, we just need to call
+<code class="docutils literal notranslate"><span class="pre">tvm.micro.generate_project</span></code> and pass in the Arduino template project to finish compilation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">tflite</span>
+<span class="kn">import</span> <span class="nn">tvm</span>
+
+<span class="c1"># Method to load model is different in TFLite 1 vs 2</span>
+<span class="k">try</span><span class="p">:</span>  <span class="c1"># TFLite 2.1 and above</span>
+    <span class="n">tflite_model</span> <span class="o">=</span> <span class="n">tflite</span><span class="o">.</span><span class="n">Model</span><span class="o">.</span><span class="n">GetRootAsModel</span><span class="p">(</span><span class="n">quantized_model</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>  <span class="c1"># Fall back to TFLite 1.14 method</span>
+    <span class="n">tflite_model</span> <span class="o">=</span> <span class="n">tflite</span><span class="o">.</span><span class="n">Model</span><span class="o">.</span><span class="n">Model</span><span class="o">.</span><span class="n">GetRootAsModel</span><span class="p">(</span><span class="n">quantized_model</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Convert to the Relay intermediate representation</span>
+<span class="n">mod</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">relay</span><span class="o">.</span><span class="n">frontend</span><span class="o">.</span><span class="n">from_tflite</span><span class="p">(</span><span class="n">tflite_model</span><span class="p">)</span>
+
+<span class="c1"># Set configuration flags to improve performance</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">micro</span><span class="p">(</span><span class="s2">&quot;nrf52840&quot;</span><span class="p">)</span>
+<span class="n">runtime</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">relay</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">Runtime</span><span class="p">(</span><span class="s2">&quot;crt&quot;</span><span class="p">)</span>
+<span class="n">executor</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">relay</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">Executor</span><span class="p">(</span><span class="s2">&quot;aot&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;unpacked-api&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+
+<span class="c1"># Convert to the MLF intermediate representation</span>
+<span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;tir.disable_vectorize&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}):</span>
+    <span class="n">mod</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">relay</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">runtime</span><span class="o">=</span><span class="n">runtime</span><span class="p">,</span> <span class="n">executor</span><span class="o">=</span><span class="n">executor</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+<span class="c1"># Generate an Arduino project from the MLF intermediate representation</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/models/project&quot;</span><span class="p">,</span> <span class="n">ignore_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">arduino_project</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">micro</span><span class="o">.</span><span class="n">generate_project</span><span class="p">(</span>
+    <span class="n">tvm</span><span class="o">.</span><span class="n">micro</span><span class="o">.</span><span class="n">get_microtvm_template_projects</span><span class="p">(</span><span class="s2">&quot;arduino&quot;</span><span class="p">),</span>
+    <span class="n">mod</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/models/project&quot;</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;arduino_board&quot;</span><span class="p">:</span> <span class="s2">&quot;nano33ble&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;arduino_cli_cmd&quot;</span><span class="p">:</span> <span class="s2">&quot;/content/bin/arduino-cli&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;project_type&quot;</span><span class="p">:</span> <span class="s2">&quot;example_project&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="testing-our-arduino-project">
+<h2>Testing our Arduino Project<a class="headerlink" href="#testing-our-arduino-project" title="永久链接至标题">#</a></h2>
+<p>Consider the following two 224x224 images from the author’s camera roll - one of a car, one not.
+We will test our Arduino project by loading both of these images and executing the compiled model
+on them.</p>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/tlc-pack/web-data/main/testdata/microTVM/data/model_train_images_combined.png"><img alt="https://raw.githubusercontent.com/tlc-pack/web-data/main/testdata/microTVM/data/model_train_images_combined.png" class="align-center" src="https://raw.githubusercontent.com/tlc-pack/web-data/main/testdata/microTVM/data/model_train_images_combined.png" style="width: 600px; height: 200px;" /></a>
+<p>Currently, these are 224x224 PNG images we can download from Imgur. Before we can feed in these
+images, we’ll need to resize and convert them to raw data, which can be done with <code class="docutils literal notranslate"><span class="pre">imagemagick</span></code>.</p>
+<p>It’s also challenging to load raw data onto an Arduino, as only C/CPP files (and similar) are
+compiled. We can work around this by embedding our raw data in a hard-coded C array with the
+built-in utility <code class="docutils literal notranslate"><span class="pre">bin2c</span></code> that will output a file like below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">CAR_IMAGE</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="mh">0x22</span><span class="p">,</span><span class="mh">0x23</span><span class="p">,</span><span class="mh">0x14</span><span class="p">,</span><span class="mh">0x22</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="mh">0x07</span><span class="p">,</span><span class="mh">0x0e</span><span class="p">,</span><span class="mh">0x08</span><span class="p">,</span><span class="mh">0x08</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>We can do both of these things with a few lines of Bash code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
+mkdir -p ~/tests
+curl &quot;https://i.imgur.com/JBbEhxN.png&quot; -o ~/tests/car_224.png
+convert ~/tests/car_224.png -resize 64 ~/tests/car_64.png
+stream ~/tests/car_64.png ~/tests/car.raw
+bin2c -c -st ~/tests/car.raw --name CAR_IMAGE &gt; ~/models/project/car.c
+
+curl &quot;https://i.imgur.com/wkh7Dx2.png&quot; -o ~/tests/catan_224.png
+convert ~/tests/catan_224.png -resize 64 ~/tests/catan_64.png
+stream ~/tests/catan_64.png ~/tests/catan.raw
+bin2c -c -st ~/tests/catan.raw --name CATAN_IMAGE &gt; ~/models/project/catan.c
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="writing-our-arduino-script">
+<h2>Writing our Arduino Script<a class="headerlink" href="#writing-our-arduino-script" title="永久链接至标题">#</a></h2>
+<p>We now need a little bit of Arduino code to read the two binary arrays we just generated, run the
+model on them, and log the output to the serial monitor. This file will replace <code class="docutils literal notranslate"><span class="pre">arduino_sketch.ino</span></code>
+as the main file of our sketch. You’ll have to copy this code in manually…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%writefile</span> /root/models/project.ino
+<span class="c1">#include &quot;src/model.h&quot;</span>
+<span class="c1">#include &quot;car.c&quot;</span>
+<span class="c1">#include &quot;catan.c&quot;</span>
+
+<span class="n">void</span> <span class="n">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">Serial</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+  <span class="n">TVMInitialize</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="n">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">uint8_t</span> <span class="n">result_data</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+  <span class="n">Serial</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;Car results:&quot;</span><span class="p">);</span>
+  <span class="n">TVMExecute</span><span class="p">(</span><span class="n">const_cast</span><span class="o">&lt;</span><span class="n">uint8_t</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">CAR_IMAGE</span><span class="p">),</span> <span class="n">result_data</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">result_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">Serial</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">result_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">Serial</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+
+  <span class="n">Serial</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;Other object results:&quot;</span><span class="p">);</span>
+  <span class="n">TVMExecute</span><span class="p">(</span><span class="n">const_cast</span><span class="o">&lt;</span><span class="n">uint8_t</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">CATAN_IMAGE</span><span class="p">),</span> <span class="n">result_data</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">result_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">Serial</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">result_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">Serial</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="compiling-our-code">
+<h3>Compiling Our Code<a class="headerlink" href="#compiling-our-code" title="永久链接至标题">#</a></h3>
+<p>Now that our project has been generated, TVM’s job is mostly done! We can still call
+<code class="docutils literal notranslate"><span class="pre">arduino_project.build()</span></code> and <code class="docutils literal notranslate"><span class="pre">arduino_project.upload()</span></code>, but these just use <code class="docutils literal notranslate"><span class="pre">arduino-cli</span></code>’s
+compile and flash commands underneath. We could also begin autotuning our model, but that’s a
+subject for a different tutorial. To finish up, we’ll verify no compiler errors are thrown
+by our project:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/models/project/build&quot;</span><span class="p">,</span> <span class="n">ignore_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">arduino_project</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Compilation succeeded!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="uploading-to-our-device">
+<h2>Uploading to Our Device<a class="headerlink" href="#uploading-to-our-device" title="永久链接至标题">#</a></h2>
+<p>The very last step is uploading our sketch to an Arduino to make sure our code works properly.
+Unfortunately, we can’t do that from Google Colab, so we’ll have to download our sketch. This is
+simple enough to do - we’ll just turn our project into a <code class="docutils literal notranslate"><span class="pre">.zip</span></code> archive, and call <code class="docutils literal notranslate"><span class="pre">files.download</span></code>.
+If you’re running on Google Colab, you’ll have to uncomment the last two lines to download the file
+after writing it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ZIP_FOLDER</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">/models/project&quot;</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">make_archive</span><span class="p">(</span><span class="n">ZIP_FOLDER</span><span class="p">,</span> <span class="s2">&quot;zip&quot;</span><span class="p">,</span> <span class="n">ZIP_FOLDER</span><span class="p">)</span>
+<span class="c1"># from google.colab import files</span>
+<span class="c1"># files.download(f&quot;{FOLDER}/models/project.zip&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From here, we’ll need to open it in the Arduino IDE. You’ll have to download the IDE as well as
+the SDK for whichever board you are using. For certain boards like the Sony SPRESENSE, you may
+have to change settings to control how much memory you want the board to use.</p>
+<section id="expected-results">
+<h3>Expected Results<a class="headerlink" href="#expected-results" title="永久链接至标题">#</a></h3>
+<p>If all works as expected, you should see the following output on a Serial monitor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Car</span> <span class="n">results</span><span class="p">:</span>
+<span class="mi">255</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">Other</span> <span class="nb">object</span> <span class="n">results</span><span class="p">:</span>
+<span class="mi">0</span><span class="p">,</span> <span class="mi">255</span>
+</pre></div>
+</div>
+<p>The first number represents the model’s confidence that the object <strong>is</strong> a car and ranges from
+0-255. The second number represents the model’s confidence that the object <strong>is not</strong> a car and
+is also 0-255. These results mean the model is very sure that the first image is a car, and the
+second image is not (which is correct). Hence, our model is working!</p>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="永久链接至标题">#</a></h2>
+<p>In this tutorial, we used transfer learning to quickly train an image recognition model to
+identify cars. We modified its input dimensions and last few layers to make it better at this,
+and to make it faster and smaller. We then quantified the model and compiled it using TVM to
+create an Arduino sketch. Lastly, we tested the model using two static images to prove it works
+as intended.</p>
+<section id="next-steps">
+<h3>Next Steps<a class="headerlink" href="#next-steps" title="永久链接至标题">#</a></h3>
+<p>From here, we could modify the model to read live images from the camera - we have another
+Arduino tutorial for how to do that <a class="reference external" href="https://github.com/guberti/tvm-arduino-demos/tree/master/examples/person_detection">on GitHub</a>. Alternatively, we could also
+<a class="reference external" href="https://tvm.apache.org/docs/how_to/work_with_microtvm/micro_autotune.html">use TVM’s autotuning capabilities</a> to dramatically improve the model’s performance.</p>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="micro_tflite.html" title="上一页 页">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一页</p>
+            <p class="prev-next-title">microTVM with TFLite Models</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="micro_tvmc.html" title="下一页 页">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">Executing a Tiny Model with TVMC Micro</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By xinetzone<br/>
+  
+      &copy; Copyright 2022, xinetzone.<br/>
+    Last updated on 2022-08-30, 08:04:17.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

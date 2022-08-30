@@ -13,8 +13,7 @@
         "快速的解决方案是通过 pip 安装：\n",
         "\n",
         "```bash\n",
-        "pip install torch==1.7.0\n",
-        "pip install torchvision==0.8.1\n",
+        "pip install torch torchvision\n",
         "```\n",
         "\n",
         "或者请参考 [官方网站](https://pytorch.org/get-started/locally/)。\n",
@@ -30,7 +29,7 @@
       "metadata": {},
       "outputs": [],
       "source": [
-        "import set_env"
+        "import env"
       ]
     },
     {

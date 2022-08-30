@@ -26,8 +26,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
@@ -45,6 +44,7 @@
     <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script src="../../../../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../_static/design-tabs.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../../../../_static/tvm-logo-square.png"/>
@@ -223,33 +223,11 @@
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../../study/index.html">
-   学习笔记
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../../study/start.html">
-     TVM 入门指南
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../../study/test.html">
-     测试 TVM
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../../../user-guide.html">
    用户手册
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -258,8 +236,8 @@
     <a class="reference internal" href="../../../tutorial/index.html">
      用户指南
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-    <label for="toctree-checkbox-7">
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -330,8 +308,8 @@
     <a class="reference internal" href="../../../how_to/index.html">
      How To 指南
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-    <label for="toctree-checkbox-8">
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -340,8 +318,8 @@
       <a class="reference internal" href="../../../how_to/compile_models/index.html">
        编译深度学习模型
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-      <label for="toctree-checkbox-9">
+      <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+      <label for="toctree-checkbox-8">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -392,6 +370,11 @@
         </a>
        </li>
        <li class="toctree-l4">
+        <a class="reference internal" href="../../../how_to/compile_models/from_oneflow.html">
+         Compile OneFlow Models
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="../../../how_to/compile_models/from_paddle.html">
          Compile PaddlePaddle Models
         </a>
@@ -402,8 +385,8 @@
       <a class="reference internal" href="../../../how_to/deploy/index.html">
        部署模型并集成到 TVM
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-      <label for="toctree-checkbox-10">
+      <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+      <label for="toctree-checkbox-9">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -458,8 +441,8 @@
       <a class="reference internal" href="../../../how_to/deploy_models/index.html">
        部署深度学习模型
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-      <label for="toctree-checkbox-11">
+      <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -510,8 +493,8 @@
       <a class="reference internal" href="../../../how_to/work_with_relay/index.html">
        使用 Relay
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-      <label for="toctree-checkbox-12">
+      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+      <label for="toctree-checkbox-11">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -527,6 +510,11 @@
         </a>
        </li>
        <li class="toctree-l4">
+        <a class="reference internal" href="../../../how_to/work_with_relay/using_pipeline_executor.html">
+         在 Relay 中使用管道执行器
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="../../../how_to/work_with_relay/using_relay_viz.html">
          使用 Relay Visualizer 可视化 Relay
         </a>
@@ -537,8 +525,8 @@
       <a class="reference internal" href="../../../how_to/work_with_schedules/index.html">
        使用 Tensor Expression 和 Schedules
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-      <label for="toctree-checkbox-13">
+      <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+      <label for="toctree-checkbox-12">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -589,15 +577,15 @@
       <a class="reference internal" href="../../../how_to/optimize_operators/index.html">
        优化张量算子
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-      <label for="toctree-checkbox-14">
+      <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+      <label for="toctree-checkbox-13">
        <i class="fas fa-chevron-down">
        </i>
       </label>
       <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../../../how_to/optimize_operators/opt_gemm.html">
-         如何在 CPU 上优化 GEMM
+         How to optimize GEMM on CPU
         </a>
        </li>
        <li class="toctree-l4">
@@ -616,8 +604,8 @@
       <a class="reference internal" href="../../../how_to/tune_with_autotvm/index.html">
        Auto-Tune with Templates and AutoTVM
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-      <label for="toctree-checkbox-15">
+      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+      <label for="toctree-checkbox-14">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -651,10 +639,10 @@
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../../how_to/tune_with_autoscheduler/index.html">
-       Use AutoScheduler for Template-Free Scheduling
+       使用自动调度器进行无模板调度
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
-      <label for="toctree-checkbox-16">
+      <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+      <label for="toctree-checkbox-15">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -695,12 +683,17 @@
       <a class="reference internal" href="../../../how_to/work_with_microtvm/index.html">
        使用 microTVM
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
-      <label for="toctree-checkbox-17">
+      <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+      <label for="toctree-checkbox-16">
        <i class="fas fa-chevron-down">
        </i>
       </label>
       <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../how_to/work_with_microtvm/micro_aot.html">
+         microTVM Host-Driven AoT
+        </a>
+       </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../../../how_to/work_with_microtvm/micro_autotune.html">
          使用 microTVM Autotuning
@@ -722,6 +715,11 @@
         </a>
        </li>
        <li class="toctree-l4">
+        <a class="reference internal" href="../../../how_to/work_with_microtvm/micro_train.html">
+         Training Vision Models for microTVM on Arduino
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="../../../how_to/work_with_microtvm/micro_tvmc.html">
          Executing a Tiny Model with TVMC Micro
         </a>
@@ -732,8 +730,8 @@
       <a class="reference internal" href="../../../how_to/extend_tvm/index.html">
        拓展 TVM
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
-      <label for="toctree-checkbox-18">
+      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+      <label for="toctree-checkbox-17">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -764,8 +762,8 @@
       <a class="reference internal" href="../../../how_to/profile/index.html">
        模型剖析
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-      <label for="toctree-checkbox-19">
+      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+      <label for="toctree-checkbox-18">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -777,6 +775,16 @@
        </li>
       </ul>
      </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../errors.html">
+       处理 TVM 的错误
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../faq.html">
+       常见问题
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
@@ -785,8 +793,8 @@
   <a class="reference internal" href="../../../../developer-guide.html">
    开发手册
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
-  <label for="toctree-checkbox-20">
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -795,8 +803,8 @@
     <a class="reference internal" href="../../../dev/tutorial/index.html">
      开发者教程
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
-    <label for="toctree-checkbox-21">
+    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+    <label for="toctree-checkbox-20">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -812,8 +820,8 @@
     <a class="reference internal" href="../../../dev/how_to/how_to.html">
      开发者指南
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
-    <label for="toctree-checkbox-22">
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -851,8 +859,8 @@
   <a class="reference internal" href="../../../arch/index.html">
    设计与架构
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
-  <label for="toctree-checkbox-23">
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -948,8 +956,8 @@
   <a class="reference internal" href="../../../../topic-guides.html">
    主题指南
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
-  <label for="toctree-checkbox-24">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -963,8 +971,8 @@
     <a class="reference internal" href="../index.html">
      VTA：通用张量加速器
     </a>
-    <input checked="" class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
-    <label for="toctree-checkbox-25">
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+    <label for="toctree-checkbox-24">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -978,8 +986,8 @@
       <a class="reference internal" href="../dev/index.html">
        VTA 设计和开发指南
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
-      <label for="toctree-checkbox-26">
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -1000,8 +1008,8 @@
       <a class="reference internal" href="index.html">
        VTA 教程
       </a>
-      <input checked="" class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
-      <label for="toctree-checkbox-27">
+      <input checked="" class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
        <i class="fas fa-chevron-down">
        </i>
       </label>
@@ -1041,8 +1049,8 @@
   <a class="reference internal" href="../../../../reference-guide.html">
    参考指南
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
-  <label for="toctree-checkbox-28">
+  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -1051,8 +1059,8 @@
     <a class="reference internal" href="../../../reference/langref/index.html">
      语言参考
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
-    <label for="toctree-checkbox-29">
+    <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+    <label for="toctree-checkbox-28">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -1093,8 +1101,8 @@
     <a class="reference internal" href="../../../reference/api/python/index.html">
      Python API
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
-    <label for="toctree-checkbox-30">
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -1252,8 +1260,8 @@
   <a class="reference internal" href="../../../../refs/index.html">
    参考
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
-  <label for="toctree-checkbox-31">
+  <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+  <label for="toctree-checkbox-30">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -1266,8 +1274,8 @@
       </span>
      </code>
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/>
-    <label for="toctree-checkbox-32">
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -1686,73 +1694,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
-<span class="nn">/media/pc/data/4tb/lxw/home/lxw/tvm/xinetzone/docs/topic/vta/tutorials/matrix_multiply.ipynb Cell 3</span> in <span class="ni">&lt;cell line: 8&gt;</span><span class="nt">()</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2Bxin/media/pc/data/4tb/lxw/home/lxw/tvm/xinetzone/docs/topic/vta/tutorials/matrix_multiply.ipynb#W1sdnNjb2RlLXJlbW90ZQ%3D%3D?line=5&#39;</span><span class="o">&gt;</span><span class="mi">6</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">rpc</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2Bxin/media/pc/data/4tb/lxw/home/lxw/tvm/xinetzone/docs/topic/vta/tutorials/matrix_multiply.ipynb#W1sdnNjb2RlLXJlbW90ZQ%3D%3D?line=6&#39;</span><span class="o">&gt;</span><span class="mi">7</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">utils</span>
-<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2Bxin/media/pc/data/4tb/lxw/home/lxw/tvm/xinetzone/docs/topic/vta/tutorials/matrix_multiply.ipynb#W1sdnNjb2RlLXJlbW90ZQ%3D%3D?line=7&#39;</span><span class="o">&gt;</span><span class="mi">8</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">vta.testing</span> <span class="kn">import</span> <span class="n">simulator</span>
-     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2Bxin/media/pc/data/4tb/lxw/home/lxw/tvm/xinetzone/docs/topic/vta/tutorials/matrix_multiply.ipynb#W1sdnNjb2RlLXJlbW90ZQ%3D%3D?line=9&#39;</span><span class="o">&gt;</span><span class="mi">10</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># 从 3rdparty/vta-hw/config/vta_config.json 文件载入 VTA 参数</span>
-     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2Bxin/media/pc/data/4tb/lxw/home/lxw/tvm/xinetzone/docs/topic/vta/tutorials/matrix_multiply.ipynb#W1sdnNjb2RlLXJlbW90ZQ%3D%3D?line=10&#39;</span><span class="o">&gt;</span><span class="mi">11</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">env</span> <span class="o">=</span> <span class="n">vta</span><span class="o">.</span><span class="n">get_env</span><span class="p">()</span>
-
-<span class="n">File</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">pc</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="mi">4</span><span class="n">tb</span><span class="o">/</span><span class="n">lxw</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">lxw</span><span class="o">/</span><span class="n">tvm</span><span class="o">/</span><span class="n">vta</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">vta</span><span class="o">/</span><span class="n">testing</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Licensed to the Apache Software Foundation (ASF) under one</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># or more contributor license agreements.  See the NOTICE file</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># distributed with this work for additional information</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="c1"># specific language governing permissions and limitations</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="c1"># under the License.</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="sd">&quot;&quot;&quot;Testing utilities, this namespace is not imported by default.&quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">20</span> <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">run</span>
-
-<span class="n">File</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">pc</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="mi">4</span><span class="n">tb</span><span class="o">/</span><span class="n">lxw</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">lxw</span><span class="o">/</span><span class="n">tvm</span><span class="o">/</span><span class="n">vta</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">vta</span><span class="o">/</span><span class="n">testing</span><span class="o">/</span><span class="n">utils</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">23</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">rpc</span><span class="p">,</span> <span class="n">autotvm</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="kn">from</span> <span class="nn">..environment</span> <span class="kn">import</span> <span class="n">get_env</span>
-<span class="ne">---&gt; </span><span class="mi">23</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">simulator</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">run_func</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span>     <span class="sd">&quot;&quot;&quot;Run test function on all available env.</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span><span class="sd"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span><span class="sd">     Parameters</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span><span class="sd">     ----------</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span><span class="sd">     run_func : function(env, remote)</span>
-<span class="g g-Whitespace">     </span><span class="mi">32</span><span class="sd">     &quot;&quot;&quot;</span>
-
-<span class="n">File</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">pc</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="mi">4</span><span class="n">tb</span><span class="o">/</span><span class="n">lxw</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">lxw</span><span class="o">/</span><span class="n">tvm</span><span class="o">/</span><span class="n">vta</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">vta</span><span class="o">/</span><span class="n">testing</span><span class="o">/</span><span class="n">simulator</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">112</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">    </span><span class="mi">103</span>     <span class="sd">&quot;&quot;&quot;Set debug mode</span>
-<span class="g g-Whitespace">    </span><span class="mi">104</span><span class="sd">     Paramaters</span>
-<span class="g g-Whitespace">    </span><span class="mi">105</span><span class="sd">     ----------</span>
-<span class="g g-Whitespace">    </span><span class="mi">106</span><span class="sd">     flag : int</span>
-<span class="g g-Whitespace">    </span><span class="mi">107</span><span class="sd">         The debug flag, 0 means clear all flags.</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">109</span>     <span class="n">tvm</span><span class="o">.</span><span class="n">get_global_func</span><span class="p">(</span><span class="s2">&quot;vta.simulator.profiler_debug_mode&quot;</span><span class="p">)(</span><span class="n">flag</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">112</span> <span class="n">LIBS</span> <span class="o">=</span> <span class="n">_load_sw</span><span class="p">()</span>
-
-<span class="nn">File /media/pc/data/4tb/lxw/home/lxw/tvm/vta/python/vta/testing/simulator.py:50,</span> in <span class="ni">_load_sw</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span>     <span class="k">if</span> <span class="n">require_sim</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">50</span>         <span class="k">raise</span> <span class="n">err</span>
-<span class="g g-Whitespace">     </span><span class="mi">51</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Error when loading VTA driver </span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lib_driver</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">err</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span>     <span class="k">return</span> <span class="p">[]</span>
-
-<span class="nn">File /media/pc/data/4tb/lxw/home/lxw/tvm/vta/python/vta/testing/simulator.py:47,</span> in <span class="ni">_load_sw</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="k">return</span> <span class="p">[]</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">47</span>     <span class="n">libs</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">CDLL</span><span class="p">(</span><span class="n">lib_driver</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">RTLD_GLOBAL</span><span class="p">)]</span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span>     <span class="k">if</span> <span class="n">require_sim</span><span class="p">:</span>
-
-<span class="nn">File /media/pc/data/4tb/lxw/libs/anaconda3/envs/mlc/lib/python3.10/ctypes/__init__.py:374,</span> in <span class="ni">CDLL.__init__</span><span class="nt">(self, name, mode, handle, use_errno, use_last_error, winmode)</span>
-<span class="g g-Whitespace">    </span><span class="mi">371</span> <span class="bp">self</span><span class="o">.</span><span class="n">_FuncPtr</span> <span class="o">=</span> <span class="n">_FuncPtr</span>
-<span class="g g-Whitespace">    </span><span class="mi">373</span> <span class="k">if</span> <span class="n">handle</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">374</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">_dlopen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">375</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">376</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">handle</span>
-
-<span class="ne">OSError</span>: /media/pc/data/4tb/lxw/home/lxw/tvm/vta/python/vta/../../../build/libvta_fsim.so: undefined symbol: _ZN3tvm7runtime8Registry8RegisterERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="id2">
@@ -1773,6 +1714,33 @@ title="Print to PDF"
 <p>在瞄准加速器时，复杂性的来源之一是确保数据布局与加速器设计施加的布局相匹配。VTA 是围绕 <em>tensor core</em> 设计的，它在激活矩阵和权值矩阵之间执行周期的矩阵-矩阵运算，将结果矩阵添加到累加器矩阵，如下图所示。</p>
 <a class="reference internal image-reference" href="../../../../_images/tensor_core.png"><img alt="../../../../_images/tensor_core.png" class="align-center" src="../../../../_images/tensor_core.png" style="width: 480px;" /></a>
 <p>矩阵-矩阵乘法的维度在 <code class="docutils literal notranslate"><span class="pre">vta_config.json</span></code> 配置文件中指定。激活矩阵为 <code class="docutils literal notranslate"><span class="pre">(BATCH,</span> <span class="pre">BLOCK_IN)</span></code> 形状，权重矩阵为 <code class="docutils literal notranslate"><span class="pre">(BLOCK_OUT,</span> <span class="pre">BLOCK_IN)</span></code> 形状，由此推断，得到的输出矩阵为 <code class="docutils literal notranslate"><span class="pre">(BATCH,</span> <span class="pre">BLOCK_OUT)</span></code> 形状。因此，VTA 处理的输入和输出张量需要根据上述尺寸平铺。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>数学公式表示：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+X = \begin{pmatrix}
+   x_1 \\
+   \vdots \\
+   x_{\colorbox{aqua}{BATCH}}
+\end{pmatrix}\\
+W = \begin{pmatrix}
+   w_1 \\
+   \vdots \\
+   w_{\colorbox{aqua}{BLOCK_OUT}}
+\end{pmatrix}
+\end{cases}
+\end{split}\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(x_i, w_j \in \mathbb{R}^{\colorbox{aqua}{BLOCK_IN}}\)</span>。</p>
+<p>故而</p>
+<div class="math notranslate nohighlight">
+\[
+O = X W^T = \begin{pmatrix}
+\braket{x_i, w_j}
+\end{pmatrix}
+\]</div>
+</div>
 <p>下图显示了数据平铺对最初形状为 (4,8) 的矩阵的影响。平铺 (2,2) tile 保证了每个平铺内的数据是连续的。得到的平铺张量的形状是 (2, 4, 2, 2)。</p>
 <a class="reference internal image-reference" href="../../../../_images/data_tiling.png"><img alt="../../../../_images/data_tiling.png" class="align-center" src="../../../../_images/data_tiling.png" style="width: 480px;" /></a>
 </div>
@@ -1865,6 +1833,55 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>@main = primfn(A_1: handle, B_1: handle, C_1: handle) -&gt; ()
+  attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
+  buffers = {A: Buffer(A_2: Pointer(int8), int8, [256], []),
+             B: Buffer(B_2: Pointer(int8), int8, [65536], []),
+             C: Buffer(C_2: Pointer(int8), int8, [256], [])}
+  buffer_map = {A_1: A, B_1: B, C_1: C}
+  preflattened_buffer_map = {A_1: A_3: Buffer(A_2, int8, [1, 16, 1, 16], []), B_1: B_3: Buffer(B_2, int8, [16, 16, 16, 16], []), C_1: C_3: Buffer(C_2, int8, [1, 16, 1, 16], [])} {
+  allocate(A_buf: Pointer(global int8), int8, [256]), storage_scope = global;
+  allocate(B_buf: Pointer(global int8), int8, [65536]), storage_scope = global;
+  allocate(C_buf: Pointer(global int32), int32, [256]), storage_scope = global {
+    for (i1: int32, 0, 16) {
+      for (i3: int32, 0, 16) {
+        let cse_var_1: int32 = ((i1*16) + i3)
+        A_buf_1: Buffer(A_buf, int8, [256], [])[cse_var_1] = A[cse_var_1]
+      }
+    }
+    for (i0: int32, 0, 16) {
+      for (i1_1: int32, 0, 16) {
+        for (i2: int32, 0, 16) {
+          for (i3_1: int32, 0, 16) {
+            let cse_var_2: int32 = ((((i0*4096) + (i1_1*256)) + (i2*16)) + i3_1)
+            B_buf_1: Buffer(B_buf, int8, [65536], [])[cse_var_2] = B[cse_var_2]
+          }
+        }
+      }
+    }
+    for (co: int32, 0, 16) {
+      for (ci: int32, 0, 16) {
+        C_buf_1: Buffer(C_buf, int32, [256], [])[((co*16) + ci)] = 0
+        for (ko: int32, 0, 16) {
+          for (ki: int32, 0, 16) {
+            let cse_var_3: int32 = ((co*16) + ci)
+            C_buf_1[cse_var_3] = (C_buf_1[cse_var_3] + (cast(int32, A_buf_1[((ko*16) + ki)])*cast(int32, B_buf_1[((((co*4096) + (ko*256)) + (ci*16)) + ki)])))
+          }
+        }
+      }
+    }
+    for (i1_2: int32, 0, 16) {
+      for (i3_2: int32, 0, 16) {
+        let cse_var_4: int32 = ((i1_2*16) + i3_2)
+        C[cse_var_4] = cast(int8, C_buf_1[cse_var_4])
+      }
+    }
+  }
+}
+</pre></div>
+</div>
+</div>
 </div>
 <p>虽然此调度有意义，但它不会编译到 VTA。为了获得正确的代码生成，需要应用调度原语和代码注解，将调度变换为可以直接 lower 至 VTA 硬件 intrinsic 的调度。这些包括：</p>
 <ul class="simple">
@@ -1893,6 +1910,11 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>stage(C_buf, compute(C_buf, body=[reduce(combiner=comm_reducer(result=[(x + y)], lhs=[x], rhs=[y], identity_element=[0]), source=[(int32(A_buf[bo, ko, bi, ki])*int32(B_buf[co, ko, ci, ki]))], init=[], axis=[iter_var(ko, range(min=0, ext=16)), iter_var(ki, range(min=0, ext=16))], where=(bool)1, value_index=0)], axis=[iter_var(bo, range(min=0, ext=1)), iter_var(co, range(min=0, ext=16)), iter_var(bi, range(min=0, ext=1)), iter_var(ci, range(min=0, ext=16))], reduce_axis=[iter_var(ko, range(min=0, ext=16)), iter_var(ki, range(min=0, ext=16))], tag=, attrs={}))
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="dma">
@@ -1915,6 +1937,48 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>@main = primfn(A_1: handle, B_1: handle, C_1: handle) -&gt; ()
+  attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
+  buffers = {A: Buffer(A_2: Pointer(int8), int8, [256], []),
+             B: Buffer(B_2: Pointer(int8), int8, [65536], []),
+             C: Buffer(C_2: Pointer(int8), int8, [256], [])}
+  buffer_map = {A_1: A, B_1: B, C_1: C}
+  preflattened_buffer_map = {A_1: A_3: Buffer(A_2, int8, [1, 16, 1, 16], []), B_1: B_3: Buffer(B_2, int8, [16, 16, 16, 16], []), C_1: C_3: Buffer(C_2, int8, [1, 16, 1, 16], [])} {
+  allocate(C_buf: Pointer(local.acc_buffer int32), int32, [256]), storage_scope = local.acc_buffer;
+  allocate(A_buf: Pointer(local.inp_buffer int8), int8, [16]), storage_scope = local.inp_buffer;
+  allocate(B_buf: Pointer(local.wgt_buffer int8), int8, [16]), storage_scope = local.wgt_buffer {
+    for (co: int32, 0, 16) {
+      for (ci: int32, 0, 16) {
+        C_buf_1: Buffer(C_buf, int32, [256], [], scope=&quot;local.acc_buffer&quot;, align=16)[((co*16) + ci)] = 0
+        for (ko: int32, 0, 16) {
+          attr [IterVar(i0: int32, (nullptr), &quot;DataPar&quot;, &quot;&quot;)] &quot;pragma_dma_copy&quot; = 1;
+          for (i3: int32, 0, 16) {
+            A_buf_1: Buffer(A_buf, int8, [16], [], scope=&quot;local.inp_buffer&quot;, align=16)[i3] = A[((ko*16) + i3)]
+          }
+          attr [IterVar(i0_1: int32, (nullptr), &quot;DataPar&quot;, &quot;&quot;)] &quot;pragma_dma_copy&quot; = 1;
+          for (i3_1: int32, 0, 16) {
+            B_buf_1: Buffer(B_buf, int8, [16], [], scope=&quot;local.wgt_buffer&quot;, align=256)[i3_1] = B[((((co*4096) + (ko*256)) + (ci*16)) + i3_1)]
+          }
+          for (ki: int32, 0, 16) {
+            let cse_var_1: int32 = ((co*16) + ci)
+            C_buf_1[cse_var_1] = (C_buf_1[cse_var_1] + (cast(int32, A_buf_1[ki])*cast(int32, B_buf_1[ki])))
+          }
+        }
+      }
+    }
+    attr [IterVar(i0_2: int32, (nullptr), &quot;DataPar&quot;, &quot;&quot;)] &quot;pragma_dma_copy&quot; = 1;
+    for (i1: int32, 0, 16) {
+      for (i3_2: int32, 0, 16) {
+        let cse_var_2: int32 = ((i1*16) + i3_2)
+        C[cse_var_2] = cast(int8, C_buf_1[cse_var_2])
+      }
+    }
+  }
+}
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="id7">
@@ -1930,6 +1994,53 @@ title="Print to PDF"
 
 <span class="c1"># Let&#39;s take a look at the finalized schedule</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">vta</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">simple_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>@main = primfn(A_1: handle, B_1: handle, C_1: handle) -&gt; ()
+  attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
+  buffers = {A: Buffer(A_2: Pointer(int8), int8, [256], []),
+             B: Buffer(B_2: Pointer(int8), int8, [65536], []),
+             C: Buffer(C_2: Pointer(int8), int8, [256], [])}
+  buffer_map = {A_1: A, B_1: B, C_1: C}
+  preflattened_buffer_map = {A_1: A_3: Buffer(A_2, int8, [1, 16, 1, 16], []), B_1: B_3: Buffer(B_2, int8, [16, 16, 16, 16], []), C_1: C_3: Buffer(C_2, int8, [1, 16, 1, 16], [])} {
+  attr [IterVar(vta: int32, (nullptr), &quot;ThreadIndex&quot;, &quot;vta&quot;)] &quot;coproc_scope&quot; = 2 {
+    attr [IterVar(vta, (nullptr), &quot;ThreadIndex&quot;, &quot;vta&quot;)] &quot;coproc_uop_scope&quot; = &quot;VTAPushGEMMOp&quot; {
+      @tir.call_extern(&quot;VTAUopLoopBegin&quot;, 16, 1, 0, 0, dtype=int32)
+      @tir.vta.uop_push(0, 1, 0, 0, 0, 0, 0, 0, dtype=int32)
+      @tir.call_extern(&quot;VTAUopLoopEnd&quot;, dtype=int32)
+    }
+    @tir.vta.coproc_dep_push(2, 1, dtype=int32)
+  }
+  for (ko: int32, 0, 16) {
+    attr [IterVar(vta, (nullptr), &quot;ThreadIndex&quot;, &quot;vta&quot;)] &quot;coproc_scope&quot; = 1 {
+      @tir.vta.coproc_dep_pop(2, 1, dtype=int32)
+      @tir.call_extern(&quot;VTALoadBuffer2D&quot;, @tir.tvm_thread_context(@tir.vta.command_handle(, dtype=handle), dtype=handle), A_2, ko, 1, 1, 1, 0, 0, 0, 0, 0, 2, dtype=int32)
+      @tir.call_extern(&quot;VTALoadBuffer2D&quot;, @tir.tvm_thread_context(@tir.vta.command_handle(, dtype=handle), dtype=handle), B_2, ko, 1, 16, 16, 0, 0, 0, 0, 0, 1, dtype=int32)
+      @tir.vta.coproc_dep_push(1, 2, dtype=int32)
+    }
+    attr [IterVar(vta, (nullptr), &quot;ThreadIndex&quot;, &quot;vta&quot;)] &quot;coproc_scope&quot; = 2 {
+      @tir.vta.coproc_dep_pop(1, 2, dtype=int32)
+      attr [IterVar(vta, (nullptr), &quot;ThreadIndex&quot;, &quot;vta&quot;)] &quot;coproc_uop_scope&quot; = &quot;VTAPushGEMMOp&quot; {
+        @tir.call_extern(&quot;VTAUopLoopBegin&quot;, 16, 1, 0, 1, dtype=int32)
+        @tir.vta.uop_push(0, 0, 0, 0, 0, 0, 0, 0, dtype=int32)
+        @tir.call_extern(&quot;VTAUopLoopEnd&quot;, dtype=int32)
+      }
+      @tir.vta.coproc_dep_push(2, 1, dtype=int32)
+    }
+  }
+  @tir.vta.coproc_dep_push(2, 3, dtype=int32)
+  @tir.vta.coproc_dep_pop(2, 1, dtype=int32)
+  attr [IterVar(vta, (nullptr), &quot;ThreadIndex&quot;, &quot;vta&quot;)] &quot;coproc_scope&quot; = 3 {
+    @tir.vta.coproc_dep_pop(2, 3, dtype=int32)
+    @tir.call_extern(&quot;VTAStoreBuffer2D&quot;, @tir.tvm_thread_context(@tir.vta.command_handle(, dtype=handle), dtype=handle), 0, 4, C_2, 0, 16, 1, 16, dtype=int32)
+  }
+  @tir.vta.coproc_sync(, dtype=int32)
+}
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[18:49:14] /media/pc/data/4tb/lxw/home/lxw/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
 </pre></div>
 </div>
 </div>
@@ -1956,6 +2067,12 @@ title="Print to PDF"
 
 <span class="c1"># Load the compiled module</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">remote</span><span class="o">.</span><span class="n">load_module</span><span class="p">(</span><span class="s2">&quot;gemm.o&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[18:49:14] /media/pc/data/4tb/lxw/home/lxw/tvm/src/tir/transforms/arg_binder.cc:95: Warning: Trying to bind buffer to another one with lower alignment requirement  required_alignment=256, provided_alignment=128
+2022-08-24 18:49:14.416 INFO load_module /tmp/tmp36w80p53/gemm.o
 </pre></div>
 </div>
 </div>
@@ -2025,6 +2142,19 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution statistics:
+	inp_load_nbytes :              256
+	wgt_load_nbytes :            65536
+	acc_load_nbytes :                0
+	uop_load_nbytes :                8
+	out_store_nbytes:              256
+	gemm_counter    :              256
+	alu_counter     :                0
+Successful matrix multiply test!
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="id10">
@@ -2073,7 +2203,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-08-24, 08:57:06.<br/>
+    Last updated on 2022-08-30, 08:04:17.<br/>
 </p>
         </footer>
     </div>
