@@ -14,7 +14,7 @@ cloudpickle
 jupyter-sphinx
 myst-nb
 sphinx-thebe
-sphinx-panels
+sphinx_design
 attrs
 sphinxext-rediraffe
 myst_nb
