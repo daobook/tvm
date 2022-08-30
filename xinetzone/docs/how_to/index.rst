@@ -17,3 +17,5 @@ How To 指南
    work_with_microtvm/index
    extend_tvm/index
    profile/index
+   ../errors
+   ../faq
