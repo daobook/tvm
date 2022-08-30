@@ -28,8 +28,7 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.autosectionlabel',
     'sphinx.ext.napoleon',
-    'sphinx_panels',
-    # 'sphinx_tabs.tabs',
+    "sphinx_design",
     # "sphinxext.rediraffe",
 ]
 

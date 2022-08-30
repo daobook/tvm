@@ -45,6 +45,7 @@ def config(ctx, cuda=False):
         content = content.replace('set(USE_RELAY_DEBUG OFF)', 'set(USE_RELAY_DEBUG ON)')
         # content = content.replace("set(USE_PAPI OFF)", "set(USE_PAPI ON)")
         # content = content.replace("set(USE_PROFILER OFF)", "set(USE_PROFILER ON)")
+        content = content.replace("set(USE_PIPELINE_EXECUTOR OFF)", "set(USE_PIPELINE_EXECUTOR ON)")
         if cuda:
             content = content.replace('set(USE_CUDA OFF)', 'set(USE_CUDA ON)')
             content = content.replace('set(USE_MICRO OFF)', 'set(USE_MICRO ON)')
@@ -78,6 +79,7 @@ def update(ctx):
         ctx.run('cp -r xinetzone/docs/tutorial xin/docs/')
         ctx.run('cp -r xinetzone/docs/how_to xin/docs/')
         ctx.run('cp -r xinetzone/docs/topic xin/docs/')
+        ctx.run("cp tests/scripts/ci.py xin/tests/scripts/ci.py")
 
 @task
 def ln_env(ctx,
