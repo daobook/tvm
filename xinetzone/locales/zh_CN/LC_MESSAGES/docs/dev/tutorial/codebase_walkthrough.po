@@ -119,7 +119,7 @@ msgid ""
 " Python, and its implementation is invoked from C++ code in Relay."
 msgstr ""
 "TVM 代码库的一个有趣方面是，C++ 和 Python 之间的互操作性不是单向的。"
-"通常情况下，所有执行繁重工作的代码都是用 C++ 实现的，而 Python 绑定是为用户界面提供的。"
+"通常情况下，所有执行繁重工作的代码都是用 C++ 实现的，而 Python 绑定是为用户接口提供的。"
 "这在 TVM 中也是如此，但在 TVM 代码库中，C++ 代码也可以调用 Python 模块中定义的函数。"
 "例如，卷积算子是用 Python 实现的，它的实现是由 Relay 中的 C++ 代码调用的。"
 
