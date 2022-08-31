@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>External Tensor Functions &#8212; TVM  文档</title>
+    <title>外部张量函数 &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -531,7 +531,7 @@
       <ul class="current">
        <li class="toctree-l4">
         <a class="reference internal" href="schedule_primitives.html">
-         Schedule Primitives in TVM
+         TVM 中的调度原语
         </a>
        </li>
        <li class="toctree-l4">
@@ -551,7 +551,7 @@
        </li>
        <li class="toctree-l4 current active">
         <a class="current reference internal" href="#">
-         External Tensor Functions
+         外部张量函数
         </a>
        </li>
        <li class="toctree-l4">
@@ -1460,28 +1460,28 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#use-extern-tensor-function">
-   Use Extern Tensor Function
+  <a class="reference internal nav-link" href="#extern">
+   使用 Extern 张量函数
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#verify-the-result">
-   Verify the Result
+  <a class="reference internal nav-link" href="#id2">
+   验证结果
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extern-contrib-wrappers">
-   Extern Contrib Wrappers
+  <a class="reference internal nav-link" href="#extern-contrib">
+   封装 Extern Contrib
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hook-python-function-as-extern">
-   Hook Python Function as Extern
+  <a class="reference internal nav-link" href="#hook-python-extern">
+   Hook Python 函数作为 Extern
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
+  <a class="reference internal nav-link" href="#id3">
+   小结
   </a>
  </li>
 </ul>
@@ -1493,7 +1493,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>External Tensor Functions</h1>
+                <h1>外部张量函数</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1504,28 +1504,28 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#use-extern-tensor-function">
-   Use Extern Tensor Function
+  <a class="reference internal nav-link" href="#extern">
+   使用 Extern 张量函数
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#verify-the-result">
-   Verify the Result
+  <a class="reference internal nav-link" href="#id2">
+   验证结果
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extern-contrib-wrappers">
-   Extern Contrib Wrappers
+  <a class="reference internal nav-link" href="#extern-contrib">
+   封装 Extern Contrib
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hook-python-function-as-extern">
-   Hook Python Function as Extern
+  <a class="reference internal nav-link" href="#hook-python-extern">
+   Hook Python 函数作为 Extern
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
+  <a class="reference internal nav-link" href="#id3">
+   小结
   </a>
  </li>
 </ul>
@@ -1538,29 +1538,22 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>外部张量函数<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h1>
+<p><strong>原作者</strong>: <a class="reference external" href="https://tqchen.github.io">Tianqi Chen</a></p>
+<p>虽然 TVM 支持透明的代码生成，但有时将手动编写的代码合并到 pipeline 中也是有帮助的。例如，可能想要使用 cuDNN 来处理一些卷积核，并定义其余的阶段。</p>
+<p>TVM本身就支持这些黑盒函数调用。具体来说，TVM 支持所有与 DLPack 兼容的张量函数。这意味着可以调用任何带有 POD 类型（pointer、int、float）或指向 DLTensor 的指针作为参数的函数。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>这里需要设定 cmake：</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Whether use BLAS, choices: openblas, atlas, apple</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">USE_BLAS</span><span class="w"> </span><span class="s">atlas</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="external-tensor-functions">
-<h1>External Tensor Functions<a class="headerlink" href="#external-tensor-functions" title="永久链接至标题">#</a></h1>
-<p><strong>Author</strong>: <a class="reference external" href="https://tqchen.github.io">Tianqi Chen</a></p>
-<p>While TVM supports transparent code generation, sometimes
-it is also helpful to incorporate manual written code into
-the pipeline. For example, we might want to use cuDNN for
-some of the convolution kernels and define the rest of the stages.</p>
-<p>TVM supports these black box function calls natively.
-Specifically, TVM support all the tensor functions that are DLPack compatible.
-Which means we can call any function with POD types(pointer, int, float)
-or pointer to DLTensor as argument.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">print_function</span>
-
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">env</span> <span class="c1"># 加载 TVM 环境</span>
 <span class="kn">import</span> <span class="nn">tvm</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">te</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1573,17 +1566,11 @@ or pointer to DLTensor as argument.</p>
 </div>
 </div>
 </div>
-<section id="use-extern-tensor-function">
-<h2>Use Extern Tensor Function<a class="headerlink" href="#use-extern-tensor-function" title="永久链接至标题">#</a></h2>
-<p>In the example below, we use :any:<code class="docutils literal notranslate"><span class="pre">te.extern</span></code> to add an extern
-array function call. In the extern call, we declare the shape
-of output tensors. In the second argument we provide the list of inputs.</p>
-<p>User will need to provide a function describing how to compute the result.
-The compute function takes list of symbolic placeholder for the inputs,
-list of symbolic placeholder for the outputs and returns the executing statement.</p>
-<p>In this case we simply call a registered TVM function, which invokes a CBLAS call.
-TVM does not control internal of the extern array function and treats it as black-box.
-We can further mix schedulable TVM calls that add a bias term to the result.</p>
+<section id="extern">
+<h2>使用 Extern 张量函数<a class="headerlink" href="#extern" title="永久链接至标题">#</a></h2>
+<p>在下面的例子中，使用 <code class="xref any docutils literal notranslate"><span class="pre">te.extern</span></code> 添加外部数组函数调用。在 extern 调用中，声明输出张量的形状。在第二个参数中，提供了输入列表。</p>
+<p>用户需要提供描述如何计算结果的函数。<code class="docutils literal notranslate"><span class="pre">compute</span></code> 函数接受输入的符号占位符列表和输出的符号占位符列表，并返回正在执行的语句。</p>
+<p>在本例中，只需调用已注册的 TVM 函数，该函数调用 CBLAS 回调。TVM 不控制 extern 数组函数的内部，并将其视为黑盒。可以进一步混合可调度的 TVM 调用，为结果添加 bias 项。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">1024</span>
@@ -1607,9 +1594,9 @@ We can further mix schedulable TVM calls that add a bias term to the result.</p>
 </div>
 </div>
 </section>
-<section id="verify-the-result">
-<h2>Verify the Result<a class="headerlink" href="#verify-the-result" title="永久链接至标题">#</a></h2>
-<p>We can verify that the result matches what we expected.</p>
+<section id="id2">
+<h2>验证结果<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
+<p>可以验证结果是否符合期望。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dev</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">cpu</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -1625,10 +1612,9 @@ We can further mix schedulable TVM calls that add a bias term to the result.</p>
 </div>
 </div>
 </section>
-<section id="extern-contrib-wrappers">
-<h2>Extern Contrib Wrappers<a class="headerlink" href="#extern-contrib-wrappers" title="永久链接至标题">#</a></h2>
-<p>TVM also provide extern contrib wrappers to useful extern calls,
-the following line is equivalent to the previous example.</p>
+<section id="extern-contrib">
+<h2>封装 Extern Contrib<a class="headerlink" href="#extern-contrib" title="永久链接至标题">#</a></h2>
+<p>TVM 还为有用的 extern 调用提供了 extern contrib 封装器，下面一行与前面的示例等价。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">cblas</span>
@@ -1641,15 +1627,10 @@ the following line is equivalent to the previous example.</p>
 </div>
 </div>
 </section>
-<section id="hook-python-function-as-extern">
-<h2>Hook Python Function as Extern<a class="headerlink" href="#hook-python-function-as-extern" title="永久链接至标题">#</a></h2>
-<p>Since we can call into any PackedFunc in TVM. We can use the extern
-function to callback into python.</p>
-<p>The following example registers a python function into TVM runtime system
-and use it to complete one stage of the computation.
-This makes TVM much more flexible. For example, we can insert front-end
-callbacks to inspect the intermediate results or mix customized code
-with TVM.</p>
+<section id="hook-python-extern">
+<h2>Hook Python 函数作为 Extern<a class="headerlink" href="#hook-python-extern" title="永久链接至标题">#</a></h2>
+<p>因为可以在 TVM 中调用任何 PackedFunc。所以可以使用 extern 函数回调到 python。</p>
+<p>下面的例子注册了 python 函数到 TVM 运行时系统，并使用它来完成计算的一个阶段。这使得 TVM 更加灵活。例如，可以插入前端回调来检查中间结果，或者将定制代码与 TVM 混合使用。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@tvm</span><span class="o">.</span><span class="n">register_func</span><span class="p">(</span><span class="s2">&quot;tvm.contrib.my_tvm_addone&quot;</span><span class="p">)</span>
@@ -1674,14 +1655,19 @@ with TVM.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>my_tvm_addone signatures: &lt;class &#39;tvm.runtime.ndarray.NDArray&#39;&gt;, &lt;class &#39;tvm.runtime.ndarray.NDArray&#39;&gt;
+</pre></div>
+</div>
+</div>
 </div>
 </section>
-<section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="永久链接至标题">#</a></h2>
+<section id="id3">
+<h2>小结<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h2>
 <ul class="simple">
-<li><p>TVM calls extern tensor function via :any:<code class="docutils literal notranslate"><span class="pre">te.extern</span></code></p></li>
-<li><p>Use contrib wrappers for short sugars of extern tensor calls.</p></li>
-<li><p>We can hook front-end function as extern tensor callbacks.</p></li>
+<li><p>TVM 通过 <code class="xref any docutils literal notranslate"><span class="pre">te.extern</span></code> 调用外部张量函数</p></li>
+<li><p>使用 contrib 包装的外部张量调用的简短语法糖。</p></li>
+<li><p>可以将前端函数 hook 为外部张量回调函数。</p></li>
 </ul>
 </section>
 </section>
@@ -1718,7 +1704,7 @@ with TVM.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-08-30, 08:04:17.<br/>
+    Last updated on 2022-08-31, 02:37:09.<br/>
 </p>
         </footer>
     </div>
