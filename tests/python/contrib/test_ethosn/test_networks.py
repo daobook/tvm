@@ -14,7 +14,7 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-
+# pylint: disable=wrong-import-position
 """Arm(R) Ethos(TM)-N integration end-to-end network tests"""
 
 import pytest
@@ -22,12 +22,11 @@ import pytest
 pytest.importorskip("tflite")
 pytest.importorskip("tensorflow")
 
+import tflite.Model
 from tvm import relay
 from tvm.testing import requires_ethosn
 from tvm.contrib import download
-
 import tvm.relay.testing.tf as tf_testing
-import tflite.Model
 from . import infrastructure as tei
 
 
@@ -41,10 +40,10 @@ def _get_tflite_model(tflite_model_path, inputs_dict, dtype):
         tflite_model = tflite.Model.GetRootAsModel(tflite_model_buffer, 0)
     shape_dict = {}
     dtype_dict = {}
-    for input in inputs_dict:
-        input_shape = inputs_dict[input]
-        shape_dict[input] = input_shape
-        dtype_dict[input] = dtype
+    for value in inputs_dict:
+        input_shape = inputs_dict[value]
+        shape_dict[value] = input_shape
+        dtype_dict[value] = dtype
 
     return relay.frontend.from_tflite(
         tflite_model,
@@ -151,7 +150,7 @@ def test_resnet_50_int8():
         input_dict={"input": (1, 224, 224, 3)},
         compile_hash=_compile_hash,
         output_count=1,
-        host_ops=11,
+        host_ops=10,
         npu_partitions=2,
     )
 
@@ -211,6 +210,6 @@ def test_ssd_mobilenet_v1():
         input_dict={"normalized_input_image_tensor": (1, 300, 300, 3)},
         compile_hash=_compile_hash,
         output_count=4,
-        host_ops=28,
+        host_ops=27,
         npu_partitions=2,
     )
