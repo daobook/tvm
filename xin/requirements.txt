@@ -17,4 +17,4 @@ sphinx-thebe
 sphinx_design
 attrs
 sphinxext-rediraffe
-myst_nb
+

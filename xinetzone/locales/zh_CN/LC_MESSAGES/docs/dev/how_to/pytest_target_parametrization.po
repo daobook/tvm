@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../../xin/docs/dev/how_to/pytest_target_parametrization.rst:19
 msgid "Python Target Parametrization"
-msgstr ""
+msgstr "Python 目标参数化"
 
 #: ../../../xin/docs/dev/how_to/pytest_target_parametrization.rst:22
 msgid "Summary"
-msgstr ""
+msgstr "概要"
 
 #: ../../../xin/docs/dev/how_to/pytest_target_parametrization.rst:24
 msgid ""
@@ -34,6 +34,9 @@ msgid ""
 "unit tests such that they will run on all targets that are enabled and "
 "have a compatible device."
 msgstr ""
+"对于任何支持的运行时，TVM 都应该产生数值正确的结果。"
+"因此，当编写验证数值输出的单元测试时，这些单元测试应该在所有支持的运行时上运行。"
+"因为这是非常常见的用例，TVM 有辅助函数来参数化单元测试，这样它们就可以在所有启用和兼容设备的目标上运行。"
 
 #: ../../../xin/docs/dev/how_to/pytest_target_parametrization.rst:31
 msgid ""
@@ -41,10 +44,12 @@ msgid ""
 "parameterized unit tests, each of which tests a single target device. In "
 "order for a test to be run, all of the following must be true."
 msgstr ""
+"测试套件中的python 函数可以扩展为几个参数化的单元测试，每个单元测试一个目标设备。"
+"为了运行测试，以下所有项必须为真。"
 
 #: ../../../xin/docs/dev/how_to/pytest_target_parametrization.rst:35
 msgid "The test exists in a file or directory that has been passed to `pytest`."
-msgstr ""
+msgstr "这个测试存在于已被传递给 `pytest` 的文件或目录中。"
 
 #: ../../../xin/docs/dev/how_to/pytest_target_parametrization.rst:38
 msgid ""
@@ -52,22 +57,25 @@ msgid ""
 "target parametrization, must be compatible with the expression passed to "
 "pytest's `-m` argument."
 msgstr ""
+"应用于函数的 pytest 标记，无论是显式的还是通过目标参数化，都必须与传递给 pytest 的 `-m` 参数的表达式兼容。"
 
 #: ../../../xin/docs/dev/how_to/pytest_target_parametrization.rst:42
 msgid ""
 "For parametrized tests using the `target` fixture, the target must appear"
 " in the environment variable `TVM_TEST_TARGETS`."
 msgstr ""
+"对于使用 `target` 装置的参数化测试，目标必须出现在环境变量 `TVM_TEST_TARGETS` 中。"
 
 #: ../../../xin/docs/dev/how_to/pytest_target_parametrization.rst:45
 msgid ""
 "For parametrized tests using the `target` fixture, the build "
 "configuration in `config.cmake` must enable the corresponding runtime."
 msgstr ""
+"对于使用 `target` 配置的参数化测试，在 `config.cmake` 中必须启用相应的运行时。"
 
 #: ../../../xin/docs/dev/how_to/pytest_target_parametrization.rst:50
 msgid "Unit-Test File Contents"
-msgstr ""
+msgstr "单元测试文件内容"
 
 #: ../../../xin/docs/dev/how_to/pytest_target_parametrization.rst:54
 msgid ""

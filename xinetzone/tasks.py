@@ -12,20 +12,21 @@ ROOT = str(Path('..').absolute().resolve())
 def init(ctx,
          name='xinetzone',
          email='xinzone@outlook.com'):
+    
+    # 安装这些最小的共享库（Linux）
+    ctx.run('sudo apt-get update')
+    package_cmd = ('sudo apt-get install -y git '
+                   'gcc g++ libtinfo-dev zlib1g-dev '
+                   'build-essential cmake libedit-dev libxml2-dev')
+    ctx.run(package_cmd)
+    ctx.run('sudo apt install clang clangd llvm liblldb-14-dev')
+    ctx.run(f'pip install -r {ROOT}/xin/requirements.txt')
     # Git
     ctx.run(f'git config user.name {name}')
     ctx.run(f'git config user.eamil {email}')
     ctx.run('git submodule init')
     ctx.run('git submodule update')
 
-    # 安装这些最小的共享库（Linux）
-    ctx.run('sudo apt-get update')
-    package_cmd = ('sudo apt-get install -y python3 python3-dev '
-                   'gcc g++ libtinfo-dev zlib1g-dev '
-                   'build-essential cmake libedit-dev libxml2-dev')
-    ctx.run(package_cmd)
-    ctx.run('sudo apt install clang-12 clangd-12 llvm-12 liblldb-12-dev')
-    ctx.run(f'pip install -r {ROOT}/xin/requirements.txt')
 
 @task
 def config(ctx, cuda=False):
