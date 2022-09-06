@@ -46,6 +46,19 @@
     {
       "cell_type": "code",
       "execution_count": 2,
+      "metadata": {},
+      "outputs": [],
+      "source": [
+        "batch_size = 1\n",
+        "num_of_image_class = 1000\n",
+        "image_shape = (3, 224, 224)\n",
+        "output_shape = (batch_size, num_of_image_class)\n",
+        "relay_mod, relay_params = resnet.get_workload(num_layers=18, batch_size=1, image_shape=image_shape)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 3,
       "metadata": {
         "collapsed": false
       },
@@ -55,8 +68,7 @@
           "output_type": "stream",
           "text": [
             "Printing the IR module...\n",
-            "#[version = \"0.0.5\"]\n",
-            "def @main(%data: Tensor[(1, 3, 224, 224), float32] /* ty=Tensor[(1, 3, 224, 224), float32] */, %bn_data_gamma: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %bn_data_beta: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %bn_data_moving_mean: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %bn_data_moving_var: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %conv0_weight: Tensor[(64, 3, 7, 7), float32] /* ty=Tensor[(64, 3, 7, 7), float32] */, %bn0_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %bn0_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %bn0_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %bn0_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_conv1_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage1_unit1_bn2_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn2_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn2_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn2_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_conv2_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage1_unit1_sc_weight: Tensor[(64, 64, 1, 1), float32] /* ty=Tensor[(64, 64, 1, 1), float32] */, %stage1_unit2_bn1_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn1_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn1_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn1_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_conv1_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage1_unit2_bn2_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn2_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn2_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn2_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_conv2_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage2_unit1_bn1_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_bn1_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_bn1_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_bn1_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_conv1_weight: Tensor[(128, 64, 3, 3), float32] /* ty=Tensor[(128, 64, 3, 3), float32] */, %stage2_unit1_bn2_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_bn2_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_bn2_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_bn2_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_conv2_weight: Tensor[(128, 128, 3, 3), float32] /* ty=Tensor[(128, 128, 3, 3), float32] */, %stage2_unit1_sc_weight: Tensor[(128, 64, 1, 1), float32] /* ty=Tensor[(128, 64, 1, 1), float32] */, %stage2_unit2_bn1_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn1_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn1_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn1_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_conv1_weight: Tensor[(128, 128, 3, 3), float32] /* ty=Tensor[(128, 128, 3, 3), float32] */, %stage2_unit2_bn2_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn2_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn2_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn2_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_conv2_weight: Tensor[(128, 128, 3, 3), float32] /* ty=Tensor[(128, 128, 3, 3), float32] */, %stage3_unit1_bn1_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_bn1_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_bn1_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_bn1_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_conv1_weight: Tensor[(256, 128, 3, 3), float32] /* ty=Tensor[(256, 128, 3, 3), float32] */, %stage3_unit1_bn2_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_bn2_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_bn2_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_bn2_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_conv2_weight: Tensor[(256, 256, 3, 3), float32] /* ty=Tensor[(256, 256, 3, 3), float32] */, %stage3_unit1_sc_weight: Tensor[(256, 128, 1, 1), float32] /* ty=Tensor[(256, 128, 1, 1), float32] */, %stage3_unit2_bn1_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn1_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn1_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn1_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_conv1_weight: Tensor[(256, 256, 3, 3), float32] /* ty=Tensor[(256, 256, 3, 3), float32] */, %stage3_unit2_bn2_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn2_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn2_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn2_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_conv2_weight: Tensor[(256, 256, 3, 3), float32] /* ty=Tensor[(256, 256, 3, 3), float32] */, %stage4_unit1_bn1_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_bn1_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_bn1_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_bn1_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_conv1_weight: Tensor[(512, 256, 3, 3), float32] /* ty=Tensor[(512, 256, 3, 3), float32] */, %stage4_unit1_bn2_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_bn2_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_bn2_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_bn2_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_conv2_weight: Tensor[(512, 512, 3, 3), float32] /* ty=Tensor[(512, 512, 3, 3), float32] */, %stage4_unit1_sc_weight: Tensor[(512, 256, 1, 1), float32] /* ty=Tensor[(512, 256, 1, 1), float32] */, %stage4_unit2_bn1_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn1_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn1_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn1_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_conv1_weight: Tensor[(512, 512, 3, 3), float32] /* ty=Tensor[(512, 512, 3, 3), float32] */, %stage4_unit2_bn2_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn2_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn2_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn2_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_conv2_weight: Tensor[(512, 512, 3, 3), float32] /* ty=Tensor[(512, 512, 3, 3), float32] */, %bn1_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %bn1_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %bn1_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %bn1_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %fc1_weight: Tensor[(1000, 512), float32] /* ty=Tensor[(1000, 512), float32] */, %fc1_bias: Tensor[(1000), float32] /* ty=Tensor[(1000), float32] */) -> Tensor[(1, 1000), float32] {\n",
+            "fn (%data: Tensor[(1, 3, 224, 224), float32] /* ty=Tensor[(1, 3, 224, 224), float32] */, %bn_data_gamma: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %bn_data_beta: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %bn_data_moving_mean: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %bn_data_moving_var: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %conv0_weight: Tensor[(64, 3, 7, 7), float32] /* ty=Tensor[(64, 3, 7, 7), float32] */, %bn0_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %bn0_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %bn0_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %bn0_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_conv1_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage1_unit1_bn2_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn2_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn2_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn2_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_conv2_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage1_unit1_sc_weight: Tensor[(64, 64, 1, 1), float32] /* ty=Tensor[(64, 64, 1, 1), float32] */, %stage1_unit2_bn1_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn1_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn1_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn1_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_conv1_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage1_unit2_bn2_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn2_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn2_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn2_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_conv2_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage2_unit1_bn1_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_bn1_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_bn1_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_bn1_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_conv1_weight: Tensor[(128, 64, 3, 3), float32] /* ty=Tensor[(128, 64, 3, 3), float32] */, %stage2_unit1_bn2_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_bn2_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_bn2_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_bn2_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_conv2_weight: Tensor[(128, 128, 3, 3), float32] /* ty=Tensor[(128, 128, 3, 3), float32] */, %stage2_unit1_sc_weight: Tensor[(128, 64, 1, 1), float32] /* ty=Tensor[(128, 64, 1, 1), float32] */, %stage2_unit2_bn1_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn1_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn1_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn1_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_conv1_weight: Tensor[(128, 128, 3, 3), float32] /* ty=Tensor[(128, 128, 3, 3), float32] */, %stage2_unit2_bn2_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn2_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn2_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn2_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_conv2_weight: Tensor[(128, 128, 3, 3), float32] /* ty=Tensor[(128, 128, 3, 3), float32] */, %stage3_unit1_bn1_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_bn1_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_bn1_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_bn1_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_conv1_weight: Tensor[(256, 128, 3, 3), float32] /* ty=Tensor[(256, 128, 3, 3), float32] */, %stage3_unit1_bn2_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_bn2_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_bn2_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_bn2_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_conv2_weight: Tensor[(256, 256, 3, 3), float32] /* ty=Tensor[(256, 256, 3, 3), float32] */, %stage3_unit1_sc_weight: Tensor[(256, 128, 1, 1), float32] /* ty=Tensor[(256, 128, 1, 1), float32] */, %stage3_unit2_bn1_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn1_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn1_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn1_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_conv1_weight: Tensor[(256, 256, 3, 3), float32] /* ty=Tensor[(256, 256, 3, 3), float32] */, %stage3_unit2_bn2_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn2_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn2_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn2_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_conv2_weight: Tensor[(256, 256, 3, 3), float32] /* ty=Tensor[(256, 256, 3, 3), float32] */, %stage4_unit1_bn1_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_bn1_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_bn1_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_bn1_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_conv1_weight: Tensor[(512, 256, 3, 3), float32] /* ty=Tensor[(512, 256, 3, 3), float32] */, %stage4_unit1_bn2_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_bn2_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_bn2_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_bn2_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_conv2_weight: Tensor[(512, 512, 3, 3), float32] /* ty=Tensor[(512, 512, 3, 3), float32] */, %stage4_unit1_sc_weight: Tensor[(512, 256, 1, 1), float32] /* ty=Tensor[(512, 256, 1, 1), float32] */, %stage4_unit2_bn1_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn1_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn1_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn1_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_conv1_weight: Tensor[(512, 512, 3, 3), float32] /* ty=Tensor[(512, 512, 3, 3), float32] */, %stage4_unit2_bn2_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn2_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn2_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn2_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_conv2_weight: Tensor[(512, 512, 3, 3), float32] /* ty=Tensor[(512, 512, 3, 3), float32] */, %bn1_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %bn1_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %bn1_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %bn1_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %fc1_weight: Tensor[(1000, 512), float32] /* ty=Tensor[(1000, 512), float32] */, %fc1_bias: Tensor[(1000), float32] /* ty=Tensor[(1000), float32] */) -> Tensor[(1, 1000), float32] {\n",
             "  %0 = nn.batch_norm(%data, %bn_data_gamma, %bn_data_beta, %bn_data_moving_mean, %bn_data_moving_var, epsilon=2e-05f, scale=False) /* ty=(Tensor[(1, 3, 224, 224), float32], Tensor[(3), float32], Tensor[(3), float32]) */;\n",
             "  %1 = %0.0 /* ty=Tensor[(1, 3, 224, 224), float32] */;\n",
             "  %2 = nn.conv2d(%1, %conv0_weight, strides=[2, 2], padding=[3, 3, 3, 3], channels=64, kernel_size=[7, 7]) /* ty=Tensor[(1, 64, 112, 112), float32] */;\n",
@@ -148,19 +160,13 @@
             "  %88 = nn.dense(%87, %fc1_weight, units=1000) /* ty=Tensor[(1, 1000), float32] */;\n",
             "  %89 = nn.bias_add(%88, %fc1_bias, axis=-1) /* ty=Tensor[(1, 1000), float32] */;\n",
             "  nn.softmax(%89) /* ty=Tensor[(1, 1000), float32] */\n",
-            "}\n",
-            "\n"
+            "} /* ty=fn (Tensor[(1, 3, 224, 224), float32], Tensor[(3), float32], Tensor[(3), float32], Tensor[(3), float32], Tensor[(3), float32], Tensor[(64, 3, 7, 7), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64, 64, 3, 3), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64, 64, 3, 3), float32], Tensor[(64, 64, 1, 1), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64, 64, 3, 3), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64, 64, 3, 3), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(128, 64, 3, 3), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128, 128, 3, 3), float32], Tensor[(128, 64, 1, 1), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128, 128, 3, 3), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128, 128, 3, 3), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(256, 128, 3, 3), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256, 256, 3, 3), float32], Tensor[(256, 128, 1, 1), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256, 256, 3, 3), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256, 256, 3, 3), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(512, 256, 3, 3), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512, 512, 3, 3), float32], Tensor[(512, 256, 1, 1), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512, 512, 3, 3), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512, 512, 3, 3), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(1000, 512), float32], Tensor[(1000), float32]) -> Tensor[(1, 1000), float32] */\n"
           ]
         }
       ],
       "source": [
-        "batch_size = 1\n",
-        "num_of_image_class = 1000\n",
-        "image_shape = (3, 224, 224)\n",
-        "output_shape = (batch_size, num_of_image_class)\n",
-        "relay_mod, relay_params = resnet.get_workload(num_layers=18, batch_size=1, image_shape=image_shape)\n",
         "print(\"Printing the IR module...\")\n",
-        "print(relay_mod.astext(show_meta_data=False))"
+        "print(relay_mod[\"main\"])"
       ]
     },
     {
@@ -174,7 +180,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 3,
+      "execution_count": 4,
       "metadata": {
         "collapsed": false
       },
@@ -184,10 +190,10 @@
           "output_type": "stream",
           "text": [
             "Printing results of timing profile...\n",
-            "InferType: 10083us [10083us] (52.24%; 52.24%)\n",
-            "FoldScaleAxis: 9218us [7us] (47.76%; 47.76%)\n",
-            "\tFoldConstant: 9212us [1909us] (47.73%; 99.93%)\n",
-            "\t\tInferType: 7302us [7302us] (37.84%; 79.27%)\n",
+            "InferType: 8012us [8012us] (51.67%; 51.67%)\n",
+            "FoldScaleAxis: 7495us [5us] (48.33%; 48.33%)\n",
+            "\tFoldConstant: 7490us [1545us] (48.30%; 99.93%)\n",
+            "\t\tInferType: 5944us [5944us] (38.33%; 79.37%)\n",
             "\n"
           ]
         }
@@ -214,11 +220,24 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 5,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Printing results of timing profile...\n",
+            "InferType: 8879us [8879us] (53.79%; 53.79%)\n",
+            "FoldScaleAxis: 7629us [6us] (46.21%; 46.21%)\n",
+            "\tFoldConstant: 7623us [1488us] (46.18%; 99.92%)\n",
+            "\t\tInferType: 6134us [6134us] (37.16%; 80.47%)\n",
+            "\n"
+          ]
+        }
+      ],
       "source": [
         "cur_pass_ctx = tvm.transform.PassContext.current()\n",
         "cur_pass_ctx.override_instruments([timing_inst])\n",
@@ -240,13 +259,14 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 6,
       "metadata": {
         "collapsed": false
       },
       "outputs": [],
       "source": [
         "cur_pass_ctx.override_instruments([])\n",
+        "# profiles = timing_inst.render()\n",
         "# Uncomment the call to .render() to see a warning like:\n",
         "# Warning: no passes have been profiled, did you enable pass profiling?\n",
         "# profiles = timing_inst.render()"
@@ -265,7 +285,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 7,
       "metadata": {
         "collapsed": false
       },
@@ -356,11 +376,22 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 8,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stderr",
+          "output_type": "stream",
+          "text": [
+            "[11:07:21] /workspace/tvm/src/relay/transforms/convert_layout.cc:99: Warning: Desired layout(s) not specified for op: nn.max_pool2d\n",
+            "[11:07:21] /workspace/tvm/src/relay/transforms/convert_layout.cc:99: Warning: Desired layout(s) not specified for op: nn.global_avg_pool2d\n",
+            "/media/pc/data/4tb/lxw/libs/anaconda3/envs/py38/lib/python3.8/site-packages/tvm/driver/build_module.py:267: UserWarning: target_host parameter is going to be deprecated. Please pass in tvm.target.Target(target, host=target_host) instead.\n",
+            "  warnings.warn(\n"
+          ]
+        }
+      ],
       "source": [
         "call_node_inst = RelayCallNodeDiffer()\n",
         "desired_layouts = {\n",
@@ -374,12 +405,12 @@
         "    ]\n",
         ")\n",
         "relay_mod[\"main\"] = bind_params_by_name(relay_mod[\"main\"], relay_params)\n",
-        "# timing_inst is put after call_node_inst.\n",
-        "# So the execution time of ``call_node.inst.run_after_pass()`` is also counted.\n",
+        "# timing_inst 放在 call_node_inst 之后。\n",
+        "# 因此，``call_node.inst.run_after_pass()`` 的执行时间也被计算在内。\n",
         "with tvm.transform.PassContext(opt_level=3, instruments=[call_node_inst, timing_inst]):\n",
         "    relay_mod = pass_seq(relay_mod)\n",
         "    profiles = timing_inst.render()\n",
-        "# Uncomment the next line to see timing-profile results.\n",
+        "# 查看 timing-profile 结果\n",
         "# print(profiles)"
       ]
     },
@@ -387,20 +418,32 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "可以看到每个 op 类型增加/减少了多少 CallNode。"
+        "可以看到每个 op 类型增加/减少了多少 CallNode。\n",
+        "\n",
+        "打印由每次 pass 引起的每个算子出现次数的变化："
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 9,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "[(1, 'CanonicalizeOps', {'add': 1, 'nn.bias_add': -1}),\n",
+            " (1, 'ConvertLayout', {'expand_dims': 1, 'layout_transform': 23}),\n",
+            " (1, 'FoldConstant', {'expand_dims': -1, 'layout_transform': -21}),\n",
+            " (0, 'sequential', {'add': 1, 'layout_transform': 2, 'nn.bias_add': -1})]\n"
+          ]
+        }
+      ],
       "source": [
         "from pprint import pprint\n",
         "\n",
-        "print(\"Printing the change in number of occurrences of each operator caused by each pass...\")\n",
         "pprint(call_node_inst.get_pass_to_op_diff())"
       ]
     },
@@ -417,7 +460,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 10,
       "metadata": {
         "collapsed": false
       },
@@ -467,21 +510,39 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "If an exception occurs in ``enter_pass_ctx``, ``PassContext`` will disable the pass\n",
-        "instrumentation. And it will run the ``exit_pass_ctx`` of each ``PassInstrument``\n",
-        "which successfully finished ``enter_pass_ctx``.\n",
+        "如果 ``enter_pass_ctx`` 中发生异常，``PassContext`` 将禁用 pass instrumentation。运行每个成功完成 ``enter_pass_ctx`` 的 ``PassInstrument`` 的 ``exit_pass_ctx``。\n",
         "\n",
-        "In following example, we can see ``exit_pass_ctx`` of `PassFine_0` is executed after exception.\n",
-        "\n"
+        "在下面的例子中，可以看到 `PassFine_0` 的 ``exit_pass_ctx`` 在异常之后被执行。\n"
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 11,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "PassFine_0 enter_pass_ctx\n",
+            "PassBadEnterCtx bad enter_pass_ctx!!!\n",
+            "PassFine_0 exit_pass_ctx\n",
+            "Catching ValueError: PassBadEnterCtx bad enter_pass_ctx\n"
+          ]
+        },
+        {
+          "name": "stderr",
+          "output_type": "stream",
+          "text": [
+            "[11:07:25] /workspace/tvm/src/ir/transform.cc:196: Pass instrumentation entering pass context failed.\n",
+            "[11:07:25] /workspace/tvm/src/ir/transform.cc:197: Disable pass instrumentation.\n",
+            "[11:07:25] /workspace/tvm/src/ir/transform.cc:201: PassFine exiting PassContext ...\n",
+            "[11:07:25] /workspace/tvm/src/ir/transform.cc:203: PassFine exited PassContext.\n"
+          ]
+        }
+      ],
       "source": [
         "demo_ctx = tvm.transform.PassContext(\n",
         "    instruments=[\n",
@@ -501,14 +562,12 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "Exceptions in ``PassInstrument`` instances cause all instruments of the current ``PassContext``\n",
-        "to be cleared, so nothing is printed when ``override_instruments`` is called.\n",
-        "\n"
+        "``PassInstrument`` 实例中的异常会导致当前 ``PassContext`` 中的所有 instruments 被清除，因此当调用 ``override_instruments`` 时不会打印任何东西。"
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 12,
       "metadata": {
         "collapsed": false
       },
@@ -521,19 +580,45 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "If an exception occurs in ``exit_pass_ctx``, then the pass instrument is disabled.\n",
-        "Then exception is propagated. That means ``PassInstrument`` instances registered\n",
-        "after the one throwing the exception do not execute ``exit_pass_ctx``.\n",
-        "\n"
+        "如果 ``exit_pass_ctx`` 中发生异常，则禁用 pass instrument。然后传播异常。这意味着在抛出异常之后注册的 ``PassInstrument`` 实例不执行 ``exit_pass_ctx``。"
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 13,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "PassFine_0 enter_pass_ctx\n",
+            "PassBadExitCtx enter_pass_ctx\n",
+            "PassFine_1 enter_pass_ctx\n",
+            "PassFine_0 should_run\n",
+            "PassBadExitCtx should_run\n",
+            "PassFine_1 should_run\n",
+            "PassFine_0 run_before_pass\n",
+            "PassBadExitCtx run_before_pass\n",
+            "PassFine_1 run_before_pass\n",
+            "PassFine_0 run_after_pass\n",
+            "PassBadExitCtx run_after_pass\n",
+            "PassFine_1 run_after_pass\n",
+            "PassFine_0 exit_pass_ctx\n",
+            "PassBadExitCtx bad exit_pass_ctx!!!\n",
+            "Catching ValueError: PassBadExitCtx bad exit_pass_ctx\n"
+          ]
+        },
+        {
+          "name": "stderr",
+          "output_type": "stream",
+          "text": [
+            "[11:07:25] /workspace/tvm/src/ir/transform.cc:220: Pass instrumentation exiting pass context failed.\n"
+          ]
+        }
+      ],
       "source": [
         "demo_ctx = tvm.transform.PassContext(\n",
         "    instruments=[\n",
@@ -554,21 +639,37 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "Exceptions occurred in ``should_run``, ``run_before_pass``, ``run_after_pass``\n",
-        "are not handled explicitly -- we rely on the context manager (the ``with`` syntax)\n",
-        "to exit ``PassContext`` safely.\n",
+        "在 ``should_run``, ``run_before_pass``, ``run_after_pass`` 中发生的异常没有被显式处理——依赖于上下文管理器( ``with`` 语法)安全地退出 ``PassContext``。\n",
         "\n",
-        "We use ``run_before_pass`` as an example:\n",
-        "\n"
+        "以 ``run_before_pass`` 为例："
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 14,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "PassFine_0 enter_pass_ctx\n",
+            "PassBadRunBefore enter_pass_ctx\n",
+            "PassFine_1 enter_pass_ctx\n",
+            "PassFine_0 should_run\n",
+            "PassBadRunBefore should_run\n",
+            "PassFine_1 should_run\n",
+            "PassFine_0 run_before_pass\n",
+            "PassBadRunBefore bad run_before_pass!!!\n",
+            "PassFine_0 exit_pass_ctx\n",
+            "PassBadRunBefore exit_pass_ctx\n",
+            "PassFine_1 exit_pass_ctx\n",
+            "Catching ValueError: PassBadRunBefore bad run_before_pass\n"
+          ]
+        }
+      ],
       "source": [
         "@pass_instrument\n",
         "class PassBadRunBefore(PassExampleBase):\n",
@@ -596,19 +697,26 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "Also note that pass instrumentation is not disable. So if we call\n",
-        "``override_instruments``, the ``exit_pass_ctx`` of old registered ``PassInstrument``\n",
-        "is called.\n",
-        "\n"
+        "还要注意，pass instrumentation 不是禁用的。因此，如果调用 ``override_instruments``，旧注册 ``PassInstrument`` 的 ``exit_pass_ctx`` 就会被调用。"
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 15,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "PassFine_0 exit_pass_ctx\n",
+            "PassBadRunBefore exit_pass_ctx\n",
+            "PassFine_1 exit_pass_ctx\n"
+          ]
+        }
+      ],
       "source": [
         "demo_ctx.override_instruments([])"
       ]
@@ -617,18 +725,26 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "If we don't wrap pass execution with ``with`` syntax, ``exit_pass_ctx`` is not\n",
-        "called. Let try this with current ``PassContext``:\n",
-        "\n"
+        "如果不使用 ``with`` 语法封装 pass 执行，则不会调用 ``exit_pass_ctx``。让我们用当前的 ``PassContext`` 来试试："
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 16,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "PassFine_0 enter_pass_ctx\n",
+            "PassBadRunBefore enter_pass_ctx\n",
+            "PassFine_1 enter_pass_ctx\n"
+          ]
+        }
+      ],
       "source": [
         "cur_pass_ctx = tvm.transform.PassContext.current()\n",
         "cur_pass_ctx.override_instruments(\n",
@@ -644,18 +760,29 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "Then call passes. ``exit_pass_ctx`` is not executed after the exception,\n",
-        "as expectation.\n",
-        "\n"
+        "然后调用传递。``exit_pass_ctx`` 不像预期的那样在异常之后执行。"
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 17,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "PassFine_0 should_run\n",
+            "PassBadRunBefore should_run\n",
+            "PassFine_1 should_run\n",
+            "PassFine_0 run_before_pass\n",
+            "PassBadRunBefore bad run_before_pass!!!\n",
+            "Catching ValueError: PassBadRunBefore bad run_before_pass\n"
+          ]
+        }
+      ],
       "source": [
         "try:\n",
         "    # No ``exit_pass_ctx`` got executed.\n",
@@ -668,17 +795,26 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "Clear instruments.\n",
-        "\n"
+        "清除 instruments。"
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 18,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "PassFine_0 exit_pass_ctx\n",
+            "PassBadRunBefore exit_pass_ctx\n",
+            "PassFine_1 exit_pass_ctx\n"
+          ]
+        }
+      ],
       "source": [
         "cur_pass_ctx.override_instruments([])"
       ]

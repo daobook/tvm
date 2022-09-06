@@ -751,7 +751,7 @@
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../extend_tvm/bring_your_own_datatypes.html">
-         Bring Your Own Datatypes to TVM
+         自定义 TVM 数据类型
         </a>
        </li>
       </ul>
@@ -846,7 +846,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../dev/how_to/pytest_target_parametrization.html">
-       Python Target Parametrization
+       Python 目标参数化
       </a>
      </li>
     </ul>
@@ -1635,7 +1635,7 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@tvm</span><span class="o">.</span><span class="n">register_func</span><span class="p">(</span><span class="s2">&quot;tvm.contrib.my_tvm_addone&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">my_tvm_addone</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;my_tvm_addone signatures: </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;my_tvm_addone signatures: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">tvm</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">copyto</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
 
@@ -1704,7 +1704,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-08-31, 02:37:09.<br/>
+    Last updated on 2022-09-06, 06:11:08.<br/>
 </p>
         </footer>
     </div>

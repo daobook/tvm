@@ -51,18 +51,19 @@
           "name": "stdout",
           "output_type": "stream",
           "text": [
-            "@main = primfn(a_1: handle, b_1: handle, c_1: handle) -> ()\n",
-            "  attr = {\"from_legacy_te_schedule\": True, \"global_symbol\": \"main\", \"tir.noalias\": True}\n",
-            "  buffers = {a: Buffer(a_2: Pointer(float32), float32, [128], []),\n",
-            "             b: Buffer(b_2: Pointer(float32), float32, [128], []),\n",
-            "             c: Buffer(c_2: Pointer(float32), float32, [128], [])}\n",
-            "  buffer_map = {a_1: a, b_1: b, c_1: c}\n",
-            "  preflattened_buffer_map = {a_1: a_3: Buffer(a_2, float32, [128], []), b_1: b_3: Buffer(b_2, float32, [128], []), c_1: c_3: Buffer(c_2, float32, [128], [])} {\n",
-            "  for (i: int32, 0, 128) {\n",
-            "    c[i] = (a[i] + b[i])\n",
-            "  }\n",
-            "}\n",
-            "\n",
+            "\u001b[38;5;129m@tvm\u001b[39m\u001b[38;5;129;01m.\u001b[39;00mscript\u001b[38;5;129;01m.\u001b[39;00mir_module\n",
+            "\u001b[38;5;28;01mclass\u001b[39;00m \u001b[38;5;21;01mModule\u001b[39;00m:\n",
+            "    \u001b[38;5;129m@T\u001b[39m\u001b[38;5;129;01m.\u001b[39;00mprim_func\n",
+            "    \u001b[38;5;28;01mdef\u001b[39;00m \u001b[38;5;21mmain\u001b[39m(a: T\u001b[38;5;129;01m.\u001b[39;00mBuffer[\u001b[38;5;28m128\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m], b: T\u001b[38;5;129;01m.\u001b[39;00mBuffer[\u001b[38;5;28m128\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m], c: T\u001b[38;5;129;01m.\u001b[39;00mBuffer[\u001b[38;5;28m128\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m]) \u001b[38;5;129;01m-\u001b[39;00m\u001b[38;5;129;01m>\u001b[39;00m \u001b[38;5;28;01mNone\u001b[39;00m:\n",
+            "        \u001b[38;5;30;03m# function attr dict\u001b[39;00m\n",
+            "        T\u001b[38;5;129;01m.\u001b[39;00mfunc_attr({\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfrom_legacy_te_schedule\u001b[39m\u001b[38;5;124m\"\u001b[39m: \u001b[38;5;28;01mTrue\u001b[39;00m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mglobal_symbol\u001b[39m\u001b[38;5;124m\"\u001b[39m: \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mmain\u001b[39m\u001b[38;5;124m\"\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mtir.noalias\u001b[39m\u001b[38;5;124m\"\u001b[39m: \u001b[38;5;28;01mTrue\u001b[39;00m})\n",
+            "        T\u001b[38;5;129;01m.\u001b[39;00mpreflattened_buffer(a, [\u001b[38;5;28m128\u001b[39m], dtype\u001b[38;5;129;01m=\u001b[39;00m\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m, data\u001b[38;5;129;01m=\u001b[39;00ma\u001b[38;5;129;01m.\u001b[39;00mdata)\n",
+            "        T\u001b[38;5;129;01m.\u001b[39;00mpreflattened_buffer(b, [\u001b[38;5;28m128\u001b[39m], dtype\u001b[38;5;129;01m=\u001b[39;00m\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m, data\u001b[38;5;129;01m=\u001b[39;00mb\u001b[38;5;129;01m.\u001b[39;00mdata)\n",
+            "        T\u001b[38;5;129;01m.\u001b[39;00mpreflattened_buffer(c, [\u001b[38;5;28m128\u001b[39m], dtype\u001b[38;5;129;01m=\u001b[39;00m\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m, data\u001b[38;5;129;01m=\u001b[39;00mc\u001b[38;5;129;01m.\u001b[39;00mdata)\n",
+            "        \u001b[38;5;30;03m# body\u001b[39;00m\n",
+            "        \u001b[38;5;28;01mfor\u001b[39;00m i \u001b[38;5;28;01min\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mserial(\u001b[38;5;28m128\u001b[39m):\n",
+            "            c[i] \u001b[38;5;129;01m=\u001b[39;00m a[i] \u001b[38;5;129;01m+\u001b[39;00m b[i]\n",
+            "    \n",
             "\n"
           ]
         }
@@ -75,7 +76,7 @@
         "\n",
         "sch = te.create_schedule(c.op)\n",
         "ir = tvm.lower(sch, [a, b, c])\n",
-        "print(ir)"
+        "ir.show()"
       ]
     },
     {
@@ -161,14 +162,11 @@
         "@tvm.tir.transform.prim_func_pass(opt_level=0)\n",
         "def vectorize(f, mod, ctx):\n",
         "    global loops\n",
-        "\n",
         "    tvm.tir.stmt_functor.post_order_visit(f.body, find_width8)\n",
-        "\n",
         "    if not loops:\n",
         "        return f\n",
-        "\n",
-        "    # The last list arugment indicates what kinds of nodes will be transformed.\n",
-        "    # Thus, in this case only `For` nodes will call `vectorize8`\n",
+        "    # 最后一个 list 参数表示要转换的节点类型。\n",
+        "    # 因此，在这种情况下，只有 `For` 节点会调用 `vectorize8`\n",
         "    return f.with_body(tvm.tir.stmt_functor.ir_transform(f.body, None, vectorize8, [\"tir.For\"]))"
       ]
     },
@@ -206,19 +204,20 @@
           "name": "stdout",
           "output_type": "stream",
           "text": [
-            "@main = primfn(a_1: handle, b_1: handle, c_1: handle) -> ()\n",
-            "  attr = {\"from_legacy_te_schedule\": True, \"global_symbol\": \"main\", \"tir.noalias\": True}\n",
-            "  buffers = {a: Buffer(a_2: Pointer(float32), float32, [128], []),\n",
-            "             b: Buffer(b_2: Pointer(float32), float32, [128], []),\n",
-            "             c: Buffer(c_2: Pointer(float32), float32, [128], [])}\n",
-            "  buffer_map = {a_1: a, b_1: b, c_1: c}\n",
-            "  preflattened_buffer_map = {a_1: a_3: Buffer(a_2, float32, [128], []), b_1: b_3: Buffer(b_2, float32, [128], []), c_1: c_3: Buffer(c_2, float32, [128], [])} {\n",
-            "  for (i.outer: int32, 0, 16) {\n",
-            "    let cse_var_1: int32 = (i.outer*8)\n",
-            "    c[ramp(cse_var_1, 1, 8)] = (a[ramp(cse_var_1, 1, 8)] + b[ramp(cse_var_1, 1, 8)])\n",
-            "  }\n",
-            "}\n",
-            "\n",
+            "\u001b[38;5;129m@tvm\u001b[39m\u001b[38;5;129;01m.\u001b[39;00mscript\u001b[38;5;129;01m.\u001b[39;00mir_module\n",
+            "\u001b[38;5;28;01mclass\u001b[39;00m \u001b[38;5;21;01mModule\u001b[39;00m:\n",
+            "    \u001b[38;5;129m@T\u001b[39m\u001b[38;5;129;01m.\u001b[39;00mprim_func\n",
+            "    \u001b[38;5;28;01mdef\u001b[39;00m \u001b[38;5;21mmain\u001b[39m(a: T\u001b[38;5;129;01m.\u001b[39;00mBuffer[\u001b[38;5;28m128\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m], b: T\u001b[38;5;129;01m.\u001b[39;00mBuffer[\u001b[38;5;28m128\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m], c: T\u001b[38;5;129;01m.\u001b[39;00mBuffer[\u001b[38;5;28m128\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m]) \u001b[38;5;129;01m-\u001b[39;00m\u001b[38;5;129;01m>\u001b[39;00m \u001b[38;5;28;01mNone\u001b[39;00m:\n",
+            "        \u001b[38;5;30;03m# function attr dict\u001b[39;00m\n",
+            "        T\u001b[38;5;129;01m.\u001b[39;00mfunc_attr({\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfrom_legacy_te_schedule\u001b[39m\u001b[38;5;124m\"\u001b[39m: \u001b[38;5;28;01mTrue\u001b[39;00m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mglobal_symbol\u001b[39m\u001b[38;5;124m\"\u001b[39m: \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mmain\u001b[39m\u001b[38;5;124m\"\u001b[39m, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mtir.noalias\u001b[39m\u001b[38;5;124m\"\u001b[39m: \u001b[38;5;28;01mTrue\u001b[39;00m})\n",
+            "        T\u001b[38;5;129;01m.\u001b[39;00mpreflattened_buffer(a, [\u001b[38;5;28m128\u001b[39m], dtype\u001b[38;5;129;01m=\u001b[39;00m\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m, data\u001b[38;5;129;01m=\u001b[39;00ma\u001b[38;5;129;01m.\u001b[39;00mdata)\n",
+            "        T\u001b[38;5;129;01m.\u001b[39;00mpreflattened_buffer(b, [\u001b[38;5;28m128\u001b[39m], dtype\u001b[38;5;129;01m=\u001b[39;00m\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m, data\u001b[38;5;129;01m=\u001b[39;00mb\u001b[38;5;129;01m.\u001b[39;00mdata)\n",
+            "        T\u001b[38;5;129;01m.\u001b[39;00mpreflattened_buffer(c, [\u001b[38;5;28m128\u001b[39m], dtype\u001b[38;5;129;01m=\u001b[39;00m\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfloat32\u001b[39m\u001b[38;5;124m\"\u001b[39m, data\u001b[38;5;129;01m=\u001b[39;00mc\u001b[38;5;129;01m.\u001b[39;00mdata)\n",
+            "        \u001b[38;5;30;03m# body\u001b[39;00m\n",
+            "        \u001b[38;5;28;01mfor\u001b[39;00m i_outer \u001b[38;5;28;01min\u001b[39;00m T\u001b[38;5;129;01m.\u001b[39;00mserial(\u001b[38;5;28m16\u001b[39m):\n",
+            "            cse_var_1: T\u001b[38;5;129;01m.\u001b[39;00mint32 \u001b[38;5;129;01m=\u001b[39;00m i_outer \u001b[38;5;129;01m*\u001b[39;00m \u001b[38;5;28m8\u001b[39m\n",
+            "            c[cse_var_1:cse_var_1 \u001b[38;5;129;01m+\u001b[39;00m \u001b[38;5;28m8\u001b[39m] \u001b[38;5;129;01m=\u001b[39;00m a[cse_var_1:cse_var_1 \u001b[38;5;129;01m+\u001b[39;00m \u001b[38;5;28m8\u001b[39m] \u001b[38;5;129;01m+\u001b[39;00m b[cse_var_1:cse_var_1 \u001b[38;5;129;01m+\u001b[39;00m \u001b[38;5;28m8\u001b[39m]\n",
+            "    \n",
             "\n"
           ]
         }
@@ -226,7 +225,7 @@
       "source": [
         "with tvm.transform.PassContext(config={\"tir.add_lower_pass\":\n",
         "                                       [(1, vectorize)]}):\n",
-        "    print(tvm.lower(sch, [a, b, c]))"
+        "    tvm.lower(sch, [a, b, c]).show()"
       ]
     },
     {

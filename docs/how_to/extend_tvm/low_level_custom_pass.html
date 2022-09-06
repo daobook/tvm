@@ -751,7 +751,7 @@
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="bring_your_own_datatypes.html">
-         Bring Your Own Datatypes to TVM
+         自定义 TVM 数据类型
         </a>
        </li>
       </ul>
@@ -846,7 +846,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../dev/how_to/pytest_target_parametrization.html">
-       Python Target Parametrization
+       Python 目标参数化
       </a>
      </li>
     </ul>
@@ -1583,22 +1583,24 @@ title="Print to PDF"
 
 <span class="n">sch</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">create_schedule</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
 <span class="n">ir</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">sch</span><span class="p">,</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ir</span><span class="p">)</span>
+<span class="n">ir</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>@main = primfn(a_1: handle, b_1: handle, c_1: handle) -&gt; ()
-  attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
-  buffers = {a: Buffer(a_2: Pointer(float32), float32, [128], []),
-             b: Buffer(b_2: Pointer(float32), float32, [128], []),
-             c: Buffer(c_2: Pointer(float32), float32, [128], [])}
-  buffer_map = {a_1: a, b_1: b, c_1: c}
-  preflattened_buffer_map = {a_1: a_3: Buffer(a_2, float32, [128], []), b_1: b_3: Buffer(b_2, float32, [128], []), c_1: c_3: Buffer(c_2, float32, [128], [])} {
-  for (i: int32, 0, 128) {
-    c[i] = (a[i] + b[i])
-  }
-}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C129">@tvm</span><span class=" -Color -Color-Bold -Color-Bold-C129">.</span>script<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>ir_module
+<span class=" -Color -Color-Bold -Color-Bold-C28">class</span> <span class=" -Color -Color-Bold -Color-Bold-C21">Module</span>:
+    <span class=" -Color -Color-C129">@T</span><span class=" -Color -Color-Bold -Color-Bold-C129">.</span>prim_func
+    <span class=" -Color -Color-Bold -Color-Bold-C28">def</span> <span class=" -Color -Color-C21">main</span>(a: T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>Buffer[<span class=" -Color -Color-C28">128</span>, <span class=" -Color -Color-C124">&quot;float32&quot;</span>], b: T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>Buffer[<span class=" -Color -Color-C28">128</span>, <span class=" -Color -Color-C124">&quot;float32&quot;</span>], c: T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>Buffer[<span class=" -Color -Color-C28">128</span>, <span class=" -Color -Color-C124">&quot;float32&quot;</span>]) <span class=" -Color -Color-Bold -Color-Bold-C129">-&gt;</span> <span class=" -Color -Color-Bold -Color-Bold-C28">None</span>:
+        <span class=" -Color -Color-C30"># function attr dict</span>
+        T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>func_attr({<span class=" -Color -Color-C124">&quot;from_legacy_te_schedule&quot;</span>: <span class=" -Color -Color-Bold -Color-Bold-C28">True</span>, <span class=" -Color -Color-C124">&quot;global_symbol&quot;</span>: <span class=" -Color -Color-C124">&quot;main&quot;</span>, <span class=" -Color -Color-C124">&quot;tir.noalias&quot;</span>: <span class=" -Color -Color-Bold -Color-Bold-C28">True</span>})
+        T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>preflattened_buffer(a, [<span class=" -Color -Color-C28">128</span>], dtype<span class=" -Color -Color-Bold -Color-Bold-C129">=</span><span class=" -Color -Color-C124">&quot;float32&quot;</span>, data<span class=" -Color -Color-Bold -Color-Bold-C129">=</span>a<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>data)
+        T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>preflattened_buffer(b, [<span class=" -Color -Color-C28">128</span>], dtype<span class=" -Color -Color-Bold -Color-Bold-C129">=</span><span class=" -Color -Color-C124">&quot;float32&quot;</span>, data<span class=" -Color -Color-Bold -Color-Bold-C129">=</span>b<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>data)
+        T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>preflattened_buffer(c, [<span class=" -Color -Color-C28">128</span>], dtype<span class=" -Color -Color-Bold -Color-Bold-C129">=</span><span class=" -Color -Color-C124">&quot;float32&quot;</span>, data<span class=" -Color -Color-Bold -Color-Bold-C129">=</span>c<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>data)
+        <span class=" -Color -Color-C30"># body</span>
+        <span class=" -Color -Color-Bold -Color-Bold-C28">for</span> i <span class=" -Color -Color-Bold -Color-Bold-C28">in</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>serial(<span class=" -Color -Color-C28">128</span>):
+            c[i] <span class=" -Color -Color-Bold -Color-Bold-C129">=</span> a[i] <span class=" -Color -Color-Bold -Color-Bold-C129">+</span> b[i]
+    
 </pre></div>
 </div>
 </div>
@@ -1655,14 +1657,11 @@ title="Print to PDF"
 <span class="nd">@tvm</span><span class="o">.</span><span class="n">tir</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">prim_func_pass</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">vectorize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">mod</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">loops</span>
-
     <span class="n">tvm</span><span class="o">.</span><span class="n">tir</span><span class="o">.</span><span class="n">stmt_functor</span><span class="o">.</span><span class="n">post_order_visit</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">find_width8</span><span class="p">)</span>
-
     <span class="k">if</span> <span class="ow">not</span> <span class="n">loops</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">f</span>
-
-    <span class="c1"># The last list arugment indicates what kinds of nodes will be transformed.</span>
-    <span class="c1"># Thus, in this case only `For` nodes will call `vectorize8`</span>
+    <span class="c1"># 最后一个 list 参数表示要转换的节点类型。</span>
+    <span class="c1"># 因此，在这种情况下，只有 `For` 节点会调用 `vectorize8`</span>
     <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">with_body</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">tir</span><span class="o">.</span><span class="n">stmt_functor</span><span class="o">.</span><span class="n">ir_transform</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">vectorize8</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;tir.For&quot;</span><span class="p">]))</span>
 </pre></div>
 </div>
@@ -1689,23 +1688,25 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;tir.add_lower_pass&quot;</span><span class="p">:</span>
                                        <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="n">vectorize</span><span class="p">)]}):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">sch</span><span class="p">,</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">]))</span>
+    <span class="n">tvm</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">sch</span><span class="p">,</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>@main = primfn(a_1: handle, b_1: handle, c_1: handle) -&gt; ()
-  attr = {&quot;from_legacy_te_schedule&quot;: True, &quot;global_symbol&quot;: &quot;main&quot;, &quot;tir.noalias&quot;: True}
-  buffers = {a: Buffer(a_2: Pointer(float32), float32, [128], []),
-             b: Buffer(b_2: Pointer(float32), float32, [128], []),
-             c: Buffer(c_2: Pointer(float32), float32, [128], [])}
-  buffer_map = {a_1: a, b_1: b, c_1: c}
-  preflattened_buffer_map = {a_1: a_3: Buffer(a_2, float32, [128], []), b_1: b_3: Buffer(b_2, float32, [128], []), c_1: c_3: Buffer(c_2, float32, [128], [])} {
-  for (i.outer: int32, 0, 16) {
-    let cse_var_1: int32 = (i.outer*8)
-    c[ramp(cse_var_1, 1, 8)] = (a[ramp(cse_var_1, 1, 8)] + b[ramp(cse_var_1, 1, 8)])
-  }
-}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C129">@tvm</span><span class=" -Color -Color-Bold -Color-Bold-C129">.</span>script<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>ir_module
+<span class=" -Color -Color-Bold -Color-Bold-C28">class</span> <span class=" -Color -Color-Bold -Color-Bold-C21">Module</span>:
+    <span class=" -Color -Color-C129">@T</span><span class=" -Color -Color-Bold -Color-Bold-C129">.</span>prim_func
+    <span class=" -Color -Color-Bold -Color-Bold-C28">def</span> <span class=" -Color -Color-C21">main</span>(a: T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>Buffer[<span class=" -Color -Color-C28">128</span>, <span class=" -Color -Color-C124">&quot;float32&quot;</span>], b: T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>Buffer[<span class=" -Color -Color-C28">128</span>, <span class=" -Color -Color-C124">&quot;float32&quot;</span>], c: T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>Buffer[<span class=" -Color -Color-C28">128</span>, <span class=" -Color -Color-C124">&quot;float32&quot;</span>]) <span class=" -Color -Color-Bold -Color-Bold-C129">-&gt;</span> <span class=" -Color -Color-Bold -Color-Bold-C28">None</span>:
+        <span class=" -Color -Color-C30"># function attr dict</span>
+        T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>func_attr({<span class=" -Color -Color-C124">&quot;from_legacy_te_schedule&quot;</span>: <span class=" -Color -Color-Bold -Color-Bold-C28">True</span>, <span class=" -Color -Color-C124">&quot;global_symbol&quot;</span>: <span class=" -Color -Color-C124">&quot;main&quot;</span>, <span class=" -Color -Color-C124">&quot;tir.noalias&quot;</span>: <span class=" -Color -Color-Bold -Color-Bold-C28">True</span>})
+        T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>preflattened_buffer(a, [<span class=" -Color -Color-C28">128</span>], dtype<span class=" -Color -Color-Bold -Color-Bold-C129">=</span><span class=" -Color -Color-C124">&quot;float32&quot;</span>, data<span class=" -Color -Color-Bold -Color-Bold-C129">=</span>a<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>data)
+        T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>preflattened_buffer(b, [<span class=" -Color -Color-C28">128</span>], dtype<span class=" -Color -Color-Bold -Color-Bold-C129">=</span><span class=" -Color -Color-C124">&quot;float32&quot;</span>, data<span class=" -Color -Color-Bold -Color-Bold-C129">=</span>b<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>data)
+        T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>preflattened_buffer(c, [<span class=" -Color -Color-C28">128</span>], dtype<span class=" -Color -Color-Bold -Color-Bold-C129">=</span><span class=" -Color -Color-C124">&quot;float32&quot;</span>, data<span class=" -Color -Color-Bold -Color-Bold-C129">=</span>c<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>data)
+        <span class=" -Color -Color-C30"># body</span>
+        <span class=" -Color -Color-Bold -Color-Bold-C28">for</span> i_outer <span class=" -Color -Color-Bold -Color-Bold-C28">in</span> T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>serial(<span class=" -Color -Color-C28">16</span>):
+            cse_var_1: T<span class=" -Color -Color-Bold -Color-Bold-C129">.</span>int32 <span class=" -Color -Color-Bold -Color-Bold-C129">=</span> i_outer <span class=" -Color -Color-Bold -Color-Bold-C129">*</span> <span class=" -Color -Color-C28">8</span>
+            c[cse_var_1:cse_var_1 <span class=" -Color -Color-Bold -Color-Bold-C129">+</span> <span class=" -Color -Color-C28">8</span>] <span class=" -Color -Color-Bold -Color-Bold-C129">=</span> a[cse_var_1:cse_var_1 <span class=" -Color -Color-Bold -Color-Bold-C129">+</span> <span class=" -Color -Color-C28">8</span>] <span class=" -Color -Color-Bold -Color-Bold-C129">+</span> b[cse_var_1:cse_var_1 <span class=" -Color -Color-Bold -Color-Bold-C129">+</span> <span class=" -Color -Color-C28">8</span>]
+    
 </pre></div>
 </div>
 </div>
@@ -1755,7 +1756,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-08-31, 02:37:09.<br/>
+    Last updated on 2022-09-06, 06:11:08.<br/>
 </p>
         </footer>
     </div>

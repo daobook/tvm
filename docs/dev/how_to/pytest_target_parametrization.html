@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Python Target Parametrization &#8212; TVM  文档</title>
+    <title>Python 目标参数化 &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -751,7 +751,7 @@
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="../../how_to/extend_tvm/bring_your_own_datatypes.html">
-         Bring Your Own Datatypes to TVM
+         自定义 TVM 数据类型
         </a>
        </li>
       </ul>
@@ -846,7 +846,7 @@
      </li>
      <li class="toctree-l3 current active">
       <a class="current reference internal" href="#">
-       Python Target Parametrization
+       Python 目标参数化
       </a>
      </li>
     </ul>
@@ -1461,12 +1461,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   Summary
+   概要
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#unit-test-file-contents">
-   Unit-Test File Contents
+   单元测试文件内容
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1493,7 +1493,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Python Target Parametrization</h1>
+                <h1>Python 目标参数化</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1505,12 +1505,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   Summary
+   概要
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#unit-test-file-contents">
-   Unit-Test File Contents
+   单元测试文件内容
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1539,33 +1539,20 @@ title="Print to PDF"
               <div>
                 
   <section id="python-target-parametrization">
-<h1>Python Target Parametrization<a class="headerlink" href="#python-target-parametrization" title="永久链接至标题">#</a></h1>
+<h1>Python 目标参数化<a class="headerlink" href="#python-target-parametrization" title="永久链接至标题">#</a></h1>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="永久链接至标题">#</a></h2>
-<p>For any supported runtime, TVM should produce numerically
-correct results.  Therefore, when writing unit tests that validate
-the numeric output, these unit tests should be run on all supported
-runtimes.  Since this is a very common use case, TVM has helper
-functions to parametrize unit tests such that they will run on all
-targets that are enabled and have a compatible device.</p>
-<p>A single python function in the test suite can expand to several
-parameterized unit tests, each of which tests a single target device.
-In order for a test to be run, all of the following must be true.</p>
+<h2>概要<a class="headerlink" href="#summary" title="永久链接至标题">#</a></h2>
+<p>对于任何支持的运行时，TVM 都应该产生数值正确的结果。因此，当编写验证数值输出的单元测试时，这些单元测试应该在所有支持的运行时上运行。因为这是非常常见的用例，TVM 有辅助函数来参数化单元测试，这样它们就可以在所有启用和兼容设备的目标上运行。</p>
+<p>测试套件中的python 函数可以扩展为几个参数化的单元测试，每个单元测试一个目标设备。为了运行测试，以下所有项必须为真。</p>
 <ul class="simple">
-<li><p>The test exists in a file or directory that has been passed to
-<cite>pytest</cite>.</p></li>
-<li><p>The pytest marks applied to the function, either explicitly or
-through target parametrization, must be compatible with the
-expression passed to pytest’s <cite>-m</cite> argument.</p></li>
-<li><p>For parametrized tests using the <cite>target</cite> fixture, the target must
-appear in the environment variable <cite>TVM_TEST_TARGETS</cite>.</p></li>
-<li><p>For parametrized tests using the <cite>target</cite> fixture, the build
-configuration in <cite>config.cmake</cite> must enable the corresponding
-runtime.</p></li>
+<li><p>这个测试存在于已被传递给 <cite>pytest</cite> 的文件或目录中。</p></li>
+<li><p>应用于函数的 pytest 标记，无论是显式的还是通过目标参数化，都必须与传递给 pytest 的 <cite>-m</cite> 参数的表达式兼容。</p></li>
+<li><p>对于使用 <cite>target</cite> 装置的参数化测试，目标必须出现在环境变量 <cite>TVM_TEST_TARGETS</cite> 中。</p></li>
+<li><p>对于使用 <cite>target</cite> 配置的参数化测试，在 <cite>config.cmake</cite> 中必须启用相应的运行时。</p></li>
 </ul>
 </section>
 <section id="unit-test-file-contents">
-<h2>Unit-Test File Contents<a class="headerlink" href="#unit-test-file-contents" title="永久链接至标题">#</a></h2>
+<h2>单元测试文件内容<a class="headerlink" href="#unit-test-file-contents" title="永久链接至标题">#</a></h2>
 <p>The recommended method to run a test on multiple targets is by
 parametrizing the test.  This can be done explicitly for a fixed list
 of targets by decorating with
@@ -1810,7 +1797,7 @@ restricts the tests to only run tests that include the
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-08-31, 02:37:09.<br/>
+    Last updated on 2022-09-06, 06:11:08.<br/>
 </p>
         </footer>
     </div>

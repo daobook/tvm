@@ -48,7 +48,7 @@
     <link rel="shortcut icon" href="../../../_static/tvm-logo-square.png"/>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="Bring Your Own Datatypes to TVM" href="bring_your_own_datatypes.html" />
+    <link rel="next" title="自定义 TVM 数据类型" href="bring_your_own_datatypes.html" />
     <link rel="prev" title="如何使用 TVM Pass Infra" href="use_pass_infra.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
@@ -751,7 +751,7 @@
        </li>
        <li class="toctree-l4">
         <a class="reference internal" href="bring_your_own_datatypes.html">
-         Bring Your Own Datatypes to TVM
+         自定义 TVM 数据类型
         </a>
        </li>
       </ul>
@@ -846,7 +846,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../dev/how_to/pytest_target_parametrization.html">
-       Python Target Parametrization
+       Python 目标参数化
       </a>
      </li>
     </ul>
@@ -1579,15 +1579,20 @@ title="Print to PDF"
 <span class="n">image_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">)</span>
 <span class="n">output_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_of_image_class</span><span class="p">)</span>
 <span class="n">relay_mod</span><span class="p">,</span> <span class="n">relay_params</span> <span class="o">=</span> <span class="n">resnet</span><span class="o">.</span><span class="n">get_workload</span><span class="p">(</span><span class="n">num_layers</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">image_shape</span><span class="o">=</span><span class="n">image_shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Printing the IR module...&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">relay_mod</span><span class="o">.</span><span class="n">astext</span><span class="p">(</span><span class="n">show_meta_data</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Printing the IR module...&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">relay_mod</span><span class="p">[</span><span class="s2">&quot;main&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Printing the IR module...
-#[version = &quot;0.0.5&quot;]
-def @main(%data: Tensor[(1, 3, 224, 224), float32] /* ty=Tensor[(1, 3, 224, 224), float32] */, %bn_data_gamma: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %bn_data_beta: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %bn_data_moving_mean: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %bn_data_moving_var: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %conv0_weight: Tensor[(64, 3, 7, 7), float32] /* ty=Tensor[(64, 3, 7, 7), float32] */, %bn0_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %bn0_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %bn0_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %bn0_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_conv1_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage1_unit1_bn2_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn2_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn2_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn2_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_conv2_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage1_unit1_sc_weight: Tensor[(64, 64, 1, 1), float32] /* ty=Tensor[(64, 64, 1, 1), float32] */, %stage1_unit2_bn1_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn1_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn1_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn1_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_conv1_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage1_unit2_bn2_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn2_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn2_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn2_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_conv2_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage2_unit1_bn1_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_bn1_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_bn1_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_bn1_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_conv1_weight: Tensor[(128, 64, 3, 3), float32] /* ty=Tensor[(128, 64, 3, 3), float32] */, %stage2_unit1_bn2_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_bn2_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_bn2_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_bn2_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_conv2_weight: Tensor[(128, 128, 3, 3), float32] /* ty=Tensor[(128, 128, 3, 3), float32] */, %stage2_unit1_sc_weight: Tensor[(128, 64, 1, 1), float32] /* ty=Tensor[(128, 64, 1, 1), float32] */, %stage2_unit2_bn1_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn1_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn1_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn1_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_conv1_weight: Tensor[(128, 128, 3, 3), float32] /* ty=Tensor[(128, 128, 3, 3), float32] */, %stage2_unit2_bn2_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn2_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn2_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn2_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_conv2_weight: Tensor[(128, 128, 3, 3), float32] /* ty=Tensor[(128, 128, 3, 3), float32] */, %stage3_unit1_bn1_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_bn1_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_bn1_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_bn1_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_conv1_weight: Tensor[(256, 128, 3, 3), float32] /* ty=Tensor[(256, 128, 3, 3), float32] */, %stage3_unit1_bn2_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_bn2_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_bn2_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_bn2_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_conv2_weight: Tensor[(256, 256, 3, 3), float32] /* ty=Tensor[(256, 256, 3, 3), float32] */, %stage3_unit1_sc_weight: Tensor[(256, 128, 1, 1), float32] /* ty=Tensor[(256, 128, 1, 1), float32] */, %stage3_unit2_bn1_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn1_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn1_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn1_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_conv1_weight: Tensor[(256, 256, 3, 3), float32] /* ty=Tensor[(256, 256, 3, 3), float32] */, %stage3_unit2_bn2_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn2_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn2_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn2_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_conv2_weight: Tensor[(256, 256, 3, 3), float32] /* ty=Tensor[(256, 256, 3, 3), float32] */, %stage4_unit1_bn1_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_bn1_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_bn1_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_bn1_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_conv1_weight: Tensor[(512, 256, 3, 3), float32] /* ty=Tensor[(512, 256, 3, 3), float32] */, %stage4_unit1_bn2_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_bn2_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_bn2_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_bn2_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_conv2_weight: Tensor[(512, 512, 3, 3), float32] /* ty=Tensor[(512, 512, 3, 3), float32] */, %stage4_unit1_sc_weight: Tensor[(512, 256, 1, 1), float32] /* ty=Tensor[(512, 256, 1, 1), float32] */, %stage4_unit2_bn1_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn1_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn1_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn1_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_conv1_weight: Tensor[(512, 512, 3, 3), float32] /* ty=Tensor[(512, 512, 3, 3), float32] */, %stage4_unit2_bn2_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn2_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn2_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn2_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_conv2_weight: Tensor[(512, 512, 3, 3), float32] /* ty=Tensor[(512, 512, 3, 3), float32] */, %bn1_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %bn1_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %bn1_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %bn1_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %fc1_weight: Tensor[(1000, 512), float32] /* ty=Tensor[(1000, 512), float32] */, %fc1_bias: Tensor[(1000), float32] /* ty=Tensor[(1000), float32] */) -&gt; Tensor[(1, 1000), float32] {
+fn (%data: Tensor[(1, 3, 224, 224), float32] /* ty=Tensor[(1, 3, 224, 224), float32] */, %bn_data_gamma: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %bn_data_beta: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %bn_data_moving_mean: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %bn_data_moving_var: Tensor[(3), float32] /* ty=Tensor[(3), float32] */, %conv0_weight: Tensor[(64, 3, 7, 7), float32] /* ty=Tensor[(64, 3, 7, 7), float32] */, %bn0_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %bn0_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %bn0_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %bn0_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn1_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_conv1_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage1_unit1_bn2_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn2_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn2_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_bn2_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit1_conv2_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage1_unit1_sc_weight: Tensor[(64, 64, 1, 1), float32] /* ty=Tensor[(64, 64, 1, 1), float32] */, %stage1_unit2_bn1_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn1_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn1_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn1_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_conv1_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage1_unit2_bn2_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn2_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn2_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_bn2_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage1_unit2_conv2_weight: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, %stage2_unit1_bn1_gamma: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_bn1_beta: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_bn1_moving_mean: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_bn1_moving_var: Tensor[(64), float32] /* ty=Tensor[(64), float32] */, %stage2_unit1_conv1_weight: Tensor[(128, 64, 3, 3), float32] /* ty=Tensor[(128, 64, 3, 3), float32] */, %stage2_unit1_bn2_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_bn2_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_bn2_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_bn2_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit1_conv2_weight: Tensor[(128, 128, 3, 3), float32] /* ty=Tensor[(128, 128, 3, 3), float32] */, %stage2_unit1_sc_weight: Tensor[(128, 64, 1, 1), float32] /* ty=Tensor[(128, 64, 1, 1), float32] */, %stage2_unit2_bn1_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn1_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn1_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn1_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_conv1_weight: Tensor[(128, 128, 3, 3), float32] /* ty=Tensor[(128, 128, 3, 3), float32] */, %stage2_unit2_bn2_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn2_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn2_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_bn2_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage2_unit2_conv2_weight: Tensor[(128, 128, 3, 3), float32] /* ty=Tensor[(128, 128, 3, 3), float32] */, %stage3_unit1_bn1_gamma: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_bn1_beta: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_bn1_moving_mean: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_bn1_moving_var: Tensor[(128), float32] /* ty=Tensor[(128), float32] */, %stage3_unit1_conv1_weight: Tensor[(256, 128, 3, 3), float32] /* ty=Tensor[(256, 128, 3, 3), float32] */, %stage3_unit1_bn2_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_bn2_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_bn2_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_bn2_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit1_conv2_weight: Tensor[(256, 256, 3, 3), float32] /* ty=Tensor[(256, 256, 3, 3), float32] */, %stage3_unit1_sc_weight: Tensor[(256, 128, 1, 1), float32] /* ty=Tensor[(256, 128, 1, 1), float32] */, %stage3_unit2_bn1_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn1_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn1_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn1_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_conv1_weight: Tensor[(256, 256, 3, 3), float32] /* ty=Tensor[(256, 256, 3, 3), float32] */, %stage3_unit2_bn2_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn2_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn2_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_bn2_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage3_unit2_conv2_weight: Tensor[(256, 256, 3, 3), float32] /* ty=Tensor[(256, 256, 3, 3), float32] */, %stage4_unit1_bn1_gamma: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_bn1_beta: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_bn1_moving_mean: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_bn1_moving_var: Tensor[(256), float32] /* ty=Tensor[(256), float32] */, %stage4_unit1_conv1_weight: Tensor[(512, 256, 3, 3), float32] /* ty=Tensor[(512, 256, 3, 3), float32] */, %stage4_unit1_bn2_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_bn2_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_bn2_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_bn2_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit1_conv2_weight: Tensor[(512, 512, 3, 3), float32] /* ty=Tensor[(512, 512, 3, 3), float32] */, %stage4_unit1_sc_weight: Tensor[(512, 256, 1, 1), float32] /* ty=Tensor[(512, 256, 1, 1), float32] */, %stage4_unit2_bn1_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn1_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn1_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn1_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_conv1_weight: Tensor[(512, 512, 3, 3), float32] /* ty=Tensor[(512, 512, 3, 3), float32] */, %stage4_unit2_bn2_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn2_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn2_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_bn2_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %stage4_unit2_conv2_weight: Tensor[(512, 512, 3, 3), float32] /* ty=Tensor[(512, 512, 3, 3), float32] */, %bn1_gamma: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %bn1_beta: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %bn1_moving_mean: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %bn1_moving_var: Tensor[(512), float32] /* ty=Tensor[(512), float32] */, %fc1_weight: Tensor[(1000, 512), float32] /* ty=Tensor[(1000, 512), float32] */, %fc1_bias: Tensor[(1000), float32] /* ty=Tensor[(1000), float32] */) -&gt; Tensor[(1, 1000), float32] {
   %0 = nn.batch_norm(%data, %bn_data_gamma, %bn_data_beta, %bn_data_moving_mean, %bn_data_moving_var, epsilon=2e-05f, scale=False) /* ty=(Tensor[(1, 3, 224, 224), float32], Tensor[(3), float32], Tensor[(3), float32]) */;
   %1 = %0.0 /* ty=Tensor[(1, 3, 224, 224), float32] */;
   %2 = nn.conv2d(%1, %conv0_weight, strides=[2, 2], padding=[3, 3, 3, 3], channels=64, kernel_size=[7, 7]) /* ty=Tensor[(1, 64, 112, 112), float32] */;
@@ -1679,7 +1684,7 @@ def @main(%data: Tensor[(1, 3, 224, 224), float32] /* ty=Tensor[(1, 3, 224, 224)
   %88 = nn.dense(%87, %fc1_weight, units=1000) /* ty=Tensor[(1, 1000), float32] */;
   %89 = nn.bias_add(%88, %fc1_bias, axis=-1) /* ty=Tensor[(1, 1000), float32] */;
   nn.softmax(%89) /* ty=Tensor[(1, 1000), float32] */
-}
+} /* ty=fn (Tensor[(1, 3, 224, 224), float32], Tensor[(3), float32], Tensor[(3), float32], Tensor[(3), float32], Tensor[(3), float32], Tensor[(64, 3, 7, 7), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64, 64, 3, 3), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64, 64, 3, 3), float32], Tensor[(64, 64, 1, 1), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64, 64, 3, 3), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64, 64, 3, 3), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(64), float32], Tensor[(128, 64, 3, 3), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128, 128, 3, 3), float32], Tensor[(128, 64, 1, 1), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128, 128, 3, 3), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128, 128, 3, 3), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(128), float32], Tensor[(256, 128, 3, 3), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256, 256, 3, 3), float32], Tensor[(256, 128, 1, 1), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256, 256, 3, 3), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256, 256, 3, 3), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(256), float32], Tensor[(512, 256, 3, 3), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512, 512, 3, 3), float32], Tensor[(512, 256, 1, 1), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512, 512, 3, 3), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512, 512, 3, 3), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(512), float32], Tensor[(1000, 512), float32], Tensor[(1000), float32]) -&gt; Tensor[(1, 1000), float32] */
 </pre></div>
 </div>
 </div>
@@ -1703,10 +1708,10 @@ def @main(%data: Tensor[(1, 3, 224, 224), float32] /* ty=Tensor[(1, 3, 224, 224)
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Printing results of timing profile...
-InferType: 10083us [10083us] (52.24%; 52.24%)
-FoldScaleAxis: 9218us [7us] (47.76%; 47.76%)
-	FoldConstant: 9212us [1909us] (47.73%; 99.93%)
-		InferType: 7302us [7302us] (37.84%; 79.27%)
+InferType: 8012us [8012us] (51.67%; 51.67%)
+FoldScaleAxis: 7495us [5us] (48.33%; 48.33%)
+	FoldConstant: 7490us [1545us] (48.30%; 99.93%)
+		InferType: 5944us [5944us] (38.33%; 79.37%)
 </pre></div>
 </div>
 </div>
@@ -1727,12 +1732,22 @@ FoldScaleAxis: 9218us [7us] (47.76%; 47.76%)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Printing results of timing profile...
+InferType: 8879us [8879us] (53.79%; 53.79%)
+FoldScaleAxis: 7629us [6us] (46.21%; 46.21%)
+	FoldConstant: 7623us [1488us] (46.18%; 99.92%)
+		InferType: 6134us [6134us] (37.16%; 80.47%)
+</pre></div>
+</div>
+</div>
 </div>
 <p>注册空 list 以清除现有 instruments。</p>
 <p>注意，调用了 <code class="docutils literal notranslate"><span class="pre">PassTimingInstrument</span></code> 的 <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code>。Profiles 被清除，所以不会打印任何内容。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cur_pass_ctx</span><span class="o">.</span><span class="n">override_instruments</span><span class="p">([])</span>
+<span class="c1"># profiles = timing_inst.render()</span>
 <span class="c1"># Uncomment the call to .render() to see a warning like:</span>
 <span class="c1"># Warning: no passes have been profiled, did you enable pass profiling?</span>
 <span class="c1"># profiles = timing_inst.render()</span>
@@ -1841,24 +1856,40 @@ FoldScaleAxis: 9218us [7us] (47.76%; 47.76%)
     <span class="p">]</span>
 <span class="p">)</span>
 <span class="n">relay_mod</span><span class="p">[</span><span class="s2">&quot;main&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bind_params_by_name</span><span class="p">(</span><span class="n">relay_mod</span><span class="p">[</span><span class="s2">&quot;main&quot;</span><span class="p">],</span> <span class="n">relay_params</span><span class="p">)</span>
-<span class="c1"># timing_inst is put after call_node_inst.</span>
-<span class="c1"># So the execution time of ``call_node.inst.run_after_pass()`` is also counted.</span>
+<span class="c1"># timing_inst 放在 call_node_inst 之后。</span>
+<span class="c1"># 因此，``call_node.inst.run_after_pass()`` 的执行时间也被计算在内。</span>
 <span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">instruments</span><span class="o">=</span><span class="p">[</span><span class="n">call_node_inst</span><span class="p">,</span> <span class="n">timing_inst</span><span class="p">]):</span>
     <span class="n">relay_mod</span> <span class="o">=</span> <span class="n">pass_seq</span><span class="p">(</span><span class="n">relay_mod</span><span class="p">)</span>
     <span class="n">profiles</span> <span class="o">=</span> <span class="n">timing_inst</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
-<span class="c1"># Uncomment the next line to see timing-profile results.</span>
+<span class="c1"># 查看 timing-profile 结果</span>
 <span class="c1"># print(profiles)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[11:07:21] /workspace/tvm/src/relay/transforms/convert_layout.cc:99: Warning: Desired layout(s) not specified for op: nn.max_pool2d
+[11:07:21] /workspace/tvm/src/relay/transforms/convert_layout.cc:99: Warning: Desired layout(s) not specified for op: nn.global_avg_pool2d
+/media/pc/data/4tb/lxw/libs/anaconda3/envs/py38/lib/python3.8/site-packages/tvm/driver/build_module.py:267: UserWarning: target_host parameter is going to be deprecated. Please pass in tvm.target.Target(target, host=target_host) instead.
+  warnings.warn(
 </pre></div>
 </div>
 </div>
 </div>
 <p>可以看到每个 op 类型增加/减少了多少 CallNode。</p>
+<p>打印由每次 pass 引起的每个算子出现次数的变化：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Printing the change in number of occurrences of each operator caused by each pass...&quot;</span><span class="p">)</span>
 <span class="n">pprint</span><span class="p">(</span><span class="n">call_node_inst</span><span class="o">.</span><span class="n">get_pass_to_op_diff</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(1, &#39;CanonicalizeOps&#39;, {&#39;add&#39;: 1, &#39;nn.bias_add&#39;: -1}),
+ (1, &#39;ConvertLayout&#39;, {&#39;expand_dims&#39;: 1, &#39;layout_transform&#39;: 23}),
+ (1, &#39;FoldConstant&#39;, {&#39;expand_dims&#39;: -1, &#39;layout_transform&#39;: -21}),
+ (0, &#39;sequential&#39;, {&#39;add&#39;: 1, &#39;layout_transform&#39;: 2, &#39;nn.bias_add&#39;: -1})]
 </pre></div>
 </div>
 </div>
@@ -1912,10 +1943,8 @@ FoldScaleAxis: 9218us [7us] (47.76%; 47.76%)
 </div>
 </div>
 </div>
-<p>If an exception occurs in <code class="docutils literal notranslate"><span class="pre">enter_pass_ctx</span></code>, <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> will disable the pass
-instrumentation. And it will run the <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> of each <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code>
-which successfully finished <code class="docutils literal notranslate"><span class="pre">enter_pass_ctx</span></code>.</p>
-<p>In following example, we can see <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> of <code class="docutils literal notranslate"><span class="pre">PassFine_0</span></code> is executed after exception.</p>
+<p>如果 <code class="docutils literal notranslate"><span class="pre">enter_pass_ctx</span></code> 中发生异常，<code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 将禁用 pass instrumentation。运行每个成功完成 <code class="docutils literal notranslate"><span class="pre">enter_pass_ctx</span></code> 的 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 的 <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code>。</p>
+<p>在下面的例子中，可以看到 <code class="docutils literal notranslate"><span class="pre">PassFine_0</span></code> 的 <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> 在异常之后被执行。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">demo_ctx</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span>
@@ -1933,9 +1962,22 @@ which successfully finished <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PassFine_0 enter_pass_ctx
+PassBadEnterCtx bad enter_pass_ctx!!!
+PassFine_0 exit_pass_ctx
+Catching ValueError: PassBadEnterCtx bad enter_pass_ctx
+</pre></div>
 </div>
-<p>Exceptions in <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> instances cause all instruments of the current <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>
-to be cleared, so nothing is printed when <code class="docutils literal notranslate"><span class="pre">override_instruments</span></code> is called.</p>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[11:07:25] /workspace/tvm/src/ir/transform.cc:196: Pass instrumentation entering pass context failed.
+[11:07:25] /workspace/tvm/src/ir/transform.cc:197: Disable pass instrumentation.
+[11:07:25] /workspace/tvm/src/ir/transform.cc:201: PassFine exiting PassContext ...
+[11:07:25] /workspace/tvm/src/ir/transform.cc:203: PassFine exited PassContext.
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 实例中的异常会导致当前 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 中的所有 instruments 被清除，因此当调用 <code class="docutils literal notranslate"><span class="pre">override_instruments</span></code> 时不会打印任何东西。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">demo_ctx</span><span class="o">.</span><span class="n">override_instruments</span><span class="p">([])</span>  <span class="c1"># no PassFine_0 exit_pass_ctx printed....etc</span>
@@ -1943,9 +1985,7 @@ to be cleared, so nothing is printed when <code class="docutils literal notransl
 </div>
 </div>
 </div>
-<p>If an exception occurs in <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code>, then the pass instrument is disabled.
-Then exception is propagated. That means <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> instances registered
-after the one throwing the exception do not execute <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code>.</p>
+<p>如果 <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> 中发生异常，则禁用 pass instrument。然后传播异常。这意味着在抛出异常之后注册的 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 实例不执行 <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code>。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">demo_ctx</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span>
@@ -1964,11 +2004,31 @@ after the one throwing the exception do not execute <code class="docutils litera
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PassFine_0 enter_pass_ctx
+PassBadExitCtx enter_pass_ctx
+PassFine_1 enter_pass_ctx
+PassFine_0 should_run
+PassBadExitCtx should_run
+PassFine_1 should_run
+PassFine_0 run_before_pass
+PassBadExitCtx run_before_pass
+PassFine_1 run_before_pass
+PassFine_0 run_after_pass
+PassBadExitCtx run_after_pass
+PassFine_1 run_after_pass
+PassFine_0 exit_pass_ctx
+PassBadExitCtx bad exit_pass_ctx!!!
+Catching ValueError: PassBadExitCtx bad exit_pass_ctx
+</pre></div>
 </div>
-<p>Exceptions occurred in <code class="docutils literal notranslate"><span class="pre">should_run</span></code>, <code class="docutils literal notranslate"><span class="pre">run_before_pass</span></code>, <code class="docutils literal notranslate"><span class="pre">run_after_pass</span></code>
-are not handled explicitly – we rely on the context manager (the <code class="docutils literal notranslate"><span class="pre">with</span></code> syntax)
-to exit <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> safely.</p>
-<p>We use <code class="docutils literal notranslate"><span class="pre">run_before_pass</span></code> as an example:</p>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[11:07:25] /workspace/tvm/src/ir/transform.cc:220: Pass instrumentation exiting pass context failed.
+</pre></div>
+</div>
+</div>
+</div>
+<p>在 <code class="docutils literal notranslate"><span class="pre">should_run</span></code>, <code class="docutils literal notranslate"><span class="pre">run_before_pass</span></code>, <code class="docutils literal notranslate"><span class="pre">run_after_pass</span></code> 中发生的异常没有被显式处理——依赖于上下文管理器( <code class="docutils literal notranslate"><span class="pre">with</span></code> 语法)安全地退出 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>。</p>
+<p>以 <code class="docutils literal notranslate"><span class="pre">run_before_pass</span></code> 为例：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@pass_instrument</span>
@@ -1994,19 +2054,39 @@ to exit <code class="docutils literal notranslate"><span class="pre">PassContext
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PassFine_0 enter_pass_ctx
+PassBadRunBefore enter_pass_ctx
+PassFine_1 enter_pass_ctx
+PassFine_0 should_run
+PassBadRunBefore should_run
+PassFine_1 should_run
+PassFine_0 run_before_pass
+PassBadRunBefore bad run_before_pass!!!
+PassFine_0 exit_pass_ctx
+PassBadRunBefore exit_pass_ctx
+PassFine_1 exit_pass_ctx
+Catching ValueError: PassBadRunBefore bad run_before_pass
+</pre></div>
 </div>
-<p>Also note that pass instrumentation is not disable. So if we call
-<code class="docutils literal notranslate"><span class="pre">override_instruments</span></code>, the <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> of old registered <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code>
-is called.</p>
+</div>
+</div>
+<p>还要注意，pass instrumentation 不是禁用的。因此，如果调用 <code class="docutils literal notranslate"><span class="pre">override_instruments</span></code>，旧注册 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 的 <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> 就会被调用。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">demo_ctx</span><span class="o">.</span><span class="n">override_instruments</span><span class="p">([])</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PassFine_0 exit_pass_ctx
+PassBadRunBefore exit_pass_ctx
+PassFine_1 exit_pass_ctx
+</pre></div>
 </div>
-<p>If we don’t wrap pass execution with <code class="docutils literal notranslate"><span class="pre">with</span></code> syntax, <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> is not
-called. Let try this with current <code class="docutils literal notranslate"><span class="pre">PassContext</span></code>:</p>
+</div>
+</div>
+<p>如果不使用 <code class="docutils literal notranslate"><span class="pre">with</span></code> 语法封装 pass 执行，则不会调用 <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code>。让我们用当前的 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 来试试：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cur_pass_ctx</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="o">.</span><span class="n">current</span><span class="p">()</span>
@@ -2020,9 +2100,15 @@ called. Let try this with current <code class="docutils literal notranslate"><sp
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PassFine_0 enter_pass_ctx
+PassBadRunBefore enter_pass_ctx
+PassFine_1 enter_pass_ctx
+</pre></div>
 </div>
-<p>Then call passes. <code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> is not executed after the exception,
-as expectation.</p>
+</div>
+</div>
+<p>然后调用传递。<code class="docutils literal notranslate"><span class="pre">exit_pass_ctx</span></code> 不像预期的那样在异常之后执行。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
@@ -2033,11 +2119,28 @@ as expectation.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PassFine_0 should_run
+PassBadRunBefore should_run
+PassFine_1 should_run
+PassFine_0 run_before_pass
+PassBadRunBefore bad run_before_pass!!!
+Catching ValueError: PassBadRunBefore bad run_before_pass
+</pre></div>
 </div>
-<p>Clear instruments.</p>
+</div>
+</div>
+<p>清除 instruments。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cur_pass_ctx</span><span class="o">.</span><span class="n">override_instruments</span><span class="p">([])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PassFine_0 exit_pass_ctx
+PassBadRunBefore exit_pass_ctx
+PassFine_1 exit_pass_ctx
 </pre></div>
 </div>
 </div>
@@ -2063,7 +2166,7 @@ as expectation.</p>
     <a class='right-next' id="next-link" href="bring_your_own_datatypes.html" title="下一页 页">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">下一页</p>
-        <p class="prev-next-title">Bring Your Own Datatypes to TVM</p>
+        <p class="prev-next-title">自定义 TVM 数据类型</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -2077,7 +2180,7 @@ as expectation.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-08-31, 02:37:09.<br/>
+    Last updated on 2022-09-06, 06:11:08.<br/>
 </p>
         </footer>
     </div>

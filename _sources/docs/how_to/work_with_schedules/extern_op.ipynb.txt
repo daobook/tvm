@@ -159,7 +159,7 @@
       "source": [
         "@tvm.register_func(\"tvm.contrib.my_tvm_addone\")\n",
         "def my_tvm_addone(x, y):\n",
-        "    print(\"my_tvm_addone signatures: %s, %s\" % (type(x), type(y)))\n",
+        "    print(f\"my_tvm_addone signatures: {type(x)}, {type(y)}\")\n",
         "    tvm.nd.array(x.numpy() + 1).copyto(y)\n",
         "\n",
         "\n",
