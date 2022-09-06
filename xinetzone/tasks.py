@@ -19,7 +19,7 @@ def init(ctx,
                    'gcc g++ libtinfo-dev zlib1g-dev '
                    'build-essential cmake libedit-dev libxml2-dev')
     ctx.run(package_cmd)
-    ctx.run('sudo apt install clang clangd llvm liblldb-14-dev')
+    ctx.run('sudo apt install clang clangd llvm liblldb-dev')
     ctx.run(f'pip install -r {ROOT}/xin/requirements.txt')
     # Git
     ctx.run(f'git config user.name {name}')
