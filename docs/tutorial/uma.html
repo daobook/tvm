@@ -1463,6 +1463,35 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#vanilla">
    Vanilla
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Vanilla 后端
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     定义卸载模式
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#codegen">
+     Codegen
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     建立神经网络，并在 Vanilla 上运行
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#output">
+       Output
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#strawberry">
@@ -1507,6 +1536,35 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#vanilla">
    Vanilla
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Vanilla 后端
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     定义卸载模式
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#codegen">
+     Codegen
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     建立神经网络，并在 Vanilla 上运行
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#output">
+       Output
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#strawberry">
@@ -1548,24 +1606,20 @@ title="Print to PDF"
 <p>在本教程中，您将了解 UMA API 在三个日益复杂的用例中。在这些用例中，三个模拟加速器 <strong>Vanilla</strong>、<strong>Strawberry</strong> 和 <strong>Chocolate</strong> 被引入并使用 UMA 集成到 TVM 中。</p>
 <section id="vanilla">
 <h2>Vanilla<a class="headerlink" href="#vanilla" title="永久链接至标题">#</a></h2>
-<p><strong>Vanilla</strong> is a simple accelerator consisting of a MAC array and has no internal memory.
-It is can ONLY process Conv2D layers, all other layers are executed on a CPU, that also orchestrates <strong>Vanilla</strong>.
-Both the CPU and Vanilla use a shared memory.</p>
+<p><strong>Vanilla</strong> 是由 MAC array 组成，没有内部内存的简单加速器。它只能处理 Conv2D 层，所有其他层都在 CPU 上执行，这也协调了 <strong>Vanilla</strong>。CPU 和 Vanilla 都使用共享内存。</p>
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/apache/tvm-site/main/images/tutorial/uma_vanilla_block_diagram.png"><img alt="A block diagram of Vanilla" src="https://raw.githubusercontent.com/apache/tvm-site/main/images/tutorial/uma_vanilla_block_diagram.png" style="width: 100%;" /></a>
-<p><strong>Vanilla</strong> has a C interface ``vanilla_conv2dnchw(…)``` for carrying out a Conv2D operation (including same-padding),
-that accepts pointers to input feature map, weights and result,
-as well as the dimensions of <code class="docutils literal notranslate"><span class="pre">Conv2D</span></code>: <code class="docutils literal notranslate"><span class="pre">oc</span></code>, <code class="docutils literal notranslate"><span class="pre">iw</span></code>, <code class="docutils literal notranslate"><span class="pre">ih</span></code>, <code class="docutils literal notranslate"><span class="pre">ic</span></code>, <code class="docutils literal notranslate"><span class="pre">kh</span></code>, <code class="docutils literal notranslate"><span class="pre">kw</span></code>.</p>
+<p><strong>Vanilla</strong> 提供 C 接口 <code class="docutils literal notranslate"><span class="pre">vanilla_conv2dnchw(...)</span></code> 用于携带 Conv2D 运算（包括 same-padding），它接受指向输入 feature map、权重和结果的指针，以及的 <code class="docutils literal notranslate"><span class="pre">Conv2D</span></code> 的维度：<code class="docutils literal notranslate"><span class="pre">oc</span></code>, <code class="docutils literal notranslate"><span class="pre">iw</span></code>, <code class="docutils literal notranslate"><span class="pre">ih</span></code>, <code class="docutils literal notranslate"><span class="pre">ic</span></code>, <code class="docutils literal notranslate"><span class="pre">kh</span></code>, <code class="docutils literal notranslate"><span class="pre">kw</span></code>。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">vanilla_conv2dnchw</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">ifmap</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">*</span><span class="w">  </span><span class="n">weights</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">*</span><span class="w">  </span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">oc</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">iw</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ih</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ic</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kh</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kw</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The script <code class="docutils literal notranslate"><span class="pre">uma_cli</span></code> creates code skeletons with API-calls into the UMA-API for new accelerators.</p>
-<p>For <strong>Vanilla</strong> we use it as follows: (<code class="docutils literal notranslate"><span class="pre">--tutorial</span> <span class="pre">vanilla</span></code> adds all the additional files required for this part of the tutorial)</p>
+<p>脚本 <code class="docutils literal notranslate"><span class="pre">uma_cli</span></code> 为新的加速器创建带有 API-calls 的代码骨架。</p>
+<p>对于 <strong>Vanilla</strong>，我们使用如下方法： （<code class="docutils literal notranslate"><span class="pre">--tutorial</span> <span class="pre">vanilla</span></code> 添加教程这部分所需的所有附加文件）</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install inflection
 <span class="nb">cd</span> <span class="nv">$TVM_HOME</span>/apps/uma
 python uma_cli.py --add_hardware vanilla_accelerator --tutorial vanilla
 </pre></div>
 </div>
-<p>uma_cli.py generates these files in the directory <code class="docutils literal notranslate"><span class="pre">vanilla_accelerator</span></code> which we are going to revist.</p>
+<p><code class="docutils literal notranslate"><span class="pre">uma_cli.py</span></code> 将在 <code class="docutils literal notranslate"><span class="pre">vanilla_accelerator</span></code> 目录中生成这些文件，我们将重新访问这个目录。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>backend.py
 codegen.py
 conv2dnchw.cc
@@ -1575,8 +1629,9 @@ run.py
 strategies.py
 </pre></div>
 </div>
-<p>Vanilla backend</p>
-<p>The generated backend for vanilla is found in <code class="docutils literal notranslate"><span class="pre">vanilla_accelerator/backend.py</span></code>:</p>
+<section id="id1">
+<h3>Vanilla 后端<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h3>
+<p>为 vanilla 生成的后端可以在 <code class="docutils literal notranslate"><span class="pre">vanilla_accelerator/backend.py</span></code> 中找到：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">VanillaAcceleratorBackend</span><span class="p">(</span><span class="n">UMABackend</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;UMA backend for VanillaAccelerator.&quot;&quot;&quot;</span>
 
@@ -1592,23 +1647,22 @@ strategies.py
         <span class="k">return</span> <span class="s2">&quot;vanilla_accelerator&quot;</span>
 </pre></div>
 </div>
-<p>Define offloaded patterns</p>
-<p>To specify that <code class="docutils literal notranslate"><span class="pre">Conv2D</span></code> is offloaded to <strong>Vanilla</strong>, it is described as Relay dataflow pattern
-(<a class="reference external" href="https://tvm.apache.org/docs/reference/langref/relay_pattern.html">DFPattern</a>) in <code class="docutils literal notranslate"><span class="pre">vanilla_accelerator/patterns.py</span></code></p>
+</section>
+<section id="id2">
+<h3>定义卸载模式<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h3>
+<p>为了指定将 <code class="docutils literal notranslate"><span class="pre">Conv2D</span></code> 卸载（offloaded）到 <strong>Vanilla</strong>，它在 <code class="docutils literal notranslate"><span class="pre">vanilla_accelerator/patterns.py</span></code> 中被描述为 Relay 数据流模式(<a class="reference external" href="https://tvm.apache.org/docs/reference/langref/relay_pattern.html">DFPattern</a>)</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">conv2d_pattern</span><span class="p">():</span>
     <span class="n">pattern</span> <span class="o">=</span> <span class="n">is_op</span><span class="p">(</span><span class="s2">&quot;nn.conv2d&quot;</span><span class="p">)(</span><span class="n">wildcard</span><span class="p">(),</span> <span class="n">wildcard</span><span class="p">())</span>
     <span class="n">pattern</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">has_attr</span><span class="p">({</span><span class="s2">&quot;strides&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]})</span>
     <span class="k">return</span> <span class="n">pattern</span>
 </pre></div>
 </div>
-<p>To map <strong>Conv2D</strong> operations from the input graph  to <strong>Vanilla</strong>’s
-low level function call <code class="docutils literal notranslate"><span class="pre">vanilla_conv2dnchw(...)</span></code>, the TIR pass
-<em>VanillaAcceleratorConv2DPass</em> (that will be discussed later in this tutorial)
-is registered in <code class="docutils literal notranslate"><span class="pre">VanillaAcceleratorBackend</span></code>.</p>
-<p>Codegen</p>
-<p>The file <code class="docutils literal notranslate"><span class="pre">vanilla_accelerator/codegen.py</span></code> defines static  C-code that is added to the
-resulting C-Code generated by TVMś C-Codegen in <code class="docutils literal notranslate"><span class="pre">gen_includes</span></code>.
-Here C-code is added to include <strong>Vanilla</strong>’s low level library<code class="docutils literal notranslate"><span class="pre">vanilla_conv2dnchw()</span></code>.</p>
+<p>为了将 <code class="docutils literal notranslate"><span class="pre">Conv2D</span></code> 运算从 input graph 映射到 <strong>Vanilla</strong> 的低级函数调用 <code class="docutils literal notranslate"><span class="pre">vanilla_conv2dnchw(...)</span></code>，TIR pass <code class="docutils literal notranslate"><span class="pre">VanillaAcceleratorConv2DPass</span></code> (将在本教程后面讨论)在 <code class="docutils literal notranslate"><span class="pre">VanillaAcceleratorBackend</span></code> 中注册。</p>
+</section>
+<section id="codegen">
+<h3>Codegen<a class="headerlink" href="#codegen" title="永久链接至标题">#</a></h3>
+<p>文件 <code class="docutils literal notranslate"><span class="pre">vanilla_accelerator/codegen.py</span></code> 定义了静态 C 代码，它被添加到由 TVM C-Codegen 在 <code class="docutils literal notranslate"><span class="pre">gen_includes</span></code> 中生成的 C 代码。</p>
+<p>这里添加了 C 代码，以包含 <strong>Vanilla</strong> 的低级库 <code class="docutils literal notranslate"><span class="pre">vanilla_conv2dnchw()</span></code>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gen_includes</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="n">topdir</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
 
@@ -1617,16 +1671,14 @@ Here C-code is added to include <strong>Vanilla</strong>’s low level library<c
     <span class="k">return</span> <span class="n">includes</span>
 </pre></div>
 </div>
-<p>As shown above in <code class="docutils literal notranslate"><span class="pre">VanillaAcceleratorBackend</span></code> it is registered to UMA with
-the <code class="docutils literal notranslate"><span class="pre">self._register_codegen</span></code></p>
+<p>如上所示，在 <code class="docutils literal notranslate"><span class="pre">VanillaAcceleratorBackend</span></code> 中，它通过 <code class="docutils literal notranslate"><span class="pre">self._register_codegen</span></code> 注册到 UMA</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_register_codegen</span><span class="p">(</span><span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="n">includes</span><span class="o">=</span><span class="n">gen_includes</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Building the Neural Network and run it on Vanilla</p>
-<p>To demonstrate UMA’s functionality, we will generate C code for a single Conv2D layer and run it on
-the Vanilla accelerator.
-The file <code class="docutils literal notranslate"><span class="pre">vanilla_accelerator/run.py</span></code> provides a demo running a Conv2D layer
-making use of Vanilla’s C-API.</p>
+</section>
+<section id="id3">
+<h3>建立神经网络，并在 Vanilla 上运行<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h3>
+<p>为了演示 UMA 的功能，我们将为单个 <code class="docutils literal notranslate"><span class="pre">Conv2D</span></code> 层生成 C 代码，并在 Vanilla 加速器上运行它。文件 <code class="docutils literal notranslate"><span class="pre">vanilla_accelerator/run.py</span></code> 提供了一个使用 Vanilla 的 C-API 运行 Conv2D 层的演示。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">mod</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">output_list</span><span class="p">,</span> <span class="n">runner</span> <span class="o">=</span> <span class="n">create_conv2d</span><span class="p">()</span>
 
@@ -1650,12 +1702,13 @@ making use of Vanilla’s C-API.</p>
 <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>By running <code class="docutils literal notranslate"><span class="pre">vanilla_accelerator/run.py</span></code> the output files are generated in the model library format (MLF).</p>
-<p>Output:</p>
+<p>通过运行 <code class="docutils literal notranslate"><span class="pre">vanilla_accelerator/run.py</span></code>，输出文件将以模型库格式（model library format，简称 MLF）生成。</p>
+<section id="output">
+<h4>Output<a class="headerlink" href="#output" title="永久链接至标题">#</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Generated files are <span class="k">in</span> /tmp/tvm-debug-mode-tempdirs/2022-07-13T13-26-22___x5u76h0p/00000
 </pre></div>
 </div>
-<p>Let’s examine the generated files:</p>
+<p>让我们检查一下生成的文件：</p>
 <p>Output:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /tmp/tvm-debug-mode-tempdirs/2022-07-13T13-26-22___x5u76h0p/00000
 <span class="nb">cd</span> build/
@@ -1669,7 +1722,7 @@ runtime
 src
 </pre></div>
 </div>
-<p>To evaluate the generated C code go to <code class="docutils literal notranslate"><span class="pre">codegen/host/src/default_lib2.c</span></code></p>
+<p>要 evaluate 生成的 C 代码，请访问 <code class="docutils literal notranslate"><span class="pre">codegen/host/src/default_lib2.c</span></code>：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> codegen/host/src/
 ls -1
 
@@ -1678,14 +1731,15 @@ default_lib1.c
 default_lib2.c
 </pre></div>
 </div>
-<p>In <code class="docutils literal notranslate"><span class="pre">default_lib2.c</span></code> you can now see that the generated code calls
-into Vanilla’s C-API and executes a Conv2D layer:</p>
+<p>在 <code class="docutils literal notranslate"><span class="pre">default_lib2.c</span></code> 中，你现在可以看到生成的代码调用了 Vanilla 的 C-API 并执行了 Conv2D 层：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">TVM_DLL</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">tvmgen_default_vanilla_accelerator_main_0</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">placeholder</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">placeholder1</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">conv2d_nchw</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="o">*</span><span class="w"> </span><span class="n">global_workspace_1_var</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">     </span><span class="n">vanilla_accelerator_conv2dnchw</span><span class="p">(</span><span class="n">placeholder</span><span class="p">,</span><span class="w"> </span><span class="n">placeholder1</span><span class="p">,</span><span class="w"> </span><span class="n">conv2d_nchw</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
 <span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
+</section>
+</section>
 </section>
 <section id="strawberry">
 <h2>Strawberry<a class="headerlink" href="#strawberry" title="永久链接至标题">#</a></h2>
@@ -1742,7 +1796,7 @@ TVM RFC, June 2022.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-09-07, 12:59:46.<br/>
+    Last updated on 2022-09-14, 03:49:18.<br/>
 </p>
         </footer>
     </div>

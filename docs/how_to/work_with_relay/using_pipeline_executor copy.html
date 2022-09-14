@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>拓展 TVM &#8212; TVM  文档</title>
+    <title>在 Relay 中使用管道执行器 &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -48,8 +48,6 @@
     <link rel="shortcut icon" href="../../../_static/tvm-logo-square.png"/>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="编写定制 Pass" href="low_level_custom_pass.html" />
-    <link rel="prev" title="Executing a Tiny Model with TVMC Micro" href="../work_with_microtvm/micro_tvmc.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -101,7 +99,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../README.html">
    TVM 文档
@@ -220,16 +218,16 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../../user-guide.html">
    用户手册
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../../tutorial/index.html">
      用户指南
@@ -302,16 +300,16 @@
      </li>
     </ul>
    </li>
-   <li class="toctree-l2 current active has-children">
+   <li class="toctree-l2 has-children">
     <a class="reference internal" href="../index.html">
      How To 指南
     </a>
-    <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
     <label for="toctree-checkbox-7">
      <i class="fas fa-chevron-down">
      </i>
     </label>
-    <ul class="current">
+    <ul>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../compile_models/index.html">
        编译深度学习模型
@@ -488,7 +486,7 @@
       </ul>
      </li>
      <li class="toctree-l3 has-children">
-      <a class="reference internal" href="../work_with_relay/index.html">
+      <a class="reference internal" href="index.html">
        使用 Relay
       </a>
       <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
@@ -498,22 +496,22 @@
       </label>
       <ul>
        <li class="toctree-l4">
-        <a class="reference internal" href="../work_with_relay/build_gcn.html">
+        <a class="reference internal" href="build_gcn.html">
          构建图卷积网络
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="../work_with_relay/using_external_lib.html">
+        <a class="reference internal" href="using_external_lib.html">
          在 Relay 中使用外部库
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="../work_with_relay/using_pipeline_executor.html">
+        <a class="reference internal" href="using_pipeline_executor.html">
          在 Relay 中使用管道执行器
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="../work_with_relay/using_relay_viz.html">
+        <a class="reference internal" href="using_relay_viz.html">
          使用 Relay Visualizer 可视化 Relay
         </a>
        </li>
@@ -724,33 +722,33 @@
        </li>
       </ul>
      </li>
-     <li class="toctree-l3 current active has-children">
-      <a class="current reference internal" href="#">
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extend_tvm/index.html">
        拓展 TVM
       </a>
-      <input checked="" class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
       <label for="toctree-checkbox-17">
        <i class="fas fa-chevron-down">
        </i>
       </label>
       <ul>
        <li class="toctree-l4">
-        <a class="reference internal" href="low_level_custom_pass.html">
+        <a class="reference internal" href="../extend_tvm/low_level_custom_pass.html">
          编写定制 Pass
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="use_pass_infra.html">
+        <a class="reference internal" href="../extend_tvm/use_pass_infra.html">
          如何使用 TVM Pass Infra
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="use_pass_instrument.html">
+        <a class="reference internal" href="../extend_tvm/use_pass_instrument.html">
          如何使用 TVM Pass Instrument
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="bring_your_own_datatypes.html">
+        <a class="reference internal" href="../extend_tvm/bring_your_own_datatypes.html">
          自定义 TVM 数据类型
         </a>
        </li>
@@ -1400,7 +1398,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/docs/how_to/extend_tvm/index.rst.txt"
+        <a href="../../../_sources/docs/how_to/work_with_relay/using_pipeline_executor copy.ipynb.txt"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -1411,7 +1409,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.rst</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -1437,23 +1435,130 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> 导航
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   创建简单网络，可以是预训练的模型
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   将网络分成两个子图
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cutlass-target">
+   使用 cutlass target 构建子图
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   使用管道执行器在管道中运行两个子图
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-the-pipeline-executor">
+   Build the pipeline executor.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-the-load-function-to-create-and-initialize-pipelinemodule">
+   Use the load function to create and initialize PipelineModule.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-pipeline-executor">
+   Run the pipeline executor.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-graph-executor-for-verification">
+   Use graph_executor for verification.
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>拓展 TVM</h1>
+                <h1>在 Relay 中使用管道执行器</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> 导航 </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   创建简单网络，可以是预训练的模型
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   将网络分成两个子图
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cutlass-target">
+   使用 cutlass target 构建子图
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   使用管道执行器在管道中运行两个子图
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-the-pipeline-executor">
+   Build the pipeline executor.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-the-load-function-to-create-and-initialize-pipelinemodule">
+   Use the load function to create and initialize PipelineModule.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-pipeline-executor">
+   Run the pipeline executor.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-graph-executor-for-verification">
+   Use graph_executor for verification.
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -1461,12 +1566,341 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="tvm">
-<span id="sphx-glr-how-to-extend-tvm"></span><h1>拓展 TVM<a class="headerlink" href="#tvm" title="永久链接至标题">#</a></h1>
-<p>TVM 是可扩展的开发平台，有许多入口，包括引入新数据类型和添加较低级定制优化 passes 的选项。</p>
-<p>这些运算指南描述了扩展 TVM 的一些方法。</p>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="relay">
+<h1>在 Relay 中使用管道执行器<a class="headerlink" href="#relay" title="永久链接至标题">#</a></h1>
+<p><strong>原作者</strong>: <a class="reference external" href="https://github.com/huajsj">Hua Jiang</a></p>
+<p>这是关于如何在 Relay 中使用“管道执行器”（Pipeline Executor）的简短教程。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">env</span> <span class="c1"># 加载 TVM</span>
+<span class="kn">import</span> <span class="nn">tvm</span>
+<span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">te</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">graph_executor</span> <span class="k">as</span> <span class="n">runtime</span>
+<span class="kn">from</span> <span class="nn">tvm.relay.op.contrib.cutlass</span> <span class="kn">import</span> <span class="n">partition_for_cutlass</span>
+<span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">relay</span>
+<span class="kn">from</span> <span class="nn">tvm.relay</span> <span class="kn">import</span> <span class="n">testing</span>
+<span class="kn">import</span> <span class="nn">tvm.testing</span>
+<span class="kn">from</span> <span class="nn">tvm.contrib.cutlass</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">has_cutlass</span><span class="p">,</span>
+    <span class="n">num_cutlass_partitions</span><span class="p">,</span>
+    <span class="n">finalize_modules</span><span class="p">,</span>
+    <span class="n">finalize_modules_vm</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">img_size</span> <span class="o">=</span> <span class="mi">8</span>
+</pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/pc/data/4tb/lxw/home/lxw/tvm/xinetzone/src
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h2>创建简单网络，可以是预训练的模型<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
+<p>创建非常简单的网络进行演示。它由卷积、batch normalization、dense 和 ReLU 激活组成。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_network</span><span class="p">():</span>
+    <span class="n">out_channels</span> <span class="o">=</span> <span class="mi">16</span>
+    <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">relay</span><span class="o">.</span><span class="n">TensorType</span><span class="p">((</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">img_size</span><span class="p">,</span> <span class="n">img_size</span><span class="p">),</span> <span class="s2">&quot;float16&quot;</span><span class="p">))</span>
+    <span class="n">dense_weight</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">var</span><span class="p">(</span>
+        <span class="s2">&quot;dweight&quot;</span><span class="p">,</span> <span class="n">relay</span><span class="o">.</span><span class="n">TensorType</span><span class="p">((</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">16</span> <span class="o">*</span> <span class="n">img_size</span> <span class="o">*</span> <span class="n">img_size</span><span class="p">),</span> <span class="s2">&quot;float16&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">weight</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span>
+    <span class="n">second_weight</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s2">&quot;second_weight&quot;</span><span class="p">)</span>
+    <span class="n">bn_gamma</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s2">&quot;bn_gamma&quot;</span><span class="p">)</span>
+    <span class="n">bn_beta</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s2">&quot;bn_beta&quot;</span><span class="p">)</span>
+    <span class="n">bn_mmean</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s2">&quot;bn_mean&quot;</span><span class="p">)</span>
+    <span class="n">bn_mvar</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s2">&quot;bn_var&quot;</span><span class="p">)</span>
+    <span class="n">simple_net</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">channels</span><span class="o">=</span><span class="n">out_channels</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">simple_net</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">batch_norm</span><span class="p">(</span><span class="n">simple_net</span><span class="p">,</span> <span class="n">bn_gamma</span><span class="p">,</span> <span class="n">bn_beta</span><span class="p">,</span> <span class="n">bn_mmean</span><span class="p">,</span> <span class="n">bn_mvar</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">simple_net</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">simple_net</span><span class="p">)</span>
+    <span class="n">simple_net</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">batch_flatten</span><span class="p">(</span><span class="n">simple_net</span><span class="p">)</span>
+    <span class="n">simple_net</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">simple_net</span><span class="p">,</span> <span class="n">dense_weight</span><span class="p">)</span>
+    <span class="n">simple_net</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">relay</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">free_vars</span><span class="p">(</span><span class="n">simple_net</span><span class="p">),</span> <span class="n">simple_net</span><span class="p">)</span>
+    <span class="n">data_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">img_size</span><span class="p">,</span> <span class="n">img_size</span><span class="p">)</span>
+    <span class="n">net</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">testing</span><span class="o">.</span><span class="n">create_workload</span><span class="p">(</span><span class="n">simple_net</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">net</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">data_shape</span>
+
+
+<span class="n">net</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">data_shape</span> <span class="o">=</span> <span class="n">get_network</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>将网络分成两个子图<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
+<p>单元测试中的 ‘graph_split’ 函数只是一个例子。用户可以创建自定义的逻辑来分割计算图。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">env</span> <span class="kn">import</span> <span class="n">TVM_ROOT</span>
+<span class="n">os</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">TVM_ROOT</span><span class="si">}</span><span class="s2">/tests/python/relay&quot;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">test_pipeline_executor</span> <span class="kn">import</span> <span class="n">graph_split</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>将网络分成两个子图。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">split_config</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;op_name&quot;</span><span class="p">:</span> <span class="s2">&quot;nn.relu&quot;</span><span class="p">,</span> <span class="s2">&quot;op_index&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}]</span>
+<span class="n">subgraphs</span> <span class="o">=</span> <span class="n">graph_split</span><span class="p">(</span><span class="n">net</span><span class="p">[</span><span class="s2">&quot;main&quot;</span><span class="p">],</span> <span class="n">split_config</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>生成的子图应该如下所示。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">subgraphs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;子图 </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;main&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>子图 0:
+ fn (%data: Tensor[(1, 3, 8, 8), float16] /* ty=Tensor[(1, 3, 8, 8), float16] */) {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(16, 3, 3, 3), float16] */, padding=[1, 1, 1, 1], channels=16, kernel_size=[3, 3]) /* ty=Tensor[(1, 16, 8, 8), float16] */;
+  %1 = nn.batch_norm(%0, meta[relay.Constant][1] /* ty=Tensor[(16), float16] */, meta[relay.Constant][2] /* ty=Tensor[(16), float16] */, meta[relay.Constant][3] /* ty=Tensor[(16), float16] */, meta[relay.Constant][4] /* ty=Tensor[(16), float16] */) /* ty=(Tensor[(1, 16, 8, 8), float16], Tensor[(16), float16], Tensor[(16), float16]) */;
+  %2 = %1.0 /* ty=Tensor[(1, 16, 8, 8), float16] */;
+  nn.relu(%2) /* ty=Tensor[(1, 16, 8, 8), float16] */
+}
+
+子图 1:
+ fn (%data_n_0: Tensor[(1, 16, 8, 8), float16] /* ty=Tensor[(1, 16, 8, 8), float16] */) {
+  %0 = nn.batch_flatten(%data_n_0) /* ty=Tensor[(1, 1024), float16] */;
+  nn.dense(%0, meta[relay.Constant][0] /* ty=Tensor[(1, 1024), float16] */, units=None) /* ty=Tensor[(1, 1), float16] */
+}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cutlass-target">
+<h2>使用 cutlass target 构建子图<a class="headerlink" href="#cutlass-target" title="永久链接至标题">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cutlass</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">Target</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;cutlass&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sm&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">tvm</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">Target</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">arch</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]),</span>
+        <span class="s2">&quot;use_3xtf32&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;split_k_slices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="s2">&quot;profile_all_alignments&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;find_first_valid&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;use_multiprocessing&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;use_fast_math&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;tmp_dir&quot;</span><span class="p">:</span> <span class="s2">&quot;./tmp&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">host</span><span class="o">=</span><span class="n">tvm</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">Target</span><span class="p">(</span><span class="s2">&quot;llvm&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">cutlass_build</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target_host</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mod_name</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">):</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="n">target</span><span class="p">,</span> <span class="n">cutlass</span><span class="p">]</span>
+    <span class="n">lib</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">build_module</span><span class="o">.</span><span class="n">build</span><span class="p">(</span>
+        <span class="n">mod</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">target_host</span><span class="o">=</span><span class="n">target_host</span><span class="p">,</span> <span class="n">mod_name</span><span class="o">=</span><span class="n">mod_name</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">lib</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>使用管道执行器在管道中运行两个子图<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h2>
+<p>在 cmake 中将 <code class="docutils literal notranslate"><span class="pre">USE_PIPELINE_EXECUTOR</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">ON</span></code>，并将 <code class="docutils literal notranslate"><span class="pre">USE_CUTLASS</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">ON</span></code>。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">graph_executor</span><span class="p">,</span> <span class="n">pipeline_executor</span><span class="p">,</span> <span class="n">pipeline_executor_build</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create subgraph pipeline configuration.
+Associate a subgraph module with a target.
+Use CUTLASS BYOC to build the second subgraph module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod0</span><span class="p">,</span> <span class="n">mod1</span> <span class="o">=</span> <span class="n">subgraphs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">subgraphs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1"># Use cutlass as the codegen.</span>
+<span class="n">mod1</span> <span class="o">=</span> <span class="n">partition_for_cutlass</span><span class="p">(</span><span class="n">mod1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Get the pipeline executor configuration object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe_config</span> <span class="o">=</span> <span class="n">pipeline_executor_build</span><span class="o">.</span><span class="n">PipelineConfig</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set the compile target of the subgraph module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe_config</span><span class="p">[</span><span class="n">mod0</span><span class="p">]</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;llvm&quot;</span>
+<span class="n">pipe_config</span><span class="p">[</span><span class="n">mod0</span><span class="p">]</span><span class="o">.</span><span class="n">dev</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">cpu</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set the compile target of the second subgraph module as cuda.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe_config</span><span class="p">[</span><span class="n">mod1</span><span class="p">]</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span>
+<span class="n">pipe_config</span><span class="p">[</span><span class="n">mod1</span><span class="p">]</span><span class="o">.</span><span class="n">dev</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pipe_config</span><span class="p">[</span><span class="n">mod1</span><span class="p">]</span><span class="o">.</span><span class="n">build_func</span> <span class="o">=</span> <span class="n">cutlass_build</span>
+<span class="n">pipe_config</span><span class="p">[</span><span class="n">mod1</span><span class="p">]</span><span class="o">.</span><span class="n">export_cc</span> <span class="o">=</span> <span class="s2">&quot;nvcc&quot;</span>
+<span class="c1"># Create the pipeline by connecting the subgraph modules.</span>
+<span class="c1"># The global input will be forwarded to the input interface of the first module named mod0</span>
+<span class="n">pipe_config</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pipe_config</span><span class="p">[</span><span class="n">mod0</span><span class="p">][</span><span class="s2">&quot;input&quot;</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+<span class="c1"># The first output of mod0 will be forwarded to the input interface of mod1</span>
+<span class="n">pipe_config</span><span class="p">[</span><span class="n">mod0</span><span class="p">][</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pipe_config</span><span class="p">[</span><span class="n">mod1</span><span class="p">][</span><span class="s2">&quot;input&quot;</span><span class="p">][</span><span class="s2">&quot;data_n_0&quot;</span><span class="p">])</span>
+<span class="c1"># The first output of mod1 will be the first global output.</span>
+<span class="n">pipe_config</span><span class="p">[</span><span class="n">mod1</span><span class="p">][</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pipe_config</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The pipeline configuration as below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">print(pipe_config)</span>
+<span class="sd"> Inputs</span>
+<span class="sd">  |data: mod0:data</span>
+
+<span class="sd"> output</span>
+<span class="sd">  |output(0) : mod1.output(0)</span>
+
+<span class="sd"> connections</span>
+<span class="sd">  |mod0.output(0)-&gt; mod1.data_n_0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;\nprint(pipe_config)\n Inputs\n  |data: mod0:data\n\n output\n  |output(0) : mod1.output(0)\n\n connections\n  |mod0.output(0)-&gt; mod1.data_n_0\n&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="build-the-pipeline-executor">
+<h2>Build the pipeline executor.<a class="headerlink" href="#build-the-pipeline-executor" title="永久链接至标题">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">pipeline_mod_factory</span> <span class="o">=</span> <span class="n">pipeline_executor_build</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">pipe_config</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/pc/data/4tb/lxw/home/lxw/tvm/python/tvm/driver/build_module.py:266: UserWarning: target_host parameter is going to be deprecated. Please pass in tvm.target.Target(target, host=target_host) instead.
+  warnings.warn(
+One or more operators have not been tuned. Please tune your model for better performance. Use DEBUG logging level to see more details.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Export the parameter configuration to a file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">directory_path</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">tempdir</span><span class="p">()</span><span class="o">.</span><span class="n">temp_dir</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory_path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">config_file_name</span> <span class="o">=</span> <span class="n">pipeline_mod_factory</span><span class="o">.</span><span class="n">export_library</span><span class="p">(</span><span class="n">directory_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="use-the-load-function-to-create-and-initialize-pipelinemodule">
+<h2>Use the load function to create and initialize PipelineModule.<a class="headerlink" href="#use-the-load-function-to-create-and-initialize-pipelinemodule" title="永久链接至标题">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline_module</span> <span class="o">=</span> <span class="n">pipeline_executor</span><span class="o">.</span><span class="n">PipelineModule</span><span class="o">.</span><span class="n">load_library</span><span class="p">(</span><span class="n">config_file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-the-pipeline-executor">
+<h2>Run the pipeline executor.<a class="headerlink" href="#run-the-pipeline-executor" title="永久链接至标题">#</a></h2>
+<p>Allocate input data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">data_shape</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float16&quot;</span><span class="p">)</span>
+<span class="n">pipeline_module</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">tvm</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Run the two subgraph in the pipeline mode to get the output asynchronously
+or synchronously. In the following example, it is synchronous.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline_module</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">pipeline_module</span><span class="o">.</span><span class="n">get_output</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="use-graph-executor-for-verification">
+<h2>Use graph_executor for verification.<a class="headerlink" href="#use-graph-executor-for-verification" title="永久链接至标题">#</a></h2>
+<p>Run these two subgraphs in sequence with graph_executor to get the output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;llvm&quot;</span>
+<span class="n">dev0</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">lib0</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">build_module</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">mod0</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<span class="n">module0</span> <span class="o">=</span> <span class="n">runtime</span><span class="o">.</span><span class="n">GraphModule</span><span class="p">(</span><span class="n">lib0</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">](</span><span class="n">dev0</span><span class="p">))</span>
+<span class="n">cuda</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">Target</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="n">tvm</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">Target</span><span class="p">(</span><span class="s2">&quot;llvm&quot;</span><span class="p">))</span>
+<span class="n">lib1</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">build_module</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">mod1</span><span class="p">,</span> <span class="p">[</span><span class="n">cuda</span><span class="p">,</span> <span class="n">cutlass</span><span class="p">],</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<span class="n">lib1</span> <span class="o">=</span> <span class="n">finalize_modules</span><span class="p">(</span><span class="n">lib1</span><span class="p">,</span> <span class="s2">&quot;compile.so&quot;</span><span class="p">,</span> <span class="s2">&quot;./tmp&quot;</span><span class="p">)</span>
+
+<span class="n">dev1</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">module1</span> <span class="o">=</span> <span class="n">runtime</span><span class="o">.</span><span class="n">GraphModule</span><span class="p">(</span><span class="n">lib1</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">](</span><span class="n">dev1</span><span class="p">))</span>
+
+<span class="n">module0</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">module0</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">out_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">img_size</span><span class="p">,</span> <span class="n">img_size</span><span class="p">)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">module0</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tvm</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">out_shape</span><span class="p">,</span> <span class="s2">&quot;float16&quot;</span><span class="p">))</span>
+<span class="n">module1</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="s2">&quot;data_n_0&quot;</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+<span class="n">module1</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">out_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">module1</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tvm</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">out_shape</span><span class="p">,</span> <span class="s2">&quot;float16&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/media/pc/data/4tb/lxw/home/lxw/tvm/python/tvm/driver/build_module.py:266: UserWarning: target_host parameter is going to be deprecated. Please pass in tvm.target.Target(target, host=target_host) instead.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<p>Verify the result.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tvm</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">out</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
 
@@ -1477,20 +1911,6 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../work_with_microtvm/micro_tvmc.html" title="上一页 页">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">上一页</p>
-            <p class="prev-next-title">Executing a Tiny Model with TVMC Micro</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="low_level_custom_pass.html" title="下一页 页">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">下一页</p>
-        <p class="prev-next-title">编写定制 Pass</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
