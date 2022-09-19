@@ -1673,8 +1673,6 @@ title="Fullscreen mode"
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;inputs must be Schedule, IRModule,&quot;</span> <span class="s2">&quot;or dict of str to IRModule.&quot;</span><span class="p">)</span>
         <span class="n">annotated_mods</span><span class="p">[</span><span class="n">tar</span><span class="p">]</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">with_attr</span><span class="p">(</span><span class="s2">&quot;runtime&quot;</span><span class="p">,</span> <span class="n">runtime</span><span class="p">)</span>
 
-    <span class="n">annotated_mods</span><span class="p">,</span> <span class="n">target_host</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">canon_target_map_and_host</span><span class="p">(</span><span class="n">annotated_mods</span><span class="p">,</span> <span class="n">target_host</span><span class="p">)</span>
-
     <span class="c1"># TODO(mbs): Both CompilationConfig and TIRToRuntime implement the same host target</span>
     <span class="c1">#  defaulting logic, but there&#39;s currently no way to get back the decided host.</span>
     <span class="k">if</span> <span class="n">target_host</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -1682,6 +1680,8 @@ title="Fullscreen mode"
             <span class="s2">&quot;target_host parameter is going to be deprecated. &quot;</span>
             <span class="s2">&quot;Please pass in tvm.target.Target(target, host=target_host) instead.&quot;</span>
         <span class="p">)</span>
+
+    <span class="n">annotated_mods</span><span class="p">,</span> <span class="n">target_host</span> <span class="o">=</span> <span class="n">Target</span><span class="o">.</span><span class="n">canon_target_map_and_host</span><span class="p">(</span><span class="n">annotated_mods</span><span class="p">,</span> <span class="n">target_host</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">target_host</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">tar</span><span class="p">,</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">annotated_mods</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">device_type</span> <span class="o">=</span> <span class="n">ndarray</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="n">tar</span><span class="o">.</span><span class="n">kind</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">device_type</span>
@@ -1752,7 +1752,7 @@ title="Fullscreen mode"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-09-14, 03:49:18.<br/>
+    Last updated on 2022-09-19, 02:05:06.<br/>
 </p>
         </footer>
     </div>
