@@ -41,7 +41,7 @@ msgid ""
 "Add an attribute node declaring fixed arguments which are known at "
 "compile time"
 msgstr ""
-""添加属性节点，声明在编译时已知的固定参数"
+"添加属性节点，声明在编译时已知的固定参数"
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:33
 msgid ""
@@ -55,32 +55,34 @@ msgid ""
 "Use the ``RELAY_REGISTER_OP`` macro in C++ to register the operator's "
 "arity, type, and other hints for the compiler"
 msgstr ""
+"使用 C++ 中的 ``RELAY_REGISTER_OP`` 宏为编译器注册算子的属性、类型和其他提示"
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:35
 msgid "Write how the operator is computed"
-msgstr ""
+msgstr "编写算子的计算方式"
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:36
 msgid "Register the compute, schedule with the relay operator"
-msgstr ""
+msgstr "注册 Relay 算子的 compute, schedule"
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:37
 msgid ""
 "Define a C++ function to produce a call node for the operator and "
 "registering a Python API hook for the function"
 msgstr ""
+"定义 C++ 函数，为算子生成 call 节点，并为该函数注册 Python API 钩子"
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:38
 msgid "Wrapping the above Python API hook in a neater interface"
-msgstr ""
+msgstr "将上面的 Python API 钩子包装在更整洁的接口中"
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:39
 msgid "Writing tests for the new relay operator"
-msgstr ""
+msgstr "为新的 Relay 算子编写测试"
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:42
 msgid "1. Defining an Attribute Node"
-msgstr ""
+msgstr "1. 定义属性节点"
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:43
 msgid ""
@@ -89,22 +91,26 @@ msgid ""
 "appropriate example of fields which might belong in an attribute node for"
 " a convolution operator."
 msgstr ""
+"属性是固定的参数，应该在编译时就知道。"
+"卷积算子的 stride 和 expand 是属于卷积算子属性节点的字段的一个适当的例子。"
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:46
 msgid ""
 "Attributes should be defined in a file within the folder "
 "`include/tvm/relay/attrs/`_."
 msgstr ""
+"属性应该定义在 `include/tvm/relay/attrs/`_ 文件夹下的文件中"
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:50
 msgid ""
 "Ultimately we want to create an operator whose interface can be seen "
 "clearly in the final python interface:"
 msgstr ""
+"最终希望创建一个算子，它的接口可以在最终的 python 接口中清楚地看到："
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:79
 msgid "A similiar interface exists for ``cumsum()``."
-msgstr ""
+msgstr "实现 ``cumsum()`` 类似的接口。"
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:81
 msgid ""
@@ -113,10 +119,11 @@ msgid ""
 "dtype, and exclusivity of the operation as appropriate fields for the "
 "struct."
 msgstr ""
+"因此，当在 ``include/tvm/relay/attrs/transform.h`` 中定义属性时，选择算子的 axis、累积 dtype 和 exclusivity 作为结构的适当字段。"
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:101
 msgid "2. Writing a Type Relation"
-msgstr ""
+msgstr "2. 编写类型关系"
 
 #: ../../../xin/docs/dev/how_to/relay_add_op.rst:102
 msgid ""

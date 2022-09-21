@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../xin/docs/dev/how_to/relay_bring_your_own_codegen.rst:22
 msgid "Bring Your Own Codegen To TVM"
-msgstr ""
+msgstr "带你自己的 Codegen 到 TVM"
 
 #: ../../../xin/docs/dev/how_to/relay_bring_your_own_codegen.rst:24
 msgid ""
@@ -39,6 +39,12 @@ msgid ""
 "operators with extremely high performance, but fallback unsupported "
 "operators to general devices like CPU/GPU."
 msgstr ""
+"随着深度学习工作负载针对的硬件设备数量不断增加，用户在各种设备上实现高性能所需的知识也在不断增加。"
+"为了让数据科学家在开发新模型时不再担心性能问题，硬件后端提供商要么提供 DNNL(Intel OneDNN) 或 cuDNN等库，"
+"其中包含许多常用的深度学习算子，要么提供 TensorRT 等框架，让用户以某种方式描述他们的模型，以实现高性能。"
+"然而，当用户尝试使用新的库或设备时，他们必须学习新的编程接口。"
+"因此，对统一编程接口的需求变得越来越重要，1) 让所有用户和硬件后端提供者站在同一个页面上，2)提供一个可行的解决方案，"
+"允许专门的硬件或库只支持广泛使用的、具有极高性能的算子，而将不支持的算子退到像 CPU/GPU 这样的通用设备上。"
 
 #: ../../../xin/docs/dev/how_to/relay_bring_your_own_codegen.rst:26
 msgid ""
@@ -48,10 +54,12 @@ msgid ""
 "guide covers two types of codegen based on different graph "
 "representations you need:"
 msgstr ""
+"在本开发指南中，将演示作为硬件后端提供者，如何轻松实现自己的代码生成，并将其注册为 Relay 后端编译器，以支持硬件设备/库。"
+"本指南根据你需要的不同 graph 表示涵盖了两种类型的代码："
 
 #: ../../../xin/docs/dev/how_to/relay_bring_your_own_codegen.rst:28
 msgid "**1. You want to generate C code.**"
-msgstr ""
+msgstr "**1. 您需要生成 C 代码。**"
 
 #: ../../../xin/docs/dev/how_to/relay_bring_your_own_codegen.rst:30
 msgid ""
@@ -65,10 +73,14 @@ msgid ""
 "demonstrate how to implement a C code generator for your hardware in the "
 "following section."
 msgstr ""
+"如果您的硬件已经有一个良好优化的 C/C++ 库，如 Intel CBLAS/MKL 到 CPU 和 NVIDIA CUBLAS 到 GPU，那么这就是您要寻找的。"
+"幸运的是，C 源代码模块与 TVM 运行时模块完全兼容，这意味着生成的代码可以由任何具有适当编译标志的 C/C++ 编译器编译，"
+"因此您唯一的任务是实现一个代码生成器，为子图生成 C 代码，并实现一个 C source module 集成到 TVM 运行时模块中。"
+"将在下一节中演示如何为您的硬件实现一个 C 代码生成器。"
 
 #: ../../../xin/docs/dev/how_to/relay_bring_your_own_codegen.rst:32
 msgid "**2. You want to generate any other graph representations.**"
-msgstr ""
+msgstr "**2. 希望生成任何其他 graph 表示。**"
 
 #: ../../../xin/docs/dev/how_to/relay_bring_your_own_codegen.rst:34
 msgid ""
@@ -79,6 +91,9 @@ msgid ""
 "execution engine for your hardware, such as TensorRT for GPU, then this "
 "is a solution you can consider."
 msgstr ""
+"您的硬件可能需要其他形式的 graph 表示，例如 JSON。"
+"在这种情况下，您不仅需要实现 codegen，还需要实现定制 TVM 运行时模块，以便让 TVM 运行时知道应该如何执行这个 graph 表示。"
+"如果您的硬件已经有了一个完整的 graph 执行引擎，比如 GPU 的 tensort，那么这是一个可以考虑的解决方案。"
 
 #: ../../../xin/docs/dev/how_to/relay_bring_your_own_codegen.rst:36
 msgid ""
@@ -87,10 +102,12 @@ msgid ""
 "tutorial for end-users to annotate and launch a specific codegen is "
 "**here (TBA)**."
 msgstr ""
+"在您完成代码生成和运行时之后，您就可以让您的客户使用您的定制 tag 来注解他们的模型，以使用它们。"
+"最终用户注解和启动特定 codegen 的教程在这里(TBA)。"
 
 #: ../../../xin/docs/dev/how_to/relay_bring_your_own_codegen.rst:40
 msgid "Implement a C Codegen"
-msgstr ""
+msgstr "实现 C Codegen"
 
 #: ../../../xin/docs/dev/how_to/relay_bring_your_own_codegen.rst:42
 msgid ""
@@ -99,6 +116,8 @@ msgid ""
 "codegen does not depend on third-party libraries. Instead, we manually "
 "implement two macros in C:"
 msgstr ""
+"在本部分中，将演示如何实现代码生成器，它生成带有预先实现的算子函数的 C 代码。"
+"为了简化，示例代码生成不依赖于第三方库。相反，我们在 C 中手动实现了两个宏："
 
 #: ../../../xin/docs/dev/how_to/relay_bring_your_own_codegen.rst:63
 msgid ""
@@ -106,16 +125,19 @@ msgid ""
 "tensors. For example, given a subgraph as follows. Assuming all inputs "
 "are 2-D tensors with shape (10, 10)."
 msgstr ""
+"利用这两个宏，我们可以生成一维和二维张量的二元算子。"
+"例如，给定如下的子图。假设所有输入都是形状为 ``(10,10)`` 的二维张量。"
 
 #: ../../../xin/docs/dev/how_to/relay_bring_your_own_codegen.rst:77
 msgid ""
 "Our goal is to generate the following compilable code to execute the "
 "subgraph:"
 msgstr ""
+"我们的目标是生成以下可编译代码来执行子图："
 
 #: ../../../xin/docs/dev/how_to/relay_bring_your_own_codegen.rst:132
 msgid "Here we highlight the notes marked in the above code:"
-msgstr ""
+msgstr "这里高亮了上面代码中标记的注解："
 
 #: ../../../xin/docs/dev/how_to/relay_bring_your_own_codegen.rst:134
 msgid ""
