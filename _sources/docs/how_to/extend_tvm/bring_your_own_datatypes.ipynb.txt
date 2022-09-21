@@ -12,44 +12,39 @@
         "\n",
         "## Datatype 库\n",
         "\n",
-        "The Bring Your Own Datatypes allows users to register their own datatype implementations alongside TVM's native datatypes (such as ``float``).\n",
-        "In the wild, these datatype implementations often appear as libraries.\n",
-        "For example:\n",
+        "Bring Your Own Datatypes 允许用户在 TVM 的原生数据类型(如 ``float`` 下)旁边注册自己的数据类型实现。在一般情况下，这些数据类型实现通常以库的形式出现。例如：\n",
         "\n",
         "- [libposit](https://github.com/cjdelisle/libposit), a posit library\n",
         "- [Stillwater Universal](https://github.com/stillwater-sc/universal), a library with posits, fixed-point numbers, and other types\n",
         "- [SoftFloat](https://github.com/ucb-bar/berkeley-softfloat-3), Berkeley's software implementation of IEEE 754 floating-point\n",
         "\n",
-        "The Bring Your Own Datatypes enables users to plug these datatype implementations into TVM!\n",
+        "在本节中，我们将使用一个已经实现的示例库，位于 ``3rdparty/byodt/myfloat.cc``。我们称之为“myfloat”的这个数据类型实际上只是 IEE-754  浮点数，但它提供了有用的示例\n",
+        "以说明在 BYODT 框架中可以使用任何数据类型。\n",
         "\n",
-        "In this section, we will use an example library we have already implemented, located at ``3rdparty/byodt/myfloat.cc``.\n",
-        "This datatype, which we dubbed \"myfloat\", is really just a IEE-754 float under-the-hood, but it serves a useful example\n",
-        "to show that any datatype can be used in the BYODT framework.\n",
+        "## 设置\n",
         "\n",
-        "## Setup\n",
+        "因为我们不使用任何 3rdparty 库，所以不需要设置。\n",
         "\n",
-        "Since we do not use any 3rdparty library, there is no setup needed.\n",
+        "如果你想在自己的数据类型库中尝试这种方法，首先使用 ``CDLL`` 将库的函数引入进程空间：\n",
         "\n",
-        "If you would like to try this with your own datatype library, first bring the library's functions into the process space with ``CDLL``:\n",
-        "\n",
-        ".. code-block :: python\n",
-        "\n",
-        "    ctypes.CDLL('my-datatype-lib.so', ctypes.RTLD_GLOBAL)\n"
+        "```python\n",
+        "ctypes.CDLL('my-datatype-lib.so', ctypes.RTLD_GLOBAL)\n",
+        "```\n"
       ]
     },
     {
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "## A Simple TVM Program\n",
+        "## 简单的 TVM 程序\n",
         "\n",
-        "We'll begin by writing a simple program in TVM; afterwards, we will re-write it to use custom datatypes.\n",
+        "我们将首先在 TVM 中编写一个简单的程序；然后，重写它以使用自定义数据类型。\n",
         "\n"
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 1,
       "metadata": {
         "collapsed": false
       },
@@ -58,7 +53,7 @@
         "import tvm\n",
         "from tvm import relay\n",
         "\n",
-        "# Our basic program: Z = X + Y\n",
+        "# 我们的基本程序:  Z = X + Y\n",
         "x = relay.var(\"x\", shape=(3,), dtype=\"float32\")\n",
         "y = relay.var(\"y\", shape=(3,), dtype=\"float32\")\n",
         "z = x + y\n",
@@ -70,43 +65,58 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "Now, we create random inputs to feed into this program using numpy:\n",
-        "\n"
+        "现在，我们使用 numpy 创建随机数输入到这个程序中："
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 2,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "x: [0.51729786 0.9469626  0.7654598 ]\n",
+            "y: [0.28239584 0.22104536 0.6862221 ]\n"
+          ]
+        }
+      ],
       "source": [
         "import numpy as np\n",
         "\n",
-        "np.random.seed(23)  # for reproducibility\n",
+        "np.random.seed(23)  # 为再现性\n",
         "\n",
         "x_input = np.random.rand(3).astype(\"float32\")\n",
         "y_input = np.random.rand(3).astype(\"float32\")\n",
-        "print(\"x: {}\".format(x_input))\n",
-        "print(\"y: {}\".format(y_input))"
+        "print(f\"x: {x_input}\")\n",
+        "print(f\"y: {y_input}\")"
       ]
     },
     {
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "Finally, we're ready to run the program:\n",
-        "\n"
+        "最后，我们准备好运行程序："
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 3,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "z: [0.7996937 1.168008  1.4516819]\n"
+          ]
+        }
+      ],
       "source": [
         "z_output = relay.create_executor(mod=module).evaluate()(x_input, y_input)\n",
         "print(\"z: {}\".format(z_output))"
@@ -116,23 +126,30 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "## Adding Custom Datatypes\n",
-        "Now, we will do the same, but we will use a custom datatype for our intermediate computation.\n",
+        "## 添加自定义数据类型\n",
         "\n",
-        "We use the same input variables ``x`` and ``y`` as above, but before adding ``x + y``, we first cast both ``x`` and ``y`` to a custom datatype via the ``relay.cast(...)`` call.\n",
+        "现在，我们将做同样的事情，但是我们将为中间计算使用自定义数据类型。\n",
         "\n",
-        "Note how we specify the custom datatype: we indicate it using the special ``custom[...]`` syntax.\n",
-        "Additionally, note the \"32\" after the datatype: this is the bitwidth of the custom datatype. This tells TVM that each instance of ``myfloat`` is 32 bits wide.\n",
-        "\n"
+        "我们使用与上面相同的输入变量 ``x`` 和 ``y``，但在添加 ``x + y`` 之前，我们首先通过 ``relay.cast(...)`` call 将 ``x`` 和 ``y`` 强制转换为自定义数据类型。\n",
+        "\n",
+        "注意我们如何指定自定义数据类型：我们使用特殊的 ``custom[...]`` 语法。另外，注意数据类型后面的“32”：这是自定义数据类型的 bitwidth。这告诉 TVM ``myfloat`` 的每个实例都是 32 位宽的。\n"
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 4,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "\n"
+          ]
+        }
+      ],
       "source": [
         "try:\n",
         "    with tvm.transform.PassContext(config={\"tir.disable_vectorize\": True}):\n",
@@ -152,12 +169,13 @@
         "Trying to generate this program throws an error from TVM.\n",
         "TVM does not know how to handle any custom datatype out of the box!\n",
         "We first have to register the custom type with TVM, giving it a name and a type code:\n",
-        "\n"
+        "\n",
+        "试图从 TVM 生成此程序会抛出一个错误。TVM 不知道如何处理任何开箱即用的自定义数据类型！我们首先要向 TVM 注册自定义类型，给它一个名称和一个类型代码："
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 5,
       "metadata": {
         "collapsed": false
       },
@@ -173,12 +191,13 @@
         "Note that the type code, 150, is currently chosen manually by the user.\n",
         "See ``TVMTypeCode::kCustomBegin`` in [include/tvm/runtime/c_runtime_api.h](https://github.com/apache/tvm/blob/main/include/tvm/runtime/data_type.h).\n",
         "Now we can generate our program again:\n",
-        "\n"
+        "\n",
+        "注意，type 代码 150 目前是由用户手动选择的。参见 [include/tvm/runtime/c_runtime_api.h](https://github.com/apache/tvm/blob/main/include/tvm/runtime/data_type.h) 中的 ``TVMTypeCode::kCustomBegin``。现在我们可以再次生成我们的程序:"
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 6,
       "metadata": {
         "collapsed": false
       },
@@ -197,17 +216,29 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "Now we have a Relay program that uses myfloat!\n",
-        "\n"
+        "现在我们有了一个使用 ``myfloat`` 的 Relay 程序！"
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 7,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "fn (%x: Tensor[(3), float32], %y: Tensor[(3), float32]) {\n",
+            "  %0 = cast(%x, dtype=\"custom[myfloat]32\");\n",
+            "  %1 = cast(%y, dtype=\"custom[myfloat]32\");\n",
+            "  %2 = add(%0, %1);\n",
+            "  cast(%2, dtype=\"float32\")\n",
+            "}\n"
+          ]
+        }
+      ],
       "source": [
         "print(program)"
       ]
@@ -216,17 +247,24 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "Now that we can express our program without errors, let's try running it!\n",
-        "\n"
+        "现在我们可以无错误地表示我们的程序，让我们试着运行它！"
       ]
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 8,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "  Check failed: (lower) is false: Cast lowering function for target llvm destination type 150 source type 2 not found\n"
+          ]
+        }
+      ],
       "source": [
         "try:\n",
         "    with tvm.transform.PassContext(config={\"tir.disable_vectorize\": True}):\n",
@@ -255,7 +293,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 9,
       "metadata": {
         "collapsed": false
       },
@@ -294,11 +332,19 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 10,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "  Check failed: (lower) is false: Add lowering function for target llvm type 150 not found\n"
+          ]
+        }
+      ],
       "source": [
         "# We can now re-try running the program:\n",
         "try:\n",
@@ -325,11 +371,23 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 11,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "z: [0.7996937 1.168008  1.4516819]\n",
+            "x:\t\t[0.51729786 0.9469626  0.7654598 ]\n",
+            "y:\t\t[0.28239584 0.22104536 0.6862221 ]\n",
+            "z (float32):\t[0.7996937 1.168008  1.4516819]\n",
+            "z (myfloat32):\t[0.7996937 1.168008  1.4516819]\n"
+          ]
+        }
+      ],
       "source": [
         "tvm.target.datatype.register_op(\n",
         "    tvm.target.datatype.create_lower_func({32: \"Custom32Add\"}),\n",
@@ -375,11 +433,19 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 12,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Downloading /home/xinet/.mxnet/models/mobilenet0.25-9f83e440.zipeb3c4f5d-55fd-40c7-b2a0-1981acc156d2 from https://apache-mxnet.s3-accelerate.dualstack.amazonaws.com/gluon/models/mobilenet0.25-9f83e440.zip...\n"
+          ]
+        }
+      ],
       "source": [
         "def get_mobilenet():\n",
         "    dshape = (1, 3, 224, 224)\n",
@@ -417,11 +483,23 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 13,
       "metadata": {
         "collapsed": false
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "ename": "TypeError",
+          "evalue": "create_executor() got an unexpected keyword argument 'params'",
+          "output_type": "error",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mTypeError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[1;32m/home/xinet/workspace/lxw/tvm/xinetzone/docs/how_to/extend_tvm/bring_your_own_datatypes.ipynb Cell 27\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> <a href='vscode-notebook-cell://attached-container%2B7b22636f6e7461696e65724e616d65223a222f6f7074696d69737469635f626f7267222c2273657474696e6773223a7b22686f7374223a227373683a2f2f78696e227d7d/home/xinet/workspace/lxw/tvm/xinetzone/docs/how_to/extend_tvm/bring_your_own_datatypes.ipynb#X35sdnNjb2RlLXJlbW90ZQ%3D%3D?line=0'>1</a>\u001b[0m ex \u001b[39m=\u001b[39m tvm\u001b[39m.\u001b[39;49mrelay\u001b[39m.\u001b[39;49mcreate_executor(\u001b[39m\"\u001b[39;49m\u001b[39mgraph\u001b[39;49m\u001b[39m\"\u001b[39;49m, mod\u001b[39m=\u001b[39;49mmodule, params\u001b[39m=\u001b[39;49mparams)\n\u001b[1;32m      <a href='vscode-notebook-cell://attached-container%2B7b22636f6e7461696e65724e616d65223a222f6f7074696d69737469635f626f7267222c2273657474696e6773223a7b22686f7374223a227373683a2f2f78696e227d7d/home/xinet/workspace/lxw/tvm/xinetzone/docs/how_to/extend_tvm/bring_your_own_datatypes.ipynb#X35sdnNjb2RlLXJlbW90ZQ%3D%3D?line=1'>2</a>\u001b[0m \u001b[39minput\u001b[39m \u001b[39m=\u001b[39m get_cat_image()\n\u001b[1;32m      <a href='vscode-notebook-cell://attached-container%2B7b22636f6e7461696e65724e616d65223a222f6f7074696d69737469635f626f7267222c2273657474696e6773223a7b22686f7374223a227373683a2f2f78696e227d7d/home/xinet/workspace/lxw/tvm/xinetzone/docs/how_to/extend_tvm/bring_your_own_datatypes.ipynb#X35sdnNjb2RlLXJlbW90ZQ%3D%3D?line=2'>3</a>\u001b[0m result \u001b[39m=\u001b[39m ex\u001b[39m.\u001b[39mevaluate()(\u001b[39minput\u001b[39m)\u001b[39m.\u001b[39mnumpy()\n",
+            "\u001b[0;31mTypeError\u001b[0m: create_executor() got an unexpected keyword argument 'params'"
+          ]
+        }
+      ],
       "source": [
         "ex = tvm.relay.create_executor(\"graph\", mod=module, params=params)\n",
         "input = get_cat_image()\n",
@@ -631,7 +709,7 @@
   ],
   "metadata": {
     "kernelspec": {
-      "display_name": "Python 3",
+      "display_name": "Python 3.8.13 ('tvm80')",
       "language": "python",
       "name": "python3"
     },
@@ -645,7 +723,12 @@
       "name": "python",
       "nbconvert_exporter": "python",
       "pygments_lexer": "ipython3",
-      "version": "3.7.5"
+      "version": "3.8.13"
+    },
+    "vscode": {
+      "interpreter": {
+        "hash": "4d56931767869a22775ecec95b6db9cb1d4d3c8e9a80ba4de55eaee096d239e9"
+      }
     }
   },
   "nbformat": 4,

@@ -843,7 +843,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="relay_bring_your_own_codegen.html">
-       Bring Your Own Codegen To TVM
+       带你自己的 Codegen 到 TVM
       </a>
      </li>
      <li class="toctree-l3">
@@ -912,7 +912,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/relay_op_strategy.html">
-     Relay Operator Strategy
+     Relay 算子策略
     </a>
    </li>
    <li class="toctree-l2">
@@ -1463,12 +1463,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#defining-an-attribute-node">
-   1. Defining an Attribute Node
+   1. 定义属性节点
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#writing-a-type-relation">
-   2. Writing a Type Relation
+   2. 编写类型关系
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1544,12 +1544,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#defining-an-attribute-node">
-   1. Defining an Attribute Node
+   1. 定义属性节点
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#writing-a-type-relation">
-   2. Writing a Type Relation
+   2. 编写类型关系
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1619,21 +1619,20 @@ title="Print to PDF"
 <p>在本文档中，将介绍在 Relay 中注册新的 TVM 算子所需的步骤。我们将遵循这个 PR，它增加了 <a class="reference external" href="https://github.com/apache/tvm/pull/7722">cumulative product</a> 作为例子。PR 本身建立在另一个 PR 的基础上，后者添加了 <a class="reference external" href="https://github.com/apache/tvm/pull/7334">cumulative sum</a> 算子。</p>
 <p>注册新的算子需要几个步骤：</p>
 <ol class="arabic simple">
-<li><p>“添加属性节点，声明在编译时已知的固定参数</p></li>
+<li><p>添加属性节点，声明在编译时已知的固定参数</p></li>
 <li><p>为集成到 Relay 类型系统中的运算编写类型关系。</p></li>
-<li><p>Use the <code class="docutils literal notranslate"><span class="pre">RELAY_REGISTER_OP</span></code> macro in C++ to register the operator’s arity, type, and other hints for the compiler</p></li>
-<li><p>Write how the operator is computed</p></li>
-<li><p>Register the compute, schedule with the relay operator</p></li>
-<li><p>Define a C++ function to produce a call node for the operator and registering a Python API hook for the function</p></li>
-<li><p>Wrapping the above Python API hook in a neater interface</p></li>
-<li><p>Writing tests for the new relay operator</p></li>
+<li><p>使用 C++ 中的 <code class="docutils literal notranslate"><span class="pre">RELAY_REGISTER_OP</span></code> 宏为编译器注册算子的属性、类型和其他提示</p></li>
+<li><p>编写算子的计算方式</p></li>
+<li><p>注册 Relay 算子的 compute, schedule</p></li>
+<li><p>定义 C++ 函数，为算子生成 call 节点，并为该函数注册 Python API 钩子</p></li>
+<li><p>将上面的 Python API 钩子包装在更整洁的接口中</p></li>
+<li><p>为新的 Relay 算子编写测试</p></li>
 </ol>
 <section id="defining-an-attribute-node">
-<h2>1. Defining an Attribute Node<a class="headerlink" href="#defining-an-attribute-node" title="永久链接至标题">#</a></h2>
-<p>Attributes are fixed arguments which are supposed to be known at compile time. The stride and dilation of a convolution
-operator would be an appropriate example of fields which might belong in an attribute node for a convolution operator.</p>
-<p>Attributes should be defined in a file within the folder <a class="reference external" href="https://github.com/apache/tvm/tree/main/include/tvm/relay/attrs">include/tvm/relay/attrs/</a>.</p>
-<p>Ultimately we want to create an operator whose interface can be seen clearly in the final python interface:</p>
+<h2>1. 定义属性节点<a class="headerlink" href="#defining-an-attribute-node" title="永久链接至标题">#</a></h2>
+<p>属性是固定的参数，应该在编译时就知道。卷积算子的 stride 和 expand 是属于卷积算子属性节点的字段的一个适当的例子。</p>
+<p>属性应该定义在 <a class="reference external" href="https://github.com/apache/tvm/tree/main/include/tvm/relay/attrs">include/tvm/relay/attrs/</a> 文件夹下的文件中</p>
+<p>最终希望创建一个算子，它的接口可以在最终的 python 接口中清楚地看到：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cumprod</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">exclusive</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Numpy style cumprod op. Return the cumulative inclusive product of the elements along</span>
 <span class="sd">    a given axis.</span>
@@ -1660,9 +1659,8 @@ operator would be an appropriate example of fields which might belong in an attr
 <span class="sd">    &quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>A similiar interface exists for <code class="docutils literal notranslate"><span class="pre">cumsum()</span></code>.</p>
-<p>Therefore, when defining our attributes in <code class="docutils literal notranslate"><span class="pre">include/tvm/relay/attrs/transform.h</span></code> we choose the axis,
-accumulation dtype, and exclusivity of the operation as appropriate fields for the struct.</p>
+<p>实现 <code class="docutils literal notranslate"><span class="pre">cumsum()</span></code> 类似的接口。</p>
+<p>因此，当在 <code class="docutils literal notranslate"><span class="pre">include/tvm/relay/attrs/transform.h</span></code> 中定义属性时，选择算子的 axis、累积 dtype 和 exclusivity 作为结构的适当字段。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*! \brief Attributes used in cumsum and cumprod operator */</span><span class="w"></span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">ScanopAttrs</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">tvm</span><span class="o">::</span><span class="n">AttrsNode</span><span class="o">&lt;</span><span class="n">ScanopAttrs</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">Integer</span><span class="w"> </span><span class="n">axis</span><span class="p">;</span><span class="w"></span>
@@ -1680,7 +1678,7 @@ accumulation dtype, and exclusivity of the operation as appropriate fields for t
 </div>
 </section>
 <section id="writing-a-type-relation">
-<h2>2. Writing a Type Relation<a class="headerlink" href="#writing-a-type-relation" title="永久链接至标题">#</a></h2>
+<h2>2. 编写类型关系<a class="headerlink" href="#writing-a-type-relation" title="永久链接至标题">#</a></h2>
 <p>To allow for flexibility in registering operators and greater
 expressivity and granularity in expressing types in Relay, operators
 are typed using relations between input and output types. These relations
@@ -2070,7 +2068,7 @@ order to register the gradient.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-09-19, 02:05:06.<br/>
+    Last updated on 2022-09-21, 01:22:46.<br/>
 </p>
         </footer>
     </div>

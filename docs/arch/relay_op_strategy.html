@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Relay Operator Strategy &#8212; TVM  文档</title>
+    <title>Relay 算子策略 &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -841,7 +841,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/relay_bring_your_own_codegen.html">
-       Bring Your Own Codegen To TVM
+       带你自己的 Codegen 到 TVM
       </a>
      </li>
      <li class="toctree-l3">
@@ -910,7 +910,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Relay Operator Strategy
+     Relay 算子策略
     </a>
    </li>
    <li class="toctree-l2">
@@ -1400,7 +1400,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/docs/arch/relay_op_strategy.rst.txt"
+        <a href="../../_sources/docs/arch/relay_op_strategy.ipynb.txt"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -1411,7 +1411,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.rst</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -1460,13 +1460,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#operator-strategy-design">
-   Operator Strategy Design
+  <a class="reference internal nav-link" href="#id1">
+   算子策略设计
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#write-a-strategy-function">
-   Write A Strategy Function
+  <a class="reference internal nav-link" href="#id2">
+   编写策略函数
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1480,8 +1480,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#select-implementation-from-op-strategy">
-   Select Implementation from Op Strategy
+  <a class="reference internal nav-link" href="#op">
+   Op 策略中选择实现
   </a>
  </li>
 </ul>
@@ -1493,7 +1493,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Relay Operator Strategy</h1>
+                <h1>Relay 算子策略</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1504,13 +1504,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#operator-strategy-design">
-   Operator Strategy Design
+  <a class="reference internal nav-link" href="#id1">
+   算子策略设计
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#write-a-strategy-function">
-   Write A Strategy Function
+  <a class="reference internal nav-link" href="#id2">
+   编写策略函数
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1524,8 +1524,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#select-implementation-from-op-strategy">
-   Select Implementation from Op Strategy
+  <a class="reference internal nav-link" href="#op">
+   Op 策略中选择实现
   </a>
  </li>
 </ul>
@@ -1538,52 +1538,27 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="relay-operator-strategy">
-<span id="relay-op-strategy"></span><h1>Relay Operator Strategy<a class="headerlink" href="#relay-operator-strategy" title="永久链接至标题">#</a></h1>
-<p>In order to lower Relay operators to the implementations defined in TOPI
-library, a compute and schedule function need to be registered to each Relay
-operator.  However, compute and schedule functions are usually specialized for
-each target, and further, even for the same target, we may have multiple
-algorithms and implementations available. To deal with the complexity, we
-introduce operator strategy to allow developers to define a flexible lowering
-strategy for each operator and target.</p>
-<section id="operator-strategy-design">
-<h2>Operator Strategy Design<a class="headerlink" href="#operator-strategy-design" title="永久链接至标题">#</a></h2>
-<p>The basic element in operator strategy is an <code class="docutils literal notranslate"><span class="pre">OpImplementation</span></code>. It includes
-the a pair of compute and schedule function, the name of the implementation,
-and a priority level (the use of priority level is explained in
-<a class="reference internal" href="#select-implementation-from-op-strategy">Select Implementation from Op Strategy</a>).</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">OpStrategy</span></code> includes a list of <code class="docutils literal notranslate"><span class="pre">OpSpecialization</span></code>. Each <code class="docutils literal notranslate"><span class="pre">OpSpecialization</span></code>
-contains a list of <code class="docutils literal notranslate"><span class="pre">OpImplementation</span></code> associated with a <code class="docutils literal notranslate"><span class="pre">SpecializedCondition</span></code>
-(see definition in <code class="docutils literal notranslate"><span class="pre">include/tvm/te/schedule.h</span></code>).  The <code class="docutils literal notranslate"><span class="pre">SpecializedCondition</span></code>
-can be null, indicating the implementations are generally applicable;
-otherwise, the implementations are only considered when the specialized
-condition is satisfied. <code class="docutils literal notranslate"><span class="pre">SpecializedCondition</span></code> consists of a list
-of clauses defined in Tensor Expression in conjunctive normal form (CNF) and
-only supports conditions on tensor shapes.</p>
-<p>Last, a strategy function, or <code class="docutils literal notranslate"><span class="pre">FTVMStrategy</span></code>, determines which pair(s) of
-compute and schedule functions should be used given a workload, and needs to be
-registered to each Relay operator.  <code class="docutils literal notranslate"><span class="pre">FTVMStrategy</span></code> is a generic function (see
-<code class="docutils literal notranslate"><span class="pre">include/tvm/target/generic_func.h</span></code>), that can be overwritten for each
-target. The function signature is</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="relay">
+<span id="relay-op-strategy"></span><h1>Relay 算子策略<a class="headerlink" href="#relay" title="永久链接至标题">#</a></h1>
+<p>为了将 Relay 算子 lower 到 TOPI 库中定义的实现，需要向每个 Relay 算子注册 compute 和 schedule 函数。然而，compute 和 schedule 函数通常是针对每个 target 的，而且，甚至对于同一个 target，可能有多个算法和实现可用。为了解决问题的复杂性，引入了算子策略，允许开发者为每个算子和目标定义灵活的 lowering 策略。</p>
+<section id="id1">
+<h2>算子策略设计<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
+<p>算子策略的基本元素是 <code class="docutils literal notranslate"><span class="pre">OpImplementation</span></code>。它包括一对计算和调度函数、实现的名称和优先级级别（优先级级别的使用在 [Op 策略中选择实现](Op 策略中选择实现) 中有解释）。</p>
+<p><code class="docutils literal notranslate"><span class="pre">OpStrategy</span></code> 包含一组 <code class="docutils literal notranslate"><span class="pre">OpSpecialization</span></code>。每个 <code class="docutils literal notranslate"><span class="pre">OpSpecialization</span></code> 都包含一组与 <code class="docutils literal notranslate"><span class="pre">SpecializedCondition</span></code> 相关联的 <code class="docutils literal notranslate"><span class="pre">OpImplementation</span></code> （参见 <code class="docutils literal notranslate"><span class="pre">include/tvm/te/schedule.h</span></code> 中的定义）。<code class="docutils literal notranslate"><span class="pre">SpecializedCondition</span></code> 可以为 null，表示实现是普遍适用的；否则，只在满足特定条件时才考虑实现。 <code class="docutils literal notranslate"><span class="pre">SpecializedCondition</span></code> 由一组在合取范式张量表达式（conjunctive normal form，即 CNF）中定义的子句组成，只支持张量 shapes 上的条件。</p>
+<p>最后，策略函数或 <code class="docutils literal notranslate"><span class="pre">FTVMStrategy</span></code> 决定给定工作负载应该使用哪一对计算和调度函数，并且需要注册到每个 Relay 算子。<code class="docutils literal notranslate"><span class="pre">FTVMStrategy</span></code> 是 generic 函数（参见 <code class="docutils literal notranslate"><span class="pre">include/tvm/target/generic_func.h</span></code> ），它可以被每个目标覆盖。函数签名为</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OpStrategy</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Attrs</span><span class="o">&amp;</span><span class="w"> </span><span class="n">attrs</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Array</span><span class="o">&lt;</span><span class="n">Tensor</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">inputs</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Type</span><span class="o">&amp;</span><span class="w"> </span><span class="n">out_type</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Target</span><span class="o">&amp;</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
-<p>that the function returns an <code class="docutils literal notranslate"><span class="pre">OpStrategy</span></code> given the op attributes, input
-tensors, output types, and target to compile to.</p>
+<p>函数返回给定 op 属性、输入张量、输出类型和要编译的 target 的 <code class="docutils literal notranslate"><span class="pre">OpStrategy</span></code>。</p>
 </section>
-<section id="write-a-strategy-function">
-<h2>Write A Strategy Function<a class="headerlink" href="#write-a-strategy-function" title="永久链接至标题">#</a></h2>
-<p>We recommend developers to write strategy function in Python as
-most TOPI compute and schedule functions are written in Python.
-In python, we provide <code class="docutils literal notranslate"><span class="pre">OpStrategy</span></code> class in <code class="docutils literal notranslate"><span class="pre">pyton/tvm/relay/op/op.py</span></code>.
-It only has one API, which is to add an implementation to the strategy:</p>
+<section id="id2">
+<h2>编写策略函数<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
+<p>建议开发人员用 Python 编写策略函数，因为大多数 TOPI 计算和调度函数都是用 Python 编写的。在 Python 中，在 <code class="docutils literal notranslate"><span class="pre">pyton/tvm/relay/op/op.py</span></code> 中提供 <code class="docutils literal notranslate"><span class="pre">OpStrategy</span></code> 类。它只有一个 API，就是向策略中添加实现：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_implementation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">compute</span><span class="p">,</span> <span class="n">schedule</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="n">plevel</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We now take <code class="docutils literal notranslate"><span class="pre">topk</span></code> as an example to explain how to write the
-<code class="docutils literal notranslate"><span class="pre">FTVMStrategy</span></code> function:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># add to python/tvm/relay/op/strategy/generic.py</span>
+<p>以 <code class="docutils literal notranslate"><span class="pre">topk</span></code> 为例来解释如何编写 <code class="docutils literal notranslate"><span class="pre">FTVMStrategy</span></code> 函数：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 添加到 python/tvm/relay/op/strategy/generic.py</span>
 <span class="nd">@override_native_generic_func</span><span class="p">(</span><span class="s2">&quot;topk_strategy&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">topk_strategy</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">out_type</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
     <span class="n">strategy</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">OpStrategy</span><span class="p">()</span>
@@ -1618,18 +1593,19 @@ we may need to add multiple implementations that use different algorithms.
 For example, we can use both direct and winograd algorithm to
 compute a conv2d op. In order to achieve this, we can write the strategy function
 as follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">strategy</span><span class="o">.</span><span class="n">add_implementation</span><span class="p">(</span>
-    <span class="n">wrap_compute_conv2d</span><span class="p">(</span><span class="n">topi</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">conv2d_nchw</span><span class="p">),</span>
-    <span class="n">wrap_topi_schedule</span><span class="p">(</span><span class="n">topi</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">schedule_conv2d_nchw</span><span class="p">),</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;conv2d_nchw.cuda&quot;</span><span class="p">,</span>
-    <span class="n">plevel</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<p>… code:: python</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>strategy.add_implementation(
+    wrap_compute_conv2d(topi.cuda.conv2d_nchw),
+    wrap_topi_schedule(topi.cuda.schedule_conv2d_nchw),
+    name=&quot;conv2d_nchw.cuda&quot;,
+    plevel=10)
 
-<span class="k">if</span> <span class="n">winograd_condition</span><span class="p">:</span>
-    <span class="n">strategy</span><span class="o">.</span><span class="n">add_implementation</span><span class="p">(</span>
-        <span class="n">wrap_compute_conv2d</span><span class="p">(</span><span class="n">topi</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">conv2d_nchw_winograd</span><span class="p">),</span>
-        <span class="n">wrap_topi_schedule</span><span class="p">(</span><span class="n">topi</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">schedule_conv2d_nchw_winograd</span><span class="p">),</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;conv2d_nchw_winograd.cuda&quot;</span><span class="p">,</span>
-        <span class="n">plevel</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+if winograd_condition:
+    strategy.add_implementation(
+        wrap_compute_conv2d(topi.cuda.conv2d_nchw_winograd),
+        wrap_topi_schedule(topi.cuda.schedule_conv2d_nchw_winograd),
+        name=&quot;conv2d_nchw_winograd.cuda&quot;,
+        plevel=15)
 </pre></div>
 </div>
 <p>In this example, we add two implementations to the conv2d strategy where
@@ -1637,17 +1613,18 @@ winograd algorithm is only added when <code class="docutils literal notranslate"
 The implementation <code class="docutils literal notranslate"><span class="pre">&quot;conv2d_nchw_winograd.cuda&quot;</span></code> will be used to compile
 conv2d when <code class="docutils literal notranslate"><span class="pre">winograd_condition</span></code> is true as it has higher
 priority level (this could be changed if certain implementation is an AutoTVM
-template. See <a class="reference internal" href="#select-implementation-from-op-strategy">Select Implementation from Op Strategy</a> for more
+template. See <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">Implementation</span> <span class="pre">from</span> <span class="pre">Op</span> <span class="pre">Strategy</span></code>_ for more
 details). Otherwise, <code class="docutils literal notranslate"><span class="pre">&quot;conv2d_nchw.cuda&quot;</span></code> is used.</p>
 <p>We can extend the example above to third party library implementation. For
 example, we can add the implementation that invokes kernel in the cblas
 library when cblas is included in the target.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="s2">&quot;cblas&quot;</span> <span class="ow">in</span> <span class="n">target</span><span class="o">.</span><span class="n">libs</span><span class="p">:</span>
-    <span class="n">strategy</span><span class="o">.</span><span class="n">add_implementation</span><span class="p">(</span>
-        <span class="n">wrap_compute_dense</span><span class="p">(</span><span class="n">topi</span><span class="o">.</span><span class="n">x86</span><span class="o">.</span><span class="n">dense_cblas</span><span class="p">),</span>
-        <span class="n">wrap_topi_schedule</span><span class="p">(</span><span class="n">topi</span><span class="o">.</span><span class="n">x86</span><span class="o">.</span><span class="n">schedule_dense_cblas</span><span class="p">),</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dense_cblas.x86&quot;</span><span class="p">,</span>
-        <span class="n">plevel</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<p>… code:: python</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if &quot;cblas&quot; in target.libs:
+    strategy.add_implementation(
+        wrap_compute_dense(topi.x86.dense_cblas),
+        wrap_topi_schedule(topi.x86.schedule_dense_cblas),
+        name=&quot;dense_cblas.x86&quot;,
+        plevel=15)
 </pre></div>
 </div>
 <p>Further, we can add implementation specialized for a certain range of shapes.
@@ -1660,22 +1637,23 @@ specialized kernel when the corresponding condition is met; otherwise,
 invoke the kernel that has no associated specialized condition (<code class="docutils literal notranslate"><span class="pre">dense_common</span></code>
 in this example). This part is still work in progress. More details will be
 provided after it is done.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dense_strategy</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">out_type</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">strategy</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">OpStrategy</span><span class="p">()</span>
-    <span class="n">strategy</span><span class="o">.</span><span class="n">add_implementation</span><span class="p">(</span>
-        <span class="n">wrap_compute_dense</span><span class="p">(</span><span class="n">dense_compute1</span><span class="p">),</span>
-        <span class="n">wrap_topi_schedule</span><span class="p">(</span><span class="n">dense_schedule1</span><span class="p">),</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dense_common&quot;</span><span class="p">)</span>
+<p>… code:: python</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def dense_strategy(attrs, inputs, out_type, target):
+    m = inputs[0].shape[0]
+    strategy = _op.OpStrategy()
+    strategy.add_implementation(
+        wrap_compute_dense(dense_compute1),
+        wrap_topi_schedule(dense_schedule1),
+        name=&quot;dense_common&quot;)
 
-    <span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">te</span><span class="o">.</span><span class="n">SpecializedCondition</span><span class="p">(</span><span class="n">m</span> <span class="o">&gt;</span> <span class="mi">16</span><span class="p">):</span>
-        <span class="n">strategy</span><span class="o">.</span><span class="n">add_implementation</span><span class="p">(</span>
-            <span class="n">wrap_compute_dense</span><span class="p">(</span><span class="n">dense_compute2</span><span class="p">),</span>
-            <span class="n">wrap_topi_schedule</span><span class="p">(</span><span class="n">dense_schedule2</span><span class="p">),</span>
-            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dense_for_large_m&quot;</span><span class="p">,</span>
-            <span class="n">plevel</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    with tvm.te.SpecializedCondition(m &gt; 16):
+        strategy.add_implementation(
+            wrap_compute_dense(dense_compute2),
+            wrap_topi_schedule(dense_schedule2),
+            name=&quot;dense_for_large_m&quot;,
+            plevel=15)
 
-    <span class="k">return</span> <span class="n">strategy</span>
+    return strategy
 </pre></div>
 </div>
 </section>
@@ -1683,7 +1661,8 @@ provided after it is done.</p>
 <h2>Register Strategy Function to An Operator<a class="headerlink" href="#register-strategy-function-to-an-operator" title="永久链接至标题">#</a></h2>
 <p>After we define the strategy function for an operator, we can now
 register the strategy function to this operator with</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">register_strategy</span><span class="p">(</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span> <span class="n">strategy</span><span class="o">.</span><span class="n">topk_strategy</span><span class="p">)</span>
+<p>… code:: python</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>register_strategy(&quot;topk&quot;, strategy.topk_strategy)
 </pre></div>
 </div>
 <p>However, it takes much effort to write a strategy function for an operator.
@@ -1695,7 +1674,8 @@ patterns are already registered by each target and can be applied to these
 operators. We assume the compute function should be the same across all targets,
 and <code class="docutils literal notranslate"><span class="pre">FTVMCompute</span></code> needs to be registered to the op before invoking register
 schedule.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">register_broadcast_schedule</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">)</span>
+<p>… code:: python</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>register_broadcast_schedule(&quot;add&quot;)
 </pre></div>
 </div>
 <p>Second, for operators that doesn’t have these common patterns mentioned before,
@@ -1703,21 +1683,23 @@ but also have the same compute function for all targets, we can use
 <code class="docutils literal notranslate"><span class="pre">register_schedule</span></code> API. It is easier to write <code class="docutils literal notranslate"><span class="pre">FTVMSchedule</span></code> function
 as we only need to provide which schedule function to use. The following
 code snippet shows <code class="docutils literal notranslate"><span class="pre">FTVMSchedule</span></code> function for pooling.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># add to python/tvm/relay/op/strategy/generic.py</span>
-<span class="nd">@generic_func</span>
-<span class="k">def</span> <span class="nf">schedule_pool</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">outs</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
-    <span class="k">with</span> <span class="n">target</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">topi</span><span class="o">.</span><span class="n">generic</span><span class="o">.</span><span class="n">schedule_pool</span><span class="p">(</span><span class="n">outs</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">layout</span><span class="p">)</span>
+<p>… code:: python</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># add to python/tvm/relay/op/strategy/generic.py
+@generic_func
+def schedule_pool(attrs, outs, target):
+    with target:
+        return topi.generic.schedule_pool(outs, attrs.layout)
 
-<span class="c1"># add to each target file in python/tvm/relay/op/strategy, e.g., x86.py, cuda.py, etc.</span>
-<span class="nd">@schedule_pool</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">schedule_pool_cpu</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">outs</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
-    <span class="o">...</span>
+# add to each target file in python/tvm/relay/op/strategy, e.g., x86.py, cuda.py, etc.
+@schedule_pool.register(&quot;cpu&quot;)
+def schedule_pool_cpu(attrs, outs, target):
+    ...
 </pre></div>
 </div>
 <p>After we created the <code class="docutils literal notranslate"><span class="pre">FTVMSchedule</span></code> for an operator, we can
 register the strategy using <code class="docutils literal notranslate"><span class="pre">register_schedule</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">register_schedule</span><span class="p">(</span><span class="s2">&quot;nn.max_pool2d&quot;</span><span class="p">,</span> <span class="n">strategy</span><span class="o">.</span><span class="n">schedule_pool</span><span class="p">)</span>
+<p>… code:: python</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>register_schedule(&quot;nn.max_pool2d&quot;, strategy.schedule_pool)
 </pre></div>
 </div>
 </section>
@@ -1731,14 +1713,15 @@ strategies for the rest.</p>
 <p>Alternatively, you can also register the strategy for the new target outside the
 TVM python library. The following code snippet shows an example how to do
 so. You can find more examples in <code class="docutils literal notranslate"><span class="pre">vta/python/vta/top/op.py</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@relay</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">strategy</span><span class="o">.</span><span class="n">conv2d_strategy</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;mytarget&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">conv2d_strategy_mytarget</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">out_type</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
-    <span class="o">...</span>
+<p>… code:: python</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>@relay.op.strategy.conv2d_strategy.register(&quot;mytarget&quot;)
+def conv2d_strategy_mytarget(attrs, inputs, out_type, target):
+    ...
 </pre></div>
 </div>
 </section>
-<section id="select-implementation-from-op-strategy">
-<h2>Select Implementation from Op Strategy<a class="headerlink" href="#select-implementation-from-op-strategy" title="永久链接至标题">#</a></h2>
+<section id="op">
+<h2>Op 策略中选择实现<a class="headerlink" href="#op" title="永久链接至标题">#</a></h2>
 <p>During the compilation, Relay compile engine needs to determine which
 implementation to use for an operator when there are multiple. The selection
 policy works as follows.</p>
@@ -1754,8 +1737,9 @@ implementation with highest priority level will be used for this operator. This
 will be updated after the implementation finishes.</p>
 <p>For debug purpose, you can add the following lines before you compile the Relay
 model to learn which implementation is used for each operator.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;te_compiler&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;te_compiler&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">))</span>
+<p>… code:: python</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>logging.getLogger(&quot;te_compiler&quot;).setLevel(logging.INFO)
+logging.getLogger(&quot;te_compiler&quot;).addHandler(logging.StreamHandler(sys.stdout))
 </pre></div>
 </div>
 </section>
@@ -1793,7 +1777,7 @@ model to learn which implementation is used for each operator.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-09-19, 02:05:06.<br/>
+    Last updated on 2022-09-21, 01:22:46.<br/>
 </p>
         </footer>
     </div>

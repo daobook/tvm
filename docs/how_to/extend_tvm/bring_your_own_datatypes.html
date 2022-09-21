@@ -841,7 +841,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../dev/how_to/relay_bring_your_own_codegen.html">
-       Bring Your Own Codegen To TVM
+       带你自己的 Codegen 到 TVM
       </a>
      </li>
      <li class="toctree-l3">
@@ -910,7 +910,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/relay_op_strategy.html">
-     Relay Operator Strategy
+     Relay 算子策略
     </a>
    </li>
    <li class="toctree-l2">
@@ -1465,18 +1465,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup">
-   Setup
+  <a class="reference internal nav-link" href="#id1">
+   设置
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-simple-tvm-program">
-   A Simple TVM Program
+  <a class="reference internal nav-link" href="#id2">
+   简单的 TVM 程序
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adding-custom-datatypes">
-   Adding Custom Datatypes
+  <a class="reference internal nav-link" href="#id3">
+   添加自定义数据类型
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1509,18 +1509,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup">
-   Setup
+  <a class="reference internal nav-link" href="#id1">
+   设置
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-simple-tvm-program">
-   A Simple TVM Program
+  <a class="reference internal nav-link" href="#id2">
+   简单的 TVM 程序
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adding-custom-datatypes">
-   Adding Custom Datatypes
+  <a class="reference internal nav-link" href="#id3">
+   添加自定义数据类型
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1544,37 +1544,32 @@ title="Print to PDF"
 <p>在本教程中，将向您展示如何利用 Bring Your Own Datatypes 框架在 TVM 中使用您自己的自定义数据类型。请注意，Bring Your Own Datatypes 框架目前只处理 <strong>software emulated versions of datatypes</strong>。框架不支持开箱即用的自定义加速器数据类型的编译。</p>
 <section id="datatype">
 <h2>Datatype 库<a class="headerlink" href="#datatype" title="永久链接至标题">#</a></h2>
-<p>The Bring Your Own Datatypes allows users to register their own datatype implementations alongside TVM’s native datatypes (such as <code class="docutils literal notranslate"><span class="pre">float</span></code>).
-In the wild, these datatype implementations often appear as libraries.
-For example:</p>
+<p>Bring Your Own Datatypes 允许用户在 TVM 的原生数据类型(如 <code class="docutils literal notranslate"><span class="pre">float</span></code> 下)旁边注册自己的数据类型实现。在一般情况下，这些数据类型实现通常以库的形式出现。例如：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/cjdelisle/libposit">libposit</a>, a posit library</p></li>
 <li><p><a class="reference external" href="https://github.com/stillwater-sc/universal">Stillwater Universal</a>, a library with posits, fixed-point numbers, and other types</p></li>
 <li><p><a class="reference external" href="https://github.com/ucb-bar/berkeley-softfloat-3">SoftFloat</a>, Berkeley’s software implementation of IEEE 754 floating-point</p></li>
 </ul>
-<p>The Bring Your Own Datatypes enables users to plug these datatype implementations into TVM!</p>
-<p>In this section, we will use an example library we have already implemented, located at <code class="docutils literal notranslate"><span class="pre">3rdparty/byodt/myfloat.cc</span></code>.
-This datatype, which we dubbed “myfloat”, is really just a IEE-754 float under-the-hood, but it serves a useful example
-to show that any datatype can be used in the BYODT framework.</p>
+<p>在本节中，我们将使用一个已经实现的示例库，位于 <code class="docutils literal notranslate"><span class="pre">3rdparty/byodt/myfloat.cc</span></code>。我们称之为“myfloat”的这个数据类型实际上只是 IEE-754  浮点数，但它提供了有用的示例
+以说明在 BYODT 框架中可以使用任何数据类型。</p>
 </section>
-<section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="永久链接至标题">#</a></h2>
-<p>Since we do not use any 3rdparty library, there is no setup needed.</p>
-<p>If you would like to try this with your own datatype library, first bring the library’s functions into the process space with <code class="docutils literal notranslate"><span class="pre">CDLL</span></code>:</p>
-<p>… code-block :: python</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ctypes.CDLL(&#39;my-datatype-lib.so&#39;, ctypes.RTLD_GLOBAL)
+<section id="id1">
+<h2>设置<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
+<p>因为我们不使用任何 3rdparty 库，所以不需要设置。</p>
+<p>如果你想在自己的数据类型库中尝试这种方法，首先使用 <code class="docutils literal notranslate"><span class="pre">CDLL</span></code> 将库的函数引入进程空间：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ctypes</span><span class="o">.</span><span class="n">CDLL</span><span class="p">(</span><span class="s1">&#39;my-datatype-lib.so&#39;</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">RTLD_GLOBAL</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
-<section id="a-simple-tvm-program">
-<h2>A Simple TVM Program<a class="headerlink" href="#a-simple-tvm-program" title="永久链接至标题">#</a></h2>
-<p>We’ll begin by writing a simple program in TVM; afterwards, we will re-write it to use custom datatypes.</p>
+<section id="id2">
+<h2>简单的 TVM 程序<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h2>
+<p>我们将首先在 TVM 中编写一个简单的程序；然后，重写它以使用自定义数据类型。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tvm</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">relay</span>
 
-<span class="c1"># Our basic program: Z = X + Y</span>
+<span class="c1"># 我们的基本程序:  Z = X + Y</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
@@ -1584,22 +1579,28 @@ to show that any datatype can be used in the BYODT framework.</p>
 </div>
 </div>
 </div>
-<p>Now, we create random inputs to feed into this program using numpy:</p>
+<p>现在，我们使用 numpy 创建随机数输入到这个程序中：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span>  <span class="c1"># for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span>  <span class="c1"># 为再现性</span>
 
 <span class="n">x_input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
 <span class="n">y_input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x_input</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">y_input</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x: </span><span class="si">{</span><span class="n">x_input</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y: </span><span class="si">{</span><span class="n">y_input</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x: [0.51729786 0.9469626  0.7654598 ]
+y: [0.28239584 0.22104536 0.6862221 ]
 </pre></div>
 </div>
 </div>
 </div>
-<p>Finally, we’re ready to run the program:</p>
+<p>最后，我们准备好运行程序：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z_output</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">create_executor</span><span class="p">(</span><span class="n">mod</span><span class="o">=</span><span class="n">module</span><span class="p">)</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()(</span><span class="n">x_input</span><span class="p">,</span> <span class="n">y_input</span><span class="p">)</span>
@@ -1607,14 +1608,18 @@ to show that any datatype can be used in the BYODT framework.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>z: [0.7996937 1.168008  1.4516819]
+</pre></div>
+</div>
+</div>
 </div>
 </section>
-<section id="adding-custom-datatypes">
-<h2>Adding Custom Datatypes<a class="headerlink" href="#adding-custom-datatypes" title="永久链接至标题">#</a></h2>
-<p>Now, we will do the same, but we will use a custom datatype for our intermediate computation.</p>
-<p>We use the same input variables <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> as above, but before adding <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code>, we first cast both <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to a custom datatype via the <code class="docutils literal notranslate"><span class="pre">relay.cast(...)</span></code> call.</p>
-<p>Note how we specify the custom datatype: we indicate it using the special <code class="docutils literal notranslate"><span class="pre">custom[...]</span></code> syntax.
-Additionally, note the “32” after the datatype: this is the bitwidth of the custom datatype. This tells TVM that each instance of <code class="docutils literal notranslate"><span class="pre">myfloat</span></code> is 32 bits wide.</p>
+<section id="id3">
+<h2>添加自定义数据类型<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h2>
+<p>现在，我们将做同样的事情，但是我们将为中间计算使用自定义数据类型。</p>
+<p>我们使用与上面相同的输入变量 <code class="docutils literal notranslate"><span class="pre">x</span></code> 和 <code class="docutils literal notranslate"><span class="pre">y</span></code>，但在添加 <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code> 之前，我们首先通过 <code class="docutils literal notranslate"><span class="pre">relay.cast(...)</span></code> call 将 <code class="docutils literal notranslate"><span class="pre">x</span></code> 和 <code class="docutils literal notranslate"><span class="pre">y</span></code> 强制转换为自定义数据类型。</p>
+<p>注意我们如何指定自定义数据类型：我们使用特殊的 <code class="docutils literal notranslate"><span class="pre">custom[...]</span></code> 语法。另外，注意数据类型后面的“32”：这是自定义数据类型的 bitwidth。这告诉 TVM <code class="docutils literal notranslate"><span class="pre">myfloat</span></code> 的每个实例都是 32 位宽的。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
@@ -1629,10 +1634,16 @@ Additionally, note the “32” after the datatype: this is the bitwidth of the 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <p>Trying to generate this program throws an error from TVM.
 TVM does not know how to handle any custom datatype out of the box!
 We first have to register the custom type with TVM, giving it a name and a type code:</p>
+<p>试图从 TVM 生成此程序会抛出一个错误。TVM 不知道如何处理任何开箱即用的自定义数据类型！我们首先要向 TVM 注册自定义类型，给它一个名称和一个类型代码：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tvm</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">datatype</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;myfloat&quot;</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
@@ -1643,6 +1654,7 @@ We first have to register the custom type with TVM, giving it a name and a type 
 <p>Note that the type code, 150, is currently chosen manually by the user.
 See <code class="docutils literal notranslate"><span class="pre">TVMTypeCode::kCustomBegin</span></code> in <a class="reference external" href="https://github.com/apache/tvm/blob/main/include/tvm/runtime/data_type.h">include/tvm/runtime/c_runtime_api.h</a>.
 Now we can generate our program again:</p>
+<p>注意，type 代码 150 目前是由用户手动选择的。参见 <a class="reference external" href="https://github.com/apache/tvm/blob/main/include/tvm/runtime/data_type.h">include/tvm/runtime/c_runtime_api.h</a> 中的 <code class="docutils literal notranslate"><span class="pre">TVMTypeCode::kCustomBegin</span></code>。现在我们可以再次生成我们的程序:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_myfloat</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;custom[myfloat]32&quot;</span><span class="p">)</span>
@@ -1656,15 +1668,25 @@ Now we can generate our program again:</p>
 </div>
 </div>
 </div>
-<p>Now we have a Relay program that uses myfloat!</p>
+<p>现在我们有了一个使用 <code class="docutils literal notranslate"><span class="pre">myfloat</span></code> 的 Relay 程序！</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">program</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fn (%x: Tensor[(3), float32], %y: Tensor[(3), float32]) {
+  %0 = cast(%x, dtype=&quot;custom[myfloat]32&quot;);
+  %1 = cast(%y, dtype=&quot;custom[myfloat]32&quot;);
+  %2 = add(%0, %1);
+  cast(%2, dtype=&quot;float32&quot;)
+}
+</pre></div>
 </div>
-<p>Now that we can express our program without errors, let’s try running it!</p>
+</div>
+</div>
+<p>现在我们可以无错误地表示我们的程序，让我们试着运行它！</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
@@ -1674,6 +1696,11 @@ Now we can generate our program again:</p>
 <span class="k">except</span> <span class="n">tvm</span><span class="o">.</span><span class="n">TVMError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="c1"># Print last line of error</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Check failed: (lower) is false: Cast lowering function for target llvm destination type 150 source type 2 not found
 </pre></div>
 </div>
 </div>
@@ -1724,6 +1751,11 @@ For more information, see <a class="reference external" href="https://github.com
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Check failed: (lower) is false: Add lowering function for target llvm type 150 not found
+</pre></div>
+</div>
+</div>
 </div>
 <p>This new error tells us that the <code class="docutils literal notranslate"><span class="pre">Add</span></code> lowering function is not found, which is good news, as it’s no longer complaining about the <code class="docutils literal notranslate"><span class="pre">Cast</span></code>!
 We know what to do from here: we just need to register the lowering functions for the other operations in our program.</p>
@@ -1757,6 +1789,15 @@ while for all other operations, the bit length is the same between the operands 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;z (myfloat32):</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">z_output_myfloat</span><span class="p">))</span>
 
 <span class="c1"># Perhaps as expected, the ``myfloat32`` results and ``float32`` are exactly the same!</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>z: [0.7996937 1.168008  1.4516819]
+x:		[0.51729786 0.9469626  0.7654598 ]
+y:		[0.28239584 0.22104536 0.6862221 ]
+z (float32):	[0.7996937 1.168008  1.4516819]
+z (myfloat32):	[0.7996937 1.168008  1.4516819]
 </pre></div>
 </div>
 </div>
@@ -1798,6 +1839,11 @@ In this alpha state of the Bring Your Own Datatypes framework, we have not imple
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading /home/xinet/.mxnet/models/mobilenet0.25-9f83e440.zipeb3c4f5d-55fd-40c7-b2a0-1981acc156d2 from https://apache-mxnet.s3-accelerate.dualstack.amazonaws.com/gluon/models/mobilenet0.25-9f83e440.zip...
+</pre></div>
+</div>
+</div>
 </div>
 <p>It’s easy to execute MobileNet with native TVM:</p>
 <div class="cell docutils container">
@@ -1807,6 +1853,18 @@ In this alpha state of the Bring Your Own Datatypes framework, we have not imple
 <span class="n">result</span> <span class="o">=</span> <span class="n">ex</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()(</span><span class="nb">input</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 <span class="c1"># print first 10 elements</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[:</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">/home/xinet/workspace/lxw/tvm/xinetzone/docs/how_to/extend_tvm/bring_your_own_datatypes.ipynb Cell 27</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://attached-container%2B7b22636f6e7461696e65724e616d65223a222f6f7074696d69737469635f626f7267222c2273657474696e6773223a7b22686f7374223a227373683a2f2f78696e227d7d/home/xinet/workspace/lxw/tvm/xinetzone/docs/how_to/extend_tvm/bring_your_own_datatypes.ipynb#X35sdnNjb2RlLXJlbW90ZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">ex</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">relay</span><span class="o">.</span><span class="n">create_executor</span><span class="p">(</span><span class="s2">&quot;graph&quot;</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://attached-container%2B7b22636f6e7461696e65724e616d65223a222f6f7074696d69737469635f626f7267222c2273657474696e6773223a7b22686f7374223a227373683a2f2f78696e227d7d/home/xinet/workspace/lxw/tvm/xinetzone/docs/how_to/extend_tvm/bring_your_own_datatypes.ipynb#X35sdnNjb2RlLXJlbW90ZQ%3D%3D?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">input</span> <span class="o">=</span> <span class="n">get_cat_image</span><span class="p">()</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://attached-container%2B7b22636f6e7461696e65724e616d65223a222f6f7074696d69737469635f626f7267222c2273657474696e6773223a7b22686f7374223a227373683a2f2f78696e227d7d/home/xinet/workspace/lxw/tvm/xinetzone/docs/how_to/extend_tvm/bring_your_own_datatypes.ipynb#X35sdnNjb2RlLXJlbW90ZQ%3D%3D?line=2&#39;</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">ex</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()(</span><span class="nb">input</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="ne">TypeError</span>: create_executor() got an unexpected keyword argument &#39;params&#39;
 </pre></div>
 </div>
 </div>
@@ -1996,7 +2054,7 @@ where the minimum representable custom datatype value is implemented using calls
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-09-19, 02:05:06.<br/>
+    Last updated on 2022-09-21, 01:22:46.<br/>
 </p>
         </footer>
     </div>

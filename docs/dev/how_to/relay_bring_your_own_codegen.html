@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Bring Your Own Codegen To TVM &#8212; TVM  文档</title>
+    <title>带你自己的 Codegen 到 TVM &#8212; TVM  文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -841,7 +841,7 @@
      </li>
      <li class="toctree-l3 current active">
       <a class="current reference internal" href="#">
-       Bring Your Own Codegen To TVM
+       带你自己的 Codegen 到 TVM
       </a>
      </li>
      <li class="toctree-l3">
@@ -910,7 +910,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../arch/relay_op_strategy.html">
-     Relay Operator Strategy
+     Relay 算子策略
     </a>
    </li>
    <li class="toctree-l2">
@@ -1461,7 +1461,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implement-a-c-codegen">
-   Implement a C Codegen
+   实现 C Codegen
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -1563,7 +1563,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Bring Your Own Codegen To TVM</h1>
+                <h1>带你自己的 Codegen 到 TVM</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1575,7 +1575,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implement-a-c-codegen">
-   Implement a C Codegen
+   实现 C Codegen
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -1679,17 +1679,17 @@ title="Print to PDF"
               <div>
                 
   <section id="bring-your-own-codegen-to-tvm">
-<span id="relay-bring-your-own-codegen"></span><h1>Bring Your Own Codegen To TVM<a class="headerlink" href="#bring-your-own-codegen-to-tvm" title="永久链接至标题">#</a></h1>
+<span id="relay-bring-your-own-codegen"></span><h1>带你自己的 Codegen 到 TVM<a class="headerlink" href="#bring-your-own-codegen-to-tvm" title="永久链接至标题">#</a></h1>
 <p>As the number of hardware devices targeted by deep learning workloads keeps increasing, the required knowledge for users to achieve high performance on various devices keeps increasing as well. To free data scientists from worrying about the performance when developing a new model, hardware backend providers either provide libraries such as DNNL(Intel OneDNN) or cuDNN with many commonly used deep learning operators, or provide frameworks such as TensorRT to let users describe their models in a certain way to achieve high performance. However, users have to learn a new programming interface when they attempt to work on a new library or device. As a result, the demand for a unified programming interface becomes more and more important to 1) let all users and hardware backend providers stand on the same page, and 2) provide a feasible solution to allow specialized hardware or library to only support widely used operators with extremely high performance, but fallback unsupported operators to general devices like CPU/GPU.</p>
-<p>In this developer guide, we demonstrate how you, as a hardware backend provider, can easily implement your own codegen and register it as a Relay backend compiler to support your hardware device/library. This guide covers two types of codegen based on different graph representations you need:</p>
-<p><strong>1. You want to generate C code.</strong></p>
-<p>If your hardware already has a well-optimized C/C++ library, such as Intel CBLAS/MKL to CPU and NVIDIA CUBLAS to GPU, then this is what you are looking for. Fortunately, C source code module is fully compatible with TVM runtime module, which means the generated code could be compiled by any C/C++ compiler with proper compilation flags, so the only task you have is to implement a codegen that generates C code for subgraphs and a C source module to integrate into TVM runtime module. We will demonstrate how to implement a C code generator for your hardware in the following section.</p>
-<p><strong>2. You want to generate any other graph representations.</strong></p>
-<p>Your hardware may require other forms of graph representation, such as JSON. In this case, you need to implement not only a codegen but also a customized TVM runtime module to let TVM runtime know how this graph representation should be executed. If you already have a complete graph execution engine for your hardware, such as TensorRT for GPU, then this is a solution you can consider.</p>
-<p>After you finish the codegen and runtime, you can then let your customers annotate their models with your customized tag to make use of them. The tutorial for end-users to annotate and launch a specific codegen is <strong>here (TBA)</strong>.</p>
+<p>在本开发指南中，将演示作为硬件后端提供者，如何轻松实现自己的代码生成，并将其注册为 Relay 后端编译器，以支持硬件设备/库。本指南根据你需要的不同 graph 表示涵盖了两种类型的代码：</p>
+<p><strong>1. 您需要生成 C 代码。</strong></p>
+<p>如果您的硬件已经有一个良好优化的 C/C++ 库，如 Intel CBLAS/MKL 到 CPU 和 NVIDIA CUBLAS 到 GPU，那么这就是您要寻找的。幸运的是，C 源代码模块与 TVM 运行时模块完全兼容，这意味着生成的代码可以由任何具有适当编译标志的 C/C++ 编译器编译，因此您唯一的任务是实现一个代码生成器，为子图生成 C 代码，并实现一个 C source module 集成到 TVM 运行时模块中。将在下一节中演示如何为您的硬件实现一个 C 代码生成器。</p>
+<p><strong>2. 希望生成任何其他 graph 表示。</strong></p>
+<p>您的硬件可能需要其他形式的 graph 表示，例如 JSON。在这种情况下，您不仅需要实现 codegen，还需要实现定制 TVM 运行时模块，以便让 TVM 运行时知道应该如何执行这个 graph 表示。如果您的硬件已经有了一个完整的 graph 执行引擎，比如 GPU 的 tensort，那么这是一个可以考虑的解决方案。</p>
+<p>在您完成代码生成和运行时之后，您就可以让您的客户使用您的定制 tag 来注解他们的模型，以使用它们。最终用户注解和启动特定 codegen 的教程在这里(TBA)。</p>
 <section id="implement-a-c-codegen">
-<h2>Implement a C Codegen<a class="headerlink" href="#implement-a-c-codegen" title="永久链接至标题">#</a></h2>
-<p>In this part, we demonstrate how to implement a codegen that generates C code with pre-implemented operator functions. To simplify, our example codegen does not depend on third-party libraries. Instead, we manually implement two macros in C:</p>
+<h2>实现 C Codegen<a class="headerlink" href="#implement-a-c-codegen" title="永久链接至标题">#</a></h2>
+<p>在本部分中，将演示如何实现代码生成器，它生成带有预先实现的算子函数的 C 代码。为了简化，示例代码生成不依赖于第三方库。相反，我们在 C 中手动实现了两个宏：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#define CSOURCE_BINARY_OP_1D(p_ID_, p_OP_, p_DIM1_)         \</span>
 <span class="cp">    extern &quot;C&quot; void p_ID_(float* a, float* b, float* out) { \</span>
 <span class="cp">        for (int64_t i = 0; i &lt; p_DIM1_; ++i) {             \</span>
@@ -1708,7 +1708,7 @@ title="Print to PDF"
 <span class="cp">    }</span>
 </pre></div>
 </div>
-<p>With the two macros, we can generate binary operators for 1-D and 2-D tensors. For example, given a subgraph as follows. Assuming all inputs are 2-D tensors with shape (10, 10).</p>
+<p>利用这两个宏，我们可以生成一维和二维张量的二元算子。例如，给定如下的子图。假设所有输入都是形状为 <code class="docutils literal notranslate"><span class="pre">(10,10)</span></code> 的二维张量。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c_compiler_input0</span>
        <span class="o">|</span>
       <span class="n">add</span> <span class="o">&lt;--</span> <span class="n">c_compiler_input1</span>
@@ -1720,7 +1720,7 @@ title="Print to PDF"
       <span class="n">out</span>
 </pre></div>
 </div>
-<p>Our goal is to generate the following compilable code to execute the subgraph:</p>
+<p>我们的目标是生成以下可编译代码来执行子图：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tvm/runtime/c_runtime_api.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tvm/runtime/packed_func.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;dlpack/dlpack.h&gt;</span><span class="cp"></span>
@@ -1773,7 +1773,7 @@ title="Print to PDF"
 <span class="n">TVM_DLL_EXPORT_TYPED_FUNC</span><span class="p">(</span><span class="n">gcc_0</span><span class="p">,</span><span class="w"> </span><span class="n">gcc_0_wrapper</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Here we highlight the notes marked in the above code:</p>
+<p>这里高亮了上面代码中标记的注解：</p>
 <ul class="simple">
 <li><p><strong>Note 1</strong> is the function implementation for the three nodes in the subgraph.</p></li>
 <li><p><strong>Note 2</strong> is a function to execute the subgraph by allocating intermediate buffers and invoking corresponding functions.</p></li>
@@ -2527,7 +2527,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-09-19, 02:05:06.<br/>
+    Last updated on 2022-09-21, 01:22:46.<br/>
 </p>
         </footer>
     </div>
