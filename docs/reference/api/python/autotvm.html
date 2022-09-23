@@ -2702,6 +2702,12 @@ collect transformation space and build transform graph of axes</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="tvm.autotvm.task.space.ConfigSpace.__len__">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/autotvm/task/space.html#ConfigSpace.__len__"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.autotvm.task.space.ConfigSpace.__len__" title="永久链接至目标">#</a></dt>
+<dd><p>Returns the number of valid indexes in the space</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="tvm.autotvm.task.space.ConfigSpace._add_new_transform">
 <span class="sig-name descname"><span class="pre">_add_new_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/autotvm/task/space.html#ConfigSpace._add_new_transform"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.autotvm.task.space.ConfigSpace._add_new_transform" title="永久链接至目标">#</a></dt>
 <dd><p>Add a new transform space in template</p>
@@ -2727,6 +2733,12 @@ If is IterVar, return an axis whose length is extracted from the
 IterVar’s extent domain.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.autotvm.task.space.ConfigSpace.clear_cache">
+<span class="sig-name descname"><span class="pre">clear_cache</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/autotvm/task/space.html#ConfigSpace.clear_cache"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.autotvm.task.space.ConfigSpace.clear_cache" title="永久链接至目标">#</a></dt>
+<dd><p>Clears the cache of index validity</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2808,19 +2820,27 @@ If is ‘candidate’, try given candidates.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">no_tail</span></code>:</dt><dd><p>should we only include divisible numbers as split factors (<cite>bool</cite>).</p>
 </dd>
-<dt><cite>candidate`</cite>:</dt><dd><p>(policy=candidate) manual candidate list (<cite>List</cite>).</p>
+<dt><code class="docutils literal notranslate"><span class="pre">candidate</span></code>:</dt><dd><p>(policy=candidate) manual candidate list (<cite>List</cite>).</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># use custom candidates</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span><span class="o">.</span><span class="n">define_split</span><span class="p">(</span><span class="s1">&#39;tile_x&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">policy</span><span class="o">=</span><span class="s1">&#39;candidate&#39;</span><span class="p">,</span> <span class="n">candidate</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span><span class="o">.</span><span class="n">define_split</span><span class="p">(</span><span class="s1">&#39;tile_x&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">policy</span><span class="o">=</span><span class="s1">&#39;candidate&#39;</span><span class="p">,</span> <span class="n">num_outputs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">candidate</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># use a filter that only accepts the split scheme whose inner most tile is less then 4</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span><span class="o">.</span><span class="n">define_split</span><span class="p">(</span><span class="s1">&#39;tile_y&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">policy</span><span class="o">=</span><span class="s1">&#39;factors&#39;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span><span class="o">.</span><span class="n">define_split</span><span class="p">(</span><span class="s1">&#39;tile_y&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">policy</span><span class="o">=</span><span class="s1">&#39;factors&#39;</span><span class="p">,</span> <span class="n">num_outputs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="nb">filter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tvm.autotvm.task.space.ConfigSpace.dims">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dims</span></span><a class="headerlink" href="#tvm.autotvm.task.space.ConfigSpace.dims" title="永久链接至目标">#</a></dt>
+<dd><p>Dimensions in the space</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2829,6 +2849,154 @@ If is ‘candidate’, try given candidates.</p>
 <dd><p>Get a config entity with detailed parameters from this space</p>
 <dl class="simple">
 <dt>index: int</dt><dd><p>index in the space</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>config: ConfigEntity</dt><dd><p>config corresponds to the index</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.autotvm.task.space.ConfigSpace.get_next_index">
+<span class="sig-name descname"><span class="pre">get_next_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/autotvm/task/space.html#ConfigSpace.get_next_index"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.autotvm.task.space.ConfigSpace.get_next_index" title="永久链接至目标">#</a></dt>
+<dd><p>Returns the nth valid next index or None if out of range</p>
+<dl class="simple">
+<dt>index: int</dt><dd><p>specifying at which position to start, inclusive</p>
+</dd>
+<dt>n: int, optional</dt><dd><p>step by using to find the next index, for the opposite
+direction a negative number should be used</p>
+</dd>
+<dt>start: list, optional</dt><dd><p>start of subrange, inclusive</p>
+</dd>
+<dt>end: list, optional</dt><dd><p>end of subrange, exclusive</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>next: int</dt><dd><p>next index in the space</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.autotvm.task.space.ConfigSpace.get_rand_index">
+<span class="sig-name descname"><span class="pre">get_rand_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/autotvm/task/space.html#ConfigSpace.get_rand_index"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.autotvm.task.space.ConfigSpace.get_rand_index" title="永久链接至目标">#</a></dt>
+<dd><p>Returns a random valid index unlisted to exclusion</p>
+<dl class="simple">
+<dt>start: int, optional</dt><dd><p>specifying at which position to start, inclusive</p>
+</dd>
+<dt>end: int, optional</dt><dd><p>specifying at which position to end, exclusive</p>
+</dd>
+<dt>to_exclude: list, optional</dt><dd><p>determines unsuitable values</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>rand: int</dt><dd><p>random index in the space</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Excluding all valid space indexes will lead to an infinite loop.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.autotvm.task.space.ConfigSpace.is_index_valid">
+<span class="sig-name descname"><span class="pre">is_index_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/autotvm/task/space.html#ConfigSpace.is_index_valid"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.autotvm.task.space.ConfigSpace.is_index_valid" title="永久链接至目标">#</a></dt>
+<dd><p>Checks if the index satisfies the multi_filter condition</p>
+<dl class="simple">
+<dt>index: int</dt><dd><p>index from the range of the space</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>valid: bool</dt><dd><p>whether the index meets all the constraints</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.autotvm.task.space.ConfigSpace.knob2point">
+<span class="sig-name descname"><span class="pre">knob2point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">knob</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/autotvm/task/space.html#ConfigSpace.knob2point"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.autotvm.task.space.ConfigSpace.knob2point" title="永久链接至目标">#</a></dt>
+<dd><p>Convert knob form (vector) to point form (single integer)</p>
+<dl class="simple">
+<dt>knob: list</dt><dd><p>knob to convert</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>point: int</dt><dd><p>point of the knob representation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.autotvm.task.space.ConfigSpace.multi_filter">
+<span class="sig-name descname"><span class="pre">multi_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/autotvm/task/space.html#ConfigSpace.multi_filter"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.autotvm.task.space.ConfigSpace.multi_filter" title="永久链接至目标">#</a></dt>
+<dd><p>The filter can restrict combination of parameters in difference to the knob filter,
+that restricts only single parameter</p>
+<dl class="simple">
+<dt>filter: function</dt><dd><p>predicate with one argument (Callable[[int], bool])</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Using this filter causes additional restrictions on the use of __len__.
+Normally, it define the count of valid indexes and the range of space, but when
+multi_filter enabled, it requires to use __len__ for getting the count of valid
+indexes or range_length for the range of space. It is recommended to use:
+<code class="docutils literal notranslate"><span class="pre">is_index_valid</span></code>, <code class="docutils literal notranslate"><span class="pre">get_next_index</span></code>, <code class="docutils literal notranslate"><span class="pre">get_rand_index</span></code> to bypass the space</p>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Pre-requisites</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">candidates</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">],</span> <span class="p">[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">16</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">filter</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">16</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">multi_filter</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;tile_x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">e</span><span class="p">[</span><span class="s2">&quot;tile_y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">64</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Case 1 - without filtering</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span><span class="o">.</span><span class="n">define_split</span><span class="p">(</span><span class="s2">&quot;tile_x&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">num_outputs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">policy</span><span class="o">=</span><span class="s2">&quot;candidate&quot;</span><span class="p">,</span> <span class="n">candidate</span><span class="o">=</span><span class="n">candidates</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span><span class="o">.</span><span class="n">define_split</span><span class="p">(</span><span class="s2">&quot;tile_y&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">num_outputs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">policy</span><span class="o">=</span><span class="s2">&quot;candidate&quot;</span><span class="p">,</span> <span class="n">candidate</span><span class="o">=</span><span class="n">candidates</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [(&#39;tile_x&#39;, [16, 64]), (&#39;tile_y&#39;, [16, 64])],None,0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [(&#39;tile_x&#39;, [32, 32]), (&#39;tile_y&#39;, [16, 64])],None,1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [(&#39;tile_x&#39;, [64, 16]), (&#39;tile_y&#39;, [16, 64])],None,2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [(&#39;tile_x&#39;, [16, 64]), (&#39;tile_y&#39;, [32, 32])],None,3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [(&#39;tile_x&#39;, [32, 32]), (&#39;tile_y&#39;, [32, 32])],None,4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [(&#39;tile_x&#39;, [64, 16]), (&#39;tile_y&#39;, [32, 32])],None,5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [(&#39;tile_x&#39;, [16, 64]), (&#39;tile_y&#39;, [64, 16])],None,6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [(&#39;tile_x&#39;, [32, 32]), (&#39;tile_y&#39;, [64, 16])],None,7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [(&#39;tile_x&#39;, [64, 16]), (&#39;tile_y&#39;, [64, 16])],None,8</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Case 2 - with filter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span><span class="o">.</span><span class="n">define_split</span><span class="p">(</span><span class="s2">&quot;tile_x&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">num_outputs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">policy</span><span class="o">=</span><span class="s2">&quot;candidate&quot;</span><span class="p">,</span> <span class="n">candidate</span><span class="o">=</span><span class="n">candidates</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span><span class="o">.</span><span class="n">define_split</span><span class="p">(</span><span class="s2">&quot;tile_y&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">num_outputs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">policy</span><span class="o">=</span><span class="s2">&quot;candidate&quot;</span><span class="p">,</span> <span class="n">candidate</span><span class="o">=</span><span class="n">candidates</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [(&#39;tile_x&#39;, [32, 32]), (&#39;tile_y&#39;, [32, 32])],None,0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [(&#39;tile_x&#39;, [64, 16]), (&#39;tile_y&#39;, [32, 32])],None,1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [(&#39;tile_x&#39;, [32, 32]), (&#39;tile_y&#39;, [64, 16])],None,2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [(&#39;tile_x&#39;, [64, 16]), (&#39;tile_y&#39;, [64, 16])],None,3</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Case 3 - with filter and multi_filter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span><span class="o">.</span><span class="n">define_split</span><span class="p">(</span><span class="s2">&quot;tile_x&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">num_outputs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">policy</span><span class="o">=</span><span class="s2">&quot;candidate&quot;</span><span class="p">,</span> <span class="n">candidate</span><span class="o">=</span><span class="n">candidates</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span><span class="o">.</span><span class="n">define_split</span><span class="p">(</span><span class="s2">&quot;tile_y&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">num_outputs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">policy</span><span class="o">=</span><span class="s2">&quot;candidate&quot;</span><span class="p">,</span> <span class="n">candidate</span><span class="o">=</span><span class="n">candidates</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span><span class="o">.</span><span class="n">multi_filter</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="n">multi_filter</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [(&#39;tile_x&#39;, [32, 32]), (&#39;tile_y&#39;, [32, 32])],None,0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.autotvm.task.space.ConfigSpace.point2knob">
+<span class="sig-name descname"><span class="pre">point2knob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/autotvm/task/space.html#ConfigSpace.point2knob"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.autotvm.task.space.ConfigSpace.point2knob" title="永久链接至目标">#</a></dt>
+<dd><p>Convert point form (single integer) to knob (vector)</p>
+<dl class="simple">
+<dt>point: int</dt><dd><p>point to convert</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>knob: list</dt><dd><p>knob representation of the point</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2844,6 +3012,26 @@ will cost more time.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="tvm.autotvm.task.space.ConfigSpace.random_walk">
+<span class="sig-name descname"><span class="pre">random_walk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/autotvm/task/space.html#ConfigSpace.random_walk"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.autotvm.task.space.ConfigSpace.random_walk" title="永久链接至目标">#</a></dt>
+<dd><p>random walk as local transition</p>
+<dl class="simple">
+<dt>point: int</dt><dd><p>index of the ConfigEntity</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>new_point: int</dt><dd><p>new neighborhood index</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tvm.autotvm.task.space.ConfigSpace.range_length">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">range_length</span></span><a class="headerlink" href="#tvm.autotvm.task.space.ConfigSpace.range_length" title="永久链接至目标">#</a></dt>
+<dd><p>Length of the index range in the space</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="tvm.autotvm.task.space.ConfigSpace.reduce_axis">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reduce_axis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tvm.autotvm.task.space.ConfigSpace.reduce_axis" title="永久链接至目标">#</a></dt>
 <dd><p>get a virtual axis (axis placeholder)</p>
@@ -2851,6 +3039,35 @@ will cost more time.</p>
 <dt>var: int or tvm.te.schedule.IterVar</dt><dd><p>If is int, return an axis whose length is the provided argument.
 If is IterVar, return an axis whose length is extracted from the
 IterVar’s extent domain.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.autotvm.task.space.ConfigSpace.sample_ints">
+<span class="sig-name descname"><span class="pre">sample_ints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/autotvm/task/space.html#ConfigSpace.sample_ints"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.autotvm.task.space.ConfigSpace.sample_ints" title="永久链接至目标">#</a></dt>
+<dd><p>Sample m different integer numbers from [0, self.range_length) without replacement
+This function is an alternative of <cite>np.random.choice</cite> when self.range_length &gt; 2 ^ 32, in
+which case numpy does not work.</p>
+<dl class="simple">
+<dt>m: int</dt><dd><p>The number of sampled int</p>
+</dd>
+</dl>
+<p>ints: an numpy array of size m</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tvm.autotvm.task.space.ConfigSpace.subrange_length">
+<span class="sig-name descname"><span class="pre">subrange_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/tvm/autotvm/task/space.html#ConfigSpace.subrange_length"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm.autotvm.task.space.ConfigSpace.subrange_length" title="永久链接至目标">#</a></dt>
+<dd><p>Returns the number of valid indexes within the limited range from [start, end]</p>
+<dl class="simple">
+<dt>start: int</dt><dd><p>start of subrange, inclusive</p>
+</dd>
+<dt>end: int</dt><dd><p>end of subrange, exclusive</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>count: int</dt><dd><p>number of valid indexes</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3759,7 +3976,7 @@ This function can also delete duplicated records in log file</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-09-22, 02:21:10.<br/>
+    Last updated on 2022-09-23, 11:51:24.<br/>
 </p>
         </footer>
     </div>

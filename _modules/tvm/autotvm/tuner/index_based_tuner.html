@@ -1432,8 +1432,6 @@ title="Fullscreen mode"
 <span class="c1"># pylint: disable=abstract-method</span>
 <span class="sd">&quot;&quot;&quot;Grid search tuner and random tuner&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
 <span class="kn">from</span> <span class="nn">.tuner</span> <span class="kn">import</span> <span class="n">Tuner</span>
 
 
@@ -1447,7 +1445,7 @@ title="Fullscreen mode"
 <span class="sd">        The tuning task</span>
 
 <span class="sd">    range_idx: Optional[Tuple[int, int]]</span>
-<span class="sd">        A tuple of index range that this tuner can select from</span>
+<span class="sd">        A tuple of index range that this tuner can select from [begin_idx, end_idx]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">range_idx</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1456,17 +1454,19 @@ title="Fullscreen mode"
             <span class="n">range_idx</span><span class="p">,</span> <span class="nb">tuple</span>
         <span class="p">),</span> <span class="s2">&quot;range_idx must be None or (int, int)&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">range_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">config_space</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">index_offset</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">if</span> <span class="n">range_idx</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="n">range_idx</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">range_idx</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;Index range must be positive&quot;</span>
-            <span class="k">assert</span> <span class="n">range_idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Start index must be positive&quot;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">range_length</span> <span class="o">=</span> <span class="n">range_idx</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">range_idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">index_offset</span> <span class="o">=</span> <span class="n">range_idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visited</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">begin_idx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_idx</span> <span class="o">=</span> <span class="n">range_idx</span> <span class="ow">or</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">range_length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">begin_idx</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Start index must be positive&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_idx</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># Further end_idx is exclusive</span>
+        <span class="k">assert</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">end_idx</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">range_length</span>
+        <span class="p">),</span> <span class="s2">&quot;Finish index must be less the space range length &quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">range_length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_idx</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">begin_idx</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">range_length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Index range must be positive&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visited_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">subrange_length</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">begin_idx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_idx</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">has_next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">range_length</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">visited</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">visited_max</span>
 
     <span class="k">def</span> <span class="nf">load_history</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_set</span><span class="p">,</span> <span class="n">min_seed_records</span><span class="o">=</span><span class="mi">500</span><span class="p">):</span>
         <span class="k">pass</span>
@@ -1475,14 +1475,23 @@ title="Fullscreen mode"
 <div class="viewcode-block" id="GridSearchTuner"><a class="viewcode-back" href="../../../../docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GridSearchTuner">[文档]</a><span class="k">class</span> <span class="nc">GridSearchTuner</span><span class="p">(</span><span class="n">IndexBaseTuner</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Enumerate the search space in a grid search order&quot;&quot;&quot;</span>
 
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">range_idx</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GridSearchTuner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">range_idx</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">begin_idx</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">is_index_valid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">get_next_index</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">begin_idx</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">end_idx</span>
+            <span class="p">)</span>
+
 <div class="viewcode-block" id="GridSearchTuner.next_batch"><a class="viewcode-back" href="../../../../docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.GridSearchTuner.next_batch">[文档]</a>    <span class="k">def</span> <span class="nf">next_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">range_length</span><span class="p">:</span>
-                <span class="k">break</span>
-            <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_offset</span>
-            <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">config_space</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">index</span><span class="p">))</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">batch_size</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_next</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">visited</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+            <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">get_next_index</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">begin_idx</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">end_idx</span>
+            <span class="p">)</span>
         <span class="k">return</span> <span class="n">ret</span></div></div>
 
 
@@ -1498,34 +1507,12 @@ title="Fullscreen mode"
 <span class="sd">        A tuple of index range to random</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">range_idx</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">RandomTuner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">range_idx</span><span class="p">)</span>
-
-        <span class="c1"># Use a dict to mimic a range(n) list without storing rand_state[i] = i entries so that</span>
-        <span class="c1"># we can generate non-repetitive random indices.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rand_state</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rand_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">range_length</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">visited</span> <span class="o">=</span> <span class="p">[]</span>
-
 <div class="viewcode-block" id="RandomTuner.next_batch"><a class="viewcode-back" href="../../../../docs/reference/api/python/autotvm.html#tvm.autotvm.tuner.RandomTuner.next_batch">[文档]</a>    <span class="k">def</span> <span class="nf">next_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rand_max</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="k">break</span>
-
-            <span class="c1"># Random an indirect index.</span>
-            <span class="n">index_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rand_max</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">rand_max</span> <span class="o">-=</span> <span class="mi">1</span>
-
-            <span class="c1"># Use the indirect index to get a direct index.</span>
-            <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rand_state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">index_</span><span class="p">,</span> <span class="n">index_</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_offset</span>
-            <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">config_space</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">index</span><span class="p">))</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">batch_size</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_next</span><span class="p">():</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">get_rand_index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">begin_idx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_idx</span><span class="p">,</span> <span class="n">to_exclude</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">visited</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">visited</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
-
-            <span class="c1"># Update the direct index map.</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">rand_state</span><span class="p">[</span><span class="n">index_</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rand_state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rand_max</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rand_max</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">rand_state</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rand_max</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">index</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">ret</span></div></div>
 </pre></div>
 
@@ -1546,7 +1533,7 @@ title="Fullscreen mode"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-09-22, 02:21:10.<br/>
+    Last updated on 2022-09-23, 11:51:24.<br/>
 </p>
         </footer>
     </div>
