@@ -107,7 +107,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 3,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -192,21 +192,21 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 11,
+   "execution_count": 6,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
        "Name                                                 Duration (us)  Percent  Device  Count                                                    Argument Shapes              Hash  \n",
-       "tvmgen_default_fused_nn_dense_nn_bias_add_nn_relu           110.43    50.35    cpu0      1  float32[1, 784], float32[128, 784], float32[128], float32[1, 128]  35ac6d50e6e03a62  \n",
-       "tvmgen_default_fused_nn_dense_nn_bias_add_nn_relu_1          21.70     9.90    cpu0      1     float32[1, 128], float32[64, 128], float32[64], float32[1, 64]  7c89e1efbba1ce3b  \n",
-       "tvmgen_default_fused_nn_dense_nn_bias_add                    11.81     5.39    cpu0      1       float32[1, 64], float32[10, 64], float32[10], float32[1, 10]  8a679957c4723fed  \n",
-       "tvmgen_default_fused_nn_softmax                               1.68     0.77    cpu0      1                                     float32[1, 10], float32[1, 10]  0cc19816e7a3c070  \n",
-       "__nop                                                         1.60     0.73    cpu0      1                             float32[1, 1, 28, 28], float32[1, 784]  9efde5b782d81fa1  \n",
+       "tvmgen_default_fused_nn_dense_nn_bias_add_nn_relu            49.04    42.70    cpu0      1  float32[1, 784], float32[128, 784], float32[128], float32[1, 128]  35ac6d50e6e03a62  \n",
+       "tvmgen_default_fused_nn_dense_nn_bias_add_nn_relu_1           9.33     8.12    cpu0      1     float32[1, 128], float32[64, 128], float32[64], float32[1, 64]  7c89e1efbba1ce3b  \n",
+       "tvmgen_default_fused_nn_dense_nn_bias_add                     5.50     4.79    cpu0      1       float32[1, 64], float32[10, 64], float32[10], float32[1, 10]  8a679957c4723fed  \n",
+       "__nop                                                         1.08     0.94    cpu0      1                             float32[1, 1, 28, 28], float32[1, 784]  9efde5b782d81fa1  \n",
+       "tvmgen_default_fused_nn_softmax                               0.77     0.67    cpu0      1                                     float32[1, 10], float32[1, 10]  0cc19816e7a3c070  \n",
        "----------                                                                                                                                                                       \n",
-       "Sum                                                         147.23    67.13              5                                                                                       \n",
-       "Total                                                       219.30             cpu0      1                                                                                       \n",
+       "Sum                                                          65.72    57.23              5                                                                                       \n",
+       "Total                                                       114.84             cpu0      1                                                                                       \n",
        "\n",
        "Configuration\n",
        "-------------\n",
@@ -214,7 +214,7 @@
        "Executor: Graph"
       ]
      },
-     "execution_count": 11,
+     "execution_count": 6,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -309,7 +309,7 @@
  ],
  "metadata": {
   "kernelspec": {
-   "display_name": "Python 3.8.13 ('xc': conda)",
+   "display_name": "Python 3.8.13 ('py38': conda)",
    "language": "python",
    "name": "python3"
   },
@@ -328,7 +328,7 @@
   "orig_nbformat": 4,
   "vscode": {
    "interpreter": {
-    "hash": "f4772b2d9fb5f4e213cea28dc6a0e63daacdc3e8a701d5a5063e88b8cfe3308a"
+    "hash": "ad2d1ab9d1dc65ef84f368aa5042276df6e59670f363eef0e3da4892909479be"
    }
   }
  },
