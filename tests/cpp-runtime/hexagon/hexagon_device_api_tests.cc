@@ -164,3 +164,33 @@ TEST_F(HexagonDeviceAPITest, leak_resources) {
   hexapi->FreeDataSpace(hex_dev, pre_runtime_buf);
   hexapi->AcquireResources();
 }
+
+// Ensure thread manager is properly configured and destroyed
+// in Acquire/Release
+TEST_F(HexagonDeviceAPITest, thread_manager) {
+  HexagonThreadManager* threads = hexapi->ThreadManager();
+  CHECK(threads != nullptr);
+  hexapi->ReleaseResources();
+  EXPECT_THROW(hexapi->ThreadManager(), InternalError);
+  hexapi->AcquireResources();
+}
+
+// Ensure user DMA manager is properly configured and destroyed
+// in Acquire/Release
+TEST_F(HexagonDeviceAPITest, user_dma) {
+  HexagonUserDMA* user_dma = hexapi->UserDMA();
+  CHECK(user_dma != nullptr);
+  hexapi->ReleaseResources();
+  EXPECT_THROW(hexapi->UserDMA(), InternalError);
+  hexapi->AcquireResources();
+}
+
+// Ensure VTCM pool is properly configured and destroyed
+// in Acquire/Release
+TEST_F(HexagonDeviceAPITest, vtcm_pool) {
+  HexagonVtcmPool* vtcm_pool = hexapi->VtcmPool();
+  CHECK(vtcm_pool != nullptr);
+  hexapi->ReleaseResources();
+  EXPECT_THROW(hexapi->VtcmPool(), InternalError);
+  hexapi->AcquireResources();
+}
