@@ -22,8 +22,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
@@ -37,13 +36,8 @@
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script src="../../_static/translations.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/design-tabs.js"></script>
     <link rel="shortcut icon" href="../../_static/tvm-logo-square.png"/>
     <link rel="index" title="索引" href="../../genindex.html" />
@@ -1640,7 +1634,7 @@ git submodule update
 </dd>
 </dl>
 </li>
-<li><p>CMake 3.10 或更高版本</p></li>
+<li><p>CMake 3.18 or higher</p></li>
 <li><p>我们强烈建议使用 LLVM 构建，以启用所有的功能。</p></li>
 <li><p>如果你想使用 CUDA，需要 CUDA 工具箱版本 &gt;=8.0。如果你从旧版本升级，请确保在安装后清除旧版本并重新启动。</p></li>
 <li><p>在 macOS 上，你可能想安装 <a class="reference external" href="https://brew.sh">Homebrew</a> 以方便安装和管理依赖性。</p></li>
@@ -1652,6 +1646,7 @@ git submodule update
 sudo apt-get install -y python3 python3-dev python3-setuptools gcc libtinfo-dev zlib1g-dev build-essential cmake libedit-dev libxml2-dev
 </pre></div>
 </div>
+<p>Note that the version of CMake on apt may not be sufficiently up to date; it may be necessary to install it directly from <a class="reference external" href="https://apt.kitware.com/">Kitware’s third-party APT repository</a>.</p>
 <p>使用 Homebrew 为运行英特尔或 M1 处理器的 macOS 安装所需的依赖项。你必须遵循 Homebrew 指定的安装后步骤，以确保正确地安装和配置这些依赖项：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install gcc git cmake
 brew install llvm
@@ -1706,6 +1701,7 @@ cp cmake/config.cmake build
 <li><p>On supported platforms, the <a class="reference external" href="https://ccache.dev/">Ccache compiler wrapper</a> may be helpful for
 reducing TVM’s build time.  There are several ways to enable CCache in TVM builds:</p>
 <ul>
+<li><p>Leave <cite>USE_CCACHE=AUTO</cite> in <cite>build/config.cmake</cite>. CCache will be used if it is found.</p></li>
 <li><p>Ccache’s Masquerade mode. This is typically enabled during the Ccache installation process.
 To have TVM use Ccache in masquerade, simply specify the appropriate C/C++ compiler
 paths when configuring TVM’s build system.  For example:
@@ -1918,7 +1914,7 @@ sudo make install
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-09-26, 07:12:37.<br/>
+    Last updated on 2022-10-05, 03:58:23.<br/>
 </p>
         </footer>
     </div>
