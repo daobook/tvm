@@ -24,11 +24,16 @@ from tvm import tir
 from tvm.contrib.hexagon.session import Session
 from tvm.script import tir as T
 
+from .infrastructure import get_hexagon_target
+
 outer = tvm.testing.parameter(8, 16)
 inner = tvm.testing.parameter(64, 128)
 dtype = tvm.testing.parameter("uint8", "float16")
 scope = tvm.testing.parameter("global", "global.vtcm")
-sched = tvm.testing.parameter("cache_read", "cache_write", "cache_read_write")
+# TODO(Straw) Add back "cache_write" schedule type once we have upstreamed
+# buffer dependency analysis in InjectSoftwarePipeline pass
+# to insert approprite TIR "wait" attributes for this schedule
+sched = tvm.testing.parameter("cache_read", "cache_read_write")
 
 
 @tvm.testing.fixture
@@ -86,11 +91,8 @@ def test_async_software_pipeline(hexagon_launcher, compute, schedule, outer, inn
     b_np = np.random.uniform(low=0, high=128, size=(outer, inner)).astype(dtype)
     ref = compute[1](a_np)
 
-    target_hexagon = tvm.target.hexagon("v68", link_params=True)
     with tvm.transform.PassContext(config={"tir.use_async_copy": 1}):
-        func = tvm.build(
-            sch.mod["main"], target=tvm.target.Target(target_hexagon, host=target_hexagon)
-        )
+        func = tvm.build(sch.mod["main"], target=get_hexagon_target("v68"))
 
     with hexagon_launcher.start_session() as hexagon_session:
         dev = hexagon_session.device
