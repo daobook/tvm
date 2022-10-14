@@ -820,7 +820,7 @@
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/debugging_tvm.html">
-       调试 TVM
+       Debugging TVM
       </a>
      </li>
      <li class="toctree-l3">
@@ -1518,14 +1518,14 @@ In other languages like c++, you simply add <code class="docutils literal notran
 the error message(see below).</p>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>Please refer to <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/error.html#module-tvm.error" title="(在 tvm v0.10.dev0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tvm.error</span></code></a> for the list of errors.</p>
+<p>Please refer to <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/error.html#module-tvm.error" title="(在 tvm v0.11.dev0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tvm.error</span></code></a> for the list of errors.</p>
 </div>
 <section id="raise-a-specific-error-in-c">
 <h2><a class="toc-backref" href="#id3">Raise a Specific Error in C++</a><a class="headerlink" href="#raise-a-specific-error-in-c" title="永久链接至标题">#</a></h2>
 <p>You can add <code class="docutils literal notranslate"><span class="pre">&lt;ErrorType&gt;:</span></code> prefix to your error message to
 raise an error of the corresponding type.
 Note that you do not have to add a new type
-<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/error.html#tvm.error.TVMError" title="(在 tvm v0.10.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.error.TVMError</span></code></a> will be raised by default when
+<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/error.html#tvm.error.TVMError" title="(在 tvm v0.11.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.error.TVMError</span></code></a> will be raised by default when
 there is no error type prefix in the message.
 This mechanism works for both <code class="docutils literal notranslate"><span class="pre">LOG(FATAL)</span></code> and <code class="docutils literal notranslate"><span class="pre">ICHECK</span></code> macros.
 The following code gives an example on how to do so.</p>
@@ -1582,7 +1582,7 @@ We try to keep a reasonable amount of error types.
 If you feel there is a need to add a new error type, do the following steps:</p>
 <ul class="simple">
 <li><p>Send a RFC proposal with a description and usage examples in the current codebase.</p></li>
-<li><p>Add the new error type to <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/error.html#module-tvm.error" title="(在 tvm v0.10.dev0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tvm.error</span></code></a> with clear documents.</p></li>
+<li><p>Add the new error type to <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/error.html#module-tvm.error" title="(在 tvm v0.11.dev0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tvm.error</span></code></a> with clear documents.</p></li>
 <li><p>Update the list in this file to include the new error type.</p></li>
 <li><p>Change the code to use the new error type.</p></li>
 </ul>
@@ -1638,7 +1638,7 @@ please put wrapper in the same file so other developers can look up the implemen
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-10-11, 05:02:23.<br/>
+    Last updated on 2022-10-14, 05:48:28.<br/>
 </p>
         </footer>
     </div>

@@ -820,7 +820,7 @@
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../how_to/debugging_tvm.html">
-       调试 TVM
+       Debugging TVM
       </a>
      </li>
      <li class="toctree-l3">
@@ -1565,7 +1565,7 @@ title="Print to PDF"
 <span class="n">fadd</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="n">target</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">tvm.build()</span></code> （被定义在 <code class="docutils literal notranslate"><span class="pre">python/tvm/driver/build_module.py</span></code>） 获取调度、输入和输出 <code class="docutils literal notranslate"><span class="pre">Tensor</span></code> 和目标，并返回 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.Module" title="(在 tvm v0.10.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.runtime.Module</span></code></a> 对象。<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.Module" title="(在 tvm v0.10.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.runtime.Module</span></code></a> 对象包含已编译的函数，它可以用函数调用语法调用。</p>
+<p><code class="docutils literal notranslate"><span class="pre">tvm.build()</span></code> （被定义在 <code class="docutils literal notranslate"><span class="pre">python/tvm/driver/build_module.py</span></code>） 获取调度、输入和输出 <code class="docutils literal notranslate"><span class="pre">Tensor</span></code> 和目标，并返回 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.Module" title="(在 tvm v0.11.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.runtime.Module</span></code></a> 对象。<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.Module" title="(在 tvm v0.11.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.runtime.Module</span></code></a> 对象包含已编译的函数，它可以用函数调用语法调用。</p>
 <p><code class="docutils literal notranslate"><span class="pre">tvm.build()</span></code> 的过程可以分为两个步骤：</p>
 <ul class="simple">
 <li><p>降级，即高级的初始循环嵌套结构变换为最终的低级 IR</p></li>
@@ -1695,7 +1695,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-10-11, 05:02:23.<br/>
+    Last updated on 2022-10-14, 05:48:28.<br/>
 </p>
         </footer>
     </div>

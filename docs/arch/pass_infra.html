@@ -820,7 +820,7 @@
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/debugging_tvm.html">
-       调试 TVM
+       Debugging TVM
       </a>
      </li>
      <li class="toctree-l3">
@@ -1917,7 +1917,7 @@ Relay 中一些需要模块 global picture 的典型过程，如 A-normal form c
 </div>
 <p>当进入 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 实例的作用域时，立即调用 <code class="docutils literal notranslate"><span class="pre">InstrumentEnterPassContext</span></code>。</p>
 <p>当离开 <code class="docutils literal notranslate"><span class="pre">PassContext</span></code> 的作用域，或者在 pass 的执行过程中发生异常时，将调用 <code class="docutils literal notranslate"><span class="pre">InstrumentExitPassContext</span></code>。
-当在 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.PassContext" title="(在 tvm v0.10.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.PassContext</span></code></a> 中被 <code class="docutils literal notranslate"><span class="pre">override_instruments</span></code> 重写 instruments 时，也会调用此方法。
+当在 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.PassContext" title="(在 tvm v0.11.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.PassContext</span></code></a> 中被 <code class="docutils literal notranslate"><span class="pre">override_instruments</span></code> 重写 instruments 时，也会调用此方法。
 请参阅 <a class="reference internal" href="#pass-instrument-overriden"><span class="std std-ref">在 Current PassContext 中覆写 Instruments</span></a>。</p>
 <p>在执行之前调用 <code class="docutils literal notranslate"><span class="pre">InstrumentBeforePass</span></code>。如果通过，则在执行后调用 <code class="docutils literal notranslate"><span class="pre">InstrumentAfterPass</span></code>。行为编写如下：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pass_ctx</span><span class="p">.</span><span class="n">InstrumentBeforePass</span><span class="p">(</span><span class="n">ir_module</span><span class="p">,</span><span class="w"> </span><span class="n">pass_info</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -2017,7 +2017,7 @@ We rely on Python Context Manager or <code class="docutils literal notranslate">
 </li>
 <li><p>PrintIRBefore(TODO)</p>
 <ul>
-<li><p>Print the IR module before the pass transforms it. <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.PrintIR" title="(在 tvm v0.10.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.transform.PrintIR()</span></code></a>
+<li><p>Print the IR module before the pass transforms it. <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.PrintIR" title="(在 tvm v0.11.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.transform.PrintIR()</span></code></a>
 can also serve this purpose if we insert it around passes. However,
 with the <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code>, we don’t need to modify the sequence of passes.</p></li>
 </ul>
@@ -2158,7 +2158,7 @@ with the <code class="docutils literal notranslate"><span class="pre">PassInstru
 </ul>
 </li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 实例可以通过 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.PassContext" title="(在 tvm v0.10.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.PassContext</span></code></a> 中的 <code class="docutils literal notranslate"><span class="pre">instruments</span></code> 参数进行注册。</p>
+<p><code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 实例可以通过 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/ir.html#tvm.transform.PassContext" title="(在 tvm v0.11.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.transform.PassContext</span></code></a> 中的 <code class="docutils literal notranslate"><span class="pre">instruments</span></code> 参数进行注册。</p>
 <p><a class="reference external" href="https://github.com/apache/tvm/blob/main/tutorials/dev/use_pass_instrument.py">use pass instrument</a> 教程提供了如何用 Python API 实现 <code class="docutils literal notranslate"><span class="pre">PassInstrument</span></code> 的例子。</p>
 </section>
 <section id="current-passcontext-instruments">
@@ -2211,7 +2211,7 @@ with the <code class="docutils literal notranslate"><span class="pre">PassInstru
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-10-11, 05:02:23.<br/>
+    Last updated on 2022-10-14, 05:48:28.<br/>
 </p>
         </footer>
     </div>

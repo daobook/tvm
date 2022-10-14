@@ -820,7 +820,7 @@
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/debugging_tvm.html">
-       调试 TVM
+       Debugging TVM
       </a>
      </li>
      <li class="toctree-l3">
@@ -1784,9 +1784,9 @@ title="Print to PDF"
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.Module" title="(在 tvm v0.10.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.runtime.Module</span></code></a> 封装了编译的结果。runtime.Module 包含 GetFunction 方法，可以按名称获取 PackedFuncs。</p>
-<p><a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.PackedFunc" title="(在 tvm v0.10.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.runtime.PackedFunc</span></code></a> 是两个生成函数的类型擦除函数接口。runtime.PackedFunc 可以接受以下类型的参数和返回值：POD 类型（int, float），字符串，runtime.PackedFunc，runtime.Module，runtime.NDArray 以及 runtime.Object 的其他子类。</p>
-<p><a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.Module" title="(在 tvm v0.10.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.runtime.Module</span></code></a> 和 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.PackedFunc" title="(在 tvm v0.10.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.runtime.PackedFunc</span></code></a> 是模块化运行时的强大机制。例如，要在 CUDA 上获得上述的 <code class="docutils literal notranslate"><span class="pre">addone</span></code> 函数，可以使用 LLVM 生成主机端代码来计算启动参数（例如：线程组大小）然后从 CUDAModule 中调用另一个 PackedFunc，这个 CUDA 驱动 API 支持它。同样的机制也可以用于 OpenCL 内核。</p>
+<p><a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.Module" title="(在 tvm v0.11.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.runtime.Module</span></code></a> 封装了编译的结果。runtime.Module 包含 GetFunction 方法，可以按名称获取 PackedFuncs。</p>
+<p><a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.PackedFunc" title="(在 tvm v0.11.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.runtime.PackedFunc</span></code></a> 是两个生成函数的类型擦除函数接口。runtime.PackedFunc 可以接受以下类型的参数和返回值：POD 类型（int, float），字符串，runtime.PackedFunc，runtime.Module，runtime.NDArray 以及 runtime.Object 的其他子类。</p>
+<p><a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.Module" title="(在 tvm v0.11.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.runtime.Module</span></code></a> 和 <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.PackedFunc" title="(在 tvm v0.11.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.runtime.PackedFunc</span></code></a> 是模块化运行时的强大机制。例如，要在 CUDA 上获得上述的 <code class="docutils literal notranslate"><span class="pre">addone</span></code> 函数，可以使用 LLVM 生成主机端代码来计算启动参数（例如：线程组大小）然后从 CUDAModule 中调用另一个 PackedFunc，这个 CUDA 驱动 API 支持它。同样的机制也可以用于 OpenCL 内核。</p>
 <p>上面的例子只处理了简单的 <code class="docutils literal notranslate"><span class="pre">addone</span></code> 函数。下面的代码片段给出了使用相同接口执行端到端模型的例子：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tvm</span>
 <span class="c1"># Example runtime execution program in python, with types annotated</span>
@@ -1956,7 +1956,7 @@ title="Print to PDF"
 </section>
 <section id="frontends">
 <h2>前端<a class="headerlink" href="#frontends" title="永久链接至标题">#</a></h2>
-<p>前端从不同框架吸收模型到 TVM 堆栈。<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/relay/frontend.html#module-tvm.relay.frontend" title="(在 tvm v0.10.dev0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tvm.relay.frontend</span></code></a> 是模型摄取 API 的命名空间。</p>
+<p>前端从不同框架吸收模型到 TVM 堆栈。<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/relay/frontend.html#module-tvm.relay.frontend" title="(在 tvm v0.11.dev0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tvm.relay.frontend</span></code></a> 是模型摄取 API 的命名空间。</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="frontend/tensorflow.html">TensorFlow Frontend</a></li>
@@ -2015,7 +2015,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-10-11, 05:02:23.<br/>
+    Last updated on 2022-10-14, 05:48:28.<br/>
 </p>
         </footer>
     </div>

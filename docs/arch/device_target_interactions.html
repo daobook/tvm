@@ -820,7 +820,7 @@
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../dev/how_to/debugging_tvm.html">
-       调试 TVM
+       Debugging TVM
       </a>
      </li>
      <li class="toctree-l3">
@@ -1541,7 +1541,7 @@ an IRModule.</p></li>
 API.  (e.g. <code class="docutils literal notranslate"><span class="pre">CUDADeviceAPI</span></code> handles all interactions through the
 CUDA framework.)  Most <code class="docutils literal notranslate"><span class="pre">DeviceAPI</span></code> methods accept a <code class="docutils literal notranslate"><span class="pre">device_id</span></code>
 parameter to specify which device should be accessed.  In Python,
-these are typically accessed using the <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.device" title="(在 tvm v0.10.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.runtime.device()</span></code></a>
+these are typically accessed using the <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.device" title="(在 tvm v0.11.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">tvm.runtime.device()</span></code></a>
 function, which returns a handle to a specific device, accessed
 through a specific API.  (e.g. <code class="docutils literal notranslate"><span class="pre">tvm.runtime.device('cuda',0)</span></code> gives
 access to physical device <code class="docutils literal notranslate"><span class="pre">0</span></code>, accessed through the CUDA API.)</p>
@@ -1646,7 +1646,7 @@ than <code class="docutils literal notranslate"><span class="pre">DLDeviceType::
 enum value to a string representation.  This string representation
 should match the name given to <code class="docutils literal notranslate"><span class="pre">TVM_REGISTER_GLOBAL</span></code>.</p></li>
 <li><p>Add entries to the <code class="docutils literal notranslate"><span class="pre">MASK2STR</span></code> and <code class="docutils literal notranslate"><span class="pre">STR2MASK</span></code> dictionaries of
-<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.Device" title="(在 tvm v0.10.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.runtime.Device</span></code></a> for the new enum value.</p></li>
+<a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/runtime.html#tvm.runtime.Device" title="(在 tvm v0.11.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.runtime.Device</span></code></a> for the new enum value.</p></li>
 </ol>
 </section>
 <section id="target-definition">
@@ -1673,7 +1673,7 @@ queried from device properties.</p>
 <p>This argument definition defines a parser that can unpack a string
 description of a target.  This is done in the <code class="docutils literal notranslate"><span class="pre">Target::Target(const</span>
 <span class="pre">String&amp;)</span></code> constructor in C++, which accepts a JSON-formatted string
-and is typically called using the <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/target.html#tvm.target.Target" title="(在 tvm v0.10.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.target.Target</span></code></a> python
+and is typically called using the <a class="reference external" href="https://tvm.apache.org/docs/reference/api/python/target.html#tvm.target.Target" title="(在 tvm v0.11.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tvm.target.Target</span></code></a> python
 object.  For example, <code class="docutils literal notranslate"><span class="pre">tvm.target.Target('{&quot;kind&quot;:</span> <span class="pre">&quot;cuda&quot;,</span>
 <span class="pre">&quot;max_num_threads&quot;:</span> <span class="pre">1024}')</span></code> will create a <code class="docutils literal notranslate"><span class="pre">cuda</span></code> target, while
 overriding the default maximum number of threads.</p>
@@ -1737,7 +1737,7 @@ in the output <code class="docutils literal notranslate"><span class="pre">runti
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-10-11, 05:02:23.<br/>
+    Last updated on 2022-10-14, 05:48:28.<br/>
 </p>
         </footer>
     </div>
