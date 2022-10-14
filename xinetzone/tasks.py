@@ -52,6 +52,8 @@ def config(ctx, cuda=False):
             content = content.replace('set(USE_CUDNN OFF)', 'set(USE_CUDNN ON)')
             content = content.replace("set(USE_PAPI OFF)", "set(USE_PAPI ON)")
             content = content.replace("set(USE_PROFILER OFF)", "set(USE_PROFILER ON)")
+            content = content.replace("set(USE_UMA OFF)", "set(USE_UMA ON)")
+            
             # content = content.replace('set(USE_NNPACK OFF)', 'set(USE_NNPACK ON)')
         fp.write(content)
 
