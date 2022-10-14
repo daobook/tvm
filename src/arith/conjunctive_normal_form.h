@@ -18,35 +18,32 @@
  */
 
 /*!
- * \file framing.h
- * \brief Framing for RPC.
+ * \file conjunctive_normal_form.h
+ *
+ * \brief Centralized location for simplifying into specific forms
  */
 
-#ifndef TVM_RUNTIME_CRT_RPC_COMMON_WRITE_STREAM_H_
-#define TVM_RUNTIME_CRT_RPC_COMMON_WRITE_STREAM_H_
+#ifndef TVM_ARITH_CONJUNCTIVE_NORMAL_FORM_H_
+#define TVM_ARITH_CONJUNCTIVE_NORMAL_FORM_H_
 
-#include <inttypes.h>
-#include <stddef.h>
-#include <sys/types.h>
-#include <tvm/runtime/crt/error_codes.h>
-
-#include "../../../../../src/support/ssize.h"
+#include <tvm/tir/expr.h>
 
 namespace tvm {
-namespace runtime {
-namespace micro_rpc {
+namespace arith {
 
-class WriteStream {
- public:
-  virtual ~WriteStream();
-  virtual ssize_t Write(const uint8_t* data, size_t data_size_bytes) = 0;
-  virtual void PacketDone(bool is_valid) = 0;
+class Analyzer;
 
-  tvm_crt_error_t WriteAll(uint8_t* data, size_t data_size_bytes, size_t* bytes_consumed);
-};
+/*! \brief Convert boolean expression to AND of ORs and simplify
+ *
+ * \param expr The PrimExpr to be simplified
+ *
+ * \param analyzer The analyzer with which to simplify
+ *
+ * \return The simplified expression
+ */
+PrimExpr SimplifyAsAndOfOrs(const PrimExpr& expr, Analyzer* analyzer);
 
-}  // namespace micro_rpc
-}  // namespace runtime
+}  // namespace arith
 }  // namespace tvm
 
-#endif  // TVM_RUNTIME_CRT_RPC_COMMON_WRITE_STREAM_H_
+#endif  // TVM_ARITH_CONJUNCTIVE_NORMAL_FORM_H_
