@@ -14,30 +14,35 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""A database that stores TuningRecords in memory"""
-from tvm._ffi import register_object
+"""The entry point of TVM parser."""
 
-from .. import _ffi_api
-from .database import Database
+from typing import Any, Dict, Union
+
+from ...ir_builder import IRBuilder
+from . import doc
+from .diagnostics import Source
+from .parser import Parser
 
 
-@register_object("meta_schedule.MemoryDatabase")
-class MemoryDatabase(Database):
-    """An in-memory database
+def parse(program: Union[doc.AST, Any, str], extra_vars: Dict[str, Any] = None) -> Any:
+    """Register a method for a operand type, AST operator node and operand index.
 
     Parameters
     ----------
-    module_equality : Optional[str]
-        A string to specify the module equality testing and hashing method.
-        It must be one of the followings:
-          - "structural": Use StructuralEqual/Hash
+    program : Union[doc.AST, Any, str]
+        The TVMScript code to parse.
+
+    extra_vars : Dict[str, Any]
+        The extra variable table for parsing.
+
+    Returns
+    -------
+    func : Any
+        The parsed TVMScript program.
     """
 
-    def __init__(
-        self,
-        module_equality: str = "structural",
-    ) -> None:
-        self.__init_handle_by_constructor__(
-            _ffi_api.DatabaseMemoryDatabase,  # type: ignore # pylint: disable=no-member,
-            module_equality,
-        )
+    source = Source(program)
+    parser = Parser(source)
+    with IRBuilder() as builder:
+        parser.parse(extra_vars=extra_vars)
+    return builder.get()

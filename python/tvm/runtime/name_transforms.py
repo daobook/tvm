@@ -14,5 +14,19 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""The core parser infra"""
-from . import diagnostics, dispatch, doc, doc_core, entry, evaluator, parser, utils
+"""
+Name transformation functions shared in Backend and Runtime
+"""
+
+from . import _ffi_api
+
+
+def sanitize_name(original_name: str):
+    """Sanitize name for output into compiler artifacts
+
+    Parameters
+    ----------
+    original_name : str
+        Original name to sanitize
+    """
+    return _ffi_api.SanitizeName(original_name)
