@@ -81,7 +81,7 @@ void* HexagonDeviceAPI::AllocDataSpace(Device dev, int ndim, const int64_t* shap
 
   // NOTE: This check should be superfluous, but it's probably a good idea to leave it in
   // until the AoT executor's multi-device dispatch code is mature. --cconvey 2022-08-26
-  CHECK(TVMDeviceExtType(dev.device_type) == kDLHexagon)
+  CHECK(dev.device_type == kDLHexagon)
       << "dev.device_type: " << dev.device_type << " DeviceName(" << dev.device_type
       << "): " << DeviceName(dev.device_type) << "";
 
@@ -132,22 +132,10 @@ void HexagonDeviceAPI::FreeDataSpace(Device dev, void* ptr) {
   if (runtime_hexbuffs) {
     runtime_hexbuffs->FreeHexagonBuffer(ptr);
   } else {
-    auto it = std::find(released_runtime_buffers.begin(), released_runtime_buffers.end(), ptr);
-    CHECK(it != released_runtime_buffers.end()) << "Attempted to free Hexagon data with "
-                                                << "HexagonDeviceAPI::FreeDataSpace that was not "
-                                                << "allocated during the session.";
+    // Either AcquireResources was never called, or ReleaseResources was called.  Since this can
+    // occur in the normal course of shutdown, log a message and continue.
+    DLOG(INFO) << "FreeDataSpace called outside a session for " << ptr;
   }
-}
-
-void* HexagonDeviceAPI::AllocRpcBuffer(size_t nbytes, size_t alignment) {
-  CHECK(nbytes) << "number of bytes is zero";
-  CHECK(alignment) << "alignment is zero";
-  return rpc_hexbuffs.AllocateHexagonBuffer(nbytes, alignment, String("global"));
-}
-
-void HexagonDeviceAPI::FreeRpcBuffer(void* ptr) {
-  CHECK(ptr) << "buffer pointer is null";
-  rpc_hexbuffs.FreeHexagonBuffer(ptr);
 }
 
 // WorkSpace: runtime allocations for Hexagon
@@ -166,7 +154,7 @@ void HexagonDeviceAPI::FreeWorkspace(Device dev, void* data) {
   CHECK(runtime_hexbuffs) << "Attempted to free Hexagon workspace with "
                           << "HexagonDeviceAPI::FreeWorkspace outside of a session.  "
                           << "Please call HexagonDeviceAPI::AcquireResources";
-  CHECK(runtime_hexbuffs->count(data) != 0)
+  CHECK(runtime_hexbuffs->FindHexagonBuffer(data) != nullptr)
       << "Attempt made to free unknown or already freed workspace allocation";
   dmlc::ThreadLocalStore<HexagonWorkspacePool>::Get()->FreeWorkspace(dev, data);
 }
@@ -174,14 +162,14 @@ void HexagonDeviceAPI::FreeWorkspace(Device dev, void* data) {
 void* HexagonDeviceAPI::AllocVtcmWorkspace(Device dev, int ndim, const int64_t* shape,
                                            DLDataType dtype, Optional<String> mem_scope) {
   // must be Hexagon device (not CPU)
-  CHECK(TVMDeviceExtType(dev.device_type) == kDLHexagon) << "dev.device_type: " << dev.device_type;
+  CHECK(dev.device_type == kDLHexagon) << "dev.device_type: " << dev.device_type;
   CHECK((ndim == 1 || ndim == 2) && "Hexagon Device API supports only 1d and 2d allocations");
   return AllocDataSpace(dev, ndim, shape, dtype, mem_scope);
 }
 
 void HexagonDeviceAPI::FreeVtcmWorkspace(Device dev, void* ptr) {
   // must be Hexagon device (not CPU)
-  CHECK(TVMDeviceExtType(dev.device_type) == kDLHexagon) << "dev.device_type: " << dev.device_type;
+  CHECK(dev.device_type == kDLHexagon) << "dev.device_type: " << dev.device_type;
   FreeDataSpace(dev, ptr);
 }
 
@@ -194,7 +182,7 @@ void HexagonDeviceAPI::CopyDataFromTo(DLTensor* from, DLTensor* to, TVMStreamHan
                           << "Please call HexagonDeviceAPI::AcquireResources";
 
   auto lookup_hexagon_buffer = [this](void* ptr) -> HexagonBuffer* {
-    return runtime_hexbuffs->find(ptr);
+    return runtime_hexbuffs->FindHexagonBuffer(ptr);
   };
 
   HexagonBuffer* hex_from_buf = lookup_hexagon_buffer(from->data);

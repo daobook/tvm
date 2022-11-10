@@ -139,6 +139,7 @@ def test_complex_likely_elimination():
 class BaseBeforeAfter(tvm.testing.CompareBeforeAfter):
     transitively_prove_inequalities = False
     convert_boolean_to_and_of_ors = False
+    apply_constraints_to_boolean_branches = False
 
     def transform(self):
         def inner(mod):
@@ -146,6 +147,7 @@ class BaseBeforeAfter(tvm.testing.CompareBeforeAfter):
                 "tir.Simplify": {
                     "transitively_prove_inequalities": self.transitively_prove_inequalities,
                     "convert_boolean_to_and_of_ors": self.convert_boolean_to_and_of_ors,
+                    "apply_constraints_to_boolean_branches": self.apply_constraints_to_boolean_branches,
                 }
             }
             with tvm.transform.PassContext(config=config):
@@ -814,6 +816,237 @@ class TestRewriteAsAndOfOrUsingSimplificationWithinOr(BaseBeforeAfter):
 
     def expected(A: T.Buffer[1, "bool"], i: T.int32, j: T.int32, k: T.int32):
         A[0] = (i != 30) or (j == 0)
+
+
+class TestConditionalFloorMod(BaseBeforeAfter):
+    """A regression test for negative floormod denominator
+
+    Previously, simplifying this function could throw an error.  First, the
+    `canonical_simplify` would rewrite `floormod(0-i,2)` to the equivalent
+    `floormod(i,-2)`.  Then, the rewrite_simplifier would enter a
+    constrained context in which `floormod(i,-2)==1`.  Passing this
+    expression to `ModularSet::EnterConstraint`, which previously did not
+    support a negative value for the second argument, threw an error.
+
+    The analogous failure mode never occurred for `truncmod`, because
+    `truncmod(0-i,2)` would be canonicalized to `truncmod(i, -2) * -1`, and
+    the pattern matching in `ModularSet` didn't recognize the constant
+    factor.
+
+    This failure mode was resolved by supporting negative arguments in
+    `ModularSet`, using the same sign convention as is used by
+    `canonical_simplify`.
+    """
+
+    def before(A: T.Buffer[1, "bool"], i: T.int32):
+        if T.floormod(0 - i, 2) == 0:
+            A[0] = T.floormod(i, 2) == 0
+
+    def expected(A: T.Buffer[1, "bool"], i: T.int32):
+        if T.floormod(i, -2) == 0:
+            A[0] = True
+
+
+class TestSimplifyRHSOfBooleanAndUsingLHS(BaseBeforeAfter):
+    """Boolean expressions can introduce contexts.
+
+    In `A and B`, the result of `B` only matters when `A` is
+    true, and can be simplified under that context.  This test
+    simplifies `n < 10` under the assumption that `n < 5`.
+    """
+
+    apply_constraints_to_boolean_branches = True
+
+    def before(A: T.Buffer[1, "bool"], n: T.int32):
+        A[0] = n < 5 and n < 10
+
+    def expected(A: T.Buffer[1, "bool"], n: T.int32):
+        A[0] = n < 5
+
+
+class TestSimplifyLHSOfBooleanAndUsingRHS(BaseBeforeAfter):
+    """Boolean expressions can introduce contexts for their arguments.
+
+    Like TestSimplifyRHSOfBooleanAndUsingLHS, but using the RHS to
+    simplify the LHS.
+    """
+
+    apply_constraints_to_boolean_branches = True
+
+    def before(A: T.Buffer[1, "bool"], n: T.int32):
+        A[0] = n < 10 and n < 5
+
+    def expected(A: T.Buffer[1, "bool"], n: T.int32):
+        A[0] = n < 5
+
+
+class TestSimplifyRHSOfBooleanOrUsingLHS(BaseBeforeAfter):
+    """Boolean expressions can introduce contexts.
+
+    In `A or B`, the result of `B` only matters when `A` is false, so
+    `B` can be simplified under the assumption that `A` is false.
+    This test simplifies `n < 5` under the assumption that `!(n < 10)`
+    """
+
+    apply_constraints_to_boolean_branches = True
+
+    def before(A: T.Buffer[1, "bool"], n: T.int32):
+        A[0] = n < 10 or n < 5
+
+    def expected(A: T.Buffer[1, "bool"], n: T.int32):
+        A[0] = n < 10
+
+
+class TestSimplifyLHSOfBooleanOrUsingRHS(BaseBeforeAfter):
+    """Boolean expressions can introduce contexts for their arguments.
+
+    Like TestSimplifyRHSOfBooleanOrUsingLHS, but using the RHS to
+    simplify the LHS.
+    """
+
+    apply_constraints_to_boolean_branches = True
+
+    def before(A: T.Buffer[1, "bool"], n: T.int32):
+        A[0] = n < 5 or n < 10
+
+    def expected(A: T.Buffer[1, "bool"], n: T.int32):
+        A[0] = n < 10
+
+
+class TestSimplifyRHSOfBooleanAndUsingLHSWithoutConst(BaseBeforeAfter):
+    """Boolean expressions can introduce contexts.
+
+    Like TestSimplifyRHSOfBooleanAndUsingLHS, but with variables in
+    the conditions, preventing ConstIntBoundAnalyzer from handling it.
+    This proof requires the extension to transitively prove
+    inequalities.
+    """
+
+    apply_constraints_to_boolean_branches = True
+    transitively_prove_inequalities = True
+
+    def before(A: T.Buffer[1, "bool"], n: T.int32, m: T.int32):
+        A[0] = n < m + 5 and n < m + 10
+
+    def expected(A: T.Buffer[1, "bool"], n: T.int32, m: T.int32):
+        A[0] = n < m + 5
+
+
+class TestSimplifyLHSOfBooleanAndUsingRHSWithoutConst(BaseBeforeAfter):
+    """Boolean expressions can introduce contexts for their arguments.
+
+    Like TestSimplifyLHSOfBooleanAndUsingRHS, but with variables in
+    the conditions, preventing ConstIntBoundAnalyzer from handling it.
+    This proof requires the extension to transitively prove
+    inequalities.
+    """
+
+    apply_constraints_to_boolean_branches = True
+    transitively_prove_inequalities = True
+
+    def before(A: T.Buffer[1, "bool"], n: T.int32, m: T.int32):
+        A[0] = n < m + 10 and n < m + 5
+
+    def expected(A: T.Buffer[1, "bool"], n: T.int32, m: T.int32):
+        A[0] = n < m + 5
+
+
+class TestSimplifyRHSOfBooleanOrUsingLHSWithoutConst(BaseBeforeAfter):
+    """Boolean expressions can introduce contexts.
+
+    Like TestSimplifyRHSOfBooleanOrUsingLHS, but with variables in the
+    conditions, preventing ConstIntBoundAnalyzer from handling it.
+    This proof requires the extension to transitively prove
+    inequalities.
+    """
+
+    apply_constraints_to_boolean_branches = True
+    transitively_prove_inequalities = True
+
+    def before(A: T.Buffer[1, "bool"], n: T.int32, m: T.int32):
+        A[0] = n < m + 10 or n < m + 5
+
+    def expected(A: T.Buffer[1, "bool"], n: T.int32, m: T.int32):
+        A[0] = n < m + 10
+
+
+class TestSimplifyLHSOfBooleanOrUsingRHSWithoutConst(BaseBeforeAfter):
+    """Boolean expressions can introduce contexts for their arguments.
+
+    Like TestSimplifyLHSOfBooleanOrUsingRHS, but with variables in the
+    conditions, preventing ConstIntBoundAnalyzer from handling it.
+    This proof requires the extension to transitively prove
+    inequalities.
+    """
+
+    apply_constraints_to_boolean_branches = True
+    transitively_prove_inequalities = True
+
+    def before(A: T.Buffer[1, "bool"], n: T.int32, m: T.int32):
+        A[0] = n < m + 5 or n < m + 10
+
+    def expected(A: T.Buffer[1, "bool"], n: T.int32, m: T.int32):
+        A[0] = n < m + 10
+
+
+class TestProvableConditionWithOffset(BaseBeforeAfter):
+    """Use scoped-constraint to prove inequalities"""
+
+    transitively_prove_inequalities = False
+
+    def before(A: T.Buffer[1, "bool"], i: T.int32, j: T.int32):
+        if i < j:
+            A[0] = i < j + 1
+
+    def expected(A: T.Buffer[1, "bool"], i: T.int32, j: T.int32):
+        if i < j:
+            A[0] = True
+
+
+class TestMostRestrictiveConditional(BaseBeforeAfter):
+    """Preferentially prove part of a compound conditional.
+
+    Even if we cannot prove a conditional as true or false on its own,
+    proving that a conditional must satisfy a stronger condition may
+    allow for later rewrites.  For example, if it is known that `a <= b`,
+    then `a >= b` cannot be proven, but can be reduced to `a == b`.
+    """
+
+    i, j, k = [tvm.tir.Var(name, "int32") for name in "ijk"]
+    tir_int = tvm.tir.IntImm("int32", 0)
+
+    test_case = tvm.testing.parameter(
+        (i <= tir_int, tir_int <= i, i == tir_int),
+        (i <= tir_int, i != tir_int, i < tir_int),
+        (i != tir_int, i <= tir_int, i < tir_int),
+        (i != tir_int, tir_int <= i, tir_int < i),
+        (i <= j, j <= i, j == i),
+        (i <= j, i != j, i < j),
+        (i != j, i <= j, i < j),
+        (i != j, j <= i, j < i),
+    )
+
+    @tvm.testing.fixture
+    def before(self, test_case):
+        priors, expr_before, _ = test_case
+
+        @T.prim_func
+        def func(A: T.Buffer[1, "bool"]):
+            if priors:
+                A[0] = expr_before
+
+        return func
+
+    @tvm.testing.fixture
+    def expected(self, test_case):
+        priors, _, expr_after = test_case
+
+        @T.prim_func
+        def func(A: T.Buffer[1, "bool"]):
+            if priors:
+                A[0] = expr_after
+
+        return func
 
 
 if __name__ == "__main__":

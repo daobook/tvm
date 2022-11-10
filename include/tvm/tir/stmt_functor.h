@@ -410,6 +410,32 @@ inline T Substitute(T input, const std::unordered_map<const VarNode*, PrimExpr>&
 }
 
 /*!
+ * \brief Substitute the var specified by vmap and legalize data types after substitution.
+ * \param stmt The source statement to be substituted
+ * \param vmap returns a new value if re-mapping is needed, otherwise returns nullptr.
+ *
+ * Unlike `Substitute`, this allows the substitution to change the data type of the expression.
+ *
+ * \sa Substitute
+ * \return The result.
+ */
+TVM_DLL Stmt SubstituteWithDataTypeLegalization(Stmt stmt,
+                                                std::function<Optional<PrimExpr>(const Var&)> vmap);
+
+/*!
+ * \brief Substitute the var specified by vmap and legalize data types after substitution.
+ * \param expr The source statement to be substituted
+ * \param vmap returns a new value if re-mapping is needed, otherwise returns nullptr.
+ *
+ * Unlike `Substitute`, this allows the substitution to change the data type of the expression.
+ *
+ * \sa Substitute
+ * \return The result.
+ */
+TVM_DLL PrimExpr SubstituteWithDataTypeLegalization(
+    PrimExpr expr, std::function<Optional<PrimExpr>(const Var&)> vmap);
+
+/*!
  * \brief Recursively visit the IR in pre DFS order node, apply fvisit.
  * If fvisit returns false, it won't visit the children of the node.
  * \param stmt_or_expr The ir to be visited.
@@ -476,7 +502,7 @@ bool ContainsNode(const Stmt& stmt) {
  * base class of such passes to ensure the consistency of data types.
  */
 class DataTypeLegalizer : public StmtExprMutator {
- public:
+ protected:
   Stmt VisitStmt_(const ForNode* op) override;
 
   Stmt VisitStmt_(const AttrStmtNode* op) override;
@@ -504,7 +530,6 @@ class DataTypeLegalizer : public StmtExprMutator {
   using StmtExprMutator::VisitExpr_;
   using StmtExprMutator::VisitStmt_;
 
- protected:
   // a map from IterVar before rewrite to that after rewrite,
   // ensures one old IterVar maps to exactly one new IterVar
   std::unordered_map<const IterVarNode*, IterVar> ivmap_;

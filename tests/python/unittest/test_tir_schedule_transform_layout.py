@@ -376,6 +376,41 @@ def test_transform_block_layout_fail_mixed_iter_type(use_block_name):
         )
 
 
+def test_transform_block_layout_int64_extent(use_block_name):
+    @T.prim_func
+    def elementwise_int64_extent(
+        A: T.Buffer[(T.int64(128), T.int64(128)), "float32"],
+        B: T.Buffer[(T.int64(128), T.int64(128)), "float32"],
+    ) -> None:
+        for i, j in T.grid(T.int64(128), T.int64(128)):
+            with T.block("B"):
+                vi, vj = T.axis.remap("SS", [i, j])
+                B[vi, vj] = A[vi, vj] * 2.0
+
+    @T.prim_func
+    def elementwise_int64_extent_transformed(
+        A: T.Buffer[(T.int64(128), T.int64(128)), "float32"],
+        B: T.Buffer[(T.int64(128), T.int64(128)), "float32"],
+    ) -> None:
+        for i in range(T.int64(16384)):
+            with T.block("B"):
+                vi = T.axis.remap("S", [i])
+                B[vi // T.int64(128), vi % T.int64(128)] = (
+                    A[vi // T.int64(128), vi % T.int64(128)] * 2.0
+                )
+
+    sch = tir.Schedule(elementwise_int64_extent, debug_mask="all")
+    block = "B" if use_block_name else sch.get_block("B")
+    sch.transform_block_layout(block, lambda i, j: (i * 128 + j,))
+    print(
+        tvm.ir.base.get_first_structural_mismatch(
+            elementwise_int64_extent_transformed, sch.mod["main"]
+        )
+    )
+    tvm.ir.assert_structural_equal(elementwise_int64_extent_transformed, sch.mod["main"])
+    verify_trace_roundtrip(sch=sch, mod=elementwise_int64_extent)
+
+
 class BasePaddingCompare(tvm.testing.CompareBeforeAfter):
     pad_value = tvm.testing.parameter(None)
 
@@ -799,6 +834,54 @@ class TestPadValueMayNotReferenceOtherBuffer(tvm.testing.CompareBeforeAfter):
                 B[vi] = A[vi]
 
     expected = tvm.tir.schedule.schedule.ScheduleError
+
+
+class TestTransformLayoutWithVar(tvm.testing.CompareBeforeAfter):
+    """Layout transform with dynamic parameter in transform"""
+
+    @pytest.fixture
+    def transform(self):
+        def transform(mod):
+            sch = tir.Schedule(mod)
+
+            n = sch.mod["main"].params[1]
+
+            sch.transform_layout(
+                "block",
+                "B",
+                lambda i: [i // n, i % n],
+                pad_value=0,
+            )
+            return sch.mod
+
+        return transform
+
+    def before(A: T.Buffer[16, "int32"], n: T.int32):
+        B = T.alloc_buffer(16, "int32")
+        for i in T.serial(16):
+            with T.block("block"):
+                vi = T.axis.remap("S", [i])
+                B[vi] = A[vi]
+
+    def expected(A: T.Buffer[16, "int32"], n: T.int32):
+        B = T.alloc_buffer([(-16 % n + 16) // n, n], dtype="int32")
+        for i, j in T.grid((-16 % n + 16) // n, n):
+            with T.block("block"):
+                vi, vj = T.axis.remap("SS", [i, j])
+                B[vi, vj] = T.if_then_else(
+                    # Checks if the transform introduced padding
+                    -16 % n != 0
+                    and (
+                        # If so, is vi in the last group (which may
+                        # include padding).
+                        (vj + vi * n) // n == 16 // n
+                        # And is vj within the padding
+                        and 16 % n <= (vj + vi * n) % n
+                    ),
+                    0,
+                    A[vj + vi * n],
+                    dtype="int32",
+                )
 
 
 if __name__ == "__main__":
