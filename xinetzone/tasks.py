@@ -42,9 +42,9 @@ def config(ctx, cuda=False):
         content = fp.read()
     with open(target, 'w') as fp:
         content = content.replace('set(USE_LLVM OFF)', 'set(USE_LLVM ON)')
-        content = content.replace('set(USE_VTA_FSIM OFF)', 'set(USE_VTA_FSIM ON)')
-        content = content.replace('set(USE_RELAY_DEBUG OFF)', 'set(USE_RELAY_DEBUG ON)')
-        content = content.replace("set(USE_PIPELINE_EXECUTOR OFF)", "set(USE_PIPELINE_EXECUTOR ON)")
+        # content = content.replace('set(USE_VTA_FSIM OFF)', 'set(USE_VTA_FSIM ON)')
+        # content = content.replace('set(USE_RELAY_DEBUG OFF)', 'set(USE_RELAY_DEBUG ON)')
+        # content = content.replace("set(USE_PIPELINE_EXECUTOR OFF)", "set(USE_PIPELINE_EXECUTOR ON)")
         if cuda:
             content = content.replace('set(USE_CUDA OFF)', 'set(USE_CUDA ON)')
             content = content.replace('set(USE_MICRO OFF)', 'set(USE_MICRO ON)')
@@ -53,7 +53,6 @@ def config(ctx, cuda=False):
             content = content.replace("set(USE_PAPI OFF)", "set(USE_PAPI ON)")
             content = content.replace("set(USE_PROFILER OFF)", "set(USE_PROFILER ON)")
             content = content.replace("set(USE_UMA OFF)", "set(USE_UMA ON)")
-            
             # content = content.replace('set(USE_NNPACK OFF)', 'set(USE_NNPACK ON)')
         fp.write(content)
 
