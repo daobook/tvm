@@ -1604,44 +1604,73 @@ title="Fullscreen mode"
 <span class="sd">    OpenCL.  Some properties may return None depending on whether an</span>
 <span class="sd">    API exposes that particular property.</span>
 
+<span class="sd">    NOTE!  The integer values in MASK2STR and STR2MASK *must* correspond</span>
+<span class="sd">    to the values provided by the DLDeviceType and TVMDeviceExtType enums.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">kDLCPU</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">kDLCUDA</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">kDLCUDAHost</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">kDLOpenCL</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">kDLVulkan</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="n">kDLMetal</span> <span class="o">=</span> <span class="mi">8</span>
+    <span class="n">kDLVPI</span> <span class="o">=</span> <span class="mi">9</span>
+    <span class="n">kDLROCM</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">kDLROCMHost</span> <span class="o">=</span> <span class="mi">11</span>
+    <span class="n">kDLExtDev</span> <span class="o">=</span> <span class="mi">12</span>
+    <span class="n">kDLCUDAManaged</span> <span class="o">=</span> <span class="mi">13</span>
+    <span class="n">kDLOneAPI</span> <span class="o">=</span> <span class="mi">14</span>
+    <span class="n">kDLWebGPU</span> <span class="o">=</span> <span class="mi">15</span>
+    <span class="n">kDLHexagon</span> <span class="o">=</span> <span class="mi">16</span>
+    <span class="n">kDLAOCL</span> <span class="o">=</span> <span class="mi">32</span>
+    <span class="n">kDLSDAccel</span> <span class="o">=</span> <span class="mi">33</span>
+    <span class="n">kOpenGL</span> <span class="o">=</span> <span class="mi">34</span>
+    <span class="n">kDLMicroDev</span> <span class="o">=</span> <span class="mi">35</span>
 
     <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;device_type&quot;</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;device_id&quot;</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">)]</span>
     <span class="n">MASK2STR</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
-        <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;cuda&quot;</span><span class="p">,</span>
-        <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;opencl&quot;</span><span class="p">,</span>
-        <span class="mi">5</span><span class="p">:</span> <span class="s2">&quot;aocl&quot;</span><span class="p">,</span>
-        <span class="mi">7</span><span class="p">:</span> <span class="s2">&quot;vulkan&quot;</span><span class="p">,</span>
-        <span class="mi">8</span><span class="p">:</span> <span class="s2">&quot;metal&quot;</span><span class="p">,</span>
-        <span class="mi">9</span><span class="p">:</span> <span class="s2">&quot;vpi&quot;</span><span class="p">,</span>
-        <span class="mi">10</span><span class="p">:</span> <span class="s2">&quot;rocm&quot;</span><span class="p">,</span>
-        <span class="mi">12</span><span class="p">:</span> <span class="s2">&quot;ext_dev&quot;</span><span class="p">,</span>
-        <span class="mi">14</span><span class="p">:</span> <span class="s2">&quot;hexagon&quot;</span><span class="p">,</span>
-        <span class="mi">15</span><span class="p">:</span> <span class="s2">&quot;webgpu&quot;</span><span class="p">,</span>
+        <span class="n">kDLCPU</span><span class="p">:</span> <span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+        <span class="n">kDLCUDA</span><span class="p">:</span> <span class="s2">&quot;cuda&quot;</span><span class="p">,</span>
+        <span class="n">kDLCUDAHost</span><span class="p">:</span> <span class="s2">&quot;cuda_host&quot;</span><span class="p">,</span>
+        <span class="n">kDLCUDAManaged</span><span class="p">:</span> <span class="s2">&quot;cuda_managed&quot;</span><span class="p">,</span>
+        <span class="n">kDLOpenCL</span><span class="p">:</span> <span class="s2">&quot;opencl&quot;</span><span class="p">,</span>
+        <span class="n">kDLVulkan</span><span class="p">:</span> <span class="s2">&quot;vulkan&quot;</span><span class="p">,</span>
+        <span class="n">kDLMetal</span><span class="p">:</span> <span class="s2">&quot;metal&quot;</span><span class="p">,</span>
+        <span class="n">kDLVPI</span><span class="p">:</span> <span class="s2">&quot;vpi&quot;</span><span class="p">,</span>
+        <span class="n">kDLROCM</span><span class="p">:</span> <span class="s2">&quot;rocm&quot;</span><span class="p">,</span>
+        <span class="n">kDLROCMHost</span><span class="p">:</span> <span class="s2">&quot;rocm_host&quot;</span><span class="p">,</span>
+        <span class="n">kDLExtDev</span><span class="p">:</span> <span class="s2">&quot;ext_dev&quot;</span><span class="p">,</span>
+        <span class="n">kDLOneAPI</span><span class="p">:</span> <span class="s2">&quot;oneapi&quot;</span><span class="p">,</span>
+        <span class="n">kDLWebGPU</span><span class="p">:</span> <span class="s2">&quot;webgpu&quot;</span><span class="p">,</span>
+        <span class="n">kDLHexagon</span><span class="p">:</span> <span class="s2">&quot;hexagon&quot;</span><span class="p">,</span>
+        <span class="n">kDLAOCL</span><span class="p">:</span> <span class="s2">&quot;aocl&quot;</span><span class="p">,</span>
+        <span class="n">kDLSDAccel</span><span class="p">:</span> <span class="s2">&quot;sdaccel&quot;</span><span class="p">,</span>
+        <span class="n">kOpenGL</span><span class="p">:</span> <span class="s2">&quot;opengl&quot;</span><span class="p">,</span>
+        <span class="n">kDLMicroDev</span><span class="p">:</span> <span class="s2">&quot;microdev&quot;</span><span class="p">,</span>
     <span class="p">}</span>
+
     <span class="n">STR2MASK</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;llvm&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;stackvm&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;cpu&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;hybrid&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;composite&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;cuda&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="s2">&quot;nvptx&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="s2">&quot;cl&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-        <span class="s2">&quot;opencl&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-        <span class="s2">&quot;sdaccel&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-        <span class="s2">&quot;aocl&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="s2">&quot;aocl_sw_emu&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="s2">&quot;vulkan&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
-        <span class="s2">&quot;metal&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-        <span class="s2">&quot;vpi&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
-        <span class="s2">&quot;rocm&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-        <span class="s2">&quot;ext_dev&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
-        <span class="s2">&quot;hexagon&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
-        <span class="s2">&quot;webgpu&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+        <span class="s2">&quot;llvm&quot;</span><span class="p">:</span> <span class="n">kDLCPU</span><span class="p">,</span>
+        <span class="s2">&quot;stackvm&quot;</span><span class="p">:</span> <span class="n">kDLCPU</span><span class="p">,</span>
+        <span class="s2">&quot;cpu&quot;</span><span class="p">:</span> <span class="n">kDLCPU</span><span class="p">,</span>
+        <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="n">kDLCPU</span><span class="p">,</span>
+        <span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="n">kDLCPU</span><span class="p">,</span>
+        <span class="s2">&quot;hybrid&quot;</span><span class="p">:</span> <span class="n">kDLCPU</span><span class="p">,</span>
+        <span class="s2">&quot;composite&quot;</span><span class="p">:</span> <span class="n">kDLCPU</span><span class="p">,</span>
+        <span class="s2">&quot;cuda&quot;</span><span class="p">:</span> <span class="n">kDLCUDA</span><span class="p">,</span>
+        <span class="s2">&quot;nvptx&quot;</span><span class="p">:</span> <span class="n">kDLCUDA</span><span class="p">,</span>
+        <span class="s2">&quot;cl&quot;</span><span class="p">:</span> <span class="n">kDLOpenCL</span><span class="p">,</span>
+        <span class="s2">&quot;opencl&quot;</span><span class="p">:</span> <span class="n">kDLOpenCL</span><span class="p">,</span>
+        <span class="s2">&quot;sdaccel&quot;</span><span class="p">:</span> <span class="n">kDLOpenCL</span><span class="p">,</span>
+        <span class="s2">&quot;aocl&quot;</span><span class="p">:</span> <span class="n">kDLAOCL</span><span class="p">,</span>
+        <span class="s2">&quot;aocl_sw_emu&quot;</span><span class="p">:</span> <span class="n">kDLAOCL</span><span class="p">,</span>
+        <span class="s2">&quot;vulkan&quot;</span><span class="p">:</span> <span class="n">kDLVulkan</span><span class="p">,</span>
+        <span class="s2">&quot;metal&quot;</span><span class="p">:</span> <span class="n">kDLMetal</span><span class="p">,</span>
+        <span class="s2">&quot;vpi&quot;</span><span class="p">:</span> <span class="n">kDLVPI</span><span class="p">,</span>
+        <span class="s2">&quot;rocm&quot;</span><span class="p">:</span> <span class="n">kDLROCM</span><span class="p">,</span>
+        <span class="s2">&quot;ext_dev&quot;</span><span class="p">:</span> <span class="n">kDLExtDev</span><span class="p">,</span>
+        <span class="s2">&quot;hexagon&quot;</span><span class="p">:</span> <span class="n">kDLHexagon</span><span class="p">,</span>
+        <span class="s2">&quot;webgpu&quot;</span><span class="p">:</span> <span class="n">kDLWebGPU</span><span class="p">,</span>
     <span class="p">}</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device_type</span><span class="p">,</span> <span class="n">device_id</span><span class="p">):</span>
@@ -1967,7 +1996,7 @@ title="Fullscreen mode"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-10-17, 12:32:33.<br/>
+    Last updated on 2022-11-10, 13:09:25.<br/>
 </p>
         </footer>
     </div>

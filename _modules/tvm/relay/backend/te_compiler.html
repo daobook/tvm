@@ -1433,7 +1433,7 @@ title="Fullscreen mode"
 <span class="kn">import</span> <span class="nn">tvm</span>
 <span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">autotvm</span><span class="p">,</span> <span class="n">te</span>
 <span class="kn">from</span> <span class="nn">tvm.auto_scheduler</span> <span class="kn">import</span> <span class="n">is_auto_scheduler_enabled</span>
-<span class="kn">from</span> <span class="nn">tvm.meta_schedule</span> <span class="kn">import</span> <span class="n">is_meta_schedule_dispatch_enabled</span>
+<span class="kn">from</span> <span class="nn">tvm.meta_schedule</span> <span class="kn">import</span> <span class="n">is_meta_schedule_enabled</span>
 <span class="kn">from</span> <span class="nn">tvm.runtime</span> <span class="kn">import</span> <span class="n">Object</span>
 <span class="kn">from</span> <span class="nn">tvm.support</span> <span class="kn">import</span> <span class="n">libinfo</span>
 <span class="kn">from</span> <span class="nn">tvm.target</span> <span class="kn">import</span> <span class="n">Target</span>
@@ -1590,7 +1590,7 @@ title="Fullscreen mode"
 
     <span class="c1"># Disable autotvm if auto_scheduler is enabled.</span>
     <span class="c1"># (i.e., always return the implementation with the highest priority for auto-scheduler).</span>
-    <span class="k">if</span> <span class="n">is_auto_scheduler_enabled</span><span class="p">()</span> <span class="ow">or</span> <span class="n">is_meta_schedule_dispatch_enabled</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">is_auto_scheduler_enabled</span><span class="p">()</span> <span class="ow">or</span> <span class="n">is_meta_schedule_enabled</span><span class="p">():</span>
         <span class="n">use_autotvm</span> <span class="o">=</span> <span class="kc">False</span>
 
     <span class="c1"># If not use autotvm, always return the implementation with the highest priority</span>
@@ -1690,25 +1690,28 @@ title="Fullscreen mode"
 
 
 <span class="nd">@tvm</span><span class="o">.</span><span class="n">_ffi</span><span class="o">.</span><span class="n">register_func</span><span class="p">(</span><span class="s2">&quot;relay.backend.lower_call&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">lower_call</span><span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">lower_call</span><span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">otype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Lower the call expression to op implementation and tensor outputs.&quot;&quot;&quot;</span>
     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">call</span><span class="o">.</span><span class="n">op</span><span class="p">,</span> <span class="n">tvm</span><span class="o">.</span><span class="n">ir</span><span class="o">.</span><span class="n">Op</span><span class="p">)</span>
     <span class="n">op</span> <span class="o">=</span> <span class="n">call</span><span class="o">.</span><span class="n">op</span>
 
-    <span class="c1"># Prepare the call_node-&gt;checked_type(). For the call node inputs, we ensure that</span>
-    <span class="c1"># the shape is Int32. Following code ensures the same for the output as well.</span>
-    <span class="c1"># TODO(@icemelon9): Support recursive tuple</span>
-    <span class="n">ret_type</span> <span class="o">=</span> <span class="n">call</span><span class="o">.</span><span class="n">checked_type</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ret_type</span><span class="p">,</span> <span class="n">_ty</span><span class="o">.</span><span class="n">TensorType</span><span class="p">):</span>
-        <span class="n">ret_type</span> <span class="o">=</span> <span class="n">_ty</span><span class="o">.</span><span class="n">TensorType</span><span class="p">(</span><span class="n">get_shape</span><span class="p">(</span><span class="n">ret_type</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">ret_type</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ret_type</span><span class="p">,</span> <span class="n">_ty</span><span class="o">.</span><span class="n">TupleType</span><span class="p">):</span>
-        <span class="n">new_fields</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">ret_type</span><span class="o">.</span><span class="n">fields</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">_ty</span><span class="o">.</span><span class="n">TensorType</span><span class="p">):</span>
-                <span class="n">new_fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_ty</span><span class="o">.</span><span class="n">TensorType</span><span class="p">(</span><span class="n">get_shape</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">field</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">new_fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
-        <span class="n">ret_type</span> <span class="o">=</span> <span class="n">_ty</span><span class="o">.</span><span class="n">TupleType</span><span class="p">(</span><span class="n">new_fields</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">otype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ret_type</span> <span class="o">=</span> <span class="n">otype</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Prepare the call_node-&gt;checked_type(). For the call node inputs, we ensure that</span>
+        <span class="c1"># the shape is Int32. Following code ensures the same for the output as well.</span>
+        <span class="c1"># TODO(@icemelon9): Support recursive tuple</span>
+        <span class="n">ret_type</span> <span class="o">=</span> <span class="n">call</span><span class="o">.</span><span class="n">checked_type</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ret_type</span><span class="p">,</span> <span class="n">_ty</span><span class="o">.</span><span class="n">TensorType</span><span class="p">):</span>
+            <span class="n">ret_type</span> <span class="o">=</span> <span class="n">_ty</span><span class="o">.</span><span class="n">TensorType</span><span class="p">(</span><span class="n">get_shape</span><span class="p">(</span><span class="n">ret_type</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">ret_type</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ret_type</span><span class="p">,</span> <span class="n">_ty</span><span class="o">.</span><span class="n">TupleType</span><span class="p">):</span>
+            <span class="n">new_fields</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">ret_type</span><span class="o">.</span><span class="n">fields</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">_ty</span><span class="o">.</span><span class="n">TensorType</span><span class="p">):</span>
+                    <span class="n">new_fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_ty</span><span class="o">.</span><span class="n">TensorType</span><span class="p">(</span><span class="n">get_shape</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">field</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">new_fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+            <span class="n">ret_type</span> <span class="o">=</span> <span class="n">_ty</span><span class="o">.</span><span class="n">TupleType</span><span class="p">(</span><span class="n">new_fields</span><span class="p">)</span>
 
     <span class="n">is_dyn</span> <span class="o">=</span> <span class="n">_ty</span><span class="o">.</span><span class="n">is_dynamic</span><span class="p">(</span><span class="n">call</span><span class="o">.</span><span class="n">checked_type</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">call</span><span class="o">.</span><span class="n">args</span><span class="p">:</span>
@@ -1837,7 +1840,7 @@ title="Fullscreen mode"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-10-17, 12:32:33.<br/>
+    Last updated on 2022-11-10, 13:09:25.<br/>
 </p>
         </footer>
     </div>

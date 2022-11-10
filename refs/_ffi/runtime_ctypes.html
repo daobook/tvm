@@ -1484,6 +1484,8 @@ title="Print to PDF"
 <p>Exposes uniform interface to device-specific APIs such as CUDA or
 OpenCL.  Some properties may return None depending on whether an
 API exposes that particular property.</p>
+<p>NOTE!  The integer values in MASK2STR and STR2MASK <em>must</em> correspond
+to the values provided by the DLDeviceType and TVMDeviceExtType enums.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="tvm._ffi.runtime_ctypes.Device._GetDeviceAttr">
 <span class="sig-name descname"><span class="pre">_GetDeviceAttr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tvm/_ffi/runtime_ctypes.html#Device._GetDeviceAttr"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#tvm._ffi.runtime_ctypes.Device._GetDeviceAttr" title="永久链接至目标">#</a></dt>
@@ -1748,7 +1750,7 @@ None for all other devices.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-10-17, 12:32:33.<br/>
+    Last updated on 2022-11-10, 13:09:25.<br/>
 </p>
         </footer>
     </div>
