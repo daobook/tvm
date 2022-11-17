@@ -12,4 +12,5 @@ deploy_prequantized_tflite
 deploy_quantized
 deploy_sparse
 deploy_ssd_gluoncv
+deploy_model_on_nano
 ```
