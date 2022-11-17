@@ -481,6 +481,11 @@
          部署 Single Shot Multibox Detector(SSD) 模型
         </a>
        </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../how_to/deploy_models/deploy_model_on_nano.html">
+         Deploy the Pretrained Model on Jetson Nano
+        </a>
+       </li>
       </ul>
      </li>
      <li class="toctree-l3 has-children">
@@ -1462,52 +1467,52 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#relating-the-arity-and-attributes-to-an-operation">
-   3. Relating the Arity and Attributes to an Operation
+   3. 将 Arity 和 Attributes 关联到运算
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#defining-the-compute-of-the-operation">
-   4. Defining the Compute of the Operation
+   4. 定义算子的计算
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#hooking-up-compute-and-strategy-with-relay">
-   5. Hooking up Compute and Strategy with Relay
+   5. 使用 Relay 挂钩计算和策略
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#creating-a-relay-call-node-and-exposing-a-python-hook">
-   6. Creating a Relay Call Node and Exposing a Python Hook
+   6. 创建 Relay 调用节点并暴露 Python 钩子
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#including-a-cleaner-python-api-hook">
-   7. Including a Cleaner Python API Hook
+   7. 包括更干净的 Python API 钩子
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#writing-unit-tests">
-   8. Writing Unit Tests!
+   8. 编写单元测试！
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#other-topics">
-   Other Topics
+   其他主题
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gradient-operators">
-     Gradient Operators
+     梯度算子
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#adding-a-gradient-in-python">
-     Adding a Gradient in Python
+     在 Python 中添加梯度
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#adding-a-gradient-in-c">
-     Adding a Gradient in C++
+     在 C++ 中添加梯度
     </a>
    </li>
   </ul>
@@ -1543,52 +1548,52 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#relating-the-arity-and-attributes-to-an-operation">
-   3. Relating the Arity and Attributes to an Operation
+   3. 将 Arity 和 Attributes 关联到运算
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#defining-the-compute-of-the-operation">
-   4. Defining the Compute of the Operation
+   4. 定义算子的计算
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#hooking-up-compute-and-strategy-with-relay">
-   5. Hooking up Compute and Strategy with Relay
+   5. 使用 Relay 挂钩计算和策略
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#creating-a-relay-call-node-and-exposing-a-python-hook">
-   6. Creating a Relay Call Node and Exposing a Python Hook
+   6. 创建 Relay 调用节点并暴露 Python 钩子
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#including-a-cleaner-python-api-hook">
-   7. Including a Cleaner Python API Hook
+   7. 包括更干净的 Python API 钩子
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#writing-unit-tests">
-   8. Writing Unit Tests!
+   8. 编写单元测试！
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#other-topics">
-   Other Topics
+   其他主题
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gradient-operators">
-     Gradient Operators
+     梯度算子
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#adding-a-gradient-in-python">
-     Adding a Gradient in Python
+     在 Python 中添加梯度
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#adding-a-gradient-in-c">
-     Adding a Gradient in C++
+     在 C++ 中添加梯度
     </a>
    </li>
   </ul>
@@ -1605,7 +1610,7 @@ title="Print to PDF"
                 
   <section id="adding-an-operator-to-relay">
 <span id="relay-add-op"></span><h1>添加算子到 Relay<a class="headerlink" href="#adding-an-operator-to-relay" title="永久链接至标题">#</a></h1>
-<p>在本文档中，将介绍在 Relay 中注册新的 TVM 算子所需的步骤。我们将遵循这个 PR，它增加了 <a class="reference external" href="https://github.com/apache/tvm/pull/7722">cumulative product</a> 作为例子。PR 本身建立在另一个 PR 的基础上，后者添加了 <a class="reference external" href="https://github.com/apache/tvm/pull/7334">cumulative sum</a> 算子。</p>
+<p>在本文档中，将介绍在 Relay 中注册新的 TVM 算子所需的步骤。遵循这个 PR，它增加了 <a class="reference external" href="https://github.com/apache/tvm/pull/7722">cumulative product</a> 作为例子。PR 本身建立在另一个 PR 的基础上，后者添加了 <a class="reference external" href="https://github.com/apache/tvm/pull/7334">cumulative sum</a> 算子。</p>
 <p>注册新的算子需要几个步骤：</p>
 <ol class="arabic simple">
 <li><p>添加属性节点，声明在编译时已知的固定参数</p></li>
@@ -1668,18 +1673,8 @@ title="Print to PDF"
 </section>
 <section id="writing-a-type-relation">
 <h2>2. 编写类型关系<a class="headerlink" href="#writing-a-type-relation" title="永久链接至标题">#</a></h2>
-<p>To allow for flexibility in registering operators and greater
-expressivity and granularity in expressing types in Relay, operators
-are typed using relations between input and output types. These relations
-are represented as functions that take in a list of input types and
-output types (any of these types may be incomplete) and return a list
-of input and output types that satisfies the relation. This includes shape
-information which can be determined statically at compile time. Essentially, a
-relation for an operator can enforce all the necessary typing rules
-(namely by inspecting the input types) in addition to computing the
-output type.</p>
-<p>Type relation for the cumulative product and sum operators can be found in
-<code class="docutils literal notranslate"><span class="pre">src/relay/op/tensor/transform.cc</span></code>:</p>
+<p>为了实现注册算子的灵活性以及在 Relay 中表示类型时更大的表达性和粒度，使用输入和输出类型之间的关系对算子进行类型划分。这些关系表示为接受输入类型和输出类型列表（这些类型中的任何一个都可能是不完整的）的函数，并返回满足该关系的输入和输出类型列表。这包括可以在编译时静态确定的形状信息。从本质上讲，算子的关系除了计算输出类型外，还可以强制执行所有必要的类型规则（即通过检查输入类型）。</p>
+<p>累积乘法算子 和 sum 算子的类型关系可以在 <code class="docutils literal notranslate"><span class="pre">src/relay/op/tensor/transform.cc</span></code> 中找到：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">TVM_REGISTER_NODE_TYPE</span><span class="p">(</span><span class="n">ScanopAttrs</span><span class="p">);</span><span class="w"></span>
 <span class="kt">bool</span><span class="w"> </span><span class="nf">ScanopRel</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Array</span><span class="o">&lt;</span><span class="n">Type</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">types</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num_inputs</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Attrs</span><span class="o">&amp;</span><span class="w"> </span><span class="n">attrs</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TypeReporter</span><span class="o">&amp;</span><span class="w"> </span><span class="n">reporter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// types: [data, output]</span>
@@ -1714,18 +1709,16 @@ output type.</p>
 </div>
 </section>
 <section id="relating-the-arity-and-attributes-to-an-operation">
-<h2>3. Relating the Arity and Attributes to an Operation<a class="headerlink" href="#relating-the-arity-and-attributes-to-an-operation" title="永久链接至标题">#</a></h2>
-<p>We then register the name of our new ops and annotate them with the calling interface.
-The <code class="docutils literal notranslate"><span class="pre">RELAY_REGISTER_OP</span></code> macro in C++ allows a developer
-to specify the following information about an operator in Relay:</p>
+<h2>3. 将 Arity 和 Attributes 关联到运算<a class="headerlink" href="#relating-the-arity-and-attributes-to-an-operation" title="永久链接至标题">#</a></h2>
+<p>然后，注册新 ops 的名称，并用调用接口注解它们。C++ 中的 <code class="docutils literal notranslate"><span class="pre">RELAY_REGISTER_OP</span></code> 宏允许开发人员在 Relay 中指定关于算子的以下信息：</p>
 <ul class="simple">
-<li><p>Arity (number of arguments)</p></li>
-<li><p>Names and descriptions for positional arguments</p></li>
-<li><p>Support level (1 indicates an internal intrinsic; higher numbers indicate less integral or externally supported operators)</p></li>
-<li><p>A type relation for the operator</p></li>
-<li><p>Other annotations useful when optimizing the operation.</p></li>
+<li><p>Arity（参数数量）</p></li>
+<li><p>位置参数的名称和描述</p></li>
+<li><p>支持水平（1 表示内部 intrinsic；较高的数字表示较少的积分或外部支持的算子）”</p></li>
+<li><p>算子的类型关系</p></li>
+<li><p>优化运算时有用的其他注解。</p></li>
 </ul>
-<p>Once again we add this to <code class="docutils literal notranslate"><span class="pre">src/relay/op/tensor/transform.cc</span></code>:</p>
+<p>再一次把它添加到 <code class="docutils literal notranslate"><span class="pre">src/relay/op/tensor/transform.cc</span></code> 中：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">RELAY_REGISTER_OP</span><span class="p">(</span><span class="s">&quot;cumsum&quot;</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="p">.</span><span class="n">describe</span><span class="p">(</span><span class="w"></span>
 <span class="w">        </span><span class="sa">R</span><span class="s">&quot;</span><span class="dl">doc(</span><span class="s">Return the cumulative sum of the elements along a given axis.</span><span class="dl">)doc</span><span class="s">&quot;</span><span class="w"> </span><span class="n">TVM_ADD_FILELINE</span><span class="p">)</span><span class="w"></span>
@@ -1745,33 +1738,16 @@ to specify the following information about an operator in Relay:</p>
 <span class="w">    </span><span class="p">.</span><span class="n">set_attr</span><span class="o">&lt;</span><span class="n">TOpPattern</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;TOpPattern&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">kOpaque</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>In this case the <code class="docutils literal notranslate"><span class="pre">TOpPattern</span></code> is a hint to the compiler on the pattern of computation the operator does, which might be
-useful for fusing operators. <code class="docutils literal notranslate"><span class="pre">kOpaque</span></code> tells TVM to not bother trying to fuse this operator.</p>
+<p>在这种情况下，<code class="docutils literal notranslate"><span class="pre">TOpPattern</span></code> 是对编译器关于算子的计算模式的提示，这可能对融合算子很有用。<code class="docutils literal notranslate"><span class="pre">kOpaque</span></code> 告诉 TVM 不要费心尝试融合这个算子。</p>
 </section>
 <section id="defining-the-compute-of-the-operation">
-<h2>4. Defining the Compute of the Operation<a class="headerlink" href="#defining-the-compute-of-the-operation" title="永久链接至标题">#</a></h2>
-<p>While we’ve now defined the interface for our operations we still need to define
-how to perform the actual calculations for cumulative sum and product.</p>
-<p>Writing this code is outside the scope of the tutorial. For now, we assume we
-have a well tested implementation for the operation’s compute. For more details
-on how to do this, we recommend looking up the tutorials on <a class="reference internal" href="../../tutorial/tensor_expr_get_started.html#tutorial-tensor-expr-get-started"><span class="std std-ref">tensor
-expressions</span></a>, <a class="reference internal" href="../../tutorial/intro_topi.html#tutorial-topi"><span class="std std-ref">TVM’s operator inventory
-(topi)</span></a> and looking at the example cumulative sum and product
-implementations found in <a class="reference external" href="https://github.com/apache/tvm/blob/main/python/tvm/topi/scan.py">python/tvm/topi/scan.py</a> and the gpu versions in
-<a class="reference external" href="https://github.com/apache/tvm/blob/main/python/tvm/topi/cuda/scan.py">python/tvm/topi/cuda/scan.py</a>. In the case of our cumulative sum and product
-operations we write things directly in <a class="reference internal" href="../../reference/api/python/tir.html#api-python-tir"><span class="std std-ref">TIR</span></a> which is the
-representation where tensor expressions and topi will lower into.</p>
+<h2>4. 定义算子的计算<a class="headerlink" href="#defining-the-compute-of-the-operation" title="永久链接至标题">#</a></h2>
+<p>虽然已经为运算定义了接口，但仍然需要定义如何执行累积加法和乘法的实际计算。</p>
+<p>编写此代码超出了本教程的范围。现在，假设有经过良好测试的运算计算实现。关于如何做到这一点的更多细节，建议查看关于 <a class="reference internal" href="../../tutorial/tensor_expr_get_started.html#tutorial-tensor-expr-get-started"><span class="std std-ref">张量表达式的教程</span></a>，<a class="reference internal" href="../../tutorial/intro_topi.html#tutorial-topi"><span class="std std-ref">TVM 的算子目录(topi)</span></a>，并查看示例累积加法和乘法实现在 <a class="reference external" href="https://github.com/apache/tvm/blob/main/python/tvm/topi/scan.py">python/tvm/topi/scan.py</a> 和 gpu 版本在 <a class="reference external" href="https://github.com/apache/tvm/blob/main/python/tvm/topi/cuda/scan.py">python/tvm/topi/cuda/scan.py</a> 中找到。</p>
 </section>
 <section id="hooking-up-compute-and-strategy-with-relay">
-<h2>5. Hooking up Compute and Strategy with Relay<a class="headerlink" href="#hooking-up-compute-and-strategy-with-relay" title="永久链接至标题">#</a></h2>
-<p>After you have implemented your compute function we now need to glue it to our
-relay operation. Within TVM this means not only defining the computation, but also the schedule
-for an operation. A strategy is a method which picks which computation and which schedule
-to use. For example, for 2D convolutions we might recognize we are doing a depthwise convolution
-and dispatch to a more efficient computation and schedule as a result. In our case however we have
-no such need except for dispatching between our CPU and GPU implementations. In
-<code class="docutils literal notranslate"><span class="pre">python/tvm/relay/op/strategy/generic.py</span></code> and <code class="docutils literal notranslate"><span class="pre">python/tvm/relay/op/strategy/cuda.py</span></code> we
-add the following strategies:</p>
+<h2>5. 使用 Relay 挂钩计算和策略<a class="headerlink" href="#hooking-up-compute-and-strategy-with-relay" title="永久链接至标题">#</a></h2>
+<p>在实现了计算函数之后，现在需要将其粘贴到 Relay 运算上。在 TVM 中，这不仅意味着定义计算，还意味着定义运算的调度。策略是一种选择要使用哪个计算和哪个调度的方法。例如，对于二维卷积，可能会认为是在进行 depthwise 卷积并分配到更有效的计算和调度结果。然而在我们的例子中，除了在我们的 CPU 和 GPU 实现之间调度之外，我们没有这样的需求。在 <code class="docutils literal notranslate"><span class="pre">python/tvm/relay/op/strategy/generic.py</span></code> 和 <code class="docutils literal notranslate"><span class="pre">python/tvm/relay/op/strategy/cuda.py</span></code> 中，添加了以下策略：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wrap_compute_scanop</span><span class="p">(</span><span class="n">topi_compute</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Wrap scanop style topi compute&quot;&quot;&quot;</span>
 
@@ -1828,8 +1804,7 @@ add the following strategies:</p>
     <span class="k">return</span> <span class="n">strategy</span>
 </pre></div>
 </div>
-<p>Where in each strategy we define the compute we wrote and the schedule to use within <code class="docutils literal notranslate"><span class="pre">add_implementation()</span></code>.
-We finally link the strategy and compute with the defined relay operator in <code class="docutils literal notranslate"><span class="pre">python/tvm/relay/op/_transform.py</span></code>:</p>
+<p>在每个策略中，我们在 <code class="docutils literal notranslate"><span class="pre">add_implementation()</span></code> 中定义编写的计算和要使用的调度。最后将策略和计算与 <code class="docutils literal notranslate"><span class="pre">python/tvm/relay/op/_transform.py</span></code> 中定义的 Relay 算子链接起来：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># cumsum</span>
 <span class="nd">@_reg</span><span class="o">.</span><span class="n">register_compute</span><span class="p">(</span><span class="s2">&quot;cumsum&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">compute_cumsum</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">output_type</span><span class="p">):</span>
@@ -1851,21 +1826,12 @@ We finally link the strategy and compute with the defined relay operator in <cod
 <span class="n">_reg</span><span class="o">.</span><span class="n">register_shape_func</span><span class="p">(</span><span class="s2">&quot;cumprod&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">elemwise_shape_func</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The shape functions are used for determining output shape given a dynamically shaped tensor. In this
-case we tell TVM the output shape will be the same as the input shape.</p>
+<p>在给定动态形状张量的情况下，形状函数用于确定输出形状。在这种情况下，告诉 TVM 输出形状将与输入形状相同。</p>
 </section>
 <section id="creating-a-relay-call-node-and-exposing-a-python-hook">
-<h2>6. Creating a Relay Call Node and Exposing a Python Hook<a class="headerlink" href="#creating-a-relay-call-node-and-exposing-a-python-hook" title="永久链接至标题">#</a></h2>
-<p>We now have a working operation and now just need to properly call it
-via a Relay Call Node. This step requires simply writing a function that takes
-the arguments to the operator (as Relay expressions) and
-returning a call node to the operator (i.e., the node that
-should be placed into the Relay AST where the call to the
-operator is intended).</p>
-<p>At present call attributes and type arguments (the last two fields)
-are not supported, so it suffices to use <code class="docutils literal notranslate"><span class="pre">Op::Get</span></code> to fetch
-the operator’s information from the operator registry and pass in
-the arguments to the call node, as below. In <code class="docutils literal notranslate"><span class="pre">src/relay/op/tensor/transform.cc</span></code>:</p>
+<h2>6. 创建 Relay 调用节点并暴露 Python 钩子<a class="headerlink" href="#creating-a-relay-call-node-and-exposing-a-python-hook" title="永久链接至标题">#</a></h2>
+<p>有了可运行的运算，只需要通过 Relay 调用节点正确地调用它。这一步只需要编写一个函数，它接受算子的参数(作为 Relay 表达式)，并向 算子返回调用节点（即，应该放在对算子的调用所在的 Relay AST 中的节点）。</p>
+<p>目前不支持调用属性和类型参数（最后两个字段），因此使用 <code class="docutils literal notranslate"><span class="pre">Op::Get</span></code> 从算子注册表中获取算子的信息并将参数传递给调用节点就足够了，如下所示。在 <code class="docutils literal notranslate"><span class="pre">src/relay/op/tensor/transform.cc</span></code>：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Expr</span><span class="w"> </span><span class="nf">MakeCumsum</span><span class="p">(</span><span class="n">Expr</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="n">DataType</span><span class="w"> </span><span class="n">dtype</span><span class="p">,</span><span class="w"> </span><span class="n">Bool</span><span class="w"> </span><span class="n">exclusive</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">attrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_object</span><span class="o">&lt;</span><span class="n">ScanopAttrs</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
 <span class="w">    </span><span class="n">attrs</span><span class="o">-&gt;</span><span class="n">dtype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dtype</span><span class="p">;</span><span class="w"></span>
@@ -1889,15 +1855,11 @@ the arguments to the call node, as below. In <code class="docutils literal notra
 <span class="n">TVM_REGISTER_GLOBAL</span><span class="p">(</span><span class="s">&quot;relay.op._make.cumsum&quot;</span><span class="p">).</span><span class="n">set_body_typed</span><span class="p">(</span><span class="n">MakeCumprod</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Where <code class="docutils literal notranslate"><span class="pre">TVM_REGISTER_GLOBAL</span></code> exposes the <code class="docutils literal notranslate"><span class="pre">MakeCumsum</span></code> and <code class="docutils literal notranslate"><span class="pre">MakeCumprod</span></code> functions
-in Python via <code class="docutils literal notranslate"><span class="pre">relay.op._make.cumsum(...)</span></code> and <code class="docutils literal notranslate"><span class="pre">relay.op._make.cumsum(...)</span></code>.</p>
+<p>其中 <code class="docutils literal notranslate"><span class="pre">TVM_REGISTER_GLOBAL</span></code> 通过 <code class="docutils literal notranslate"><span class="pre">relay.op._make.cumsum(...)</span></code> 和 <code class="docutils literal notranslate"><span class="pre">relay.op._make.cumsum(...)</span></code> 在 Python 中公开 <code class="docutils literal notranslate"><span class="pre">MakeCumsum</span></code> 和 <code class="docutils literal notranslate"><span class="pre">MakeCumprod</span></code> 函数。</p>
 </section>
 <section id="including-a-cleaner-python-api-hook">
-<h2>7. Including a Cleaner Python API Hook<a class="headerlink" href="#including-a-cleaner-python-api-hook" title="永久链接至标题">#</a></h2>
-<p>It is generally the convention in Relay, that functions exported
-through <code class="docutils literal notranslate"><span class="pre">TVM_REGISTER_GLOBAL</span></code> should be wrapped in a separate
-Python function rather than called directly in Python. For our
-operators we expose this cleaner interface in <code class="docutils literal notranslate"><span class="pre">python/tvm/relay/op/transform.py</span></code></p>
+<h2>7. 包括更干净的 Python API 钩子<a class="headerlink" href="#including-a-cleaner-python-api-hook" title="永久链接至标题">#</a></h2>
+<p>这通常是 Relay 中的约定，通过 <code class="docutils literal notranslate"><span class="pre">TVM_REGISTER_GLOBAL</span></code> 导出的函数应该包装在单独的 Python 函数中，而不是直接在 Python 中调用。对于我们的算子，在 <code class="docutils literal notranslate"><span class="pre">python/tvm/relay/op/transform.py</span></code> 中公开了这个更干净的接口</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cumsum</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">exclusive</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">_make</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">exclusive</span><span class="p">)</span>
 
@@ -1905,12 +1867,7 @@ operators we expose this cleaner interface in <code class="docutils literal notr
     <span class="k">return</span> <span class="n">_make</span><span class="o">.</span><span class="n">cumprod</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">exclusive</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Note that these Python wrappers might also be good opportunities to
-provide an easier interface to the operator. For example, the
-<code class="docutils literal notranslate"><span class="pre">concat</span></code> operator is registered as taking only one operator,
-namely a tuple with the tensors to be concatenated, but the Python
-wrapper takes the tensors as arguments and combines them into a tuple
-before producing the call node:</p>
+<p>注意，这些 Python 包装器也可能是为算子提供更简单接口的好机会。例如，<code class="docutils literal notranslate"><span class="pre">concat</span></code> 算子被注册为只接受一个算子，即一个包含要链接的张量的元组，但 Python 包装器将这些张量作为参数，并在生成调用节点之前将它们组合成一个元组：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">concat</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Concatenate the input tensors along the zero axis.</span>
 
@@ -1928,52 +1885,29 @@ before producing the call node:</p>
 </div>
 </section>
 <section id="writing-unit-tests">
-<h2>8. Writing Unit Tests!<a class="headerlink" href="#writing-unit-tests" title="永久链接至标题">#</a></h2>
-<p>This is self explanatory! Some example unit tests can be found in
-<a class="reference external" href="https://github.com/apache/tvm/blob/main/tests/python/relay/test_op_level3.py">tests/python/relay/test_op_level3.py</a> for our cumulative sum
-and product operators.</p>
+<h2>8. 编写单元测试！<a class="headerlink" href="#writing-unit-tests" title="永久链接至标题">#</a></h2>
+<p>这是不言自明的！一些单元测试示例可以在 <a class="reference external" href="https://github.com/apache/tvm/blob/main/tests/python/relay/test_op_level3.py">tests/python/relay/test_op_level3.py</a> 中找到，以获取累积加法和乘积算子。</p>
 </section>
 <section id="other-topics">
-<h2>Other Topics<a class="headerlink" href="#other-topics" title="永久链接至标题">#</a></h2>
+<h2>其他主题<a class="headerlink" href="#other-topics" title="永久链接至标题">#</a></h2>
 <section id="gradient-operators">
-<h3>Gradient Operators<a class="headerlink" href="#gradient-operators" title="永久链接至标题">#</a></h3>
-<p>Gradient operators are important for writing differentiable programs in
-Relay. While it is the case that Relay’s autodiff algorithm can differentiate
-first-class language constructs, operators are opaque. Because Relay can’t
-look into the implementation, an explicit differentiation rule must be
-provided.</p>
-<p>Both Python and C++ can be used to write gradient operators, but we focus our
-examples on Python, as it is more commonly used.</p>
+<h3>梯度算子<a class="headerlink" href="#gradient-operators" title="永久链接至标题">#</a></h3>
+<p>梯度算子对于在 Relay 中编写可微程序非常重要。虽然 Relay 的 autodiff 算法可以微分 first-class 语言结构，但算子是不透明的。</p>
+<p>“Python 和 C++ 都可以用来编写梯度算子，但我们的例子集中在 Python 上，因为它更常用。”</p>
 </section>
 <section id="adding-a-gradient-in-python">
-<h3>Adding a Gradient in Python<a class="headerlink" href="#adding-a-gradient-in-python" title="永久链接至标题">#</a></h3>
-<p>A collection of Python gradient operators can be found in
-<code class="docutils literal notranslate"><span class="pre">python/tvm/relay/op/_tensor_grad.py</span></code>. We will walk through two
-representative examples: <code class="docutils literal notranslate"><span class="pre">sigmoid</span></code> and <code class="docutils literal notranslate"><span class="pre">multiply</span></code>.</p>
+<h3>在 Python 中添加梯度<a class="headerlink" href="#adding-a-gradient-in-python" title="永久链接至标题">#</a></h3>
+<p>Python 梯度算子的集合可以在 <code class="docutils literal notranslate"><span class="pre">python/tvm/relay/op/_tensor_grad.py</span></code> 中找到。介绍两个代表性的例子: <code class="docutils literal notranslate"><span class="pre">sigmoid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">multiply</span></code>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@register_gradient</span><span class="p">(</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">sigmoid_grad</span><span class="p">(</span><span class="n">orig</span><span class="p">,</span> <span class="n">grad</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns [grad * sigmoid(x) * (1 - sigmoid(x))].&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">grad</span> <span class="o">*</span> <span class="n">orig</span> <span class="o">*</span> <span class="p">(</span><span class="n">ones_like</span><span class="p">(</span><span class="n">orig</span><span class="p">)</span> <span class="o">-</span> <span class="n">orig</span><span class="p">)]</span>
 </pre></div>
 </div>
-<p>The inputs here are the original operator <code class="docutils literal notranslate"><span class="pre">orig</span></code> and a gradient <code class="docutils literal notranslate"><span class="pre">grad</span></code> to
-accumulate into. What we return is a list, where the element at the i’th
-index is the derivative of the operator with respect to the operator’s i’th
-input. In general, the gradient will return a list with as many elements as
-there are inputs to the base operator.</p>
-<p>Before we further analyze this definition, first we should recall the
-derivative of the sigmoid function: <span class="math notranslate nohighlight">\(\frac{\partial \sigma}{\partial x}
-= \sigma(x)(1 - \sigma(x))\)</span>. The definition above looks similar to the
-mathematical definition, but there is one important addition, which we
-describe below.</p>
-<p>The term <code class="docutils literal notranslate"><span class="pre">orig</span> <span class="pre">*</span> <span class="pre">(ones_like(orig)</span> <span class="pre">-</span> <span class="pre">orig)</span></code> directly matches the derivative,
-because <code class="docutils literal notranslate"><span class="pre">orig</span></code> here is the sigmoid function, but we’re not just interested
-in how to compute the gradient of this function. We’re interested in
-composing this gradient with other gradients, so we can accumulate the
-gradient across an entire program. This is where the <code class="docutils literal notranslate"><span class="pre">grad</span></code> term comes in.
-In the expression <code class="docutils literal notranslate"><span class="pre">grad</span> <span class="pre">*</span> <span class="pre">orig</span> <span class="pre">*</span> <span class="pre">(ones_like(orig)</span> <span class="pre">-</span> <span class="pre">orig)</span></code>, multiplying by
-<code class="docutils literal notranslate"><span class="pre">grad</span></code> specifies how to compose the derivative with the gradient thus far.</p>
-<p>Now, we consider <code class="docutils literal notranslate"><span class="pre">multiply</span></code>, a slightly more interesting example:</p>
+<p>这里的输入是原始的算子 <code class="docutils literal notranslate"><span class="pre">orig</span></code> 和梯度 <code class="docutils literal notranslate"><span class="pre">grad</span></code> 进行累加。返回列表，其中第 i 个下标处的元素是算子对第 i 个输入的导数。一般来说，梯度函数会返回包含基本算子输入元素数量的列表。</p>
+<p>在进一步分析这个定义之前，首先应该回忆一下 sigmoid 函数的导数： <span class="math notranslate nohighlight">\(\frac{\partial \sigma}{\partial x} = \sigma(x)(1 - \sigma(x))\)</span>。上面的定义看起来与数学定义相似，但有一个重要的补充，将在下面描述。</p>
+<p>术语 <code class="docutils literal notranslate"><span class="pre">orig</span> <span class="pre">*</span> <span class="pre">(ones_like(orig)</span> <span class="pre">-</span> <span class="pre">orig)</span></code>  直接匹配导数，因为 <code class="docutils literal notranslate"><span class="pre">orig</span></code> 在这里是 sigmoid 函数，但我们感兴趣的不仅仅是如何计算这个函数的梯度。我们感兴趣的是将这个梯度与其他梯度组合起来，这样我们就可以在整个程序中累积梯度。这就是 <code class="docutils literal notranslate"><span class="pre">grad</span></code> 项的由来。在表达式 <code class="docutils literal notranslate"><span class="pre">grad</span> <span class="pre">*</span> <span class="pre">orig</span> <span class="pre">*</span> <span class="pre">(ones_like(orig)</span> <span class="pre">-</span> <span class="pre">orig)</span></code> 中，乘 <code class="docutils literal notranslate"><span class="pre">grad</span></code> 指定如何用迄今为止的梯度组合导数。</p>
+<p>现在，我们考虑 <code class="docutils literal notranslate"><span class="pre">multiply</span></code>，一个稍微有趣一点的例子：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@register_gradient</span><span class="p">(</span><span class="s2">&quot;multiply&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">multiply_grad</span><span class="p">(</span><span class="n">orig</span><span class="p">,</span> <span class="n">grad</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns [grad * y, grad * x]&quot;&quot;&quot;</span>
@@ -1982,24 +1916,13 @@ In the expression <code class="docutils literal notranslate"><span class="pre">g
             <span class="n">collapse_sum_like</span><span class="p">(</span><span class="n">grad</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)]</span>
 </pre></div>
 </div>
-<p>In this example, there are two elements in the returned list, because
-<code class="docutils literal notranslate"><span class="pre">multiply</span></code> is a binary operator. And to recall, if <span class="math notranslate nohighlight">\(f(x, y) = xy\)</span>, the
-partial derivatives are <span class="math notranslate nohighlight">\(\frac{\partial f}{\partial x} = y\)</span> and
-<span class="math notranslate nohighlight">\(\frac{\partial f}{\partial y} = x\)</span>.</p>
-<p>There is one required step for <code class="docutils literal notranslate"><span class="pre">multiply</span></code> that is not required for
-<code class="docutils literal notranslate"><span class="pre">sigmoid</span></code>, because <code class="docutils literal notranslate"><span class="pre">multiply</span></code> has broadcasting semantics. Since the shape
-of <code class="docutils literal notranslate"><span class="pre">grad</span></code> might not match the shape of the inputs, we use
-<code class="docutils literal notranslate"><span class="pre">collapse_sum_like</span></code> to take the contents of the <code class="docutils literal notranslate"><span class="pre">grad</span> <span class="pre">*</span> <span class="pre">&lt;var&gt;</span></code> terms and
-make the shape match the shape of the input we’re differentiating with
-respect to.</p>
+<p>在本例中，返回的列表中有两个元素，因为 <code class="docutils literal notranslate"><span class="pre">multiply</span></code> 是二元算子。回想一下，如果 <span class="math notranslate nohighlight">\(f(x, y) = xy\)</span>，偏导数是 <span class="math notranslate nohighlight">\(\frac{\partial f}{\partial x} = y\)</span> 和 <span class="math notranslate nohighlight">\(\frac{\partial f}{\partial y} = x\)</span>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">multiply</span></code> 是 one required step，而 sigmoid 不需要，因为  <code class="docutils literal notranslate"><span class="pre">multiply</span></code> 具有广播语义。因为 <code class="docutils literal notranslate"><span class="pre">grad</span></code> 的形状可能与输入的形状不匹配，所以使用 <code class="docutils literal notranslate"><span class="pre">collapse_sum_like</span></code> 来获取 <code class="docutils literal notranslate"><span class="pre">grad</span> <span class="pre">*</span> <span class="pre">&lt;var&gt;</span></code> 项的内容，并使形状与我们要微分的输入的形状匹配。</p>
 </section>
 <section id="adding-a-gradient-in-c">
-<h3>Adding a Gradient in C++<a class="headerlink" href="#adding-a-gradient-in-c" title="永久链接至标题">#</a></h3>
-<p>Adding a gradient in C++ is similar to adding one in Python, but the
-interface for registering is slightly different.</p>
-<p>First, make sure <code class="docutils literal notranslate"><span class="pre">src/relay/transforms/pattern_utils.h</span></code> is included. It provides
-helper functions for creating nodes in the Relay AST. Then, define the
-gradient in a similar fashion as in the Python example:</p>
+<h3>在 C++ 中添加梯度<a class="headerlink" href="#adding-a-gradient-in-c" title="永久链接至标题">#</a></h3>
+<p>在 C++ 中添加梯度与在 Python 中添加梯度类似，但注册的接口略有不同。</p>
+<p>首先，确保包含 <code class="docutils literal notranslate"><span class="pre">src/relay/transforms/pattern_utils.h</span></code>。它提供了在 Relay AST 中创建节点的辅助函数。然后，以与 Python 示例中类似的方式定义梯度：</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">tvm</span><span class="o">::</span><span class="n">Array</span><span class="o">&lt;</span><span class="n">Expr</span><span class="o">&gt;</span><span class="w"> </span><span class="n">MultiplyGrad</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Expr</span><span class="o">&amp;</span><span class="w"> </span><span class="n">orig_call</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Expr</span><span class="o">&amp;</span><span class="w"> </span><span class="n">output_grad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Call</span><span class="o">&amp;</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orig_call</span><span class="p">.</span><span class="n">Downcast</span><span class="o">&lt;</span><span class="n">Call</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">CollapseSumLike</span><span class="p">(</span><span class="n">Multiply</span><span class="p">(</span><span class="n">output_grad</span><span class="p">,</span><span class="w"> </span><span class="n">call</span><span class="p">.</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="w"> </span><span class="n">call</span><span class="p">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="w"></span>
@@ -2007,13 +1930,8 @@ gradient in a similar fashion as in the Python example:</p>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Notice that in C++ we can’t use the same operator overloading that we have in
-Python, and we need to downcast, so the implementation is more verbose. Even
-so, we can easily verify that this definition mirrors the earlier example in
-Python.</p>
-<p>Now, instead of using a Python decorator, we need to tack a <code class="docutils literal notranslate"><span class="pre">set_attr</span></code> call
-for “FPrimalGradient” onto the end of the base operator’s registration, in
-order to register the gradient.</p>
+<p>注意，在 C++ 中，不能像在 Python 中那样使用相同的算子重载，而且需要向下强制转换，因此实现更加冗长。即便如此，可以很容易地验证这个定义与 Python 中前面的示例相对应。</p>
+<p>现在，不使用 Python 装饰器，而是需要为 “FPrimalGradient” 在基本算子注册的末尾附加  <code class="docutils literal notranslate"><span class="pre">set_attr</span></code> 调用，以便注册梯度。</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">RELAY_REGISTER_OP</span><span class="p">(</span><span class="s">&quot;multiply&quot;</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// ...</span>
 <span class="w">    </span><span class="c1">// Set other attributes</span>
@@ -2057,7 +1975,7 @@ order to register the gradient.</p>
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-11-16, 12:12:52.<br/>
+    Last updated on 2022-11-17, 06:26:12.<br/>
 </p>
         </footer>
     </div>
